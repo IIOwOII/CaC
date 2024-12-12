@@ -1,0 +1,44 @@
+--- Each Trial ---
+#. Task Type
+
+#. Role
+- Player
+- AI
+
+#. Map type
+
+#. Difficulty (AI Speed)
+
+#. Expected Win Rate
+
+#. Score
+
+
+
+--- Real time ---
+#. Absolute Position
+- Player
+- AI
+
+#. Subjective Position (Map of)
+- Player
+- AI
+
+#. Absolute Time point
+
+
+#. Time point
+
+
+#. Action Input (Controller)
+
+
+#. Absolute Angle
+- Player
+- AI
+
+
+--- End Trial ---
+#. Win/Lose
+
+#. 

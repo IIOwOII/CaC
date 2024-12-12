@@ -1,0 +1,22 @@
+{
+  "_fv": 66,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "Stiffness",
+    "icon": "texture_steve",
+    "color": {
+      "value": -1,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "mobEffectCategory": "NEUTRAL",
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": false,
+    "onStarted": {
+      "name": "EffOnStopMove"
+    },
+    "onExpired": {
+      "name": "EffOffStopMove"
+    }
+  }
+}

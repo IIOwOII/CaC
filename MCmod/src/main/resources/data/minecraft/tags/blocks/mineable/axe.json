@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "cac:blk_wall",
+    "cac:blk_obstacle"
+  ]
+}

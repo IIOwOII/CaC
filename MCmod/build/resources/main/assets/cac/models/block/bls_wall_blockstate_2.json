@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_obstacle_2a",
+  "textures": {
+    "all": "cac:block/texture_obstacle",
+    "particle": "cac:block/texture_obstacle",
+    "0": "cac:block/texture_obstacle"
+  },
+  "render_type": "cutout"
+}

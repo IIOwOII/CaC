@@ -1,0 +1,18 @@
+{
+  "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
+  "item.cac.cac_test_item": "CacTester",
+  "effect.cac.eff_stop_move": "Stiffness",
+  "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
+  "entity.cac.ent_cat": "Predator",
+  "entity.cac.ent_player_mouse": "Prey (Player)",
+  "key.cac.cac_key_left": "Cac Key Left",
+  "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
+  "effect.cac.eff_morph_predator": "Predator",
+  "entity.cac.ent_player_cat": "Predator(Player)",
+  "effect.cac.eff_morph_prey": "Prey",
+  "block.cac.blk_wall": "Wall",
+  "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
+  "block.cac.blk_obstacle": "Obstacle",
+  "entity.cac.ent_mouse": "Prey",
+  "key.cac.cac_key_right": "Cac Key Right"
+}

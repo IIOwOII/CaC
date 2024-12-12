@@ -1,0 +1,12 @@
+{
+  "_fv": 66,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "LEFT",
+    "keyBindingName": "Cac Key Left",
+    "keyBindingCategoryKey": "misc",
+    "onKeyPressed": {
+      "name": "PrdKeyLeft"
+    }
+  }
+}
