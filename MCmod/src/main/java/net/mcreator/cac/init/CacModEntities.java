@@ -26,13 +26,13 @@ import net.mcreator.cac.CacMod;
 public class CacModEntities {
 	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CacMod.MODID);
 	public static final RegistryObject<EntityType<EntCatEntity>> ENT_CAT = register("ent_cat",
-			EntityType.Builder.<EntCatEntity>of(EntCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntCatEntity::new).fireImmune().sized(0.5f, 0.5f));
+			EntityType.Builder.<EntCatEntity>of(EntCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntCatEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPlayerCatEntity>> ENT_PLAYER_CAT = register("ent_player_cat", EntityType.Builder.<EntPlayerCatEntity>of(EntPlayerCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
-			.setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntPlayerCatEntity::new).fireImmune().sized(0.5f, 0.5f));
+			.setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerCatEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntMouseEntity>> ENT_MOUSE = register("ent_mouse",
-			EntityType.Builder.<EntMouseEntity>of(EntMouseEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
+			EntityType.Builder.<EntMouseEntity>of(EntMouseEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPlayerMouseEntity>> ENT_PLAYER_MOUSE = register("ent_player_mouse", EntityType.Builder.<EntPlayerMouseEntity>of(EntPlayerMouseEntity::new, MobCategory.CREATURE)
-			.setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntPlayerMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
+			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

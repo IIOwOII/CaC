@@ -21,7 +21,7 @@ import net.mcreator.cac.CacMod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class CacModKeyMappings {
-	public static final KeyMapping CAC_KEY_LEFT = new KeyMapping("key.cac.cac_key_left", GLFW.GLFW_KEY_LEFT, "key.categories.misc") {
+	public static final KeyMapping CAC_KEY_LEFT = new KeyMapping("key.cac.cac_key_left", GLFW.GLFW_KEY_LEFT, "key.categories.cac") {
 		private boolean isDownOld = false;
 
 		@Override
@@ -34,7 +34,7 @@ public class CacModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping CAC_KEY_RIGHT = new KeyMapping("key.cac.cac_key_right", GLFW.GLFW_KEY_RIGHT, "key.categories.misc") {
+	public static final KeyMapping CAC_KEY_RIGHT = new KeyMapping("key.cac.cac_key_right", GLFW.GLFW_KEY_RIGHT, "key.categories.cac") {
 		private boolean isDownOld = false;
 
 		@Override

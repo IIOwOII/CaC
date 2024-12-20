@@ -50,7 +50,7 @@ soundDevice:""
 chatVisibility:0
 chatOpacity:1.0
 chatLineSpacing:0.0
-textBackgroundOpacity:0.5
+textBackgroundOpacity:0.0
 backgroundForChatOnly:true
 hideServerAddress:false
 advancedItemTooltips:false
@@ -72,7 +72,7 @@ tutorialStep:none
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
-skipMultiplayerWarning:false
+skipMultiplayerWarning:true
 skipRealms32bitWarning:false
 hideMatchedNames:true
 joinedFirstServer:false
@@ -121,7 +121,7 @@ key_key.hotbar.9:key.keyboard.9
 key_key.cac.cac_key_left:key.keyboard.left
 key_key.cac.cac_key_right:key.keyboard.right
 soundCategory_master:1.0
-soundCategory_music:1.0
+soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

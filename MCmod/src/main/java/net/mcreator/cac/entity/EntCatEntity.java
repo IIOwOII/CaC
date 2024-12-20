@@ -1,16 +1,13 @@
 
 package net.mcreator.cac.entity;
 
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
 
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.SpawnGroupData;
@@ -19,17 +16,15 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.BlockPos;
 
-import net.mcreator.cac.procedures.PrdTouchProcedure;
 import net.mcreator.cac.procedures.PrdInitializeCatProcedure;
 import net.mcreator.cac.procedures.AiCatProcedure;
 import net.mcreator.cac.init.CacModEntities;
@@ -43,7 +38,7 @@ public class EntCatEntity extends PathfinderMob {
 
 	public EntCatEntity(EntityType<EntCatEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.1f);
+		setMaxUpStep(0f);
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -68,11 +63,6 @@ public class EntCatEntity extends PathfinderMob {
 	@Override
 	public boolean removeWhenFarAway(double distanceToClosestPlayer) {
 		return false;
-	}
-
-	@Override
-	public void playStepSound(BlockPos pos, BlockState blockIn) {
-		this.playSound(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.amethyst_block.step")), 0.15f, 1);
 	}
 
 	@Override
@@ -128,9 +118,13 @@ public class EntCatEntity extends PathfinderMob {
 	}
 
 	@Override
-	public void playerTouch(Player sourceentity) {
-		super.playerTouch(sourceentity);
-		PrdTouchProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+	public boolean isPushedByFluid() {
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Level world = this.level();
+		Entity entity = this;
+		return false;
 	}
 
 	public static void init() {

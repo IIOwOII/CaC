@@ -35,7 +35,7 @@ public class EntPlayerCatEntity extends PathfinderMob {
 
 	public EntPlayerCatEntity(EntityType<EntPlayerCatEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.1f);
+		setMaxUpStep(0f);
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -116,6 +116,16 @@ public class EntPlayerCatEntity extends PathfinderMob {
 	}
 
 	@Override
+	public boolean isPushedByFluid() {
+		double x = this.getX();
+		double y = this.getY();
+		double z = this.getZ();
+		Level world = this.level();
+		Entity entity = this;
+		return false;
+	}
+
+	@Override
 	public void travel(Vec3 dir) {
 		Entity entity = this.getPassengers().isEmpty() ? null : (Entity) this.getPassengers().get(0);
 		if (this.isVehicle()) {
@@ -128,7 +138,7 @@ public class EntPlayerCatEntity extends PathfinderMob {
 			if (entity instanceof LivingEntity passenger) {
 				this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
 				float forward = passenger.zza;
-				float strafe = passenger.xxa;
+				float strafe = 0;
 				super.travel(new Vec3(strafe, 0, forward));
 			}
 			double d1 = this.getX() - this.xo;
@@ -149,7 +159,7 @@ public class EntPlayerCatEntity extends PathfinderMob {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.12);
+		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.08);
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);

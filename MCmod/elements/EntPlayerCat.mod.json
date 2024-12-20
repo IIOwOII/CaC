@@ -66,10 +66,10 @@
     "attackStrength": 0,
     "attackKnockback": 0.0,
     "knockbackResistance": 0.0,
-    "movementSpeed": 0.12,
-    "stepHeight": 0.1,
+    "movementSpeed": 0.08,
+    "stepHeight": 0.0,
     "armorBaseValue": 0.0,
-    "trackingRange": 256,
+    "trackingRange": 128,
     "followRange": 64,
     "health": 0,
     "xpAmount": 0,
@@ -78,7 +78,7 @@
       "fixedValue": false
     },
     "pushedByFluids": {
-      "fixedValue": true
+      "fixedValue": false
     },
     "flyingMob": false,
     "guiBoundTo": "<NONE>",
@@ -87,7 +87,7 @@
     "disableCollisions": false,
     "ridable": true,
     "canControlForward": true,
-    "canControlStrafe": true,
+    "canControlStrafe": false,
     "immuneToFire": true,
     "immuneToArrows": true,
     "immuneToFallDamage": true,

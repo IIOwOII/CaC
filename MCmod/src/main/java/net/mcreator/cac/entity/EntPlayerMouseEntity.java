@@ -64,7 +64,7 @@ public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 		super(type, world);
 		xpReward = 0;
 		setNoAi(false);
-		setMaxUpStep(0.1f);
+		setMaxUpStep(0f);
 		setPersistenceRequired();
 	}
 
@@ -197,7 +197,7 @@ public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 			if (entity instanceof LivingEntity passenger) {
 				this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
 				float forward = passenger.zza;
-				float strafe = passenger.xxa;
+				float strafe = 0;
 				super.travel(new Vec3(strafe, 0, forward));
 			}
 			double d1 = this.getX() - this.xo;
@@ -224,7 +224,7 @@ public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.12);
+		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.08);
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);

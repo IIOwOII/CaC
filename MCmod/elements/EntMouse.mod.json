@@ -17,7 +17,7 @@
     "modelHeight": 0.5,
     "modelShadowSize": 0.5,
     "mountedYOffset": 0.0,
-    "stepHeight": 0.1,
+    "stepHeight": 0.0,
     "hasSpawnEgg": true,
     "spawnEggBaseColor": {
       "value": -16777216,
@@ -60,7 +60,7 @@
     "knockbackResistance": 0.0,
     "movementSpeed": 0.5,
     "armorBaseValue": 0.0,
-    "trackingRange": 256,
+    "trackingRange": 128,
     "followRange": 64,
     "health": 0,
     "xpAmount": 0,
@@ -108,9 +108,6 @@
     },
     "onMobTickUpdate": {
       "name": "AiMouse"
-    },
-    "onPlayerCollidesWith": {
-      "name": "PrdTouch"
     },
     "onInitialSpawn": {
       "name": "PrdInitializeMouse"

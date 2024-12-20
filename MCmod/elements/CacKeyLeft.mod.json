@@ -3,8 +3,8 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "LEFT",
-    "keyBindingName": "Cac Key Left",
-    "keyBindingCategoryKey": "misc",
+    "keyBindingName": "Left Arrow",
+    "keyBindingCategoryKey": "cac",
     "onKeyPressed": {
       "name": "PrdKeyLeft"
     }

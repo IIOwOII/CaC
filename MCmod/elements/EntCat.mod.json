@@ -67,9 +67,9 @@
     "attackKnockback": 0.0,
     "knockbackResistance": 0.0,
     "movementSpeed": 0.5,
-    "stepHeight": 0.1,
+    "stepHeight": 0.0,
     "armorBaseValue": 0.0,
-    "trackingRange": 256,
+    "trackingRange": 128,
     "followRange": 64,
     "health": 0,
     "xpAmount": 0,
@@ -78,7 +78,7 @@
       "fixedValue": false
     },
     "pushedByFluids": {
-      "fixedValue": true
+      "fixedValue": false
     },
     "flyingMob": false,
     "guiBoundTo": "<NONE>",
@@ -114,7 +114,7 @@
       "value": ""
     },
     "stepSound": {
-      "value": "block.amethyst_block.step"
+      "value": ""
     },
     "raidCelebrationSound": {
       "value": ""
@@ -122,9 +122,6 @@
     "entityDataEntries": [],
     "onMobTickUpdate": {
       "name": "AiCat"
-    },
-    "onPlayerCollidesWith": {
-      "name": "PrdTouch"
     },
     "onInitialSpawn": {
       "name": "PrdInitializeCat"

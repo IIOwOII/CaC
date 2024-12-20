@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.LevelAccessor;
@@ -15,6 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.DoubleTag;
 import net.minecraft.nbt.CompoundTag;
 
 import net.mcreator.cac.CacMod;
@@ -96,7 +98,7 @@ public class CacModVariables {
 		public double Pos_player_x = 0;
 		public double Pos_player_z = 0;
 		public boolean Switch_Task = false;
-		public double Pmt_far = 16.0;
+		public double Pmt_far = 15.0;
 		public double Pmt_distance_scale = 1.0;
 		public boolean Exp_Rest = false;
 		public double Timer_time = 0.0;
@@ -112,6 +114,10 @@ public class CacModVariables {
 		public ListTag Exp_prechased_difficulty = new ListTag();
 		public double Exp_prechased_trial = 0;
 		public ListTag Exp_pre_type = new ListTag();
+		public ListTag List_obstacle = new ListTag();
+		public Vec3 Pos_offset = Vec3.ZERO;
+		public double Radius_map = 16.0;
+		public ListTag List_wall = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -144,6 +150,13 @@ public class CacModVariables {
 			this.Exp_prechased_difficulty = nbt.get("Exp_prechased_difficulty") instanceof ListTag Exp_prechased_difficulty ? Exp_prechased_difficulty : new ListTag();
 			Exp_prechased_trial = nbt.getDouble("Exp_prechased_trial");
 			this.Exp_pre_type = nbt.get("Exp_pre_type") instanceof ListTag Exp_pre_type ? Exp_pre_type : new ListTag();
+			this.List_obstacle = nbt.get("List_obstacle") instanceof ListTag List_obstacle ? List_obstacle : new ListTag();
+			{
+				ListTag listTag = nbt.getList("Pos_offset", 6);
+				this.Pos_offset = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
+			Radius_map = nbt.getDouble("Radius_map");
+			this.List_wall = nbt.get("List_wall") instanceof ListTag List_wall ? List_wall : new ListTag();
 		}
 
 		@Override
@@ -172,6 +185,17 @@ public class CacModVariables {
 			nbt.put("Exp_prechased_difficulty", this.Exp_prechased_difficulty);
 			nbt.putDouble("Exp_prechased_trial", Exp_prechased_trial);
 			nbt.put("Exp_pre_type", this.Exp_pre_type);
+			nbt.put("List_obstacle", this.List_obstacle);
+			{
+				this.Pos_offset = this.Pos_offset == null ? Vec3.ZERO : this.Pos_offset;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Pos_offset.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Pos_offset.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Pos_offset.z()));
+				nbt.put("Pos_offset", listTag);
+			}
+			nbt.putDouble("Radius_map", Radius_map);
+			nbt.put("List_wall", this.List_wall);
 			return nbt;
 		}
 

@@ -5,7 +5,7 @@
   "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
   "entity.cac.ent_cat": "Predator",
   "entity.cac.ent_player_mouse": "Prey (Player)",
-  "key.cac.cac_key_left": "Cac Key Left",
+  "key.cac.cac_key_left": "Left Arrow",
   "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
   "effect.cac.eff_morph_predator": "Predator",
   "entity.cac.ent_player_cat": "Predator(Player)",
@@ -14,5 +14,5 @@
   "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
   "block.cac.blk_obstacle": "Obstacle",
   "entity.cac.ent_mouse": "Prey",
-  "key.cac.cac_key_right": "Cac Key Right"
+  "key.cac.cac_key_right": "Right Arrow"
 }

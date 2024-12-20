@@ -3,8 +3,8 @@
   "_type": "keybind",
   "definition": {
     "triggerKey": "RIGHT",
-    "keyBindingName": "Cac Key Right",
-    "keyBindingCategoryKey": "misc",
+    "keyBindingName": "Right Arrow",
+    "keyBindingCategoryKey": "cac",
     "onKeyPressed": {
       "name": "PrdKeyRight"
     }
