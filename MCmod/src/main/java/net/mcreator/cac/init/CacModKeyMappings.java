@@ -17,6 +17,7 @@ import net.minecraft.client.KeyMapping;
 
 import net.mcreator.cac.network.CacKeyRightMessage;
 import net.mcreator.cac.network.CacKeyLeftMessage;
+import net.mcreator.cac.network.CacKeyCtrlMessage;
 import net.mcreator.cac.CacMod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
@@ -47,11 +48,25 @@ public class CacModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
+	public static final KeyMapping CAC_KEY_CTRL = new KeyMapping("key.cac.cac_key_ctrl", GLFW.GLFW_KEY_RIGHT_CONTROL, "key.categories.cac") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				CacMod.PACKET_HANDLER.sendToServer(new CacKeyCtrlMessage(0, 0));
+				CacKeyCtrlMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+			}
+			isDownOld = isDown;
+		}
+	};
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
 		event.register(CAC_KEY_LEFT);
 		event.register(CAC_KEY_RIGHT);
+		event.register(CAC_KEY_CTRL);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})
@@ -61,6 +76,7 @@ public class CacModKeyMappings {
 			if (Minecraft.getInstance().screen == null) {
 				CAC_KEY_LEFT.consumeClick();
 				CAC_KEY_RIGHT.consumeClick();
+				CAC_KEY_CTRL.consumeClick();
 			}
 		}
 	}

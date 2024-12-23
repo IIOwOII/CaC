@@ -26,11 +26,11 @@ public class TaskPresessionStartProcedure {
 							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title " + "@a " + "title " + "\"\uC7A0\uC2DC \uD6C4 \uC5F0\uC2B5 \uACFC\uC81C\uB97C \uC2DC\uC791\uD569\uB2C8\uB2E4.\""));
 				}
 			}
-			CacModVariables.MapVariables.get(world).Timer_time = 5;
-			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).Timer_show = "subtitle";
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).Timer_event = "pre_" + StringArgumentType.getString(arguments, "method");
+			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.MapVariables.get(world).Timer_time = 5;
 			CacModVariables.MapVariables.get(world).syncData(world);
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)

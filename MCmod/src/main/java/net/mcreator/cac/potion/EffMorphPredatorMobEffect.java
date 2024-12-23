@@ -9,6 +9,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 
+import net.mcreator.cac.procedures.EffTickMorphProcedure;
 import net.mcreator.cac.procedures.EffOnMorphPredatorProcedure;
 
 public class EffMorphPredatorMobEffect extends MobEffect {
@@ -19,6 +20,11 @@ public class EffMorphPredatorMobEffect extends MobEffect {
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		EffOnMorphPredatorProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+	}
+
+	@Override
+	public void applyEffectTick(LivingEntity entity, int amplifier) {
+		EffTickMorphProcedure.execute(entity);
 	}
 
 	@Override

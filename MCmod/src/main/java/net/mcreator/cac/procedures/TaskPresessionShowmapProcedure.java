@@ -24,11 +24,11 @@ public class TaskPresessionShowmapProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp task_topview");
 			}
 		}
-		CacModVariables.MapVariables.get(world).Timer_time = 5;
-		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Timer_show = "actionbar";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Timer_event = "pre_return";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Timer_time = 5;
 		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

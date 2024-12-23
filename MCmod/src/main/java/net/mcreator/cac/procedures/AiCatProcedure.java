@@ -18,7 +18,7 @@ public class AiCatProcedure {
 			entity.getPersistentData().putDouble("C_Timer", (entity.getPersistentData().getDouble("C_Timer") - 0.05));
 			distance_player = Math.pow(Math.pow(x - CacModVariables.MapVariables.get(world).Pos_player_x, 2) + Math.pow(z - CacModVariables.MapVariables.get(world).Pos_player_z, 2), 0.5);
 			if (distance_player < 1) {
-				PrdTouchProcedure.execute(world, y, entity);
+				PrdTouchProcedure.execute(world, entity);
 			}
 		}
 	}

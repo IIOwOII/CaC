@@ -1,0 +1,12 @@
+{
+  "_fv": 66,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "RCONTROL",
+    "keyBindingName": "Hotbar On/Off",
+    "keyBindingCategoryKey": "cac",
+    "onKeyPressed": {
+      "name": "PrdHotbarSwitch"
+    }
+  }
+}

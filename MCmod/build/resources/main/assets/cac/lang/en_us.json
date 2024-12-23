@@ -6,6 +6,7 @@
   "entity.cac.ent_cat": "Predator",
   "entity.cac.ent_player_mouse": "Prey (Player)",
   "key.cac.cac_key_left": "Left Arrow",
+  "key.cac.cac_key_ctrl": "Hotbar On/Off",
   "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
   "effect.cac.eff_morph_predator": "Predator",
   "entity.cac.ent_player_cat": "Predator(Player)",

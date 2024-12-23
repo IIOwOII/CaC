@@ -33,6 +33,10 @@ public class PrdInitializeProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (!world.isClientSide() && world.getServer() != null)
 			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Scan Obstacle & Wall"), false);
+		CacModVariables.MapVariables.get(world).Option_hotbar = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		if (!world.isClientSide() && world.getServer() != null)
+			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Hotbar canceled"), false);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
