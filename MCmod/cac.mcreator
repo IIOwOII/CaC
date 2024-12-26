@@ -1100,12 +1100,7 @@
         "files": [
           "src/main/java/net/mcreator/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -1396,18 +1391,6 @@
       "path": "~/CacEffect"
     },
     {
-      "name": "CacHideHotbar",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "cac_hide_hotbar",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/cac/CacHideHotbar.java"
-        ]
-      }
-    },
-    {
       "name": "PrdReset",
       "type": "procedure",
       "compiles": true,
@@ -1444,36 +1427,122 @@
       "path": "~/CacCommand"
     },
     {
-      "name": "CacKeyCtrl",
-      "type": "keybind",
+      "name": "CstState",
+      "type": "code",
       "compiles": true,
-      "locked_code": false,
-      "registry_name": "cac_key_ctrl",
+      "locked_code": true,
+      "registry_name": "cst_state",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/cac/network/CacKeyCtrlMessage.java"
+          "src/main/java/net/mcreator/cac/CstState.java"
         ]
-      },
-      "path": "~/CacEtc"
+      }
     },
     {
-      "name": "PrdHotbarSwitch",
+      "name": "CstKeybind",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_keybind",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/cac/CstKeybind.java"
+        ]
+      }
+    },
+    {
+      "name": "CstKeyHandler",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_key_handler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/cac/CstKeyHandler.java"
+        ]
+      }
+    },
+    {
+      "name": "CstRenderHandler",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_render_handler",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/cac/CstRenderHandler.java"
+        ]
+      }
+    },
+    {
+      "name": "EntMeowCam",
+      "type": "animatedentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ent_meow_cam",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/cac/client/renderer/EntMeowCamRenderer.java",
+          "src/main/java/net/mcreator/cac/entity/model/EntMeowCamModel.java",
+          "src/main/java/net/mcreator/cac/entity/EntMeowCamEntity.java",
+          "src/main/resources/assets/cac/models/item/ent_meow_cam_spawn_egg.json"
+        ]
+      },
+      "path": "~/CacEntity/CacMeowCam"
+    },
+    {
+      "name": "CamTame",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "prd_hotbar_switch",
+      "registry_name": "cam_tame",
       "metadata": {
         "files": [
-          "src/main/java/net/mcreator/cac/procedures/PrdHotbarSwitchProcedure.java"
+          "src/main/java/net/mcreator/cac/procedures/CamTameProcedure.java"
         ],
         "dependencies": [
           {
-            "name": "world",
-            "type": "world"
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
           }
         ]
       },
-      "path": "~/CacEtc"
+      "path": "~/CacEntity/CacMeowCam"
+    },
+    {
+      "name": "CamTick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cam_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/cac/procedures/CamTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacEntity/CacMeowCam"
+    },
+    {
+      "name": "CstMeowview",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_meowview",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/cac/CstMeowview.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1644,12 +1713,6 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
-    },
-    {
-      "name": "Option_hotbar",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
     }
   ],
   "sound_elements": [],
@@ -1663,19 +1726,23 @@
   "language_map": {
     "en_us": {
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
+      "key.cac.key_camera": "Toggle Camera",
       "item.cac.cac_test_item": "CacTester",
       "effect.cac.eff_stop_move": "Stiffness",
+      "item.cac.ent_meow_cam_spawn_egg": "MeowCam Spawn Egg",
       "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left Arrow",
-      "key.cac.cac_key_ctrl": "Hotbar On/Off",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "effect.cac.eff_morph_predator": "Predator",
       "entity.cac.ent_player_cat": "Predator(Player)",
+      "key.categories.cac": "Chasing and Chased",
       "effect.cac.eff_morph_prey": "Prey",
+      "key.cac.key_hotbar": "Toggle Hotbar",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
+      "entity.cac.ent_meow_cam": "MeowCam",
       "block.cac.blk_obstacle": "Obstacle",
       "entity.cac.ent_mouse": "Prey",
       "key.cac.cac_key_right": "Right Arrow"
@@ -1686,7 +1753,12 @@
     "children": [
       {
         "name": "CacEntity",
-        "children": []
+        "children": [
+          {
+            "name": "CacMeowCam",
+            "children": []
+          }
+        ]
       },
       {
         "name": "CacCondition",
@@ -1742,9 +1814,10 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "1.3.0",
-    "author": "owo, MCreator",
-    "websiteURL": "https://mcreator.net",
+    "version": "1.4.0",
+    "description": "Chasing and Chased!",
+    "author": "OwO",
+    "websiteURL": "https://github.com/IIOwOII",
     "license": "Academic Free License v3.0",
     "serverSideOnly": false,
     "requiredMods": [],
@@ -1754,7 +1827,7 @@
       "geckolib"
     ],
     "currentGenerator": "forge-1.20.1",
-    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "credits": "Created using mod maker MCreator and Me...",
     "modElementsPackage": "net.mcreator.cac"
   },
   "mcreatorVersion": 202400232117

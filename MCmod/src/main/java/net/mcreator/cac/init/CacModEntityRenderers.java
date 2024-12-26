@@ -12,6 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.mcreator.cac.client.renderer.EntPlayerMouseRenderer;
 import net.mcreator.cac.client.renderer.EntPlayerCatRenderer;
 import net.mcreator.cac.client.renderer.EntMouseRenderer;
+import net.mcreator.cac.client.renderer.EntMeowCamRenderer;
 import net.mcreator.cac.client.renderer.EntCatRenderer;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -22,5 +23,6 @@ public class CacModEntityRenderers {
 		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_CAT.get(), EntPlayerCatRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_MOUSE.get(), EntMouseRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_MOUSE.get(), EntPlayerMouseRenderer::new);
+		event.registerEntityRenderer(CacModEntities.ENT_MEOW_CAM.get(), EntMeowCamRenderer::new);
 	}
 }

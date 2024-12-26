@@ -31,6 +31,7 @@ public class CacModTabs {
 			tabData.accept(CacModItems.ENT_PLAYER_CAT_SPAWN_EGG.get());
 			tabData.accept(CacModItems.ENT_MOUSE_SPAWN_EGG.get());
 			tabData.accept(CacModItems.ENT_PLAYER_MOUSE_SPAWN_EGG.get());
+			tabData.accept(CacModItems.ENT_MEOW_CAM_SPAWN_EGG.get());
 		}
 	}
 }

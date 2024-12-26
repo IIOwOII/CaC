@@ -1,0 +1,69 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.cac_meowcam",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 1.5,
+				"visible_bounds_offset": [0, 0.25, 0]
+			},
+			"bones": [
+				{
+					"name": "All",
+					"pivot": [0, 3, 0]
+				},
+				{
+					"name": "Body",
+					"parent": "All",
+					"pivot": [0, 3, 0],
+					"cubes": [
+						{
+							"origin": [-3, 0, -2],
+							"size": [6, 6, 4],
+							"uv": {
+								"north": {"uv": [4, 4], "uv_size": [6, 6]},
+								"east": {"uv": [0, 4], "uv_size": [4, 6]},
+								"south": {"uv": [4, 14], "uv_size": [6, 6]},
+								"west": {"uv": [10, 4], "uv_size": [4, 6]},
+								"up": {"uv": [4, 0], "uv_size": [6, 4]},
+								"down": {"uv": [4, 14], "uv_size": [6, -4]}
+							}
+						}
+					]
+				},
+				{
+					"name": "Lens",
+					"parent": "All",
+					"pivot": [0, 3, -2],
+					"cubes": [
+						{
+							"origin": [-2, 1, -3],
+							"size": [4, 4, 1],
+							"uv": {
+								"north": {"uv": [1, 27], "uv_size": [4, 4]},
+								"east": {"uv": [0, 27], "uv_size": [1, 4]},
+								"west": {"uv": [5, 27], "uv_size": [1, 4]},
+								"up": {"uv": [1, 26], "uv_size": [4, 1]},
+								"down": {"uv": [1, 32], "uv_size": [4, -1]}
+							}
+						},
+						{
+							"origin": [-1.5, 1.5, -4],
+							"size": [3, 3, 1],
+							"uv": {
+								"north": {"uv": [7, 28], "uv_size": [3, 3]},
+								"east": {"uv": [6, 28], "uv_size": [1, 3]},
+								"west": {"uv": [10, 28], "uv_size": [1, 3]},
+								"up": {"uv": [7, 27], "uv_size": [3, 1]},
+								"down": {"uv": [7, 32], "uv_size": [3, -1]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

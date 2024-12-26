@@ -44,13 +44,13 @@ public class PrdTestItemProcedure {
 			CacModVariables.MapVariables.get(world).Pmt_distance_scale = 1;
 			CacModVariables.MapVariables.get(world).syncData(world);
 		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Increase Difficulty")) {
-			CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty + 0.02;
+			CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty + 0.01;
 			CacModVariables.MapVariables.get(world).syncData(world);
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Difficulty : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);
 		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Decrease Difficulty")) {
 			if (CacModVariables.MapVariables.get(world).Pmt_difficulty > 0.1) {
-				CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty - 0.02;
+				CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty - 0.01;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Difficulty : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);

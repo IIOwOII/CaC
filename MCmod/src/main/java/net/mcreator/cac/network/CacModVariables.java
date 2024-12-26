@@ -118,7 +118,6 @@ public class CacModVariables {
 		public Vec3 Pos_offset = Vec3.ZERO;
 		public double Radius_map = 16.0;
 		public ListTag List_wall = new ListTag();
-		public boolean Option_hotbar = false;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -158,7 +157,6 @@ public class CacModVariables {
 			}
 			Radius_map = nbt.getDouble("Radius_map");
 			this.List_wall = nbt.get("List_wall") instanceof ListTag List_wall ? List_wall : new ListTag();
-			Option_hotbar = nbt.getBoolean("Option_hotbar");
 		}
 
 		@Override
@@ -198,7 +196,6 @@ public class CacModVariables {
 			}
 			nbt.putDouble("Radius_map", Radius_map);
 			nbt.put("List_wall", this.List_wall);
-			nbt.putBoolean("Option_hotbar", Option_hotbar);
 			return nbt;
 		}
 

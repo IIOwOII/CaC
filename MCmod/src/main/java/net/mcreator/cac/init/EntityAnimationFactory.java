@@ -6,6 +6,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 
 import net.mcreator.cac.entity.EntPlayerMouseEntity;
 import net.mcreator.cac.entity.EntMouseEntity;
+import net.mcreator.cac.entity.EntMeowCamEntity;
 
 @Mod.EventBusSubscriber
 public class EntityAnimationFactory {
@@ -20,6 +21,13 @@ public class EntityAnimationFactory {
 				}
 			}
 			if (event.getEntity() instanceof EntPlayerMouseEntity syncable) {
+				String animation = syncable.getSyncedAnimation();
+				if (!animation.equals("undefined")) {
+					syncable.setAnimation("undefined");
+					syncable.animationprocedure = animation;
+				}
+			}
+			if (event.getEntity() instanceof EntMeowCamEntity syncable) {
 				String animation = syncable.getSyncedAnimation();
 				if (!animation.equals("undefined")) {
 					syncable.setAnimation("undefined");

@@ -19,6 +19,7 @@ import net.minecraft.world.entity.Entity;
 import net.mcreator.cac.entity.EntPlayerMouseEntity;
 import net.mcreator.cac.entity.EntPlayerCatEntity;
 import net.mcreator.cac.entity.EntMouseEntity;
+import net.mcreator.cac.entity.EntMeowCamEntity;
 import net.mcreator.cac.entity.EntCatEntity;
 import net.mcreator.cac.CacMod;
 
@@ -33,6 +34,8 @@ public class CacModEntities {
 			EntityType.Builder.<EntMouseEntity>of(EntMouseEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPlayerMouseEntity>> ENT_PLAYER_MOUSE = register("ent_player_mouse", EntityType.Builder.<EntPlayerMouseEntity>of(EntPlayerMouseEntity::new, MobCategory.CREATURE)
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<EntMeowCamEntity>> ENT_MEOW_CAM = register("ent_meow_cam", EntityType.Builder.<EntMeowCamEntity>of(EntMeowCamEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(EntMeowCamEntity::new).fireImmune().sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -45,6 +48,7 @@ public class CacModEntities {
 			EntPlayerCatEntity.init();
 			EntMouseEntity.init();
 			EntPlayerMouseEntity.init();
+			EntMeowCamEntity.init();
 		});
 	}
 
@@ -54,5 +58,6 @@ public class CacModEntities {
 		event.put(ENT_PLAYER_CAT.get(), EntPlayerCatEntity.createAttributes().build());
 		event.put(ENT_MOUSE.get(), EntMouseEntity.createAttributes().build());
 		event.put(ENT_PLAYER_MOUSE.get(), EntPlayerMouseEntity.createAttributes().build());
+		event.put(ENT_MEOW_CAM.get(), EntMeowCamEntity.createAttributes().build());
 	}
 }
