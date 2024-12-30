@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "net/owo/cac/mixins/MxnMeowviewMixin": {
+      "setPosition(Lnet/minecraft/world/phys/Vec3;)V": "Lnet/minecraft/client/Camera;m_90581_(Lnet/minecraft/world/phys/Vec3;)V",
+      "setRotation": "Lnet/minecraft/client/Camera;m_90572_(FF)V"
+    }
+  },
+  "data": {
+    "searge": {
+      "net/owo/cac/mixins/MxnMeowviewMixin": {
+        "setPosition(Lnet/minecraft/world/phys/Vec3;)V": "Lnet/minecraft/client/Camera;m_90581_(Lnet/minecraft/world/phys/Vec3;)V",
+        "setRotation": "Lnet/minecraft/client/Camera;m_90572_(FF)V"
+      }
+    }
+  }
+}

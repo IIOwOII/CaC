@@ -5,6 +5,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 
+import net.owo.cac.CstState;
+
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstKeyHandler {
 
@@ -14,11 +16,11 @@ public class CstKeyHandler {
         if (event.phase == TickEvent.Phase.END) {
             if (CstKeybind.CAC_HOTBAR_KEY.consumeClick()) {
                 // Toggle the hotbar state
-                CstState.hotbarVisible = !CstState.hotbarVisible;
+                CstState.switchHotbar();
             }
             if (CstKeybind.CAC_CAMERA_KEY.consumeClick()) {
                 // Toggle the camera state
-                CstMeowview.ToggleMeowview();
+                CstState.switchMeowview();
             }
         }
     }
