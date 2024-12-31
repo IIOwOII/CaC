@@ -5,8 +5,8 @@ plugins {
 }
 
 version = '1.0'
-group = 'com.owo.cac'
-archivesBaseName = 'cac'
+group = 'com.yourname.modid'
+archivesBaseName = 'modid'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 

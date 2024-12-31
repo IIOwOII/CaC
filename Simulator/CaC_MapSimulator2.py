@@ -4,6 +4,7 @@ import pygame as pg
 import numpy as np
 import os
 import itertools
+import pickle as pkl
 
 
 #%% Game System
@@ -21,13 +22,20 @@ def load_image(file):
 
 #%%
 class Env_CaC():
-    def __init__(self, grid_num=(10,10), speed_prey=8, speed_predator=8):
-        self.mode = 0
+    def __init__(self, data_map = '', grid_num=(10,10), speed_prey=8, speed_predator=8):
+        self.mode_num = 0
         self.show_field = 0
+        self.role_pla = 'Editor'
         
         # 그리드 설정
         self.grid_num = grid_num
-        self.grid_size = 32
+        if (data_map == ''):
+            pass
+        else:
+            with open(data_map, 'rb') as f:
+                data = pkl.load(f)
+                self.grid_num = data['Grid Number']
+        self.grid_size = 16
         self.grid_SP = (64,64) # 그리드가 시작되는 위치, 즉 그리드 왼쪽 상단의 위치
         self.grid_EP = (self.grid_SP[0]+self.grid_num[0]*self.grid_size, 
                         self.grid_SP[1]+self.grid_num[1]*self.grid_size)
@@ -44,31 +52,80 @@ class Env_CaC():
         self.map_prey = np.zeros((grid_num[0]*self.freq, grid_num[1]*self.freq))
         self.map_predator = np.zeros((grid_num[0]*self.freq, grid_num[1]*self.freq))
         
-        self.obstacle = []
-        self.vec_obstacles = [] # center 위치 픽셀 좌표
-        self.wall = []
-        self.vec_walls = []
-        self.wall.append((-1,-1))
-        self.wall.append((-1,grid_num[1]))
-        self.wall.append((grid_num[0],-1))
-        self.wall.append(grid_num)
-        for wall in itertools.product(np.arange(0,grid_num[0]),np.array([-1,grid_num[1]])):
-            self.wall.append(wall)
-        for wall in itertools.product(np.array([-1,grid_num[0]]),np.arange(0,grid_num[1])):
-            self.wall.append(wall)
-        
-        for wall in self.wall:
-            self.vec_walls.append(Vec2(self.grid_SP[0]+(wall[0]*self.grid_size)+self.grid_size//2, 
-                                       self.grid_SP[1]+(wall[1]*self.grid_size)+self.grid_size//2))
-        
-        self.render_initialize()
+        # Initialize
+        self.init_map(data_map)
+        self.init_render()
     
+    def init_map(self, data_map):
+        self.vec_obstacles = []
+        self.vec_walls = []
+        self.vec_pla_spawns = []
+        self.vec_opp_spawns = []
+        if (data_map == ''):
+            pass
+        else:
+            with open(data_map, 'rb') as f:
+                data = pkl.load(f)
+                self.vec_obstacles = data['Obstacles']
+                self.vec_walls = data['Walls']
+                self.vec_pla_spawns = data['Player Spawn Points']
+                self.vec_opp_spawns = data['Opponent Spawn Points']
+    
+    def init_render(self):
+        pg.init()
+        pg.display.set_caption('Chasing and Chased Simulator')
+        
+        # Screen 생성
+        self.screen = pg.display.set_mode((640,640))
+        
+        # clock 생성
+        self.G_clock = pg.time.Clock()
+        self.G_font = pg.font.SysFont('Arial', 24)
+        
+        self.MX_max = self.grid_num[0] # 미만
+        self.MY_max = self.grid_num[1] # 미만
+        
+        # 스프라이트 생성
+        self.spr_select = pg.transform.scale(load_image("Grid_Selected.png"), (self.grid_size,self.grid_size))
+        self.spr_block = pg.transform.scale(load_image("Grid_White.png"), (self.grid_size,self.grid_size))
+        self.spr_wall = pg.transform.scale(load_image("Grid_Green.png"), (self.grid_size,self.grid_size))
+        self.spr_predator = pg.transform.scale(load_image("Spr_Yellow.png"), (self.grid_size//2,self.grid_size//2))
+        self.spr_prey = pg.transform.scale(load_image("Spr_Cyan.png"), (self.grid_size//2,self.grid_size//2))
+        
+        # 초기 렌더
+        self.screen.fill((0,0,0)) # 화면 검은색으로
+    
+    def init_mode(self):
+        if (self.role_pla == 'Editor'):
+            self.prey.__del__()
+            self.predator.__del__()
+        else:
+            if (~self.vec_pla_spawns or ~self.vec_opp_spawns):
+                self.util_error()
+            else:
+                vec_pla_spawn = self.vec_pla_spawns[np.random.randint(len(self.vec_pla_spawns))]
+                vec_opp_spawn = self.vec_opp_spawns[np.random.randint(len(self.vec_opp_spawns))]
+    
+    def util_error(self):
+        print('No!')
+        pg.exit()
     
     def step(self, action):
         # Mode Change
         if (action==0):
-            self.mode = (self.mode+1)%4
+            self.mode_num = (self.mode_num + 1) % 4
+            if (self.mode_num == 0):
+                self.role_pla = 'Editor'
+            elif (self.mode_num == 1):
+                self.role_pla = 'Predator'
+            elif (self.mode_num == 2):
+                self.role_pla = 'Prey'
+            elif (self.mode_num == 3):
+                self.role_pla = 'None'
+            self.init_mode()
+            
             if (self.mode == 0):
+                self.role_pla = 'None'
                 self.prey.__del__()
                 self.predator.__del__()
             else:
@@ -126,31 +183,6 @@ class Env_CaC():
         elif (self.mode==3): # AI
             self.prey.move()
             self.predator.move()
-            
-    
-    def render_initialize(self):
-        pg.init()
-        pg.display.set_caption('CaC')
-        
-        # Screen 생성
-        self.screen = pg.display.set_mode((640,640))
-        
-        # clock 생성
-        self.G_clock = pg.time.Clock()
-        self.G_font = pg.font.SysFont('Arial', 24)
-        
-        self.MX_max = self.grid_num[0] # 미만
-        self.MY_max = self.grid_num[1] # 미만
-        
-        # 스프라이트 생성
-        self.spr_select = pg.transform.scale(load_image("Grid_Selected.png"), (self.grid_size,self.grid_size))
-        self.spr_block = pg.transform.scale(load_image("Grid_White.png"), (self.grid_size,self.grid_size))
-        self.spr_wall = pg.transform.scale(load_image("Grid_Green.png"), (self.grid_size,self.grid_size))
-        self.spr_predator = pg.transform.scale(load_image("Spr_Yellow.png"), (self.grid_size//2,self.grid_size//2))
-        self.spr_prey = pg.transform.scale(load_image("Spr_Cyan.png"), (self.grid_size//2,self.grid_size//2))
-        
-        # 초기 렌더
-        self.screen.fill((0,0,0)) # 화면 검은색으로
     
     
     def render(self):
