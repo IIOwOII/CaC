@@ -22,9 +22,11 @@ def load_image(file):
 
 #%%
 class Env_CaC:
-    def __init__(self, grid_num=(33,33), data_map=''):
+    def __init__(self, grid_num=(33,33), data_map='', field_line_ver=0, field_point_ver=0):
         # Components
         self.mode_num = -1
+        self.field_line_ver = field_line_ver
+        self.field_point_ver = field_point_ver
         
         # 그리드 설정
         self.grid_num = Vec2(*grid_num)
@@ -32,15 +34,15 @@ class Env_CaC:
         self.grid_SP = Vec2(64,64) # 그리드가 시작되는 위치, 즉 그리드 왼쪽 상단의 위치
         
         # Field map
-        self.K_OPP_prey = 50
+        self.K_OPP_prey = 10
         self.K_OBS_prey = 3
         self.K_WAL_prey = 10
-        self.K_OPP_predator = -50
+        self.K_OPP_predator = -2
         self.K_OBS_predator = 3
-        self.K_WAL_predator = 10
+        self.K_WAL_predator = 0
         
         self.field_mode = 0
-        self.field_freq = 2
+        self.field_freq = 4
         self.field_map = np.zeros(self.field_freq * self.grid_num)
         
         # Player
@@ -146,7 +148,7 @@ class Env_CaC:
                 self.predator.warp(vec_opp_spawn)
     
     def init_fieldmap(self):
-        print('1')
+        print('Loading...')
         self.field_map = np.zeros(self.field_freq * self.grid_num)
         self.vtc_obstacles = self.util_vertice(self.vec_obstacles)
         self.vtc_walls = self.util_vertice(self.vec_walls)
@@ -158,14 +160,16 @@ class Env_CaC:
             K_WAL = self.K_WAL_predator
         for ssx in range(self.field_map.shape[0]):
             sx = ssx/self.field_freq
+            sx_corr = sx-0.5+(1/(2*self.field_freq))
             for ssy in range(self.field_map.shape[1]):
                 sy = ssy/self.field_freq
+                sy_corr = sy-0.5+(1/(2*self.field_freq))
                 if (Vec2(int(sx),int(sy)) in self.vec_obstacles) or (Vec2(int(sx),int(sy)) in self.vec_walls):
                     pass
                 else:
-                    self.field_map[ssx,ssy] = abs(Field_Line(Vec2(sx,sy), self.vtc_obstacles, K_OBS) + Field_Line(Vec2(sx,sy), self.vtc_walls, K_WAL))
+                    self.field_map[ssx,ssy] = abs(Field_Line(Vec2(sx_corr,sy_corr), self.vtc_obstacles, K_OBS, self.field_line_ver) + Field_Line(Vec2(sx_corr,sy_corr), self.vtc_walls, K_WAL, self.field_line_ver))
         self.field_map = np.log(self.field_map+1)
-        print('2')
+        print('Done!')
         
     # Util
     def util_error(self):
@@ -335,7 +339,7 @@ class Env_CaC:
         if (self.role_active):
             if (action==0): # Forward
                 pointer_pla.move(self.pla_spd)
-                pointer_opp.move_AI(self.opp_spd, pointer_pla.vec_pos, self.vtc_obstacles, self.vtc_walls)
+                pointer_opp.move_AI(self.opp_spd, pointer_pla.vec_pos, self.vtc_obstacles, self.vtc_walls, self.field_line_ver, self.field_point_ver)
             elif (action==1): # Left
                 pointer_pla.rotation(-self.pla_rspd)
             elif (action==2): # Right
@@ -427,8 +431,8 @@ class CaC_Role:
     def move(self, spd):
         self.vec_pos += spd * self.vec_rot
     
-    def move_AI(self, spd, OPP, OBS, WAL):
-        field = Field_Point(self.vec_pos, OPP, self.K_OPP) + Field_Line(self.vec_pos, OBS, self.K_OBS) + Field_Line(self.vec_pos, WAL, self.K_WAL)
+    def move_AI(self, spd, OPP, OBS, WAL, line_ver, point_ver):
+        field = Field_Point(self.vec_pos, OPP, self.K_OPP, point_ver) + Field_Line(self.vec_pos, OBS, self.K_OBS, line_ver) + Field_Line(self.vec_pos, WAL, self.K_WAL, line_ver)
         self.vec_rot = field.unit()
         self.vec_pos += spd * self.vec_rot
     
@@ -438,12 +442,18 @@ class CaC_Role:
         #    self.spr = pg.transform.rotate(self.spr, deg)
 
 #%%
-def Field_Point(vec_p, vec_o, K=1):
+def Field_Point(vec_p, vec_o, K=1, version=0):
     r = (vec_p - vec_o)
-    field = (K/((abs(r))**3)) * r
+    if (version == 0):
+        field = (K/(abs(r)**3)) * r
+    elif (version == 1):
+        field = (K/(abs(r)**2)) * r
+    elif (version == 2):
+        field = (K*(abs(r)**(-0.5))) * r
+    
     return field
 
-def Field_Line(vec_p, lst_vertices, K=1):
+def Field_Line(vec_p, lst_vertices, K=1, version=0):
     field = Vec2(0,0)
     
     for vertice in lst_vertices:
@@ -458,11 +468,18 @@ def Field_Line(vec_p, lst_vertices, K=1):
         h = (-l_b*a + l_a*b)/abs(a-b)
         D = abs(h)
         
-        if (D < 0.01):
-            subfield = (K*((1/l_a)-(1/l_b))) * basis_u
-        else:
-            basis_n = h.unit()
-            subfield = ((-K/D)*((l_a/((D**2+l_a**2)**0.5))-(l_b/((D**2+l_b**2)**0.5)))) * basis_n + ((K/((D**2+l_a**2)**0.5))-(K/((D**2+l_b**2)**0.5))) * basis_u
+        if (version == 0):
+            if (D < 0.01):
+                subfield = (K*((1/l_a)-(1/l_b))) * basis_u
+            else:
+                basis_n = h.unit()
+                subfield = ((-K/D)*((l_a/((D**2+l_a**2)**0.5))-(l_b/((D**2+l_b**2)**0.5)))) * basis_n + ((K/((D**2+l_a**2)**0.5))-(K/((D**2+l_b**2)**0.5))) * basis_u
+        elif (version == 1):
+            if (D < 0.01):
+                subfield = (-K * np.log(abs(l_a/l_b))) * basis_u
+            else:
+                basis_n = h.unit()
+                subfield = (-K)*(np.arctan(l_a/D)-np.arctan(l_b/D)) * basis_n + (-K/2)*((np.log(D**2+l_a**2))-(np.log(D**2+l_b**2))) * basis_u
         
         field = field + subfield
         
@@ -545,7 +562,8 @@ map_y = 33
 
 G_FPS = 24
 
-env = Env_CaC(grid_num=(map_x,map_y), data_map='Map01.pickle')
+env = Env_CaC(grid_num=(map_x,map_y), data_map='Map01.pickle', 
+              field_line_ver=0, field_point_ver=2)
 key_up = False
 key_left = False
 key_right = False
