@@ -1372,25 +1372,6 @@
       "path": "~/CacUtil"
     },
     {
-      "name": "EffTickMorph",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "eff_tick_morph",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/EffTickMorphProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacEffect"
-    },
-    {
       "name": "PrdReset",
       "type": "procedure",
       "compiles": true,

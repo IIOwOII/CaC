@@ -6,7 +6,7 @@ chatColors:true
 chatLinks:true
 chatLinksPrompt:true
 enableVsync:false
-entityShadows:true
+entityShadows:false
 forceUnicodeFont:false
 discrete_mouse_scroll:false
 invertYMouse:false
@@ -26,7 +26,7 @@ fov:0.0
 screenEffectScale:1.0
 fovEffectScale:0.0
 darknessEffectScale:1.0
-glintSpeed:0.5
+glintSpeed:0.5088028169014085
 glintStrength:0.75
 damageTiltStrength:1.0
 highContrast:false
@@ -42,7 +42,7 @@ ao:false
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"true"
-resourcePacks:[]
+resourcePacks:["vanilla","mod_resources"]
 incompatibleResourcePacks:[]
 lastServer:localhost:25463
 lang:en_us
@@ -122,6 +122,7 @@ key_key.cac.key_hotbar:key.keyboard.right.control
 key_key.cac.key_camera:key.keyboard.f6
 key_key.cac.cac_key_left:key.keyboard.left
 key_key.cac.cac_key_right:key.keyboard.right
+key_key.cac.cac_key_signal:key.keyboard.s
 soundCategory_master:1.0
 soundCategory_music:0.0
 soundCategory_record:1.0

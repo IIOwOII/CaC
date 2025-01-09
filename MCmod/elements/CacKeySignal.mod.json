@@ -1,0 +1,15 @@
+{
+  "_fv": 66,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "S",
+    "keyBindingName": "Scanner Signal",
+    "keyBindingCategoryKey": "cac",
+    "onKeyPressed": {
+      "name": "PrdKeySignal"
+    },
+    "onKeyReleased": {
+      "name": "PrdKeySignalOut"
+    }
+  }
+}

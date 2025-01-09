@@ -118,6 +118,9 @@ public class CacModVariables {
 		public Vec3 Pos_offset = Vec3.ZERO;
 		public double Radius_map = 16.0;
 		public ListTag List_wall = new ListTag();
+		public boolean Exp_signal = false;
+		public double Exp_phase = 0;
+		public ListTag Timer_random_preparation = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -157,6 +160,9 @@ public class CacModVariables {
 			}
 			Radius_map = nbt.getDouble("Radius_map");
 			this.List_wall = nbt.get("List_wall") instanceof ListTag List_wall ? List_wall : new ListTag();
+			Exp_signal = nbt.getBoolean("Exp_signal");
+			Exp_phase = nbt.getDouble("Exp_phase");
+			this.Timer_random_preparation = nbt.get("Timer_random_preparation") instanceof ListTag Timer_random_preparation ? Timer_random_preparation : new ListTag();
 		}
 
 		@Override
@@ -196,6 +202,9 @@ public class CacModVariables {
 			}
 			nbt.putDouble("Radius_map", Radius_map);
 			nbt.put("List_wall", this.List_wall);
+			nbt.putBoolean("Exp_signal", Exp_signal);
+			nbt.putDouble("Exp_phase", Exp_phase);
+			nbt.put("Timer_random_preparation", this.Timer_random_preparation);
 			return nbt;
 		}
 

@@ -1372,25 +1372,6 @@
       "path": "~/CacUtil"
     },
     {
-      "name": "EffTickMorph",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "eff_tick_morph",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/EffTickMorphProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacEffect"
-    },
-    {
       "name": "PrdReset",
       "type": "procedure",
       "compiles": true,
@@ -1475,64 +1456,6 @@
       }
     },
     {
-      "name": "EntMeowCam",
-      "type": "animatedentity",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ent_meow_cam",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/entity/EntMeowCamEntity.java",
-          "src/main/java/net/owo/cac/entity/model/EntMeowCamModel.java",
-          "src/main/java/net/owo/cac/client/renderer/EntMeowCamRenderer.java",
-          "src/main/resources/assets/cac/models/item/ent_meow_cam_spawn_egg.json"
-        ]
-      },
-      "path": "~/CacEntity/CacMeowCam"
-    },
-    {
-      "name": "CamTame",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cam_tame",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/CamTameProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacEntity/CacMeowCam"
-    },
-    {
-      "name": "CamTick",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "cam_tick",
-      "metadata": {
-        "files": [
-          "src/main/java/net/mcreator/cac/procedures/CamTickProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacEntity/CacMeowCam"
-    },
-    {
       "name": "MxnMeowview",
       "type": "mixin",
       "compiles": true,
@@ -1543,6 +1466,25 @@
           "src/main/java/net/owo/cac/mixins/MxnMeowviewMixin.java"
         ]
       }
+    },
+    {
+      "name": "PrdInitializePlayer",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_initialize_player",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdInitializePlayerProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
     }
   ],
   "variable_elements": [
@@ -1729,7 +1671,6 @@
       "key.cac.key_camera": "Toggle Camera",
       "item.cac.cac_test_item": "CacTester",
       "effect.cac.eff_stop_move": "Stiffness",
-      "item.cac.ent_meow_cam_spawn_egg": "MeowCam Spawn Egg",
       "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_player_mouse": "Prey (Player)",
@@ -1742,7 +1683,6 @@
       "key.cac.key_hotbar": "Toggle Hotbar",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
-      "entity.cac.ent_meow_cam": "MeowCam",
       "block.cac.blk_obstacle": "Obstacle",
       "entity.cac.ent_mouse": "Prey",
       "key.cac.cac_key_right": "Right Arrow"
@@ -1753,12 +1693,7 @@
     "children": [
       {
         "name": "CacEntity",
-        "children": [
-          {
-            "name": "CacMeowCam",
-            "children": []
-          }
-        ]
+        "children": []
       },
       {
         "name": "CacCondition",

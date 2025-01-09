@@ -3,6 +3,7 @@
   "key.cac.key_camera": "Toggle Camera",
   "item.cac.cac_test_item": "CacTester",
   "effect.cac.eff_stop_move": "Stiffness",
+  "key.cac.cac_key_signal": "Scanner Signal",
   "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
   "entity.cac.ent_cat": "Predator",
   "entity.cac.ent_player_mouse": "Prey (Player)",
