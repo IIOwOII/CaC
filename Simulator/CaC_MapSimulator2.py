@@ -37,9 +37,9 @@ class Env_CaC:
         self.K_OPP_prey = 10
         self.K_OBS_prey = 3
         self.K_WAL_prey = 10
-        self.K_OPP_predator = -2
-        self.K_OBS_predator = 3
-        self.K_WAL_predator = 0
+        self.K_OPP_predator = -10
+        self.K_OBS_predator = 1
+        self.K_WAL_predator = 1
         
         self.field_mode = 0
         self.field_freq = 4
@@ -563,7 +563,7 @@ map_y = 33
 G_FPS = 24
 
 env = Env_CaC(grid_num=(map_x,map_y), data_map='Map01.pickle', 
-              field_line_ver=0, field_point_ver=2)
+              field_line_ver=0, field_point_ver=1)
 key_up = False
 key_left = False
 key_right = False

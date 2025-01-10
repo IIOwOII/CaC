@@ -15,7 +15,7 @@ public class FncFieldPlayerProcedure {
 		double sca_K = 0;
 		sca_K = entity.getPersistentData().getDouble("K_Player");
 		vec_TP = new Vec3((x - CacModVariables.MapVariables.get(world).Pos_player_x), 0, (z - CacModVariables.MapVariables.get(world).Pos_player_z));
-		vec_field = (vec_TP.normalize()).scale((sca_K / vec_TP.lengthSqr()));
+		vec_field = (vec_TP.normalize()).scale((sca_K / vec_TP.length()));
 		return vec_field;
 	}
 }
