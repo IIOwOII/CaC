@@ -3,12 +3,15 @@ package net.owo.cac.procedures;
 import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.chat.Component;
+import net.minecraft.nbt.DoubleTag;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
-public class TaskPresessionPreparationProcedure {
+public class TaskPreparationProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
@@ -28,9 +31,12 @@ public class TaskPresessionPreparationProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "worldborder set 8");
 			}
 		}
-		CacModVariables.MapVariables.get(world).Timer_show = "none";
+		CacModVariables.MapVariables.get(world).Timer_event = "phase_gameplay";
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Timer_event = "pre_phase2";
+		CacModVariables.MapVariables.get(world).Timer_time = (CacModVariables.MapVariables.get(world).Dat_time_preparation
+				.get((int) (CacModVariables.MapVariables.get(world).Exp_trial % CacModVariables.MapVariables.get(world).Dat_time_preparation.size()))) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		if (entity instanceof Player _player && !_player.level().isClientSide())
+			_player.displayClientMessage(Component.literal("Ready..."), true);
 	}
 }

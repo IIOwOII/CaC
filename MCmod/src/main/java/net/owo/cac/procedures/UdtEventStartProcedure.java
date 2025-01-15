@@ -13,7 +13,7 @@ public class UdtEventStartProcedure {
 		event = CacModVariables.MapVariables.get(world).Timer_event;
 		CacModVariables.MapVariables.get(world).Timer_event = "none";
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if ((event).equals("pre_AP")) {
+		if ((event).equals("start_presession")) {
 			TaskPresessionShowmapProcedure.execute(world, entity);
 		} else if ((event).equals("pre_return")) {
 			TaskPresessionReturnProcedure.execute(entity);

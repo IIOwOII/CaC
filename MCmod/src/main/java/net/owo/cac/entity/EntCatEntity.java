@@ -2,6 +2,7 @@
 package net.owo.cac.entity;
 
 import net.owo.cac.procedures.PrdInitializeCatProcedure;
+import net.owo.cac.procedures.PrdDespawnOpponentProcedure;
 import net.owo.cac.procedures.AiCatProcedure;
 import net.owo.cac.init.CacModEntities;
 
@@ -105,9 +106,15 @@ public class EntCatEntity extends PathfinderMob {
 	}
 
 	@Override
+	public void die(DamageSource source) {
+		super.die(source);
+		PrdDespawnOpponentProcedure.execute(this.level());
+	}
+
+	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		PrdInitializeCatProcedure.execute(this);
+		PrdInitializeCatProcedure.execute(world, this);
 		return retval;
 	}
 

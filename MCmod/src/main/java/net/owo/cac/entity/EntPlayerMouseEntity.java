@@ -10,6 +10,8 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
+import net.owo.cac.procedures.PrdInitializePlayerProcedure;
+import net.owo.cac.procedures.PrdDespawnPlayerProcedure;
 import net.owo.cac.init.CacModEntities;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,6 +19,7 @@ import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
 
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.projectile.ThrownPotion;
@@ -24,9 +27,11 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
@@ -37,6 +42,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -45,6 +51,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.nbt.CompoundTag;
+
+import javax.annotation.Nullable;
 
 public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 	public static final EntityDataAccessor<Boolean> SHOOT = SynchedEntityData.defineId(EntPlayerMouseEntity.class, EntityDataSerializers.BOOLEAN);
@@ -149,6 +157,19 @@ public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 		if (source.is(DamageTypes.WITHER_SKULL))
 			return false;
 		return super.hurt(source, amount);
+	}
+
+	@Override
+	public void die(DamageSource source) {
+		super.die(source);
+		PrdDespawnPlayerProcedure.execute(this.level());
+	}
+
+	@Override
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
+		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
+		PrdInitializePlayerProcedure.execute(world, this);
+		return retval;
 	}
 
 	@Override

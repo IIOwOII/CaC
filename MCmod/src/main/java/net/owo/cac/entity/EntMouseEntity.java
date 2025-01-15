@@ -11,6 +11,7 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.animatable.GeoEntity;
 
 import net.owo.cac.procedures.PrdInitializeMouseProcedure;
+import net.owo.cac.procedures.PrdDespawnOpponentProcedure;
 import net.owo.cac.procedures.AiMouseProcedure;
 import net.owo.cac.init.CacModEntities;
 
@@ -148,9 +149,15 @@ public class EntMouseEntity extends PathfinderMob implements GeoEntity {
 	}
 
 	@Override
+	public void die(DamageSource source) {
+		super.die(source);
+		PrdDespawnOpponentProcedure.execute(this.level());
+	}
+
+	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor world, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData livingdata, @Nullable CompoundTag tag) {
 		SpawnGroupData retval = super.finalizeSpawn(world, difficulty, reason, livingdata, tag);
-		PrdInitializeMouseProcedure.execute(this);
+		PrdInitializeMouseProcedure.execute(world, this);
 		return retval;
 	}
 

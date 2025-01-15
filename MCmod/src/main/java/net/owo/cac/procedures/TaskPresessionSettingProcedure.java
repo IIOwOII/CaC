@@ -25,5 +25,9 @@ public class TaskPresessionSettingProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_prechased_difficulty = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Exp_session = "presession";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_time_preparation = FncTimepoolPreparationProcedure.execute(world);
+		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

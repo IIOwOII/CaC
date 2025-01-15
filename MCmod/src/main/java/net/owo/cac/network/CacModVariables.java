@@ -120,7 +120,14 @@ public class CacModVariables {
 		public ListTag List_wall = new ListTag();
 		public boolean Exp_signal = false;
 		public double Exp_phase = 0;
-		public ListTag Timer_random_preparation = new ListTag();
+		public String Log_error = "\"\"";
+		public String Exp_session = "\"none\"";
+		public double Exp_trial = 0;
+		public ListTag Dat_spawn_opponent = new ListTag();
+		public ListTag Dat_time_preparation = new ListTag();
+		public ListTag Dat_type_trial = new ListTag();
+		public String UUID_opponent = "\"\"";
+		public String UUID_player = "\"\"";
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -162,7 +169,14 @@ public class CacModVariables {
 			this.List_wall = nbt.get("List_wall") instanceof ListTag List_wall ? List_wall : new ListTag();
 			Exp_signal = nbt.getBoolean("Exp_signal");
 			Exp_phase = nbt.getDouble("Exp_phase");
-			this.Timer_random_preparation = nbt.get("Timer_random_preparation") instanceof ListTag Timer_random_preparation ? Timer_random_preparation : new ListTag();
+			Log_error = nbt.getString("Log_error");
+			Exp_session = nbt.getString("Exp_session");
+			Exp_trial = nbt.getDouble("Exp_trial");
+			this.Dat_spawn_opponent = nbt.get("Dat_spawn_opponent") instanceof ListTag Dat_spawn_opponent ? Dat_spawn_opponent : new ListTag();
+			this.Dat_time_preparation = nbt.get("Dat_time_preparation") instanceof ListTag Dat_time_preparation ? Dat_time_preparation : new ListTag();
+			this.Dat_type_trial = nbt.get("Dat_type_trial") instanceof ListTag Dat_type_trial ? Dat_type_trial : new ListTag();
+			UUID_opponent = nbt.getString("UUID_opponent");
+			UUID_player = nbt.getString("UUID_player");
 		}
 
 		@Override
@@ -204,7 +218,14 @@ public class CacModVariables {
 			nbt.put("List_wall", this.List_wall);
 			nbt.putBoolean("Exp_signal", Exp_signal);
 			nbt.putDouble("Exp_phase", Exp_phase);
-			nbt.put("Timer_random_preparation", this.Timer_random_preparation);
+			nbt.putString("Log_error", Log_error);
+			nbt.putString("Exp_session", Exp_session);
+			nbt.putDouble("Exp_trial", Exp_trial);
+			nbt.put("Dat_spawn_opponent", this.Dat_spawn_opponent);
+			nbt.put("Dat_time_preparation", this.Dat_time_preparation);
+			nbt.put("Dat_type_trial", this.Dat_type_trial);
+			nbt.putString("UUID_opponent", UUID_opponent);
+			nbt.putString("UUID_player", UUID_player);
 			return nbt;
 		}
 

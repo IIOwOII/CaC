@@ -48,6 +48,10 @@ public class PrdResetProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "kill @e[type=cac:ent_player_mouse]");
 			}
 		}
+		CacModVariables.MapVariables.get(world).Exp_session = "none";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Exp_phase = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		if (entity instanceof Player _player && !_player.level().isClientSide())
 			_player.displayClientMessage(Component.literal("Reset Executed"), true);
 	}

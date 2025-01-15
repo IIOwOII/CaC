@@ -915,10 +915,6 @@
         ],
         "dependencies": [
           {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
             "name": "entity",
             "type": "entity"
           },
@@ -1519,14 +1515,53 @@
       "path": "~/CacEtc"
     },
     {
-      "name": "TaskPresessionPreparation",
+      "name": "CacError",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "task_presession_preparation",
+      "registry_name": "cac_error",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/TaskPresessionPreparationProcedure.java"
+          "src/main/java/net/owo/cac/procedures/CacErrorProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacEtc"
+    },
+    {
+      "name": "FncTimepoolPreparation",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_timepool_preparation",
+      "metadata": {
+        "return_type": "datalist",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncTimepoolPreparationProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil"
+    },
+    {
+      "name": "TaskPreparation",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_preparation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskPreparationProcedure.java"
         ],
         "dependencies": [
           {
@@ -1539,7 +1574,20 @@
           }
         ]
       },
-      "path": "~/CacTask/Presession"
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "CmdTaskTest",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_task_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTaskTestCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Test"
     }
   ],
   "variable_elements": [
@@ -1724,7 +1772,37 @@
       "value": "0"
     },
     {
-      "name": "Timer_random_preparation",
+      "name": "Log_error",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Exp_session",
+      "type": "string",
+      "scope": "map",
+      "value": "\"none\""
+    },
+    {
+      "name": "Exp_trial",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_spawn_opponent",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_time_preparation",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_type_trial",
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
@@ -1814,6 +1892,10 @@
           },
           {
             "name": "General",
+            "children": []
+          },
+          {
+            "name": "Test",
             "children": []
           }
         ]

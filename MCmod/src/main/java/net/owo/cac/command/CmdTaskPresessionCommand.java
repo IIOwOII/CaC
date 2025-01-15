@@ -14,15 +14,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.commands.Commands;
 
-import com.mojang.brigadier.arguments.StringArgumentType;
-
 @Mod.EventBusSubscriber
 public class CmdTaskPresessionCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cac_task_presession")
 
-				.then(Commands.argument("method", StringArgumentType.word()).executes(arguments -> {
+				.executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();
@@ -34,8 +32,8 @@ public class CmdTaskPresessionCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TaskPresessionStartProcedure.execute(world, arguments, entity);
+					TaskPresessionStartProcedure.execute(world, entity);
 					return 0;
-				})));
+				}));
 	}
 }
