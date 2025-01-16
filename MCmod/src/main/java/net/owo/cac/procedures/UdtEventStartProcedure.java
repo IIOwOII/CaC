@@ -17,6 +17,10 @@ public class UdtEventStartProcedure {
 			TaskPresessionShowmapProcedure.execute(world, entity);
 		} else if ((event).equals("pre_return")) {
 			TaskPresessionReturnProcedure.execute(entity);
+		} else if ((event).equals("phase_preparation")) {
+			TaskPreparationProcedure.execute(world, entity);
+		} else if ((event).equals("phase_gameplay")) {
+			TaskGameplayProcedure.execute(world, entity);
 		}
 	}
 }

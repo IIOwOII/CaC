@@ -12,6 +12,9 @@ public class CacErrorProcedure {
 		if ((log_error).equals("nonexist_file")) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("No file!"), false);
+		} else if ((log_error).equals("nonexist_trialtype")) {
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("No trial type!"), false);
 		}
 		CacModVariables.MapVariables.get(world).Log_error = "";
 		CacModVariables.MapVariables.get(world).syncData(world);

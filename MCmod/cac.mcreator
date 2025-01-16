@@ -62,62 +62,6 @@
       "path": "~/CacCondition"
     },
     {
-      "name": "RtnTouch",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_touch",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnTouchProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ],
-        "return_type": "logic"
-      },
-      "path": "~/CacCondition"
-    },
-    {
-      "name": "CmdTestChased",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_test_chased",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTestChasedCommand.java"
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
-      "name": "PrdTestChased",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_test_chased",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdTestChasedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "CacTestItem",
       "type": "item",
       "compiles": true,
@@ -394,42 +338,6 @@
         ]
       },
       "path": "~/CacAI"
-    },
-    {
-      "name": "CmdTestChasing",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_test_chasing",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTestChasingCommand.java"
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
-      "name": "PrdTestChasing",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_test_chasing",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdTestChasingProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCommand"
     },
     {
       "name": "EffOnMorphPredator",
@@ -740,45 +648,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "PrdStageRest",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_stage_rest",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdStageRestProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCondition"
-    },
-    {
-      "name": "RtnStageRest",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_stage_rest",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnStageRestProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "EffApplyMorphPrey",
       "type": "procedure",
       "compiles": true,
@@ -899,19 +768,6 @@
       "path": "~/CacUpdate"
     },
     {
-      "name": "CmdTaskPresession",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_task_presession",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTaskPresessionCommand.java"
-        ]
-      },
-      "path": "~/CacTask/Presession"
-    },
-    {
       "name": "TaskPresessionStart",
       "type": "procedure",
       "compiles": true,
@@ -933,33 +789,6 @@
         ]
       },
       "path": "~/CacTask/Presession"
-    },
-    {
-      "name": "PrdIntroduction",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_introduction",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdIntroductionProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCommand"
-    },
-    {
-      "name": "CmdIntroduction",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_introduction",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdIntroductionCommand.java"
-        ]
-      },
-      "path": "~/CacCommand"
     },
     {
       "name": "EffStopMove",
@@ -1106,8 +935,20 @@
         ],
         "dependencies": [
           {
-            "name": "world",
-            "type": "world"
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
           }
         ]
       },
@@ -1594,19 +1435,6 @@
       "path": "~/CacTask/General"
     },
     {
-      "name": "CmdTaskTest",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_task_test",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTaskTestCommand.java"
-        ]
-      },
-      "path": "~/CacTask/Test"
-    },
-    {
       "name": "PrdInitializePlayer",
       "type": "procedure",
       "compiles": true,
@@ -1666,6 +1494,291 @@
         ]
       },
       "path": "~/CacCondition"
+    },
+    {
+      "name": "FncManageSpawn",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_manage_spawn",
+      "metadata": {
+        "return_type": "datalist",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncManageSpawnProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil"
+    },
+    {
+      "name": "IniReadConfig",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_read_config",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniReadConfigProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit"
+    },
+    {
+      "name": "FncManageTasktype",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_manage_tasktype",
+      "metadata": {
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncManageTasktypeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil"
+    },
+    {
+      "name": "TaskGameplay",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_gameplay",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskGameplayProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "CmdTask",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_task",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTaskCommand.java"
+        ]
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "TaskManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "CmdTest",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTestCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Test"
+    },
+    {
+      "name": "TestManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TestManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Test"
+    },
+    {
+      "name": "TestChasing",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test_chasing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TestChasingProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Test"
+    },
+    {
+      "name": "TestChased",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test_chased",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TestChasedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Test"
+    },
+    {
+      "name": "RecTrialResult",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rec_trial_result",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RecTrialResultProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Record"
+    },
+    {
+      "name": "TimTrial",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_trial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimTrialProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Timer"
+    },
+    {
+      "name": "TaskGameplayEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_gameplay_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskGameplayEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
     }
   ],
   "variable_elements": [
@@ -1697,7 +1810,7 @@
       "name": "Pmt_difficulty",
       "type": "number",
       "scope": "map",
-      "value": "0.0"
+      "value": "0.5"
     },
     {
       "name": "Pos_player_x",
@@ -1712,28 +1825,10 @@
       "value": "0"
     },
     {
-      "name": "Switch_Task",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "Pmt_far",
       "type": "number",
       "scope": "map",
       "value": "15.0"
-    },
-    {
-      "name": "Pmt_distance_scale",
-      "type": "number",
-      "scope": "map",
-      "value": "1.0"
-    },
-    {
-      "name": "Exp_Rest",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
     },
     {
       "name": "Timer_time",
@@ -1896,6 +1991,48 @@
       "type": "string",
       "scope": "map",
       "value": "\"\""
+    },
+    {
+      "name": "Pool_spawn",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Switch_AI",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Switch_exp",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Tim_trial_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Tim_trial_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_time_gameplay",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_win",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [],
@@ -1987,15 +2124,27 @@
           {
             "name": "Test",
             "children": []
+          },
+          {
+            "name": "Timer",
+            "children": []
+          },
+          {
+            "name": "Record",
+            "children": []
           }
         ]
+      },
+      {
+        "name": "CacInit",
+        "children": []
       }
     ]
   },
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "1.4.0",
+    "version": "0.5",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

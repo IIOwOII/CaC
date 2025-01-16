@@ -15,6 +15,7 @@ public class PrdInitializeProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
+		IniReadConfigProcedure.execute(world);
 		CacModVariables.MapVariables.get(world).List_obstacle = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).List_wall = new ListTag();
@@ -44,14 +45,6 @@ public class PrdInitializeProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (!world.isClientSide() && world.getServer() != null)
 			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Pmt_far = " + new java.text.DecimalFormat("##.##").format(CacModVariables.MapVariables.get(world).Pmt_far))), false);
-		CacModVariables.MapVariables.get(world).Pmt_distance_scale = 1;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Pmt_distance_scale = " + new java.text.DecimalFormat("##.##").format(CacModVariables.MapVariables.get(world).Pmt_distance_scale))), false);
-		CacModVariables.MapVariables.get(world).Exp_Rest = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Exp_Rest = False"), false);
 		CacModVariables.MapVariables.get(world).Timer_show = "none";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Timer_event = "none";

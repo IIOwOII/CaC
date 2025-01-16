@@ -17,7 +17,7 @@ public class AiMouseProcedure {
 		if (entity == null)
 			return;
 		double distance_player = 0;
-		if (CacModVariables.MapVariables.get(world).Switch_Task && !entity.getPersistentData().getBoolean("C_Touch")) {
+		if (CacModVariables.MapVariables.get(world).Switch_AI) {
 			if (entity.getPersistentData().getDouble("C_Timer") <= 0) {
 				entity.getPersistentData().putDouble("C_Timer", 0.5);
 				AiOpponentMoveProcedure.execute(world, x, y, z, entity);
@@ -35,9 +35,10 @@ public class AiMouseProcedure {
 					}
 				}
 				PrdTouchProcedure.execute(world, entity);
-				if (entity instanceof Mob _entity)
-					_entity.getNavigation().moveTo(x, y, z, 1);
 			}
+		} else {
+			if (entity instanceof Mob _entity)
+				_entity.getNavigation().stop();
 		}
 	}
 }

@@ -11,25 +11,17 @@ public class PrdTestOptionProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (CacModVariables.MapVariables.get(world).Option_tester == 0) {
-			CacModVariables.MapVariables.get(world).Option_tester_str = "Reset";
+		double num_option = 0;
+		num_option = 2;
+		if (CacModVariables.MapVariables.get(world).Option_tester < 0 || CacModVariables.MapVariables.get(world).Option_tester >= num_option) {
+			CacModVariables.MapVariables.get(world).Option_tester = CacModVariables.MapVariables.get(world).Option_tester % num_option;
 			CacModVariables.MapVariables.get(world).syncData(world);
-		} else if (CacModVariables.MapVariables.get(world).Option_tester == 1) {
+		}
+		if (CacModVariables.MapVariables.get(world).Option_tester == 0) {
 			CacModVariables.MapVariables.get(world).Option_tester_str = "Increase Difficulty";
 			CacModVariables.MapVariables.get(world).syncData(world);
-		} else if (CacModVariables.MapVariables.get(world).Option_tester == 2) {
+		} else if (CacModVariables.MapVariables.get(world).Option_tester == 1) {
 			CacModVariables.MapVariables.get(world).Option_tester_str = "Decrease Difficulty";
-			CacModVariables.MapVariables.get(world).syncData(world);
-		} else if (CacModVariables.MapVariables.get(world).Option_tester == 3) {
-			CacModVariables.MapVariables.get(world).Option_tester_str = "Increase Distance Scale";
-			CacModVariables.MapVariables.get(world).syncData(world);
-		} else if (CacModVariables.MapVariables.get(world).Option_tester == 4) {
-			CacModVariables.MapVariables.get(world).Option_tester_str = "Decrease Distance Scale";
-			CacModVariables.MapVariables.get(world).syncData(world);
-		} else {
-			CacModVariables.MapVariables.get(world).Option_tester = 0;
-			CacModVariables.MapVariables.get(world).syncData(world);
-			CacModVariables.MapVariables.get(world).Option_tester_str = "Reset";
 			CacModVariables.MapVariables.get(world).syncData(world);
 		}
 		if (entity instanceof Player _player && !_player.level().isClientSide())

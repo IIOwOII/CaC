@@ -15,7 +15,9 @@ public class PrdResetProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Switch_Task = false;
+		CacModVariables.MapVariables.get(world).Switch_exp = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_AI = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		entity.stopRiding();
 		if (entity instanceof LivingEntity _entity)

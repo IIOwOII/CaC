@@ -1,15 +1,13 @@
 package net.owo.cac.procedures;
 
-import net.owo.cac.network.CacModVariables;
-
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.Entity;
 
 public class PrdExperimentalProcedure {
-	public static void execute(LevelAccessor world) {
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(CacModVariables.MapVariables.get(world).UUID_opponent), false);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(CacModVariables.MapVariables.get(world).UUID_player), false);
+	public static void execute(double x, double y, double z, Entity entity) {
+		if (entity == null)
+			return;
+		if (entity instanceof Mob _entity)
+			_entity.getNavigation().moveTo((x + 4), y, (z + 1), 0.2);
 	}
 }

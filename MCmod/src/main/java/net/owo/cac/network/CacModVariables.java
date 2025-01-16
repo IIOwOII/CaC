@@ -94,13 +94,10 @@ public class CacModVariables {
 		public String Exp_Subject = "\"sub01\"";
 		public double Option_tester = 0.0;
 		public String Option_tester_str = "\"Reset\"";
-		public double Pmt_difficulty = 0.0;
+		public double Pmt_difficulty = 0.5;
 		public double Pos_player_x = 0;
 		public double Pos_player_z = 0;
-		public boolean Switch_Task = false;
 		public double Pmt_far = 15.0;
-		public double Pmt_distance_scale = 1.0;
-		public boolean Exp_Rest = false;
 		public double Timer_time = 0.0;
 		public String Timer_event = "\"none\"";
 		public String Timer_show = "\"none\"";
@@ -128,6 +125,13 @@ public class CacModVariables {
 		public ListTag Dat_type_trial = new ListTag();
 		public String UUID_opponent = "\"\"";
 		public String UUID_player = "\"\"";
+		public ListTag Pool_spawn = new ListTag();
+		public boolean Switch_AI = false;
+		public boolean Switch_exp = false;
+		public boolean Tim_trial_switch = false;
+		public double Tim_trial_time = 0;
+		public ListTag Dat_time_gameplay = new ListTag();
+		public ListTag Dat_win = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -143,10 +147,7 @@ public class CacModVariables {
 			Pmt_difficulty = nbt.getDouble("Pmt_difficulty");
 			Pos_player_x = nbt.getDouble("Pos_player_x");
 			Pos_player_z = nbt.getDouble("Pos_player_z");
-			Switch_Task = nbt.getBoolean("Switch_Task");
 			Pmt_far = nbt.getDouble("Pmt_far");
-			Pmt_distance_scale = nbt.getDouble("Pmt_distance_scale");
-			Exp_Rest = nbt.getBoolean("Exp_Rest");
 			Timer_time = nbt.getDouble("Timer_time");
 			Timer_event = nbt.getString("Timer_event");
 			Timer_show = nbt.getString("Timer_show");
@@ -177,6 +178,13 @@ public class CacModVariables {
 			this.Dat_type_trial = nbt.get("Dat_type_trial") instanceof ListTag Dat_type_trial ? Dat_type_trial : new ListTag();
 			UUID_opponent = nbt.getString("UUID_opponent");
 			UUID_player = nbt.getString("UUID_player");
+			this.Pool_spawn = nbt.get("Pool_spawn") instanceof ListTag Pool_spawn ? Pool_spawn : new ListTag();
+			Switch_AI = nbt.getBoolean("Switch_AI");
+			Switch_exp = nbt.getBoolean("Switch_exp");
+			Tim_trial_switch = nbt.getBoolean("Tim_trial_switch");
+			Tim_trial_time = nbt.getDouble("Tim_trial_time");
+			this.Dat_time_gameplay = nbt.get("Dat_time_gameplay") instanceof ListTag Dat_time_gameplay ? Dat_time_gameplay : new ListTag();
+			this.Dat_win = nbt.get("Dat_win") instanceof ListTag Dat_win ? Dat_win : new ListTag();
 		}
 
 		@Override
@@ -188,10 +196,7 @@ public class CacModVariables {
 			nbt.putDouble("Pmt_difficulty", Pmt_difficulty);
 			nbt.putDouble("Pos_player_x", Pos_player_x);
 			nbt.putDouble("Pos_player_z", Pos_player_z);
-			nbt.putBoolean("Switch_Task", Switch_Task);
 			nbt.putDouble("Pmt_far", Pmt_far);
-			nbt.putDouble("Pmt_distance_scale", Pmt_distance_scale);
-			nbt.putBoolean("Exp_Rest", Exp_Rest);
 			nbt.putDouble("Timer_time", Timer_time);
 			nbt.putString("Timer_event", Timer_event);
 			nbt.putString("Timer_show", Timer_show);
@@ -226,6 +231,13 @@ public class CacModVariables {
 			nbt.put("Dat_type_trial", this.Dat_type_trial);
 			nbt.putString("UUID_opponent", UUID_opponent);
 			nbt.putString("UUID_player", UUID_player);
+			nbt.put("Pool_spawn", this.Pool_spawn);
+			nbt.putBoolean("Switch_AI", Switch_AI);
+			nbt.putBoolean("Switch_exp", Switch_exp);
+			nbt.putBoolean("Tim_trial_switch", Tim_trial_switch);
+			nbt.putDouble("Tim_trial_time", Tim_trial_time);
+			nbt.put("Dat_time_gameplay", this.Dat_time_gameplay);
+			nbt.put("Dat_win", this.Dat_win);
 			return nbt;
 		}
 
