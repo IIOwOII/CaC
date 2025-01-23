@@ -1,0 +1,63 @@
+**Start
+Test, Presession, Main
+
+TaskDefaultSetting
+  MC
+    Gamemode = Adventure
+    Invisibility = true
+  Timer
+    Tim_trial
+      Tim_trial_switch = false
+      Tim_trial_time = 0
+    Tim_survey
+      Tim_survey_switch = false
+      Tim_survey_time = 0
+  Experiment
+    Switch_exp = true
+    Exp_trial = 0
+    Exp_phase = 0
+  Behavior
+    Dat_type_trial
+    Dat_type_survey
+    Dat_spawn_opponent
+    Dat_win
+    Dat_speed
+    
+TaskDefaultEnd
+  MC
+    Gamemode = ...
+    Invisibility = ...
+  
+  Experiment
+    Switch_exp = false
+
+TestSetting
+  Exp_session = test
+
+
+
+
+
+TaskPreparation
+  Exp_phase = 1
+  Switch_AI = false
+  command(cac_tp task)
+  command(worldborder set 8)
+  ...
+
+TaskGameplay
+  Exp_phase = 2
+  Switch_AI = true
+  command(worldborder set 10000000)
+  Tim_trial_time = 0
+  Tim_trial_switch = true
+
+
+
+
+FncManageTasktype
+  return tasktype
+
+sub register
+F6
+Chat

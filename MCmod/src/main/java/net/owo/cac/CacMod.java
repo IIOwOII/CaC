@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 
 import net.owo.cac.init.CacModTabs;
 import net.owo.cac.init.CacModMobEffects;
+import net.owo.cac.init.CacModMenus;
 import net.owo.cac.init.CacModItems;
 import net.owo.cac.init.CacModEntities;
 import net.owo.cac.init.CacModBlocks;
@@ -52,6 +53,7 @@ public class CacMod {
 
 		CacModMobEffects.REGISTRY.register(bus);
 
+		CacModMenus.REGISTRY.register(bus);
 		// Start of user code block mod init
 		// End of user code block mod init
 	}

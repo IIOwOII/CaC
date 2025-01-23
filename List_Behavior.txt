@@ -1,58 +1,73 @@
 --- Each Trial ---
 #. Task Type
-
-#. Role
-- Player
-- AI
-
 #. Map type
-
 #. Difficulty (AI Speed)
-
 #. Expected Win Rate
-
 #. Score
-
-
-
 --- Real time ---
 #. Absolute Position
 - Player
 - AI
-
 #. Subjective Position (Map of)
 - Player
 - AI
-
 #. Absolute Time point
-
-
 #. Time point
-
-
 #. Action Input (Controller)
-
-
 #. Absolute Angle
 - Player
 - AI
-
-
 --- End Trial ---
 #. Win/Lose
 
-#. 
+
+--- Spawn Point ---
+Player
+  (0.5,64,-49.5,0,0)
+Opponent
+  (7.5,64,-42.5,135,0)
+  (-6.5,64,-42.5,-135,0)
+  (-6.5,64,-56.5,-45,0)
+  (7.5,64,-56.5,45,0)
 
 
+--- Survey Type ---
+{0} Vote for surrender
+*{1} Predicted win prob.
+*{2} Perceived diff.
+*{3} Stress score
+*{4} Target score
+{5} Estimated cont. (per 10 trials)
 
---- Develop ---
-1. Exp_session
-2. Exp_trial
-3. Exp_phase
 
-0.5 64 -49.5 0 0
+---Notice! At first run CaC Mod---
+run cac_initialize
+add team 'Player'
+add team 'Opponent'
+check cacutil json
 
-7.5 64 -42.5 135 0
--6.5 64 -42.5 -135 0
--6.5 64 -56.5 -45 0
-7.5 64 -56.5 45 0
+---Notice! At start task---
+initialize subject
+check F6 mod
+check hotbar
+check handed item
+check chat shown
+check other options
+
+
+---Beh json---
+Type
+  trial
+Time
+  preparation
+  gameplay
+  interval
+Gameplay
+  spawn
+  win
+  speed
+Survey
+  type
+  time
+  answer
+

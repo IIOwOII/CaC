@@ -15,6 +15,9 @@ public class CacErrorProcedure {
 		} else if ((log_error).equals("nonexist_trialtype")) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("No trial type!"), false);
+		} else if ((log_error).equals("invalid_session")) {
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Invalid session!"), false);
 		}
 		CacModVariables.MapVariables.get(world).Log_error = "";
 		CacModVariables.MapVariables.get(world).syncData(world);

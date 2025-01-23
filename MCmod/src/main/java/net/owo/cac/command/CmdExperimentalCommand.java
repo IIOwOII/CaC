@@ -32,7 +32,7 @@ public class CmdExperimentalCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					PrdExperimentalProcedure.execute(x, y, z, entity);
+					PrdExperimentalProcedure.execute(entity);
 					return 0;
 				}));
 	}

@@ -30,6 +30,8 @@ public class TaskPreparationProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_AI = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_blank = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -45,8 +47,8 @@ public class TaskPreparationProcedure {
 			}
 		}
 		type_trial = FncManageTasktypeProcedure.execute(world);
-		pos_spawn = new ListTag();
 		pos_spawn = FncManageSpawnProcedure.execute(world);
+		FncManageSpeedProcedure.execute(world);
 		sx = (pos_spawn.get(0)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
 		sy = (pos_spawn.get(1)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
 		sz = (pos_spawn.get(2)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
@@ -75,10 +77,9 @@ public class TaskPreparationProcedure {
 			}
 			EffApplyMorphPreyProcedure.execute(entity);
 		}
-		CacModVariables.MapVariables.get(world).Timer_event = "phase_gameplay";
+		CacModVariables.MapVariables.get(world).Timer_time = FncManageTimepoolPreparationProcedure.execute(world);
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Timer_time = (CacModVariables.MapVariables.get(world).Dat_time_preparation
-				.get((int) (CacModVariables.MapVariables.get(world).Exp_trial % CacModVariables.MapVariables.get(world).Dat_time_preparation.size()))) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
+		CacModVariables.MapVariables.get(world).Timer_event = "phase_gameplay";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (entity instanceof Player _player && !_player.level().isClientSide())
 			_player.displayClientMessage(Component.literal("Ready..."), true);

@@ -118,7 +118,7 @@ public class EntPlayerCatEntity extends PathfinderMob {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		PrdDespawnPlayerProcedure.execute(this.level());
+		PrdDespawnPlayerProcedure.execute(this.level(), this);
 	}
 
 	@Override

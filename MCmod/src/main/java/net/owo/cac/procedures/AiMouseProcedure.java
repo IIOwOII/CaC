@@ -34,7 +34,7 @@ public class AiMouseProcedure {
 						}
 					}
 				}
-				PrdTouchProcedure.execute(world, entity);
+				PrdTouchProcedure.execute(world);
 			}
 		} else {
 			if (entity instanceof Mob _entity)

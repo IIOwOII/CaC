@@ -5,6 +5,7 @@
   "effect.cac.eff_stop_move": "Stiffness",
   "key.cac.cac_key_signal": "Scanner Signal",
   "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
+  "gui.cac.gui_blank.button_test": "test",
   "entity.cac.ent_cat": "Predator",
   "entity.cac.ent_player_mouse": "Prey (Player)",
   "key.cac.cac_key_left": "Left Arrow",

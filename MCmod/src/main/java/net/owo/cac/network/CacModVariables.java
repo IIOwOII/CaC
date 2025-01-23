@@ -90,8 +90,6 @@ public class CacModVariables {
 
 	public static class MapVariables extends SavedData {
 		public static final String DATA_NAME = "cac_mapvars";
-		public String Exp_Directory = "\"\"";
-		public String Exp_Subject = "\"sub01\"";
 		public double Option_tester = 0.0;
 		public String Option_tester_str = "\"Reset\"";
 		public double Pmt_difficulty = 0.5;
@@ -132,6 +130,18 @@ public class CacModVariables {
 		public double Tim_trial_time = 0;
 		public ListTag Dat_time_gameplay = new ListTag();
 		public ListTag Dat_win = new ListTag();
+		public boolean Switch_debug = false;
+		public boolean Tim_survey_switch = false;
+		public double Tim_survey_time = 0;
+		public ListTag Dat_type_survey = new ListTag();
+		public ListTag Dat_time_survey = new ListTag();
+		public String Exp_subject = "\"\"";
+		public String Exp_path = "\"\"";
+		public ListTag Dat_speed = new ListTag();
+		public double Dat_trial_total = 0;
+		public ListTag Dat_time_interval = new ListTag();
+		public boolean Switch_blank = false;
+		public ListTag Dat_answer_survey = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -140,8 +150,6 @@ public class CacModVariables {
 		}
 
 		public void read(CompoundTag nbt) {
-			Exp_Directory = nbt.getString("Exp_Directory");
-			Exp_Subject = nbt.getString("Exp_Subject");
 			Option_tester = nbt.getDouble("Option_tester");
 			Option_tester_str = nbt.getString("Option_tester_str");
 			Pmt_difficulty = nbt.getDouble("Pmt_difficulty");
@@ -185,12 +193,22 @@ public class CacModVariables {
 			Tim_trial_time = nbt.getDouble("Tim_trial_time");
 			this.Dat_time_gameplay = nbt.get("Dat_time_gameplay") instanceof ListTag Dat_time_gameplay ? Dat_time_gameplay : new ListTag();
 			this.Dat_win = nbt.get("Dat_win") instanceof ListTag Dat_win ? Dat_win : new ListTag();
+			Switch_debug = nbt.getBoolean("Switch_debug");
+			Tim_survey_switch = nbt.getBoolean("Tim_survey_switch");
+			Tim_survey_time = nbt.getDouble("Tim_survey_time");
+			this.Dat_type_survey = nbt.get("Dat_type_survey") instanceof ListTag Dat_type_survey ? Dat_type_survey : new ListTag();
+			this.Dat_time_survey = nbt.get("Dat_time_survey") instanceof ListTag Dat_time_survey ? Dat_time_survey : new ListTag();
+			Exp_subject = nbt.getString("Exp_subject");
+			Exp_path = nbt.getString("Exp_path");
+			this.Dat_speed = nbt.get("Dat_speed") instanceof ListTag Dat_speed ? Dat_speed : new ListTag();
+			Dat_trial_total = nbt.getDouble("Dat_trial_total");
+			this.Dat_time_interval = nbt.get("Dat_time_interval") instanceof ListTag Dat_time_interval ? Dat_time_interval : new ListTag();
+			Switch_blank = nbt.getBoolean("Switch_blank");
+			this.Dat_answer_survey = nbt.get("Dat_answer_survey") instanceof ListTag Dat_answer_survey ? Dat_answer_survey : new ListTag();
 		}
 
 		@Override
 		public CompoundTag save(CompoundTag nbt) {
-			nbt.putString("Exp_Directory", Exp_Directory);
-			nbt.putString("Exp_Subject", Exp_Subject);
 			nbt.putDouble("Option_tester", Option_tester);
 			nbt.putString("Option_tester_str", Option_tester_str);
 			nbt.putDouble("Pmt_difficulty", Pmt_difficulty);
@@ -238,6 +256,18 @@ public class CacModVariables {
 			nbt.putDouble("Tim_trial_time", Tim_trial_time);
 			nbt.put("Dat_time_gameplay", this.Dat_time_gameplay);
 			nbt.put("Dat_win", this.Dat_win);
+			nbt.putBoolean("Switch_debug", Switch_debug);
+			nbt.putBoolean("Tim_survey_switch", Tim_survey_switch);
+			nbt.putDouble("Tim_survey_time", Tim_survey_time);
+			nbt.put("Dat_type_survey", this.Dat_type_survey);
+			nbt.put("Dat_time_survey", this.Dat_time_survey);
+			nbt.putString("Exp_subject", Exp_subject);
+			nbt.putString("Exp_path", Exp_path);
+			nbt.put("Dat_speed", this.Dat_speed);
+			nbt.putDouble("Dat_trial_total", Dat_trial_total);
+			nbt.put("Dat_time_interval", this.Dat_time_interval);
+			nbt.putBoolean("Switch_blank", Switch_blank);
+			nbt.put("Dat_answer_survey", this.Dat_answer_survey);
 			return nbt;
 		}
 

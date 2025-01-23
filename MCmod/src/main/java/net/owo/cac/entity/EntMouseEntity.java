@@ -15,7 +15,6 @@ import net.owo.cac.procedures.PrdDespawnOpponentProcedure;
 import net.owo.cac.procedures.AiMouseProcedure;
 import net.owo.cac.init.CacModEntities;
 
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -37,8 +36,6 @@ import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.DifficultyInstance;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -108,16 +105,6 @@ public class EntMouseEntity extends PathfinderMob implements GeoEntity {
 	}
 
 	@Override
-	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.hurt"));
-	}
-
-	@Override
-	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.death"));
-	}
-
-	@Override
 	public boolean hurt(DamageSource source, float amount) {
 		if (source.is(DamageTypes.IN_FIRE))
 			return false;
@@ -151,7 +138,7 @@ public class EntMouseEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		PrdDespawnOpponentProcedure.execute(this.level());
+		PrdDespawnOpponentProcedure.execute(this.level(), this);
 	}
 
 	@Override

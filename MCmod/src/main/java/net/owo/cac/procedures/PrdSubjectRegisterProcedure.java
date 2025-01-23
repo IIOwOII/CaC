@@ -12,9 +12,9 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class PrdSubjectRegisterProcedure {
 	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
-		CacModVariables.MapVariables.get(world).Exp_Subject = StringArgumentType.getString(arguments, "Subject");
+		CacModVariables.MapVariables.get(world).Exp_subject = StringArgumentType.getString(arguments, "subject");
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Exp_Directory = FMLPaths.GAMEDIR.get().toString() + "/CaC/" + StringArgumentType.getString(arguments, "Subject");
+		CacModVariables.MapVariables.get(world).Exp_path = FMLPaths.GAMEDIR.get().toString() + "/cacutil/" + StringArgumentType.getString(arguments, "subject");
 		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

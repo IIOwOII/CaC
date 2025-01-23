@@ -22,7 +22,7 @@ public class CmdSubjectRegisterCommand {
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cac_subject_register")
 
-				.then(Commands.argument("Subject", StringArgumentType.word()).executes(arguments -> {
+				.then(Commands.argument("subject", StringArgumentType.word()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();
