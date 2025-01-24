@@ -22,7 +22,10 @@ public class AiOpponentMoveProcedure {
 		field_sum = field_player.add((field_obstacle.add(field_wall)));
 		if (entity instanceof Mob _entity)
 			_entity.getNavigation().moveTo((x + field_sum.x()), y, (z + field_sum.z()), CacModVariables.MapVariables.get(world).Pmt_difficulty);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("(" + new java.text.DecimalFormat("##.##").format(field_sum.x()) + "," + new java.text.DecimalFormat("##.##").format(field_sum.z()) + ")")), false);
+		if (CacModVariables.MapVariables.get(world).Switch_debug) {
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList()
+						.broadcastSystemMessage(Component.literal(("\u00A7efield: \u00A7r(" + new java.text.DecimalFormat("##.#").format(field_sum.x()) + "," + new java.text.DecimalFormat("##.#").format(field_sum.z()) + ")")), false);
+		}
 	}
 }

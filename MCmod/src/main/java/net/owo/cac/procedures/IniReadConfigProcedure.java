@@ -5,6 +5,8 @@ import net.owo.cac.network.CacModVariables;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.network.chat.Component;
+import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.DoubleTag;
 
@@ -57,6 +59,22 @@ public class IniReadConfigProcedure {
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
+			}
+		}
+		if (CacModVariables.MapVariables.get(world).Switch_debug) {
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7edir: " + FMLPaths.GAMEDIR.get().toString() + "/cacutil/components")), false);
+			for (Tag dataelementiterator : CacModVariables.MapVariables.get(world).Pool_spawn) {
+				pos_point = dataelementiterator instanceof ListTag _listTag ? _listTag.copy() : new ListTag();
+				idx_pos = 0;
+				for (int index2 = 0; index2 < pos_point.size(); index2++) {
+					if (!world.isClientSide() && world.getServer() != null)
+						world.getServer().getPlayerList()
+								.broadcastSystemMessage(Component.literal(
+										(new java.text.DecimalFormat("#").format(idx_pos) + ": " + (new java.text.DecimalFormat("###.#").format((pos_point.get((int) idx_pos)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D)))),
+										false);
+					idx_pos = idx_pos + 1;
+				}
 			}
 		}
 	}

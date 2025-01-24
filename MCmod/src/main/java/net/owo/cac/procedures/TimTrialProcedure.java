@@ -37,9 +37,11 @@ public class TimTrialProcedure {
 				CacModVariables.MapVariables.get(world).syncData(world);
 				CacModVariables.MapVariables.get(world).Switch_AI = false;
 				CacModVariables.MapVariables.get(world).syncData(world);
-				if (world instanceof Level _level) {
-					if (_level.isClientSide()) {
-						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.experience_orb.pickup")), SoundSource.NEUTRAL, 1, 1, false);
+				if (!world.isClientSide()) {
+					if (world instanceof Level _level) {
+						if (_level.isClientSide()) {
+							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.experience_orb.pickup")), SoundSource.NEUTRAL, 1, 1, false);
+						}
 					}
 				}
 				TaskPhaseEndProcedure.execute(world);

@@ -3,7 +3,6 @@ package net.owo.cac.procedures;
 import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
@@ -52,9 +51,21 @@ public class PrdResetProcedure {
 		}
 		CacModVariables.MapVariables.get(world).Exp_session = "none";
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Exp_trial = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_phase = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if (entity instanceof Player _player && !_player.level().isClientSide())
-			_player.displayClientMessage(Component.literal("Reset Executed"), true);
+		CacModVariables.MapVariables.get(world).Tim_trial_switch = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Tim_survey_switch = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Tim_trial_time = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Tim_survey_time = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_blank = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		if (!world.isClientSide() && world.getServer() != null)
+			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eReset executed!"), false);
 	}
 }

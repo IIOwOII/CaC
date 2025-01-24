@@ -1,6 +1,5 @@
 package net.owo.cac.procedures;
 
-import net.owo.cac.world.inventory.GuiBlankMenu;
 import net.owo.cac.network.CacModVariables;
 
 import net.minecraftforge.fml.common.Mod;
@@ -11,7 +10,6 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.nbt.ListTag;
 
 import javax.annotation.Nullable;
 
@@ -31,25 +29,22 @@ public class TimSurveyProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		ListTag lst_survey;
-		double idx_survey = 0;
 		if (CacModVariables.MapVariables.get(world).Tim_survey_switch) {
-			if (CacModVariables.MapVariables.get(world).Tim_survey_time == -1) {
-				lst_survey = (CacModVariables.MapVariables.get(world).Dat_type_survey.get((int) CacModVariables.MapVariables.get(world).Exp_trial)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag();
+			if (CacModVariables.MapVariables.get(world).Tim_survey_time < 0) {
 				CacModVariables.MapVariables.get(world).Tim_survey_time = 0;
 				CacModVariables.MapVariables.get(world).syncData(world);
-				idx_survey = -1;
+				CacModVariables.MapVariables.get(world).Exp_survey_idx = -1;
+				CacModVariables.MapVariables.get(world).syncData(world);
 			}
 			CacModVariables.MapVariables.get(world).Tim_survey_time = CacModVariables.MapVariables.get(world).Tim_survey_time + 0.05;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			if (CacModVariables.MapVariables.get(world).Tim_survey_time >= 5 && idx_survey == -1) {
+			if (CacModVariables.MapVariables.get(world).Tim_survey_time >= 5 && CacModVariables.MapVariables.get(world).Exp_survey_idx == -1) {
 				CacModVariables.MapVariables.get(world).Tim_survey_time = 0;
 				CacModVariables.MapVariables.get(world).syncData(world);
-				idx_survey = 0;
-				if (entity instanceof Player _plr3 && _plr3.containerMenu instanceof GuiBlankMenu) {
-					if (entity instanceof Player _player)
-						_player.closeContainer();
-				}
+				CacModVariables.MapVariables.get(world).Exp_survey_idx = 0;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				if (entity instanceof Player _player)
+					_player.closeContainer();
 				CacModVariables.MapVariables.get(world).Tim_survey_switch = false;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				TaskPhaseEndProcedure.execute(world);

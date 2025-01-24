@@ -11,9 +11,9 @@ public class PrdDebugProcedure {
 		CacModVariables.MapVariables.get(world).Switch_debug = !CacModVariables.MapVariables.get(world).Switch_debug;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (CacModVariables.MapVariables.get(world).Switch_debug) {
-			msg = "\u00A7cDebug Mod On";
+			msg = "\u00A7eDebug Mod On";
 		} else {
-			msg = "\u00A7cDebug Mod Off";
+			msg = "\u00A7eDebug Mod Off";
 		}
 		if (!world.isClientSide() && world.getServer() != null)
 			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(msg), false);

@@ -7,38 +7,42 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 
+import net.owo.cac.CstState;
+
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderHandler {
+	
     @SubscribeEvent
     public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
+		boolean ismeowview;
+		ismeowview = CstState.getMeowview();
+    	
         // Check if this is the hotbar overlay
         if (event.getOverlay() == VanillaGuiOverlay.HOTBAR.type()) {
-            // If we do NOT want the hotbar to appear, cancel the event
-            if (!CstState.getHotbar()) {
+            if (ismeowview)
                 event.setCanceled(true);
-            }
         }
         if (event.getOverlay() == VanillaGuiOverlay.PLAYER_HEALTH.type()) {
-            if (!CstState.getHotbar()) {
+            if (ismeowview)
                 event.setCanceled(true);
-            }
         }
         if (event.getOverlay() == VanillaGuiOverlay.FOOD_LEVEL.type()) {
-            if (!CstState.getHotbar()) {
+            if (ismeowview)
                 event.setCanceled(true);
-            }
         }
         if (event.getOverlay() == VanillaGuiOverlay.EXPERIENCE_BAR.type()) {
-            if (!CstState.getHotbar()) {
+            if (ismeowview)
                 event.setCanceled(true);
-            }
+        }
+        if (event.getOverlay() == VanillaGuiOverlay.CROSSHAIR.type()) {
+        	if (ismeowview)
+        		event.setCanceled(true);
         }
     }
 
     @SubscribeEvent
     public static void onRenderHand(RenderHandEvent event) {
-        if (!CstState.getHotbar()) {
+        if (CstState.getMeowview())
             event.setCanceled(true);
-        }
     }
 }

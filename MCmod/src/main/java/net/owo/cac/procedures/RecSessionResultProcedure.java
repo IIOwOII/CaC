@@ -84,7 +84,7 @@ public class RecSessionResultProcedure {
 		CacMod.LOGGER.info("time");
 		CacMod.LOGGER.info("answer");
 		obj_session.add("Survey", subobj_survey);
-		file_beh = new File(CacModVariables.MapVariables.get(world).Exp_path, File.separator + (CacModVariables.MapVariables.get(world).Exp_subject + "_beh.json"));
+		file_beh = new File(CacModVariables.MapVariables.get(world).Exp_path, File.separator + ("beh_" + CacModVariables.MapVariables.get(world).Exp_subject + ".json"));
 		if (!file_beh.exists()) {
 			try {
 				file_beh.getParentFile().mkdirs();

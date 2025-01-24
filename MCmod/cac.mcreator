@@ -875,12 +875,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -2084,6 +2079,38 @@
         ]
       },
       "path": "~/CacUtil"
+    },
+    {
+      "name": "PrdCheck",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "prd_check",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdCheckProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "CmdCheck",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_check",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdCheckCommand.java"
+        ]
+      },
+      "path": "~/CacCommand"
     }
   ],
   "variable_elements": [
@@ -2398,6 +2425,12 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Exp_survey_idx",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [],
@@ -2411,13 +2444,13 @@
   "language_map": {
     "en_us": {
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
-      "key.cac.key_camera": "Toggle Camera",
       "item.cac.cac_test_item": "CacTester",
       "effect.cac.eff_stop_move": "Stiffness",
       "key.cac.cac_key_signal": "Scanner Signal",
       "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
       "gui.cac.gui_blank.button_test": "test",
       "entity.cac.ent_cat": "Predator",
+      "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left Arrow",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
@@ -2425,7 +2458,6 @@
       "entity.cac.ent_player_cat": "Predator(Player)",
       "key.categories.cac": "Chasing and Chased",
       "effect.cac.eff_morph_prey": "Prey",
-      "key.cac.key_hotbar": "Toggle Hotbar",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
       "block.cac.blk_obstacle": "Obstacle",

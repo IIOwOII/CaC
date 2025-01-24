@@ -142,6 +142,7 @@ public class CacModVariables {
 		public ListTag Dat_time_interval = new ListTag();
 		public boolean Switch_blank = false;
 		public ListTag Dat_answer_survey = new ListTag();
+		public double Exp_survey_idx = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -205,6 +206,7 @@ public class CacModVariables {
 			this.Dat_time_interval = nbt.get("Dat_time_interval") instanceof ListTag Dat_time_interval ? Dat_time_interval : new ListTag();
 			Switch_blank = nbt.getBoolean("Switch_blank");
 			this.Dat_answer_survey = nbt.get("Dat_answer_survey") instanceof ListTag Dat_answer_survey ? Dat_answer_survey : new ListTag();
+			Exp_survey_idx = nbt.getDouble("Exp_survey_idx");
 		}
 
 		@Override
@@ -268,6 +270,7 @@ public class CacModVariables {
 			nbt.put("Dat_time_interval", this.Dat_time_interval);
 			nbt.putBoolean("Switch_blank", Switch_blank);
 			nbt.put("Dat_answer_survey", this.Dat_answer_survey);
+			nbt.putDouble("Exp_survey_idx", Exp_survey_idx);
 			return nbt;
 		}
 

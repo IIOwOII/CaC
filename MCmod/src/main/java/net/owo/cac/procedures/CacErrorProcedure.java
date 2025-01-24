@@ -11,13 +11,13 @@ public class CacErrorProcedure {
 		log_error = CacModVariables.MapVariables.get(world).Log_error;
 		if ((log_error).equals("nonexist_file")) {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("No file!"), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cNo file!"), false);
 		} else if ((log_error).equals("nonexist_trialtype")) {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("No trial type!"), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cNo trial type!"), false);
 		} else if ((log_error).equals("invalid_session")) {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Invalid session!"), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cInvalid session!"), false);
 		}
 		CacModVariables.MapVariables.get(world).Log_error = "";
 		CacModVariables.MapVariables.get(world).syncData(world);

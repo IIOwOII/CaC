@@ -14,7 +14,6 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.core.BlockPos;
 
 import io.netty.buffer.Unpooled;
@@ -23,7 +22,6 @@ public class TaskSurveyProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		ListTag type_survey;
 		CacModVariables.MapVariables.get(world).Exp_phase = 3;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (entity instanceof ServerPlayer _ent) {

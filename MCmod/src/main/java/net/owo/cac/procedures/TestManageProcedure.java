@@ -14,15 +14,13 @@ public class TestManageProcedure {
 	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
-		String session_demo = "";
 		String session = "";
-		session_demo = StringArgumentType.getString(arguments, "session_demo");
-		if ((session_demo).equals("chasing")) {
+		session = StringArgumentType.getString(arguments, "session");
+		if ((session).equals("chasing")) {
 			TestChasingProcedure.execute(world, entity);
-		} else if ((session_demo).equals("chased")) {
+		} else if ((session).equals("chased")) {
 			TestChasedProcedure.execute(world, entity);
 		} else {
-			session = StringArgumentType.getString(arguments, "session");
 			CacModVariables.MapVariables.get(world).Dat_trial_total = DoubleArgumentType.getDouble(arguments, "trials");
 			CacModVariables.MapVariables.get(world).syncData(world);
 			if ((session).equals("mixed")) {

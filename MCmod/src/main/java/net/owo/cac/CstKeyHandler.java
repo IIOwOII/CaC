@@ -14,10 +14,6 @@ public class CstKeyHandler {
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         // Only run on the "end" phase to avoid doubling
         if (event.phase == TickEvent.Phase.END) {
-            if (CstKeybind.CAC_HOTBAR_KEY.consumeClick()) {
-                // Toggle the hotbar state
-                CstState.switchHotbar();
-            }
             if (CstKeybind.CAC_CAMERA_KEY.consumeClick()) {
                 // Toggle the camera state
                 CstState.switchMeowview();

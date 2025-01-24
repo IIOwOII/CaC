@@ -875,12 +875,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -2057,9 +2052,52 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TaskSessionEndProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/General"
+    },
+    {
+      "name": "FncManageSpeed",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_manage_speed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncManageSpeedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil"
+    },
+    {
+      "name": "PrdCheck",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_check",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdCheckProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCommand"
     }
   ],
   "variable_elements": [
@@ -2368,6 +2406,12 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Dat_answer_survey",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [],
@@ -2492,7 +2536,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.5",
+    "version": "0.6",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

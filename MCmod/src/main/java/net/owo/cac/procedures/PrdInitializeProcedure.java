@@ -22,18 +22,12 @@ public class PrdInitializeProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Pos_offset = new Vec3(0, 64, (-50));
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Offset Position Setting"), false);
 		CacModVariables.MapVariables.get(world).Radius_map = 16;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Radius of map = " + new java.text.DecimalFormat("##").format(CacModVariables.MapVariables.get(world).Radius_map))), false);
 		CacModVariables.MapVariables.get(world).List_obstacle = FncScanObstacleProcedure.execute(world);
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).List_wall = FncScanWallProcedure.execute(world);
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Scan Obstacle & Wall"), false);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -43,13 +37,11 @@ public class PrdInitializeProcedure {
 		}
 		CacModVariables.MapVariables.get(world).Pmt_far = 15;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Pmt_far = " + new java.text.DecimalFormat("##.##").format(CacModVariables.MapVariables.get(world).Pmt_far))), false);
 		CacModVariables.MapVariables.get(world).Timer_show = "none";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Timer_event = "none";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Timer Reset"), false);
+			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eInitialized!"), false);
 	}
 }

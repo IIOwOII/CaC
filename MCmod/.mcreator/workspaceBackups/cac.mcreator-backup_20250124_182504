@@ -875,12 +875,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -2065,6 +2060,57 @@
         ]
       },
       "path": "~/CacTask/General"
+    },
+    {
+      "name": "FncManageSpeed",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_manage_speed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncManageSpeedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil"
+    },
+    {
+      "name": "PrdCheck",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "prd_check",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdCheckProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "CmdCheck",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_check",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdCheckCommand.java"
+        ]
+      },
+      "path": "~/CacCommand"
     }
   ],
   "variable_elements": [
@@ -2379,6 +2425,12 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Exp_survey_idx",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [],
@@ -2503,7 +2555,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.5",
+    "version": "0.6",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",
