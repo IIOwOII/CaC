@@ -25,6 +25,7 @@ public class CacModItems {
 	public static final RegistryObject<Item> BLK_WALL = block(CacModBlocks.BLK_WALL);
 	public static final RegistryObject<Item> ENT_MOUSE_SPAWN_EGG = REGISTRY.register("ent_mouse_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_MOUSE, -16777216, -16711936, new Item.Properties()));
 	public static final RegistryObject<Item> ENT_PLAYER_MOUSE_SPAWN_EGG = REGISTRY.register("ent_player_mouse_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_PLAYER_MOUSE, -1, -16711936, new Item.Properties()));
+	public static final RegistryObject<Item> ENT_MEOWCAM_SPAWN_EGG = REGISTRY.register("ent_meowcam_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_MEOWCAM, -13210, -10066330, new Item.Properties()));
 
 	// Start of user code block custom items
 	// End of user code block custom items

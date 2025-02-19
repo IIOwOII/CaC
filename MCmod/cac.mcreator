@@ -2111,6 +2111,99 @@
         ]
       },
       "path": "~/CacCommand"
+    },
+    {
+      "name": "EntMeowcam",
+      "type": "animatedentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ent_meowcam",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/entity/model/EntMeowcamModel.java",
+          "src/main/java/net/owo/cac/client/renderer/EntMeowcamRenderer.java",
+          "src/main/resources/assets/cac/models/item/ent_meowcam_spawn_egg.json",
+          "src/main/java/net/owo/cac/entity/EntMeowcamEntity.java"
+        ]
+      },
+      "path": "~/CacEntity"
+    },
+    {
+      "name": "AiMeowcam",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_meowcam",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMeowcamProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "PrdInitializeMeowcam",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_initialize_meowcam",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdInitializeMeowcamProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "PrdTouchMeowcam",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_touch_meowcam",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdTouchMeowcamProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
     }
   ],
   "variable_elements": [
@@ -2457,11 +2550,13 @@
       "effect.cac.eff_morph_predator": "Predator",
       "entity.cac.ent_player_cat": "Predator(Player)",
       "key.categories.cac": "Chasing and Chased",
+      "entity.cac.ent_meowcam": "Meowcam",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
       "block.cac.blk_obstacle": "Obstacle",
       "entity.cac.ent_mouse": "Prey",
+      "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
       "key.cac.cac_key_right": "Right Arrow"
     }
   },

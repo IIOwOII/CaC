@@ -1,0 +1,19 @@
+slipperiness: 0.6
+duration: 5sec
+
+0.2, 1 => 2.1/s => 0.105/tick
+0.2, 0.5 => 0.42/s => 0.021/tick
+0.1, 1 => 0.42/s
+0.2, 2 => 6.696/s
+0.4, 1 => 6.756/s => 0.3378/tick
+
+예상 (0.2*1)^2*C=2.1/s
+
+0.5, 0.6 => 0.19/tick
+0.5, 0.5 => 0.1319/tick
+0.5, 0.4 => 0.0844/tick
+
+speed_constant*(generic_speed*speed_factor)^2 = speed
+
+speed_constant = 2.111 = 19/9
+ex) (19/9)*(0.5*0.6)^2 = 0.19

@@ -7,6 +7,7 @@ package net.owo.cac.init;
 import net.owo.cac.client.renderer.EntPlayerMouseRenderer;
 import net.owo.cac.client.renderer.EntPlayerCatRenderer;
 import net.owo.cac.client.renderer.EntMouseRenderer;
+import net.owo.cac.client.renderer.EntMeowcamRenderer;
 import net.owo.cac.client.renderer.EntCatRenderer;
 
 import net.minecraftforge.fml.common.Mod;
@@ -22,5 +23,6 @@ public class CacModEntityRenderers {
 		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_CAT.get(), EntPlayerCatRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_MOUSE.get(), EntMouseRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_MOUSE.get(), EntPlayerMouseRenderer::new);
+		event.registerEntityRenderer(CacModEntities.ENT_MEOWCAM.get(), EntMeowcamRenderer::new);
 	}
 }

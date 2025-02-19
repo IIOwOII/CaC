@@ -7,6 +7,7 @@ package net.owo.cac.init;
 import net.owo.cac.entity.EntPlayerMouseEntity;
 import net.owo.cac.entity.EntPlayerCatEntity;
 import net.owo.cac.entity.EntMouseEntity;
+import net.owo.cac.entity.EntMeowcamEntity;
 import net.owo.cac.entity.EntCatEntity;
 import net.owo.cac.CacMod;
 
@@ -33,6 +34,8 @@ public class CacModEntities {
 			EntityType.Builder.<EntMouseEntity>of(EntMouseEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPlayerMouseEntity>> ENT_PLAYER_MOUSE = register("ent_player_mouse", EntityType.Builder.<EntPlayerMouseEntity>of(EntPlayerMouseEntity::new, MobCategory.CREATURE)
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<EntMeowcamEntity>> ENT_MEOWCAM = register("ent_meowcam", EntityType.Builder.<EntMeowcamEntity>of(EntMeowcamEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntMeowcamEntity::new).fireImmune().sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -45,6 +48,7 @@ public class CacModEntities {
 			EntPlayerCatEntity.init();
 			EntMouseEntity.init();
 			EntPlayerMouseEntity.init();
+			EntMeowcamEntity.init();
 		});
 	}
 
@@ -54,5 +58,6 @@ public class CacModEntities {
 		event.put(ENT_PLAYER_CAT.get(), EntPlayerCatEntity.createAttributes().build());
 		event.put(ENT_MOUSE.get(), EntMouseEntity.createAttributes().build());
 		event.put(ENT_PLAYER_MOUSE.get(), EntPlayerMouseEntity.createAttributes().build());
+		event.put(ENT_MEOWCAM.get(), EntMeowcamEntity.createAttributes().build());
 	}
 }
