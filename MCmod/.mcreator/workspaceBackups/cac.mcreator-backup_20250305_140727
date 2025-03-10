@@ -826,33 +826,6 @@
       "path": "~/CacEffect"
     },
     {
-      "name": "UdtPlayer",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "udt_player",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/UdtPlayerProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUpdate"
-    },
-    {
       "name": "CmdExperimental",
       "type": "command",
       "compiles": true,
@@ -875,7 +848,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -2204,6 +2182,81 @@
         ]
       },
       "path": "~/CacCondition"
+    },
+    {
+      "name": "RecTrialPosition",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rec_trial_position",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RecTrialPositionProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Record"
+    },
+    {
+      "name": "UdtEntity",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "udt_entity",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/UdtEntityProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUpdate"
+    },
+    {
+      "name": "TimExperiment",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_experiment",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimExperimentProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Timer"
+    },
+    {
+      "name": "TimeExperimentSwitch",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "time_experiment_switch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimeExperimentSwitchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Timer"
     }
   ],
   "variable_elements": [
@@ -2521,6 +2574,72 @@
     },
     {
       "name": "Exp_survey_idx",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Pos_opponent_x",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Pos_opponent_z",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_trial_pos_player",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_trial_pos_opponent",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Tim_experiment_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Tim_experiment_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Tim_experiment_tick",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Tim_experiment_time_oldtick",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Tim_experiment_time_currtick",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Tim_experiment_time_start",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Tim_experiment_time_end",
       "type": "number",
       "scope": "map",
       "value": "0"

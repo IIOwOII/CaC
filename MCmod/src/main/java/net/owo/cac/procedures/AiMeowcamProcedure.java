@@ -10,13 +10,12 @@ public class AiMeowcamProcedure {
 			return;
 		if (entity.getPersistentData().getBoolean("timer_switch")) {
 			entity.getPersistentData().putDouble("timer_time", (entity.getPersistentData().getDouble("timer_time") + 1));
-			if (entity.getPersistentData().getDouble("timer_time") >= 100) {
-				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal((new java.text.DecimalFormat("####.##").format(entity.getPersistentData().getDouble("timer_time")))), false);
-				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal((new java.text.DecimalFormat("##.####").format(entity.getX() - entity.getPersistentData().getDouble("pos_x")))), false);
-				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal((new java.text.DecimalFormat("##.####").format(entity.getZ() - entity.getPersistentData().getDouble("pos_z")))), false);
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("(dx,dz)=(" + new java.text.DecimalFormat("##.########").format(entity.getX() - entity.getPersistentData().getDouble("pos_x")) + ","
+						+ new java.text.DecimalFormat("##.########").format(entity.getZ() - entity.getPersistentData().getDouble("pos_z")) + ")")), false);
+			entity.getPersistentData().putDouble("pos_x", (entity.getX()));
+			entity.getPersistentData().putDouble("pos_z", (entity.getZ()));
+			if (entity.getPersistentData().getDouble("timer_time") == 100) {
 				entity.getPersistentData().putBoolean("timer_switch", false);
 			}
 		}

@@ -23,6 +23,17 @@ public class TaskDefaultSettingProcedure {
 		}
 		CacModVariables.MapVariables.get(world).Switch_exp = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Exp_trial = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Exp_phase = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		if (!CacModVariables.MapVariables.get(world).Tim_experiment_switch) {
+			TimeExperimentSwitchProcedure.execute(world);
+		} else {
+			CacModVariables.MapVariables.get(world).Log_error = "alreadyon_timer";
+			CacModVariables.MapVariables.get(world).syncData(world);
+			CacErrorProcedure.execute(world);
+		}
 		CacModVariables.MapVariables.get(world).Tim_trial_switch = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Tim_trial_time = 0;
@@ -30,10 +41,6 @@ public class TaskDefaultSettingProcedure {
 		CacModVariables.MapVariables.get(world).Tim_survey_switch = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Tim_survey_time = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Exp_trial = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Exp_phase = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_type_trial = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);

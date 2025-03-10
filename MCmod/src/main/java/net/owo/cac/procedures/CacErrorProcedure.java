@@ -18,6 +18,9 @@ public class CacErrorProcedure {
 		} else if ((log_error).equals("invalid_session")) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cInvalid session!"), false);
+		} else if ((log_error).equals("alreadyon_timer")) {
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cTimer is already on!"), false);
 		}
 		CacModVariables.MapVariables.get(world).Log_error = "";
 		CacModVariables.MapVariables.get(world).syncData(world);

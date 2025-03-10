@@ -18,6 +18,7 @@ import net.owo.cac.init.CacModEntities;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
 
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
@@ -32,6 +33,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.Entity;
@@ -165,13 +167,14 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 		ItemStack itemstack = sourceentity.getItemInHand(hand);
 		InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
 		super.mobInteract(sourceentity, hand);
+		sourceentity.startRiding(this);
 		double x = this.getX();
 		double y = this.getY();
 		double z = this.getZ();
 		Entity entity = this;
 		Level world = this.level();
 
-		PrdTouchMeowcamProcedure.execute(world, x, y, z, entity);
+		PrdTouchMeowcamProcedure.execute(entity);
 		return retval;
 	}
 
@@ -188,6 +191,35 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 	}
 
 	@Override
+	public void travel(Vec3 dir) {
+		Entity entity = this.getPassengers().isEmpty() ? null : (Entity) this.getPassengers().get(0);
+		if (this.isVehicle()) {
+			this.setYRot(entity.getYRot());
+			this.yRotO = this.getYRot();
+			this.setXRot(entity.getXRot() * 0.5F);
+			this.setRot(this.getYRot(), this.getXRot());
+			this.yBodyRot = entity.getYRot();
+			this.yHeadRot = entity.getYRot();
+			if (entity instanceof LivingEntity passenger) {
+				this.setSpeed((float) this.getAttributeValue(Attributes.MOVEMENT_SPEED));
+				float forward = passenger.zza;
+				float strafe = passenger.xxa;
+				super.travel(new Vec3(strafe, 0, forward));
+			}
+			double d1 = this.getX() - this.xo;
+			double d0 = this.getZ() - this.zo;
+			float f1 = (float) Math.sqrt(d1 * d1 + d0 * d0) * 4;
+			if (f1 > 1.0F)
+				f1 = 1.0F;
+			this.walkAnimation.setSpeed(this.walkAnimation.speed() + (f1 - this.walkAnimation.speed()) * 0.4F);
+			this.walkAnimation.position(this.walkAnimation.position() + this.walkAnimation.speed());
+			this.calculateEntityAnimation(true);
+			return;
+		}
+		super.travel(dir);
+	}
+
+	@Override
 	public void aiStep() {
 		super.aiStep();
 		this.updateSwingTime();
@@ -198,7 +230,7 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 1);
+		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.1);
 		builder = builder.add(Attributes.MAX_HEALTH, 1);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);

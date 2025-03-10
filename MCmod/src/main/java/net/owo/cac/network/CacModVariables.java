@@ -25,6 +25,9 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModVariables {
+	public static com.google.gson.JsonArray Dat_trial_pos_player = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_trial_pos_opponent = new com.google.gson.JsonArray();
+
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
 		CacMod.addNetworkMessage(SavedDataSyncMessage.class, SavedDataSyncMessage::buffer, SavedDataSyncMessage::new, SavedDataSyncMessage::handler);
@@ -143,6 +146,15 @@ public class CacModVariables {
 		public boolean Switch_blank = false;
 		public ListTag Dat_answer_survey = new ListTag();
 		public double Exp_survey_idx = 0;
+		public double Pos_opponent_x = 0;
+		public double Pos_opponent_z = 0;
+		public double Tim_experiment_time = 0;
+		public boolean Tim_experiment_switch = false;
+		public double Tim_experiment_tick = 0;
+		public double Tim_experiment_time_oldtick = 0;
+		public double Tim_experiment_time_currtick = 0;
+		public double Tim_experiment_time_start = 0;
+		public double Tim_experiment_time_end = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -207,6 +219,15 @@ public class CacModVariables {
 			Switch_blank = nbt.getBoolean("Switch_blank");
 			this.Dat_answer_survey = nbt.get("Dat_answer_survey") instanceof ListTag Dat_answer_survey ? Dat_answer_survey : new ListTag();
 			Exp_survey_idx = nbt.getDouble("Exp_survey_idx");
+			Pos_opponent_x = nbt.getDouble("Pos_opponent_x");
+			Pos_opponent_z = nbt.getDouble("Pos_opponent_z");
+			Tim_experiment_time = nbt.getDouble("Tim_experiment_time");
+			Tim_experiment_switch = nbt.getBoolean("Tim_experiment_switch");
+			Tim_experiment_tick = nbt.getDouble("Tim_experiment_tick");
+			Tim_experiment_time_oldtick = nbt.getDouble("Tim_experiment_time_oldtick");
+			Tim_experiment_time_currtick = nbt.getDouble("Tim_experiment_time_currtick");
+			Tim_experiment_time_start = nbt.getDouble("Tim_experiment_time_start");
+			Tim_experiment_time_end = nbt.getDouble("Tim_experiment_time_end");
 		}
 
 		@Override
@@ -271,6 +292,15 @@ public class CacModVariables {
 			nbt.putBoolean("Switch_blank", Switch_blank);
 			nbt.put("Dat_answer_survey", this.Dat_answer_survey);
 			nbt.putDouble("Exp_survey_idx", Exp_survey_idx);
+			nbt.putDouble("Pos_opponent_x", Pos_opponent_x);
+			nbt.putDouble("Pos_opponent_z", Pos_opponent_z);
+			nbt.putDouble("Tim_experiment_time", Tim_experiment_time);
+			nbt.putBoolean("Tim_experiment_switch", Tim_experiment_switch);
+			nbt.putDouble("Tim_experiment_tick", Tim_experiment_tick);
+			nbt.putDouble("Tim_experiment_time_oldtick", Tim_experiment_time_oldtick);
+			nbt.putDouble("Tim_experiment_time_currtick", Tim_experiment_time_currtick);
+			nbt.putDouble("Tim_experiment_time_start", Tim_experiment_time_start);
+			nbt.putDouble("Tim_experiment_time_end", Tim_experiment_time_end);
 			return nbt;
 		}
 
