@@ -17,7 +17,6 @@ import java.io.BufferedReader;
 
 public class IniReadConfigProcedure {
 	public static void execute(LevelAccessor world) {
-		File file_spawnpoint = new File("");
 		com.google.gson.JsonObject obj_main = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_place = new com.google.gson.JsonObject();
 		com.google.gson.JsonArray arr_opponent = new com.google.gson.JsonArray();
@@ -25,8 +24,9 @@ public class IniReadConfigProcedure {
 		double idx_point = 0;
 		double idx_pos = 0;
 		ListTag pos_point;
-		file_spawnpoint = new File((FMLPaths.GAMEDIR.get().toString() + "/cacutil/components"), File.separator + "pool_spawnpoint.json");
-		if (!file_spawnpoint.exists()) {
+		File file_pool_position = new File("");
+		file_pool_position = new File((FMLPaths.GAMEDIR.get().toString() + "/cacutil/components"), File.separator + "pool_position.json");
+		if (!file_pool_position.exists()) {
 			CacModVariables.MapVariables.get(world).Log_error = "nonexist_file";
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacErrorProcedure.execute(world);
@@ -35,7 +35,7 @@ public class IniReadConfigProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			try {
-				BufferedReader bufferedReader = new BufferedReader(new FileReader(file_spawnpoint));
+				BufferedReader bufferedReader = new BufferedReader(new FileReader(file_pool_position));
 				StringBuilder jsonstringbuilder = new StringBuilder();
 				String line;
 				while ((line = bufferedReader.readLine()) != null) {
@@ -43,7 +43,7 @@ public class IniReadConfigProcedure {
 				}
 				bufferedReader.close();
 				obj_main = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				obj_place = obj_main.get("default").getAsJsonObject();
+				obj_place = obj_main.get("spawnpoint").getAsJsonObject();
 				arr_opponent = obj_place.get("opponent").getAsJsonArray();
 				idx_point = 0;
 				for (int index0 = 0; index0 < (int) arr_opponent.size(); index0++) {

@@ -35,8 +35,6 @@ public class PrdInitializeProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title " + "@a " + "times " + "10 100 10"));
 			}
 		}
-		CacModVariables.MapVariables.get(world).Pmt_far = 15;
-		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Timer_show = "none";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Timer_event = "none";

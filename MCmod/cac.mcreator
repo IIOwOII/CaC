@@ -2241,6 +2241,44 @@
         ]
       },
       "path": "~/CacTask/Timer"
+    },
+    {
+      "name": "TimAbsolute",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_absolute",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimAbsoluteProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Absolute"
+    },
+    {
+      "name": "TimRelative",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_relative",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimRelativeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Relative"
     }
   ],
   "variable_elements": [
@@ -2273,12 +2311,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Pmt_far",
-      "type": "number",
-      "scope": "map",
-      "value": "15.0"
     },
     {
       "name": "Timer_time",
@@ -2627,6 +2659,18 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "TimR_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "TimR_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [],
@@ -2746,6 +2790,19 @@
       {
         "name": "CacSurvey",
         "children": []
+      },
+      {
+        "name": "CacTimer",
+        "children": [
+          {
+            "name": "Absolute",
+            "children": []
+          },
+          {
+            "name": "Relative",
+            "children": []
+          }
+        ]
       }
     ]
   },

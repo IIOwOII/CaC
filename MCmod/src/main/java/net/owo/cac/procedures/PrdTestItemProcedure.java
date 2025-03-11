@@ -29,19 +29,34 @@ public class PrdTestItemProcedure {
 				_player.displayClientMessage(Component.literal((CacModVariables.MapVariables.get(world).Option_tester_str + " is executed!")), true);
 		}
 		if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Increase Difficulty")) {
-			CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty + 0.01;
-			CacModVariables.MapVariables.get(world).syncData(world);
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Difficulty : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);
-		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Decrease Difficulty")) {
-			if (CacModVariables.MapVariables.get(world).Pmt_difficulty > 0.3) {
-				CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty - 0.01;
+			if (CacModVariables.MapVariables.get(world).Pmt_difficulty <= 1.5) {
+				CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty + 0.05;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Difficulty : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);
 			} else {
 				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("But... Difficulty is already minimum!"), false);
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Maximum Speed!"), false);
+			}
+		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Decrease Difficulty")) {
+			if (CacModVariables.MapVariables.get(world).Pmt_difficulty >= 0.5) {
+				CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty - 0.05;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				if (!world.isClientSide() && world.getServer() != null)
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);
+			} else {
+				if (!world.isClientSide() && world.getServer() != null)
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Minimum Speed!"), false);
+			}
+		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("AI Switch")) {
+			CacModVariables.MapVariables.get(world).Switch_AI = !CacModVariables.MapVariables.get(world).Switch_AI;
+			CacModVariables.MapVariables.get(world).syncData(world);
+			if (CacModVariables.MapVariables.get(world).Switch_AI) {
+				if (!world.isClientSide() && world.getServer() != null)
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("AI On!"), false);
+			} else {
+				if (!world.isClientSide() && world.getServer() != null)
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("AI Off!"), false);
 			}
 		}
 	}

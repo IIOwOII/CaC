@@ -31,8 +31,7 @@ public class UdtEntityProcedure {
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).Pos_player_z = entity.getZ();
 			CacModVariables.MapVariables.get(world).syncData(world);
-		}
-		if ((entity.getStringUUID()).equals(CacModVariables.MapVariables.get(world).UUID_opponent)) {
+		} else if ((entity.getStringUUID()).equals(CacModVariables.MapVariables.get(world).UUID_opponent)) {
 			CacModVariables.MapVariables.get(world).Pos_opponent_x = entity.getX();
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).Pos_opponent_z = entity.getZ();

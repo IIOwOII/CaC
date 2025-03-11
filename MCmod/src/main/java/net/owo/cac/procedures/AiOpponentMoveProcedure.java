@@ -21,7 +21,8 @@ public class AiOpponentMoveProcedure {
 		field_wall = FncFieldWallProcedure.execute(world, x, z, entity);
 		field_sum = field_player.add((field_obstacle.add(field_wall)));
 		if (entity instanceof Mob _entity)
-			_entity.getNavigation().moveTo((x + field_sum.x()), y, (z + field_sum.z()), CacModVariables.MapVariables.get(world).Pmt_difficulty);
+			_entity.getNavigation().moveTo((CacModVariables.MapVariables.get(world).Pos_opponent_x + field_sum.x()), y, (CacModVariables.MapVariables.get(world).Pos_opponent_z + field_sum.z()),
+					(0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Pmt_difficulty, 0.5)));
 		if (CacModVariables.MapVariables.get(world).Switch_debug) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList()

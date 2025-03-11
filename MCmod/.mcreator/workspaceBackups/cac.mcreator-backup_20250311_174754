@@ -2162,22 +2162,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       },
@@ -2257,6 +2241,25 @@
         ]
       },
       "path": "~/CacTask/Timer"
+    },
+    {
+      "name": "TimAbsolute",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_absolute",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimAbsoluteProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
     }
   ],
   "variable_elements": [
@@ -2289,12 +2292,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Pmt_far",
-      "type": "number",
-      "scope": "map",
-      "value": "15.0"
     },
     {
       "name": "Timer_time",
@@ -2761,6 +2758,10 @@
       },
       {
         "name": "CacSurvey",
+        "children": []
+      },
+      {
+        "name": "CacTimer",
         "children": []
       }
     ]

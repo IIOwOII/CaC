@@ -98,7 +98,6 @@ public class CacModVariables {
 		public double Pmt_difficulty = 0.5;
 		public double Pos_player_x = 0;
 		public double Pos_player_z = 0;
-		public double Pmt_far = 15.0;
 		public double Timer_time = 0.0;
 		public String Timer_event = "\"none\"";
 		public String Timer_show = "\"none\"";
@@ -155,6 +154,8 @@ public class CacModVariables {
 		public double Tim_experiment_time_currtick = 0;
 		public double Tim_experiment_time_start = 0;
 		public double Tim_experiment_time_end = 0;
+		public boolean TimR_switch = false;
+		public double TimR_time = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -168,7 +169,6 @@ public class CacModVariables {
 			Pmt_difficulty = nbt.getDouble("Pmt_difficulty");
 			Pos_player_x = nbt.getDouble("Pos_player_x");
 			Pos_player_z = nbt.getDouble("Pos_player_z");
-			Pmt_far = nbt.getDouble("Pmt_far");
 			Timer_time = nbt.getDouble("Timer_time");
 			Timer_event = nbt.getString("Timer_event");
 			Timer_show = nbt.getString("Timer_show");
@@ -228,6 +228,8 @@ public class CacModVariables {
 			Tim_experiment_time_currtick = nbt.getDouble("Tim_experiment_time_currtick");
 			Tim_experiment_time_start = nbt.getDouble("Tim_experiment_time_start");
 			Tim_experiment_time_end = nbt.getDouble("Tim_experiment_time_end");
+			TimR_switch = nbt.getBoolean("TimR_switch");
+			TimR_time = nbt.getDouble("TimR_time");
 		}
 
 		@Override
@@ -237,7 +239,6 @@ public class CacModVariables {
 			nbt.putDouble("Pmt_difficulty", Pmt_difficulty);
 			nbt.putDouble("Pos_player_x", Pos_player_x);
 			nbt.putDouble("Pos_player_z", Pos_player_z);
-			nbt.putDouble("Pmt_far", Pmt_far);
 			nbt.putDouble("Timer_time", Timer_time);
 			nbt.putString("Timer_event", Timer_event);
 			nbt.putString("Timer_show", Timer_show);
@@ -301,6 +302,8 @@ public class CacModVariables {
 			nbt.putDouble("Tim_experiment_time_currtick", Tim_experiment_time_currtick);
 			nbt.putDouble("Tim_experiment_time_start", Tim_experiment_time_start);
 			nbt.putDouble("Tim_experiment_time_end", Tim_experiment_time_end);
+			nbt.putBoolean("TimR_switch", TimR_switch);
+			nbt.putDouble("TimR_time", TimR_time);
 			return nbt;
 		}
 

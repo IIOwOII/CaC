@@ -48,6 +48,7 @@ class Env_CaC():
         pg.display.update()
 
 class CaC_Role():
-    def __init__(self, speed=1):
+    def __init__(self, movement_speed=0.5, speed_factor=1):
         #
-        self.v = speed
+        self.v_m = movement_speed
+        self.v_f = speed_factor

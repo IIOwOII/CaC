@@ -61,3 +61,11 @@ FncManageTasktype
 sub register
 F6
 Chat
+
+
+
+
+
+
+
+Tim_experiment : 실험 시작되면 절대시간 타이머

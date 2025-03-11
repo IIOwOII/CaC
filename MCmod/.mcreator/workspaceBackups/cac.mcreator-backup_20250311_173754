@@ -2162,22 +2162,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       },
@@ -2289,12 +2273,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Pmt_far",
-      "type": "number",
-      "scope": "map",
-      "value": "15.0"
     },
     {
       "name": "Timer_time",
@@ -2640,6 +2618,18 @@
     },
     {
       "name": "Tim_experiment_time_end",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "T_P",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "T_O",
       "type": "number",
       "scope": "map",
       "value": "0"

@@ -9,7 +9,7 @@ import net.minecraft.nbt.DoubleTag;
 public class FncManageSpeedProcedure {
 	public static void execute(LevelAccessor world) {
 		if ((CacModVariables.MapVariables.get(world).Exp_session).equals("test")) {
-			CacModVariables.MapVariables.get(world).Pmt_difficulty = 0.6 + 0.02 * Math.floor(CacModVariables.MapVariables.get(world).Exp_trial / 5);
+			CacModVariables.MapVariables.get(world).Pmt_difficulty = 0.9 + 0.05 * Math.floor(CacModVariables.MapVariables.get(world).Exp_trial / 2);
 			CacModVariables.MapVariables.get(world).syncData(world);
 		} else if ((CacModVariables.MapVariables.get(world).Exp_session).equals("presession")) {
 			CacMod.LOGGER.info("temp");

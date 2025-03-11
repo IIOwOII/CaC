@@ -6,7 +6,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
@@ -23,8 +22,9 @@ public class AiMouseProcedure {
 				AiOpponentMoveProcedure.execute(world, x, y, z, entity);
 			}
 			entity.getPersistentData().putDouble("C_Timer", (entity.getPersistentData().getDouble("C_Timer") - 0.05));
-			distance_player = Math.pow(Math.pow(x - CacModVariables.MapVariables.get(world).Pos_player_x, 2) + Math.pow(z - CacModVariables.MapVariables.get(world).Pos_player_z, 2), 0.5);
-			if (distance_player < 0.5) {
+			distance_player = Math.pow(Math.pow(CacModVariables.MapVariables.get(world).Pos_opponent_x - CacModVariables.MapVariables.get(world).Pos_player_x, 2)
+					+ Math.pow(CacModVariables.MapVariables.get(world).Pos_opponent_z - CacModVariables.MapVariables.get(world).Pos_player_z, 2), 0.5);
+			if (distance_player < 0.7) {
 				if (!world.isClientSide()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
@@ -35,8 +35,6 @@ public class AiMouseProcedure {
 					}
 				}
 				PrdTouchProcedure.execute(world);
-				if (entity instanceof Mob _entity)
-					_entity.getNavigation().stop();
 				CacModVariables.MapVariables.get(world).Switch_AI = false;
 				CacModVariables.MapVariables.get(world).syncData(world);
 			}
