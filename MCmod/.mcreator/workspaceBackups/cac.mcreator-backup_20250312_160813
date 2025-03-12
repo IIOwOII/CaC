@@ -850,6 +850,18 @@
         ],
         "dependencies": [
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -2205,14 +2217,14 @@
       "path": "~/CacUpdate"
     },
     {
-      "name": "TimExperiment",
+      "name": "TimAbsolute",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tim_experiment",
+      "registry_name": "tim_absolute",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/TimExperimentProcedure.java"
+          "src/main/java/net/owo/cac/procedures/TimAbsoluteProcedure.java"
         ],
         "dependencies": [
           {
@@ -2221,17 +2233,17 @@
           }
         ]
       },
-      "path": "~/CacTask/Timer"
+      "path": "~/CacTimer/Absolute"
     },
     {
-      "name": "TimeExperimentSwitch",
+      "name": "TimRelative",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "time_experiment_switch",
+      "registry_name": "tim_relative",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/TimeExperimentSwitchProcedure.java"
+          "src/main/java/net/owo/cac/procedures/TimRelativeProcedure.java"
         ],
         "dependencies": [
           {
@@ -2240,7 +2252,30 @@
           }
         ]
       },
-      "path": "~/CacTask/Timer"
+      "path": "~/CacTimer/Relative"
+    },
+    {
+      "name": "PrdSemiExp",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_semi_exp",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdSemiExpProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacEtc"
     }
   ],
   "variable_elements": [
@@ -2449,12 +2484,6 @@
       "value": "false"
     },
     {
-      "name": "Switch_exp",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "Tim_trial_switch",
       "type": "logic",
       "scope": "map",
@@ -2581,43 +2610,43 @@
       "value": "new com.google.gson.JsonArray()"
     },
     {
-      "name": "Tim_experiment_time",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Tim_experiment_switch",
+      "name": "TimR_switch",
       "type": "logic",
       "scope": "map",
       "value": "false"
     },
     {
-      "name": "Tim_experiment_tick",
+      "name": "TimR_time",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "Tim_experiment_time_oldtick",
+      "name": "TimA_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "TimA_time",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "Tim_experiment_time_currtick",
+      "name": "TimA_tick",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "Tim_experiment_time_start",
+      "name": "TimA_time_currtick",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "Tim_experiment_time_end",
+      "name": "TimA_time_oldtick",
       "type": "number",
       "scope": "map",
       "value": "0"
@@ -2740,6 +2769,19 @@
       {
         "name": "CacSurvey",
         "children": []
+      },
+      {
+        "name": "CacTimer",
+        "children": [
+          {
+            "name": "Absolute",
+            "children": []
+          },
+          {
+            "name": "Relative",
+            "children": []
+          }
+        ]
       }
     ]
   },

@@ -848,12 +848,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -2241,6 +2236,44 @@
         ]
       },
       "path": "~/CacTask/Timer"
+    },
+    {
+      "name": "TimAbsolute",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_absolute",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimAbsoluteProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Absolute"
+    },
+    {
+      "name": "TimRelative",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_relative",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimRelativeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Relative"
     }
   ],
   "variable_elements": [
@@ -2623,13 +2656,43 @@
       "value": "0"
     },
     {
-      "name": "T_P",
+      "name": "TimR_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "TimR_time",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "T_O",
+      "name": "TimA_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "TimA_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TimA_tick",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TimA_time_currtick",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TimA_time_oldtick",
       "type": "number",
       "scope": "map",
       "value": "0"
@@ -2752,6 +2815,19 @@
       {
         "name": "CacSurvey",
         "children": []
+      },
+      {
+        "name": "CacTimer",
+        "children": [
+          {
+            "name": "Absolute",
+            "children": []
+          },
+          {
+            "name": "Relative",
+            "children": []
+          }
+        ]
       }
     ]
   },

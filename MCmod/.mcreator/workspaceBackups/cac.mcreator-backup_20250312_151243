@@ -2259,7 +2259,26 @@
           }
         ]
       },
-      "path": "~/CacTimer"
+      "path": "~/CacTimer/Absolute"
+    },
+    {
+      "name": "TimRelative",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_relative",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimRelativeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Relative"
     }
   ],
   "variable_elements": [
@@ -2640,6 +2659,18 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "TimR_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "TimR_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [],
@@ -2762,7 +2793,16 @@
       },
       {
         "name": "CacTimer",
-        "children": []
+        "children": [
+          {
+            "name": "Absolute",
+            "children": []
+          },
+          {
+            "name": "Relative",
+            "children": []
+          }
+        ]
       }
     ]
   },

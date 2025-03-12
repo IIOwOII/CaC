@@ -21,19 +21,10 @@ public class TaskDefaultSettingProcedure {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, -1, 0, false, false));
 		}
-		CacModVariables.MapVariables.get(world).Switch_exp = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_trial = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_phase = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if (!CacModVariables.MapVariables.get(world).Tim_experiment_switch) {
-			TimeExperimentSwitchProcedure.execute(world);
-		} else {
-			CacModVariables.MapVariables.get(world).Log_error = "alreadyon_timer";
-			CacModVariables.MapVariables.get(world).syncData(world);
-			CacErrorProcedure.execute(world);
-		}
 		CacModVariables.MapVariables.get(world).Tim_trial_switch = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Tim_trial_time = 0;

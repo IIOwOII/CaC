@@ -25,9 +25,8 @@ public class AiCatProcedure {
 							(0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Pmt_difficulty, 0.5)));
 			}
 			entity.getPersistentData().putDouble("C_Timer", (entity.getPersistentData().getDouble("C_Timer") - 0.05));
-			distance_player = Math.pow(Math.pow(CacModVariables.MapVariables.get(world).Pos_opponent_x - CacModVariables.MapVariables.get(world).Pos_player_x, 2)
-					+ Math.pow(CacModVariables.MapVariables.get(world).Pos_opponent_z - CacModVariables.MapVariables.get(world).Pos_player_z, 2), 0.5);
-			if (distance_player < 0.7) {
+			if (Math.pow(Math.pow(CacModVariables.MapVariables.get(world).Pos_opponent_x - CacModVariables.MapVariables.get(world).Pos_player_x, 2)
+					+ Math.pow(CacModVariables.MapVariables.get(world).Pos_opponent_z - CacModVariables.MapVariables.get(world).Pos_player_z, 2), 0.5) < 1) {
 				if (!world.isClientSide()) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
@@ -38,8 +37,6 @@ public class AiCatProcedure {
 					}
 				}
 				PrdTouchProcedure.execute(world);
-				CacModVariables.MapVariables.get(world).Switch_AI = false;
-				CacModVariables.MapVariables.get(world).syncData(world);
 			}
 		}
 	}

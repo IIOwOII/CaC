@@ -28,9 +28,6 @@ public class TimRelativeProcedure {
 		if (CacModVariables.MapVariables.get(world).TimR_switch) {
 			CacModVariables.MapVariables.get(world).TimR_time = CacModVariables.MapVariables.get(world).TimR_time + 1;
 			CacModVariables.MapVariables.get(world).syncData(world);
-		} else {
-			CacModVariables.MapVariables.get(world).TimR_time = 0;
-			CacModVariables.MapVariables.get(world).syncData(world);
 		}
 	}
 }

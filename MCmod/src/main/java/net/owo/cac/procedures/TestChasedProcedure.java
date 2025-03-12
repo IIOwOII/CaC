@@ -11,8 +11,6 @@ public class TestChasedProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Switch_exp = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_AI = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		EffApplyMorphPreyProcedure.execute(entity);

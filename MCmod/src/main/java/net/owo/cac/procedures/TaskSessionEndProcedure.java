@@ -9,7 +9,5 @@ public class TaskSessionEndProcedure {
 		RecSessionResultProcedure.execute(world);
 		CacModVariables.MapVariables.get(world).Switch_blank = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Switch_exp = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

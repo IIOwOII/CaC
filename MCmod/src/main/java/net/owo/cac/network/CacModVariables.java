@@ -127,7 +127,6 @@ public class CacModVariables {
 		public String UUID_player = "\"\"";
 		public ListTag Pool_spawn = new ListTag();
 		public boolean Switch_AI = false;
-		public boolean Switch_exp = false;
 		public boolean Tim_trial_switch = false;
 		public double Tim_trial_time = 0;
 		public ListTag Dat_time_gameplay = new ListTag();
@@ -147,15 +146,13 @@ public class CacModVariables {
 		public double Exp_survey_idx = 0;
 		public double Pos_opponent_x = 0;
 		public double Pos_opponent_z = 0;
-		public double Tim_experiment_time = 0;
-		public boolean Tim_experiment_switch = false;
-		public double Tim_experiment_tick = 0;
-		public double Tim_experiment_time_oldtick = 0;
-		public double Tim_experiment_time_currtick = 0;
-		public double Tim_experiment_time_start = 0;
-		public double Tim_experiment_time_end = 0;
 		public boolean TimR_switch = false;
 		public double TimR_time = 0;
+		public boolean TimA_switch = false;
+		public double TimA_time = 0;
+		public double TimA_tick = 0;
+		public double TimA_time_currtick = 0;
+		public double TimA_time_oldtick = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -201,7 +198,6 @@ public class CacModVariables {
 			UUID_player = nbt.getString("UUID_player");
 			this.Pool_spawn = nbt.get("Pool_spawn") instanceof ListTag Pool_spawn ? Pool_spawn : new ListTag();
 			Switch_AI = nbt.getBoolean("Switch_AI");
-			Switch_exp = nbt.getBoolean("Switch_exp");
 			Tim_trial_switch = nbt.getBoolean("Tim_trial_switch");
 			Tim_trial_time = nbt.getDouble("Tim_trial_time");
 			this.Dat_time_gameplay = nbt.get("Dat_time_gameplay") instanceof ListTag Dat_time_gameplay ? Dat_time_gameplay : new ListTag();
@@ -221,15 +217,13 @@ public class CacModVariables {
 			Exp_survey_idx = nbt.getDouble("Exp_survey_idx");
 			Pos_opponent_x = nbt.getDouble("Pos_opponent_x");
 			Pos_opponent_z = nbt.getDouble("Pos_opponent_z");
-			Tim_experiment_time = nbt.getDouble("Tim_experiment_time");
-			Tim_experiment_switch = nbt.getBoolean("Tim_experiment_switch");
-			Tim_experiment_tick = nbt.getDouble("Tim_experiment_tick");
-			Tim_experiment_time_oldtick = nbt.getDouble("Tim_experiment_time_oldtick");
-			Tim_experiment_time_currtick = nbt.getDouble("Tim_experiment_time_currtick");
-			Tim_experiment_time_start = nbt.getDouble("Tim_experiment_time_start");
-			Tim_experiment_time_end = nbt.getDouble("Tim_experiment_time_end");
 			TimR_switch = nbt.getBoolean("TimR_switch");
 			TimR_time = nbt.getDouble("TimR_time");
+			TimA_switch = nbt.getBoolean("TimA_switch");
+			TimA_time = nbt.getDouble("TimA_time");
+			TimA_tick = nbt.getDouble("TimA_tick");
+			TimA_time_currtick = nbt.getDouble("TimA_time_currtick");
+			TimA_time_oldtick = nbt.getDouble("TimA_time_oldtick");
 		}
 
 		@Override
@@ -275,7 +269,6 @@ public class CacModVariables {
 			nbt.putString("UUID_player", UUID_player);
 			nbt.put("Pool_spawn", this.Pool_spawn);
 			nbt.putBoolean("Switch_AI", Switch_AI);
-			nbt.putBoolean("Switch_exp", Switch_exp);
 			nbt.putBoolean("Tim_trial_switch", Tim_trial_switch);
 			nbt.putDouble("Tim_trial_time", Tim_trial_time);
 			nbt.put("Dat_time_gameplay", this.Dat_time_gameplay);
@@ -295,15 +288,13 @@ public class CacModVariables {
 			nbt.putDouble("Exp_survey_idx", Exp_survey_idx);
 			nbt.putDouble("Pos_opponent_x", Pos_opponent_x);
 			nbt.putDouble("Pos_opponent_z", Pos_opponent_z);
-			nbt.putDouble("Tim_experiment_time", Tim_experiment_time);
-			nbt.putBoolean("Tim_experiment_switch", Tim_experiment_switch);
-			nbt.putDouble("Tim_experiment_tick", Tim_experiment_tick);
-			nbt.putDouble("Tim_experiment_time_oldtick", Tim_experiment_time_oldtick);
-			nbt.putDouble("Tim_experiment_time_currtick", Tim_experiment_time_currtick);
-			nbt.putDouble("Tim_experiment_time_start", Tim_experiment_time_start);
-			nbt.putDouble("Tim_experiment_time_end", Tim_experiment_time_end);
 			nbt.putBoolean("TimR_switch", TimR_switch);
 			nbt.putDouble("TimR_time", TimR_time);
+			nbt.putBoolean("TimA_switch", TimA_switch);
+			nbt.putDouble("TimA_time", TimA_time);
+			nbt.putDouble("TimA_tick", TimA_tick);
+			nbt.putDouble("TimA_time_currtick", TimA_time_currtick);
+			nbt.putDouble("TimA_time_oldtick", TimA_time_oldtick);
 			return nbt;
 		}
 

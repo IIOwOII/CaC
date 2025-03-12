@@ -58,6 +58,8 @@ public class PrdTestItemProcedure {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("AI Off!"), false);
 			}
+		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Semi Exp")) {
+			PrdSemiExpProcedure.execute(world, entity);
 		}
 	}
 }
