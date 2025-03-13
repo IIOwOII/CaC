@@ -848,7 +848,24 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -2200,44 +2217,6 @@
       "path": "~/CacUpdate"
     },
     {
-      "name": "TimExperiment",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_experiment",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimExperimentProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Timer"
-    },
-    {
-      "name": "TimeExperimentSwitch",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "time_experiment_switch",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimeExperimentSwitchProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Timer"
-    },
-    {
       "name": "TimAbsolute",
       "type": "procedure",
       "compiles": true,
@@ -2274,6 +2253,29 @@
         ]
       },
       "path": "~/CacTimer/Relative"
+    },
+    {
+      "name": "PrdSemiExp",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_semi_exp",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdSemiExpProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacEtc"
     }
   ],
   "variable_elements": [
@@ -2482,12 +2484,6 @@
       "value": "false"
     },
     {
-      "name": "Switch_exp",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "Tim_trial_switch",
       "type": "logic",
       "scope": "map",
@@ -2612,48 +2608,6 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Tim_experiment_time",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Tim_experiment_switch",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Tim_experiment_tick",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Tim_experiment_time_oldtick",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Tim_experiment_time_currtick",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Tim_experiment_time_start",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Tim_experiment_time_end",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
     },
     {
       "name": "TimR_switch",
