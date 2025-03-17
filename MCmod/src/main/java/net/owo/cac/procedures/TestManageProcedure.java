@@ -24,7 +24,7 @@ public class TestManageProcedure {
 			CacModVariables.MapVariables.get(world).Dat_trial_total = DoubleArgumentType.getDouble(arguments, "trials");
 			CacModVariables.MapVariables.get(world).syncData(world);
 			if ((session).equals("mixed")) {
-				TestMixedStartProcedure.execute(world, entity);
+				TestMixedStartProcedure.execute(world);
 			}
 		}
 	}

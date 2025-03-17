@@ -34,7 +34,7 @@ public class CmdTaskCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TaskManageProcedure.execute(world, arguments, entity);
+					TaskManageProcedure.execute(world, arguments);
 					return 0;
 				})));
 	}

@@ -26,7 +26,7 @@ public class TimRelativeProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world) {
 		if (CacModVariables.MapVariables.get(world).TimR_switch) {
-			CacModVariables.MapVariables.get(world).TimR_time = CacModVariables.MapVariables.get(world).TimR_time + 1;
+			CacModVariables.MapVariables.get(world).TimR_time = (int) (CacModVariables.MapVariables.get(world).TimR_time + 1);
 			CacModVariables.MapVariables.get(world).syncData(world);
 		}
 	}

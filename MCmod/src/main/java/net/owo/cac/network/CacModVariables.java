@@ -102,15 +102,6 @@ public class CacModVariables {
 		public String Timer_event = "\"none\"";
 		public String Timer_show = "\"none\"";
 		public double Pmt_unittime = 30.0;
-		public ListTag Exp_prechasing_time = new ListTag();
-		public ListTag Exp_prechasing_win = new ListTag();
-		public ListTag Exp_prechasing_difficulty = new ListTag();
-		public double Exp_prechasing_trial = 0;
-		public ListTag Exp_prechased_time = new ListTag();
-		public ListTag Exp_prechased_win = new ListTag();
-		public ListTag Exp_prechased_difficulty = new ListTag();
-		public double Exp_prechased_trial = 0;
-		public ListTag Exp_pre_type = new ListTag();
 		public ListTag List_obstacle = new ListTag();
 		public Vec3 Pos_offset = Vec3.ZERO;
 		public double Radius_map = 16.0;
@@ -142,7 +133,6 @@ public class CacModVariables {
 		public double Dat_trial_total = 0;
 		public ListTag Dat_time_interval = new ListTag();
 		public boolean Switch_blank = false;
-		public ListTag Dat_answer_survey = new ListTag();
 		public double Exp_survey_idx = 0;
 		public double Pos_opponent_x = 0;
 		public double Pos_opponent_z = 0;
@@ -153,6 +143,21 @@ public class CacModVariables {
 		public double TimA_tick = 0;
 		public double TimA_time_currtick = 0;
 		public double TimA_time_oldtick = 0;
+		public ListTag Dat_winlose = new ListTag();
+		public ListTag Dat_trial_difficulty_absolute = new ListTag();
+		public ListTag Dat_trial_difficulty_relative = new ListTag();
+		public ListTag Dat_trial_winlose = new ListTag();
+		public ListTag Dat_trial_type = new ListTag();
+		public ListTag Dat_trial_spawn_opponent = new ListTag();
+		public ListTag Dat_survey_order = new ListTag();
+		public ListTag Dat_survey_RT = new ListTag();
+		public ListTag Dat_survey_answer = new ListTag();
+		public double Exp_difficulty_absolute = 0;
+		public double Exp_difficulty_relative = 0;
+		public boolean Tim_event_pulse = false;
+		public String Tim_event_content = "\"\"";
+		public double Tim_event_duration = 0;
+		public double Tim_event_occurpoint = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -170,15 +175,6 @@ public class CacModVariables {
 			Timer_event = nbt.getString("Timer_event");
 			Timer_show = nbt.getString("Timer_show");
 			Pmt_unittime = nbt.getDouble("Pmt_unittime");
-			this.Exp_prechasing_time = nbt.get("Exp_prechasing_time") instanceof ListTag Exp_prechasing_time ? Exp_prechasing_time : new ListTag();
-			this.Exp_prechasing_win = nbt.get("Exp_prechasing_win") instanceof ListTag Exp_prechasing_win ? Exp_prechasing_win : new ListTag();
-			this.Exp_prechasing_difficulty = nbt.get("Exp_prechasing_difficulty") instanceof ListTag Exp_prechasing_difficulty ? Exp_prechasing_difficulty : new ListTag();
-			Exp_prechasing_trial = nbt.getDouble("Exp_prechasing_trial");
-			this.Exp_prechased_time = nbt.get("Exp_prechased_time") instanceof ListTag Exp_prechased_time ? Exp_prechased_time : new ListTag();
-			this.Exp_prechased_win = nbt.get("Exp_prechased_win") instanceof ListTag Exp_prechased_win ? Exp_prechased_win : new ListTag();
-			this.Exp_prechased_difficulty = nbt.get("Exp_prechased_difficulty") instanceof ListTag Exp_prechased_difficulty ? Exp_prechased_difficulty : new ListTag();
-			Exp_prechased_trial = nbt.getDouble("Exp_prechased_trial");
-			this.Exp_pre_type = nbt.get("Exp_pre_type") instanceof ListTag Exp_pre_type ? Exp_pre_type : new ListTag();
 			this.List_obstacle = nbt.get("List_obstacle") instanceof ListTag List_obstacle ? List_obstacle : new ListTag();
 			{
 				ListTag listTag = nbt.getList("Pos_offset", 6);
@@ -213,7 +209,6 @@ public class CacModVariables {
 			Dat_trial_total = nbt.getDouble("Dat_trial_total");
 			this.Dat_time_interval = nbt.get("Dat_time_interval") instanceof ListTag Dat_time_interval ? Dat_time_interval : new ListTag();
 			Switch_blank = nbt.getBoolean("Switch_blank");
-			this.Dat_answer_survey = nbt.get("Dat_answer_survey") instanceof ListTag Dat_answer_survey ? Dat_answer_survey : new ListTag();
 			Exp_survey_idx = nbt.getDouble("Exp_survey_idx");
 			Pos_opponent_x = nbt.getDouble("Pos_opponent_x");
 			Pos_opponent_z = nbt.getDouble("Pos_opponent_z");
@@ -224,6 +219,21 @@ public class CacModVariables {
 			TimA_tick = nbt.getDouble("TimA_tick");
 			TimA_time_currtick = nbt.getDouble("TimA_time_currtick");
 			TimA_time_oldtick = nbt.getDouble("TimA_time_oldtick");
+			this.Dat_winlose = nbt.get("Dat_winlose") instanceof ListTag Dat_winlose ? Dat_winlose : new ListTag();
+			this.Dat_trial_difficulty_absolute = nbt.get("Dat_trial_difficulty_absolute") instanceof ListTag Dat_trial_difficulty_absolute ? Dat_trial_difficulty_absolute : new ListTag();
+			this.Dat_trial_difficulty_relative = nbt.get("Dat_trial_difficulty_relative") instanceof ListTag Dat_trial_difficulty_relative ? Dat_trial_difficulty_relative : new ListTag();
+			this.Dat_trial_winlose = nbt.get("Dat_trial_winlose") instanceof ListTag Dat_trial_winlose ? Dat_trial_winlose : new ListTag();
+			this.Dat_trial_type = nbt.get("Dat_trial_type") instanceof ListTag Dat_trial_type ? Dat_trial_type : new ListTag();
+			this.Dat_trial_spawn_opponent = nbt.get("Dat_trial_spawn_opponent") instanceof ListTag Dat_trial_spawn_opponent ? Dat_trial_spawn_opponent : new ListTag();
+			this.Dat_survey_order = nbt.get("Dat_survey_order") instanceof ListTag Dat_survey_order ? Dat_survey_order : new ListTag();
+			this.Dat_survey_RT = nbt.get("Dat_survey_RT") instanceof ListTag Dat_survey_RT ? Dat_survey_RT : new ListTag();
+			this.Dat_survey_answer = nbt.get("Dat_survey_answer") instanceof ListTag Dat_survey_answer ? Dat_survey_answer : new ListTag();
+			Exp_difficulty_absolute = nbt.getDouble("Exp_difficulty_absolute");
+			Exp_difficulty_relative = nbt.getDouble("Exp_difficulty_relative");
+			Tim_event_pulse = nbt.getBoolean("Tim_event_pulse");
+			Tim_event_content = nbt.getString("Tim_event_content");
+			Tim_event_duration = nbt.getDouble("Tim_event_duration");
+			Tim_event_occurpoint = nbt.getDouble("Tim_event_occurpoint");
 		}
 
 		@Override
@@ -237,15 +247,6 @@ public class CacModVariables {
 			nbt.putString("Timer_event", Timer_event);
 			nbt.putString("Timer_show", Timer_show);
 			nbt.putDouble("Pmt_unittime", Pmt_unittime);
-			nbt.put("Exp_prechasing_time", this.Exp_prechasing_time);
-			nbt.put("Exp_prechasing_win", this.Exp_prechasing_win);
-			nbt.put("Exp_prechasing_difficulty", this.Exp_prechasing_difficulty);
-			nbt.putDouble("Exp_prechasing_trial", Exp_prechasing_trial);
-			nbt.put("Exp_prechased_time", this.Exp_prechased_time);
-			nbt.put("Exp_prechased_win", this.Exp_prechased_win);
-			nbt.put("Exp_prechased_difficulty", this.Exp_prechased_difficulty);
-			nbt.putDouble("Exp_prechased_trial", Exp_prechased_trial);
-			nbt.put("Exp_pre_type", this.Exp_pre_type);
 			nbt.put("List_obstacle", this.List_obstacle);
 			{
 				this.Pos_offset = this.Pos_offset == null ? Vec3.ZERO : this.Pos_offset;
@@ -284,7 +285,6 @@ public class CacModVariables {
 			nbt.putDouble("Dat_trial_total", Dat_trial_total);
 			nbt.put("Dat_time_interval", this.Dat_time_interval);
 			nbt.putBoolean("Switch_blank", Switch_blank);
-			nbt.put("Dat_answer_survey", this.Dat_answer_survey);
 			nbt.putDouble("Exp_survey_idx", Exp_survey_idx);
 			nbt.putDouble("Pos_opponent_x", Pos_opponent_x);
 			nbt.putDouble("Pos_opponent_z", Pos_opponent_z);
@@ -295,6 +295,21 @@ public class CacModVariables {
 			nbt.putDouble("TimA_tick", TimA_tick);
 			nbt.putDouble("TimA_time_currtick", TimA_time_currtick);
 			nbt.putDouble("TimA_time_oldtick", TimA_time_oldtick);
+			nbt.put("Dat_winlose", this.Dat_winlose);
+			nbt.put("Dat_trial_difficulty_absolute", this.Dat_trial_difficulty_absolute);
+			nbt.put("Dat_trial_difficulty_relative", this.Dat_trial_difficulty_relative);
+			nbt.put("Dat_trial_winlose", this.Dat_trial_winlose);
+			nbt.put("Dat_trial_type", this.Dat_trial_type);
+			nbt.put("Dat_trial_spawn_opponent", this.Dat_trial_spawn_opponent);
+			nbt.put("Dat_survey_order", this.Dat_survey_order);
+			nbt.put("Dat_survey_RT", this.Dat_survey_RT);
+			nbt.put("Dat_survey_answer", this.Dat_survey_answer);
+			nbt.putDouble("Exp_difficulty_absolute", Exp_difficulty_absolute);
+			nbt.putDouble("Exp_difficulty_relative", Exp_difficulty_relative);
+			nbt.putBoolean("Tim_event_pulse", Tim_event_pulse);
+			nbt.putString("Tim_event_content", Tim_event_content);
+			nbt.putDouble("Tim_event_duration", Tim_event_duration);
+			nbt.putDouble("Tim_event_occurpoint", Tim_event_occurpoint);
 			return nbt;
 		}
 

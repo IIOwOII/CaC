@@ -32,7 +32,7 @@ public class CmdInitializeCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					PrdInitializeProcedure.execute(world, entity);
+					PrdInitializeProcedure.execute(world);
 					return 0;
 				}));
 	}

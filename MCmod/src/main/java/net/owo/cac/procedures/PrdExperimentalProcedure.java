@@ -1,16 +1,26 @@
 package net.owo.cac.procedures;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.Vec2;
+import net.owo.cac.network.CacModVariables;
+
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.network.chat.Component;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.CommandSource;
+
+import java.io.IOException;
+import java.io.File;
 
 public class PrdExperimentalProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if (world instanceof ServerLevel _level)
-			_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "clear");
+	public static void execute(LevelAccessor world) {
+		File file = new File("");
+		com.google.gson.JsonObject obj_main = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_sub = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj = new com.google.gson.JsonObject();
+		file = new File(CacModVariables.MapVariables.get(world).Exp_path, File.separator + "test.json");
+		if (!file.exists()) {
+			try {
+				file.getParentFile().mkdirs();
+				file.createNewFile();
+			} catch (IOException exception) {
+				exception.printStackTrace();
+			}
+		}
 	}
 }
