@@ -11,13 +11,16 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class TaskManageProcedure {
 	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
+		String session = "";
 		CacModVariables.MapVariables.get(world).Exp_session = StringArgumentType.getString(arguments, "session");
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if ((CacModVariables.MapVariables.get(world).Exp_session).equals("introduction")) {
+		session = StringArgumentType.getString(arguments, "session");
+		TaskPreRunProcedure.execute(world);
+		if ((session).equals("test_mixed") || (session).equals("test_chasing") || (session).equals("test_chased")) {
 			CacMod.LOGGER.info("not yet");
-		} else if ((CacModVariables.MapVariables.get(world).Exp_session).equals("presession")) {
+		} else if ((session).equals("introduction")) {
 			CacMod.LOGGER.info("not yet");
-		} else if ((CacModVariables.MapVariables.get(world).Exp_session).equals("test_mixed")) {
+		} else if ((session).equals("presession")) {
 			CacMod.LOGGER.info("not yet");
 		}
 	}

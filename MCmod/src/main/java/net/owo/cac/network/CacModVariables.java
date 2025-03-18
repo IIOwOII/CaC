@@ -140,7 +140,6 @@ public class CacModVariables {
 		public double TimR_time = 0;
 		public boolean TimA_switch = false;
 		public double TimA_time = 0;
-		public double TimA_tick = 0;
 		public double TimA_time_currtick = 0;
 		public double TimA_time_oldtick = 0;
 		public ListTag Dat_winlose = new ListTag();
@@ -154,10 +153,9 @@ public class CacModVariables {
 		public ListTag Dat_survey_answer = new ListTag();
 		public double Exp_difficulty_absolute = 0;
 		public double Exp_difficulty_relative = 0;
-		public boolean Tim_event_pulse = false;
 		public String Tim_event_content = "\"\"";
 		public double Tim_event_duration = 0;
-		public double Tim_event_occurpoint = 0;
+		public double Exp_trial_total = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -216,7 +214,6 @@ public class CacModVariables {
 			TimR_time = nbt.getDouble("TimR_time");
 			TimA_switch = nbt.getBoolean("TimA_switch");
 			TimA_time = nbt.getDouble("TimA_time");
-			TimA_tick = nbt.getDouble("TimA_tick");
 			TimA_time_currtick = nbt.getDouble("TimA_time_currtick");
 			TimA_time_oldtick = nbt.getDouble("TimA_time_oldtick");
 			this.Dat_winlose = nbt.get("Dat_winlose") instanceof ListTag Dat_winlose ? Dat_winlose : new ListTag();
@@ -230,10 +227,9 @@ public class CacModVariables {
 			this.Dat_survey_answer = nbt.get("Dat_survey_answer") instanceof ListTag Dat_survey_answer ? Dat_survey_answer : new ListTag();
 			Exp_difficulty_absolute = nbt.getDouble("Exp_difficulty_absolute");
 			Exp_difficulty_relative = nbt.getDouble("Exp_difficulty_relative");
-			Tim_event_pulse = nbt.getBoolean("Tim_event_pulse");
 			Tim_event_content = nbt.getString("Tim_event_content");
 			Tim_event_duration = nbt.getDouble("Tim_event_duration");
-			Tim_event_occurpoint = nbt.getDouble("Tim_event_occurpoint");
+			Exp_trial_total = nbt.getDouble("Exp_trial_total");
 		}
 
 		@Override
@@ -292,7 +288,6 @@ public class CacModVariables {
 			nbt.putDouble("TimR_time", TimR_time);
 			nbt.putBoolean("TimA_switch", TimA_switch);
 			nbt.putDouble("TimA_time", TimA_time);
-			nbt.putDouble("TimA_tick", TimA_tick);
 			nbt.putDouble("TimA_time_currtick", TimA_time_currtick);
 			nbt.putDouble("TimA_time_oldtick", TimA_time_oldtick);
 			nbt.put("Dat_winlose", this.Dat_winlose);
@@ -306,10 +301,9 @@ public class CacModVariables {
 			nbt.put("Dat_survey_answer", this.Dat_survey_answer);
 			nbt.putDouble("Exp_difficulty_absolute", Exp_difficulty_absolute);
 			nbt.putDouble("Exp_difficulty_relative", Exp_difficulty_relative);
-			nbt.putBoolean("Tim_event_pulse", Tim_event_pulse);
 			nbt.putString("Tim_event_content", Tim_event_content);
 			nbt.putDouble("Tim_event_duration", Tim_event_duration);
-			nbt.putDouble("Tim_event_occurpoint", Tim_event_occurpoint);
+			nbt.putDouble("Exp_trial_total", Exp_trial_total);
 			return nbt;
 		}
 

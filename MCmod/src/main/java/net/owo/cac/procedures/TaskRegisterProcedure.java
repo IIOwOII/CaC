@@ -16,12 +16,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
-import java.util.Calendar;
-
-import java.io.IOException;
-import java.io.FileWriter;
-import java.io.File;
-
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
@@ -29,34 +23,11 @@ public class TaskRegisterProcedure {
 	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
-		File file_timestamp = new File("");
-		com.google.gson.JsonObject obj_main = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_sub = new com.google.gson.JsonObject();
 		CacModVariables.MapVariables.get(world).Exp_subject = StringArgumentType.getString(arguments, "subject");
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_path = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + StringArgumentType.getString(arguments, "subject");
 		CacModVariables.MapVariables.get(world).syncData(world);
-		file_timestamp = new File(CacModVariables.MapVariables.get(world).Exp_path, File.separator + "log_timestamp.json");
-		if (!file_timestamp.exists()) {
-			try {
-				file_timestamp.getParentFile().mkdirs();
-				file_timestamp.createNewFile();
-			} catch (IOException exception) {
-				exception.printStackTrace();
-			}
-		}
-		obj_sub.addProperty("register", Calendar.getInstance().getTime().toString());
-		obj_main.add("cac", obj_sub);
-		{
-			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
-			try {
-				FileWriter fileWriter = new FileWriter(file_timestamp);
-				fileWriter.write(mainGSONBuilderVariable.toJson(obj_main));
-				fileWriter.close();
-			} catch (IOException exception) {
-				exception.printStackTrace();
-			}
-		}
+		TaskLogTimestampProcedure.execute(world);
 		if (CacModVariables.MapVariables.get(world).Switch_debug) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7esubject: \u00A7r" + CacModVariables.MapVariables.get(world).Exp_subject)), false);

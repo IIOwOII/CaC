@@ -13,8 +13,6 @@ public class TimAbsoluteSwitchProcedure {
 		if (!CacModVariables.MapVariables.get(world).TimA_switch) {
 			CacModVariables.MapVariables.get(world).TimA_time = 0;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			CacModVariables.MapVariables.get(world).TimA_tick = 0;
-			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).TimA_time_oldtick = Calendar.getInstance().getTimeInMillis();
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).TimA_switch = true;

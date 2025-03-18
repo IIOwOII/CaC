@@ -25,7 +25,6 @@ public class TaskPreparationProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Tim_event_content = "phase_preparation";
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Tim_event_pulse = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		EvQueCallProcedure.execute(world, entity);
 	}
 }

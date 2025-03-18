@@ -35,8 +35,6 @@ public class TimAbsoluteProcedure {
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).TimA_time_oldtick = CacModVariables.MapVariables.get(world).TimA_time_currtick;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			CacModVariables.MapVariables.get(world).TimA_tick = CacModVariables.MapVariables.get(world).TimA_tick + 1;
-			CacModVariables.MapVariables.get(world).syncData(world);
 			if (CacModVariables.MapVariables.get(world).Switch_debug) {
 				CacMod.LOGGER.info(Calendar.getInstance().getTime().toString());
 			}

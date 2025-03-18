@@ -2,6 +2,7 @@
 package net.owo.cac.command;
 
 import net.owo.cac.procedures.TaskManageProcedure;
+import net.owo.cac.procedures.TaskManageAddonProcedure;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,6 +16,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.commands.Commands;
 
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 @Mod.EventBusSubscriber
 public class CmdTaskCommand {
@@ -22,7 +24,21 @@ public class CmdTaskCommand {
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cac_task")
 
-				.then(Commands.argument("session", StringArgumentType.word()).executes(arguments -> {
+				.then(Commands.argument("session", StringArgumentType.word()).then(Commands.argument("trial", DoubleArgumentType.doubleArg(1)).executes(arguments -> {
+					Level world = arguments.getSource().getUnsidedLevel();
+					double x = arguments.getSource().getPosition().x();
+					double y = arguments.getSource().getPosition().y();
+					double z = arguments.getSource().getPosition().z();
+					Entity entity = arguments.getSource().getEntity();
+					if (entity == null && world instanceof ServerLevel _servLevel)
+						entity = FakePlayerFactory.getMinecraft(_servLevel);
+					Direction direction = Direction.DOWN;
+					if (entity != null)
+						direction = entity.getDirection();
+
+					TaskManageAddonProcedure.execute(world, arguments);
+					return 0;
+				})).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();

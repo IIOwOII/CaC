@@ -33,7 +33,11 @@ public class TaskPreRunProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_survey_answer = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
+		TaskLogEventProcedure.execute(world);
 		TimAbsoluteSwitchProcedure.execute(world);
 		TimRelativeSwitchProcedure.execute(world);
+		CacModVariables.MapVariables.get(world).Tim_event_content = CacModVariables.MapVariables.get(world).Exp_session + "_start";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		EvRecordProcedure.execute(world);
 	}
 }
