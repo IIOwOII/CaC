@@ -2270,6 +2270,44 @@
         ]
       },
       "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "TaskLogTimestamp",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_log_timestamp",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskLogTimestampProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/InitLog"
+    },
+    {
+      "name": "TaskLogEvent",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_log_event",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskLogEventProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/InitLog"
     }
   ],
   "variable_elements": [
@@ -2767,6 +2805,10 @@
           },
           {
             "name": "Manager",
+            "children": []
+          },
+          {
+            "name": "InitLog",
             "children": []
           }
         ]
