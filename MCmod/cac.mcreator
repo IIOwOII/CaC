@@ -1024,42 +1024,6 @@
       "path": "~/CacUtil"
     },
     {
-      "name": "PrdReset",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_reset",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdResetProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
-      "name": "CmdReset",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_reset",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdResetCommand.java"
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "CstState",
       "type": "code",
       "compiles": true,
@@ -1347,7 +1311,6 @@
       "locked_code": false,
       "registry_name": "fnc_manage_tasktype",
       "metadata": {
-        "return_type": "number",
         "files": [
           "src/main/java/net/owo/cac/procedures/FncManageTasktypeProcedure.java"
         ],
@@ -1358,7 +1321,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacUtil/Manager/New"
     },
     {
       "name": "TaskGameplay",
@@ -1418,25 +1381,6 @@
         ]
       },
       "path": "~/CacTask/Manager"
-    },
-    {
-      "name": "RecTrialResult",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rec_trial_result",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RecTrialResultProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Record"
     },
     {
       "name": "TimTrial",
@@ -1745,25 +1689,6 @@
       "path": "~/CacCondition"
     },
     {
-      "name": "RecSessionResult",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rec_session_result",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RecSessionResultProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Record"
-    },
-    {
       "name": "TaskSessionEnd",
       "type": "procedure",
       "compiles": true,
@@ -1911,20 +1836,6 @@
       "path": "~/CacCondition"
     },
     {
-      "name": "RecTrialPosition",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rec_trial_position",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RecTrialPositionProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Record"
-    },
-    {
       "name": "UdtEntity",
       "type": "procedure",
       "compiles": true,
@@ -1977,6 +1888,22 @@
           "src/main/java/net/owo/cac/procedures/TimRelativeProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
           {
             "name": "world",
             "type": "world"
@@ -2089,7 +2016,6 @@
       "locked_code": false,
       "registry_name": "fnc_manage_spawn_opponent",
       "metadata": {
-        "return_type": "number",
         "files": [
           "src/main/java/net/owo/cac/procedures/FncManageSpawnOpponentProcedure.java"
         ],
@@ -2100,7 +2026,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacUtil/Manager/New"
     },
     {
       "name": "FncManageDifficulty",
@@ -2119,7 +2045,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacUtil/Manager/New"
     },
     {
       "name": "TaskPreTrial",
@@ -2137,6 +2063,18 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -2151,7 +2089,6 @@
       "locked_code": false,
       "registry_name": "fnc_manage_time_preparation",
       "metadata": {
-        "return_type": "number",
         "files": [
           "src/main/java/net/owo/cac/procedures/FncManageTimePreparationProcedure.java"
         ],
@@ -2162,30 +2099,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
-    },
-    {
-      "name": "EvEnvoke",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ev_envoke",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/EvEnvokeProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer/Event"
+      "path": "~/CacUtil/Manager/New"
     },
     {
       "name": "TaskManageAddon",
@@ -2209,67 +2123,6 @@
         ]
       },
       "path": "~/CacTask/Manager"
-    },
-    {
-      "name": "EvQueCall",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ev_que_call",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/EvQueCallProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer/Event"
-    },
-    {
-      "name": "EvQueRecord",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ev_que_record",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/EvQueRecordProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer/Event"
-    },
-    {
-      "name": "EvRecord",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ev_record",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/EvRecordProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer/Event"
     },
     {
       "name": "TaskLogTimestamp",
@@ -2308,6 +2161,286 @@
         ]
       },
       "path": "~/CacTask/InitLog"
+    },
+    {
+      "name": "EvQueStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_que_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvQueStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "EvQueEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_que_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvQueEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "EvQueImmediate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_que_immediate",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvQueImmediateProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "EvQueInvoke",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_que_invoke",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvQueInvokeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "EvPulseRecord",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_pulse_record",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvPulseRecordProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "TaskInterphase",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_interphase",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskInterphaseProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask"
+    },
+    {
+      "name": "FncManageTimeGameplay",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_manage_time_gameplay",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncManageTimeGameplayProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil/Manager/New"
+    },
+    {
+      "name": "TaskBlank",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_blank",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskBlankProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "EffRemoveMorph",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "eff_remove_morph",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EffRemoveMorphProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacEffect"
+    },
+    {
+      "name": "TaskPostTrial",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_post_trial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskPostTrialProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "RecTrialresult",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rec_trialresult",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RecTrialresultProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Record"
+    },
+    {
+      "name": "TaskPostRun",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_post_run",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskPostRunProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
     }
   ],
   "variable_elements": [
@@ -2426,12 +2559,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Dat_time_preparation",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Dat_type_trial",
       "type": "datalist",
       "scope": "map",
@@ -2474,12 +2601,6 @@
       "value": "0"
     },
     {
-      "name": "Dat_time_gameplay",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Dat_win",
       "type": "datalist",
       "scope": "map",
@@ -2505,12 +2626,6 @@
     },
     {
       "name": "Dat_type_survey",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_time_survey",
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
@@ -2636,18 +2751,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Dat_trial_winlose",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_trial_type",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Dat_trial_spawn_opponent",
       "type": "datalist",
       "scope": "map",
@@ -2684,25 +2787,130 @@
       "value": "0"
     },
     {
-      "name": "Tim_event_content",
+      "name": "Exp_trial_total",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Log_timestamp",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_event",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_position",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "TimR_que_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Ev_que_waittime",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Ev_que_content",
       "type": "string",
       "scope": "map",
       "value": "\"\""
     },
     {
-      "name": "Tim_event_duration",
+      "name": "Ev_pulse_content",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Dat_trial_type",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "Exp_trial_total",
+      "name": "Dat_difficulty_absolute",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_difficulty_relative",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_trial_spawnpoint_opponent",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_trial_winlose",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Log_trialresult",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Dat_time_preparation",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_time_gameplay",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_time_survey",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TimR_que_start",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "TimR_que_end",
       "type": "number",
       "scope": "map",
       "value": "0"
     }
   ],
-  "sound_elements": [],
+  "sound_elements": [
+    {
+      "name": "cac.snd_silence",
+      "files": [
+        "snd_silence"
+      ],
+      "category": "neutral",
+      "subtitle": "snd_silence"
+    }
+  ],
   "tag_elements": {
     "BLOCKS:minecraft:mineable/axe": [
       "~CUSTOM:BlkWall",
@@ -2713,6 +2921,7 @@
   "language_map": {
     "en_us": {
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
+      "subtitles.cac.snd_silence": "snd_silence",
       "item.cac.cac_test_item": "CacTester",
       "effect.cac.eff_stop_move": "Stiffness",
       "key.cac.cac_key_signal": "Scanner Signal",
@@ -2780,7 +2989,12 @@
         "children": [
           {
             "name": "Manager",
-            "children": []
+            "children": [
+              {
+                "name": "New",
+                "children": []
+              }
+            ]
           }
         ]
       },
@@ -2843,7 +3057,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.6",
+    "version": "0.7",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

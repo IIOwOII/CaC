@@ -1,0 +1,11 @@
+{
+  "cac.snd_silence": {
+    "subtitle": "subtitles.cac.snd_silence",
+    "sounds": [
+      {
+        "name": "cac:snd_silence",
+        "stream": false
+      }
+    ]
+  }
+}

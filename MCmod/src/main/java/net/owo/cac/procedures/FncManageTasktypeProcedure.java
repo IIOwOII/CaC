@@ -4,17 +4,18 @@ import net.owo.cac.network.CacModVariables;
 import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.nbt.IntTag;
 
 public class FncManageTasktypeProcedure {
-	public static double execute(LevelAccessor world) {
-		double idx_type = 0;
+	public static void execute(LevelAccessor world) {
 		if ((CacModVariables.MapVariables.get(world).Exp_session).equals("test_mixed")) {
-			idx_type = CacModVariables.MapVariables.get(world).Exp_trial % 2;
+			CacModVariables.MapVariables.get(world).Dat_trial_type = CacModVariables.MapVariables.get(world).Exp_trial % 2;
+			CacModVariables.MapVariables.get(world).syncData(world);
 		} else if ((CacModVariables.MapVariables.get(world).Exp_session).equals("test_chasing")) {
-			idx_type = 0;
+			CacModVariables.MapVariables.get(world).Dat_trial_type = 0;
+			CacModVariables.MapVariables.get(world).syncData(world);
 		} else if ((CacModVariables.MapVariables.get(world).Exp_session).equals("test_chased")) {
-			idx_type = 1;
+			CacModVariables.MapVariables.get(world).Dat_trial_type = 1;
+			CacModVariables.MapVariables.get(world).syncData(world);
 		} else if ((CacModVariables.MapVariables.get(world).Exp_session).equals("presession")) {
 			CacMod.LOGGER.info("temp");
 		} else {
@@ -22,7 +23,5 @@ public class FncManageTasktypeProcedure {
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacErrorProcedure.execute(world);
 		}
-		CacModVariables.MapVariables.get(world).Dat_trial_type.addTag((int) CacModVariables.MapVariables.get(world).Exp_trial, IntTag.valueOf((int) idx_type));
-		return idx_type;
 	}
 }

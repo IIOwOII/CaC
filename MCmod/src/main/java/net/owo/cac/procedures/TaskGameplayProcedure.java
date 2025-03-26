@@ -23,10 +23,10 @@ public class TaskGameplayProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "worldborder set 10000000");
 			}
 		}
-		CacModVariables.MapVariables.get(world).Tim_event_duration = 30;
+		CacModVariables.MapVariables.get(world).Ev_que_waittime = 30;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Tim_event_content = "phase_gameplay";
+		CacModVariables.MapVariables.get(world).Ev_que_content = "phase_gameplay";
 		CacModVariables.MapVariables.get(world).syncData(world);
-		EvQueCallProcedure.execute(world, entity);
+		EvQueStartProcedure.execute(world);
 	}
 }

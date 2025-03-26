@@ -1,5 +1,6 @@
 {
   "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
+  "subtitles.cac.snd_silence": "snd_silence",
   "item.cac.cac_test_item": "CacTester",
   "effect.cac.eff_stop_move": "Stiffness",
   "key.cac.cac_key_signal": "Scanner Signal",

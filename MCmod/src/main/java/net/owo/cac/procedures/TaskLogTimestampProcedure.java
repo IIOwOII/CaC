@@ -12,13 +12,12 @@ import java.io.File;
 
 public class TaskLogTimestampProcedure {
 	public static void execute(LevelAccessor world) {
-		File log_timestamp = new File("");
 		com.google.gson.JsonObject obj_timestamp_main = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_timestamp_sub = new com.google.gson.JsonObject();
-		log_timestamp = new File(CacModVariables.MapVariables.get(world).Exp_path, File.separator + "log_timestamp.json");
+		CacModVariables.Log_timestamp = new File(CacModVariables.MapVariables.get(world).Exp_path, File.separator + "log_timestamp.json");
 		try {
-			log_timestamp.getParentFile().mkdirs();
-			log_timestamp.createNewFile();
+			CacModVariables.Log_timestamp.getParentFile().mkdirs();
+			CacModVariables.Log_timestamp.createNewFile();
 		} catch (IOException exception) {
 			exception.printStackTrace();
 		}
@@ -27,7 +26,7 @@ public class TaskLogTimestampProcedure {
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {
-				FileWriter fileWriter = new FileWriter(log_timestamp);
+				FileWriter fileWriter = new FileWriter(CacModVariables.Log_timestamp);
 				fileWriter.write(mainGSONBuilderVariable.toJson(obj_timestamp_main));
 				fileWriter.close();
 			} catch (IOException exception) {

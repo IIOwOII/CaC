@@ -21,10 +21,11 @@ public class TaskPreparationProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "worldborder set 8");
 			}
 		}
-		CacModVariables.MapVariables.get(world).Tim_event_duration = FncManageTimePreparationProcedure.execute(world);
+		FncManageTimePreparationProcedure.execute(world);
+		CacModVariables.MapVariables.get(world).Ev_que_waittime = CacModVariables.MapVariables.get(world).Dat_time_preparation;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Tim_event_content = "phase_preparation";
+		CacModVariables.MapVariables.get(world).Ev_que_content = "phase_preparation";
 		CacModVariables.MapVariables.get(world).syncData(world);
-		EvQueCallProcedure.execute(world, entity);
+		EvQueStartProcedure.execute(world);
 	}
 }

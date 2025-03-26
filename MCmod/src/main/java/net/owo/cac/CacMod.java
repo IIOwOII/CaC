@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import net.owo.cac.init.CacModTabs;
+import net.owo.cac.init.CacModSounds;
 import net.owo.cac.init.CacModMobEffects;
 import net.owo.cac.init.CacModMenus;
 import net.owo.cac.init.CacModItems;
@@ -43,7 +44,7 @@ public class CacMod {
 		// End of user code block mod constructor
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
+		CacModSounds.REGISTRY.register(bus);
 		CacModBlocks.REGISTRY.register(bus);
 
 		CacModItems.REGISTRY.register(bus);

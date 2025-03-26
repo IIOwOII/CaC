@@ -1,6 +1,7 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CacMod;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -47,7 +48,7 @@ public class TimSurveyProcedure {
 					_player.closeContainer();
 				CacModVariables.MapVariables.get(world).Tim_survey_switch = false;
 				CacModVariables.MapVariables.get(world).syncData(world);
-				TaskPhaseEndProcedure.execute(world);
+				CacMod.LOGGER.info("TaskPhaseEnd");
 			}
 		}
 	}

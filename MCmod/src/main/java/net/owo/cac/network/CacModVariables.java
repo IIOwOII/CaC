@@ -23,10 +23,16 @@ import net.minecraft.nbt.CompoundTag;
 
 import java.util.function.Supplier;
 
+import java.io.File;
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_trial_pos_player = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_trial_pos_opponent = new com.google.gson.JsonArray();
+	public static File Log_timestamp = new File("");
+	public static File Log_event = new File("");
+	public static File Log_position = new File("");
+	public static File Log_trialresult = new File("");
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -112,7 +118,6 @@ public class CacModVariables {
 		public String Exp_session = "\"none\"";
 		public double Exp_trial = 0;
 		public ListTag Dat_spawn_opponent = new ListTag();
-		public ListTag Dat_time_preparation = new ListTag();
 		public ListTag Dat_type_trial = new ListTag();
 		public String UUID_opponent = "\"\"";
 		public String UUID_player = "\"\"";
@@ -120,13 +125,11 @@ public class CacModVariables {
 		public boolean Switch_AI = false;
 		public boolean Tim_trial_switch = false;
 		public double Tim_trial_time = 0;
-		public ListTag Dat_time_gameplay = new ListTag();
 		public ListTag Dat_win = new ListTag();
 		public boolean Switch_debug = false;
 		public boolean Tim_survey_switch = false;
 		public double Tim_survey_time = 0;
 		public ListTag Dat_type_survey = new ListTag();
-		public ListTag Dat_time_survey = new ListTag();
 		public String Exp_subject = "\"\"";
 		public String Exp_path = "\"\"";
 		public ListTag Dat_speed = new ListTag();
@@ -145,17 +148,27 @@ public class CacModVariables {
 		public ListTag Dat_winlose = new ListTag();
 		public ListTag Dat_trial_difficulty_absolute = new ListTag();
 		public ListTag Dat_trial_difficulty_relative = new ListTag();
-		public ListTag Dat_trial_winlose = new ListTag();
-		public ListTag Dat_trial_type = new ListTag();
 		public ListTag Dat_trial_spawn_opponent = new ListTag();
 		public ListTag Dat_survey_order = new ListTag();
 		public ListTag Dat_survey_RT = new ListTag();
 		public ListTag Dat_survey_answer = new ListTag();
 		public double Exp_difficulty_absolute = 0;
 		public double Exp_difficulty_relative = 0;
-		public String Tim_event_content = "\"\"";
-		public double Tim_event_duration = 0;
 		public double Exp_trial_total = 0;
+		public boolean TimR_que_switch = false;
+		public double Ev_que_waittime = 0;
+		public String Ev_que_content = "\"\"";
+		public String Ev_pulse_content = "\"\"";
+		public double Dat_trial_type = 0;
+		public double Dat_difficulty_absolute = 0;
+		public double Dat_difficulty_relative = 0;
+		public double Dat_trial_spawnpoint_opponent = 0;
+		public double Dat_trial_winlose = 0;
+		public double Dat_time_preparation = 0;
+		public double Dat_time_gameplay = 0;
+		public double Dat_time_survey = 0;
+		public double TimR_que_start = 0;
+		public double TimR_que_end = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -186,7 +199,6 @@ public class CacModVariables {
 			Exp_session = nbt.getString("Exp_session");
 			Exp_trial = nbt.getDouble("Exp_trial");
 			this.Dat_spawn_opponent = nbt.get("Dat_spawn_opponent") instanceof ListTag Dat_spawn_opponent ? Dat_spawn_opponent : new ListTag();
-			this.Dat_time_preparation = nbt.get("Dat_time_preparation") instanceof ListTag Dat_time_preparation ? Dat_time_preparation : new ListTag();
 			this.Dat_type_trial = nbt.get("Dat_type_trial") instanceof ListTag Dat_type_trial ? Dat_type_trial : new ListTag();
 			UUID_opponent = nbt.getString("UUID_opponent");
 			UUID_player = nbt.getString("UUID_player");
@@ -194,13 +206,11 @@ public class CacModVariables {
 			Switch_AI = nbt.getBoolean("Switch_AI");
 			Tim_trial_switch = nbt.getBoolean("Tim_trial_switch");
 			Tim_trial_time = nbt.getDouble("Tim_trial_time");
-			this.Dat_time_gameplay = nbt.get("Dat_time_gameplay") instanceof ListTag Dat_time_gameplay ? Dat_time_gameplay : new ListTag();
 			this.Dat_win = nbt.get("Dat_win") instanceof ListTag Dat_win ? Dat_win : new ListTag();
 			Switch_debug = nbt.getBoolean("Switch_debug");
 			Tim_survey_switch = nbt.getBoolean("Tim_survey_switch");
 			Tim_survey_time = nbt.getDouble("Tim_survey_time");
 			this.Dat_type_survey = nbt.get("Dat_type_survey") instanceof ListTag Dat_type_survey ? Dat_type_survey : new ListTag();
-			this.Dat_time_survey = nbt.get("Dat_time_survey") instanceof ListTag Dat_time_survey ? Dat_time_survey : new ListTag();
 			Exp_subject = nbt.getString("Exp_subject");
 			Exp_path = nbt.getString("Exp_path");
 			this.Dat_speed = nbt.get("Dat_speed") instanceof ListTag Dat_speed ? Dat_speed : new ListTag();
@@ -219,17 +229,27 @@ public class CacModVariables {
 			this.Dat_winlose = nbt.get("Dat_winlose") instanceof ListTag Dat_winlose ? Dat_winlose : new ListTag();
 			this.Dat_trial_difficulty_absolute = nbt.get("Dat_trial_difficulty_absolute") instanceof ListTag Dat_trial_difficulty_absolute ? Dat_trial_difficulty_absolute : new ListTag();
 			this.Dat_trial_difficulty_relative = nbt.get("Dat_trial_difficulty_relative") instanceof ListTag Dat_trial_difficulty_relative ? Dat_trial_difficulty_relative : new ListTag();
-			this.Dat_trial_winlose = nbt.get("Dat_trial_winlose") instanceof ListTag Dat_trial_winlose ? Dat_trial_winlose : new ListTag();
-			this.Dat_trial_type = nbt.get("Dat_trial_type") instanceof ListTag Dat_trial_type ? Dat_trial_type : new ListTag();
 			this.Dat_trial_spawn_opponent = nbt.get("Dat_trial_spawn_opponent") instanceof ListTag Dat_trial_spawn_opponent ? Dat_trial_spawn_opponent : new ListTag();
 			this.Dat_survey_order = nbt.get("Dat_survey_order") instanceof ListTag Dat_survey_order ? Dat_survey_order : new ListTag();
 			this.Dat_survey_RT = nbt.get("Dat_survey_RT") instanceof ListTag Dat_survey_RT ? Dat_survey_RT : new ListTag();
 			this.Dat_survey_answer = nbt.get("Dat_survey_answer") instanceof ListTag Dat_survey_answer ? Dat_survey_answer : new ListTag();
 			Exp_difficulty_absolute = nbt.getDouble("Exp_difficulty_absolute");
 			Exp_difficulty_relative = nbt.getDouble("Exp_difficulty_relative");
-			Tim_event_content = nbt.getString("Tim_event_content");
-			Tim_event_duration = nbt.getDouble("Tim_event_duration");
 			Exp_trial_total = nbt.getDouble("Exp_trial_total");
+			TimR_que_switch = nbt.getBoolean("TimR_que_switch");
+			Ev_que_waittime = nbt.getDouble("Ev_que_waittime");
+			Ev_que_content = nbt.getString("Ev_que_content");
+			Ev_pulse_content = nbt.getString("Ev_pulse_content");
+			Dat_trial_type = nbt.getDouble("Dat_trial_type");
+			Dat_difficulty_absolute = nbt.getDouble("Dat_difficulty_absolute");
+			Dat_difficulty_relative = nbt.getDouble("Dat_difficulty_relative");
+			Dat_trial_spawnpoint_opponent = nbt.getDouble("Dat_trial_spawnpoint_opponent");
+			Dat_trial_winlose = nbt.getDouble("Dat_trial_winlose");
+			Dat_time_preparation = nbt.getDouble("Dat_time_preparation");
+			Dat_time_gameplay = nbt.getDouble("Dat_time_gameplay");
+			Dat_time_survey = nbt.getDouble("Dat_time_survey");
+			TimR_que_start = nbt.getDouble("TimR_que_start");
+			TimR_que_end = nbt.getDouble("TimR_que_end");
 		}
 
 		@Override
@@ -260,7 +280,6 @@ public class CacModVariables {
 			nbt.putString("Exp_session", Exp_session);
 			nbt.putDouble("Exp_trial", Exp_trial);
 			nbt.put("Dat_spawn_opponent", this.Dat_spawn_opponent);
-			nbt.put("Dat_time_preparation", this.Dat_time_preparation);
 			nbt.put("Dat_type_trial", this.Dat_type_trial);
 			nbt.putString("UUID_opponent", UUID_opponent);
 			nbt.putString("UUID_player", UUID_player);
@@ -268,13 +287,11 @@ public class CacModVariables {
 			nbt.putBoolean("Switch_AI", Switch_AI);
 			nbt.putBoolean("Tim_trial_switch", Tim_trial_switch);
 			nbt.putDouble("Tim_trial_time", Tim_trial_time);
-			nbt.put("Dat_time_gameplay", this.Dat_time_gameplay);
 			nbt.put("Dat_win", this.Dat_win);
 			nbt.putBoolean("Switch_debug", Switch_debug);
 			nbt.putBoolean("Tim_survey_switch", Tim_survey_switch);
 			nbt.putDouble("Tim_survey_time", Tim_survey_time);
 			nbt.put("Dat_type_survey", this.Dat_type_survey);
-			nbt.put("Dat_time_survey", this.Dat_time_survey);
 			nbt.putString("Exp_subject", Exp_subject);
 			nbt.putString("Exp_path", Exp_path);
 			nbt.put("Dat_speed", this.Dat_speed);
@@ -293,17 +310,27 @@ public class CacModVariables {
 			nbt.put("Dat_winlose", this.Dat_winlose);
 			nbt.put("Dat_trial_difficulty_absolute", this.Dat_trial_difficulty_absolute);
 			nbt.put("Dat_trial_difficulty_relative", this.Dat_trial_difficulty_relative);
-			nbt.put("Dat_trial_winlose", this.Dat_trial_winlose);
-			nbt.put("Dat_trial_type", this.Dat_trial_type);
 			nbt.put("Dat_trial_spawn_opponent", this.Dat_trial_spawn_opponent);
 			nbt.put("Dat_survey_order", this.Dat_survey_order);
 			nbt.put("Dat_survey_RT", this.Dat_survey_RT);
 			nbt.put("Dat_survey_answer", this.Dat_survey_answer);
 			nbt.putDouble("Exp_difficulty_absolute", Exp_difficulty_absolute);
 			nbt.putDouble("Exp_difficulty_relative", Exp_difficulty_relative);
-			nbt.putString("Tim_event_content", Tim_event_content);
-			nbt.putDouble("Tim_event_duration", Tim_event_duration);
 			nbt.putDouble("Exp_trial_total", Exp_trial_total);
+			nbt.putBoolean("TimR_que_switch", TimR_que_switch);
+			nbt.putDouble("Ev_que_waittime", Ev_que_waittime);
+			nbt.putString("Ev_que_content", Ev_que_content);
+			nbt.putString("Ev_pulse_content", Ev_pulse_content);
+			nbt.putDouble("Dat_trial_type", Dat_trial_type);
+			nbt.putDouble("Dat_difficulty_absolute", Dat_difficulty_absolute);
+			nbt.putDouble("Dat_difficulty_relative", Dat_difficulty_relative);
+			nbt.putDouble("Dat_trial_spawnpoint_opponent", Dat_trial_spawnpoint_opponent);
+			nbt.putDouble("Dat_trial_winlose", Dat_trial_winlose);
+			nbt.putDouble("Dat_time_preparation", Dat_time_preparation);
+			nbt.putDouble("Dat_time_gameplay", Dat_time_gameplay);
+			nbt.putDouble("Dat_time_survey", Dat_time_survey);
+			nbt.putDouble("TimR_que_start", TimR_que_start);
+			nbt.putDouble("TimR_que_end", TimR_que_end);
 			return nbt;
 		}
 
