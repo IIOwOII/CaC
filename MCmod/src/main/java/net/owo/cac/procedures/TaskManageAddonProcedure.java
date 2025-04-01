@@ -3,15 +3,18 @@ package net.owo.cac.procedures;
 import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.commands.CommandSourceStack;
 
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class TaskManageAddonProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
+	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
+		if (entity == null)
+			return;
 		CacModVariables.MapVariables.get(world).Exp_trial_total = DoubleArgumentType.getDouble(arguments, "trial");
 		CacModVariables.MapVariables.get(world).syncData(world);
-		TaskManageProcedure.execute(world, arguments);
+		TaskManageProcedure.execute(world, x, y, z, arguments, entity);
 	}
 }

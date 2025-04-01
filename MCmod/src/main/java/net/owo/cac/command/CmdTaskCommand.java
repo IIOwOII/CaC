@@ -36,7 +36,7 @@ public class CmdTaskCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TaskManageAddonProcedure.execute(world, arguments);
+					TaskManageAddonProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				})).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -50,7 +50,7 @@ public class CmdTaskCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TaskManageProcedure.execute(world, arguments);
+					TaskManageProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				})));
 	}

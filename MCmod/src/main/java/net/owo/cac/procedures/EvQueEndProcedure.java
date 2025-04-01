@@ -34,7 +34,7 @@ public class EvQueEndProcedure {
 		arr_content = obj_main.get("content").getAsJsonArray();
 		arr_content.add((CacModVariables.MapVariables.get(world).Ev_que_content + "_end"));
 		arr_absolute = obj_main.get("absolute").getAsJsonArray();
-		arr_absolute.add(CacModVariables.MapVariables.get(world).TimA_time_currtick);
+		arr_absolute.add(CacModVariables.MapVariables.get(world).TimA_time);
 		arr_relative = obj_main.get("relative").getAsJsonArray();
 		arr_relative.add(CacModVariables.MapVariables.get(world).TimR_time);
 		{

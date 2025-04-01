@@ -26,9 +26,9 @@ public class TaskInterphaseProcedure {
 			TaskGameplayProcedure.execute(world, entity);
 		} else if (CacModVariables.MapVariables.get(world).Exp_phase == 2) {
 			if (session_type == 0) {
-				TaskSurveyProcedure.execute(world, x, y, z, entity);
-			} else if (session_type == 1) {
 				TaskPostTrialProcedure.execute(world, x, y, z, entity);
+			} else if (session_type == 1) {
+				TaskSurveyProcedure.execute(world, x, y, z, entity);
 			}
 		} else if (CacModVariables.MapVariables.get(world).Exp_phase == 3) {
 			CacMod.LOGGER.info("temp");

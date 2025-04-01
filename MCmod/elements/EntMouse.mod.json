@@ -106,9 +106,6 @@
     "raidCelebrationSound": {
       "value": ""
     },
-    "whenMobDies": {
-      "name": "PrdDespawnOpponent"
-    },
     "onMobTickUpdate": {
       "name": "AiMouse"
     },

@@ -3,9 +3,12 @@ package net.owo.cac.procedures;
 import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Entity;
 
 public class TaskPreRunProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
+			return;
 		CacModVariables.MapVariables.get(world).Exp_trial = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_phase = 0;
@@ -26,5 +29,6 @@ public class TaskPreRunProcedure {
 		CacModVariables.MapVariables.get(world).Ev_pulse_content = CacModVariables.MapVariables.get(world).Exp_session + "_start";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		EvPulseRecordProcedure.execute(world);
+		TaskPreTrialProcedure.execute(world, x, y, z, entity);
 	}
 }

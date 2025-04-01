@@ -120,9 +120,6 @@
       "value": ""
     },
     "entityDataEntries": [],
-    "whenMobDies": {
-      "name": "PrdDespawnOpponent"
-    },
     "onMobTickUpdate": {
       "name": "AiCat"
     },

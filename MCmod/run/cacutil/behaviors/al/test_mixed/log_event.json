@@ -1,0 +1,43 @@
+{
+  "cac": {
+    "content": [
+      "test_mixed_start",
+      "phase_gameplay_start",
+      "touch",
+      "phase_gameplay_end",
+      "blank_on_start",
+      "blank_on_end",
+      "blank_on_end",
+      "blank_off_start",
+      "blank_off_end",
+      "blank_off_end",
+      "_end"
+    ],
+    "absolute": [
+      0.0,
+      0.0,
+      0.0,
+      85.0,
+      85.0,
+      2979.0,
+      3024.0,
+      3024.0,
+      5978.0,
+      6021.0,
+      6026.0
+    ],
+    "relative": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      61.0,
+      61.0,
+      61.0,
+      121.0,
+      121.0,
+      122.0
+    ]
+  }
+}
