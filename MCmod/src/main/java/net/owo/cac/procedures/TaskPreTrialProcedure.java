@@ -14,7 +14,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 public class TaskPreTrialProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		double sx = 0;
@@ -34,6 +34,7 @@ public class TaskPreTrialProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp task");
 			}
 		}
+		IniLogPositionTrialProcedure.execute(world);
 		FncManageTasktypeProcedure.execute(world);
 		FncManageSpawnOpponentProcedure.execute(world);
 		FncManageDifficultyProcedure.execute(world);
@@ -67,6 +68,5 @@ public class TaskPreTrialProcedure {
 			}
 			EffApplyMorphPreyProcedure.execute(entity);
 		}
-		TaskInterphaseProcedure.execute(world, x, y, z, entity);
 	}
 }

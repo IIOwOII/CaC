@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
@@ -12,6 +11,7 @@ public class EvQueInvokeProcedure {
 		if (entity == null)
 			return;
 		String que_content = "";
+		EvQueEndProcedure.execute(world);
 		que_content = CacModVariables.MapVariables.get(world).Ev_que_content;
 		CacModVariables.MapVariables.get(world).Ev_que_waittime = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
@@ -26,21 +26,15 @@ public class EvQueInvokeProcedure {
 			CacModVariables.MapVariables.get(world).Switch_AI = false;
 			CacModVariables.MapVariables.get(world).syncData(world);
 			FncManageTimeGameplayProcedure.execute(world);
-			CacMod.queueServerWork(1, () -> {
-				TaskBlankProcedure.execute(world, entity);
-			});
+			TaskBlankProcedure.execute(world, entity);
 		} else if ((que_content).equals("blank_on")) {
 			CacModVariables.MapVariables.get(world).Switch_blank = true;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			CacMod.queueServerWork(1, () -> {
-				TaskBlankProcedure.execute(world, entity);
-			});
+			TaskBlankProcedure.execute(world, entity);
 		} else if ((que_content).equals("blank_off")) {
 			CacModVariables.MapVariables.get(world).Switch_blank = false;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			CacMod.queueServerWork(1, () -> {
-				TaskInterphaseProcedure.execute(world, x, y, z, entity);
-			});
+			TaskInterphaseProcedure.execute(world, x, y, z, entity);
 		}
 	}
 }

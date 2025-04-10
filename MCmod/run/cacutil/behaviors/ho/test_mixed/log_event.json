@@ -1,0 +1,49 @@
+{
+  "cac": {
+    "content": [
+      "test_mixed_start",
+      "phase_gameplay_start",
+      "touch",
+      "phase_gameplay_end",
+      "blank_on_start",
+      "blank_on_end",
+      "blank_off_start",
+      "blank_on_end",
+      "blank_off_start",
+      "blank_off_end",
+      "test_mixed_end",
+      "blank_off_end",
+      "test_mixed_end"
+    ],
+    "absolute": [
+      0.0,
+      0.0,
+      0.0,
+      86.0,
+      86.0,
+      2996.0,
+      2996.0,
+      3012.0,
+      3012.0,
+      5992.0,
+      5992.0,
+      6012.0,
+      6012.0
+    ],
+    "relative": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      61.0,
+      61.0,
+      61.0,
+      61.0,
+      121.0,
+      121.0,
+      121.0,
+      121.0
+    ]
+  }
+}

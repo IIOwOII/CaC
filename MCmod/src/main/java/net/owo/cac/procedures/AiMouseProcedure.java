@@ -10,11 +10,11 @@ public class AiMouseProcedure {
 		if (entity == null)
 			return;
 		if (CacModVariables.MapVariables.get(world).Switch_AI) {
-			if (entity.getPersistentData().getDouble("C_Timer") <= 0) {
-				entity.getPersistentData().putDouble("C_Timer", 0.5);
+			if (CacModVariables.MapVariables.get(world).Time_AI > 10) {
 				AiOpponentMoveProcedure.execute(world, x, z, entity);
+				CacModVariables.MapVariables.get(world).Time_AI = 0;
+				CacModVariables.MapVariables.get(world).syncData(world);
 			}
-			entity.getPersistentData().putDouble("C_Timer", (entity.getPersistentData().getDouble("C_Timer") - 0.05));
 		}
 	}
 }

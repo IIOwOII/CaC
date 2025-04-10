@@ -6,6 +6,7 @@ package net.owo.cac.init;
 
 import org.lwjgl.glfw.GLFW;
 
+import net.owo.cac.network.CacKeyStopwatchMessage;
 import net.owo.cac.network.CacKeySignalMessage;
 import net.owo.cac.network.CacKeyRightMessage;
 import net.owo.cac.network.CacKeyLeftMessage;
@@ -66,6 +67,19 @@ public class CacModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
+	public static final KeyMapping CAC_KEY_STOPWATCH = new KeyMapping("key.cac.cac_key_stopwatch", GLFW.GLFW_KEY_RIGHT_SHIFT, "key.categories.cac") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				CacMod.PACKET_HANDLER.sendToServer(new CacKeyStopwatchMessage(0, 0));
+				CacKeyStopwatchMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+			}
+			isDownOld = isDown;
+		}
+	};
 	private static long CAC_KEY_SIGNAL_LASTPRESS = 0;
 
 	@SubscribeEvent
@@ -73,6 +87,7 @@ public class CacModKeyMappings {
 		event.register(CAC_KEY_LEFT);
 		event.register(CAC_KEY_RIGHT);
 		event.register(CAC_KEY_SIGNAL);
+		event.register(CAC_KEY_STOPWATCH);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})
@@ -83,6 +98,7 @@ public class CacModKeyMappings {
 				CAC_KEY_LEFT.consumeClick();
 				CAC_KEY_RIGHT.consumeClick();
 				CAC_KEY_SIGNAL.consumeClick();
+				CAC_KEY_STOPWATCH.consumeClick();
 			}
 		}
 	}

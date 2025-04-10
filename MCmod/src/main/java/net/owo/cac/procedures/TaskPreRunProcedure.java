@@ -6,9 +6,15 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 
 public class TaskPreRunProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
+		TimAbsoluteSwitchProcedure.execute(world);
+		TimRelativeSwitchProcedure.execute(world);
+		IniLogPositionProcedure.execute(world);
+		IniLogTrialresultProcedure.execute(world);
+		IniLogEventProcedure.execute(world);
+		IniPoolEventProcedure.execute();
 		CacModVariables.MapVariables.get(world).Exp_trial = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_phase = 0;
@@ -23,12 +29,8 @@ public class TaskPreRunProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_trial_winlose = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		TaskLogEventProcedure.execute(world);
-		TimAbsoluteSwitchProcedure.execute(world);
-		TimRelativeSwitchProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).Ev_pulse_content = CacModVariables.MapVariables.get(world).Exp_session + "_start";
+		CacModVariables.MapVariables.get(world).Ev_content_next = "session_start";
 		CacModVariables.MapVariables.get(world).syncData(world);
-		EvPulseRecordProcedure.execute(world);
-		TaskPreTrialProcedure.execute(world, x, y, z, entity);
+		EvQueCallProcedure.execute(world, entity);
 	}
 }

@@ -386,10 +386,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "x",
             "type": "number"
           },
@@ -467,10 +463,6 @@
           "src/main/java/net/owo/cac/procedures/FncFieldPlayerProcedure.java"
         ],
         "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
           {
             "name": "world",
             "type": "world"
@@ -769,10 +761,6 @@
           "src/main/java/net/owo/cac/procedures/FncFieldWallProcedure.java"
         ],
         "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
           {
             "name": "x",
             "type": "number"
@@ -1108,18 +1096,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
           },
           {
             "name": "world",
@@ -1598,18 +1574,6 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -1671,18 +1635,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
           },
           {
             "name": "world",
@@ -1784,18 +1736,6 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -1842,62 +1782,12 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
         ]
       },
       "path": "~/CacTask/Manager"
-    },
-    {
-      "name": "TaskLogTimestamp",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "task_log_timestamp",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TaskLogTimestampProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/InitLog"
-    },
-    {
-      "name": "TaskLogEvent",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "task_log_event",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TaskLogEventProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/InitLog"
     },
     {
       "name": "EvQueStart",
@@ -2020,28 +1910,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TaskInterphaseProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacTask"
     },
@@ -2257,6 +2126,250 @@
         ]
       },
       "path": "~/CacAI"
+    },
+    {
+      "name": "TimDebug",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_debug",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimDebugProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Debug"
+    },
+    {
+      "name": "TimDebugSwitch",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_debug_switch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimDebugSwitchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Debug"
+    },
+    {
+      "name": "CacKeyStopwatch",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cac_key_stopwatch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/network/CacKeyStopwatchMessage.java"
+        ]
+      },
+      "path": "~/CacTimer/Debug"
+    },
+    {
+      "name": "IniLogTimestamp",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_timestamp",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogTimestampProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit"
+    },
+    {
+      "name": "IniLogEvent",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_event",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogEventProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit"
+    },
+    {
+      "name": "IniLogPosition",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_position",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogPositionProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit"
+    },
+    {
+      "name": "IniLogPositionTrial",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_position_trial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogPositionTrialProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit"
+    },
+    {
+      "name": "IniLogTrialresult",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_trialresult",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogTrialresultProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit"
+    },
+    {
+      "name": "AiManageTimer",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_manage_timer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiManageTimerProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "EvQueCall",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_que_call",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvQueCallProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "EvQueStack",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_que_stack",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvQueStackProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
+    },
+    {
+      "name": "IniPoolEvent",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_pool_event",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniPoolEventProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacInit"
+    },
+    {
+      "name": "EvInvoke",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_invoke",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvInvokeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer/Event"
     }
   ],
   "variable_elements": [
@@ -2655,6 +2768,54 @@
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
+    },
+    {
+      "name": "TimD_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "TimD_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Time_AI",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Pool_event",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Switch_que",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "TimR_que_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Ev_content_curr",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Ev_content_next",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
     }
   ],
   "sound_elements": [
@@ -2676,27 +2837,28 @@
   "tab_element_order": {},
   "language_map": {
     "en_us": {
-      "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "subtitles.cac.snd_silence": "snd_silence",
-      "item.cac.cac_test_item": "CacTester",
-      "effect.cac.eff_stop_move": "Stiffness",
       "key.cac.cac_key_signal": "Scanner Signal",
       "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
       "gui.cac.gui_blank.button_test": "test",
       "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
+      "key.categories.cac": "Chasing and Chased",
+      "entity.cac.ent_meowcam": "Meowcam",
+      "entity.cac.ent_mouse": "Prey",
+      "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
+      "effect.cac.eff_stop_move": "Stiffness",
+      "item.cac.cac_test_item": "CacTester",
+      "key.cac.cac_key_stopwatch": "Stopwatch",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left Arrow",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "effect.cac.eff_morph_predator": "Predator",
       "entity.cac.ent_player_cat": "Predator(Player)",
-      "key.categories.cac": "Chasing and Chased",
-      "entity.cac.ent_meowcam": "Meowcam",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
       "block.cac.blk_obstacle": "Obstacle",
-      "entity.cac.ent_mouse": "Prey",
       "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
       "key.cac.cac_key_right": "Right Arrow"
     }
@@ -2772,10 +2934,6 @@
           {
             "name": "Manager",
             "children": []
-          },
-          {
-            "name": "InitLog",
-            "children": []
           }
         ]
       },
@@ -2800,6 +2958,10 @@
           },
           {
             "name": "Event",
+            "children": []
+          },
+          {
+            "name": "Debug",
             "children": []
           }
         ]

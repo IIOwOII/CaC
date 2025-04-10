@@ -4,15 +4,12 @@ import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.nbt.Tag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.IntTag;
 
 public class FncFieldWallProcedure {
-	public static Vec3 execute(LevelAccessor world, double x, double z, Entity entity) {
-		if (entity == null)
-			return Vec3.ZERO;
+	public static Vec3 execute(LevelAccessor world, double x, double z) {
 		ListTag list_vertice_start;
 		ListTag list_vertice_end;
 		ListTag list_line;
@@ -38,7 +35,7 @@ public class FncFieldWallProcedure {
 		vec_field = Vec3.ZERO;
 		vec_opponent = new Vec3((x - (offset_x + 0.5)), 0, (z - (offset_z + 0.5)));
 		list_line = CacModVariables.MapVariables.get(world).List_wall.copy();
-		sca_K = entity.getPersistentData().getDouble("K_Wall");
+		sca_K = 10;
 		for (Tag dataelementiterator : list_line) {
 			list_vertice_start = (((dataelementiterator instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).get(0)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).copy();
 			list_vertice_end = (((dataelementiterator instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).get(1)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).copy();

@@ -27,7 +27,7 @@ public class TaskRegisterProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_path = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + StringArgumentType.getString(arguments, "subject");
 		CacModVariables.MapVariables.get(world).syncData(world);
-		TaskLogTimestampProcedure.execute(world);
+		IniLogTimestampProcedure.execute(world);
 		if (CacModVariables.MapVariables.get(world).Switch_debug) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7esubject: \u00A7r" + CacModVariables.MapVariables.get(world).Exp_subject)), false);

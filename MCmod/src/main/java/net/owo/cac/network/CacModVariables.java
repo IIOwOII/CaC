@@ -33,6 +33,7 @@ public class CacModVariables {
 	public static File Log_event = new File("");
 	public static File Log_position = new File("");
 	public static File Log_trialresult = new File("");
+	public static File Pool_event = new File("");
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -159,6 +160,13 @@ public class CacModVariables {
 		public double TimR_que_end = 0;
 		public Vec3 Pos_player = Vec3.ZERO;
 		public Vec3 Pos_opponent = Vec3.ZERO;
+		public boolean TimD_switch = false;
+		public double TimD_time = 0;
+		public double Time_AI = 0;
+		public boolean Switch_que = false;
+		public double TimR_que_time = 0;
+		public String Ev_content_curr = "\"\"";
+		public String Ev_content_next = "\"\"";
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -236,6 +244,13 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Pos_opponent", 6);
 				this.Pos_opponent = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
+			TimD_switch = nbt.getBoolean("TimD_switch");
+			TimD_time = nbt.getDouble("TimD_time");
+			Time_AI = nbt.getDouble("Time_AI");
+			Switch_que = nbt.getBoolean("Switch_que");
+			TimR_que_time = nbt.getDouble("TimR_que_time");
+			Ev_content_curr = nbt.getString("Ev_content_curr");
+			Ev_content_next = nbt.getString("Ev_content_next");
 		}
 
 		@Override
@@ -321,6 +336,13 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Pos_opponent.z()));
 				nbt.put("Pos_opponent", listTag);
 			}
+			nbt.putBoolean("TimD_switch", TimD_switch);
+			nbt.putDouble("TimD_time", TimD_time);
+			nbt.putDouble("Time_AI", Time_AI);
+			nbt.putBoolean("Switch_que", Switch_que);
+			nbt.putDouble("TimR_que_time", TimR_que_time);
+			nbt.putString("Ev_content_curr", Ev_content_curr);
+			nbt.putString("Ev_content_next", Ev_content_next);
 			return nbt;
 		}
 

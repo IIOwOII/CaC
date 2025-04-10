@@ -19,6 +19,16 @@ public class TaskResetProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).TimR_que_switch = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Ev_que_content = "";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Ev_pulse_content = "";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).TimR_que_start = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).TimR_que_end = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Ev_que_waittime = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		EffRemoveMorphProcedure.execute(entity);
 	}
 }

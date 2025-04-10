@@ -17,9 +17,9 @@ public class AiOpponentMoveProcedure {
 		Vec3 field_sum = Vec3.ZERO;
 		Vec3 field_wall = Vec3.ZERO;
 		Vec3 vec_destination = Vec3.ZERO;
-		field_player = FncFieldPlayerProcedure.execute(world, entity);
-		field_obstacle = FncFieldObstacleProcedure.execute(world, x, z, entity);
-		field_wall = FncFieldWallProcedure.execute(world, x, z, entity);
+		field_player = FncFieldPlayerProcedure.execute(world);
+		field_obstacle = FncFieldObstacleProcedure.execute(world, x, z);
+		field_wall = FncFieldWallProcedure.execute(world, x, z);
 		field_sum = field_player.add((field_obstacle.add(field_wall)));
 		vec_destination = CacModVariables.MapVariables.get(world).Pos_opponent.add(field_sum);
 		if (entity instanceof Mob _entity)

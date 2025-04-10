@@ -16,6 +16,8 @@ public class EvQueEndProcedure {
 		com.google.gson.JsonArray arr_absolute = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_relative = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_content = new com.google.gson.JsonArray();
+		String que_content = "";
+		que_content = CacModVariables.MapVariables.get(world).Ev_que_content;
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_event));
@@ -32,7 +34,7 @@ public class EvQueEndProcedure {
 			}
 		}
 		arr_content = obj_main.get("content").getAsJsonArray();
-		arr_content.add((CacModVariables.MapVariables.get(world).Ev_que_content + "_end"));
+		arr_content.add((que_content + "_end"));
 		arr_absolute = obj_main.get("absolute").getAsJsonArray();
 		arr_absolute.add(CacModVariables.MapVariables.get(world).TimA_time);
 		arr_relative = obj_main.get("relative").getAsJsonArray();

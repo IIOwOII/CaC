@@ -30,10 +30,10 @@ public class AiManagePositionProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		if (CacModVariables.MapVariables.get(world).Switch_AI) {
-			if ((CacModVariables.MapVariables.get(world).Pos_opponent.subtract(CacModVariables.MapVariables.get(world).Pos_player)).length() < 1 && !world.isClientSide()) {
-				CacModVariables.MapVariables.get(world).Switch_AI = false;
-				CacModVariables.MapVariables.get(world).syncData(world);
+		if (CacModVariables.MapVariables.get(world).Switch_AI && (CacModVariables.MapVariables.get(world).Pos_opponent.subtract(CacModVariables.MapVariables.get(world).Pos_player)).length() < 1) {
+			CacModVariables.MapVariables.get(world).Switch_AI = false;
+			CacModVariables.MapVariables.get(world).syncData(world);
+			if (!world.isClientSide()) {
 				CacModVariables.MapVariables.get(world).Ev_pulse_content = "touch";
 				CacModVariables.MapVariables.get(world).syncData(world);
 				EvPulseRecordProcedure.execute(world);

@@ -58,11 +58,17 @@ public class CstManagePosition {
 
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
+		@Nullable Entity _ent;
+		
+		_ent = event.getEntity();
+		if (_ent == null)
+			return;
+		
 		if (event != null) {
-			if (event.getEntity() == ent_opponent) {
+			if (_ent == ent_opponent) {
 				ent_opponent = null;
 			}
-			if (event.getEntity() == ent_player) {
+			if (_ent == ent_player) {
 				ent_player = null;
 			}
 		}
