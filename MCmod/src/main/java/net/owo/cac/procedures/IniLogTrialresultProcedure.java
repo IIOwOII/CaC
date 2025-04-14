@@ -17,7 +17,7 @@ public class IniLogTrialresultProcedure {
 		com.google.gson.JsonObject obj_timestamp_sub = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
-		CacModVariables.Log_trialresult = new File((CacModVariables.MapVariables.get(world).Exp_path + "/" + CacModVariables.MapVariables.get(world).Exp_session), File.separator + "log_trialresult.json");
+		CacModVariables.Log_trialresult = new File((CacModVariables.MapVariables.get(world).Dir_behaviors + "/" + CacModVariables.MapVariables.get(world).Exp_session), File.separator + "log_trialresult.json");
 		try {
 			CacModVariables.Log_trialresult.getParentFile().mkdirs();
 			CacModVariables.Log_trialresult.createNewFile();

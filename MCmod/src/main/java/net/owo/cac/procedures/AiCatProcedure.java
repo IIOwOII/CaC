@@ -16,7 +16,7 @@ public class AiCatProcedure {
 				entity.getPersistentData().putDouble("C_Timer", 0.5);
 				if (entity instanceof Mob _entity)
 					_entity.getNavigation().moveTo((CacModVariables.MapVariables.get(world).Pos_player.x()), (CacModVariables.MapVariables.get(world).Pos_player.y()), (CacModVariables.MapVariables.get(world).Pos_player.z()),
-							(0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Pmt_difficulty, 0.5)));
+							(0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Dat_difficulty_absolute, 0.5)));
 			}
 			entity.getPersistentData().putDouble("C_Timer", (entity.getPersistentData().getDouble("C_Timer") - 0.05));
 		}

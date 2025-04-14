@@ -12,7 +12,7 @@ public class IniLogPositionProcedure {
 	public static void execute(LevelAccessor world) {
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
-		CacModVariables.Log_position = new File((CacModVariables.MapVariables.get(world).Exp_path + "/" + CacModVariables.MapVariables.get(world).Exp_session), File.separator + "log_position.json");
+		CacModVariables.Log_position = new File((CacModVariables.MapVariables.get(world).Dir_behaviors + "/" + CacModVariables.MapVariables.get(world).Exp_session), File.separator + "log_position.json");
 		try {
 			CacModVariables.Log_position.getParentFile().mkdirs();
 			CacModVariables.Log_position.createNewFile();

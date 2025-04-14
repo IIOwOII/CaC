@@ -23,7 +23,7 @@ public class AiOpponentMoveProcedure {
 		field_sum = field_player.add((field_obstacle.add(field_wall)));
 		vec_destination = CacModVariables.MapVariables.get(world).Pos_opponent.add(field_sum);
 		if (entity instanceof Mob _entity)
-			_entity.getNavigation().moveTo((vec_destination.x()), (vec_destination.y()), (vec_destination.z()), (0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Pmt_difficulty, 0.5)));
+			_entity.getNavigation().moveTo((vec_destination.x()), (vec_destination.y()), (vec_destination.z()), (0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Dat_difficulty_absolute, 0.5)));
 		if (CacModVariables.MapVariables.get(world).Switch_debug) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList()

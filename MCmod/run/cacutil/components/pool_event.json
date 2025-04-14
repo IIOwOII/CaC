@@ -1,7 +1,12 @@
 {
-  "blank_off": 2,
-  "blank_on_1sec": 20,
-  "blank_on_3sec": 60,
-  "session_start": 2,
-  "blank_"
+  "test_start": 2,
+  "phase_pretrial": 2,
+  "phase_preparation": -1,
+  "phase_gameplay": 600,
+  "phase_gameplay_end": 100,
+  "phase_survey": 200,
+  "phase_posttrial": 2,
+  "test_end": -1,
+  "blank": 40,
+  "interval": -1,
 }

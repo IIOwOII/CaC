@@ -28,12 +28,10 @@ public class TimRelativeProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (CacModVariables.MapVariables.get(world).TimR_switch) {
+		if (CacModVariables.MapVariables.get(world).Switch_timer) {
 			CacModVariables.MapVariables.get(world).TimR_time = CacModVariables.MapVariables.get(world).TimR_time + 1;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			if (CacModVariables.MapVariables.get(world).Switch_que && CacModVariables.MapVariables.get(world).TimR_time > CacModVariables.MapVariables.get(world).TimR_que_time) {
-				CacModVariables.MapVariables.get(world).Switch_que = false;
-				CacModVariables.MapVariables.get(world).syncData(world);
+			if (CacModVariables.MapVariables.get(world).Switch_que && CacModVariables.MapVariables.get(world).TimR_time == CacModVariables.MapVariables.get(world).TimR_que_time) {
 				EvQueCallProcedure.execute(world, entity);
 			}
 		}

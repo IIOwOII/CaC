@@ -13,21 +13,17 @@ public class TaskResetProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_blank = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).TimA_switch = false;
+		CacModVariables.MapVariables.get(world).Switch_timer = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).TimR_switch = false;
+		CacModVariables.MapVariables.get(world).TimR_que_time = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).TimR_que_switch = false;
+		CacModVariables.MapVariables.get(world).Ev_occuring = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Ev_que_content = "";
+		CacModVariables.Ev_que_loop = false;
+		CacModVariables.Ev_que_index = 0;
+		CacModVariables.MapVariables.get(world).Ev_content = "";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Ev_pulse_content = "";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).TimR_que_start = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).TimR_que_end = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Ev_que_waittime = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		EffRemoveMorphProcedure.execute(entity);
 	}

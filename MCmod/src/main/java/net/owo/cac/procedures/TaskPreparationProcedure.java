@@ -22,10 +22,7 @@ public class TaskPreparationProcedure {
 			}
 		}
 		FncManageTimePreparationProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).Ev_que_waittime = CacModVariables.MapVariables.get(world).Dat_time_preparation;
+		CacModVariables.MapVariables.get(world).TimR_que_time = CacModVariables.MapVariables.get(world).TimR_time + CacModVariables.MapVariables.get(world).Dat_time_preparation * 20;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Ev_que_content = "phase_preparation";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		EvQueStartProcedure.execute(world);
 	}
 }

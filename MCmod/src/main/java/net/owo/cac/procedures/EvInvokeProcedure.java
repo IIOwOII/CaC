@@ -10,19 +10,36 @@ public class EvInvokeProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if ((CacModVariables.MapVariables.get(world).Ev_content_curr).equals("")) {
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cEvent content is blank!"), false);
-		} else if ((CacModVariables.MapVariables.get(world).Ev_content_curr).equals("session_start")) {
-			TaskPreTrialProcedure.execute(world, entity);
-		} else if ((CacModVariables.MapVariables.get(world).Ev_content_curr).equals("phase_gameplay")) {
-			CacModVariables.MapVariables.get(world).Switch_AI = false;
-			CacModVariables.MapVariables.get(world).syncData(world);
-		} else if ((CacModVariables.MapVariables.get(world).Ev_content_curr).equals("blank_on_1sec") || (CacModVariables.MapVariables.get(world).Ev_content_curr).equals("blank_on_3sec")) {
-			CacModVariables.MapVariables.get(world).Switch_blank = true;
-			CacModVariables.MapVariables.get(world).syncData(world);
-		} else if ((CacModVariables.MapVariables.get(world).Ev_content_curr).equals("blank_off")) {
-			CacModVariables.MapVariables.get(world).Switch_blank = false;
+		String ev_content = "";
+		if (CacModVariables.MapVariables.get(world).Ev_occuring) {
+			ev_content = CacModVariables.MapVariables.get(world).Ev_content;
+			if ((ev_content).equals("")) {
+				if (!world.isClientSide() && world.getServer() != null)
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Event is blank!"), false);
+			} else if ((ev_content).equals("test_start")) {
+				CacModVariables.MapVariables.get(world).Switch_que = true;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Ev_que_loop = true;
+				TaskPreRunProcedure.execute(world);
+			} else if ((ev_content).equals("phase_pretrial")) {
+				TaskPreTrialProcedure.execute(world, entity);
+			} else if ((ev_content).equals("phase_preparation")) {
+				TaskPreparationProcedure.execute(world, entity);
+			} else if ((ev_content).equals("phase_gameplay")) {
+				TaskGameplayProcedure.execute(world, entity);
+			} else if ((ev_content).equals("phase_posttrial")) {
+				TaskPostTrialProcedure.execute(world);
+			} else if ((ev_content).equals("test_end")) {
+				CacModVariables.MapVariables.get(world).Switch_que = false;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				TaskSessionEndProcedure.execute(world);
+			}
+			if (CacModVariables.Ev_que_loop) {
+				CacModVariables.MapVariables.get(world).Ev_content = CacModVariables.Ev_que.get(((int) CacModVariables.Ev_que_index)).getAsString();
+				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Ev_que_index = (CacModVariables.Ev_que_index + 1) % CacModVariables.Ev_que.size();
+			}
+			CacModVariables.MapVariables.get(world).Ev_occuring = false;
 			CacModVariables.MapVariables.get(world).syncData(world);
 		}
 	}

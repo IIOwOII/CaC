@@ -29,21 +29,21 @@ public class PrdTestItemProcedure {
 				_player.displayClientMessage(Component.literal((CacModVariables.MapVariables.get(world).Option_tester_str + " is executed!")), true);
 		}
 		if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Increase Difficulty")) {
-			if (CacModVariables.MapVariables.get(world).Pmt_difficulty <= 1.5) {
-				CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty + 0.05;
+			if (CacModVariables.MapVariables.get(world).Dat_difficulty_absolute <= 1.5) {
+				CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute + 0.05;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Dat_difficulty_absolute))), false);
 			} else {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Maximum Speed!"), false);
 			}
 		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Decrease Difficulty")) {
-			if (CacModVariables.MapVariables.get(world).Pmt_difficulty >= 0.5) {
-				CacModVariables.MapVariables.get(world).Pmt_difficulty = CacModVariables.MapVariables.get(world).Pmt_difficulty - 0.05;
+			if (CacModVariables.MapVariables.get(world).Dat_difficulty_absolute >= 0.5) {
+				CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute - 0.05;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Pmt_difficulty))), false);
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.MapVariables.get(world).Dat_difficulty_absolute))), false);
 			} else {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Minimum Speed!"), false);

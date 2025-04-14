@@ -25,15 +25,13 @@ public class TaskRegisterProcedure {
 			return;
 		CacModVariables.MapVariables.get(world).Exp_subject = StringArgumentType.getString(arguments, "subject");
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Exp_path = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + StringArgumentType.getString(arguments, "subject");
+		CacModVariables.MapVariables.get(world).Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + StringArgumentType.getString(arguments, "subject");
 		CacModVariables.MapVariables.get(world).syncData(world);
-		IniLogTimestampProcedure.execute(world);
-		if (CacModVariables.MapVariables.get(world).Switch_debug) {
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7esubject: \u00A7r" + CacModVariables.MapVariables.get(world).Exp_subject)), false);
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7epath: \u00A7r" + CacModVariables.MapVariables.get(world).Exp_path)), false);
-		}
+		IniTimestampProcedure.execute(world);
+		if (!world.isClientSide() && world.getServer() != null)
+			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eSubject: \u00A7r" + CacModVariables.MapVariables.get(world).Exp_subject)), false);
+		if (!world.isClientSide() && world.getServer() != null)
+			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eDirectory(behaviors): \u00A7r" + CacModVariables.MapVariables.get(world).Dir_behaviors)), false);
 		if (entity instanceof LivingEntity _entity)
 			_entity.removeAllEffects();
 		if (entity instanceof ServerPlayer _player)

@@ -1,11 +1,16 @@
 package net.owo.cac.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.network.chat.Component;
+import net.owo.cac.init.CacModMobEffects;
+
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.effect.MobEffectInstance;
 
 public class PrdExperimentalProcedure {
-	public static void execute(LevelAccessor world) {
-		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("gd"), false);
+	public static void execute(Entity entity) {
+		if (entity == null)
+			return;
+		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+			_entity.addEffect(new MobEffectInstance(CacModMobEffects.EFF_MORPH_PREY.get(), 60, 1));
 	}
 }

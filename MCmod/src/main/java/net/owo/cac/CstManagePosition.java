@@ -1,27 +1,41 @@
 package net.owo.cac;
 
-import net.owo.cac.CacMod;
-
 import javax.annotation.Nullable;
 
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
+
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffectInstance;
 
+import net.owo.cac.CacMod;
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.init.CacModMobEffects;
+
 import net.owo.cac.entity.EntCatEntity;
 import net.owo.cac.entity.EntMouseEntity;
 import net.owo.cac.entity.EntPlayerCatEntity;
 import net.owo.cac.entity.EntPlayerMouseEntity;
+import net.owo.cac.procedures.EvPulseRecordProcedure;
+import net.owo.cac.procedures.EvQueImmediateProcedure;
 
-@Mod.EventBusSubscriber
+
+@Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstManagePosition {
 	@Nullable public static Entity ent_opponent = null;
 	@Nullable public static Entity ent_player = null;
@@ -30,12 +44,31 @@ public class CstManagePosition {
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
 			LevelAccessor world = event.player.level();
-			if (ent_opponent != null) {
-				CacModVariables.MapVariables.get(world).Pos_opponent = ent_opponent.position();
+			
+			if (ent_opponent != null && ent_player != null) {
+				Vec3 pos_opponent = ent_opponent.position();
+				Vec3 pos_player = ent_player.position();
+				
+				if (CacModVariables.MapVariables.get(world).Switch_AI && (pos_opponent.subtract(pos_player)).length() < 1){
+					CacModVariables.MapVariables.get(world).Switch_AI = false;
+					CacModVariables.MapVariables.get(world).syncData(world);
+					CacModVariables.MapVariables.get(world).Ev_pulse_content = "touch";
+					CacModVariables.MapVariables.get(world).syncData(world);
+					EvPulseRecordProcedure.execute(world);
+					EvQueImmediateProcedure.execute(world);
+					
+					if (!world.isClientSide()) {
+						LivingEntity livent_opponent = (LivingEntity) ent_opponent;
+						LivingEntity livent_player = (LivingEntity) ent_player;
+						world.playSound(null, BlockPos.containing(pos_player.x, pos_player.y, pos_player.z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.experience_orb.pickup")), SoundSource.NEUTRAL, 1, 1);
+						livent_opponent.addEffect(new MobEffectInstance(CacModMobEffects.EFF_STOP_MOVE.get(), -1, 0, false, false));
+						livent_player.addEffect(new MobEffectInstance(CacModMobEffects.EFF_STOP_MOVE.get(), -1, 0, false, false));
+					}
+				}
+				
+				CacModVariables.MapVariables.get(world).Pos_opponent = pos_opponent;
 				CacModVariables.MapVariables.get(world).syncData(world);
-			}
-			if (ent_player != null) {
-				CacModVariables.MapVariables.get(world).Pos_player = ent_player.position();
+				CacModVariables.MapVariables.get(world).Pos_player = pos_player;
 				CacModVariables.MapVariables.get(world).syncData(world);
 			}
 		}
@@ -59,8 +92,8 @@ public class CstManagePosition {
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
 		@Nullable Entity _ent;
-		
 		_ent = event.getEntity();
+		
 		if (_ent == null)
 			return;
 		

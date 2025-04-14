@@ -39,7 +39,7 @@ public class TaskPreTrialProcedure {
 		FncManageSpawnOpponentProcedure.execute(world);
 		FncManageDifficultyProcedure.execute(world);
 		lst_spawnpoint = new ListTag();
-		lst_spawnpoint = (CacModVariables.MapVariables.get(world).Pool_spawn.get((int) CacModVariables.MapVariables.get(world).Dat_trial_spawnpoint_opponent)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag();
+		lst_spawnpoint = (CacModVariables.MapVariables.get(world).List_spawnpoint_opponent.get((int) CacModVariables.MapVariables.get(world).Dat_trial_spawnpoint_opponent)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag();
 		sx = (lst_spawnpoint.get(0)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
 		sy = (lst_spawnpoint.get(1)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
 		sz = (lst_spawnpoint.get(2)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
@@ -68,5 +68,7 @@ public class TaskPreTrialProcedure {
 			}
 			EffApplyMorphPreyProcedure.execute(entity);
 		}
+		CacModVariables.MapVariables.get(world).Switch_blank = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

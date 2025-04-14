@@ -1,0 +1,17 @@
+{
+  "session": [
+    "test_mixed",
+    "test_chasing",
+    "test_chased",
+    "introduction",
+    "presession",
+    "chasing",
+    "chased"
+  ],
+  "phase": [
+    "phase_pretrial",
+    "phase_preparation",
+    "phase_gameplay",
+    "phase_survey"
+  ]
+}

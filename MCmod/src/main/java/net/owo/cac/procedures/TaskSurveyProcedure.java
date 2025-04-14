@@ -40,9 +40,5 @@ public class TaskSurveyProcedure {
 		}
 		TaskCleanMobProcedure.execute(entity);
 		FncManageSurveytypeProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).Tim_survey_time = -1;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Tim_survey_switch = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

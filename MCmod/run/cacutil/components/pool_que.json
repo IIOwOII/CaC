@@ -1,0 +1,13 @@
+{
+  "test_mixed": {
+    "initial": "test_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_posttrial"
+    ],
+    "ending": "test_end"
+  }
+}
