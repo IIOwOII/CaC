@@ -15,7 +15,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class TaskManageProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
@@ -49,7 +49,7 @@ public class TaskManageProcedure {
 			idx_session = idx_session + 1;
 		}
 		if (is_session) {
-			TaskSessionStartProcedure.execute(world, entity);
+			TaskSessionStartProcedure.execute(world, x, y, z, entity);
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Please check the session name!"), false);

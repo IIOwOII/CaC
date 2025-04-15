@@ -12,6 +12,9 @@
     "phase_pretrial",
     "phase_preparation",
     "phase_gameplay",
-    "phase_survey"
+    "phase_gameplay_end",
+    "phase_survey",
+    "phase_interval",
+    "phase_posttrial"
   ]
 }

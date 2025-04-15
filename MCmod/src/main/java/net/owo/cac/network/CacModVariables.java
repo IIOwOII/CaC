@@ -27,8 +27,6 @@ import java.io.File;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModVariables {
-	public static com.google.gson.JsonArray Dat_trial_pos_player = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_trial_pos_opponent = new com.google.gson.JsonArray();
 	public static File Log_timestamp = new File("");
 	public static File Log_event = new File("");
 	public static File Log_position = new File("");
@@ -40,6 +38,13 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Ev_que = new com.google.gson.JsonArray();
 	public static boolean Ev_que_loop = false;
 	public static double Ev_que_index = 0;
+	public static com.google.gson.JsonArray Dat_pos_player_x = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_player_z = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_player_r = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_opponent_x = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_opponent_z = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_opponent_r = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_time = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -119,10 +124,7 @@ public class CacModVariables {
 		public double Exp_trial = 0;
 		public boolean Switch_AI = false;
 		public boolean Switch_debug = false;
-		public ListTag Dat_type_survey = new ListTag();
 		public String Exp_subject = "\"\"";
-		public double Dat_trial_total = 0;
-		public ListTag Dat_time_interval = new ListTag();
 		public boolean Switch_blank = false;
 		public double Exp_survey_idx = 0;
 		public double TimR_time = 0;
@@ -141,8 +143,6 @@ public class CacModVariables {
 		public double Dat_trial_winlose = 0;
 		public double Dat_time_preparation = 0;
 		public double Dat_time_gameplay = 0;
-		public double Dat_time_survey = 0;
-		public double TimR_que_start = 0;
 		public Vec3 Pos_player = Vec3.ZERO;
 		public Vec3 Pos_opponent = Vec3.ZERO;
 		public boolean TimD_switch = false;
@@ -156,6 +156,8 @@ public class CacModVariables {
 		public boolean Switch_timer = false;
 		public String Ev_content = "\"\"";
 		public boolean Ev_occuring = false;
+		public double Dat_time_interval = 0;
+		public boolean Switch_trace = false;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -180,10 +182,7 @@ public class CacModVariables {
 			Exp_trial = nbt.getDouble("Exp_trial");
 			Switch_AI = nbt.getBoolean("Switch_AI");
 			Switch_debug = nbt.getBoolean("Switch_debug");
-			this.Dat_type_survey = nbt.get("Dat_type_survey") instanceof ListTag Dat_type_survey ? Dat_type_survey : new ListTag();
 			Exp_subject = nbt.getString("Exp_subject");
-			Dat_trial_total = nbt.getDouble("Dat_trial_total");
-			this.Dat_time_interval = nbt.get("Dat_time_interval") instanceof ListTag Dat_time_interval ? Dat_time_interval : new ListTag();
 			Switch_blank = nbt.getBoolean("Switch_blank");
 			Exp_survey_idx = nbt.getDouble("Exp_survey_idx");
 			TimR_time = nbt.getDouble("TimR_time");
@@ -202,8 +201,6 @@ public class CacModVariables {
 			Dat_trial_winlose = nbt.getDouble("Dat_trial_winlose");
 			Dat_time_preparation = nbt.getDouble("Dat_time_preparation");
 			Dat_time_gameplay = nbt.getDouble("Dat_time_gameplay");
-			Dat_time_survey = nbt.getDouble("Dat_time_survey");
-			TimR_que_start = nbt.getDouble("TimR_que_start");
 			{
 				ListTag listTag = nbt.getList("Pos_player", 6);
 				this.Pos_player = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
@@ -223,6 +220,8 @@ public class CacModVariables {
 			Switch_timer = nbt.getBoolean("Switch_timer");
 			Ev_content = nbt.getString("Ev_content");
 			Ev_occuring = nbt.getBoolean("Ev_occuring");
+			Dat_time_interval = nbt.getDouble("Dat_time_interval");
+			Switch_trace = nbt.getBoolean("Switch_trace");
 		}
 
 		@Override
@@ -247,10 +246,7 @@ public class CacModVariables {
 			nbt.putDouble("Exp_trial", Exp_trial);
 			nbt.putBoolean("Switch_AI", Switch_AI);
 			nbt.putBoolean("Switch_debug", Switch_debug);
-			nbt.put("Dat_type_survey", this.Dat_type_survey);
 			nbt.putString("Exp_subject", Exp_subject);
-			nbt.putDouble("Dat_trial_total", Dat_trial_total);
-			nbt.put("Dat_time_interval", this.Dat_time_interval);
 			nbt.putBoolean("Switch_blank", Switch_blank);
 			nbt.putDouble("Exp_survey_idx", Exp_survey_idx);
 			nbt.putDouble("TimR_time", TimR_time);
@@ -269,8 +265,6 @@ public class CacModVariables {
 			nbt.putDouble("Dat_trial_winlose", Dat_trial_winlose);
 			nbt.putDouble("Dat_time_preparation", Dat_time_preparation);
 			nbt.putDouble("Dat_time_gameplay", Dat_time_gameplay);
-			nbt.putDouble("Dat_time_survey", Dat_time_survey);
-			nbt.putDouble("TimR_que_start", TimR_que_start);
 			{
 				this.Pos_player = this.Pos_player == null ? Vec3.ZERO : this.Pos_player;
 				ListTag listTag = new ListTag();
@@ -298,6 +292,8 @@ public class CacModVariables {
 			nbt.putBoolean("Switch_timer", Switch_timer);
 			nbt.putString("Ev_content", Ev_content);
 			nbt.putBoolean("Ev_occuring", Ev_occuring);
+			nbt.putDouble("Dat_time_interval", Dat_time_interval);
+			nbt.putBoolean("Switch_trace", Switch_trace);
 			return nbt;
 		}
 

@@ -2,7 +2,6 @@ package net.owo.cac;
 
 import javax.annotation.Nullable;
 
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 
@@ -11,10 +10,6 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.BlockPos;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.Level;
@@ -48,6 +43,16 @@ public class CstManagePosition {
 			if (ent_opponent != null && ent_player != null) {
 				Vec3 pos_opponent = ent_opponent.position();
 				Vec3 pos_player = ent_player.position();
+
+				if (CacModVariables.MapVariables.get(world).Switch_trace) {
+					CacModVariables.Dat_pos_time.add(CacModVariables.MapVariables.get(world).TimR_time);
+					CacModVariables.Dat_pos_player_x.add((pos_player.x()));
+					CacModVariables.Dat_pos_player_z.add((pos_player.z()));
+					CacModVariables.Dat_pos_player_r.add((ent_player.getYRot()));
+					CacModVariables.Dat_pos_player_x.add((pos_opponent.x()));
+					CacModVariables.Dat_pos_player_z.add((pos_opponent.z()));
+					CacModVariables.Dat_pos_player_r.add((ent_opponent.getYRot()));
+				}
 				
 				if (CacModVariables.MapVariables.get(world).Switch_AI && (pos_opponent.subtract(pos_player)).length() < 1){
 					CacModVariables.MapVariables.get(world).Switch_AI = false;
@@ -56,14 +61,6 @@ public class CstManagePosition {
 					CacModVariables.MapVariables.get(world).syncData(world);
 					EvPulseRecordProcedure.execute(world);
 					EvQueImmediateProcedure.execute(world);
-					
-					if (!world.isClientSide()) {
-						LivingEntity livent_opponent = (LivingEntity) ent_opponent;
-						LivingEntity livent_player = (LivingEntity) ent_player;
-						world.playSound(null, BlockPos.containing(pos_player.x, pos_player.y, pos_player.z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.experience_orb.pickup")), SoundSource.NEUTRAL, 1, 1);
-						livent_opponent.addEffect(new MobEffectInstance(CacModMobEffects.EFF_STOP_MOVE.get(), -1, 0, false, false));
-						livent_player.addEffect(new MobEffectInstance(CacModMobEffects.EFF_STOP_MOVE.get(), -1, 0, false, false));
-					}
 				}
 				
 				CacModVariables.MapVariables.get(world).Pos_opponent = pos_opponent;

@@ -25,8 +25,6 @@ public class TaskPreTrialProcedure {
 		ListTag lst_spawnpoint;
 		CacModVariables.MapVariables.get(world).Exp_phase = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Switch_AI = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -34,7 +32,13 @@ public class TaskPreTrialProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp task");
 			}
 		}
-		IniLogPositionTrialProcedure.execute(world);
+		CacModVariables.Dat_pos_time = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_player_x = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_player_z = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_player_r = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_opponent_x = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_opponent_z = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_opponent_r = new com.google.gson.JsonArray();
 		FncManageTasktypeProcedure.execute(world);
 		FncManageSpawnOpponentProcedure.execute(world);
 		FncManageDifficultyProcedure.execute(world);
@@ -68,7 +72,5 @@ public class TaskPreTrialProcedure {
 			}
 			EffApplyMorphPreyProcedure.execute(entity);
 		}
-		CacModVariables.MapVariables.get(world).Switch_blank = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

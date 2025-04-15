@@ -5,8 +5,8 @@
   "phase_gameplay": 600,
   "phase_gameplay_end": 100,
   "phase_survey": 200,
+  "phase_interval": -1,
   "phase_posttrial": 2,
   "test_end": -1,
   "blank": 40,
-  "interval": -1,
 }

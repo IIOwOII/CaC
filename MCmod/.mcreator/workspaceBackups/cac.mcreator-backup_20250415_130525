@@ -668,12 +668,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -1079,6 +1074,18 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -1478,6 +1485,18 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -1644,6 +1663,18 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -1668,7 +1699,7 @@
           }
         ]
       },
-      "path": "~/CacTimer/Event"
+      "path": "~/CacEvent"
     },
     {
       "name": "EvPulseRecord",
@@ -1687,45 +1718,7 @@
           }
         ]
       },
-      "path": "~/CacTimer/Event"
-    },
-    {
-      "name": "TaskInterphase",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "task_interphase",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TaskInterphaseProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask"
-    },
-    {
-      "name": "FncManageTimeGameplay",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_manage_time_gameplay",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncManageTimeGameplayProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Manager/New"
+      "path": "~/CacEvent"
     },
     {
       "name": "EffRemoveMorph",
@@ -2013,12 +2006,24 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
         ]
       },
-      "path": "~/CacTimer/Event"
+      "path": "~/CacEvent"
     },
     {
       "name": "IniPoolEvent",
@@ -2055,12 +2060,24 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
         ]
       },
-      "path": "~/CacTimer/Event"
+      "path": "~/CacEvent"
     },
     {
       "name": "IniPoolTask",
@@ -2173,6 +2190,18 @@
             "type": "entity"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -2217,6 +2246,70 @@
         ]
       },
       "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "EvReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ev_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/EvResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacEvent"
+    },
+    {
+      "name": "TaskGameplayEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_gameplay_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskGameplayEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "RecPosition",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rec_position",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RecPositionProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Record"
     }
   ],
   "variable_elements": [
@@ -2299,12 +2392,6 @@
       "value": "false"
     },
     {
-      "name": "Dat_type_survey",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Exp_subject",
       "type": "string",
       "scope": "map",
@@ -2317,12 +2404,6 @@
       "value": "0"
     },
     {
-      "name": "Dat_time_interval",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Switch_blank",
       "type": "logic",
       "scope": "map",
@@ -2333,18 +2414,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Dat_trial_pos_player",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_trial_pos_opponent",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
     },
     {
       "name": "TimR_time",
@@ -2462,18 +2531,6 @@
     },
     {
       "name": "Dat_time_gameplay",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_time_survey",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "TimR_que_start",
       "type": "number",
       "scope": "map",
       "value": "0"
@@ -2597,6 +2654,30 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Dat_time_interval",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Switch_trace",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Dat_pos_player",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [
@@ -2735,14 +2816,14 @@
         "name": "CacTimer",
         "children": [
           {
-            "name": "Event",
-            "children": []
-          },
-          {
             "name": "Debug",
             "children": []
           }
         ]
+      },
+      {
+        "name": "CacEvent",
+        "children": []
       }
     ]
   },

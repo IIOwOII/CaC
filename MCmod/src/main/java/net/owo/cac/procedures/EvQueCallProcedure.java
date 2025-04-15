@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class EvQueCallProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
 		com.google.gson.JsonArray arr_content = new com.google.gson.JsonArray();
@@ -70,11 +70,9 @@ public class EvQueCallProcedure {
 					e.printStackTrace();
 				}
 			}
-			CacModVariables.MapVariables.get(world).TimR_que_start = CacModVariables.MapVariables.get(world).TimR_time;
-			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).TimR_que_time = CacModVariables.MapVariables.get(world).TimR_time + ev_duration;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			EvInvokeProcedure.execute(world, entity);
+			EvInvokeProcedure.execute(world, x, y, z, entity);
 		}
 	}
 }

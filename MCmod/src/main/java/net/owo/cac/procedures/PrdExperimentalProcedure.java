@@ -1,16 +1,17 @@
 package net.owo.cac.procedures;
 
-import net.owo.cac.init.CacModMobEffects;
+import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffectInstance;
 
 public class PrdExperimentalProcedure {
-	public static void execute(Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(CacModMobEffects.EFF_MORPH_PREY.get(), 60, 1));
+		CacModVariables.Dat_pos_time.add(CacModVariables.MapVariables.get(world).TimR_time);
+		CacModVariables.Dat_pos_player_x.add(((entity.position()).x()));
+		CacModVariables.Dat_pos_player_z.add(((entity.position()).z()));
+		CacModVariables.Dat_pos_player_r.add((entity.getYRot()));
 	}
 }

@@ -28,6 +28,6 @@ public class FncManageSurveytypeProcedure {
 				type_survey.addTag(type_survey.size(), IntTag.valueOf(5));
 			}
 		}
-		CacModVariables.MapVariables.get(world).Dat_type_survey.addTag((int) CacModVariables.MapVariables.get(world).Exp_trial, (type_survey.copy()));
+		CacModVariables.MapVariables.get(world).Dat_survey_order.addTag((int) CacModVariables.MapVariables.get(world).Exp_trial, (type_survey.copy()));
 	}
 }

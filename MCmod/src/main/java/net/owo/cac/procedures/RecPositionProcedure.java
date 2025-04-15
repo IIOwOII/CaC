@@ -9,13 +9,13 @@ import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
-public class IniLogPositionTrialProcedure {
+public class RecPositionProcedure {
 	public static void execute(LevelAccessor world) {
-		com.google.gson.JsonArray arr_empty = new com.google.gson.JsonArray();
+		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_trial = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_role = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_player = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_opponent = new com.google.gson.JsonObject();
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_position));
@@ -31,16 +31,20 @@ public class IniLogPositionTrialProcedure {
 				e.printStackTrace();
 			}
 		}
-		obj_role.add("x", arr_empty);
-		obj_role.add("z", arr_empty);
-		obj_role.add("r", arr_empty);
-		obj_trial.add("player", obj_role);
-		obj_trial.add("opponent", obj_role);
+		obj_player.add("x", CacModVariables.Dat_pos_player_x);
+		obj_player.add("z", CacModVariables.Dat_pos_player_z);
+		obj_player.add("r", CacModVariables.Dat_pos_player_r);
+		obj_opponent.add("x", CacModVariables.Dat_pos_opponent_x);
+		obj_opponent.add("z", CacModVariables.Dat_pos_opponent_z);
+		obj_opponent.add("r", CacModVariables.Dat_pos_opponent_r);
+		obj_trial.add("time", CacModVariables.Dat_pos_time);
+		obj_trial.add("player", obj_player);
+		obj_trial.add("opponent", obj_opponent);
 		obj_cac.add(("trial_" + new java.text.DecimalFormat("##").format(CacModVariables.MapVariables.get(world).Exp_trial)), obj_trial);
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {
-				FileWriter fileWriter = new FileWriter(CacModVariables.Log_position);
+				FileWriter fileWriter = new FileWriter(CacModVariables.Log_timestamp);
 				fileWriter.write(mainGSONBuilderVariable.toJson(obj_file));
 				fileWriter.close();
 			} catch (IOException exception) {
