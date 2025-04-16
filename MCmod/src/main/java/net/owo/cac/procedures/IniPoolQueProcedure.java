@@ -13,9 +13,7 @@ public class IniPoolQueProcedure {
 	public static void execute(LevelAccessor world) {
 		com.google.gson.JsonObject obj_que = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
-		if (!CacModVariables.Pool_que.exists()) {
-			CacModVariables.Pool_que = new File(CacModVariables.MapVariables.get(world).Dir_components, File.separator + "pool_que.json");
-		}
+		CacModVariables.Pool_que = new File(CacModVariables.MapVariables.get(world).Dir_components, File.separator + "pool_que.json");
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_que));

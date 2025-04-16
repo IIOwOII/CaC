@@ -34,9 +34,9 @@ public class EvPulseRecordProcedure {
 		arr_content = obj_main.get("content").getAsJsonArray();
 		arr_content.add(CacModVariables.MapVariables.get(world).Ev_pulse_content);
 		arr_absolute = obj_main.get("absolute").getAsJsonArray();
-		arr_absolute.add(CacModVariables.MapVariables.get(world).TimA_time);
+		arr_absolute.add(((int) CacModVariables.MapVariables.get(world).TimA_time));
 		arr_relative = obj_main.get("relative").getAsJsonArray();
-		arr_relative.add(CacModVariables.MapVariables.get(world).TimR_time);
+		arr_relative.add(((int) CacModVariables.MapVariables.get(world).TimR_time));
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {

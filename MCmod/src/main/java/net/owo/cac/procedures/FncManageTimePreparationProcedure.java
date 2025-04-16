@@ -1,16 +1,16 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
 
 public class FncManageTimePreparationProcedure {
 	public static void execute(LevelAccessor world) {
-		RandomSource rand;
-		rand = RandomSource.create();
-		CacModVariables.MapVariables.get(world).Dat_time_preparation = Mth.nextInt(rand, 4, 6);
+		CacModVariables.MapVariables.get(world).Dat_time_preparation = 5;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).TimR_que_time = CacModVariables.MapVariables.get(world).TimR_time + CacModVariables.MapVariables.get(world).Dat_time_preparation * 20;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacMod.LOGGER.info(CacModVariables.MapVariables.get(world).TimR_que_time);
 	}
 }

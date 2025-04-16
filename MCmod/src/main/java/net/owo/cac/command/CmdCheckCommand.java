@@ -14,13 +14,15 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.Direction;
 import net.minecraft.commands.Commands;
 
+import com.mojang.brigadier.arguments.StringArgumentType;
+
 @Mod.EventBusSubscriber
 public class CmdCheckCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cac_check")
 
-				.executes(arguments -> {
+				.then(Commands.argument("target", StringArgumentType.word()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();
@@ -32,8 +34,8 @@ public class CmdCheckCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					PrdCheckProcedure.execute(world);
+					PrdCheckProcedure.execute(world, arguments);
 					return 0;
-				}));
+				})));
 	}
 }

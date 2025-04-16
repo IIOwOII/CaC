@@ -38,7 +38,6 @@ public class TaskSurveyProcedure {
 				}
 			}, _bpos);
 		}
-		TaskCleanMobProcedure.execute(entity);
 		FncManageSurveytypeProcedure.execute(world);
 	}
 }

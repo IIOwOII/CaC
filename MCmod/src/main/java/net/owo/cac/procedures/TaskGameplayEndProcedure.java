@@ -1,36 +1,36 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.init.CacModMobEffects;
-import net.owo.cac.entity.EntPlayerMouseEntity;
-import net.owo.cac.entity.EntPlayerCatEntity;
-import net.owo.cac.entity.EntMouseEntity;
-import net.owo.cac.entity.EntCatEntity;
 
 import net.minecraftforge.registries.ForgeRegistries;
 
-import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 
-import java.util.List;
-import java.util.Comparator;
-
 public class TaskGameplayEndProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z) {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
+			return;
 		CacModVariables.MapVariables.get(world).Exp_phase = 2.5;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_AI = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_trace = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time - CacModVariables.MapVariables.get(world).Dat_time_gameplay;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		if (CacModVariables.MapVariables.get(world).Dat_trial_type == 0 && CacModVariables.MapVariables.get(world).Dat_time_gameplay < 600
+				|| CacModVariables.MapVariables.get(world).Dat_trial_type == 1 && CacModVariables.MapVariables.get(world).Dat_time_gameplay >= 600) {
+			CacModVariables.MapVariables.get(world).Dat_trial_winlose = 1;
+			CacModVariables.MapVariables.get(world).syncData(world);
+		} else {
+			CacModVariables.MapVariables.get(world).Dat_trial_winlose = 0;
+			CacModVariables.MapVariables.get(world).syncData(world);
+		}
 		if (!world.isClientSide()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
@@ -40,15 +40,6 @@ public class TaskGameplayEndProcedure {
 				}
 			}
 		}
-		{
-			final Vec3 _center = new Vec3(x, y, z);
-			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(64 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
-			for (Entity entityiterator : _entfound) {
-				if (entityiterator instanceof EntCatEntity || entityiterator instanceof EntMouseEntity || entityiterator instanceof EntPlayerCatEntity || entityiterator instanceof EntPlayerMouseEntity) {
-					if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(CacModMobEffects.EFF_STOP_MOVE.get(), -1, 0, false, false));
-				}
-			}
-		}
+		EffApplyStopMoveProcedure.execute(entity);
 	}
 }

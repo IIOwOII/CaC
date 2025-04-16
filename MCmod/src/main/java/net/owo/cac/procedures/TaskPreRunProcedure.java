@@ -46,5 +46,9 @@ public class TaskPreRunProcedure {
 		CacModVariables.Dat_pos_opponent_x = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_z = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_r = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_time_prep = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_player_x_prep = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_player_z_prep = new com.google.gson.JsonArray();
+		CacModVariables.Dat_pos_player_r_prep = new com.google.gson.JsonArray();
 	}
 }

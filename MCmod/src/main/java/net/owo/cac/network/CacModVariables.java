@@ -30,7 +30,6 @@ public class CacModVariables {
 	public static File Log_timestamp = new File("");
 	public static File Log_event = new File("");
 	public static File Log_position = new File("");
-	public static File Log_trialresult = new File("");
 	public static File Pool_event = new File("");
 	public static File Pool_task = new File("");
 	public static File Pool_point = new File("");
@@ -45,6 +44,11 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_pos_opponent_z = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_r = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_time = new com.google.gson.JsonArray();
+	public static File Log_gameplay = new File("");
+	public static com.google.gson.JsonArray Dat_pos_time_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_player_x_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_player_z_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_player_r_prep = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

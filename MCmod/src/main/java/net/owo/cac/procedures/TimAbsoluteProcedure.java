@@ -28,7 +28,7 @@ public class TimAbsoluteProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world) {
-		if (CacModVariables.MapVariables.get(world).Switch_timer) {
+		if (CacModVariables.MapVariables.get(world).Switch_timer && !world.isClientSide()) {
 			CacModVariables.MapVariables.get(world).TimA_time_currtick = Calendar.getInstance().getTimeInMillis();
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).TimA_time = CacModVariables.MapVariables.get(world).TimA_time + CacModVariables.MapVariables.get(world).TimA_time_currtick - CacModVariables.MapVariables.get(world).TimA_time_oldtick;

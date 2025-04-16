@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class TaskManageProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
@@ -23,6 +24,8 @@ public class TaskManageProcedure {
 		boolean is_session = false;
 		double idx_session = 0;
 		CacModVariables.MapVariables.get(world).Exp_session = StringArgumentType.getString(arguments, "session");
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Exp_trial_total = DoubleArgumentType.getDouble(arguments, "trial");
 		CacModVariables.MapVariables.get(world).syncData(world);
 		IniPoolProcedure.execute(world);
 		{

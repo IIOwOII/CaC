@@ -24,7 +24,5 @@ public class TaskPreparationProcedure {
 			}
 		}
 		FncManageTimePreparationProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).TimR_que_time = CacModVariables.MapVariables.get(world).TimR_time + CacModVariables.MapVariables.get(world).Dat_time_preparation * 20;
-		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

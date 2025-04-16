@@ -21,7 +21,7 @@ public class EvQueCallProcedure {
 		com.google.gson.JsonObject obj_log = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_pool = new com.google.gson.JsonObject();
 		double ev_duration = 0;
-		if (!CacModVariables.MapVariables.get(world).Ev_occuring) {
+		if (!CacModVariables.MapVariables.get(world).Ev_occuring && !world.isClientSide()) {
 			CacModVariables.MapVariables.get(world).Ev_occuring = true;
 			CacModVariables.MapVariables.get(world).syncData(world);
 			{
@@ -43,13 +43,13 @@ public class EvQueCallProcedure {
 			arr_absolute = obj_cac.get("absolute").getAsJsonArray();
 			arr_relative = obj_cac.get("relative").getAsJsonArray();
 			arr_content.add(CacModVariables.MapVariables.get(world).Ev_content);
-			arr_absolute.add(CacModVariables.MapVariables.get(world).TimA_time);
-			arr_relative.add(CacModVariables.MapVariables.get(world).TimR_time);
+			arr_absolute.add(((int) CacModVariables.MapVariables.get(world).TimA_time));
+			arr_relative.add(((int) CacModVariables.MapVariables.get(world).TimR_time));
 			{
 				com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 				try {
 					FileWriter fileWriter = new FileWriter(CacModVariables.Log_event);
-					fileWriter.write(mainGSONBuilderVariable.toJson(obj_cac));
+					fileWriter.write(mainGSONBuilderVariable.toJson(obj_log));
 					fileWriter.close();
 				} catch (IOException exception) {
 					exception.printStackTrace();

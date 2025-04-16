@@ -40,18 +40,26 @@ public class CstManagePosition {
 		if (event.phase == TickEvent.Phase.END) {
 			LevelAccessor world = event.player.level();
 			
-			if (ent_opponent != null && ent_player != null) {
+			if ((ent_opponent != null && ent_player != null) && (!world.isClientSide())) {
 				Vec3 pos_opponent = ent_opponent.position();
 				Vec3 pos_player = ent_player.position();
 
 				if (CacModVariables.MapVariables.get(world).Switch_trace) {
-					CacModVariables.Dat_pos_time.add(CacModVariables.MapVariables.get(world).TimR_time);
-					CacModVariables.Dat_pos_player_x.add((pos_player.x()));
-					CacModVariables.Dat_pos_player_z.add((pos_player.z()));
-					CacModVariables.Dat_pos_player_r.add((ent_player.getYRot()));
-					CacModVariables.Dat_pos_player_x.add((pos_opponent.x()));
-					CacModVariables.Dat_pos_player_z.add((pos_opponent.z()));
-					CacModVariables.Dat_pos_player_r.add((ent_opponent.getYRot()));
+					if (CacModVariables.MapVariables.get(world).Exp_phase == 1) {
+						CacModVariables.Dat_pos_time_prep.add((int)CacModVariables.MapVariables.get(world).TimR_time);
+						CacModVariables.Dat_pos_player_x_prep.add((pos_player.x()));
+						CacModVariables.Dat_pos_player_z_prep.add((pos_player.z()));
+						CacModVariables.Dat_pos_player_r_prep.add((ent_player.getYRot()));
+					}
+					if (CacModVariables.MapVariables.get(world).Exp_phase == 2) {
+						CacModVariables.Dat_pos_time.add((int)CacModVariables.MapVariables.get(world).TimR_time);
+						CacModVariables.Dat_pos_player_x.add((pos_player.x()));
+						CacModVariables.Dat_pos_player_z.add((pos_player.z()));
+						CacModVariables.Dat_pos_player_r.add((ent_player.getYRot()));
+						CacModVariables.Dat_pos_opponent_x.add((pos_opponent.x()));
+						CacModVariables.Dat_pos_opponent_z.add((pos_opponent.z()));
+						CacModVariables.Dat_pos_opponent_r.add((ent_opponent.getYRot()));
+					}
 				}
 				
 				if (CacModVariables.MapVariables.get(world).Switch_AI && (pos_opponent.subtract(pos_player)).length() < 1){

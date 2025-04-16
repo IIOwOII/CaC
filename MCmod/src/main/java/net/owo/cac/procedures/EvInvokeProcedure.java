@@ -11,7 +11,7 @@ public class EvInvokeProcedure {
 		if (entity == null)
 			return;
 		String ev_content = "";
-		if (CacModVariables.MapVariables.get(world).Ev_occuring) {
+		if (CacModVariables.MapVariables.get(world).Ev_occuring && !world.isClientSide()) {
 			ev_content = CacModVariables.MapVariables.get(world).Ev_content;
 			if ((ev_content).equals("")) {
 				if (!world.isClientSide() && world.getServer() != null)
@@ -28,11 +28,11 @@ public class EvInvokeProcedure {
 			} else if ((ev_content).equals("phase_gameplay")) {
 				TaskGameplayProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_gameplay_end")) {
-				TaskGameplayEndProcedure.execute(world, x, y, z);
+				TaskGameplayEndProcedure.execute(world, x, y, z, entity);
 			} else if ((ev_content).equals("phase_survey")) {
 				TaskSurveyProcedure.execute(world, x, y, z, entity);
 			} else if ((ev_content).equals("phase_interval")) {
-				TaskIntervalProcedure.execute(world);
+				TaskIntervalProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_posttrial")) {
 				TaskPostTrialProcedure.execute(world);
 			} else if ((ev_content).equals("test_end")) {
