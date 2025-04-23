@@ -162,6 +162,8 @@ public class CacModVariables {
 		public boolean Ev_occuring = false;
 		public double Dat_time_interval = 0;
 		public boolean Switch_trace = false;
+		public Vec3 Pos_border_start = Vec3.ZERO;
+		public Vec3 Pos_border_end = Vec3.ZERO;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -226,6 +228,14 @@ public class CacModVariables {
 			Ev_occuring = nbt.getBoolean("Ev_occuring");
 			Dat_time_interval = nbt.getDouble("Dat_time_interval");
 			Switch_trace = nbt.getBoolean("Switch_trace");
+			{
+				ListTag listTag = nbt.getList("Pos_border_start", 6);
+				this.Pos_border_start = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
+			{
+				ListTag listTag = nbt.getList("Pos_border_end", 6);
+				this.Pos_border_end = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
 		}
 
 		@Override
@@ -298,6 +308,22 @@ public class CacModVariables {
 			nbt.putBoolean("Ev_occuring", Ev_occuring);
 			nbt.putDouble("Dat_time_interval", Dat_time_interval);
 			nbt.putBoolean("Switch_trace", Switch_trace);
+			{
+				this.Pos_border_start = this.Pos_border_start == null ? Vec3.ZERO : this.Pos_border_start;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Pos_border_start.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Pos_border_start.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Pos_border_start.z()));
+				nbt.put("Pos_border_start", listTag);
+			}
+			{
+				this.Pos_border_end = this.Pos_border_end == null ? Vec3.ZERO : this.Pos_border_end;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Pos_border_end.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Pos_border_end.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Pos_border_end.z()));
+				nbt.put("Pos_border_end", listTag);
+			}
 			return nbt;
 		}
 

@@ -3,6 +3,7 @@ package net.owo.cac.procedures;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.init.CacModBlocks;
 
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
@@ -12,12 +13,6 @@ import net.minecraft.core.BlockPos;
 
 public class FncScanObstacleProcedure {
 	public static ListTag execute(LevelAccessor world) {
-		double offset_x = 0;
-		double offset_z = 0;
-		double offset_y = 0;
-		double sx = 0;
-		double sz = 0;
-		double radius_map = 0;
 		BlockState block_curr = Blocks.AIR.defaultBlockState();
 		BlockState block_next = Blocks.AIR.defaultBlockState();
 		BlockState block_prev = Blocks.AIR.defaultBlockState();
@@ -26,22 +21,33 @@ public class FncScanObstacleProcedure {
 		ListTag list_vertice_temp;
 		ListTag list_line_temp;
 		ListTag list_line;
+		double offset_x = 0;
+		double offset_z = 0;
+		double offset_y = 0;
+		double sx = 0;
+		double sz = 0;
+		double radius_map = 0;
+		Vec3 vec_OS = Vec3.ZERO;
+		Vec3 vec_OE = Vec3.ZERO;
+		Vec3 vec_SE = Vec3.ZERO;
 		offset_x = CacModVariables.MapVariables.get(world).Pos_offset.x();
-		offset_y = CacModVariables.MapVariables.get(world).Pos_offset.y();
 		offset_z = CacModVariables.MapVariables.get(world).Pos_offset.z();
-		radius_map = CacModVariables.MapVariables.get(world).Radius_map;
+		offset_y = CacModVariables.MapVariables.get(world).Pos_offset.y();
+		vec_OS = CacModVariables.MapVariables.get(world).Pos_border_start.subtract(CacModVariables.MapVariables.get(world).Pos_offset);
+		vec_OE = CacModVariables.MapVariables.get(world).Pos_border_end.subtract(CacModVariables.MapVariables.get(world).Pos_offset);
+		vec_SE = CacModVariables.MapVariables.get(world).Pos_border_end.subtract(CacModVariables.MapVariables.get(world).Pos_border_start);
 		list_line = new ListTag();
 		list_vertice_temp = new ListTag();
 		list_line_temp = new ListTag();
-		sx = -radius_map;
-		for (int index0 = 0; index0 < (int) (radius_map * 2 + 1); index0++) {
-			sz = -radius_map;
-			block_prev = (world.getBlockState(BlockPos.containing(sx + offset_x, offset_y, sz - 1 + offset_z)));
-			block_curr = (world.getBlockState(BlockPos.containing(sx + offset_x, offset_y, sz + offset_z)));
-			for (int index1 = 0; index1 < (int) (radius_map * 2 + 1); index1++) {
+		sx = CacModVariables.MapVariables.get(world).Pos_border_start.x();
+		for (int index0 = 0; index0 < (int) (vec_SE.x() + 1); index0++) {
+			sz = CacModVariables.MapVariables.get(world).Pos_border_start.z();
+			block_prev = (world.getBlockState(BlockPos.containing(sx - 0.5, offset_y, sz - 1.5)));
+			block_curr = (world.getBlockState(BlockPos.containing(sx - 0.5, offset_y, sz - 0.5)));
+			for (int index1 = 0; index1 < (int) (vec_SE.z() + 1); index1++) {
 				ispoint_start = false;
 				ispoint_end = false;
-				block_next = (world.getBlockState(BlockPos.containing(sx + offset_x, offset_y, sz + 1 + offset_z)));
+				block_next = (world.getBlockState(BlockPos.containing(sx - 0.5, offset_y, sz + 0.5)));
 				if (block_curr.getBlock() == CacModBlocks.BLK_OBSTACLE.get()) {
 					if (!(block_prev.getBlock() == CacModBlocks.BLK_OBSTACLE.get())) {
 						ispoint_start = true;
@@ -68,15 +74,15 @@ public class FncScanObstacleProcedure {
 			}
 			sx = sx + 1;
 		}
-		sz = -radius_map;
-		for (int index2 = 0; index2 < (int) (radius_map * 2 + 1); index2++) {
-			sx = -radius_map;
-			block_prev = (world.getBlockState(BlockPos.containing(sx - 1 + offset_x, offset_y, sz + offset_z)));
-			block_curr = (world.getBlockState(BlockPos.containing(sx + offset_x, offset_y, sz + offset_z)));
-			for (int index3 = 0; index3 < (int) (radius_map * 2 + 1); index3++) {
+		sz = vec_OS.z();
+		for (int index2 = 0; index2 < (int) (vec_SE.z() + 1); index2++) {
+			sx = vec_OS.x();
+			block_prev = (world.getBlockState(BlockPos.containing(sx - 1 + offset_x - 0.5, offset_y, sz + offset_z - 0.5)));
+			block_curr = (world.getBlockState(BlockPos.containing(sx + offset_x - 0.5, offset_y, sz + offset_z - 0.5)));
+			for (int index3 = 0; index3 < (int) (vec_SE.x() + 1); index3++) {
 				ispoint_start = false;
 				ispoint_end = false;
-				block_next = (world.getBlockState(BlockPos.containing(sx + 1 + offset_x, offset_y, sz + offset_z)));
+				block_next = (world.getBlockState(BlockPos.containing(sx + 1 + offset_x - 0.5, offset_y, sz + offset_z - 0.5)));
 				if (block_curr.getBlock() == CacModBlocks.BLK_OBSTACLE.get()) {
 					if (!(block_prev.getBlock() == CacModBlocks.BLK_OBSTACLE.get())) {
 						ispoint_start = true;

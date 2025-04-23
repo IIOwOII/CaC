@@ -2,17 +2,13 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.nbt.ListTag;
 
 public class PrdInitializeProcedure {
 	public static void execute(LevelAccessor world) {
-		CacModVariables.MapVariables.get(world).Pos_offset = new Vec3(0, 64, (-50));
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Radius_map = 16;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		IniPoolProcedure.execute(world);
 		CacModVariables.MapVariables.get(world).List_obstacle = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).List_wall = new ListTag();

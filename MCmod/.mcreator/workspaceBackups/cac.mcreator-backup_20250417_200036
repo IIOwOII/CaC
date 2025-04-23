@@ -1752,7 +1752,7 @@
           }
         ]
       },
-      "path": "~/CacTask"
+      "path": "~/CacTask/Manager"
     },
     {
       "name": "CmdTaskReset",
@@ -1765,7 +1765,7 @@
           "src/main/java/net/owo/cac/command/CmdTaskResetCommand.java"
         ]
       },
-      "path": "~/CacTask"
+      "path": "~/CacTask/Manager"
     },
     {
       "name": "CstManagePosition",
@@ -2689,6 +2689,18 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Pos_border_start",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_border_end",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
     }
   ],
   "sound_elements": [
@@ -2794,10 +2806,6 @@
           },
           {
             "name": "Record",
-            "children": []
-          },
-          {
-            "name": "Tutorial",
             "children": []
           },
           {

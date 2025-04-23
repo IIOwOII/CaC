@@ -1752,7 +1752,7 @@
           }
         ]
       },
-      "path": "~/CacTask"
+      "path": "~/CacTask/Manager"
     },
     {
       "name": "CmdTaskReset",
@@ -1765,7 +1765,7 @@
           "src/main/java/net/owo/cac/command/CmdTaskResetCommand.java"
         ]
       },
-      "path": "~/CacTask"
+      "path": "~/CacTask/Manager"
     },
     {
       "name": "CstManagePosition",
@@ -2794,10 +2794,6 @@
           },
           {
             "name": "Record",
-            "children": []
-          },
-          {
-            "name": "Tutorial",
             "children": []
           },
           {

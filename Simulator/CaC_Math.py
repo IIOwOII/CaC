@@ -61,7 +61,7 @@ class CaC_Entity():
         
         # Spec
         self.v = speed
-        
+         
         # Etc
         if (self.role==0):
             self.angle = 0

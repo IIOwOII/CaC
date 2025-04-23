@@ -2689,6 +2689,18 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Pos_border_start",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_border_end",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
     }
   ],
   "sound_elements": [

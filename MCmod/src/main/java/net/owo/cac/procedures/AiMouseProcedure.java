@@ -10,10 +10,8 @@ public class AiMouseProcedure {
 		if (entity == null)
 			return;
 		if (CacModVariables.MapVariables.get(world).Switch_AI) {
-			if (CacModVariables.MapVariables.get(world).Time_AI > 10) {
+			if (CacModVariables.MapVariables.get(world).Time_AI == 0 && !world.isClientSide()) {
 				AiOpponentMoveProcedure.execute(world, x, z, entity);
-				CacModVariables.MapVariables.get(world).Time_AI = 0;
-				CacModVariables.MapVariables.get(world).syncData(world);
 			}
 		}
 	}

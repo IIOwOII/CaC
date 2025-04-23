@@ -26,7 +26,7 @@ public class AiManageTimerProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world) {
 		if (CacModVariables.MapVariables.get(world).Switch_AI) {
-			CacModVariables.MapVariables.get(world).Time_AI = CacModVariables.MapVariables.get(world).Time_AI + 1;
+			CacModVariables.MapVariables.get(world).Time_AI = (CacModVariables.MapVariables.get(world).Time_AI + 1) % 10;
 			CacModVariables.MapVariables.get(world).syncData(world);
 		} else {
 			if (CacModVariables.MapVariables.get(world).Time_AI != 0) {

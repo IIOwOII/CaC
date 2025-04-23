@@ -10,5 +10,29 @@
       "phase_posttrial"
     ],
     "ending": "test_end"
+  },
+  "test_chasing": {
+    "initial": "test_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "test_end"
+  },
+  "test_chased": {
+    "initial": "test_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "test_end"
   }
 }
