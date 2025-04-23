@@ -191,29 +191,32 @@ class Env_CaC_Simulator:
             # Degree
             self.angle = angle
         
-        def pathfinder(self, pos_end):
-            node_open = [[self.cost_h(self.P, pos_end), self.P]]
+        def pathfinder(self, node_end):
+            node_open = [self.P]
+            f_open = [self.cost_h(self.P, node_end)]
             node_closed = []
+            f_closed = []
             
             while (len(node_open)!=0): # open set is not empty
                 min_f = 9999
                 min_f_idx = -1
-                for idx, node in enumerate(node_open):
-                    if node[0] < min_f:
+                for idx, f in enumerate(f_open):
+                    if f < min_f:
                         min_f_idx = idx
+                f_curr = f_open.pop(min_f_idx)
                 node_curr = node_open.pop(min_f_idx)
+                f_closed.append(f_curr)
                 node_closed.append(node_curr)
                 
-                pos_curr = node_curr[1]
-                if pos_curr == pos_end:
+                if node_curr == node_end:
                     return
                 
                 W = self.W_wall + self.W_obstacle
                 for i in range(max(pos_curr.x-1, 0), min(pos_curr.x+2, self.map_x)):
                     for j in range(max(pos_curr.y-1, 0), min(pos_curr.y+2, self.map_y)):
-                        if W[i,j] or ([node[1]==Vec2(i,j) for node in node_closed][0]):
+                        if W[i,j] or ([node[1]==Vec2(i,j) for node in node_closed][0]): # wall or closed node
                             pass
-                        else:
+                        elif ([node[1]==Vec2(i,j) for node in node_open][0]): # already open node
                             
                 
         
