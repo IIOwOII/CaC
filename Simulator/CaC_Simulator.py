@@ -8,6 +8,8 @@ import os
 import numpy as np
 import queue
 
+import itertools
+
 
 #%% Vector
 class Vec2: # 2차원 벡터 클래스
@@ -191,39 +193,62 @@ class Env_CaC_Simulator:
             # Degree
             self.angle = angle
         
-        def pathfinder(self, node_end):
-            node_open = [self.P]
-            f_open = [self.cost_h(self.P, node_end)]
-            node_closed = []
-            f_closed = []
+        def pathfinder(self, pos_end):
+            node_end = Node(pos_end, 9999, 0)
+            set_open = [Node(self.P, 0, abs(self.P.x-pos_end.x)+abs(self.P.y-pos_end.y))]
+            set_closed = []
             
-            while (len(node_open)!=0): # open set is not empty
+            while True:
                 min_f = 9999
                 min_f_idx = -1
-                for idx, f in enumerate(f_open):
-                    if f < min_f:
+                for idx, node in enumerate(set_open):
+                    if node.f() < min_f:
                         min_f_idx = idx
-                f_curr = f_open.pop(min_f_idx)
-                node_curr = node_open.pop(min_f_idx)
-                f_closed.append(f_curr)
-                node_closed.append(node_curr)
+                        min_f = node.f()
+            
+            
+            # while (len(node_open)!=0): # open set is not empty
+            #     min_f = 9999
+            #     min_f_idx = -1
+            #     for idx, f in enumerate(f_open):
+            #         if f < min_f:
+            #             min_f_idx = idx
+            #     f_curr = f_open.pop(min_f_idx)
+            #     node_curr = node_open.pop(min_f_idx)
+            #     f_closed.append(f_curr)
+            #     node_closed.append(node_curr)
                 
-                if node_curr == node_end:
-                    return
+            #     if node_curr == node_end:
+            #         return
                 
-                W = self.W_wall + self.W_obstacle
-                for i in range(max(pos_curr.x-1, 0), min(pos_curr.x+2, self.map_x)):
-                    for j in range(max(pos_curr.y-1, 0), min(pos_curr.y+2, self.map_y)):
-                        if W[i,j] or ([node[1]==Vec2(i,j) for node in node_closed][0]): # wall or closed node
-                            pass
-                        elif ([node[1]==Vec2(i,j) for node in node_open][0]): # already open node
-                            
+            #     W = self.W_wall + self.W_obstacle
+            #     near_x = np.arange(max(pos_curr.x-1, 0), min(pos_curr.x+2, self.map_x))
+            #     near_y = np.arange(max(pos_curr.y-1, 0), min(pos_curr.y+2, self.map_y))
+            #     near = [Vec2(i,j) for i,j in itertools.product(near_x, near_y)]
+                
+            #     for node_near in near:
+            #         if W[node_near.x, node_near.y] or ([node==node_near for node in node_closed][0]): # wall or closed node
+            #             pass
+            #         elif ([node==node_near for node in node_open][0]): # already open node
+            #             f_open[node_open.index(node_near)]
+            #         else:
+            #             node_open.append(node_near)
                 
         
-        def cost_h(self, pos, pos_end):
+        def cost_h(self, node, node_end):
+            pos = node.pos
+            pos_end = node_end.pos
             h = abs(pos.x - pos_end.x) + abs(pos.y - pos_end.y)
             return h
 
+class Node():
+    def __init__(self, pos, g, h):
+        self.pos = pos
+        self.g = g
+        self.h = h
+    
+    def f(self):
+        return self.g + self.h
 
 
 #%%

@@ -22,10 +22,10 @@ public class TaskSessionStartProcedure {
 		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_timestamp = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
-		CacModVariables.Log_timestamp = new File(CacModVariables.MapVariables.get(world).Dir_behaviors, File.separator + "timestamp.json");
+		CacModVariables.Info_timestamp = new File(CacModVariables.MapVariables.get(world).Dir_behaviors, File.separator + "info_timestamp.json");
 		{
 			try {
-				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_timestamp));
+				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Info_timestamp));
 				StringBuilder jsonstringbuilder = new StringBuilder();
 				String line;
 				while ((line = bufferedReader.readLine()) != null) {
@@ -43,7 +43,7 @@ public class TaskSessionStartProcedure {
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {
-				FileWriter fileWriter = new FileWriter(CacModVariables.Log_timestamp);
+				FileWriter fileWriter = new FileWriter(CacModVariables.Info_timestamp);
 				fileWriter.write(mainGSONBuilderVariable.toJson(obj_timestamp));
 				fileWriter.close();
 			} catch (IOException exception) {

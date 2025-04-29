@@ -962,26 +962,6 @@
       "path": "~/CacEtc"
     },
     {
-      "name": "FncTimepoolPreparation",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_timepool_preparation",
-      "metadata": {
-        "return_type": "datalist",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncTimepoolPreparationProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil"
-    },
-    {
       "name": "TaskPreparation",
       "type": "procedure",
       "compiles": true,
@@ -2689,6 +2669,54 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Pos_border_start",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_border_end",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pool_PF",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "PF_alpha",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "PF_beta",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "PF_gamma",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "PF_lambda",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "PF_likelihood",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [

@@ -27,7 +27,6 @@ import java.io.File;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModVariables {
-	public static File Log_timestamp = new File("");
 	public static File Log_event = new File("");
 	public static File Log_position = new File("");
 	public static File Pool_event = new File("");
@@ -49,6 +48,8 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_pos_player_x_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_player_z_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_player_r_prep = new com.google.gson.JsonArray();
+	public static File Info_timestamp = new File("");
+	public static File Info_PF = new File("");
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -164,6 +165,9 @@ public class CacModVariables {
 		public boolean Switch_trace = false;
 		public Vec3 Pos_border_start = Vec3.ZERO;
 		public Vec3 Pos_border_end = Vec3.ZERO;
+		public ListTag PF_likelihood = new ListTag();
+		public ListTag PF_parameter = new ListTag();
+		public ListTag PF_parameter_name = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -236,6 +240,9 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Pos_border_end", 6);
 				this.Pos_border_end = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
+			this.PF_likelihood = nbt.get("PF_likelihood") instanceof ListTag PF_likelihood ? PF_likelihood : new ListTag();
+			this.PF_parameter = nbt.get("PF_parameter") instanceof ListTag PF_parameter ? PF_parameter : new ListTag();
+			this.PF_parameter_name = nbt.get("PF_parameter_name") instanceof ListTag PF_parameter_name ? PF_parameter_name : new ListTag();
 		}
 
 		@Override
@@ -324,6 +331,9 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Pos_border_end.z()));
 				nbt.put("Pos_border_end", listTag);
 			}
+			nbt.put("PF_likelihood", this.PF_likelihood);
+			nbt.put("PF_parameter", this.PF_parameter);
+			nbt.put("PF_parameter_name", this.PF_parameter_name);
 			return nbt;
 		}
 

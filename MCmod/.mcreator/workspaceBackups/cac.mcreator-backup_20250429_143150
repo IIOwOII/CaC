@@ -962,26 +962,6 @@
       "path": "~/CacEtc"
     },
     {
-      "name": "FncTimepoolPreparation",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_timepool_preparation",
-      "metadata": {
-        "return_type": "datalist",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncTimepoolPreparationProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil"
-    },
-    {
       "name": "TaskPreparation",
       "type": "procedure",
       "compiles": true,
@@ -2034,25 +2014,6 @@
       "path": "~/CacInit/Pool"
     },
     {
-      "name": "IniTimestamp",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_timestamp",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniTimestampProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit"
-    },
-    {
       "name": "IniLog",
       "type": "procedure",
       "compiles": true,
@@ -2273,6 +2234,44 @@
         ]
       },
       "path": "~/CacTask/Record"
+    },
+    {
+      "name": "IniInfoTimestamp",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_info_timestamp",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniInfoTimestampProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Info"
+    },
+    {
+      "name": "IniInfoPf",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_info_pf",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniInfoPfProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Info"
     }
   ],
   "variable_elements": [
@@ -2419,12 +2418,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Log_timestamp",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
     },
     {
       "name": "Log_event",
@@ -2689,6 +2682,42 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Pos_border_start",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_border_end",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "PF_likelihood",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Info_timestamp",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Info_PF",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "PF_parameter",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [
@@ -2811,6 +2840,10 @@
           },
           {
             "name": "Pool",
+            "children": []
+          },
+          {
+            "name": "Info",
             "children": []
           }
         ]

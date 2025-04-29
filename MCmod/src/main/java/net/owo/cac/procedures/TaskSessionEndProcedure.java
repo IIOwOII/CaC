@@ -17,7 +17,7 @@ public class TaskSessionEndProcedure {
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		{
 			try {
-				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_timestamp));
+				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Info_timestamp));
 				StringBuilder jsonstringbuilder = new StringBuilder();
 				String line;
 				while ((line = bufferedReader.readLine()) != null) {
@@ -34,7 +34,7 @@ public class TaskSessionEndProcedure {
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {
-				FileWriter fileWriter = new FileWriter(CacModVariables.Log_timestamp);
+				FileWriter fileWriter = new FileWriter(CacModVariables.Info_timestamp);
 				fileWriter.write(mainGSONBuilderVariable.toJson(obj_timestamp));
 				fileWriter.close();
 			} catch (IOException exception) {
