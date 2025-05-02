@@ -6,9 +6,10 @@ import pygame as pg
 
 import os
 import numpy as np
-import queue
-
+import pickle
 import itertools
+
+from copy import deepcopy
 
 
 #%% Vector
@@ -73,8 +74,12 @@ class Vec2: # 2차원 벡터 클래스
         else:
             return self*(1/abs(self))
     
-    def distance(self, other):
-        return abs(self - other)
+    def distance(self, other, method='E'):
+        if (method == 'E'): # Euclidean
+            D = abs(self - other)
+        elif (method == 'M'): # Manhattan
+            D = abs(self.x-other.x) + abs(self.y-other.y)
+        return D
     
     def rotation(self, deg):
         rad = deg * (np.pi/180)
@@ -109,6 +114,14 @@ class Env_CaC_Simulator:
         #
         self.W_wall = np.zeros(map_size, dtype=bool)
         self.W_obstacle = np.zeros(map_size, dtype=bool)
+        
+        #
+        self.mx = 0
+        self.my = 0
+        
+        # Entity
+        self.E_predator = self.CaC_Entity(env=self, mode='predator')
+        self.E_prey = self.CaC_Entity(env=self, mode='prey')
         
         # Initialize
         self.mode_render = mode_render
@@ -152,7 +165,13 @@ class Env_CaC_Simulator:
         if np.any(self.W_obstacle):
             for obstacle in np.transpose(np.where(self.W_obstacle)):
                 pg.draw.rect(self.screen, (180,148,91), (*(obstacle*px), *((obstacle+1)*px)))
-            
+        
+        # Entity
+        if (self.E_predator.awake):
+            pg.draw.rect(self.screen, (202,198,197), (*(self.E_predator.P*px), *((self.E_predator.P+1)*px)))
+        if (self.E_prey.awake):
+            pg.draw.rect(self.screen, (253,207,140), (*(self.E_prey.P*px), *((self.E_prey.P+1)*px)))
+        
         # Render Update
         self.clock.tick(self.TPS)
         pg.display.update()
@@ -162,101 +181,168 @@ class Env_CaC_Simulator:
     
     
     class CaC_Entity():
-        def __init__(self, env, pos=(0,0), speed=1, AI=True):
+        def __init__(self, env, mode='None', AI=True, speed=784/227):
             # Self Reference
             self.env = env
             
+            # 
+            self.mode = mode # predator, prey
+            self.awake = False
+            
             # Position
-            self.P = Vec2(pos[0], pos[1]) # Current position
-            self.P_tg = Vec2(0,0) # target position
+            self.P = Vec2(0,0) # Current position
             
             # Property
-            self.v = speed # [block/tick]
+            self.v = speed/env.TPS # [block/tick]
             self.r = 0 # [Deg]
             
             #
             self.AI = AI
-            self.AI_r = np.arange(-135, 181, 45)
             
             # Field
             self.field = Vec2(0,0)
+            
+            # Pathfinder
+            self.pathfinder = Pathfinder()
+            self.pathfinder.set_w(self.env.W_wall+self.env.W_obstacle)
+        
+        def tick(self):
+            if (self.pathfinder.que_move):
+                flag = self.pathfinder.que_move[-1]
+                self.move(flag)
+                if self.P.distance(flag) < 0.1:
+                    self.pathfinder.que_move.remove(flag)
         
         def move(self, pos_target):
-            self.P_tg = pos_target
-            
-            if (self.role==0):
-                rad = np.deg2rad(self.angle)
-                self.x += self.v * np.cos(rad)
-                self.y += self.v * np.sin(rad)
+            vec_flag = pos_target - self.P
+            ###
+            # angle ignored (temp)
+            ###
+            if (abs(vec_flag) <= self.v):
+                self.P += (self.v * vec_flag.unit())
+            else:
+                self.P += vec_flag
         
-        def steering(self, angle):
-            # Degree
-            self.angle = angle
-        
-        def pathfinder(self, pos_end):
-            node_end = Node(pos_end, 9999, 0)
-            set_open = [Node(self.P, 0, abs(self.P.x-pos_end.x)+abs(self.P.y-pos_end.y))]
-            set_closed = []
-            
-            while True:
-                min_f = 9999
-                min_f_idx = -1
-                for idx, node in enumerate(set_open):
-                    if node.f() < min_f:
-                        min_f_idx = idx
-                        min_f = node.f()
-            
-            
-            # while (len(node_open)!=0): # open set is not empty
-            #     min_f = 9999
-            #     min_f_idx = -1
-            #     for idx, f in enumerate(f_open):
-            #         if f < min_f:
-            #             min_f_idx = idx
-            #     f_curr = f_open.pop(min_f_idx)
-            #     node_curr = node_open.pop(min_f_idx)
-            #     f_closed.append(f_curr)
-            #     node_closed.append(node_curr)
-                
-            #     if node_curr == node_end:
-            #         return
-                
-            #     W = self.W_wall + self.W_obstacle
-            #     near_x = np.arange(max(pos_curr.x-1, 0), min(pos_curr.x+2, self.map_x))
-            #     near_y = np.arange(max(pos_curr.y-1, 0), min(pos_curr.y+2, self.map_y))
-            #     near = [Vec2(i,j) for i,j in itertools.product(near_x, near_y)]
-                
-            #     for node_near in near:
-            #         if W[node_near.x, node_near.y] or ([node==node_near for node in node_closed][0]): # wall or closed node
-            #             pass
-            #         elif ([node==node_near for node in node_open][0]): # already open node
-            #             f_open[node_open.index(node_near)]
-            #         else:
-            #             node_open.append(node_near)
-                
-        
-        def cost_h(self, node, node_end):
-            pos = node.pos
-            pos_end = node_end.pos
-            h = abs(pos.x - pos_end.x) + abs(pos.y - pos_end.y)
-            return h
 
-class Node():
-    def __init__(self, pos, g, h):
-        self.pos = pos
-        self.g = g
-        self.h = h
+class Pathfinder:
+    def __init__(self):
+        self.set_open = []
+        self.set_closed = []
+        self.W = np.array([], dtype=bool) # wall and obstacle map
+        self.que_move = []
     
-    def f(self):
-        return self.g + self.h
+    def set_w(self, W):
+        self.W = W
+    
+    def reset(self):
+        self.set_open.clear()
+        self.set_closed.clear()
+        self.que_move.clear()
+    
+    def findpath(self, pos_start, pos_end):
+        self.reset()
+        
+        node_start = Node(pos=pos_start, g=0, 
+                          h=round(10*pos_start.distance(pos_end, method='M')))
+        node_end = Node(pos=pos_end, g=-1, h=0)
+        self.set_open.append(deepcopy(node_start))
+        
+        while (self.set_open): # set_open is not empty
+            min_f = -1
+            min_idx = -1
+            for idx, node in enumerate(self.set_open):
+                if (min_f == -1) or (node.f < min_f):
+                    min_f = node.f
+                    min_idx = idx
+            node_curr = self.set_open.pop(min_idx)
+            self.set_closed.append(deepcopy(node_curr))
+            
+            if (node_curr == node_end):
+                pos_trace = node_end.pos
+                while (pos_trace != pos_start):
+                    self.que_move.append(deepcopy(pos_trace))
+                    pos_trace -= self.set_closed[self.set_closed.index(pos_trace)].r
+                return
+            
+            pos_nears = self.findnear(node_curr)
+            for pos in pos_nears:
+                if (pos in self.set_open):
+                    node_targ = self.set_open[self.set_open(self.set_open.index(pos))]
+                    node_targ.update(node_curr, node_end)
+                else:
+                    node_new = Node(pos=pos)
+                    node_new.update(node_curr, node_end)
+                    self.set_open.append(deepcopy(node_new))
+    
+    def findnear(self, node):
+        near_x = np.arange(max(node.pos.x-1, 0), min(node.pos.x+2, self.W.shape[0]))
+        near_y = np.arange(max(node.pos.y-1, 0), min(node.pos.y+2, self.W.shape[1]))
+        nears = list(itertools.product(near_x, near_y))
+        
+        pos_nears = []
+        for near in nears:
+            pos = Vec2(near[0], near[1])
+            # Not wall and not closed set
+            if (not self.W[near[0], near[1]]) and not (pos in self.set_closed):
+                pos_nears.append(pos)
+        
+        return pos_nears
+        
+
+class Node:
+    def __init__(self, pos, g=-1, h=-1):
+        self.pos = pos # Vec2
+        self.g = g # -1 = inf
+        self.h = h # -1 = inf
+        self.update_f()
+        self.r = Vec2(0,0) # arrow
+    
+    def __repr__(self):
+        # example : <<1,4>>
+        return f'<{self.pos}>'
+    
+    def __eq__(self, other):
+        if isinstance(other, Vec2):
+            return (self.pos == other)
+        elif isinstance(other, Node):
+            return (self.pos == other.pos)
+    
+    def update(self, node_g, node_h):
+        self.update_g(node_g)
+        self.update_h(node_h)
+        self.update_f()
+        
+    def update_g(self, node_ref):
+        diff = round(self.pos.distance(node_ref.pos, method='M'))
+        if (diff == 1):
+            diff = 10
+        elif (diff == 2):
+            diff = 14
+        else:
+            print(diff)
+        if (self.g == -1) or (self.g > (node_ref.g + diff)):
+            self.r = self.pos - node_ref.pos
+            self.g = node_ref.g + diff
+    
+    def update_h(self, node_end):
+        self.h = round(10*self.pos.distance(node_end.pos, method='M'))
+    
+    def update_f(self):
+        if (self.g == -1) or (self.h == -1):
+            self.f = -1
+        else:
+            self.f = self.g + self.h
 
 
 #%%
 env = Env_CaC_Simulator()
 
-while True:
+env_switch = True
+while env_switch:
     env.tick()
     for event in pg.event.get():
         if (event.type == pg.QUIT):
+            env_switch = False
             env.close()
-            break
+        if (event.type == pg.MOUSEMOTION):
+            env.mx, env.my = pg.mouse.get_pos() # 마우스 x,y좌표값 저장
