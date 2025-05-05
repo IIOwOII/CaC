@@ -1,6 +1,6 @@
 #%% CaC Simulator
 # python = 3.9.18
-# pygame = 2.6.0
+# pygame-ce = 2.5.3
 
 import pygame as pg
 
@@ -33,10 +33,16 @@ class Vec2: # 2차원 벡터 클래스
         return (self.values == other.values)
 
     def __add__(self, other):
-        return Vec2(self.x + other.x, self.y + other.y)
+        if isinstance(other, Vec2):
+            return Vec2(self.x + other.x, self.y + other.y)
+        elif isinstance(other, (int,float)):
+            return Vec2(self.x + other, self.y + other)
     
     def __radd__(self, other):
-        return Vec2(self.x + other.x, self.y + other.y)
+        if isinstance(other, Vec2):
+            return Vec2(self.x + other.x, self.y + other.y)
+        elif isinstance(other, (int,float)):
+            return Vec2(self.x + other, self.y + other)
 
     def __mul__(self, num):
         return Vec2(num * self.x, num * self.y)
@@ -107,23 +113,42 @@ def util_image_load(img):
 #%% Environment
 class Env_CaC_Simulator:
     def __init__(self, map_size=(33,33), mode_render='human'):
+        #
         self.TPS = 20
         self.map_x = map_size[0]
         self.map_y = map_size[1] # In MC, it represents z-coordinate
         
+        # 
+        self.screen_w = 1280
+        self.screen_h = 720
+        self.color = {
+            'font': (255,255,255),
+            'shade': (255,255,255,128),
+            'grass': (93,114,59),
+            'wall': (93,75,51),
+            'obstacle': (180,148,91),
+            'spawn_player': (0,0,255),
+            'spawn_opponent': (0,233,255),
+            'entity_predator': (202,198,197),
+            'entity_prey': (253,207,140)}
+        
         #
         self.W_wall = np.zeros(map_size, dtype=bool)
         self.W_obstacle = np.zeros(map_size, dtype=bool)
+        self.W_spawn_player = np.zeros(map_size, dtype=bool)
+        self.W_spawn_opponent = np.zeros(map_size, dtype=bool)
         
-        #
-        self.mx = 0
-        self.my = 0
+        # Cursor
+        self.mx = 0 # px
+        self.my = 0 # px
+        self.mw = 0 # wheel
         
         # Entity
         self.E_predator = self.CaC_Entity(env=self, mode='predator')
         self.E_prey = self.CaC_Entity(env=self, mode='prey')
         
         # Initialize
+        self.mode_game = 'edit'
         self.mode_render = mode_render
         self.init_render()
     
@@ -132,49 +157,125 @@ class Env_CaC_Simulator:
         pg.display.set_caption('Chasing and Chased Simulator')
         
         # Screen 생성
-        self.screen = pg.display.set_mode((1920,1080))
+        self.screen = pg.display.set_mode((self.screen_w, self.screen_h))
+        
+        # pixel size
+        self.px = 16
         
         # clock 생성
         self.clock = pg.time.Clock()
-        self.font = pg.font.SysFont('Arial', 12)
+        self.font = pg.font.SysFont('Arial', size=16)
         
         # 초기 렌더
         self.screen.fill((0,0,0))
+    
     
     def tick(self):
         self.tick_render()
     
     def tick_render(self):
-        # pixel size
-        px = 24
-        
         # Background
         self.screen.fill((0,0,0))
         
-        # Grass (Grid)
-        pg.draw.rect(self.screen, (93,114,59), (0, 0, self.map_x*px, self.map_y*px))
-        for i in range(self.map_x+1):
-            pg.draw.line(self.screen, (255,255,255), (i*px, 0), (i*px, self.map_y*px))
-        for j in range(self.map_y+1):
-            pg.draw.line(self.screen, (255,255,255), (0, j*px), (self.map_x*px, j*px))
-            
+        # Grass
+        pg.draw.rect(self.screen, self.color['grass'], 
+                     (0, 0, self.map_x*self.px, self.map_y*self.px))
+        
         # Wall and obstacle
         if np.any(self.W_wall):
             for wall in np.transpose(np.where(self.W_wall)):
-                pg.draw.rect(self.screen, (93,75,51), (*(wall*px), *((wall+1)*px)))
+                pg.draw.rect(self.screen, self.color['wall'], 
+                             (*(wall*self.px), self.px, self.px))
         if np.any(self.W_obstacle):
             for obstacle in np.transpose(np.where(self.W_obstacle)):
-                pg.draw.rect(self.screen, (180,148,91), (*(obstacle*px), *((obstacle+1)*px)))
+                pg.draw.rect(self.screen, self.color['obstacle'], 
+                             (*(obstacle*self.px), self.px, self.px))
         
         # Entity
         if (self.E_predator.awake):
-            pg.draw.rect(self.screen, (202,198,197), (*(self.E_predator.P*px), *((self.E_predator.P+1)*px)))
+            pg.draw.rect(self.screen, self.color['entity_predator'], 
+                         (*(self.E_predator.P*self.px), self.px, self.px))
         if (self.E_prey.awake):
-            pg.draw.rect(self.screen, (253,207,140), (*(self.E_prey.P*px), *((self.E_prey.P+1)*px)))
+            pg.draw.rect(self.screen, self.color['entity_prey'], 
+                         (*(self.E_prey.P*self.px), self.px, self.px))
+            
+        # other
+        if (self.mode_game=='edit'):
+            self.render_editor()
+        
+        # Grid
+        for i in range(self.map_x+1):
+            pg.draw.line(self.screen, (255,255,255), 
+                         (i*self.px, 0), (i*self.px, self.map_y*self.px))
+        for j in range(self.map_y+1):
+            pg.draw.line(self.screen, (255,255,255), 
+                         (0, j*self.px), (self.map_x*self.px, j*self.px))
+        
+        # Description
+        desc_size_w = 256
+        desc_size_h = 256
+        desc_pos = (self.screen_w-desc_size_w, self.screen_h-desc_size_h)
+        self.screen.blit(pg.transform.scale(
+            util_image_load('spr_wood.png'), (desc_size_w, desc_size_h)),
+            desc_pos)
+        
+        # Text
+        desc_mode = self.font.render(text=f'{self.mode_game}', 
+                         antialias=False, color=self.color['font'])
+        self.screen.blit(desc_mode, desc_pos)
         
         # Render Update
         self.clock.tick(self.TPS)
         pg.display.update()
+        
+    def render_editor(self):
+        M = self.util_px2block(Vec2(self.mx, self.my))
+        if (M.x != -1):
+            shade = pg.Surface((self.px, self.px), pg.SRCALPHA)
+            shade.fill(self.color['shade'])
+            self.screen.blit(shade, tuple(M*self.px))
+    
+    
+    def step_mouse(self, action):
+        """
+        1 : Left
+        2 : Middle
+        3 : Right
+        4 : Scroll Up
+        5 : Scroll Down
+        """
+        if (action==4):
+            self.mw += 1
+        elif (action==5):
+            self.mw -= 1
+        
+        if (action==1) and (self.mode_game=='edit'):
+            M = self.util_px2block(Vec2(self.mx, self.my))
+            tile_type = (self.mw % 4) 
+            self.step_build(M, tile_type)
+        
+    def step_build(self, pos, tile):
+        if (pos.x != -1):
+            if (tile == 0):
+                self.W_wall[pos.x, pos.y] = (not self.W_wall[pos.x, pos.y])
+            elif (tile == 1):
+                self.W_obstacle[pos.x, pos.y] = (not self.W_obstacle[pos.x, pos.y])
+            elif (tile == 2):
+                self.W_spawn_player[pos.x, pos.y] = (not self.W_spawn_player[pos.x, pos.y])
+            elif (tile == 3):
+                self.W_spawn_opponent[pos.x, pos.y] = (not self.W_spawn_opponent[pos.x, pos.y])
+                
+    
+    def util_px2block(self, pos_px):
+        pos = (pos_px//self.px)
+        if ((pos.x < 0) or (pos.x >= self.map_x)) or ((pos.y < 0) or (pos.y >= self.map_y)):
+            return Vec2(-1,-1)
+        else:
+            return pos
+    
+    def mode_change(self):
+        mode = ['edit', 'play']
+        self.mode_game = mode[np.mod(mode.index(self.mode_game)+1, len(mode))]
     
     def close(self):
         pg.quit()
@@ -344,5 +445,10 @@ while env_switch:
         if (event.type == pg.QUIT):
             env_switch = False
             env.close()
+        if (event.type == pg.KEYDOWN):
+            if (event.key == pg.K_m):
+                env.mode_change()
         if (event.type == pg.MOUSEMOTION):
             env.mx, env.my = pg.mouse.get_pos() # 마우스 x,y좌표값 저장
+        if (event.type == pg.MOUSEBUTTONDOWN):
+            env.step_mouse(event.button)
