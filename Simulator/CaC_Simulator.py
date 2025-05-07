@@ -132,11 +132,8 @@ class Env_CaC_Simulator:
             'entity_predator': (202,198,197),
             'entity_prey': (253,207,140)}
         
-        #
-        self.W_wall = np.zeros(map_size, dtype=bool)
-        self.W_obstacle = np.zeros(map_size, dtype=bool)
-        self.W_spawn_player = np.zeros(map_size, dtype=bool)
-        self.W_spawn_opponent = np.zeros(map_size, dtype=bool)
+        # map
+        self.W = np.zeros(map_size)
         
         # Cursor
         self.mx = 0 # px
@@ -166,12 +163,19 @@ class Env_CaC_Simulator:
         self.clock = pg.time.Clock()
         self.font = pg.font.SysFont('Arial', size=16)
         
+        # Menu
+        self.menu = Menu(env=self)
+        self.menu.buttons = [
+            Button(func='save', pos=(self.screen_w-220,20)),
+            Button(func='load', pos=(self.screen_w-220,80))]
+        
         # 초기 렌더
         self.screen.fill((0,0,0))
     
     
     def tick(self):
         self.tick_render()
+        self.menu.tick()
     
     def tick_render(self):
         # Background
@@ -182,14 +186,24 @@ class Env_CaC_Simulator:
                      (0, 0, self.map_x*self.px, self.map_y*self.px))
         
         # Wall and obstacle
-        if np.any(self.W_wall):
-            for wall in np.transpose(np.where(self.W_wall)):
+        if np.any(self.W == 1):
+            for wall in np.transpose(np.where(self.W == 1)):
                 pg.draw.rect(self.screen, self.color['wall'], 
                              (*(wall*self.px), self.px, self.px))
-        if np.any(self.W_obstacle):
-            for obstacle in np.transpose(np.where(self.W_obstacle)):
+        if np.any(self.W == 2):
+            for obstacle in np.transpose(np.where(self.W == 2)):
                 pg.draw.rect(self.screen, self.color['obstacle'], 
                              (*(obstacle*self.px), self.px, self.px))
+        
+        # Spawn point
+        if np.any(self.W == -1):
+            for spawn_player in np.transpose(np.where(self.W == -1)):
+                pg.draw.rect(self.screen, self.color['spawn_player'], 
+                             (*(spawn_player*self.px), self.px, self.px))
+        if np.any(self.W == -2):
+            for spawn_opponent in np.transpose(np.where(self.W == -2)):
+                pg.draw.rect(self.screen, self.color['spawn_opponent'], 
+                             (*(spawn_opponent*self.px), self.px, self.px))
         
         # Entity
         if (self.E_predator.awake):
@@ -198,8 +212,11 @@ class Env_CaC_Simulator:
         if (self.E_prey.awake):
             pg.draw.rect(self.screen, self.color['entity_prey'], 
                          (*(self.E_prey.P*self.px), self.px, self.px))
-            
-        # other
+        
+        # Menu
+        self.render_menu()
+        
+        # submenu
         if (self.mode_game=='edit'):
             self.render_editor()
         
@@ -227,13 +244,18 @@ class Env_CaC_Simulator:
         # Render Update
         self.clock.tick(self.TPS)
         pg.display.update()
-        
+    
+    
     def render_editor(self):
         M = self.util_px2block(Vec2(self.mx, self.my))
         if (M.x != -1):
             shade = pg.Surface((self.px, self.px), pg.SRCALPHA)
             shade.fill(self.color['shade'])
             self.screen.blit(shade, tuple(M*self.px))
+    
+    def render_menu(self):
+        for btn in self.menu.buttons:
+            self.screen.blit(btn.spr, btn.pos)        
     
     
     def step_mouse(self, action):
@@ -251,20 +273,28 @@ class Env_CaC_Simulator:
         
         if (action==1) and (self.mode_game=='edit'):
             M = self.util_px2block(Vec2(self.mx, self.my))
-            tile_type = (self.mw % 4) 
+            tile_type = (self.mw % 5) -2
             self.step_build(M, tile_type)
         
+        if (action==1):
+            self.menu.call_button()
+            
+        
     def step_build(self, pos, tile):
+        # 0: None
+        # 1: wall
+        # 2: obstacle
+        # -1: spawn_player
+        # -2: spawn_opponent
         if (pos.x != -1):
-            if (tile == 0):
-                self.W_wall[pos.x, pos.y] = (not self.W_wall[pos.x, pos.y])
-            elif (tile == 1):
-                self.W_obstacle[pos.x, pos.y] = (not self.W_obstacle[pos.x, pos.y])
-            elif (tile == 2):
-                self.W_spawn_player[pos.x, pos.y] = (not self.W_spawn_player[pos.x, pos.y])
-            elif (tile == 3):
-                self.W_spawn_opponent[pos.x, pos.y] = (not self.W_spawn_opponent[pos.x, pos.y])
-                
+            self.W[pos.x, pos.y] = tile
+    
+    
+    def call(self, func):
+        if (func=='save'):
+            self.util_save()
+        elif (func=='load'):
+            self.util_load()
     
     def util_px2block(self, pos_px):
         pos = (pos_px//self.px)
@@ -272,6 +302,17 @@ class Env_CaC_Simulator:
             return Vec2(-1,-1)
         else:
             return pos
+    
+    def util_save(self):
+        dir_main = util_directory()
+        with open(f'{dir_main}/data/map/Map.p', 'wb') as f:
+            pickle.dump(self.W, f)
+    
+    def util_load(self):
+        dir_main = util_directory()
+        with open(f'{dir_main}/data/map/Map.p', 'rb') as f:
+            self.W = pickle.load(f)
+    
     
     def mode_change(self):
         mode = ['edit', 'play']
@@ -305,7 +346,7 @@ class Env_CaC_Simulator:
             
             # Pathfinder
             self.pathfinder = Pathfinder()
-            self.pathfinder.set_w(self.env.W_wall+self.env.W_obstacle)
+            self.pathfinder.set_w(self.env.W)
         
         def tick(self):
             if (self.pathfinder.que_move):
@@ -329,7 +370,7 @@ class Pathfinder:
     def __init__(self):
         self.set_open = []
         self.set_closed = []
-        self.W = np.array([], dtype=bool) # wall and obstacle map
+        self.W = np.array([]) # wall and obstacle map
         self.que_move = []
     
     def set_w(self, W):
@@ -384,7 +425,7 @@ class Pathfinder:
         for near in nears:
             pos = Vec2(near[0], near[1])
             # Not wall and not closed set
-            if (not self.W[near[0], near[1]]) and not (pos in self.set_closed):
+            if (self.W[near[0], near[1]] <= 0) and not (pos in self.set_closed):
                 pos_nears.append(pos)
         
         return pos_nears
@@ -433,6 +474,47 @@ class Node:
             self.f = -1
         else:
             self.f = self.g + self.h
+
+
+class Button():
+    def __init__(self, func, pos=(0,0), size=(200,40)):
+        self.func = func
+        
+        self.on_mouse = False
+        self.pos = pos
+        self.size = size
+        
+        self.spr_default = pg.transform.scale(util_image_load('spr_button_default.png'), size)
+        self.spr_cursored = pg.transform.scale(util_image_load('spr_button_cursored.png'), size)
+        self.spr_pressed = pg.transform.scale(util_image_load('spr_button_pressed.png'), size)
+        self.spr = self.spr_default
+        
+
+class Menu():
+    def __init__(self, env):
+        self.env = env
+        self.buttons = []
+    
+    def tick(self):
+        # check the button
+        mx, my = self.env.mx, self.env.my
+        for btn in self.buttons:
+            btn_x, btn_y = btn.pos[0], btn.pos[1]
+            btn_w, btn_h = btn.size[0], btn.size[1]
+            on_x = (mx > btn_x) and (mx < btn_x + btn_w)
+            on_y = (my > btn_y) and (my < btn_y + btn_h)
+            btn.on_mouse = on_x and on_y
+            if (on_x and on_y):
+                btn.spr = btn.spr_cursored
+            else:
+                btn.spr = btn.spr_default
+    
+    def call_button(self):
+        for btn in self.buttons:
+            if btn.on_mouse:
+                btn.spr = btn.spr_pressed
+                self.env.call(btn.func)
+                break
 
 
 #%%
