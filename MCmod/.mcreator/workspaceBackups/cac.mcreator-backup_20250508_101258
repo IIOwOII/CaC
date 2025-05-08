@@ -2253,6 +2253,25 @@
         ]
       },
       "path": "~/CacInit/Info"
+    },
+    {
+      "name": "IniInfoPf",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_info_pf",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniInfoPfProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Info"
     }
   ],
   "variable_elements": [
@@ -2677,30 +2696,6 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "PF_alpha",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "PF_beta",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "PF_gamma",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "PF_lambda",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "PF_likelihood",
       "type": "datalist",
       "scope": "map",
@@ -2717,6 +2712,18 @@
       "type": "file",
       "scope": "global",
       "value": "new File(\"\")"
+    },
+    {
+      "name": "PF_parameter",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "PF_parameter_name",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [

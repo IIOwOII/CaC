@@ -2696,30 +2696,6 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "PF_alpha",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "PF_beta",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "PF_gamma",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "PF_lambda",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "PF_likelihood",
       "type": "datalist",
       "scope": "map",
@@ -2739,6 +2715,12 @@
     },
     {
       "name": "PF_parameter",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "PF_parameter_name",
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
