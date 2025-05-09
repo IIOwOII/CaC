@@ -360,5 +360,17 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/glow_item_frame": {
+    "criteria": {
+      "has_item_frame": "2025-05-09 18:04:13 +0900"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/map": {
+    "criteria": {
+      "has_compass": "2025-05-09 18:04:25 +0900"
+    },
+    "done": true
+  },
   "DataVersion": 3465
 }

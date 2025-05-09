@@ -255,7 +255,7 @@ class Env_CaC_Simulator:
     
     def render_menu(self):
         for btn in self.menu.buttons:
-            self.screen.blit(btn.spr, btn.pos)        
+            self.screen.blit(btn.spr, btn.pos)
     
     
     def step_mouse(self, action):
@@ -364,8 +364,9 @@ class Env_CaC_Simulator:
                 self.P += (self.v * vec_flag.unit())
             else:
                 self.P += vec_flag
-        
 
+
+#%% Pathfinder
 class Pathfinder:
     def __init__(self):
         self.set_open = []
@@ -475,7 +476,7 @@ class Node:
         else:
             self.f = self.g + self.h
 
-
+#%% Button
 class Button():
     def __init__(self, func, pos=(0,0), size=(200,40)):
         self.func = func
@@ -489,7 +490,7 @@ class Button():
         self.spr_pressed = pg.transform.scale(util_image_load('spr_button_pressed.png'), size)
         self.spr = self.spr_default
         
-
+#%% Menu
 class Menu():
     def __init__(self, env):
         self.env = env
@@ -515,6 +516,17 @@ class Menu():
                 btn.spr = btn.spr_pressed
                 self.env.call(btn.func)
                 break
+
+
+#%% Field
+def Field_point(dE, P, P_ref, k=1):
+    R = P - P_ref
+    field = k * dE(abs(R)) * R.unit()
+    return field
+
+
+def dE_invsq(r):
+    return 1/(r**2)
 
 
 #%%

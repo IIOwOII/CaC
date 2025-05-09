@@ -2272,6 +2272,33 @@
         ]
       },
       "path": "~/CacInit/Info"
+    },
+    {
+      "name": "PrdMeowControl",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_meow_control",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdMeowControlProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "CmdMeowControl",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_meow_control",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdMeowControlCommand.java"
+        ]
+      },
+      "path": "~/CacCommand"
     }
   ],
   "variable_elements": [
@@ -2724,6 +2751,18 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Meow_dx",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Meow_dz",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [

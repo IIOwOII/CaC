@@ -13,8 +13,8 @@
       "fixedValue": 1.0
     },
     "entityDataEntries": [],
-    "modelWidth": 0.6,
-    "modelHeight": 1.8,
+    "modelWidth": 0.5,
+    "modelHeight": 0.5,
     "modelShadowSize": 0.5,
     "mountedYOffset": 0.0,
     "stepHeight": 0.0,
@@ -58,11 +58,11 @@
     "attackStrength": 0,
     "attackKnockback": 0.0,
     "knockbackResistance": 0.0,
-    "movementSpeed": 0.1,
+    "movementSpeed": 0.5,
     "armorBaseValue": 0.0,
     "trackingRange": 256,
     "followRange": 64,
-    "health": 1,
+    "health": 0,
     "xpAmount": 0,
     "waterMob": false,
     "flyingMob": false,
@@ -72,9 +72,9 @@
     "deathTime": 20,
     "lerp": 4,
     "disableCollisions": false,
-    "ridable": true,
-    "canControlForward": true,
-    "canControlStrafe": true,
+    "ridable": false,
+    "canControlForward": false,
+    "canControlStrafe": false,
     "immuneToFire": true,
     "immuneToArrows": true,
     "immuneToFallDamage": true,
@@ -105,15 +105,6 @@
     },
     "raidCelebrationSound": {
       "value": ""
-    },
-    "onRightClickedOn": {
-      "name": "PrdTouchMeowcam"
-    },
-    "onMobTickUpdate": {
-      "name": "AiMeowcam"
-    },
-    "onInitialSpawn": {
-      "name": "PrdInitializeMeowcam"
     },
     "hasAI": true,
     "aiBase": "(none)",

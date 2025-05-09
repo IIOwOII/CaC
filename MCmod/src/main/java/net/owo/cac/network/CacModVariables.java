@@ -168,6 +168,8 @@ public class CacModVariables {
 		public ListTag PF_likelihood = new ListTag();
 		public ListTag PF_parameter = new ListTag();
 		public ListTag PF_parameter_name = new ListTag();
+		public double Meow_dx = 0;
+		public double Meow_dz = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -243,6 +245,8 @@ public class CacModVariables {
 			this.PF_likelihood = nbt.get("PF_likelihood") instanceof ListTag PF_likelihood ? PF_likelihood : new ListTag();
 			this.PF_parameter = nbt.get("PF_parameter") instanceof ListTag PF_parameter ? PF_parameter : new ListTag();
 			this.PF_parameter_name = nbt.get("PF_parameter_name") instanceof ListTag PF_parameter_name ? PF_parameter_name : new ListTag();
+			Meow_dx = nbt.getDouble("Meow_dx");
+			Meow_dz = nbt.getDouble("Meow_dz");
 		}
 
 		@Override
@@ -334,6 +338,8 @@ public class CacModVariables {
 			nbt.put("PF_likelihood", this.PF_likelihood);
 			nbt.put("PF_parameter", this.PF_parameter);
 			nbt.put("PF_parameter_name", this.PF_parameter_name);
+			nbt.putDouble("Meow_dx", Meow_dx);
+			nbt.putDouble("Meow_dz", Meow_dz);
 			return nbt;
 		}
 

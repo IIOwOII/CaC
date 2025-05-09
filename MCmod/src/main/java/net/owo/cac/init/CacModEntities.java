@@ -35,7 +35,7 @@ public class CacModEntities {
 	public static final RegistryObject<EntityType<EntPlayerMouseEntity>> ENT_PLAYER_MOUSE = register("ent_player_mouse", EntityType.Builder.<EntPlayerMouseEntity>of(EntPlayerMouseEntity::new, MobCategory.CREATURE)
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntMeowcamEntity>> ENT_MEOWCAM = register("ent_meowcam", EntityType.Builder.<EntMeowcamEntity>of(EntMeowcamEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
-			.setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntMeowcamEntity::new).fireImmune().sized(0.6f, 1.8f));
+			.setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntMeowcamEntity::new).fireImmune().sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

@@ -1,0 +1,10 @@
+{
+  "_fv": 66,
+  "_type": "command",
+  "definition": {
+    "commandName": "cac_meow_control",
+    "type": "STANDARD",
+    "permissionLevel": "No requirement",
+    "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"number_default\"><field name=\"name\">meow_speed</field><statement name=\"args\"><block type=\"number_default\"><field name=\"name\">meow_dx</field><statement name=\"args\"><block type=\"number_default\"><field name=\"name\">meow_dz</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">PrdMeowControl</field></block></statement></block></statement></block></statement></block></next></block></xml>"
+  }
+}
