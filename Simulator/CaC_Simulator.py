@@ -128,16 +128,17 @@ class Env_CaC_Simulator:
         self.screen_h = 720
         self.color = {
             'font': (255,255,255),
-            'shade': (255,255,255,128),
-            'fm_w': (255,255,255),
-            'fm_f': (0,0,0),
-            'grass': (93,114,59),
-            'wall': (93,75,51),
-            'obstacle': (180,148,91),
-            'spawn_player': (0,0,255),
-            'spawn_opponent': (0,233,255),
-            'entity_predator': (202,198,197),
-            'entity_prey': (253,207,140)}
+            'shade': (255,255,255),
+            'grass': [(93,114,59), (32,32,32), (32,32,32)],
+            'wall': [(93,75,51), (224,224,224), (224,224,224)],
+            'obstacle': [(180,148,91), (224,224,224), (224,224,224)],
+            'void': (0,0,0),
+            'spawn_player': (0,0,224),
+            'spawn_opponent': (0,192,224),
+            'path_predator': (160,0,160),
+            'path_prey': (0,160,160),
+            'dest_predator': (255,0,255),
+            'dest_prey': (0,255,255)}
         
         # map
         self.W = np.zeros(map_size)
@@ -146,7 +147,7 @@ class Env_CaC_Simulator:
         # Cursor
         self.mx = 0 # px
         self.my = 0 # px
-        self.mw = 0 # wheel
+        self.mw = 2 # wheel
         
         # Entity
         self.rho_A = 1.00
@@ -155,10 +156,24 @@ class Env_CaC_Simulator:
         self.E_predator = self.CaC_Entity(env=self, label='predator')
         self.E_prey = self.CaC_Entity(env=self, label='prey')
         
-        # Initialize
+        # Block List
+        self.block_list = ['sp_opp',
+                           'sp_pla',
+                           'grass',
+                           'wall',
+                           'obs',
+                           'void']
+        
+        # Mode Setting
         self.mode_render = mode_render
-        self.mode_game = 'edit'
-        self.mode_map = 'default'
+        
+        self.mode_game_list = ['edit', 'play']
+        self.mode_game = 0
+        
+        self.mode_map_list = ['default', 'field', 'path']
+        self.mode_map = 0
+        
+        # Initialize rendering
         if (mode_render=='human'):
             self.init_render()
     
@@ -208,13 +223,64 @@ class Env_CaC_Simulator:
         self.screen.fill((0,0,0))
         
         # Grass
-        pg.draw.rect(self.screen, self.color['grass'], 
+        pg.draw.rect(self.screen, self.color['grass'][self.mode_map], 
                      (0, 0, self.map_x*self.px, self.map_y*self.px))
         
         # Wall and obstacle
         self.render_wall()
         
         # Spawn point
+        if (self.mode_map == 0):
+            self.render_spawnpoint()
+        
+        # Entity path
+        if (self.mode_map==2):
+            self.render_path()
+        
+        # Menu
+        self.render_menu()
+        
+        # submenu
+        if (self.mode_game==0):
+            self.render_editor()
+        
+        # Grid
+        for i in range(self.map_x+1):
+            pg.draw.line(self.screen, (128,128,128), 
+                         (i*self.px, 0), (i*self.px, self.map_y*self.px))
+        for j in range(self.map_y+1):
+            pg.draw.line(self.screen, (128,128,128), 
+                         (0, j*self.px), (self.map_x*self.px, j*self.px))
+        
+        # Entity
+        self.E_predator.render()
+        self.E_prey.render()
+        
+        # Description
+        self.render_description()
+        
+        # Render Update
+        pg.display.update()
+    
+    def render_description(self):
+        width = 240
+        height = 240
+        offset = Vec2(self.screen_w-width, self.screen_h-height)
+        self.screen.blit(pg.transform.scale(
+            util_image_load('spr_wood.png'), (width, height)), tuple(offset))
+        
+        # Text
+        text_mode = self.font.render(
+            text=f'Mode: {self.mode_game_list[self.mode_game]}', antialias=True, color=self.color['font'])
+        self.screen.blit(text_mode, tuple(offset+Vec2(20,20)))
+        text_map = self.font.render(
+            text=f'Map: {self.mode_map_list[self.mode_map]}', antialias=True, color=self.color['font'])
+        self.screen.blit(text_map, tuple(offset+Vec2(20,60)))
+        text_block = self.font.render(
+            text=f'Block: {self.block_list[(self.mw%6)]}', antialias=True, color=self.color['font'])
+        self.screen.blit(text_block, tuple(offset+Vec2(20,100)))
+    
+    def render_spawnpoint(self):
         if np.any(self.W == -1):
             for spawn_player in np.transpose(np.where(self.W == -1)):
                 pg.draw.rect(self.screen, self.color['spawn_player'], 
@@ -223,53 +289,21 @@ class Env_CaC_Simulator:
             for spawn_opponent in np.transpose(np.where(self.W == -2)):
                 pg.draw.rect(self.screen, self.color['spawn_opponent'], 
                              (*(spawn_opponent*self.px), self.px, self.px))
-        
-        # Menu
-        self.render_menu()
-        
-        # submenu
-        if (self.mode_game=='edit'):
-            self.render_editor()
-        
-        # Grid
-        for i in range(self.map_x+1):
-            pg.draw.line(self.screen, (255,255,255,128), 
-                         (i*self.px, 0), (i*self.px, self.map_y*self.px))
-        for j in range(self.map_y+1):
-            pg.draw.line(self.screen, (255,255,255,128), 
-                         (0, j*self.px), (self.map_x*self.px, j*self.px))
-        
-        # Entity
-        self.E_predator.render()
-        self.E_prey.render()
-        
-        # Description
-        desc_size_w = 256
-        desc_size_h = 256
-        desc_pos = (self.screen_w-desc_size_w, self.screen_h-desc_size_h)
-        self.screen.blit(pg.transform.scale(
-            util_image_load('spr_wood.png'), (desc_size_w, desc_size_h)),
-            desc_pos)
-        
-        # Text
-        desc_mode = self.font.render(text=f'{self.mode_game}', 
-                         antialias=False, color=self.color['font'])
-        self.screen.blit(desc_mode, desc_pos)
-        
-        # Render Update
-        
-        pg.display.update()
     
     def render_wall(self):
         # Including obstacle
         if np.any(self.W == 1):
             for wall in np.transpose(np.where(self.W == 1)):
-                pg.draw.rect(self.screen, self.color['wall'], 
+                pg.draw.rect(self.screen, self.color['wall'][self.mode_map], 
                              (*(wall*self.px), self.px, self.px))
         if np.any(self.W == 2):
             for obstacle in np.transpose(np.where(self.W == 2)):
-                pg.draw.rect(self.screen, self.color['obstacle'], 
+                pg.draw.rect(self.screen, self.color['obstacle'][self.mode_map], 
                              (*(obstacle*self.px), self.px, self.px))
+        if np.any(self.W == 3):
+            for void in np.transpose(np.where(self.W == 3)):
+                pg.draw.rect(self.screen, self.color['void'], 
+                             (*(void*self.px), self.px, self.px))
     
     def render_editor(self):
         M = self.util_px2block(Vec2(self.mx, self.my))
@@ -289,6 +323,18 @@ class Env_CaC_Simulator:
         spd_text = self.font.render(f'{self.rho_A:.2f}', True, self.color['font'])
         self.screen.blit(spd_text, (self.screen_w-140, 210))
     
+    def render_path(self):
+        for path in self.E_predator.pathfinder.que_move:
+            pg.draw.rect(self.screen, self.color['path_predator'],
+                         (*(path*self.px), self.px, self.px))
+        for path in self.E_prey.pathfinder.que_move:
+            pg.draw.rect(self.screen, self.color['path_prey'],
+                         (*(path*self.px), self.px, self.px))
+        pg.draw.rect(self.screen, self.color['dest_predator'],
+                     (*(self.E_predator.pathfinder.destination*self.px), self.px, self.px))
+        pg.draw.rect(self.screen, self.color['dest_prey'],
+                     (*(self.E_prey.pathfinder.destination*self.px), self.px, self.px))
+    
     
     def step_mouse(self, action):
         """
@@ -303,9 +349,9 @@ class Env_CaC_Simulator:
         elif (action==5):
             self.mw -= 1
         
-        if (action==1) and (self.mode_game=='edit'):
+        if (action==1) and (self.mode_game==0):
             M = self.util_px2block(Vec2(self.mx, self.my))
-            tile_type = (self.mw % 5) -2
+            tile_type = (self.mw % 6) -2
             self.step_build(M, tile_type)
         
         if (action==1):
@@ -316,6 +362,7 @@ class Env_CaC_Simulator:
         # 0: None
         # 1: wall
         # 2: obstacle
+        # 3: void
         # -1: spawn_player
         # -2: spawn_opponent
         if (pos.x != -1):
@@ -378,12 +425,10 @@ class Env_CaC_Simulator:
             return
         else:
             if mode_type == 'game':
-                mode_games = ['edit', 'play']
-                self.mode_game = mode_games[np.mod(mode_games.index(self.mode_game)+1, len(mode_games))]
-                self.E_switch_render = (self.mode_game != 'edit')
+                self.mode_game = (self.mode_game + 1) % len(self.mode_game_list)
+                self.E_switch_render = (self.mode_game != 0)
             elif mode_type == 'map':
-                mode_maps = ['default', 'field']
-                self.mode_map = mode_maps[np.mod(mode_maps.index(self.mode_map)+1, len(mode_maps))]
+                self.mode_map = (self.mode_map + 1) % len(self.mode_map_list)
     
     def close(self):
         pg.quit()
@@ -405,13 +450,13 @@ class Env_CaC_Simulator:
             self.v = (speed/env.TPS) # [block/tick]
             self.r = 0 # [Deg]
             if (self.label=='predator'):
-                self.k = {'opponent': -100,
+                self.k = {'opponent': -50,
                           'wall': 0,
                           'obstacle': 0}
             elif (self.label=='prey'):
                 self.k = {'opponent': 10,
-                          'wall': 10,
-                          'obstacle': 3}
+                          'wall': 5,
+                          'obstacle': 2}
             
             # Field
             self.timer = 0
@@ -446,7 +491,7 @@ class Env_CaC_Simulator:
             if (self.timer == 10):
                 self.timer = 0
                 self.update_path()
-            if (self.pathfinder.que_move):
+            elif (self.pathfinder.que_move):
                 flag = self.pathfinder.que_move[-1]
                 self.move(flag)
                 if self.P.distance(flag) < 0.1:
@@ -471,8 +516,23 @@ class Env_CaC_Simulator:
         
         def update_path(self):
             F = self.update_field()
-            flag = self.P + F
-            self.pathfinder.findpath(self.P, flag)
+            dF = F.unit() * 0.1
+            P_targ = self.P + F
+            
+            map_x = self.env.map_x
+            map_y = self.env.map_y
+            W = self.env.W
+            while True:
+                P_rnd = P_targ.vec2int()
+                cond_x = (P_rnd.x >= 0) and (P_rnd.x < map_x)
+                cond_y = (P_rnd.y >= 0) and (P_rnd.y < map_y)
+                if cond_x and cond_y:
+                    cond_w = (W[tuple(P_rnd)] <= 0)
+                    if cond_w:
+                        break
+                P_targ -= dF
+            
+            self.pathfinder.findpath(self.P, P_targ)
             
         def update_field(self):
             r_walls = np.array(list(self.P))-self.env.walls
@@ -494,6 +554,7 @@ class Pathfinder:
         self.set_closed = []
         self.W = np.array([]) # wall and obstacle map
         self.que_move = []
+        self.destination = Vec2(0,0)
     
     def set_w(self, W):
         self.W = W
@@ -503,16 +564,15 @@ class Pathfinder:
         self.set_closed.clear()
         self.que_move.clear()
     
-    
-    
-    def findpath(self, pos_start, pos_end):
-        pos_start = pos_start.vec2int()
-        pos_end = pos_end.vec2int()
+    def findpath(self, vec_S, vec_E):
         self.reset()
         
-        node_start = Node(pos=pos_start, g=0, 
-                          h=round(10*pos_start.distance(pos_end, method='M')))
-        node_end = Node(pos=pos_end, g=-1, h=0)
+        S = vec_S.vec2int()
+        E = vec_E.vec2int()
+        self.destination = E
+        node_start = Node(pos=S, g=0, 
+                          h=round(10*S.distance(E, method='M')))
+        node_end = Node(pos=E, g=-1, h=0)
         self.set_open.append(deepcopy(node_start))
         
         while (self.set_open): # set_open is not empty
@@ -527,7 +587,7 @@ class Pathfinder:
             
             if (node_curr == node_end):
                 pos_trace = node_end.pos
-                while (pos_trace != pos_start):
+                while (pos_trace != S):
                     self.que_move.append(deepcopy(pos_trace))
                     pos_trace -= self.set_closed[self.set_closed.index(pos_trace)].r
                 return
@@ -629,7 +689,7 @@ class Menu():
         # check the button
         mx, my = self.env.mx, self.env.my
         for btn in self.buttons:
-            if self.env.mode_game in btn.condition:
+            if self.env.mode_game_list[self.env.mode_game] in btn.condition:
                 btn_x, btn_y = btn.pos[0], btn.pos[1]
                 btn_w, btn_h = btn.size[0], btn.size[1]
                 on_x = (mx > btn_x) and (mx < btn_x + btn_w)
@@ -664,6 +724,8 @@ def Field_point(vec_r, k=1, func='1/r^2'):
     
     return field
 
+
+def Field_line
 
 #%%
 env = Env_CaC_Simulator()
