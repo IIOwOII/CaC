@@ -50,6 +50,9 @@ public class CstManagePosition {
 						CacModVariables.Dat_pos_player_x_prep.add((pos_player.x()));
 						CacModVariables.Dat_pos_player_z_prep.add((pos_player.z()));
 						CacModVariables.Dat_pos_player_r_prep.add((ent_player.getYRot()));
+						CacModVariables.Dat_pos_opponent_x_prep.add((pos_opponent.x()));
+						CacModVariables.Dat_pos_opponent_z_prep.add((pos_opponent.z()));
+						CacModVariables.Dat_pos_opponent_r_prep.add((ent_opponent.getYRot()));
 					}
 					if (CacModVariables.MapVariables.get(world).Exp_phase == 2) {
 						CacModVariables.Dat_pos_time.add((int)CacModVariables.MapVariables.get(world).TimR_time);

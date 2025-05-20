@@ -392,8 +392,87 @@ class Env_CaC_Simulator:
             return pos
     
     def util_categorize_map(self):
+        # Point sort
         self.walls = np.transpose(np.where(self.W==1))
         self.obstacles = np.transpose(np.where(self.W==2))
+        
+        # Line sort (vertices)
+        self.util_find_vertice()
+    
+    def util_find_vertice(self):
+        # sort the vertice of walls from the map
+        walls = (self.W == 1)
+        self.walls_vt = {'row': [], 'column': []}
+        obstacles = (self.W == 2)
+        self.obstacles_vt = {'row': [], 'column': []}
+        
+        # find the vertices of row(x)
+        for y in range(self.map_y):
+            vt_temp = []
+            if all(walls[0:2,y]):
+                vt_temp.append([0,y])
+            vt_temp_obs = []
+            if all(obstacles[0:2,y]):
+                vt_temp_obs.append([0,y])
+                
+            for x in range(1, self.map_x-1):
+                w = walls[x-1:x+2,y]
+                if all([not w[0], w[1], w[2]]): # (-) side
+                    vt_temp.append([x,y])
+                elif all([w[0], w[1], not w[2]]): # (+) side
+                    vt_temp.append([x,y])
+                    self.walls_vt['row'].append(deepcopy(vt_temp))
+                    vt_temp.clear()
+                o = obstacles[x-1:x+2,y]
+                if all([not o[0], o[1], o[2]]): # (-) side
+                    vt_temp_obs.append([x,y])
+                elif all([o[0], o[1], not o[2]]): # (+) side
+                    vt_temp_obs.append([x,y])
+                    self.obstacles_vt['row'].append(deepcopy(vt_temp_obs))
+                    vt_temp_obs.clear()
+                    
+            if all(walls[self.map_x-2:self.map_x,y]):
+                vt_temp.append([self.map_x-1,y])
+                self.walls_vt['row'].append(deepcopy(vt_temp))
+            if all(obstacles[self.map_x-2:self.map_x,y]):
+                vt_temp_obs.append([self.map_x-1,y])
+                self.obstacles_vt['row'].append(deepcopy(vt_temp_obs))
+        self.walls_vt['row'] = np.array(self.walls_vt['row'])
+        self.obstacles_vt['row'] = np.array(self.obstacles_vt['row'])
+        
+        # find the vertices of column(y)
+        for x in range(self.map_x):
+            vt_temp = []
+            if all(walls[x,0:2]):
+                vt_temp.append([x,0])
+            vt_temp_obs = []
+            if all(obstacles[x,0:2]):
+                vt_temp_obs.append([x,0])
+                
+            for y in range(1, self.map_y-1):
+                w = walls[x,y-1:y+2]
+                if all([not w[0], w[1], w[2]]): # (-) side
+                    vt_temp.append([x,y])
+                elif all([w[0], w[1], not w[2]]): # (+) side
+                    vt_temp.append([x,y])
+                    self.walls_vt['column'].append(deepcopy(vt_temp))
+                    vt_temp.clear()
+                o = obstacles[x,y-1:y+2]
+                if all([not o[0], o[1], o[2]]): # (-) side
+                    vt_temp_obs.append([x,y])
+                elif all([o[0], o[1], not o[2]]): # (+) side
+                    vt_temp_obs.append([x,y])
+                    self.obstacles_vt['column'].append(deepcopy(vt_temp_obs))
+                    vt_temp_obs.clear()
+                
+            if all(walls[x,self.map_y-2:self.map_y]):
+                vt_temp.append([x,self.map_y-1])
+                self.walls_vt['column'].append(deepcopy(vt_temp))
+            if all(obstacles[x,self.map_y-2:self.map_y]):
+                vt_temp_obs.append([x,self.map_y-1])
+                self.obstacles_vt['column'].append(deepcopy(vt_temp_obs))
+        self.walls_vt['column'] = np.array(self.walls_vt['column'])
+        self.obstacles_vt['column'] = np.array(self.obstacles_vt['column'])
     
     def util_save(self):
         dir_main = util_directory()
@@ -455,8 +534,8 @@ class Env_CaC_Simulator:
                           'obstacle': 0}
             elif (self.label=='prey'):
                 self.k = {'opponent': 10,
-                          'wall': 5,
-                          'obstacle': 2}
+                          'wall': 10,
+                          'obstacle': 3}
             
             # Field
             self.timer = 0
@@ -488,7 +567,7 @@ class Env_CaC_Simulator:
             
         def tick(self):
             self.timer += 1
-            if (self.timer == 10):
+            if (self.timer == 20):
                 self.timer = 0
                 self.update_path()
             elif (self.pathfinder.que_move):
@@ -535,14 +614,27 @@ class Env_CaC_Simulator:
             self.pathfinder.findpath(self.P, P_targ)
             
         def update_field(self):
-            r_walls = np.array(list(self.P))-self.env.walls
-            r_obstacles = np.array(list(self.P))-self.env.obstacles
+            P = np.array(list(self.P))
+            r_walls = {'column': self.env.walls_vt['column']-P,
+                       'row': self.env.walls_vt['row']-P}
+            r_obstacles = {'column': self.env.obstacles_vt['column']-P,
+                           'row': self.env.obstacles_vt['row']-P}
             
             sum_field = Vec2(0,0)
-            sum_field += Field_point(np.array([list(self.P - self.other.P)]),
-                                     k=self.k['opponent'], func='1/r^2')
-            sum_field += Field_point(r_walls, k=self.k['wall'], func='1/r^2')
-            sum_field += Field_point(r_obstacles, k=self.k['obstacle'], func='1/r^2')
+            r_opp = self.other.P - self.P
+            if self.label=='predator':
+                f_opp = r_opp+r_opp.unit()
+            if self.label=='prey':
+                f_opp = Field_point(np.array([list(r_opp)]),
+                                          k=self.k['opponent'], f='1/r')
+                # f_opp = -(8 - min(abs(r_opp),8)) * r_opp.unit()
+            sum_field += f_opp
+            # sum_field += Field_point(np.array([list(self.P - self.other.P)]),
+            #                          k=self.k['opponent'], f='1/r^2')
+            sum_field += Field_line(r_walls, k=self.k['wall'], f='1/r')
+            sum_field += Field_line(r_obstacles, k=self.k['obstacle'], f='1/r')
+            
+            print(sum_field)
             
             return sum_field
             
@@ -711,21 +803,82 @@ class Menu():
 
 
 #%% Field
-def Field_point(vec_r, k=1, func='1/r^2'):
+def Field_point(vec_r, k=1, f='1/r^2'):
+    """
+    Parameters
+    ----------
+    vec_r : ndarray(Vec2)
+        The distance vector between points to target.
+    k : num
+        force scalar multiplier. The default is 1.
+    f : str
+        The field function by distance r of the point. The default is '1/r^2'.
+
+    Returns
+    -------
+    field : Vec2
+        The Net field to the target by points.
+    """
+    
     sca_r = (np.sum(vec_r**2, axis=1, keepdims=True)**0.5)
     
-    if func=='1/r^2':
+    if f=='1/r^2':
         E = 1/(sca_r**2)
+    elif f=='1/r':
+        E = 1/sca_r
     
     unit_r = vec_r/sca_r
     
-    fields = k * E * unit_r
+    fields = -k * E * unit_r
     field = Vec2(*np.sum(fields, axis=0))
     
     return field
 
 
-def Field_line
+def Field_line(vec_r, k=1, f='1/r'):
+    nu_p = vec_r['column'][:,1] # (+) side (x=n, y=u)
+    un_p = vec_r['row'][:,1] # (+) side (x=u, y=n)
+    nu_m = vec_r['column'][:,0] # (-) side (x=n, y=u)
+    un_m = vec_r['row'][:,0] # (-) side (x=u, y=n)
+    
+    field_x = 0
+    field_y = 0
+    
+    if f=='1/r':
+        # basis n : (l/d)/r
+        # basis u : -1/r
+        
+        # nu_p
+        r = (np.sum(nu_p**2, axis=1)**0.5)
+        l = nu_p[:,1]
+        d = nu_p[:,0]
+        field_x += np.sum(np.divide(l, d, out=np.zeros(l.shape, dtype=float), where=(d!=0)) / r)
+        field_y += np.sum(-1 / r)
+        
+        # un_p
+        r = (np.sum(un_p**2, axis=1)**0.5)
+        l = un_p[:,0]
+        d = un_p[:,1]
+        field_x += np.sum(-1 / r)
+        field_y += np.sum(np.divide(l, d, out=np.zeros(l.shape, dtype=float), where=(d!=0)) / r)
+        
+        # nu_m
+        r = (np.sum(nu_m**2, axis=1)**0.5)
+        l = nu_m[:,1]
+        d = nu_m[:,0]
+        field_x -= np.sum(np.divide(l, d, out=np.zeros(l.shape, dtype=float), where=(d!=0)) / r)
+        field_y -= np.sum(-1 / r)
+        
+        # un_m
+        r = (np.sum(un_m**2, axis=1)**0.5)
+        l = un_m[:,0]
+        d = un_m[:,1]
+        field_x -= np.sum(-1 / r)
+        field_y -= np.sum(np.divide(l, d, out=np.zeros(l.shape, dtype=float), where=(d!=0)) / r)
+    
+    field = (-k * Vec2(field_x, field_y))
+    
+    return field
 
 #%%
 env = Env_CaC_Simulator()

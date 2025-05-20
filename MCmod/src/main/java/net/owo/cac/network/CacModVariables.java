@@ -50,6 +50,9 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_pos_player_r_prep = new com.google.gson.JsonArray();
 	public static File Info_timestamp = new File("");
 	public static File Info_PF = new File("");
+	public static com.google.gson.JsonArray Dat_pos_opponent_x_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_opponent_z_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

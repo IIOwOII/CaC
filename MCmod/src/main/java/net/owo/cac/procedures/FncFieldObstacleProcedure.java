@@ -33,7 +33,7 @@ public class FncFieldObstacleProcedure {
 		offset_x = CacModVariables.MapVariables.get(world).Pos_offset.x();
 		offset_z = CacModVariables.MapVariables.get(world).Pos_offset.z();
 		vec_field = Vec3.ZERO;
-		vec_opponent = new Vec3((x - (offset_x + 0.5)), 0, (z - (offset_z + 0.5)));
+		vec_opponent = new Vec3((x - CacModVariables.MapVariables.get(world).Pos_offset.x()), 0, (z - CacModVariables.MapVariables.get(world).Pos_offset.z()));
 		list_line = CacModVariables.MapVariables.get(world).List_obstacle.copy();
 		sca_K = 3;
 		for (Tag dataelementiterator : list_line) {

@@ -2723,6 +2723,24 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "Dat_pos_opponent_x_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_z_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_r_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [

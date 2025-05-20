@@ -13,7 +13,9 @@ public class AiCatProcedure {
 		if (CacModVariables.MapVariables.get(world).Switch_AI) {
 			if (CacModVariables.MapVariables.get(world).Time_AI == 0 && !world.isClientSide()) {
 				if (entity instanceof Mob _entity)
-					_entity.getNavigation().moveTo((CacModVariables.MapVariables.get(world).Pos_player.x()), (CacModVariables.MapVariables.get(world).Pos_player.y()), (CacModVariables.MapVariables.get(world).Pos_player.z()),
+					_entity.getNavigation().moveTo(((CacModVariables.MapVariables.get(world).Pos_player.add(((CacModVariables.MapVariables.get(world).Pos_player.subtract(CacModVariables.MapVariables.get(world).Pos_opponent)).normalize()))).x()),
+							(CacModVariables.MapVariables.get(world).Pos_player.y()),
+							((CacModVariables.MapVariables.get(world).Pos_player.add(((CacModVariables.MapVariables.get(world).Pos_player.subtract(CacModVariables.MapVariables.get(world).Pos_opponent)).normalize()))).z()),
 							(0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Dat_difficulty_absolute, 0.5)));
 			}
 		}

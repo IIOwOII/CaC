@@ -19,6 +19,7 @@ public class RecPositionProcedure {
 		com.google.gson.JsonObject obj_gameplay = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_preparation = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_player_prep = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_opponent_prep = new com.google.gson.JsonObject();
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_position));
@@ -38,8 +39,12 @@ public class RecPositionProcedure {
 			obj_player_prep.add("x", CacModVariables.Dat_pos_player_x_prep);
 			obj_player_prep.add("z", CacModVariables.Dat_pos_player_z_prep);
 			obj_player_prep.add("r", CacModVariables.Dat_pos_player_r_prep);
+			obj_opponent_prep.add("x", CacModVariables.Dat_pos_opponent_x_prep);
+			obj_opponent_prep.add("z", CacModVariables.Dat_pos_opponent_z_prep);
+			obj_opponent_prep.add("r", CacModVariables.Dat_pos_opponent_r_prep);
 			obj_preparation.add("time", CacModVariables.Dat_pos_time_prep);
 			obj_preparation.add("player", obj_player_prep);
+			obj_preparation.add("opponent", obj_opponent_prep);
 			obj_trial.add("preparation", obj_preparation);
 		}
 		if (!CacModVariables.Dat_pos_time.isEmpty()) {

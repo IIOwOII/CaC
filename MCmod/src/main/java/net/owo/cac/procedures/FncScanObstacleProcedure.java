@@ -21,33 +21,28 @@ public class FncScanObstacleProcedure {
 		ListTag list_vertice_temp;
 		ListTag list_line_temp;
 		ListTag list_line;
-		double offset_x = 0;
-		double offset_z = 0;
+		Vec3 vec_SE = Vec3.ZERO;
 		double offset_y = 0;
 		double sx = 0;
 		double sz = 0;
-		double radius_map = 0;
-		Vec3 vec_OS = Vec3.ZERO;
-		Vec3 vec_OE = Vec3.ZERO;
-		Vec3 vec_SE = Vec3.ZERO;
-		offset_x = CacModVariables.MapVariables.get(world).Pos_offset.x();
-		offset_z = CacModVariables.MapVariables.get(world).Pos_offset.z();
+		double bx_offset = 0;
+		double bz_offset = 0;
+		bx_offset = Math.round(CacModVariables.MapVariables.get(world).Pos_offset.x() - 0.5);
+		bz_offset = Math.round(CacModVariables.MapVariables.get(world).Pos_offset.z() - 0.5);
 		offset_y = CacModVariables.MapVariables.get(world).Pos_offset.y();
-		vec_OS = CacModVariables.MapVariables.get(world).Pos_border_start.subtract(CacModVariables.MapVariables.get(world).Pos_offset);
-		vec_OE = CacModVariables.MapVariables.get(world).Pos_border_end.subtract(CacModVariables.MapVariables.get(world).Pos_offset);
 		vec_SE = CacModVariables.MapVariables.get(world).Pos_border_end.subtract(CacModVariables.MapVariables.get(world).Pos_border_start);
 		list_line = new ListTag();
 		list_vertice_temp = new ListTag();
 		list_line_temp = new ListTag();
-		sx = CacModVariables.MapVariables.get(world).Pos_border_start.x();
+		sx = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.x() - 0.5);
 		for (int index0 = 0; index0 < (int) (vec_SE.x() + 1); index0++) {
-			sz = CacModVariables.MapVariables.get(world).Pos_border_start.z();
-			block_prev = (world.getBlockState(BlockPos.containing(sx - 0.5, offset_y, sz - 1.5)));
-			block_curr = (world.getBlockState(BlockPos.containing(sx - 0.5, offset_y, sz - 0.5)));
+			sz = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.z() - 0.5);
+			block_prev = (world.getBlockState(BlockPos.containing(sx, offset_y, sz - 1)));
+			block_curr = (world.getBlockState(BlockPos.containing(sx, offset_y, sz)));
 			for (int index1 = 0; index1 < (int) (vec_SE.z() + 1); index1++) {
 				ispoint_start = false;
 				ispoint_end = false;
-				block_next = (world.getBlockState(BlockPos.containing(sx - 0.5, offset_y, sz + 0.5)));
+				block_next = (world.getBlockState(BlockPos.containing(sx, offset_y, sz + 1)));
 				if (block_curr.getBlock() == CacModBlocks.BLK_OBSTACLE.get()) {
 					if (!(block_prev.getBlock() == CacModBlocks.BLK_OBSTACLE.get())) {
 						ispoint_start = true;
@@ -58,8 +53,8 @@ public class FncScanObstacleProcedure {
 				}
 				if (ispoint_start || ispoint_end) {
 					list_vertice_temp = new ListTag();
-					list_vertice_temp.addTag(0, IntTag.valueOf((int) sx));
-					list_vertice_temp.addTag(1, IntTag.valueOf((int) sz));
+					list_vertice_temp.addTag(0, IntTag.valueOf((int) Math.round(sx - bx_offset)));
+					list_vertice_temp.addTag(1, IntTag.valueOf((int) Math.round(sz - bz_offset)));
 					if (ispoint_start && !ispoint_end) {
 						list_line_temp = new ListTag();
 						list_line_temp.addTag(0, (list_vertice_temp.copy()));
@@ -74,15 +69,15 @@ public class FncScanObstacleProcedure {
 			}
 			sx = sx + 1;
 		}
-		sz = vec_OS.z();
+		sz = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.z() - 0.5);
 		for (int index2 = 0; index2 < (int) (vec_SE.z() + 1); index2++) {
-			sx = vec_OS.x();
-			block_prev = (world.getBlockState(BlockPos.containing(sx - 1 + offset_x - 0.5, offset_y, sz + offset_z - 0.5)));
-			block_curr = (world.getBlockState(BlockPos.containing(sx + offset_x - 0.5, offset_y, sz + offset_z - 0.5)));
+			sx = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.x() - 0.5);
+			block_prev = (world.getBlockState(BlockPos.containing(sx - 1, offset_y, sz)));
+			block_curr = (world.getBlockState(BlockPos.containing(sx, offset_y, sz)));
 			for (int index3 = 0; index3 < (int) (vec_SE.x() + 1); index3++) {
 				ispoint_start = false;
 				ispoint_end = false;
-				block_next = (world.getBlockState(BlockPos.containing(sx + 1 + offset_x - 0.5, offset_y, sz + offset_z - 0.5)));
+				block_next = (world.getBlockState(BlockPos.containing(sx + 1, offset_y, sz)));
 				if (block_curr.getBlock() == CacModBlocks.BLK_OBSTACLE.get()) {
 					if (!(block_prev.getBlock() == CacModBlocks.BLK_OBSTACLE.get())) {
 						ispoint_start = true;
@@ -93,8 +88,8 @@ public class FncScanObstacleProcedure {
 				}
 				if (ispoint_start || ispoint_end) {
 					list_vertice_temp = new ListTag();
-					list_vertice_temp.addTag(0, IntTag.valueOf((int) sx));
-					list_vertice_temp.addTag(1, IntTag.valueOf((int) sz));
+					list_vertice_temp.addTag(0, IntTag.valueOf((int) Math.round(sx - bx_offset)));
+					list_vertice_temp.addTag(1, IntTag.valueOf((int) Math.round(sz - bz_offset)));
 					if (ispoint_start && !ispoint_end) {
 						list_line_temp = new ListTag();
 						list_line_temp.addTag(0, (list_vertice_temp.copy()));

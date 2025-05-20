@@ -2224,6 +2224,10 @@
         ],
         "dependencies": [
           {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
             "name": "x",
             "type": "number"
           },

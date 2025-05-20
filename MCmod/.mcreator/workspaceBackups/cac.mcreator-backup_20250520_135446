@@ -1363,67 +1363,6 @@
       "path": "~/CacEntity"
     },
     {
-      "name": "AiMeowcam",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ai_meowcam",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/AiMeowcamProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacAI"
-    },
-    {
-      "name": "PrdInitializeMeowcam",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_initialize_meowcam",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdInitializeMeowcamProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacCondition"
-    },
-    {
-      "name": "PrdTouchMeowcam",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_touch_meowcam",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdTouchMeowcamProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "TimAbsolute",
       "type": "procedure",
       "compiles": true,
@@ -2283,7 +2222,28 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdMeowControlProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -2763,6 +2723,24 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "Dat_pos_opponent_x_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_z_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_r_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [
