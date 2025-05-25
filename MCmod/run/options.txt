@@ -15,7 +15,7 @@ reducedDebugInfo:false
 showSubtitles:false
 directionalAudio:false
 touchscreen:false
-fullscreen:true
+fullscreen:false
 bobView:false
 toggleCrouch:false
 toggleSprint:false
@@ -35,15 +35,15 @@ renderDistance:5
 simulationDistance:8
 entityDistanceScaling:1.0
 guiScale:0
-particles:0
+particles:1
 maxFps:120
 graphicsMode:0
 ao:false
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"false"
-resourcePacks:[]
-incompatibleResourcePacks:[]
+resourcePacks:["vanilla","mod_resources","file/better-world-border.zip"]
+incompatibleResourcePacks:["file/better-world-border.zip"]
 lastServer:localhost:25463
 lang:en_us
 soundDevice:""
@@ -122,6 +122,7 @@ key_key.cac.cac_key_camera:key.keyboard.right.control
 key_key.cac.cac_key_left:key.keyboard.left
 key_key.cac.cac_key_right:key.keyboard.right
 key_key.cac.cac_key_signal:key.keyboard.s
+key_key.cac.cac_key_stopwatch:key.keyboard.right.shift
 soundCategory_master:1.0
 soundCategory_music:0.0
 soundCategory_record:1.0

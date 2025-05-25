@@ -1,5 +1,6 @@
 package net.owo.cac.procedures;
 
+import net.owo.cac.network.CacModVariables;
 import net.owo.cac.entity.EntMeowcamEntity;
 
 import net.minecraft.world.phys.Vec3;
@@ -21,12 +22,12 @@ public class PrdMeowControlProcedure {
 			final Vec3 _center = new Vec3(x, y, z);
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(64 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 			for (Entity entityiterator : _entfound) {
-				if (entityiterator instanceof EntMeowcamEntity) {
-					if (!world.isClientSide()) {
-						if (entityiterator instanceof Mob _entity)
-							_entity.getNavigation().moveTo((entityiterator.getX() + DoubleArgumentType.getDouble(arguments, "meow_dx")), (entityiterator.getY()), (entityiterator.getZ() + DoubleArgumentType.getDouble(arguments, "meow_dz")),
-									(0.565685424949238 * Math.pow(DoubleArgumentType.getDouble(arguments, "meow_speed"), 0.5)));
-					}
+				if (entityiterator instanceof EntMeowcamEntity && !world.isClientSide()) {
+					CacModVariables.MapVariables.get(world).Meow_destination = (entityiterator.position()).add((new Vec3((DoubleArgumentType.getDouble(arguments, "meow_dx")), 0, (DoubleArgumentType.getDouble(arguments, "meow_dz")))));
+					CacModVariables.MapVariables.get(world).syncData(world);
+					if (entityiterator instanceof Mob _entity)
+						_entity.getNavigation().moveTo((CacModVariables.MapVariables.get(world).Meow_destination.x()), (CacModVariables.MapVariables.get(world).Meow_destination.y()), (CacModVariables.MapVariables.get(world).Meow_destination.z()),
+								(0.565685424949238 * Math.pow(DoubleArgumentType.getDouble(arguments, "meow_speed"), 0.5)));
 				}
 			}
 		}

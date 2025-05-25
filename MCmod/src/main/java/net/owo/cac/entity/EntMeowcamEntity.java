@@ -10,6 +10,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
+import net.owo.cac.procedures.AiMoveMeowProcedure;
 import net.owo.cac.init.CacModEntities;
 
 import net.minecraftforge.network.PlayMessages;
@@ -142,6 +143,7 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	public void baseTick() {
 		super.baseTick();
+		AiMoveMeowProcedure.execute();
 		this.refreshDimensions();
 	}
 

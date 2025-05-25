@@ -4,6 +4,8 @@
  */
 package net.owo.cac.init;
 
+import net.owo.cac.client.renderer.EntPseudoMouseRenderer;
+import net.owo.cac.client.renderer.EntPseudoCatRenderer;
 import net.owo.cac.client.renderer.EntPlayerMouseRenderer;
 import net.owo.cac.client.renderer.EntPlayerCatRenderer;
 import net.owo.cac.client.renderer.EntMouseRenderer;
@@ -24,5 +26,7 @@ public class CacModEntityRenderers {
 		event.registerEntityRenderer(CacModEntities.ENT_MOUSE.get(), EntMouseRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_MOUSE.get(), EntPlayerMouseRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_MEOWCAM.get(), EntMeowcamRenderer::new);
+		event.registerEntityRenderer(CacModEntities.ENT_PSEUDO_CAT.get(), EntPseudoCatRenderer::new);
+		event.registerEntityRenderer(CacModEntities.ENT_PSEUDO_MOUSE.get(), EntPseudoMouseRenderer::new);
 	}
 }

@@ -1,5 +1,6 @@
 package net.owo.cac.init;
 
+import net.owo.cac.entity.EntPseudoMouseEntity;
 import net.owo.cac.entity.EntPlayerMouseEntity;
 import net.owo.cac.entity.EntMouseEntity;
 import net.owo.cac.entity.EntMeowcamEntity;
@@ -28,6 +29,13 @@ public class EntityAnimationFactory {
 				}
 			}
 			if (event.getEntity() instanceof EntMeowcamEntity syncable) {
+				String animation = syncable.getSyncedAnimation();
+				if (!animation.equals("undefined")) {
+					syncable.setAnimation("undefined");
+					syncable.animationprocedure = animation;
+				}
+			}
+			if (event.getEntity() instanceof EntPseudoMouseEntity syncable) {
 				String animation = syncable.getSyncedAnimation();
 				if (!animation.equals("undefined")) {
 					syncable.setAnimation("undefined");

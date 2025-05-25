@@ -1,0 +1,7 @@
+{
+  "_fv": 66,
+  "_type": "procedure",
+  "definition": {
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field></block><block type=\"controls_if\" x=\"22\" y=\"203\"></block><block type=\"vector_operate\" x=\"167\" y=\"241\"><field name=\"operator\">-</field><value name=\"left\"><block type=\"variables_get_vector\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" is_player_var=\"false\" has_entity=\"false\"></mutation><field name=\"VAR\">global:Meow_destination</field></block></value><value name=\"right\"><block type=\"vector_get_entityposition\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block></value></block><block type=\"vector_set_entitydeltamovement\" x=\"-25\" y=\"451\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value></block></xml>"
+  }
+}

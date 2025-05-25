@@ -173,6 +173,9 @@ public class CacModVariables {
 		public ListTag PF_parameter_name = new ListTag();
 		public double Meow_dx = 0;
 		public double Meow_dz = 0;
+		public Vec3 Pos_player_destination = Vec3.ZERO;
+		public Vec3 Pos_opponent_destination = Vec3.ZERO;
+		public Vec3 Meow_destination = Vec3.ZERO;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -250,6 +253,18 @@ public class CacModVariables {
 			this.PF_parameter_name = nbt.get("PF_parameter_name") instanceof ListTag PF_parameter_name ? PF_parameter_name : new ListTag();
 			Meow_dx = nbt.getDouble("Meow_dx");
 			Meow_dz = nbt.getDouble("Meow_dz");
+			{
+				ListTag listTag = nbt.getList("Pos_player_destination", 6);
+				this.Pos_player_destination = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
+			{
+				ListTag listTag = nbt.getList("Pos_opponent_destination", 6);
+				this.Pos_opponent_destination = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
+			{
+				ListTag listTag = nbt.getList("Meow_destination", 6);
+				this.Meow_destination = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
 		}
 
 		@Override
@@ -343,6 +358,30 @@ public class CacModVariables {
 			nbt.put("PF_parameter_name", this.PF_parameter_name);
 			nbt.putDouble("Meow_dx", Meow_dx);
 			nbt.putDouble("Meow_dz", Meow_dz);
+			{
+				this.Pos_player_destination = this.Pos_player_destination == null ? Vec3.ZERO : this.Pos_player_destination;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Pos_player_destination.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Pos_player_destination.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Pos_player_destination.z()));
+				nbt.put("Pos_player_destination", listTag);
+			}
+			{
+				this.Pos_opponent_destination = this.Pos_opponent_destination == null ? Vec3.ZERO : this.Pos_opponent_destination;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Pos_opponent_destination.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Pos_opponent_destination.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Pos_opponent_destination.z()));
+				nbt.put("Pos_opponent_destination", listTag);
+			}
+			{
+				this.Meow_destination = this.Meow_destination == null ? Vec3.ZERO : this.Meow_destination;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Meow_destination.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Meow_destination.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Meow_destination.z()));
+				nbt.put("Meow_destination", listTag);
+			}
 			return nbt;
 		}
 

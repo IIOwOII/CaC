@@ -26,6 +26,8 @@ import net.owo.cac.entity.EntCatEntity;
 import net.owo.cac.entity.EntMouseEntity;
 import net.owo.cac.entity.EntPlayerCatEntity;
 import net.owo.cac.entity.EntPlayerMouseEntity;
+import net.owo.cac.entity.EntPseudoCatEntity;
+import net.owo.cac.entity.EntPseudoMouseEntity;
 import net.owo.cac.procedures.EvPulseRecordProcedure;
 import net.owo.cac.procedures.EvQueImmediateProcedure;
 
@@ -70,8 +72,10 @@ public class CstManagePosition {
 					CacModVariables.MapVariables.get(world).syncData(world);
 					CacModVariables.MapVariables.get(world).Ev_pulse_content = "touch";
 					CacModVariables.MapVariables.get(world).syncData(world);
-					EvPulseRecordProcedure.execute(world);
-					EvQueImmediateProcedure.execute(world);
+					if (CacModVariables.MapVariables.get(world).Switch_trace) {
+						EvPulseRecordProcedure.execute(world);
+						EvQueImmediateProcedure.execute(world);
+					}
 				}
 				
 				CacModVariables.MapVariables.get(world).Pos_opponent = pos_opponent;
@@ -85,14 +89,14 @@ public class CstManagePosition {
 	@SubscribeEvent
 	public static void onEntitySpawned(EntityJoinLevelEvent event) {
 		@Nullable Entity _ent;
-		
 		_ent = event.getEntity();
 		if (_ent == null)
 			return;
+			
 		if (_ent instanceof EntCatEntity || _ent instanceof EntMouseEntity) {
 			ent_opponent = _ent;
 		} 
-		if (_ent instanceof EntPlayerCatEntity || _ent instanceof EntPlayerMouseEntity) {
+		if ((_ent instanceof EntPlayerCatEntity || _ent instanceof EntPlayerMouseEntity) || (_ent instanceof EntPseudoCatEntity || _ent instanceof EntPseudoMouseEntity)) {
 			ent_player = _ent;
 		}
 	}
@@ -101,7 +105,6 @@ public class CstManagePosition {
 	public static void onEntityDeath(LivingDeathEvent event) {
 		@Nullable Entity _ent;
 		_ent = event.getEntity();
-		
 		if (_ent == null)
 			return;
 		

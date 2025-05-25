@@ -4,6 +4,8 @@
  */
 package net.owo.cac.init;
 
+import net.owo.cac.entity.EntPseudoMouseEntity;
+import net.owo.cac.entity.EntPseudoCatEntity;
 import net.owo.cac.entity.EntPlayerMouseEntity;
 import net.owo.cac.entity.EntPlayerCatEntity;
 import net.owo.cac.entity.EntMouseEntity;
@@ -36,6 +38,10 @@ public class CacModEntities {
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntMeowcamEntity>> ENT_MEOWCAM = register("ent_meowcam", EntityType.Builder.<EntMeowcamEntity>of(EntMeowcamEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
 			.setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntMeowcamEntity::new).fireImmune().sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<EntPseudoCatEntity>> ENT_PSEUDO_CAT = register("ent_pseudo_cat", EntityType.Builder.<EntPseudoCatEntity>of(EntPseudoCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPseudoCatEntity::new).fireImmune().sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<EntPseudoMouseEntity>> ENT_PSEUDO_MOUSE = register("ent_pseudo_mouse", EntityType.Builder.<EntPseudoMouseEntity>of(EntPseudoMouseEntity::new, MobCategory.CREATURE)
+			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPseudoMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -49,6 +55,8 @@ public class CacModEntities {
 			EntMouseEntity.init();
 			EntPlayerMouseEntity.init();
 			EntMeowcamEntity.init();
+			EntPseudoCatEntity.init();
+			EntPseudoMouseEntity.init();
 		});
 	}
 
@@ -59,5 +67,7 @@ public class CacModEntities {
 		event.put(ENT_MOUSE.get(), EntMouseEntity.createAttributes().build());
 		event.put(ENT_PLAYER_MOUSE.get(), EntPlayerMouseEntity.createAttributes().build());
 		event.put(ENT_MEOWCAM.get(), EntMeowcamEntity.createAttributes().build());
+		event.put(ENT_PSEUDO_CAT.get(), EntPseudoCatEntity.createAttributes().build());
+		event.put(ENT_PSEUDO_MOUSE.get(), EntPseudoMouseEntity.createAttributes().build());
 	}
 }
