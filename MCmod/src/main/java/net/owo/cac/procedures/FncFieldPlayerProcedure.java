@@ -18,7 +18,7 @@ public class FncFieldPlayerProcedure {
 		Vec3 vec_PP = Vec3.ZERO;
 		Vec3 vec_P = Vec3.ZERO;
 		Vec3 vec_P_prime = Vec3.ZERO;
-		sca_K = 15;
+		sca_K = 15 * CacModVariables.MapVariables.get(world).Dat_difficulty_absolute;
 		vec_P = entity.position();
 		if (entity instanceof EntMouseEntity) {
 			vec_P_prime = CacModVariables.MapVariables.get(world).Pos_player;
@@ -27,6 +27,9 @@ public class FncFieldPlayerProcedure {
 		}
 		vec_PP = vec_P_prime.subtract(vec_P);
 		vec_field = (vec_PP.normalize()).scale((-(sca_K / vec_PP.length())));
+		if (vec_field.length() > 50) {
+			vec_field = (vec_field.normalize()).scale(50);
+		}
 		return vec_field;
 	}
 }

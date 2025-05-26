@@ -2321,7 +2321,108 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/AiMoveMeowProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiPseudoMouse",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_pseudo_mouse",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiPseudoMouseProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiPseudoCat",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_pseudo_cat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiPseudoCatProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiMovePseudoMouse",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_move_pseudo_mouse",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMovePseudoMouseProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiMovePseudoCat",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_move_pseudo_cat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMovePseudoCatProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacAI"
     }
@@ -2853,8 +2954,8 @@
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey",
       "key.cac.cac_key_camera": "Toggle Camera",
-      "key.categories.cac": "Chasing and Chased",
       "entity.cac.ent_meowcam": "Meowcam",
+      "key.categories.cac": "Chasing and Chased",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",

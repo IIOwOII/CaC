@@ -34,4 +34,9 @@ public class EntPlayerMouseRenderer extends GeoEntityRenderer<EntPlayerMouseEnti
 		this.scaleWidth = scale;
 		super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
 	}
+
+	@Override
+	protected float getDeathMaxRotation(EntPlayerMouseEntity entityLivingBaseIn) {
+		return 0.0F;
+	}
 }

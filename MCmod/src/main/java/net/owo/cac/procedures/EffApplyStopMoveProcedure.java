@@ -37,5 +37,19 @@ public class EffApplyStopMoveProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "attribute @e[type=cac:ent_player_mouse,limit=1] minecraft:generic.movement_speed base set 0.0");
 			}
 		}
+		{
+			Entity _ent = entity;
+			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+				_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "attribute @e[type=cac:ent_pseudo_cat,limit=1] minecraft:generic.movement_speed base set 0.0");
+			}
+		}
+		{
+			Entity _ent = entity;
+			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+				_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "attribute @e[type=cac:ent_pseudo_mouse,limit=1] minecraft:generic.movement_speed base set 0.0");
+			}
+		}
 	}
 }

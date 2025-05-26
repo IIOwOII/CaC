@@ -121,7 +121,7 @@
     },
     "entityDataEntries": [],
     "onMobTickUpdate": {
-      "name": "AiCat"
+      "name": "AiPseudoCat"
     },
     "hasAI": true,
     "aiBase": "(none)",

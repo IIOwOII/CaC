@@ -221,7 +221,7 @@ public class EntMouseEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	protected void tickDeath() {
 		++this.deathTime;
-		if (this.deathTime == 20) {
+		if (this.deathTime == 1) {
 			this.remove(EntMouseEntity.RemovalReason.KILLED);
 			this.dropExperience();
 		}

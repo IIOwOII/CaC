@@ -76,6 +76,8 @@ public class CstManagePosition {
 						EvPulseRecordProcedure.execute(world);
 						EvQueImmediateProcedure.execute(world);
 					}
+					ent_opponent.setDeltaMovement(Vec3.ZERO);
+					ent_player.setDeltaMovement(Vec3.ZERO);
 				}
 				
 				CacModVariables.MapVariables.get(world).Pos_opponent = pos_opponent;

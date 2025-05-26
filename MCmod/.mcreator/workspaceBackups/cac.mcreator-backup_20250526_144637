@@ -251,14 +251,6 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -348,12 +340,8 @@
         ],
         "dependencies": [
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
+            "name": "entity",
+            "type": "entity"
           },
           {
             "name": "world",
@@ -728,12 +716,8 @@
         ],
         "dependencies": [
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
+            "name": "entity",
+            "type": "entity"
           },
           {
             "name": "world",
@@ -757,37 +741,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacAI"
-    },
-    {
-      "name": "AiOpponentMove",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ai_opponent_move",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/AiOpponentMoveProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
           },
           {
             "name": "world",
@@ -2311,6 +2264,75 @@
         ]
       },
       "path": "~/CacEntity"
+    },
+    {
+      "name": "AiMoveMouse",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_move_mouse",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMoveMouseProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiMoveCat",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_move_cat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMoveCatProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiMoveMeow",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_move_meow",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMoveMeowProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
     }
   ],
   "variable_elements": [
@@ -2793,6 +2815,24 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Pos_player_destination",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_opponent_destination",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Meow_destination",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
     }
   ],
   "sound_elements": [
@@ -2822,8 +2862,8 @@
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey",
       "key.cac.cac_key_camera": "Toggle Camera",
-      "key.categories.cac": "Chasing and Chased",
       "entity.cac.ent_meowcam": "Meowcam",
+      "key.categories.cac": "Chasing and Chased",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",

@@ -1,7 +1,7 @@
 
 package net.owo.cac.entity;
 
-import net.owo.cac.procedures.AiCatProcedure;
+import net.owo.cac.procedures.AiPseudoCatProcedure;
 import net.owo.cac.init.CacModEntities;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -112,7 +112,7 @@ public class EntPseudoCatEntity extends PathfinderMob {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		AiCatProcedure.execute(this.level(), this);
+		AiPseudoCatProcedure.execute(this.level(), this);
 	}
 
 	@Override

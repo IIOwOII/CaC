@@ -143,7 +143,7 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		AiMoveMeowProcedure.execute();
+		AiMoveMeowProcedure.execute(this.level(), this);
 		this.refreshDimensions();
 	}
 
@@ -200,7 +200,7 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	protected void tickDeath() {
 		++this.deathTime;
-		if (this.deathTime == 20) {
+		if (this.deathTime == 1) {
 			this.remove(EntMeowcamEntity.RemovalReason.KILLED);
 			this.dropExperience();
 		}

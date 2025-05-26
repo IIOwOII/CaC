@@ -13,6 +13,9 @@ public class AiCatProcedure {
 			if (CacModVariables.MapVariables.get(world).Time_AI == 0 && !world.isClientSide()) {
 				AiMoveCatProcedure.execute(world, entity);
 			}
+			if ((CacModVariables.MapVariables.get(world).Pos_opponent_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.MapVariables.get(world).Pos_opponent_destination.subtract((entity.position()))).length() > 0.5) {
+				entity.setDeltaMovement((((CacModVariables.MapVariables.get(world).Pos_opponent_destination.subtract((entity.position()))).normalize()).scale((0.094280904 * CacModVariables.MapVariables.get(world).Dat_difficulty_absolute))));
+			}
 		}
 	}
 }

@@ -10,7 +10,7 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-import net.owo.cac.procedures.AiMouseProcedure;
+import net.owo.cac.procedures.AiPseudoMouseProcedure;
 import net.owo.cac.init.CacModEntities;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -156,7 +156,7 @@ public class EntPseudoMouseEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		AiMouseProcedure.execute(this.level(), this);
+		AiPseudoMouseProcedure.execute(this.level(), this);
 		this.refreshDimensions();
 	}
 
@@ -221,7 +221,7 @@ public class EntPseudoMouseEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	protected void tickDeath() {
 		++this.deathTime;
-		if (this.deathTime == 20) {
+		if (this.deathTime == 1) {
 			this.remove(EntPseudoMouseEntity.RemovalReason.KILLED);
 			this.dropExperience();
 		}
