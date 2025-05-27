@@ -4,6 +4,7 @@
  */
 package net.owo.cac.init;
 
+import net.owo.cac.client.gui.GuiSurrenderScreen;
 import net.owo.cac.client.gui.GuiBlankScreen;
 
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -19,6 +20,7 @@ public class CacModScreens {
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			MenuScreens.register(CacModMenus.GUI_BLANK.get(), GuiBlankScreen::new);
+			MenuScreens.register(CacModMenus.GUI_SURRENDER.get(), GuiSurrenderScreen::new);
 		});
 	}
 }

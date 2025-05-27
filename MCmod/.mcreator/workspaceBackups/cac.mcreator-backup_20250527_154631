@@ -1088,12 +1088,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/FncManageSurveytypeProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacUtil/Manager"
     },
@@ -2333,6 +2328,169 @@
         ]
       },
       "path": "~/CacAI"
+    },
+    {
+      "name": "AiPseudoMouse",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_pseudo_mouse",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiPseudoMouseProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiPseudoCat",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_pseudo_cat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiPseudoCatProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiMovePseudoMouse",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_move_pseudo_mouse",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMovePseudoMouseProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "AiMovePseudoCat",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_move_pseudo_cat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiMovePseudoCatProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "SuvSlide",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "suv_slide",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SuvSlideProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacSurvey"
+    },
+    {
+      "name": "IniPoolSurvey",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_pool_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniPoolSurveyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "IniLogSurvey",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogSurveyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Log"
+    },
+    {
+      "name": "TaskSurveyStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_survey_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskSurveyStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
     }
   ],
   "variable_elements": [
@@ -2455,24 +2613,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Dat_survey_order",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_survey_RT",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_survey_answer",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
     },
     {
       "name": "Exp_trial_total",
@@ -2833,6 +2973,54 @@
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pool_survey",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Dat_survey_value",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Log_survey",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Dat_survey_surrender",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_survey_time",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_survey_answer",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_survey_answer_before",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_survey_order",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [
@@ -2862,8 +3050,8 @@
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey",
       "key.cac.cac_key_camera": "Toggle Camera",
-      "entity.cac.ent_meowcam": "Meowcam",
       "key.categories.cac": "Chasing and Chased",
+      "entity.cac.ent_meowcam": "Meowcam",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",

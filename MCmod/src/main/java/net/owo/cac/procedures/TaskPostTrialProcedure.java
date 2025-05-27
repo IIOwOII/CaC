@@ -10,6 +10,8 @@ public class TaskPostTrialProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_trial = CacModVariables.MapVariables.get(world).Exp_trial + 1;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_blank = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		if (CacModVariables.MapVariables.get(world).Exp_trial >= CacModVariables.MapVariables.get(world).Exp_trial_total) {
 			TaskPostRunProcedure.execute(world);
 		}

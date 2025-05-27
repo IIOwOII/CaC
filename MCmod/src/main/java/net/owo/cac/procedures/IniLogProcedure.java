@@ -13,5 +13,6 @@ public class IniLogProcedure {
 		IniLogEventProcedure.execute(world);
 		IniLogPositionProcedure.execute(world);
 		IniLogGameplayProcedure.execute(world);
+		IniLogSurveyProcedure.execute(world);
 	}
 }

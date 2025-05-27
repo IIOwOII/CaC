@@ -20,8 +20,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Camera.class)
 public abstract class MxnMeowviewMixin {
 	private static final double CAM_GAP = 1;
-	@Unique private static final double CAM_DISTANCE = 5;
-	@Unique private static final float CAM_PITCH = 60;
+	@Unique private static final double CAM_DISTANCE = 4;
+	@Unique private static final float CAM_PITCH = 30;
 	@Unique private static final double CAM_PITCH_RAD = CAM_PITCH * 0.017453292519943295;
 	@Unique private static final double CAM_DISTANCE_XZ= Math.cos(CAM_PITCH_RAD) * CAM_DISTANCE + CAM_GAP;
 
@@ -40,8 +40,7 @@ public abstract class MxnMeowviewMixin {
 	@Inject(at = @At("TAIL"), method = "setPosition(Lnet/minecraft/world/phys/Vec3;)V")
 	private void setPositionMixin(CallbackInfo ci) {
 		if (CstState.getMeowview()) {
-			// double yaw = this.yRot * 0.017453292519943295;
-			double yaw = 0.0; // Rotation Fixed
+			double yaw = this.yRot * 0.017453292519943295;
 			
 			Vec3 addedVec = new Vec3(Math.sin(yaw) * CAM_DISTANCE_XZ, Math.sin(CAM_PITCH_RAD) * CAM_DISTANCE, -Math.cos(yaw) * CAM_DISTANCE_XZ);
 			this.position = this.position.add(addedVec);
@@ -54,7 +53,7 @@ public abstract class MxnMeowviewMixin {
 		if (CstState.getMeowview()) {
 			this.xRot = CAM_PITCH;
 			
-			this.yRot = 0.0F; // Rotation Fixed
+			// this.yRot = 0.0F; // Rotation Fixed
 			
 			this.rotation.rotationYXZ(-this.yRot * 0.017453292F, CAM_PITCH * 0.017453292F, 0.0F);
 			this.forwards.set(0.0F, 0.0F, 1.0F).rotate(this.rotation);

@@ -53,6 +53,11 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_pos_opponent_x_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_z_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
+	public static File Pool_survey = new File("");
+	public static File Log_survey = new File("");
+	public static com.google.gson.JsonArray Dat_survey_time = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_survey_answer = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_survey_order = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -139,9 +144,6 @@ public class CacModVariables {
 		public double TimA_time = 0;
 		public double TimA_time_currtick = 0;
 		public double TimA_time_oldtick = 0;
-		public ListTag Dat_survey_order = new ListTag();
-		public ListTag Dat_survey_RT = new ListTag();
-		public ListTag Dat_survey_answer = new ListTag();
 		public double Exp_trial_total = 0;
 		public String Ev_pulse_content = "\"\"";
 		public double Dat_trial_type = 0;
@@ -176,6 +178,14 @@ public class CacModVariables {
 		public Vec3 Pos_player_destination = Vec3.ZERO;
 		public Vec3 Pos_opponent_destination = Vec3.ZERO;
 		public Vec3 Meow_destination = Vec3.ZERO;
+		public double Dat_survey_value = 0;
+		public double Dat_survey_surrender = 0;
+		public ListTag List_survey_name = new ListTag();
+		public ListTag List_survey_type = new ListTag();
+		public ListTag List_survey_range = new ListTag();
+		public ListTag List_survey_label = new ListTag();
+		public ListTag List_survey_initial = new ListTag();
+		public ListTag List_survey_preans = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -207,9 +217,6 @@ public class CacModVariables {
 			TimA_time = nbt.getDouble("TimA_time");
 			TimA_time_currtick = nbt.getDouble("TimA_time_currtick");
 			TimA_time_oldtick = nbt.getDouble("TimA_time_oldtick");
-			this.Dat_survey_order = nbt.get("Dat_survey_order") instanceof ListTag Dat_survey_order ? Dat_survey_order : new ListTag();
-			this.Dat_survey_RT = nbt.get("Dat_survey_RT") instanceof ListTag Dat_survey_RT ? Dat_survey_RT : new ListTag();
-			this.Dat_survey_answer = nbt.get("Dat_survey_answer") instanceof ListTag Dat_survey_answer ? Dat_survey_answer : new ListTag();
 			Exp_trial_total = nbt.getDouble("Exp_trial_total");
 			Ev_pulse_content = nbt.getString("Ev_pulse_content");
 			Dat_trial_type = nbt.getDouble("Dat_trial_type");
@@ -265,6 +272,14 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Meow_destination", 6);
 				this.Meow_destination = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
+			Dat_survey_value = nbt.getDouble("Dat_survey_value");
+			Dat_survey_surrender = nbt.getDouble("Dat_survey_surrender");
+			this.List_survey_name = nbt.get("List_survey_name") instanceof ListTag List_survey_name ? List_survey_name : new ListTag();
+			this.List_survey_type = nbt.get("List_survey_type") instanceof ListTag List_survey_type ? List_survey_type : new ListTag();
+			this.List_survey_range = nbt.get("List_survey_range") instanceof ListTag List_survey_range ? List_survey_range : new ListTag();
+			this.List_survey_label = nbt.get("List_survey_label") instanceof ListTag List_survey_label ? List_survey_label : new ListTag();
+			this.List_survey_initial = nbt.get("List_survey_initial") instanceof ListTag List_survey_initial ? List_survey_initial : new ListTag();
+			this.List_survey_preans = nbt.get("List_survey_preans") instanceof ListTag List_survey_preans ? List_survey_preans : new ListTag();
 		}
 
 		@Override
@@ -296,9 +311,6 @@ public class CacModVariables {
 			nbt.putDouble("TimA_time", TimA_time);
 			nbt.putDouble("TimA_time_currtick", TimA_time_currtick);
 			nbt.putDouble("TimA_time_oldtick", TimA_time_oldtick);
-			nbt.put("Dat_survey_order", this.Dat_survey_order);
-			nbt.put("Dat_survey_RT", this.Dat_survey_RT);
-			nbt.put("Dat_survey_answer", this.Dat_survey_answer);
 			nbt.putDouble("Exp_trial_total", Exp_trial_total);
 			nbt.putString("Ev_pulse_content", Ev_pulse_content);
 			nbt.putDouble("Dat_trial_type", Dat_trial_type);
@@ -382,6 +394,14 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Meow_destination.z()));
 				nbt.put("Meow_destination", listTag);
 			}
+			nbt.putDouble("Dat_survey_value", Dat_survey_value);
+			nbt.putDouble("Dat_survey_surrender", Dat_survey_surrender);
+			nbt.put("List_survey_name", this.List_survey_name);
+			nbt.put("List_survey_type", this.List_survey_type);
+			nbt.put("List_survey_range", this.List_survey_range);
+			nbt.put("List_survey_label", this.List_survey_label);
+			nbt.put("List_survey_initial", this.List_survey_initial);
+			nbt.put("List_survey_preans", this.List_survey_preans);
 			return nbt;
 		}
 

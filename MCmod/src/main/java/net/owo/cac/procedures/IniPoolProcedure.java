@@ -15,6 +15,7 @@ public class IniPoolProcedure {
 		IniPoolEventProcedure.execute(world);
 		IniPoolPointProcedure.execute(world);
 		IniPoolQueProcedure.execute(world);
+		IniPoolSurveyProcedure.execute(world);
 		if (CacModVariables.MapVariables.get(world).Switch_debug) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eDirectory(components): \u00A7r" + CacModVariables.MapVariables.get(world).Dir_components)), false);

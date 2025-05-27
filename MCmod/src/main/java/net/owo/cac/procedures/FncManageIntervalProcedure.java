@@ -11,6 +11,8 @@ public class FncManageIntervalProcedure {
 			CacModVariables.MapVariables.get(world).Dat_time_interval = 1;
 			CacModVariables.MapVariables.get(world).syncData(world);
 		}
+		CacModVariables.MapVariables.get(world).Switch_blank = true;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).TimR_que_time = CacModVariables.MapVariables.get(world).TimR_time + CacModVariables.MapVariables.get(world).Dat_time_interval * 20;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacMod.LOGGER.info(CacModVariables.MapVariables.get(world).TimR_que_time);

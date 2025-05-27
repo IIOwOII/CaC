@@ -18,7 +18,7 @@ public class FncFieldPlayerProcedure {
 		Vec3 vec_PP = Vec3.ZERO;
 		Vec3 vec_P = Vec3.ZERO;
 		Vec3 vec_P_prime = Vec3.ZERO;
-		sca_K = 15 * CacModVariables.MapVariables.get(world).Dat_difficulty_absolute;
+		sca_K = 15;
 		vec_P = entity.position();
 		if (entity instanceof EntMouseEntity) {
 			vec_P_prime = CacModVariables.MapVariables.get(world).Pos_player;

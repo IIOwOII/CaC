@@ -29,8 +29,10 @@ public class EvInvokeProcedure {
 				TaskGameplayProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_gameplay_end")) {
 				TaskGameplayEndProcedure.execute(world, x, y, z, entity);
+			} else if ((ev_content).equals("phase_survey_start")) {
+				TaskSurveyStartProcedure.execute(world);
 			} else if ((ev_content).equals("phase_survey")) {
-				TaskSurveyProcedure.execute(world, x, y, z, entity);
+				TaskSurveyProcedure.execute(world);
 			} else if ((ev_content).equals("phase_interval")) {
 				TaskIntervalProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_posttrial")) {

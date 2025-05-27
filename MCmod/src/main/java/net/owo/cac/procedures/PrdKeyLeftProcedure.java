@@ -16,6 +16,9 @@ public class PrdKeyLeftProcedure {
 			CacModVariables.MapVariables.get(world).Option_tester = CacModVariables.MapVariables.get(world).Option_tester - 1;
 			CacModVariables.MapVariables.get(world).syncData(world);
 			PrdTestOptionProcedure.execute(world, entity);
+		} else if (CacModVariables.MapVariables.get(world).Exp_phase == 3) {
+			CacModVariables.MapVariables.get(world).Dat_survey_value = Math.round(CacModVariables.MapVariables.get(world).Dat_survey_value - 1);
+			CacModVariables.MapVariables.get(world).syncData(world);
 		}
 	}
 }
