@@ -33,6 +33,8 @@ public class EvInvokeProcedure {
 				TaskSurveyStartProcedure.execute(world);
 			} else if ((ev_content).equals("phase_survey")) {
 				TaskSurveyProcedure.execute(world);
+			} else if ((ev_content).equals("phase_surrender")) {
+				TaskSurrenderProcedure.execute(world, x, y, z, entity);
 			} else if ((ev_content).equals("phase_interval")) {
 				TaskIntervalProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_posttrial")) {

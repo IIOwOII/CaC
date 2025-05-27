@@ -1,15 +1,14 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-
-import net.minecraft.world.level.LevelAccessor;
+import net.owo.cac.CacMod;
 
 public class PrdExperimentalProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_pool = new com.google.gson.JsonObject();
-		if (!world.isClientSide()) {
-			CacModVariables.MapVariables.get(world).Exp_signal = false;
-			CacModVariables.MapVariables.get(world).syncData(world);
-		}
+		CacModVariables.Dat_survey_order = new com.google.gson.JsonArray();
+		CacModVariables.Dat_survey_order.add(0);
+		CacModVariables.Dat_survey_order.add(1);
+		CacMod.LOGGER.info(CacModVariables.Dat_survey_order);
 	}
 }

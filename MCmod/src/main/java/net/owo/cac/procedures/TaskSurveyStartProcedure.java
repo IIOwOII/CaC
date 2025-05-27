@@ -10,7 +10,6 @@ public class TaskSurveyStartProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_blank = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dat_survey_surrender = -1;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		FncManageSurveytypeProcedure.execute(world);
 	}
 }

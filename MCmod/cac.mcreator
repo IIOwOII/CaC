@@ -622,12 +622,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -3151,8 +3146,8 @@
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey",
       "key.cac.cac_key_camera": "Toggle Camera",
-      "key.categories.cac": "Chasing and Chased",
       "entity.cac.ent_meowcam": "Meowcam",
+      "key.categories.cac": "Chasing and Chased",
       "gui.cac.gui_surrender.button_yes": "Yes",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_mouse": "Prey",

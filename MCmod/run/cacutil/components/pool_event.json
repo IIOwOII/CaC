@@ -5,7 +5,7 @@
   "phase_gameplay": 600,
   "phase_gameplay_end": 100,
   "phase_survey_start": 60,
-  "phase_survey": 200,
+  "phase_survey": -1,
   "phase_surrender": 200,
   "phase_interval": -1,
   "phase_posttrial": 2,
