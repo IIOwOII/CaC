@@ -920,7 +920,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager/New"
+      "path": "~/CacUtil/Manager"
     },
     {
       "name": "TaskGameplay",
@@ -1055,22 +1055,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -1175,7 +1159,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager/New"
+      "path": "~/CacUtil/Manager"
     },
     {
       "name": "OvlBlank",
@@ -1411,7 +1395,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager/New"
+      "path": "~/CacUtil/Manager"
     },
     {
       "name": "FncManageDifficulty",
@@ -1430,7 +1414,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager/New"
+      "path": "~/CacUtil/Manager"
     },
     {
       "name": "TaskPreTrial",
@@ -1472,7 +1456,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager/New"
+      "path": "~/CacUtil/Manager"
     },
     {
       "name": "EvQueImmediate",
@@ -2427,20 +2411,6 @@
       "path": "~/CacAI"
     },
     {
-      "name": "SuvSlide",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_slide",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvSlideProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacSurvey"
-    },
-    {
       "name": "IniPoolSurvey",
       "type": "procedure",
       "compiles": true,
@@ -2489,6 +2459,102 @@
           "src/main/java/net/owo/cac/procedures/TaskSurveyStartProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "SuvSurrenderYes",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "suv_surrender_yes",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SuvSurrenderYesProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacSurvey"
+    },
+    {
+      "name": "SuvSurrenderNo",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "suv_surrender_no",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SuvSurrenderNoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacSurvey"
+    },
+    {
+      "name": "GuiSurrender",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "gui_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/client/gui/GuiSurrenderScreen.java",
+          "src/main/java/net/owo/cac/network/GuiSurrenderButtonMessage.java",
+          "src/main/java/net/owo/cac/world/inventory/GuiSurrenderMenu.java"
+        ]
+      },
+      "path": "~/CacSurvey"
+    },
+    {
+      "name": "TaskSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
           {
             "name": "world",
             "type": "world"
@@ -3087,8 +3153,10 @@
       "key.cac.cac_key_camera": "Toggle Camera",
       "key.categories.cac": "Chasing and Chased",
       "entity.cac.ent_meowcam": "Meowcam",
+      "gui.cac.gui_surrender.button_yes": "Yes",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
+      "gui.cac.gui_surrender.button_no": "No",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "effect.cac.eff_stop_move": "Stiffness",
       "item.cac.cac_test_item": "CacTester",
@@ -3101,6 +3169,7 @@
       "entity.cac.ent_player_cat": "Predator(Player)",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
+      "gui.cac.gui_surrender.label_are_you_willing_to_surrender": "Are you willing to surrender?",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
       "block.cac.blk_obstacle": "Obstacle",
       "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
@@ -3147,12 +3216,7 @@
         "children": [
           {
             "name": "Manager",
-            "children": [
-              {
-                "name": "New",
-                "children": []
-              }
-            ]
+            "children": []
           }
         ]
       },

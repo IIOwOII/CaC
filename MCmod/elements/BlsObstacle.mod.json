@@ -5,7 +5,7 @@
     "block": "BlkObstacle",
     "blockstateList": [
       {
-        "texture": "texture_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -13,7 +13,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_obstacle_0:default",
+        "customModelName": "cac_fence_0:default",
         "luminance": 0,
         "boundingBoxes": [
           {
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "texture": "texture_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -36,13 +36,13 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_obstacle_1:default",
+        "customModelName": "cac_fence_1:default",
         "luminance": 0,
         "boundingBoxes": [
           {
             "mx": 2.0,
             "my": 0.0,
-            "mz": 2.0,
+            "mz": 0.0,
             "Mx": 14.0,
             "My": 24.0,
             "Mz": 14.0,
@@ -51,7 +51,7 @@
         ]
       },
       {
-        "texture": "texture_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -59,22 +59,54 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_obstacle_2a:default",
+        "customModelName": "cac_fence_2a:default",
         "luminance": 0,
         "boundingBoxes": [
           {
             "mx": 2.0,
             "my": 0.0,
-            "mz": 2.0,
-            "Mx": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
             "My": 24.0,
             "Mz": 14.0,
+            "subtract": false
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 2.0,
+            "subtract": true
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_fence",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_fence_2b:default",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 2.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 14.0,
+            "My": 24.0,
+            "Mz": 16.0,
             "subtract": false
           }
         ]
       },
       {
-        "texture": "texture_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -82,22 +114,49 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_obstacle_2b:default",
+        "customModelName": "cac_fence_3:default",
         "luminance": 0,
         "boundingBoxes": [
           {
-            "mx": 2.0,
+            "mx": 0.0,
             "my": 0.0,
-            "mz": 2.0,
-            "Mx": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
             "My": 24.0,
-            "Mz": 14.0,
+            "Mz": 16.0,
             "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 2.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 2.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 14.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
           }
         ]
       },
       {
-        "texture": "texture_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -105,40 +164,53 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_obstacle_3:default",
+        "customModelName": "cac_fence_4:default",
         "luminance": 0,
         "boundingBoxes": [
           {
-            "mx": 2.0,
+            "mx": 0.0,
             "my": 0.0,
-            "mz": 2.0,
-            "Mx": 14.0,
+            "mz": 0.0,
+            "Mx": 16.0,
             "My": 24.0,
-            "Mz": 14.0,
+            "Mz": 16.0,
             "subtract": false
-          }
-        ]
-      },
-      {
-        "texture": "texture_obstacle",
-        "textureTop": "",
-        "textureLeft": "",
-        "textureFront": "",
-        "textureRight": "",
-        "textureBack": "",
-        "particleTexture": "",
-        "renderType": 2,
-        "customModelName": "cac_obstacle_4:default",
-        "luminance": 0,
-        "boundingBoxes": [
+          },
           {
-            "mx": 2.0,
+            "mx": 0.0,
             "my": 0.0,
-            "mz": 2.0,
-            "Mx": 14.0,
+            "mz": 0.0,
+            "Mx": 2.0,
             "My": 24.0,
-            "Mz": 14.0,
-            "subtract": false
+            "Mz": 2.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 2.0,
+            "subtract": true
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 14.0,
+            "Mx": 2.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 14.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
           }
         ]
       }

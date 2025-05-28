@@ -186,6 +186,8 @@ public class CacModVariables {
 		public ListTag List_survey_label = new ListTag();
 		public ListTag List_survey_initial = new ListTag();
 		public ListTag List_survey_preans = new ListTag();
+		public double Dat_survey_index = 0;
+		public boolean Switch_survey = false;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -280,6 +282,8 @@ public class CacModVariables {
 			this.List_survey_label = nbt.get("List_survey_label") instanceof ListTag List_survey_label ? List_survey_label : new ListTag();
 			this.List_survey_initial = nbt.get("List_survey_initial") instanceof ListTag List_survey_initial ? List_survey_initial : new ListTag();
 			this.List_survey_preans = nbt.get("List_survey_preans") instanceof ListTag List_survey_preans ? List_survey_preans : new ListTag();
+			Dat_survey_index = nbt.getDouble("Dat_survey_index");
+			Switch_survey = nbt.getBoolean("Switch_survey");
 		}
 
 		@Override
@@ -402,6 +406,8 @@ public class CacModVariables {
 			nbt.put("List_survey_label", this.List_survey_label);
 			nbt.put("List_survey_initial", this.List_survey_initial);
 			nbt.put("List_survey_preans", this.List_survey_preans);
+			nbt.putDouble("Dat_survey_index", Dat_survey_index);
+			nbt.putBoolean("Switch_survey", Switch_survey);
 			return nbt;
 		}
 

@@ -8,6 +8,7 @@ import net.owo.cac.procedures.BlsFenceUpdateProcedure;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.FluidState;
@@ -87,49 +88,49 @@ public class BlkObstacleBlock extends Block {
 		}
 		if (state.getValue(BLOCKSTATE) == 2) {
 			return switch (state.getValue(FACING)) {
-				default -> box(2, 0, 2, 14, 24, 14);
-				case NORTH -> box(2, 0, 2, 14, 24, 14);
-				case EAST -> box(2, 0, 2, 14, 24, 14);
-				case WEST -> box(2, 0, 2, 14, 24, 14);
+				default -> box(2, 0, 2, 14, 24, 16);
+				case NORTH -> box(2, 0, 0, 14, 24, 14);
+				case EAST -> box(2, 0, 2, 16, 24, 14);
+				case WEST -> box(0, 0, 2, 14, 24, 14);
 			};
 		}
 		if (state.getValue(BLOCKSTATE) == 3) {
 			return switch (state.getValue(FACING)) {
-				default -> box(2, 0, 2, 14, 24, 14);
-				case NORTH -> box(2, 0, 2, 14, 24, 14);
-				case EAST -> box(2, 0, 2, 14, 24, 14);
-				case WEST -> box(2, 0, 2, 14, 24, 14);
+				default -> Shapes.join(box(0, 0, 2, 14, 24, 16), box(0, 0, 14, 2, 24, 16), BooleanOp.ONLY_FIRST);
+				case NORTH -> Shapes.join(box(2, 0, 0, 16, 24, 14), box(14, 0, 0, 16, 24, 2), BooleanOp.ONLY_FIRST);
+				case EAST -> Shapes.join(box(2, 0, 2, 16, 24, 16), box(14, 0, 14, 16, 24, 16), BooleanOp.ONLY_FIRST);
+				case WEST -> Shapes.join(box(0, 0, 0, 14, 24, 14), box(0, 0, 0, 2, 24, 2), BooleanOp.ONLY_FIRST);
 			};
 		}
 		if (state.getValue(BLOCKSTATE) == 4) {
 			return switch (state.getValue(FACING)) {
-				default -> box(2, 0, 2, 14, 24, 14);
-				case NORTH -> box(2, 0, 2, 14, 24, 14);
-				case EAST -> box(2, 0, 2, 14, 24, 14);
-				case WEST -> box(2, 0, 2, 14, 24, 14);
+				default -> box(2, 0, 0, 14, 24, 16);
+				case NORTH -> box(2, 0, 0, 14, 24, 16);
+				case EAST -> box(0, 0, 2, 16, 24, 14);
+				case WEST -> box(0, 0, 2, 16, 24, 14);
 			};
 		}
 		if (state.getValue(BLOCKSTATE) == 5) {
 			return switch (state.getValue(FACING)) {
-				default -> box(2, 0, 2, 14, 24, 14);
-				case NORTH -> box(2, 0, 2, 14, 24, 14);
-				case EAST -> box(2, 0, 2, 14, 24, 14);
-				case WEST -> box(2, 0, 2, 14, 24, 14);
+				default -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(14, 0, 0, 16, 24, 16), box(0, 0, 14, 2, 24, 16), box(0, 0, 0, 2, 24, 2)), BooleanOp.ONLY_FIRST);
+				case NORTH -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(0, 0, 0, 2, 24, 16), box(14, 0, 0, 16, 24, 2), box(14, 0, 14, 16, 24, 16)), BooleanOp.ONLY_FIRST);
+				case EAST -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(0, 0, 0, 16, 24, 2), box(14, 0, 14, 16, 24, 16), box(0, 0, 14, 2, 24, 16)), BooleanOp.ONLY_FIRST);
+				case WEST -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(0, 0, 14, 16, 24, 16), box(0, 0, 0, 2, 24, 2), box(14, 0, 0, 16, 24, 2)), BooleanOp.ONLY_FIRST);
 			};
 		}
 		if (state.getValue(BLOCKSTATE) == 6) {
 			return switch (state.getValue(FACING)) {
-				default -> box(2, 0, 2, 14, 24, 14);
-				case NORTH -> box(2, 0, 2, 14, 24, 14);
-				case EAST -> box(2, 0, 2, 14, 24, 14);
-				case WEST -> box(2, 0, 2, 14, 24, 14);
+				default -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(14, 0, 14, 16, 24, 16), box(0, 0, 14, 2, 24, 16), box(14, 0, 0, 16, 24, 2), box(0, 0, 0, 2, 24, 2)), BooleanOp.ONLY_FIRST);
+				case NORTH -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(0, 0, 0, 2, 24, 2), box(14, 0, 0, 16, 24, 2), box(0, 0, 14, 2, 24, 16), box(14, 0, 14, 16, 24, 16)), BooleanOp.ONLY_FIRST);
+				case EAST -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(14, 0, 0, 16, 24, 2), box(14, 0, 14, 16, 24, 16), box(0, 0, 0, 2, 24, 2), box(0, 0, 14, 2, 24, 16)), BooleanOp.ONLY_FIRST);
+				case WEST -> Shapes.join(box(0, 0, 0, 16, 24, 16), Shapes.or(box(0, 0, 14, 2, 24, 16), box(0, 0, 0, 2, 24, 2), box(14, 0, 14, 16, 24, 16), box(14, 0, 0, 16, 24, 2)), BooleanOp.ONLY_FIRST);
 			};
 		}
 		return switch (state.getValue(FACING)) {
-			default -> box(7, 0, 7, 9, 24, 9);
-			case NORTH -> box(7, 0, 7, 9, 24, 9);
-			case EAST -> box(7, 0, 7, 9, 24, 9);
-			case WEST -> box(7, 0, 7, 9, 24, 9);
+			default -> box(2, 0, 2, 14, 24, 14);
+			case NORTH -> box(2, 0, 2, 14, 24, 14);
+			case EAST -> box(2, 0, 2, 14, 24, 14);
+			case WEST -> box(2, 0, 2, 14, 24, 14);
 		};
 	}
 

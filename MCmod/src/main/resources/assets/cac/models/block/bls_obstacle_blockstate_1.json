@@ -1,9 +1,9 @@
 {
-  "parent": "cac:custom/cac_obstacle_1",
+  "parent": "cac:custom/cac_fence_1",
   "textures": {
-    "all": "cac:block/texture_obstacle",
-    "particle": "cac:block/texture_obstacle",
-    "0": "cac:block/texture_obstacle"
+    "all": "cac:block/texture_cac_fence",
+    "particle": "cac:block/texture_cac_fence",
+    "0": "cac:block/texture_cac_fence"
   },
   "render_type": "cutout"
 }

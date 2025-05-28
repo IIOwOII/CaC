@@ -2411,20 +2411,6 @@
       "path": "~/CacAI"
     },
     {
-      "name": "SuvSlide",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_slide",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvSlideProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacSurvey"
-    },
-    {
       "name": "IniPoolSurvey",
       "type": "procedure",
       "compiles": true,
@@ -2516,6 +2502,10 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -2537,6 +2527,41 @@
         ]
       },
       "path": "~/CacSurvey"
+    },
+    {
+      "name": "TaskSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
     }
   ],
   "variable_elements": [

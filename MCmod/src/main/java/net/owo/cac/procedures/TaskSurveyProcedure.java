@@ -8,7 +8,7 @@ public class TaskSurveyProcedure {
 	public static void execute(LevelAccessor world) {
 		CacModVariables.MapVariables.get(world).Exp_phase = 3;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Switch_blank = false;
+		CacModVariables.MapVariables.get(world).Switch_blank = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }
