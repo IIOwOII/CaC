@@ -3,30 +3,40 @@
     "type": "slide",
     "range": [0, 100],
     "label": ["0%", "50%", "100%"],
-    "initial": 50
+    "initial": 50,
+    "period": 1,
+    "sort": "random"
   },
   "survey_perdiff": {
     "type": "slide",
     "range": [0, 10],
     "label": ["Easy", "Normal", "Hard"],
-    "initial": 5
+    "initial": 5,
+    "period": 1,
+    "sort": "random"
   },
   "survey_stress": {
     "type": "slide",
     "range": [0, 10],
     "label": ["Comfortable", ".", "Stressful"],
-    "initial": 5
+    "initial": 5,
+    "period": 1,
+    "sort": "random"
   },
   "survey_target": {
     "type": "slide",
     "range": [0, 10],
     "label": ["Comfortable", ".", "Stressful"],
-    "initial": 5
+    "initial": 5,
+    "period": 1,
+    "sort": "random"
   },
   "survey_control": {
     "type": "slide",
     "range": [0, 10],
-    "label": ["Controllable", ".", "Uncontrollable"],
-    "initial": 5
+    "label": ["Agree", ".", "Disagree"],
+    "initial": 5,
+    "period": 1,
+    "sort": "random"
   }
 }

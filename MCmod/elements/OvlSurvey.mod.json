@@ -1,0 +1,109 @@
+{
+  "_fv": 66,
+  "_type": "overlay",
+  "definition": {
+    "priority": "HIGHEST",
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "texture_slide.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 24,
+          "y": 177
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "texture_slide_trace.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 219,
+          "y": 184
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "texture_slide_cursor.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 219,
+          "y": 182
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_label_low",
+          "text": {
+            "fixedValue": "label_low"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 23,
+          "y": 160
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_label_mid",
+          "text": {
+            "fixedValue": "label_mid"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 197,
+          "y": 161
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_label_high",
+          "text": {
+            "fixedValue": "label_high"
+          },
+          "color": {
+            "value": -1,
+            "falpha": 0.0
+          },
+          "anchorPoint": "CENTER",
+          "x": 360,
+          "y": 158
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "text_winprob.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 6,
+          "y": 35
+        }
+      }
+    ],
+    "baseTexture": "gui_blank.png",
+    "overlayTarget": "Ingame",
+    "displayCondition": {
+      "name": "RtnBlank"
+    },
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

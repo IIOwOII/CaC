@@ -2465,7 +2465,7 @@
           }
         ]
       },
-      "path": "~/CacTask/General"
+      "path": "~/CacTask/General/Survey"
     },
     {
       "name": "SuvSurrenderYes",
@@ -2562,6 +2562,25 @@
         ]
       },
       "path": "~/CacTask/General"
+    },
+    {
+      "name": "TaskSurveySetting",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_survey_setting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskSurveySettingProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General/Survey"
     }
   ],
   "variable_elements": [
@@ -3122,6 +3141,18 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_survey_index",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Switch_survey",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -3225,7 +3256,12 @@
         "children": [
           {
             "name": "General",
-            "children": []
+            "children": [
+              {
+                "name": "Survey",
+                "children": []
+              }
+            ]
           },
           {
             "name": "Record",

@@ -622,7 +622,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -2460,7 +2465,7 @@
           }
         ]
       },
-      "path": "~/CacTask/General"
+      "path": "~/CacTask/General/Survey"
     },
     {
       "name": "SuvSurrenderYes",
@@ -2557,6 +2562,38 @@
         ]
       },
       "path": "~/CacTask/General"
+    },
+    {
+      "name": "TaskSurveySetting",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_survey_setting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskSurveySettingProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General/Survey"
+    },
+    {
+      "name": "OvlSurvey",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ovl_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/client/screens/OvlSurveyOverlay.java"
+        ]
+      },
+      "path": "~/CacOverlay"
     }
   ],
   "variable_elements": [
@@ -3117,6 +3154,18 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_survey_index",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Switch_survey",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -3146,8 +3195,8 @@
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey",
       "key.cac.cac_key_camera": "Toggle Camera",
-      "key.categories.cac": "Chasing and Chased",
       "entity.cac.ent_meowcam": "Meowcam",
+      "key.categories.cac": "Chasing and Chased",
       "gui.cac.gui_surrender.button_yes": "Yes",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
@@ -3220,7 +3269,12 @@
         "children": [
           {
             "name": "General",
-            "children": []
+            "children": [
+              {
+                "name": "Survey",
+                "children": []
+              }
+            ]
           },
           {
             "name": "Record",

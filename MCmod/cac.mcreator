@@ -2581,6 +2581,19 @@
         ]
       },
       "path": "~/CacTask/General/Survey"
+    },
+    {
+      "name": "OvlSurvey",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ovl_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/client/screens/OvlSurveyOverlay.java"
+        ]
+      },
+      "path": "~/CacOverlay"
     }
   ],
   "variable_elements": [
@@ -3182,8 +3195,11 @@
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey",
       "key.cac.cac_key_camera": "Toggle Camera",
-      "key.categories.cac": "Chasing and Chased",
+      "gui.cac.ovl_survey.label_label_high": "label_high",
       "entity.cac.ent_meowcam": "Meowcam",
+      "key.categories.cac": "Chasing and Chased",
+      "gui.cac.ovl_survey.label_label_mid": "label_mid",
+      "gui.cac.ovl_survey.label_ao": "Ao",
       "gui.cac.gui_surrender.button_yes": "Yes",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
@@ -3192,6 +3208,7 @@
       "effect.cac.eff_stop_move": "Stiffness",
       "item.cac.cac_test_item": "CacTester",
       "key.cac.cac_key_stopwatch": "Stopwatch",
+      "gui.cac.ovl_survey.label_label_low": "label_low",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey Spawn Egg",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left Arrow",
