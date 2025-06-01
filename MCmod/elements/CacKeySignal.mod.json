@@ -6,10 +6,10 @@
     "keyBindingName": "Scanner Signal",
     "keyBindingCategoryKey": "cac",
     "onKeyPressed": {
-      "name": "PrdKeySignal"
+      "name": "KeySignalOn"
     },
     "onKeyReleased": {
-      "name": "PrdKeySignalOut"
+      "name": "KeySignalOff"
     }
   }
 }

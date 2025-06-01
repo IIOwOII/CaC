@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MCmod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MCmod.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/MCmod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/MCmod.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.yourname.modid.MCmod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.yourname.modid.MCmod.test.iml" />
     </modules>
   </component>
 </project>
