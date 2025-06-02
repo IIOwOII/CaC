@@ -39,7 +39,7 @@ public abstract class MxnMeowviewMixin {
 	
 	@Inject(at = @At("TAIL"), method = "setPosition(Lnet/minecraft/world/phys/Vec3;)V")
 	private void setPositionMixin(CallbackInfo ci) {
-		if (CstState.getMeowview()) {
+		if (CstState.getMeowView()) {
 			double yaw = this.yRot * 0.017453292519943295;
 			
 			Vec3 addedVec = new Vec3(Math.sin(yaw) * CAM_DISTANCE_XZ, Math.sin(CAM_PITCH_RAD) * CAM_DISTANCE, -Math.cos(yaw) * CAM_DISTANCE_XZ);
@@ -50,10 +50,10 @@ public abstract class MxnMeowviewMixin {
 
 	@Inject(at = @At("TAIL"), method = "setRotation")
 	private void setRotationMixin(CallbackInfo ci) {
-		if (CstState.getMeowview()) {
+		if (CstState.getMeowView()) {
 			this.xRot = CAM_PITCH;
 			
-			this.yRot = 0.0F; // Rotation Fixed
+			this.yRot = 180.0F; // Rotation Fixed
 			
 			this.rotation.rotationYXZ(-this.yRot * 0.017453292F, CAM_PITCH * 0.017453292F, 0.0F);
 			this.forwards.set(0.0F, 0.0F, 1.0F).rotate(this.rotation);

@@ -2,7 +2,7 @@
   "_fv": 66,
   "_type": "livingentity",
   "definition": {
-    "mobName": "Predator",
+    "mobName": "Predator (Pseudo)",
     "mobLabel": "",
     "mobModelName": "Ocelot",
     "mobModelTexture": "ocelot.png",

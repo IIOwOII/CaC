@@ -29,10 +29,16 @@ public class EvInvokeProcedure {
 				TaskGameplayProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_gameplay_end")) {
 				TaskGameplayEndProcedure.execute(world, x, y, z, entity);
-			} else if ((ev_content).equals("phase_survey_start")) {
-				TaskSurveyStartProcedure.execute(world);
 			} else if ((ev_content).equals("phase_survey")) {
+				CacModVariables.MapVariables.get(world).Switch_survey = true;
+				CacModVariables.MapVariables.get(world).syncData(world);
 				TaskSurveyProcedure.execute(world);
+			} else if ((ev_content).equals("survey_waiting")) {
+				SuvWaitingProcedure.execute(world);
+			} else if ((ev_content).equals("survey_progress")) {
+				SuvProgressProcedure.execute(world);
+			} else if ((ev_content).equals("survey_confirmed")) {
+				SuvConfirmedProcedure.execute(world);
 			} else if ((ev_content).equals("phase_surrender")) {
 				TaskSurrenderProcedure.execute(world, x, y, z, entity);
 			} else if ((ev_content).equals("phase_interval")) {
@@ -44,7 +50,7 @@ public class EvInvokeProcedure {
 				CacModVariables.MapVariables.get(world).syncData(world);
 				TaskSessionEndProcedure.execute(world);
 			}
-			if (CacModVariables.Ev_que_loop) {
+			if (CacModVariables.Ev_que_loop && !CacModVariables.MapVariables.get(world).Switch_survey) {
 				CacModVariables.MapVariables.get(world).Ev_content = CacModVariables.Ev_que.get(((int) CacModVariables.Ev_que_index)).getAsString();
 				CacModVariables.MapVariables.get(world).syncData(world);
 				CacModVariables.Ev_que_index = (CacModVariables.Ev_que_index + 1) % CacModVariables.Ev_que.size();

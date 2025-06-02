@@ -7,11 +7,11 @@
     "customModelName": "Normal",
     "customProperties": {},
     "states": [],
-    "name": "CacTester",
-    "rarity": "COMMON",
+    "name": "Tester",
+    "rarity": "RARE",
     "creativeTabs": [
       {
-        "value": "TRANSPORTATION"
+        "value": "CUSTOM:CacTab"
       }
     ],
     "stackSize": 1,

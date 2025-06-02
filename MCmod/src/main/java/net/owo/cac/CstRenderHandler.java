@@ -15,7 +15,7 @@ public class CstRenderHandler {
     @SubscribeEvent
     public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
 		boolean ismeowview;
-		ismeowview = CstState.getMeowview();
+		ismeowview = CstState.getMeowView();
     	
         // Check if this is the hotbar overlay
         if (event.getOverlay() == VanillaGuiOverlay.HOTBAR.type()) {
@@ -42,7 +42,7 @@ public class CstRenderHandler {
 
     @SubscribeEvent
     public static void onRenderHand(RenderHandEvent event) {
-        if (CstState.getMeowview())
+        if (CstState.getMeowView())
             event.setCanceled(true);
     }
 }

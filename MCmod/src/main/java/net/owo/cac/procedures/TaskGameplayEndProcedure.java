@@ -17,6 +17,7 @@ public class TaskGameplayEndProcedure {
 			return;
 		CacModVariables.MapVariables.get(world).Exp_phase = 2.5;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		PrdMeowMoveOffProcedure.execute();
 		CacModVariables.MapVariables.get(world).Switch_AI = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_trace = false;

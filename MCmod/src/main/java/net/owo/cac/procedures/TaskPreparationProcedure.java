@@ -23,6 +23,7 @@ public class TaskPreparationProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "worldborder set 8");
 			}
 		}
+		PrdMeowMoveOnProcedure.execute();
 		FncManageTimePreparationProcedure.execute(world);
 	}
 }

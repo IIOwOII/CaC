@@ -55,9 +55,6 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
 	public static File Pool_survey = new File("");
 	public static File Log_survey = new File("");
-	public static com.google.gson.JsonArray Dat_survey_time = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_survey_answer = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_survey_order = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -139,7 +136,6 @@ public class CacModVariables {
 		public boolean Switch_debug = false;
 		public String Exp_subject = "\"\"";
 		public boolean Switch_blank = false;
-		public double Exp_survey_idx = 0;
 		public double TimR_time = 0;
 		public double TimA_time = 0;
 		public double TimA_time_currtick = 0;
@@ -185,11 +181,17 @@ public class CacModVariables {
 		public ListTag List_survey_range = new ListTag();
 		public ListTag List_survey_label = new ListTag();
 		public ListTag List_survey_initial = new ListTag();
-		public ListTag List_survey_preans = new ListTag();
 		public double Dat_survey_index = 0;
 		public boolean Switch_survey = false;
-		public boolean Key_left = false;
-		public boolean Key_right = false;
+		public String Dat_survey_name = "\"\"";
+		public ListTag Dat_survey_answer_pre = new ListTag();
+		public ListTag Dat_survey_order = new ListTag();
+		public ListTag Dat_survey_time = new ListTag();
+		public ListTag Dat_survey_answer = new ListTag();
+		public double Dat_survey_value_pre = 0;
+		public String Dat_survey_type = "\"\"";
+		public double Dat_survey_range_lower = 0;
+		public double Dat_survey_range_upper = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -216,7 +218,6 @@ public class CacModVariables {
 			Switch_debug = nbt.getBoolean("Switch_debug");
 			Exp_subject = nbt.getString("Exp_subject");
 			Switch_blank = nbt.getBoolean("Switch_blank");
-			Exp_survey_idx = nbt.getDouble("Exp_survey_idx");
 			TimR_time = nbt.getDouble("TimR_time");
 			TimA_time = nbt.getDouble("TimA_time");
 			TimA_time_currtick = nbt.getDouble("TimA_time_currtick");
@@ -283,11 +284,17 @@ public class CacModVariables {
 			this.List_survey_range = nbt.get("List_survey_range") instanceof ListTag List_survey_range ? List_survey_range : new ListTag();
 			this.List_survey_label = nbt.get("List_survey_label") instanceof ListTag List_survey_label ? List_survey_label : new ListTag();
 			this.List_survey_initial = nbt.get("List_survey_initial") instanceof ListTag List_survey_initial ? List_survey_initial : new ListTag();
-			this.List_survey_preans = nbt.get("List_survey_preans") instanceof ListTag List_survey_preans ? List_survey_preans : new ListTag();
 			Dat_survey_index = nbt.getDouble("Dat_survey_index");
 			Switch_survey = nbt.getBoolean("Switch_survey");
-			Key_left = nbt.getBoolean("Key_left");
-			Key_right = nbt.getBoolean("Key_right");
+			Dat_survey_name = nbt.getString("Dat_survey_name");
+			this.Dat_survey_answer_pre = nbt.get("Dat_survey_answer_pre") instanceof ListTag Dat_survey_answer_pre ? Dat_survey_answer_pre : new ListTag();
+			this.Dat_survey_order = nbt.get("Dat_survey_order") instanceof ListTag Dat_survey_order ? Dat_survey_order : new ListTag();
+			this.Dat_survey_time = nbt.get("Dat_survey_time") instanceof ListTag Dat_survey_time ? Dat_survey_time : new ListTag();
+			this.Dat_survey_answer = nbt.get("Dat_survey_answer") instanceof ListTag Dat_survey_answer ? Dat_survey_answer : new ListTag();
+			Dat_survey_value_pre = nbt.getDouble("Dat_survey_value_pre");
+			Dat_survey_type = nbt.getString("Dat_survey_type");
+			Dat_survey_range_lower = nbt.getDouble("Dat_survey_range_lower");
+			Dat_survey_range_upper = nbt.getDouble("Dat_survey_range_upper");
 		}
 
 		@Override
@@ -314,7 +321,6 @@ public class CacModVariables {
 			nbt.putBoolean("Switch_debug", Switch_debug);
 			nbt.putString("Exp_subject", Exp_subject);
 			nbt.putBoolean("Switch_blank", Switch_blank);
-			nbt.putDouble("Exp_survey_idx", Exp_survey_idx);
 			nbt.putDouble("TimR_time", TimR_time);
 			nbt.putDouble("TimA_time", TimA_time);
 			nbt.putDouble("TimA_time_currtick", TimA_time_currtick);
@@ -409,11 +415,17 @@ public class CacModVariables {
 			nbt.put("List_survey_range", this.List_survey_range);
 			nbt.put("List_survey_label", this.List_survey_label);
 			nbt.put("List_survey_initial", this.List_survey_initial);
-			nbt.put("List_survey_preans", this.List_survey_preans);
 			nbt.putDouble("Dat_survey_index", Dat_survey_index);
 			nbt.putBoolean("Switch_survey", Switch_survey);
-			nbt.putBoolean("Key_left", Key_left);
-			nbt.putBoolean("Key_right", Key_right);
+			nbt.putString("Dat_survey_name", Dat_survey_name);
+			nbt.put("Dat_survey_answer_pre", this.Dat_survey_answer_pre);
+			nbt.put("Dat_survey_order", this.Dat_survey_order);
+			nbt.put("Dat_survey_time", this.Dat_survey_time);
+			nbt.put("Dat_survey_answer", this.Dat_survey_answer);
+			nbt.putDouble("Dat_survey_value_pre", Dat_survey_value_pre);
+			nbt.putString("Dat_survey_type", Dat_survey_type);
+			nbt.putDouble("Dat_survey_range_lower", Dat_survey_range_lower);
+			nbt.putDouble("Dat_survey_range_upper", Dat_survey_range_upper);
 			return nbt;
 		}
 

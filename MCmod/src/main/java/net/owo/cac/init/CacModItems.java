@@ -5,6 +5,7 @@
 package net.owo.cac.init;
 
 import net.owo.cac.item.CacTestItemItem;
+import net.owo.cac.item.CacLogoItem;
 import net.owo.cac.CacMod;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -28,6 +29,8 @@ public class CacModItems {
 	public static final RegistryObject<Item> ENT_MEOWCAM_SPAWN_EGG = REGISTRY.register("ent_meowcam_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_MEOWCAM, -13210, -10066330, new Item.Properties()));
 	public static final RegistryObject<Item> ENT_PSEUDO_CAT_SPAWN_EGG = REGISTRY.register("ent_pseudo_cat_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_PSEUDO_CAT, -6710887, -65536, new Item.Properties()));
 	public static final RegistryObject<Item> ENT_PSEUDO_MOUSE_SPAWN_EGG = REGISTRY.register("ent_pseudo_mouse_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_PSEUDO_MOUSE, -6710887, -16711936, new Item.Properties()));
+	public static final RegistryObject<Item> BLK_FENCE = block(CacModBlocks.BLK_FENCE);
+	public static final RegistryObject<Item> CAC_LOGO = REGISTRY.register("cac_logo", () -> new CacLogoItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

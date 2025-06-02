@@ -14,6 +14,7 @@ public class TimDebugSwitchProcedure {
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eTime: \u00A7r" + new java.text.DecimalFormat("####").format(CacModVariables.MapVariables.get(world).TimD_time))), false);
 			CacModVariables.MapVariables.get(world).TimD_switch = false;
 			CacModVariables.MapVariables.get(world).syncData(world);
+			PrdMeowMoveOffProcedure.execute();
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eDebug Timer On \u00A7r"), false);
@@ -21,6 +22,7 @@ public class TimDebugSwitchProcedure {
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).TimD_switch = true;
 			CacModVariables.MapVariables.get(world).syncData(world);
+			PrdMeowMoveOnProcedure.execute();
 		}
 	}
 }

@@ -17,7 +17,7 @@ import net.minecraft.world.InteractionHand;
 
 public class CacTestItemItem extends Item {
 	public CacTestItemItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+		super(new Item.Properties().stacksTo(1).rarity(Rarity.RARE));
 	}
 
 	@Override

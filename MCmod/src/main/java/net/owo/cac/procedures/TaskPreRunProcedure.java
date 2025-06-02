@@ -33,11 +33,29 @@ public class TaskPreRunProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_time_interval = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_index = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_survey_value = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_value_pre = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_range_lower = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_range_upper = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_survey_surrender = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).List_survey_preans = new ListTag();
+		CacModVariables.MapVariables.get(world).Dat_survey_name = "";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_type = "";
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_time = new ListTag();
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_order = new ListTag();
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_answer = new ListTag();
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_answer_pre = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.Dat_pos_time = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_player_x = new com.google.gson.JsonArray();
@@ -53,8 +71,5 @@ public class TaskPreRunProcedure {
 		CacModVariables.Dat_pos_opponent_x_prep = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_z_prep = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
-		CacModVariables.Dat_survey_time = new com.google.gson.JsonArray();
-		CacModVariables.Dat_survey_order = new com.google.gson.JsonArray();
-		CacModVariables.Dat_survey_answer = new com.google.gson.JsonArray();
 	}
 }

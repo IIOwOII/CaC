@@ -2,7 +2,7 @@
   "_fv": 66,
   "_type": "animatedentity",
   "definition": {
-    "mobName": "Prey",
+    "mobName": "Prey (Pseudo)",
     "mobLabel": "",
     "mobModelTexture": "texture_cac_mouse.png",
     "mobModelGlowTexture": "",
