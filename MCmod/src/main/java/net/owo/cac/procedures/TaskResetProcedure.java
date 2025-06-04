@@ -21,6 +21,8 @@ public class TaskResetProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_survey = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_surrender = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).TimR_que_time = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Ev_occuring = false;

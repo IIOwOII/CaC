@@ -6,6 +6,7 @@ import org.lwjgl.glfw.GLFW;
 
 import net.minecraft.client.KeyMapping;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.util.Mth;
 
 import net.minecraftforge.event.TickEvent;
@@ -14,6 +15,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 
 import net.owo.cac.CstState;
+import net.owo.cac.network.CacModVariables;
+import net.owo.cac.network.CacModVariables.MapVariables;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstKeyHandler {
@@ -22,21 +25,20 @@ public class CstKeyHandler {
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         // Only run on the "end" phase to avoid doubling
         if (event.phase == TickEvent.Phase.END) {
-        
+        	// Arrow Control
+            CstState.arrow_right = CstKeybind.CAC_RIGHT_KEY.isDown() ? 1 : 0;
+            CstState.arrow_left = CstKeybind.CAC_LEFT_KEY.isDown() ? 1 : 0;
+            CstState.arrow_up = CstKeybind.CAC_UP_KEY.isDown() ? 1 : 0;
+            CstState.arrow_down = CstKeybind.CAC_DOWN_KEY.isDown() ? 1 : 0;
+            
             if (CstKeybind.CAC_CAMERA_KEY.consumeClick()) {
                 // Toggle the camera state
                 CstState.switchMeowView();
             }
 
 			if (CstState.CanMeowMove) {
-				// Arrow Control
-	            int weight_right = CstKeybind.CAC_RIGHT_KEY.isDown() ? 1 : 0;
-	            int weight_left = CstKeybind.CAC_LEFT_KEY.isDown() ? 1 : 0;
-	            int weight_up = CstKeybind.CAC_UP_KEY.isDown() ? 1 : 0;
-	            int weight_down = CstKeybind.CAC_DOWN_KEY.isDown() ? 1 : 0;
-	            
-	            int rot_re = weight_right - weight_left;
-	            int rot_im = weight_up - weight_down;
+	            int rot_re = CstState.arrow_right - CstState.arrow_left;
+	            int rot_im = CstState.arrow_up - CstState.arrow_down;
 	
 	            double rot_norm = Math.sqrt(rot_re*rot_re + rot_im*rot_im);
 	
@@ -62,11 +64,25 @@ public class CstKeyHandler {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
     	@Nullable Entity _ent = null;
     	_ent = event.player;
-
+    	
     	if (_ent == null) {
     		return;
-    	} else if (CstState.CanMeowMove && CstState.IsMeowMove_old) {
+    	} 
+    	if (CstState.CanMeowMove && CstState.IsMeowMove_old) {
     		_ent.setYRot(CstState.rot_angle);
+    	}
+    	
+    	if (event.phase == TickEvent.Phase.END) {
+    		LevelAccessor world = _ent.level();
+    		MapVariables cacvar = CacModVariables.MapVariables.get(world);
+    		
+    		// Survey Value
+    		if (cacvar.Switch_survey) {
+    			cacvar.SuvT_value = (cacvar.SuvT_range_upper > cacvar.SuvT_value) ? (cacvar.SuvT_value + CstState.arrow_right):(cacvar.SuvT_value);
+    			cacvar.syncData(world);
+    			cacvar.SuvT_value = (cacvar.SuvT_range_lower < cacvar.SuvT_value) ? (cacvar.SuvT_value - CstState.arrow_left):(cacvar.SuvT_value);
+    			cacvar.syncData(world);
+    		}
     	}
     }
     

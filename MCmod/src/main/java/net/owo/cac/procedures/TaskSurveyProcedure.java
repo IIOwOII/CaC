@@ -10,10 +10,13 @@ public class TaskSurveyProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_blank = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		FncManageSurveytypeProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).Dat_survey_index = 0;
+		if (CacModVariables.MapVariables.get(world).Exp_trial == 0) {
+			CacModVariables.MapVariables.get(world).SuvT_answer_pre = CacModVariables.MapVariables.get(world).Suv_initial.copy();
+			CacModVariables.MapVariables.get(world).syncData(world);
+		}
+		CacModVariables.MapVariables.get(world).SuvT_index = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Switch_survey = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		FncManageSurveyResetProcedure.execute(world);
+		FncManageSurveyOrderProcedure.execute(world);
 	}
 }

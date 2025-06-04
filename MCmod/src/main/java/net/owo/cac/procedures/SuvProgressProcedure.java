@@ -10,6 +10,10 @@ public class SuvProgressProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_blank = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_survey = true;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).SuvT_time = CacModVariables.MapVariables.get(world).TimR_time;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Ev_content = "survey_confirmed";
 		CacModVariables.MapVariables.get(world).syncData(world);
 	}
