@@ -939,25 +939,6 @@
       "path": "~/CacTask/General"
     },
     {
-      "name": "FncManageSurveytype",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_manage_surveytype",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncManageSurveytypeProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Manager"
-    },
-    {
       "name": "TaskMapShow",
       "type": "procedure",
       "compiles": true,
@@ -2371,21 +2352,6 @@
       "path": "~/CacTask/General/Survey"
     },
     {
-      "name": "GuiSurrender",
-      "type": "gui",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "gui_surrender",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/client/gui/GuiSurrenderScreen.java",
-          "src/main/java/net/owo/cac/network/GuiSurrenderButtonMessage.java",
-          "src/main/java/net/owo/cac/world/inventory/GuiSurrenderMenu.java"
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
-    },
-    {
       "name": "TaskSurrender",
       "type": "procedure",
       "compiles": true,
@@ -2397,28 +2363,12 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
         ]
       },
-      "path": "~/CacTask/General/Survey"
+      "path": "~/CacTask/General"
     },
     {
       "name": "OvlSurvey",
@@ -2661,6 +2611,77 @@
         ]
       },
       "path": "~/CacKey"
+    },
+    {
+      "name": "FncManageSurveyOrder",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_manage_survey_order",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncManageSurveyOrderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil/Manager"
+    },
+    {
+      "name": "FncManageSurveyReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_manage_survey_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncManageSurveyResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacUtil/Manager"
+    },
+    {
+      "name": "OvlSurrender",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ovl_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/client/screens/OvlSurrenderOverlay.java"
+        ]
+      },
+      "path": "~/CacTask/General/Survey"
+    },
+    {
+      "name": "RtnSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
     }
   ],
   "variable_elements": [
@@ -3145,12 +3166,6 @@
       "value": "new File(\"\")"
     },
     {
-      "name": "Dat_survey_value",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
       "name": "Log_survey",
       "type": "file",
       "scope": "global",
@@ -3193,28 +3208,10 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Dat_survey_index",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
       "name": "Switch_survey",
       "type": "logic",
       "scope": "map",
       "value": "false"
-    },
-    {
-      "name": "Dat_survey_name",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Dat_survey_answer_pre",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
     },
     {
       "name": "Dat_survey_order",
@@ -3233,48 +3230,6 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_survey_value_pre",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_survey_type",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Dat_survey_range_lower",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_survey_range_upper",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_survey_label_low",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Dat_survey_label_mid",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Dat_survey_label_high",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
     },
     {
       "name": "Suv_reference",
@@ -3389,6 +3344,18 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "SuvT_time",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Switch_surrender",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -3416,7 +3383,6 @@
       "key.cac.cac_key_signal": "Scanner Signal",
       "key.cac.cac_key_down": "Down",
       "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
-      "gui.cac.gui_blank.button_test": "test",
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "item_group.cac.cac_tab": "Chasing and Chased",
@@ -3424,11 +3390,8 @@
       "entity.cac.ent_meowcam": "Meowcam",
       "key.categories.cac": "Chasing and Chased",
       "block.cac.blk_fence": "Fence (No field)",
-      "gui.cac.ovl_survey.label_ao": "Ao",
-      "gui.cac.gui_surrender.button_yes": "Yes",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
-      "gui.cac.gui_surrender.button_no": "No",
       "key.cac.cac_key_decide": "Decide",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "effect.cac.eff_stop_move": "Stiffness",
@@ -3444,7 +3407,6 @@
       "entity.cac.ent_player_cat": "Predator(Player)",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
-      "gui.cac.gui_surrender.label_are_you_willing_to_surrender": "Are you willing to surrender?",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
       "block.cac.blk_obstacle": "Obstacle",
       "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
