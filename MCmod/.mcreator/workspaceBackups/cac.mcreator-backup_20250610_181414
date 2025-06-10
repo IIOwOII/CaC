@@ -1,21 +1,6 @@
 {
   "mod_elements": [
     {
-      "name": "EntCat",
-      "type": "livingentity",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ent_cat",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/client/renderer/EntCatRenderer.java",
-          "src/main/resources/assets/cac/models/item/ent_cat_spawn_egg.json",
-          "src/main/java/net/owo/cac/entity/EntCatEntity.java"
-        ]
-      },
-      "path": "~/CacEntity"
-    },
-    {
       "name": "CacTestItem",
       "type": "item",
       "compiles": true,
@@ -147,21 +132,6 @@
         ]
       },
       "path": "~/CacEffect"
-    },
-    {
-      "name": "EntPlayerCat",
-      "type": "livingentity",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ent_player_cat",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/cac/models/item/ent_player_cat_spawn_egg.json",
-          "src/main/java/net/owo/cac/entity/EntPlayerCatEntity.java",
-          "src/main/java/net/owo/cac/client/renderer/EntPlayerCatRenderer.java"
-        ]
-      },
-      "path": "~/CacEntity"
     },
     {
       "name": "AiMouse",
@@ -567,10 +537,10 @@
       "registry_name": "ent_mouse",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/client/renderer/EntMouseRenderer.java",
           "src/main/java/net/owo/cac/entity/model/EntMouseModel.java",
-          "src/main/resources/assets/cac/models/item/ent_mouse_spawn_egg.json",
-          "src/main/java/net/owo/cac/entity/EntMouseEntity.java"
+          "src/main/java/net/owo/cac/entity/EntMouseEntity.java",
+          "src/main/java/net/owo/cac/client/renderer/EntMouseRenderer.java",
+          "src/main/resources/assets/cac/models/item/ent_mouse_spawn_egg.json"
         ]
       },
       "path": "~/CacEntity"
@@ -583,10 +553,10 @@
       "registry_name": "ent_player_mouse",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/entity/EntPlayerMouseEntity.java",
-          "src/main/java/net/owo/cac/client/renderer/EntPlayerMouseRenderer.java",
+          "src/main/resources/assets/cac/models/item/ent_player_mouse_spawn_egg.json",
           "src/main/java/net/owo/cac/entity/model/EntPlayerMouseModel.java",
-          "src/main/resources/assets/cac/models/item/ent_player_mouse_spawn_egg.json"
+          "src/main/java/net/owo/cac/entity/EntPlayerMouseEntity.java",
+          "src/main/java/net/owo/cac/client/renderer/EntPlayerMouseRenderer.java"
         ]
       },
       "path": "~/CacEntity"
@@ -1623,7 +1593,7 @@
     {
       "name": "EvInvoke",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "ev_invoke",
       "metadata": {
@@ -2074,21 +2044,6 @@
         ]
       },
       "path": "~/CacTask/General"
-    },
-    {
-      "name": "EntPseudoCat",
-      "type": "livingentity",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ent_pseudo_cat",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/entity/EntPseudoCatEntity.java",
-          "src/main/java/net/owo/cac/client/renderer/EntPseudoCatRenderer.java",
-          "src/main/resources/assets/cac/models/item/ent_pseudo_cat_spawn_egg.json"
-        ]
-      },
-      "path": "~/CacEntity"
     },
     {
       "name": "EntPseudoMouse",
@@ -2576,7 +2531,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/RecSurveyProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Record"
     },
@@ -2662,6 +2622,93 @@
         ]
       },
       "path": "~/CacTask/General/Survey"
+    },
+    {
+      "name": "RtnSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "EntCat",
+      "type": "animatedentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ent_cat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/client/renderer/EntCatRenderer.java",
+          "src/main/resources/assets/cac/models/item/ent_cat_spawn_egg.json",
+          "src/main/java/net/owo/cac/entity/EntCatEntity.java",
+          "src/main/java/net/owo/cac/entity/model/EntCatModel.java"
+        ]
+      },
+      "path": "~/CacEntity"
+    },
+    {
+      "name": "EntPlayerCat",
+      "type": "animatedentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ent_player_cat",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/item/ent_player_cat_spawn_egg.json",
+          "src/main/java/net/owo/cac/entity/EntPlayerCatEntity.java",
+          "src/main/java/net/owo/cac/client/renderer/EntPlayerCatRenderer.java",
+          "src/main/java/net/owo/cac/entity/model/EntPlayerCatModel.java"
+        ]
+      },
+      "path": "~/CacEntity"
+    },
+    {
+      "name": "EntPseudoCat",
+      "type": "animatedentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ent_pseudo_cat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/entity/EntPseudoCatEntity.java",
+          "src/main/java/net/owo/cac/entity/model/EntPseudoCatModel.java",
+          "src/main/java/net/owo/cac/client/renderer/EntPseudoCatRenderer.java",
+          "src/main/resources/assets/cac/models/item/ent_pseudo_cat_spawn_egg.json"
+        ]
+      },
+      "path": "~/CacEntity"
+    },
+    {
+      "name": "TaskSurrenderEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_surrender_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskSurrenderEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/General"
     }
   ],
   "variable_elements": [
@@ -3336,6 +3383,12 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Dat_survey_surrender_type",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [
@@ -3362,16 +3415,14 @@
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
       "key.cac.cac_key_down": "Down",
-      "item.cac.ent_player_cat_spawn_egg": "Predator(Player) Spawn Egg",
-      "gui.cac.gui_blank.button_test": "test",
-      "entity.cac.ent_cat": "Predator",
+      "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "item_group.cac.cac_tab": "Chasing and Chased",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "key.categories.cac": "Chasing and Chased",
       "block.cac.blk_fence": "Fence (No field)",
-      "gui.cac.ovl_survey.label_ao": "Ao",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
       "key.cac.cac_key_decide": "Decide",
@@ -3384,9 +3435,9 @@
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left",
-      "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "effect.cac.eff_morph_predator": "Predator",
-      "entity.cac.ent_player_cat": "Predator(Player)",
+      "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
+      "entity.cac.ent_player_cat": "Predator (Player)",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",

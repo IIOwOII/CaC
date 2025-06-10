@@ -1,21 +1,42 @@
 
 package net.owo.cac.client.renderer;
 
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.cache.object.BakedGeoModel;
+
+import net.owo.cac.entity.model.EntPlayerCatModel;
 import net.owo.cac.entity.EntPlayerCatEntity;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.model.OcelotModel;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.MultiBufferSource;
 
-public class EntPlayerCatRenderer extends MobRenderer<EntPlayerCatEntity, OcelotModel<EntPlayerCatEntity>> {
-	public EntPlayerCatRenderer(EntityRendererProvider.Context context) {
-		super(context, new OcelotModel(context.bakeLayer(ModelLayers.OCELOT)), 0.5f);
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.PoseStack;
+
+public class EntPlayerCatRenderer extends GeoEntityRenderer<EntPlayerCatEntity> {
+	public EntPlayerCatRenderer(EntityRendererProvider.Context renderManager) {
+		super(renderManager, new EntPlayerCatModel());
+		this.shadowRadius = 0.5f;
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(EntPlayerCatEntity entity) {
-		return new ResourceLocation("cac:textures/entities/ocelot.png");
+	public RenderType getRenderType(EntPlayerCatEntity animatable, ResourceLocation texture, MultiBufferSource bufferSource, float partialTick) {
+		return RenderType.entityTranslucent(getTextureLocation(animatable));
+	}
+
+	@Override
+	public void preRender(PoseStack poseStack, EntPlayerCatEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green,
+			float blue, float alpha) {
+		float scale = 1f;
+		this.scaleHeight = scale;
+		this.scaleWidth = scale;
+		super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+	}
+
+	@Override
+	protected float getDeathMaxRotation(EntPlayerCatEntity entityLivingBaseIn) {
+		return 0.0F;
 	}
 }

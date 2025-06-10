@@ -10,5 +10,13 @@ public class TaskSurrenderProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_survey_surrender = 0.5;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_blank = false;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_surrender = true;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_surrender_type = CacModVariables.MapVariables.get(world).Exp_trial % 2;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Ev_content = "phase_surrender_end";
+		CacModVariables.MapVariables.get(world).syncData(world);
 	}
 }

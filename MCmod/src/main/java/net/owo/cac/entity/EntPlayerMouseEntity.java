@@ -106,11 +106,6 @@ public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 	}
 
 	@Override
-	public double getPassengersRidingOffset() {
-		return super.getPassengersRidingOffset() + -0.5;
-	}
-
-	@Override
 	public SoundEvent getHurtSound(DamageSource ds) {
 		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:cac.snd_silence"));
 	}

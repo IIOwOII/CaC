@@ -21,12 +21,12 @@ import net.minecraftforge.api.distmarker.Dist;
 public class CacModEntityRenderers {
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerEntityRenderer(CacModEntities.ENT_CAT.get(), EntCatRenderer::new);
-		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_CAT.get(), EntPlayerCatRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_MOUSE.get(), EntMouseRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_MOUSE.get(), EntPlayerMouseRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_MEOWCAM.get(), EntMeowcamRenderer::new);
-		event.registerEntityRenderer(CacModEntities.ENT_PSEUDO_CAT.get(), EntPseudoCatRenderer::new);
 		event.registerEntityRenderer(CacModEntities.ENT_PSEUDO_MOUSE.get(), EntPseudoMouseRenderer::new);
+		event.registerEntityRenderer(CacModEntities.ENT_CAT.get(), EntCatRenderer::new);
+		event.registerEntityRenderer(CacModEntities.ENT_PLAYER_CAT.get(), EntPlayerCatRenderer::new);
+		event.registerEntityRenderer(CacModEntities.ENT_PSEUDO_CAT.get(), EntPseudoCatRenderer::new);
 	}
 }

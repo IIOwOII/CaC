@@ -12,7 +12,9 @@ public class FncManageSurveyResetProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_survey_answer = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dat_survey_surrender = 0;
+		CacModVariables.MapVariables.get(world).Dat_survey_surrender = 0.5;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Dat_survey_surrender_type = 0.5;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		for (int index0 = 0; index0 < CacModVariables.MapVariables.get(world).Suv_reference.size(); index0++) {
 			CacModVariables.MapVariables.get(world).Dat_survey_time.addTag(0, IntTag.valueOf(0));

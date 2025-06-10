@@ -56,7 +56,6 @@ public class CstKeyHandler {
 	            	CstState.IsMeowMove_old = false;
 	            }
 			}
-			
         }
     }
 
@@ -75,13 +74,40 @@ public class CstKeyHandler {
     	if (event.phase == TickEvent.Phase.END) {
     		LevelAccessor world = _ent.level();
     		MapVariables cacvar = CacModVariables.MapVariables.get(world);
+    		int arrow_R = CstState.arrow_right;
+    		int arrow_L = CstState.arrow_left;
+
+    		//
+    		if ((arrow_R == 0) && (arrow_L == 0)) {
+    			CstState.arrow_tick = 0;
+    		} else {
+    			if (arrow_R == 1) {
+    				CstState.arrow_tick = CstState.arrow_tick + 1;
+    			}
+    			if (arrow_L == 1) {
+    				CstState.arrow_tick = CstState.arrow_tick - 1;
+    			}
+    		}
     		
     		// Survey Value
     		if (cacvar.Switch_survey) {
-    			cacvar.SuvT_value = (cacvar.SuvT_range_upper > cacvar.SuvT_value) ? (cacvar.SuvT_value + CstState.arrow_right):(cacvar.SuvT_value);
-    			cacvar.syncData(world);
-    			cacvar.SuvT_value = (cacvar.SuvT_range_lower < cacvar.SuvT_value) ? (cacvar.SuvT_value - CstState.arrow_left):(cacvar.SuvT_value);
-    			cacvar.syncData(world);
+				if (CstState.arrow_tick == 5) {
+					cacvar.SuvT_value = (cacvar.SuvT_range_upper > cacvar.SuvT_value) ? (cacvar.SuvT_value + 1):(cacvar.SuvT_value);
+    				cacvar.syncData(world);
+    				CstState.arrow_tick = 0;
+				} else if (CstState.arrow_tick == -5) {
+					cacvar.SuvT_value = (cacvar.SuvT_range_lower < cacvar.SuvT_value) ? (cacvar.SuvT_value - 1):(cacvar.SuvT_value);
+    				cacvar.syncData(world);
+    				CstState.arrow_tick = 0;
+				}
+    		} else if (cacvar.Switch_surrender) {
+    			if ((CstState.arrow_right == 1) && (cacvar.Dat_survey_surrender != 1)) {
+    				cacvar.Dat_survey_surrender = 1;
+    				cacvar.syncData(world);
+    			} else if ((CstState.arrow_left == 1) && (cacvar.Dat_survey_surrender != 0)) {
+    				cacvar.Dat_survey_surrender = 0;
+    				cacvar.syncData(world);
+    			}
     		}
     	}
     }

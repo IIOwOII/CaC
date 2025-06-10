@@ -205,6 +205,7 @@ public class CacModVariables {
 		public double SuvT_value_pre = 0;
 		public double SuvT_time = 0;
 		public boolean Switch_surrender = false;
+		public double Dat_survey_surrender_type = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -321,6 +322,7 @@ public class CacModVariables {
 			SuvT_value_pre = nbt.getDouble("SuvT_value_pre");
 			SuvT_time = nbt.getDouble("SuvT_time");
 			Switch_surrender = nbt.getBoolean("Switch_surrender");
+			Dat_survey_surrender_type = nbt.getDouble("Dat_survey_surrender_type");
 		}
 
 		@Override
@@ -465,6 +467,7 @@ public class CacModVariables {
 			nbt.putDouble("SuvT_value_pre", SuvT_value_pre);
 			nbt.putDouble("SuvT_time", SuvT_time);
 			nbt.putBoolean("Switch_surrender", Switch_surrender);
+			nbt.putDouble("Dat_survey_surrender_type", Dat_survey_surrender_type);
 			return nbt;
 		}
 

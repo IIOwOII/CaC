@@ -28,20 +28,20 @@ import net.minecraft.world.entity.Entity;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModEntities {
 	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CacMod.MODID);
-	public static final RegistryObject<EntityType<EntCatEntity>> ENT_CAT = register("ent_cat",
-			EntityType.Builder.<EntCatEntity>of(EntCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntCatEntity::new).fireImmune().sized(0.5f, 0.5f));
-	public static final RegistryObject<EntityType<EntPlayerCatEntity>> ENT_PLAYER_CAT = register("ent_player_cat", EntityType.Builder.<EntPlayerCatEntity>of(EntPlayerCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
-			.setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerCatEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntMouseEntity>> ENT_MOUSE = register("ent_mouse",
 			EntityType.Builder.<EntMouseEntity>of(EntMouseEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPlayerMouseEntity>> ENT_PLAYER_MOUSE = register("ent_player_mouse", EntityType.Builder.<EntPlayerMouseEntity>of(EntPlayerMouseEntity::new, MobCategory.CREATURE)
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntMeowcamEntity>> ENT_MEOWCAM = register("ent_meowcam", EntityType.Builder.<EntMeowcamEntity>of(EntMeowcamEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
 			.setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntMeowcamEntity::new).fireImmune().sized(0.5f, 0.5f));
-	public static final RegistryObject<EntityType<EntPseudoCatEntity>> ENT_PSEUDO_CAT = register("ent_pseudo_cat", EntityType.Builder.<EntPseudoCatEntity>of(EntPseudoCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
-			.setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPseudoCatEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPseudoMouseEntity>> ENT_PSEUDO_MOUSE = register("ent_pseudo_mouse", EntityType.Builder.<EntPseudoMouseEntity>of(EntPseudoMouseEntity::new, MobCategory.CREATURE)
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPseudoMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<EntCatEntity>> ENT_CAT = register("ent_cat",
+			EntityType.Builder.<EntCatEntity>of(EntCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntCatEntity::new).fireImmune().sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<EntPlayerCatEntity>> ENT_PLAYER_CAT = register("ent_player_cat", EntityType.Builder.<EntPlayerCatEntity>of(EntPlayerCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPlayerCatEntity::new).fireImmune().sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<EntPseudoCatEntity>> ENT_PSEUDO_CAT = register("ent_pseudo_cat", EntityType.Builder.<EntPseudoCatEntity>of(EntPseudoCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EntPseudoCatEntity::new).fireImmune().sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -50,24 +50,24 @@ public class CacModEntities {
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			EntCatEntity.init();
-			EntPlayerCatEntity.init();
 			EntMouseEntity.init();
 			EntPlayerMouseEntity.init();
 			EntMeowcamEntity.init();
-			EntPseudoCatEntity.init();
 			EntPseudoMouseEntity.init();
+			EntCatEntity.init();
+			EntPlayerCatEntity.init();
+			EntPseudoCatEntity.init();
 		});
 	}
 
 	@SubscribeEvent
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
-		event.put(ENT_CAT.get(), EntCatEntity.createAttributes().build());
-		event.put(ENT_PLAYER_CAT.get(), EntPlayerCatEntity.createAttributes().build());
 		event.put(ENT_MOUSE.get(), EntMouseEntity.createAttributes().build());
 		event.put(ENT_PLAYER_MOUSE.get(), EntPlayerMouseEntity.createAttributes().build());
 		event.put(ENT_MEOWCAM.get(), EntMeowcamEntity.createAttributes().build());
-		event.put(ENT_PSEUDO_CAT.get(), EntPseudoCatEntity.createAttributes().build());
 		event.put(ENT_PSEUDO_MOUSE.get(), EntPseudoMouseEntity.createAttributes().build());
+		event.put(ENT_CAT.get(), EntCatEntity.createAttributes().build());
+		event.put(ENT_PLAYER_CAT.get(), EntPlayerCatEntity.createAttributes().build());
+		event.put(ENT_PSEUDO_CAT.get(), EntPseudoCatEntity.createAttributes().build());
 	}
 }

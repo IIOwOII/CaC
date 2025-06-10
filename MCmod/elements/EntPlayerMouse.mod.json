@@ -7,7 +7,7 @@
     "mobModelTexture": "texture_cac_mouse.png",
     "mobModelGlowTexture": "",
     "visualScale": {
-      "fixedValue": 1.0
+      "fixedValue": 1.5
     },
     "boundingBoxScale": {
       "fixedValue": 1.0
@@ -16,7 +16,7 @@
     "modelWidth": 0.5,
     "modelHeight": 0.5,
     "modelShadowSize": 0.5,
-    "mountedYOffset": -0.5,
+    "mountedYOffset": 0.0,
     "stepHeight": 0.0,
     "hasSpawnEgg": true,
     "spawnEggBaseColor": {
@@ -29,7 +29,7 @@
     },
     "creativeTabs": [
       {
-        "value": "MISC"
+        "value": "CUSTOM:CacTab"
       }
     ],
     "isBoss": false,

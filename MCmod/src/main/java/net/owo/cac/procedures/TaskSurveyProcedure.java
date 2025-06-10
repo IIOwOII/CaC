@@ -16,6 +16,8 @@ public class TaskSurveyProcedure {
 		}
 		CacModVariables.MapVariables.get(world).SuvT_index = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Ev_content = "survey_waiting";
+		CacModVariables.MapVariables.get(world).syncData(world);
 		FncManageSurveyResetProcedure.execute(world);
 		FncManageSurveyOrderProcedure.execute(world);
 	}

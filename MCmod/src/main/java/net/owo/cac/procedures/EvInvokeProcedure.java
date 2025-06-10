@@ -40,6 +40,9 @@ public class EvInvokeProcedure {
 				SuvConfirmedProcedure.execute(world);
 			} else if ((ev_content).equals("phase_surrender")) {
 				TaskSurrenderProcedure.execute(world);
+			} else if ((ev_content).equals("phase_surrender_end")) {
+				CacModVariables.Ev_que_loop = true;
+				TaskSurrenderEndProcedure.execute(world);
 			} else if ((ev_content).equals("phase_interval")) {
 				TaskIntervalProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_posttrial")) {

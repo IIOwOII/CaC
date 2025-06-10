@@ -17,5 +17,6 @@ public class TaskIntervalProcedure {
 		EffRemoveMorphProcedure.execute(entity);
 		RecGameplayProcedure.execute(world);
 		RecPositionProcedure.execute(world);
+		RecSurveyProcedure.execute(world);
 	}
 }

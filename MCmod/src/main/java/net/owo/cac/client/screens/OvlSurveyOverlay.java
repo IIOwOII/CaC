@@ -49,7 +49,7 @@ public class OvlSurveyOverlay {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 
 		MapVariables cacvar = CacModVariables.MapVariables.get(world);
-		if (cacvar.Switch_survey) {
+		if (cacvar.Switch_survey && world.isClientSide())) {
 			// Variables
 			GuiGraphics gg = event.getGuiGraphics();
 			
@@ -70,7 +70,7 @@ public class OvlSurveyOverlay {
 			gg.blit(new ResourceLocation("cac:textures/screens/gui_blank.png"), 0, 0, 0, 0, w, h, w, h);
 
 			// Slide
-			if (suv_type == "slide") {
+			if (suv_type.equals("slide")) {
 				gg.blit(new ResourceLocation("cac:textures/screens/texture_slide.png"), (w/2-200), (h/2+54), 0, 0, 400, 32, 400, 32);
 				gg.blit(new ResourceLocation("cac:textures/screens/texture_slide_trace.png"), ((w/2-2) + (int)(400*suv_value_pre_prop)), (h/2+60), 0, 0, 4, 20, 4, 20);
 				gg.blit(new ResourceLocation("cac:textures/screens/texture_slide_cursor.png"), ((w/2-2) + (int)(400*suv_value_prop)), (h/2+60), 0, 0, 4, 20, 4, 20);
@@ -79,7 +79,7 @@ public class OvlSurveyOverlay {
 			// Label
 			gg.drawString(mc.font, Component.literal(suv_label_low), (w/2-200), (h/2+40), -1, false);
 			gg.drawString(mc.font, Component.literal(suv_label_mid), (w/2), (h/2+40), -1, false);
-			gg.drawString(mc.font, Component.literal(suv_label_high), (w/2+200), (h/2+40), -1, false);
+			gg.drawString(mc.font, Component.literal(suv_label_high), (w/2+150), (h/2+40), -1, false);
 
 			// Survey
 			StringBuilder sb_name = new StringBuilder("cac:textures/screens/text_");

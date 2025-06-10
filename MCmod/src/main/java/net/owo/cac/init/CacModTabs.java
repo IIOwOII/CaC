@@ -26,20 +26,20 @@ public class CacModTabs {
 				tabData.accept(CacModItems.CAC_TEST_ITEM.get());
 				tabData.accept(CacModBlocks.BLK_OBSTACLE.get().asItem());
 				tabData.accept(CacModBlocks.BLK_WALL.get().asItem());
+				tabData.accept(CacModItems.ENT_MOUSE_SPAWN_EGG.get());
+				tabData.accept(CacModItems.ENT_PLAYER_MOUSE_SPAWN_EGG.get());
+				tabData.accept(CacModItems.ENT_PSEUDO_MOUSE_SPAWN_EGG.get());
 				tabData.accept(CacModBlocks.BLK_FENCE.get().asItem());
 				tabData.accept(CacModItems.CAC_LOGO.get());
+				tabData.accept(CacModItems.ENT_CAT_SPAWN_EGG.get());
+				tabData.accept(CacModItems.ENT_PLAYER_CAT_SPAWN_EGG.get());
+				tabData.accept(CacModItems.ENT_PSEUDO_CAT_SPAWN_EGG.get());
 			}).withSearchBar().build());
 
 	@SubscribeEvent
 	public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
 		if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
-			tabData.accept(CacModItems.ENT_CAT_SPAWN_EGG.get());
-			tabData.accept(CacModItems.ENT_PLAYER_CAT_SPAWN_EGG.get());
-			tabData.accept(CacModItems.ENT_MOUSE_SPAWN_EGG.get());
-			tabData.accept(CacModItems.ENT_PLAYER_MOUSE_SPAWN_EGG.get());
 			tabData.accept(CacModItems.ENT_MEOWCAM_SPAWN_EGG.get());
-			tabData.accept(CacModItems.ENT_PSEUDO_CAT_SPAWN_EGG.get());
-			tabData.accept(CacModItems.ENT_PSEUDO_MOUSE_SPAWN_EGG.get());
 		}
 	}
 }

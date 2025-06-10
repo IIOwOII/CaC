@@ -1,32 +1,32 @@
 {
   "winprob": {
     "type": "slide",
-    "range": [0, 100],
+    "range": [0.0, 100.0],
     "label": ["0%", "50%", "100%"],
-    "initial": 50
+    "initial": 50.0
   },
   "perdiff": {
     "type": "slide",
-    "range": [0, 10],
+    "range": [0.0, 10.0],
     "label": ["Easy", "Normal", "Hard"],
-    "initial": 5
+    "initial": 5.0
   },
   "stress": {
     "type": "slide",
-    "range": [0, 10],
+    "range": [0.0, 10.0],
     "label": ["Comfortable", ".", "Stressful"],
-    "initial": 5
+    "initial": 5.0
   },
   "target": {
     "type": "slide",
-    "range": [0, 10],
+    "range": [0.0, 10.0],
     "label": ["Comfortable", ".", "Stressful"],
-    "initial": 5
+    "initial": 5.0
   },
   "control": {
     "type": "slide",
-    "range": [0, 10],
+    "range": [0.0, 10.0],
     "label": ["Agree", ".", "Disagree"],
-    "initial": 5
+    "initial": 5.0
   }
 }
