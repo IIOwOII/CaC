@@ -2531,7 +2531,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/RecSurveyProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Record"
     },
