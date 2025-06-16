@@ -4,6 +4,7 @@ import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.nbt.IntTag;
+import net.minecraft.nbt.DoubleTag;
 
 public class SuvConfirmedProcedure {
 	public static void execute(LevelAccessor world) {
@@ -19,6 +20,7 @@ public class SuvConfirmedProcedure {
 		ord = (CacModVariables.MapVariables.get(world).Dat_survey_order.get((int) CacModVariables.MapVariables.get(world).SuvT_index)) instanceof IntTag _intTag ? _intTag.getAsInt() : 0;
 		CacModVariables.MapVariables.get(world).Dat_survey_time.setTag((int) ord, IntTag.valueOf((int) CacModVariables.MapVariables.get(world).SuvT_time));
 		CacModVariables.MapVariables.get(world).Dat_survey_answer.setTag((int) ord, IntTag.valueOf((int) CacModVariables.MapVariables.get(world).SuvT_value));
+		CacModVariables.MapVariables.get(world).SuvT_answer_pre.setTag((int) ord, DoubleTag.valueOf(CacModVariables.MapVariables.get(world).SuvT_value));
 		CacModVariables.MapVariables.get(world).SuvT_index = CacModVariables.MapVariables.get(world).SuvT_index + 1;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (CacModVariables.MapVariables.get(world).SuvT_index < CacModVariables.MapVariables.get(world).Suv_reference.size()) {

@@ -1,0 +1,61 @@
+{
+  "cac": {
+    "reference": [
+      "winprob",
+      "perdiff",
+      "stress",
+      "target",
+      "control"
+    ],
+    "trial_0": {
+      "order": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": [
+        178,
+        200,
+        161,
+        157,
+        52
+      ],
+      "answer": [
+        22,
+        8,
+        9,
+        9,
+        2
+      ],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_1": {
+      "order": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": [
+        49,
+        33,
+        33,
+        51,
+        24
+      ],
+      "answer": [
+        56,
+        3,
+        3,
+        1,
+        8
+      ],
+      "surrender": 1,
+      "surrender type": 1
+    }
+  }
+}

@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Camera.class)
 public abstract class MxnMeowviewMixin {
 	private static final double CAM_GAP = 0;
-	@Unique private static final double CAM_DISTANCE = 4;
+	@Unique private static final double CAM_DISTANCE = 8;
 	@Unique private static final float CAM_PITCH = 90;
 	@Unique private static final double CAM_PITCH_RAD = CAM_PITCH * 0.017453292519943295;
 	@Unique private static final double CAM_DISTANCE_XZ= Math.cos(CAM_PITCH_RAD) * CAM_DISTANCE + CAM_GAP;

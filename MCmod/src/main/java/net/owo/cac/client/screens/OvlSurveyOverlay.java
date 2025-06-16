@@ -49,7 +49,7 @@ public class OvlSurveyOverlay {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 
 		MapVariables cacvar = CacModVariables.MapVariables.get(world);
-		if (cacvar.Switch_survey && world.isClientSide())) {
+		if (cacvar.Switch_survey && world.isClientSide()) {
 			// Variables
 			GuiGraphics gg = event.getGuiGraphics();
 			

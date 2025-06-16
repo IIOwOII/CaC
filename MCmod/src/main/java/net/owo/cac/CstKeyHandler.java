@@ -90,17 +90,17 @@ public class CstKeyHandler {
     		}
     		
     		// Survey Value
-    		if (cacvar.Switch_survey) {
-				if (CstState.arrow_tick == 5) {
+    		if (cacvar.Switch_survey && world.isClientSide()) {
+				if (CstState.arrow_tick == 2) {
 					cacvar.SuvT_value = (cacvar.SuvT_range_upper > cacvar.SuvT_value) ? (cacvar.SuvT_value + 1):(cacvar.SuvT_value);
     				cacvar.syncData(world);
     				CstState.arrow_tick = 0;
-				} else if (CstState.arrow_tick == -5) {
+				} else if (CstState.arrow_tick == -2) {
 					cacvar.SuvT_value = (cacvar.SuvT_range_lower < cacvar.SuvT_value) ? (cacvar.SuvT_value - 1):(cacvar.SuvT_value);
     				cacvar.syncData(world);
     				CstState.arrow_tick = 0;
 				}
-    		} else if (cacvar.Switch_surrender) {
+    		} else if (cacvar.Switch_surrender && world.isClientSide()) {
     			if ((CstState.arrow_right == 1) && (cacvar.Dat_survey_surrender != 1)) {
     				cacvar.Dat_survey_surrender = 1;
     				cacvar.syncData(world);
