@@ -21,6 +21,12 @@ public class EvInvokeProcedure {
 				CacModVariables.MapVariables.get(world).syncData(world);
 				CacModVariables.Ev_que_loop = true;
 				TaskPreRunProcedure.execute(world);
+			} else if ((ev_content).equals("pseudo_start")) {
+				CacModVariables.MapVariables.get(world).Switch_que = true;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Ev_que_loop = true;
+				TaskPreRunProcedure.execute(world);
+				TimCountdownProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_pretrial")) {
 				TaskPreTrialProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_preparation")) {
@@ -47,7 +53,7 @@ public class EvInvokeProcedure {
 				TaskIntervalProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_posttrial")) {
 				TaskPostTrialProcedure.execute(world);
-			} else if ((ev_content).equals("test_end")) {
+			} else if ((ev_content).equals("test_end") && (ev_content).equals("pseudo_end")) {
 				CacModVariables.MapVariables.get(world).Switch_que = false;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				TaskSessionEndProcedure.execute(world);

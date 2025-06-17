@@ -19,6 +19,7 @@
       "phase_preparation",
       "phase_gameplay",
       "phase_gameplay_end",
+      "phase_survey",
       "phase_interval",
       "phase_posttrial"
     ],
@@ -31,9 +32,36 @@
       "phase_preparation",
       "phase_gameplay",
       "phase_gameplay_end",
+      "phase_survey",
       "phase_interval",
       "phase_posttrial"
     ],
     "ending": "test_end"
+  },
+  "pseudo_chasing": {
+    "initial": "pseudo_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_survey",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "pseudo_end"
+  },
+  "pseudo_chased": {
+    "initial": "pseudo_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_survey",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "pseudo_end"
   }
 }

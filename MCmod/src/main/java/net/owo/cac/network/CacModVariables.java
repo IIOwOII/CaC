@@ -49,12 +49,12 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_pos_player_z_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_player_r_prep = new com.google.gson.JsonArray();
 	public static File Info_timestamp = new File("");
-	public static File Info_PF = new File("");
 	public static com.google.gson.JsonArray Dat_pos_opponent_x_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_z_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
 	public static File Pool_survey = new File("");
 	public static File Log_survey = new File("");
+	public static File Pool_psychometric = new File("");
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -166,9 +166,6 @@ public class CacModVariables {
 		public boolean Switch_trace = false;
 		public Vec3 Pos_border_start = Vec3.ZERO;
 		public Vec3 Pos_border_end = Vec3.ZERO;
-		public ListTag PF_likelihood = new ListTag();
-		public ListTag PF_parameter = new ListTag();
-		public ListTag PF_parameter_name = new ListTag();
 		public double Meow_dx = 0;
 		public double Meow_dz = 0;
 		public Vec3 Pos_player_destination = Vec3.ZERO;
@@ -206,6 +203,12 @@ public class CacModVariables {
 		public double SuvT_time = 0;
 		public boolean Switch_surrender = false;
 		public double Dat_survey_surrender_type = 0;
+		public ListTag Psy_param_m = new ListTag();
+		public ListTag Psy_param_w = new ListTag();
+		public ListTag Psy_param_gamma = new ListTag();
+		public ListTag Psy_param_lambda = new ListTag();
+		public ListTag Psy_likelihood = new ListTag();
+		public boolean Switch_countdown = false;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -274,9 +277,6 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Pos_border_end", 6);
 				this.Pos_border_end = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
-			this.PF_likelihood = nbt.get("PF_likelihood") instanceof ListTag PF_likelihood ? PF_likelihood : new ListTag();
-			this.PF_parameter = nbt.get("PF_parameter") instanceof ListTag PF_parameter ? PF_parameter : new ListTag();
-			this.PF_parameter_name = nbt.get("PF_parameter_name") instanceof ListTag PF_parameter_name ? PF_parameter_name : new ListTag();
 			Meow_dx = nbt.getDouble("Meow_dx");
 			Meow_dz = nbt.getDouble("Meow_dz");
 			{
@@ -323,6 +323,12 @@ public class CacModVariables {
 			SuvT_time = nbt.getDouble("SuvT_time");
 			Switch_surrender = nbt.getBoolean("Switch_surrender");
 			Dat_survey_surrender_type = nbt.getDouble("Dat_survey_surrender_type");
+			this.Psy_param_m = nbt.get("Psy_param_m") instanceof ListTag Psy_param_m ? Psy_param_m : new ListTag();
+			this.Psy_param_w = nbt.get("Psy_param_w") instanceof ListTag Psy_param_w ? Psy_param_w : new ListTag();
+			this.Psy_param_gamma = nbt.get("Psy_param_gamma") instanceof ListTag Psy_param_gamma ? Psy_param_gamma : new ListTag();
+			this.Psy_param_lambda = nbt.get("Psy_param_lambda") instanceof ListTag Psy_param_lambda ? Psy_param_lambda : new ListTag();
+			this.Psy_likelihood = nbt.get("Psy_likelihood") instanceof ListTag Psy_likelihood ? Psy_likelihood : new ListTag();
+			Switch_countdown = nbt.getBoolean("Switch_countdown");
 		}
 
 		@Override
@@ -407,9 +413,6 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Pos_border_end.z()));
 				nbt.put("Pos_border_end", listTag);
 			}
-			nbt.put("PF_likelihood", this.PF_likelihood);
-			nbt.put("PF_parameter", this.PF_parameter);
-			nbt.put("PF_parameter_name", this.PF_parameter_name);
 			nbt.putDouble("Meow_dx", Meow_dx);
 			nbt.putDouble("Meow_dz", Meow_dz);
 			{
@@ -468,6 +471,12 @@ public class CacModVariables {
 			nbt.putDouble("SuvT_time", SuvT_time);
 			nbt.putBoolean("Switch_surrender", Switch_surrender);
 			nbt.putDouble("Dat_survey_surrender_type", Dat_survey_surrender_type);
+			nbt.put("Psy_param_m", this.Psy_param_m);
+			nbt.put("Psy_param_w", this.Psy_param_w);
+			nbt.put("Psy_param_gamma", this.Psy_param_gamma);
+			nbt.put("Psy_param_lambda", this.Psy_param_lambda);
+			nbt.put("Psy_likelihood", this.Psy_likelihood);
+			nbt.putBoolean("Switch_countdown", Switch_countdown);
 			return nbt;
 		}
 

@@ -275,6 +275,10 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -1924,25 +1928,6 @@
       "path": "~/CacInit/Info"
     },
     {
-      "name": "IniInfoPf",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_info_pf",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniInfoPfProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Info"
-    },
-    {
       "name": "PrdMeowControl",
       "type": "procedure",
       "compiles": true,
@@ -2709,6 +2694,86 @@
         ]
       },
       "path": "~/CacTask/General"
+    },
+    {
+      "name": "PsyPsiLogistic",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_psi_logistic",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyPsiLogisticProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "IniPoolPsychometric",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_pool_psychometric",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniPoolPsychometricProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "PsyLikelihoodReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_likelihood_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyLikelihoodResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "TimCountdown",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_countdown",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimCountdownProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
     }
   ],
   "variable_elements": [
@@ -3109,34 +3174,10 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "PF_likelihood",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Info_timestamp",
       "type": "file",
       "scope": "global",
       "value": "new File(\"\")"
-    },
-    {
-      "name": "Info_PF",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "PF_parameter",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "PF_parameter_name",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
     },
     {
       "name": "Meow_dx",
@@ -3389,6 +3430,48 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "Pool_psychometric",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Psy_param_m",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_param_w",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_param_gamma",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_param_lambda",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_likelihood",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Switch_countdown",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -3501,6 +3584,10 @@
           {
             "name": "Manager",
             "children": []
+          },
+          {
+            "name": "Psychometric",
+            "children": []
           }
         ]
       },
@@ -3543,7 +3630,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.8",
+    "version": "0.9",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

@@ -1,5 +1,6 @@
 {
   "test_start": 2,
+  "pseudo_start": 100,
   "phase_pretrial": 2,
   "phase_preparation": -1,
   "phase_gameplay": 600,
@@ -13,5 +14,6 @@
   "phase_interval": -1,
   "phase_posttrial": 2,
   "test_end": -1,
+  "pseudo_end": -1,
   "blank": 60
 }
