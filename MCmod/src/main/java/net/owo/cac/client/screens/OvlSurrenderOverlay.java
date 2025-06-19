@@ -3,6 +3,11 @@ package net.owo.cac.client.screens;
 
 import org.checkerframework.checker.units.qual.h;
 
+import net.owo.cac.procedures.RtnSurrenderValueRightProcedure;
+import net.owo.cac.procedures.RtnSurrenderValueMidProcedure;
+import net.owo.cac.procedures.RtnSurrenderValueLeftProcedure;
+import net.owo.cac.procedures.RtnSurrenderTypeIProcedure;
+import net.owo.cac.procedures.RtnSurrenderTypeIIProcedure;
 import net.owo.cac.procedures.RtnSurrenderProcedure;
 
 import net.minecraftforge.fml.common.Mod;
@@ -45,6 +50,29 @@ public class OvlSurrenderOverlay {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		if (RtnSurrenderProcedure.execute(world)) {
 			event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/gui_blank.png"), 0, 0, 0, 0, w, h, w, h);
+			if (RtnSurrenderTypeIIProcedure.execute(world)) {
+				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/button_no.png"), w / 2 + -144, h / 2 + 23, 0, 0, 80, 32, 80, 32);
+			}
+			if (RtnSurrenderTypeIIProcedure.execute(world)) {
+				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/button_yes.png"), w / 2 + 72, h / 2 + 23, 0, 0, 80, 32, 80, 32);
+			}
+			if (RtnSurrenderTypeIProcedure.execute(world)) {
+				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/button_no.png"), w / 2 + 72, h / 2 + 23, 0, 0, 80, 32, 80, 32);
+			}
+			if (RtnSurrenderTypeIProcedure.execute(world)) {
+				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/button_yes.png"), w / 2 + -144, h / 2 + 23, 0, 0, 80, 32, 80, 32);
+			}
+			if (RtnSurrenderValueMidProcedure.execute(world)) {
+				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/button_select.png"), w / 2 + -36, h / 2 + 23, 0, 0, 80, 32, 80, 32);
+			}
+			if (RtnSurrenderValueLeftProcedure.execute(world)) {
+				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/button_select.png"), w / 2 + -144, h / 2 + 23, 0, 0, 80, 32, 80, 32);
+			}
+			if (RtnSurrenderValueRightProcedure.execute(world)) {
+				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/button_select.png"), w / 2 + 72, h / 2 + 23, 0, 0, 80, 32, 80, 32);
+			}
+			event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/text_surrender.png"), w / 2 + -198, h / 2 + -85, 0, 0, 400, 60, 400, 60);
+
 		}
 		RenderSystem.depthMask(true);
 		RenderSystem.defaultBlendFunc();

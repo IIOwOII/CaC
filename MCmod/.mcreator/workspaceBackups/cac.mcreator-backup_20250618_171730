@@ -275,6 +275,10 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -2747,6 +2751,43 @@
         ]
       },
       "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "TimCountdown",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_countdown",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimCountdownProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
+    },
+    {
+      "name": "PrdMeowViewOn",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "prd_meow_view_on",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdMeowViewOnProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacCondition"
     }
   ],
   "variable_elements": [
@@ -3445,6 +3486,12 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Dat_psy_param",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [

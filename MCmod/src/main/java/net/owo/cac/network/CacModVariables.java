@@ -209,6 +209,7 @@ public class CacModVariables {
 		public ListTag Psy_param_lambda = new ListTag();
 		public ListTag Psy_likelihood = new ListTag();
 		public boolean Switch_countdown = false;
+		public ListTag Dat_psy_param = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -329,6 +330,7 @@ public class CacModVariables {
 			this.Psy_param_lambda = nbt.get("Psy_param_lambda") instanceof ListTag Psy_param_lambda ? Psy_param_lambda : new ListTag();
 			this.Psy_likelihood = nbt.get("Psy_likelihood") instanceof ListTag Psy_likelihood ? Psy_likelihood : new ListTag();
 			Switch_countdown = nbt.getBoolean("Switch_countdown");
+			this.Dat_psy_param = nbt.get("Dat_psy_param") instanceof ListTag Dat_psy_param ? Dat_psy_param : new ListTag();
 		}
 
 		@Override
@@ -477,6 +479,7 @@ public class CacModVariables {
 			nbt.put("Psy_param_lambda", this.Psy_param_lambda);
 			nbt.put("Psy_likelihood", this.Psy_likelihood);
 			nbt.putBoolean("Switch_countdown", Switch_countdown);
+			nbt.put("Dat_psy_param", this.Dat_psy_param);
 			return nbt;
 		}
 

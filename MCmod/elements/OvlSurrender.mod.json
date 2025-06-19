@@ -3,7 +3,109 @@
   "_type": "overlay",
   "definition": {
     "priority": "HIGHEST",
-    "components": [],
+    "components": [
+      {
+        "type": "image",
+        "data": {
+          "image": "button_no.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RtnSurrenderTypeII"
+          },
+          "anchorPoint": "CENTER",
+          "x": 69,
+          "y": 143
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "button_yes.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RtnSurrenderTypeII"
+          },
+          "anchorPoint": "CENTER",
+          "x": 285,
+          "y": 143
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "button_no.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RtnSurrenderTypeI"
+          },
+          "anchorPoint": "CENTER",
+          "x": 285,
+          "y": 143
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "button_yes.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RtnSurrenderTypeI"
+          },
+          "anchorPoint": "CENTER",
+          "x": 69,
+          "y": 143
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "button_select.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RtnSurrenderValueMid"
+          },
+          "anchorPoint": "CENTER",
+          "x": 177,
+          "y": 143
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "button_select.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RtnSurrenderValueLeft"
+          },
+          "anchorPoint": "CENTER",
+          "x": 69,
+          "y": 143
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "button_select.png",
+          "use1Xscale": false,
+          "displayCondition": {
+            "name": "RtnSurrenderValueRight"
+          },
+          "anchorPoint": "CENTER",
+          "x": 285,
+          "y": 143
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "text_surrender.png",
+          "use1Xscale": false,
+          "anchorPoint": "CENTER",
+          "x": 15,
+          "y": 35
+        }
+      }
+    ],
     "baseTexture": "gui_blank.png",
     "overlayTarget": "Ingame",
     "displayCondition": {
@@ -14,7 +116,7 @@
       "sy": 18,
       "ox": 11,
       "oy": 15,
-      "snapOnGrid": false
+      "snapOnGrid": true
     }
   }
 }

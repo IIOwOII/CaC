@@ -2788,6 +2788,106 @@
         "dependencies": []
       },
       "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderTypeI",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_type_i",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderTypeIProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderTypeII",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_type_ii",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderTypeIIProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderValueLeft",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_value_left",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueLeftProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderValueRight",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_value_right",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueRightProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderValueMid",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_value_mid",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueMidProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
     }
   ],
   "variable_elements": [
@@ -3486,6 +3586,12 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Dat_psy_param",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [
