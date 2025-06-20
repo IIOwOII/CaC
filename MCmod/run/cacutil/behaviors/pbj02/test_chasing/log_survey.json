@@ -1,0 +1,151 @@
+{
+  "cac": {
+    "reference": [
+      "winprob",
+      "perdiff",
+      "stress",
+      "target",
+      "control"
+    ],
+    "trial_0": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_1": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_2": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_3": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_4": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_5": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_6": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_7": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_8": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_9": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_10": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_11": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_12": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_13": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_14": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_15": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_16": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_17": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_18": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    },
+    "trial_19": {
+      "order": [],
+      "time": [],
+      "answer": [],
+      "surrender": 0,
+      "surrender type": 0
+    }
+  }
+}
