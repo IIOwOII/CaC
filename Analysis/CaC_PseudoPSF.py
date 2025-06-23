@@ -40,7 +40,7 @@ def log_load(subject, task, log_name):
 
 #%%
 def func_sigmoid(x, m, w, gam, lam):
-    return gam + (1-lam-gam) * (1/(1+np.exp(2*np.log(19)*((x-m)/w))))
+    return gam + (1-lam-gam)/(1+19**(2*(x-m)/w))
 
 def func_exponential(x):
     return
