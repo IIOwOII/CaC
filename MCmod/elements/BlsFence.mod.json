@@ -5,7 +5,7 @@
     "block": "BlkFence",
     "blockstateList": [
       {
-        "texture": "texture_cac_fence",
+        "texture": "texture_block_fakefence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "texture": "texture_cac_fence",
+        "texture": "texture_block_fakefence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -51,7 +51,7 @@
         ]
       },
       {
-        "texture": "texture_cac_fence",
+        "texture": "texture_block_fakefence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -83,7 +83,7 @@
         ]
       },
       {
-        "texture": "texture_cac_fence",
+        "texture": "texture_block_fakefence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -106,7 +106,7 @@
         ]
       },
       {
-        "texture": "texture_cac_fence",
+        "texture": "texture_block_fakefence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -156,7 +156,7 @@
         ]
       },
       {
-        "texture": "texture_cac_fence",
+        "texture": "texture_block_fakefence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",

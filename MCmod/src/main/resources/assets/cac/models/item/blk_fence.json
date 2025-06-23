@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cac:item/texture_fence_icon"
+    "layer0": "cac:item/texture_item_fakefence"
   },
   "render_type": "translucent"
 }

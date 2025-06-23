@@ -2710,7 +2710,8 @@
             "name": "world",
             "type": "world"
           }
-        ]
+        ],
+        "return_type": "number"
       },
       "path": "~/CacTask/Psychometric"
     },
@@ -2828,6 +2829,105 @@
         ]
       },
       "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderValueLeft",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_value_left",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueLeftProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderValueRight",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_value_right",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueRightProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "RtnSurrenderValueMid",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rtn_surrender_value_mid",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueMidProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacCondition"
+    },
+    {
+      "name": "PsyInvpsiLogistic",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_invpsi_logistic",
+      "metadata": {
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyInvpsiLogisticProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "PsyPsiPseudo",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_psi_pseudo",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyPsiPseudoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
     }
   ],
   "variable_elements": [

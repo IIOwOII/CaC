@@ -1,7 +1,7 @@
 {
   "parent": "cac:custom/cac_fence_2a",
   "textures": {
-    "all": "cac:block/texture_cac_fence",
+    "all": "cac:block/texture_block_wall",
     "particle": "cac:block/texture_cac_fence",
     "0": "cac:block/texture_cac_fence"
   },

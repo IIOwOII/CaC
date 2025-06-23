@@ -25,6 +25,7 @@ public class EvInvokeProcedure {
 				CacModVariables.MapVariables.get(world).Switch_que = true;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				CacModVariables.Ev_que_loop = true;
+				PsyPsiPseudoProcedure.execute(world);
 				TaskPreRunProcedure.execute(world);
 				TimCountdownProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_pretrial")) {

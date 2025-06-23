@@ -2,7 +2,7 @@
   "_fv": 66,
   "_type": "block",
   "definition": {
-    "texture": "texture_cac_fence",
+    "texture": "texture_block_wall",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
@@ -14,7 +14,7 @@
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": true,
-    "itemTexture": "",
+    "itemTexture": "texture_item_wall",
     "particleTexture": "",
     "tintType": "No tint",
     "isItemTinted": false,

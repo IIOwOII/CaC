@@ -2710,7 +2710,8 @@
             "name": "world",
             "type": "world"
           }
-        ]
+        ],
+        "return_type": "number"
       },
       "path": "~/CacTask/Psychometric"
     },
@@ -2888,6 +2889,45 @@
         ]
       },
       "path": "~/CacCondition"
+    },
+    {
+      "name": "PsyInvpsiLogistic",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_invpsi_logistic",
+      "metadata": {
+        "return_type": "number",
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyInvpsiLogisticProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "PsyPsiPseudo",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_psi_pseudo",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyPsiPseudoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
     }
   ],
   "variable_elements": [
