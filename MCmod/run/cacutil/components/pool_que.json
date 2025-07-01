@@ -6,7 +6,6 @@
       "phase_preparation",
       "phase_gameplay",
       "phase_gameplay_end",
-      "phase_survey",
       "phase_interval",
       "phase_posttrial"
     ],
@@ -19,7 +18,6 @@
       "phase_preparation",
       "phase_gameplay",
       "phase_gameplay_end",
-      "phase_survey",
       "phase_interval",
       "phase_posttrial"
     ],
@@ -32,7 +30,6 @@
       "phase_preparation",
       "phase_gameplay",
       "phase_gameplay_end",
-      "phase_survey",
       "phase_interval",
       "phase_posttrial"
     ],
