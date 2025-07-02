@@ -5,5 +5,5 @@
     "particle": "cac:block/texture_cac_checkpoint",
     "0": "cac:block/texture_cac_checkpoint"
   },
-  "render_type": "solid"
+  "render_type": "cutout"
 }

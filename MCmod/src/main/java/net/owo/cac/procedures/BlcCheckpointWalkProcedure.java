@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 
 public class BlcCheckpointWalkProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
-		if (!((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip1 ? blockstate.getValue(_getip1) : -1) != 2)) {
+		if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip1 ? blockstate.getValue(_getip1) : -1) != 2) {
 			{
 				int _value = 2;
 				BlockPos _pos = BlockPos.containing(x, y, z);

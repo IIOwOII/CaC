@@ -2928,6 +2928,72 @@
         ]
       },
       "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "BlcCheckpointWalk",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_checkpoint_walk",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcCheckpointWalkProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlkCheckpoint",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_checkpoint",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/block/BlkCheckpointBlock.java",
+          "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
+          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlsCheckpoint",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bls_checkpoint",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/block/bls_checkpoint_blockstate_1.json",
+          "src/main/resources/assets/cac/models/block/bls_checkpoint_blockstate_0.json"
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -2954,12 +3020,6 @@
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Radius_map",
-      "type": "number",
-      "scope": "map",
-      "value": "16.0"
     },
     {
       "name": "List_wall",
@@ -3649,6 +3709,9 @@
       "~CUSTOM:BlkFence",
       "~CUSTOM:BlkWall",
       "~CUSTOM:BlkObstacle"
+    ],
+    "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkCheckpoint"
     ]
   },
   "tab_element_order": {},
@@ -3677,6 +3740,7 @@
       "key.cac.cac_key_stopwatch": "Stopwatch",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
       "entity.cac.ent_player_mouse": "Prey (Player)",
+      "block.cac.blk_checkpoint": "Checkpoint",
       "key.cac.cac_key_left": "Left",
       "effect.cac.eff_morph_predator": "Predator",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",

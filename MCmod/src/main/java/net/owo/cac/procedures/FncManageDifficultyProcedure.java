@@ -17,12 +17,12 @@ public class FncManageDifficultyProcedure {
 		double winlose_pre = 0;
 		session = CacModVariables.MapVariables.get(world).Exp_session;
 		if ((session).equals("test_mixed")) {
-			CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.8 + 0.02 * Math.floor(CacModVariables.MapVariables.get(world).Exp_trial / 2))) / Math.pow(10, 2);
+			CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * Math.floor(CacModVariables.MapVariables.get(world).Exp_trial / 2))) / Math.pow(10, 2);
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).Dat_difficulty_relative = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute;
 			CacModVariables.MapVariables.get(world).syncData(world);
 		} else if ((session).equals("test_chasing") || (session).equals("test_chased")) {
-			CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.8 + 0.02 * CacModVariables.MapVariables.get(world).Exp_trial)) / Math.pow(10, 2);
+			CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * CacModVariables.MapVariables.get(world).Exp_trial)) / Math.pow(10, 2);
 			CacModVariables.MapVariables.get(world).syncData(world);
 			CacModVariables.MapVariables.get(world).Dat_difficulty_relative = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute;
 			CacModVariables.MapVariables.get(world).syncData(world);

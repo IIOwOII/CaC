@@ -2973,10 +2973,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/block/BlkCheckpointBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
           "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
+          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json"
         ]
       },
       "path": "~/CacBlock"
@@ -3020,12 +3020,6 @@
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Radius_map",
-      "type": "number",
-      "scope": "map",
-      "value": "16.0"
     },
     {
       "name": "List_wall",
@@ -3715,6 +3709,9 @@
       "~CUSTOM:BlkFence",
       "~CUSTOM:BlkWall",
       "~CUSTOM:BlkObstacle"
+    ],
+    "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkCheckpoint"
     ]
   },
   "tab_element_order": {},

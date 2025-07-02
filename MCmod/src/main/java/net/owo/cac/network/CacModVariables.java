@@ -125,7 +125,6 @@ public class CacModVariables {
 		public String Option_tester_str = "\"Reset\"";
 		public ListTag List_obstacle = new ListTag();
 		public Vec3 Pos_offset = Vec3.ZERO;
-		public double Radius_map = 16.0;
 		public ListTag List_wall = new ListTag();
 		public boolean Exp_signal = false;
 		public double Exp_phase = 0;
@@ -225,7 +224,6 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Pos_offset", 6);
 				this.Pos_offset = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
-			Radius_map = nbt.getDouble("Radius_map");
 			this.List_wall = nbt.get("List_wall") instanceof ListTag List_wall ? List_wall : new ListTag();
 			Exp_signal = nbt.getBoolean("Exp_signal");
 			Exp_phase = nbt.getDouble("Exp_phase");
@@ -346,7 +344,6 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Pos_offset.z()));
 				nbt.put("Pos_offset", listTag);
 			}
-			nbt.putDouble("Radius_map", Radius_map);
 			nbt.put("List_wall", this.List_wall);
 			nbt.putBoolean("Exp_signal", Exp_signal);
 			nbt.putDouble("Exp_phase", Exp_phase);

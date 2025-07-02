@@ -14,7 +14,7 @@
         "particleTexture": "",
         "renderType": 2,
         "customModelName": "cac_checkpoint:default",
-        "luminance": 0,
+        "luminance": 15,
         "boundingBoxes": [
           {
             "mx": 0.0,
@@ -36,7 +36,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_checkpoint:default",
+        "customModelName": "cac_checkpoint_off:default",
         "luminance": 0,
         "boundingBoxes": [
           {

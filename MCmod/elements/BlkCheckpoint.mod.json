@@ -12,7 +12,7 @@
     "customModelName": "cac_checkpoint:default",
     "rotationMode": 0,
     "enablePitch": false,
-    "emissiveRendering": true,
+    "emissiveRendering": false,
     "displayFluidOverlay": true,
     "itemTexture": "texture_cac_checkpoint_icon",
     "particleTexture": "",
@@ -46,7 +46,7 @@
         "value": "CUSTOM:CacTab"
       }
     ],
-    "destroyTool": "Not specified",
+    "destroyTool": "pickaxe",
     "customDrop": {
       "value": ""
     },
@@ -83,7 +83,7 @@
     "isNotColidable": false,
     "isCustomSoundType": false,
     "soundOnStep": {
-      "value": "GROUND"
+      "value": "STONE"
     },
     "breakSound": {
       "value": ""
@@ -121,7 +121,7 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
-    "onEntityCollides": {
+    "onEntityWalksOn": {
       "name": "BlcCheckpointWalk"
     },
     "generateFeature": false,
