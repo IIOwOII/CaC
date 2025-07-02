@@ -1,0 +1,55 @@
+{
+  "_fv": 66,
+  "_type": "blockstates",
+  "definition": {
+    "block": "BlkCheckpoint",
+    "blockstateList": [
+      {
+        "texture": "texture_cac_checkpoint",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_checkpoint:default",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_checkpoint_off",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_checkpoint:default",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 16.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
+      }
+    ]
+  }
+}

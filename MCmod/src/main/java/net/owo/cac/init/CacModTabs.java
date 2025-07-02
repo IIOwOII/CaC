@@ -34,6 +34,7 @@ public class CacModTabs {
 				tabData.accept(CacModItems.ENT_CAT_SPAWN_EGG.get());
 				tabData.accept(CacModItems.ENT_PLAYER_CAT_SPAWN_EGG.get());
 				tabData.accept(CacModItems.ENT_PSEUDO_CAT_SPAWN_EGG.get());
+				tabData.accept(CacModBlocks.BLK_CHECKPOINT.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent

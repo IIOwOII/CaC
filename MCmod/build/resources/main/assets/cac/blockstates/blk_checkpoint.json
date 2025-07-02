@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "cac:block/blk_checkpoint"
+    },
+    "blockstate=1": {
+      "model": "cac:block/bls_checkpoint_blockstate_0"
+    },
+    "blockstate=2": {
+      "model": "cac:block/bls_checkpoint_blockstate_1"
+    }
+  }
+}

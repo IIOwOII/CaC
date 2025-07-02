@@ -15,14 +15,14 @@ reducedDebugInfo:false
 showSubtitles:false
 directionalAudio:false
 touchscreen:false
-fullscreen:false
+fullscreen:true
 bobView:false
 toggleCrouch:false
 toggleSprint:false
 darkMojangStudiosBackground:false
 hideLightningFlashes:false
 mouseSensitivity:0.5
-fov:0.0
+fov:0.5
 screenEffectScale:1.0
 fovEffectScale:1.0
 darknessEffectScale:1.0
@@ -127,7 +127,7 @@ key_key.cac.cac_key_signal:key.keyboard.s
 key_key.cac.cac_key_stopwatch:key.keyboard.right.shift
 key_key.cac.cac_key_decide:key.keyboard.left.control
 soundCategory_master:1.0
-soundCategory_music:1.0
+soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

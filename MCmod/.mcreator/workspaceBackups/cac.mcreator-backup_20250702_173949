@@ -2928,6 +2928,41 @@
         ]
       },
       "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "BlcCheckpointWalk",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_checkpoint_walk",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcCheckpointWalkProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
