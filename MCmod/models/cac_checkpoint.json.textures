@@ -5,6 +5,12 @@
         "0": "texture_cac_checkpoint"
       },
       "name": "default"
+    },
+    "off": {
+      "map": {
+        "0": "texture_cac_checkpoint_off"
+      },
+      "name": "off"
     }
   }
 }

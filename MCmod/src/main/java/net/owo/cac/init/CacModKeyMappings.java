@@ -31,11 +31,6 @@ public class CacModKeyMappings {
 			if (isDownOld != isDown && isDown) {
 				CacMod.PACKET_HANDLER.sendToServer(new CacKeySignalMessage(0, 0));
 				CacKeySignalMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-				CAC_KEY_SIGNAL_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - CAC_KEY_SIGNAL_LASTPRESS);
-				CacMod.PACKET_HANDLER.sendToServer(new CacKeySignalMessage(1, dt));
-				CacKeySignalMessage.pressAction(Minecraft.getInstance().player, 1, dt);
 			}
 			isDownOld = isDown;
 		}
@@ -66,7 +61,6 @@ public class CacModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	private static long CAC_KEY_SIGNAL_LASTPRESS = 0;
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {

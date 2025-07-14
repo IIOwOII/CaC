@@ -104,6 +104,96 @@
     "facing=west,blockstate=6": {
       "model": "cac:block/bls_obstacle_blockstate_5",
       "y": 270
+    },
+    "facing=north,blockstate=7": {
+      "model": "cac:block/bls_obstacle_blockstate_6"
+    },
+    "facing=east,blockstate=7": {
+      "model": "cac:block/bls_obstacle_blockstate_6",
+      "y": 90
+    },
+    "facing=south,blockstate=7": {
+      "model": "cac:block/bls_obstacle_blockstate_6",
+      "y": 180
+    },
+    "facing=west,blockstate=7": {
+      "model": "cac:block/bls_obstacle_blockstate_6",
+      "y": 270
+    },
+    "facing=north,blockstate=8": {
+      "model": "cac:block/bls_obstacle_blockstate_7"
+    },
+    "facing=east,blockstate=8": {
+      "model": "cac:block/bls_obstacle_blockstate_7",
+      "y": 90
+    },
+    "facing=south,blockstate=8": {
+      "model": "cac:block/bls_obstacle_blockstate_7",
+      "y": 180
+    },
+    "facing=west,blockstate=8": {
+      "model": "cac:block/bls_obstacle_blockstate_7",
+      "y": 270
+    },
+    "facing=north,blockstate=9": {
+      "model": "cac:block/bls_obstacle_blockstate_8"
+    },
+    "facing=east,blockstate=9": {
+      "model": "cac:block/bls_obstacle_blockstate_8",
+      "y": 90
+    },
+    "facing=south,blockstate=9": {
+      "model": "cac:block/bls_obstacle_blockstate_8",
+      "y": 180
+    },
+    "facing=west,blockstate=9": {
+      "model": "cac:block/bls_obstacle_blockstate_8",
+      "y": 270
+    },
+    "facing=north,blockstate=10": {
+      "model": "cac:block/bls_obstacle_blockstate_9"
+    },
+    "facing=east,blockstate=10": {
+      "model": "cac:block/bls_obstacle_blockstate_9",
+      "y": 90
+    },
+    "facing=south,blockstate=10": {
+      "model": "cac:block/bls_obstacle_blockstate_9",
+      "y": 180
+    },
+    "facing=west,blockstate=10": {
+      "model": "cac:block/bls_obstacle_blockstate_9",
+      "y": 270
+    },
+    "facing=north,blockstate=11": {
+      "model": "cac:block/bls_obstacle_blockstate_10"
+    },
+    "facing=east,blockstate=11": {
+      "model": "cac:block/bls_obstacle_blockstate_10",
+      "y": 90
+    },
+    "facing=south,blockstate=11": {
+      "model": "cac:block/bls_obstacle_blockstate_10",
+      "y": 180
+    },
+    "facing=west,blockstate=11": {
+      "model": "cac:block/bls_obstacle_blockstate_10",
+      "y": 270
+    },
+    "facing=north,blockstate=12": {
+      "model": "cac:block/bls_obstacle_blockstate_11"
+    },
+    "facing=east,blockstate=12": {
+      "model": "cac:block/bls_obstacle_blockstate_11",
+      "y": 90
+    },
+    "facing=south,blockstate=12": {
+      "model": "cac:block/bls_obstacle_blockstate_11",
+      "y": 180
+    },
+    "facing=west,blockstate=12": {
+      "model": "cac:block/bls_obstacle_blockstate_11",
+      "y": 270
     }
   }
 }

@@ -5,6 +5,12 @@
         "0": "texture_cac_fence"
       },
       "name": "default"
+    },
+    "highlight": {
+      "map": {
+        "0": "texture_cac_fence_highlight"
+      },
+      "name": "highlight"
     }
   }
 }

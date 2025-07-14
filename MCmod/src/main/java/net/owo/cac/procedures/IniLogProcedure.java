@@ -14,5 +14,8 @@ public class IniLogProcedure {
 		IniLogPositionProcedure.execute(world);
 		IniLogGameplayProcedure.execute(world);
 		IniLogSurveyProcedure.execute(world);
+		if (CacModVariables.MapVariables.get(world).Switch_scanner) {
+			IniLogScannerProcedure.execute(world);
+		}
 	}
 }

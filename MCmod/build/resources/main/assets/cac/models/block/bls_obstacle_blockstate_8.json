@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_fence_2a",
+  "textures": {
+    "all": "cac:block/texture_cac_fence_highlight",
+    "particle": "cac:block/texture_cac_fence",
+    "0": "cac:block/texture_cac_fence_highlight"
+  },
+  "render_type": "cutout"
+}

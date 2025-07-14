@@ -1,5 +1,5 @@
 {
-  "parent": "cac:custom/cac_checkpoint_off",
+  "parent": "cac:custom/cac_checkpoint",
   "textures": {
     "all": "cac:block/texture_cac_checkpoint_off",
     "particle": "cac:block/texture_cac_checkpoint",

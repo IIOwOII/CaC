@@ -36,7 +36,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_checkpoint_off:default",
+        "customModelName": "cac_checkpoint:off",
         "luminance": 0,
         "boundingBoxes": [
           {

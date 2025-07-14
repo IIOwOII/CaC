@@ -60,5 +60,23 @@
       "phase_posttrial"
     ],
     "ending": "pseudo_end"
+  },
+  "simulation_chasing": {
+    "initial": "simulation_start",
+    "trial": [
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval"
+    ],
+    "ending": "simulation_end"
+  },
+  "simulation_chased": {
+    "initial": "simulation_start",
+    "trial": [
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval"
+    ],
+    "ending": "simulation_end"
   }
 }

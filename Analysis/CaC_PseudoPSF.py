@@ -42,8 +42,8 @@ def log_load(subject, task, log_name):
 def func_sigmoid(x, m, w, gam, lam):
     return gam + (1-lam-gam)/(1+19**(2*(x-m)/w))
 
-def func_exponential(x):
-    return
+def func_exponential(x, m, w, gam):
+    return gam + w * np.exp(w*(x-m))
 
 
 #%%
@@ -163,8 +163,10 @@ subjs_data = subjs_data[:, subjs_data[0].argsort()]
 subjs_diff = subjs_data[0]
 subjs_time = subjs_data[1]
 
-popt, pcov = curve_fit(func_sigmoid, subjs_diff, subjs_time)
-cur_y = func_sigmoid(subjs_diff, *(popt))
+# popt, pcov = curve_fit(func_sigmoid, subjs_diff, subjs_time)
+# cur_y = func_sigmoid(subjs_diff, *(popt))
+popt, pcov = curve_fit(func_exponential, subjs_diff, subjs_time)
+cur_y = func_exponential(subjs_diff, *(popt))
 
 
 #%% t-rho graph

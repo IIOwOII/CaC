@@ -7,6 +7,8 @@
     "presession",
     "pseudo_chasing",
     "pseudo_chased",
+    "simulation_chasing",
+    "simulation_chased",
     "chasing",
     "chased"
   ],

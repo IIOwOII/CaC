@@ -5,7 +5,7 @@
     "block": "BlkObstacle",
     "blockstateList": [
       {
-        "texture": "texture_block_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -28,7 +28,7 @@
         ]
       },
       {
-        "texture": "texture_block_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -51,7 +51,7 @@
         ]
       },
       {
-        "texture": "texture_block_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -83,7 +83,7 @@
         ]
       },
       {
-        "texture": "texture_block_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -106,7 +106,7 @@
         ]
       },
       {
-        "texture": "texture_block_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -156,7 +156,7 @@
         ]
       },
       {
-        "texture": "texture_block_obstacle",
+        "texture": "texture_cac_fence",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -165,6 +165,216 @@
         "particleTexture": "",
         "renderType": 2,
         "customModelName": "cac_fence_4:default",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 2.0,
+            "My": 24.0,
+            "Mz": 2.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 2.0,
+            "subtract": true
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 14.0,
+            "Mx": 2.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 14.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_fence_highlight",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_fence_0:highlight",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 2.0,
+            "my": 0.0,
+            "mz": 2.0,
+            "Mx": 14.0,
+            "My": 24.0,
+            "Mz": 14.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_fence_highlight",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_fence_1:highlight",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 2.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 14.0,
+            "My": 24.0,
+            "Mz": 14.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_fence_highlight",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_fence_2a:highlight",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 2.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 14.0,
+            "subtract": false
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 2.0,
+            "subtract": true
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_fence_highlight",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_fence_2b:highlight",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 2.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 14.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": false
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_fence_highlight",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_fence_3:highlight",
+        "luminance": 0,
+        "boundingBoxes": [
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": false
+          },
+          {
+            "mx": 0.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 2.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 0.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 2.0,
+            "subtract": true
+          },
+          {
+            "mx": 14.0,
+            "my": 0.0,
+            "mz": 14.0,
+            "Mx": 16.0,
+            "My": 24.0,
+            "Mz": 16.0,
+            "subtract": true
+          }
+        ]
+      },
+      {
+        "texture": "texture_cac_fence_highlight",
+        "textureTop": "",
+        "textureLeft": "",
+        "textureFront": "",
+        "textureRight": "",
+        "textureBack": "",
+        "particleTexture": "",
+        "renderType": 2,
+        "customModelName": "cac_fence_4:highlight",
         "luminance": 0,
         "boundingBoxes": [
           {

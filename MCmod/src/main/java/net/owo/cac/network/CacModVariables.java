@@ -55,6 +55,7 @@ public class CacModVariables {
 	public static File Pool_survey = new File("");
 	public static File Log_survey = new File("");
 	public static File Pool_psychometric = new File("");
+	public static File Log_scanner = new File("");
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -209,6 +210,8 @@ public class CacModVariables {
 		public ListTag Psy_likelihood = new ListTag();
 		public boolean Switch_countdown = false;
 		public ListTag Dat_psy_param = new ListTag();
+		public boolean Switch_scanner = false;
+		public double TimS_time = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -329,6 +332,8 @@ public class CacModVariables {
 			this.Psy_likelihood = nbt.get("Psy_likelihood") instanceof ListTag Psy_likelihood ? Psy_likelihood : new ListTag();
 			Switch_countdown = nbt.getBoolean("Switch_countdown");
 			this.Dat_psy_param = nbt.get("Dat_psy_param") instanceof ListTag Dat_psy_param ? Dat_psy_param : new ListTag();
+			Switch_scanner = nbt.getBoolean("Switch_scanner");
+			TimS_time = nbt.getDouble("TimS_time");
 		}
 
 		@Override
@@ -477,6 +482,8 @@ public class CacModVariables {
 			nbt.put("Psy_likelihood", this.Psy_likelihood);
 			nbt.putBoolean("Switch_countdown", Switch_countdown);
 			nbt.put("Dat_psy_param", this.Dat_psy_param);
+			nbt.putBoolean("Switch_scanner", Switch_scanner);
+			nbt.putDouble("TimS_time", TimS_time);
 			return nbt;
 		}
 

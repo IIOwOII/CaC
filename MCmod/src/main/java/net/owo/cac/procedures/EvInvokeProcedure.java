@@ -28,6 +28,17 @@ public class EvInvokeProcedure {
 				PsyPsiPseudoProcedure.execute(world);
 				TaskPreRunProcedure.execute(world);
 				TimCountdownProcedure.execute(world, entity);
+			} else if ((ev_content).equals("simulation_start")) {
+				CacModVariables.MapVariables.get(world).Switch_que = true;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Ev_que_loop = true;
+				SimStartProcedure.execute(world);
+			} else if ((ev_content).equals("simulation_gameplay")) {
+				SimGameplayProcedure.execute(world);
+			} else if ((ev_content).equals("simulation_gameplay_end")) {
+				SimGameplayEndProcedure.execute(world, x, y, z, entity);
+			} else if ((ev_content).equals("simulation_interval")) {
+				SimIntervalProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_pretrial")) {
 				TaskPreTrialProcedure.execute(world, entity);
 			} else if ((ev_content).equals("phase_preparation")) {
@@ -58,6 +69,11 @@ public class EvInvokeProcedure {
 				CacModVariables.MapVariables.get(world).Switch_que = false;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				TaskSessionEndProcedure.execute(world);
+			} else if ((ev_content).equals("simulation_end")) {
+				CacModVariables.MapVariables.get(world).Switch_que = false;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.MapVariables.get(world).Switch_timer = false;
+				CacModVariables.MapVariables.get(world).syncData(world);
 			}
 			if (CacModVariables.Ev_que_loop) {
 				CacModVariables.MapVariables.get(world).Ev_content = CacModVariables.Ev_que.get(((int) CacModVariables.Ev_que_index)).getAsString();

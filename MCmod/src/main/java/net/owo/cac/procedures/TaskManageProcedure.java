@@ -14,6 +14,7 @@ import java.io.BufferedReader;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 
 public class TaskManageProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
@@ -25,8 +26,16 @@ public class TaskManageProcedure {
 		double idx_session = 0;
 		CacModVariables.MapVariables.get(world).Exp_session = StringArgumentType.getString(arguments, "session");
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Switch_scanner = BoolArgumentType.getBool(arguments, "scanner");
+		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Exp_trial_total = DoubleArgumentType.getDouble(arguments, "trial");
 		CacModVariables.MapVariables.get(world).syncData(world);
+		if (CacModVariables.MapVariables.get(world).Switch_scanner) {
+			CacModVariables.MapVariables.get(world).Exp_signal = false;
+			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.MapVariables.get(world).TimS_time = 0;
+			CacModVariables.MapVariables.get(world).syncData(world);
+		}
 		IniPoolProcedure.execute(world);
 		{
 			try {

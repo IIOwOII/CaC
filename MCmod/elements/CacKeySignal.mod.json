@@ -7,9 +7,6 @@
     "keyBindingCategoryKey": "cac",
     "onKeyPressed": {
       "name": "KeySignalOn"
-    },
-    "onKeyReleased": {
-      "name": "KeySignalOff"
     }
   }
 }

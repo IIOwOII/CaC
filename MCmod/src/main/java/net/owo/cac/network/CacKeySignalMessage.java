@@ -2,7 +2,6 @@
 package net.owo.cac.network;
 
 import net.owo.cac.procedures.KeySignalOnProcedure;
-import net.owo.cac.procedures.KeySignalOffProcedure;
 import net.owo.cac.CacMod;
 
 import net.minecraftforge.network.NetworkEvent;
@@ -54,10 +53,6 @@ public class CacKeySignalMessage {
 		if (type == 0) {
 
 			KeySignalOnProcedure.execute(world);
-		}
-		if (type == 1) {
-
-			KeySignalOffProcedure.execute(world);
 		}
 	}
 
