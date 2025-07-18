@@ -3082,7 +3082,122 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/SimStartProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "CmdSimulation",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_simulation",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdSimulationCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "SimManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sim_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SimManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "SimGameplayEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sim_gameplay_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SimGameplayEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "SimInterval",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sim_interval",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SimIntervalProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Simulation"
     }
