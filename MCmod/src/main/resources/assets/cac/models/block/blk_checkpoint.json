@@ -3,7 +3,7 @@
   "textures": {
     "all": "cac:block/texture_cac_checkpoint",
     "particle": "cac:block/texture_cac_checkpoint",
-    "0": "cac:block/texture_cac_checkpoint"
+    "0": "cac:block/texture_cac_checkpoint_off"
   },
   "render_type": "cutout"
 }

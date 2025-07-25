@@ -9,7 +9,7 @@
     "textureRight": "",
     "textureBack": "",
     "renderType": 2,
-    "customModelName": "cac_checkpoint:default",
+    "customModelName": "cac_checkpoint:off",
     "rotationMode": 0,
     "enablePitch": false,
     "emissiveRendering": false,
@@ -58,14 +58,14 @@
     "canRedstoneConnect": false,
     "lightOpacity": 0,
     "material": {
-      "value": "ROCK"
+      "value": "WOOD"
     },
     "tickRate": 0,
     "tickRandomly": false,
     "isReplaceable": false,
     "canProvidePower": false,
     "emittedRedstonePower": {
-      "fixedValue": 15.0
+      "fixedValue": 0.0
     },
     "colorOnMap": "DEFAULT",
     "creativePickItem": {

@@ -23,15 +23,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.core.BlockPos;
 
 public class BlkCheckpointBlock extends Block {
-	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 2);
+	public static final IntegerProperty BLOCKSTATE = IntegerProperty.create("blockstate", 0, 1);
 
 	public BlkCheckpointBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.STONE).strength(1f, 10f).lightLevel(s -> (new Object() {
+		super(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).sound(SoundType.STONE).strength(1f, 10f).lightLevel(s -> (new Object() {
 			public int getLightLevel() {
 				if (s.getValue(BLOCKSTATE) == 1)
 					return 15;
-				if (s.getValue(BLOCKSTATE) == 2)
-					return 0;
 				return 0;
 			}
 		}.getLightLevel())).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
@@ -60,9 +58,6 @@ public class BlkCheckpointBlock extends Block {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		if (state.getValue(BLOCKSTATE) == 1) {
-			return box(0, 0, 0, 16, 16, 16);
-		}
-		if (state.getValue(BLOCKSTATE) == 2) {
 			return box(0, 0, 0, 16, 16, 16);
 		}
 		return box(0, 0, 0, 16, 16, 16);

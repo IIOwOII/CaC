@@ -2976,7 +2976,6 @@
       "registry_name": "bls_checkpoint",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/bls_checkpoint_blockstate_1.json",
           "src/main/resources/assets/cac/models/block/bls_checkpoint_blockstate_0.json"
         ]
       },

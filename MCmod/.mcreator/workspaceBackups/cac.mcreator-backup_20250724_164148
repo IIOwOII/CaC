@@ -2963,7 +2963,8 @@
           "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
           "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
           "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/java/net/owo/cac/block/entity/BlkCheckpointBlockEntity.java"
         ]
       },
       "path": "~/CacBlock"

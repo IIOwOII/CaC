@@ -2976,7 +2976,6 @@
       "registry_name": "bls_checkpoint",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/bls_checkpoint_blockstate_1.json",
           "src/main/resources/assets/cac/models/block/bls_checkpoint_blockstate_0.json"
         ]
       },
@@ -3177,6 +3176,60 @@
         ]
       },
       "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "SimInterval",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sim_interval",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SimIntervalProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "BlcCheckpointRedstoneOn",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_checkpoint_redstone_on",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcCheckpointRedstoneOnProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [

@@ -2963,7 +2963,8 @@
           "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
           "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
           "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/java/net/owo/cac/block/entity/BlkCheckpointBlockEntity.java"
         ]
       },
       "path": "~/CacBlock"
@@ -3134,6 +3135,64 @@
           {
             "name": "z",
             "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "SimGameplayEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sim_gameplay_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SimGameplayEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "SimInterval",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sim_interval",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/SimIntervalProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
           },
           {
             "name": "world",
