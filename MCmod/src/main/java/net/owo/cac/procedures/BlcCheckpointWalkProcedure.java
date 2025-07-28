@@ -15,6 +15,7 @@ public class BlcCheckpointWalkProcedure {
 				if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 			}
+			TutoCheckpointTouchProcedure.execute(world);
 		}
 	}
 }

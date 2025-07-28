@@ -212,6 +212,10 @@ public class CacModVariables {
 		public ListTag Dat_psy_param = new ListTag();
 		public boolean Switch_scanner = false;
 		public double TimS_time = 0;
+		public double Tuto_checkpoint_index = 0;
+		public Vec3 Tuto_checkpoint_center = Vec3.ZERO;
+		public ListTag Tuto_checkpoint_route = new ListTag();
+		public ListTag Tuto_checkpoint_pos = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -334,6 +338,13 @@ public class CacModVariables {
 			this.Dat_psy_param = nbt.get("Dat_psy_param") instanceof ListTag Dat_psy_param ? Dat_psy_param : new ListTag();
 			Switch_scanner = nbt.getBoolean("Switch_scanner");
 			TimS_time = nbt.getDouble("TimS_time");
+			Tuto_checkpoint_index = nbt.getDouble("Tuto_checkpoint_index");
+			{
+				ListTag listTag = nbt.getList("Tuto_checkpoint_center", 6);
+				this.Tuto_checkpoint_center = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
+			this.Tuto_checkpoint_route = nbt.get("Tuto_checkpoint_route") instanceof ListTag Tuto_checkpoint_route ? Tuto_checkpoint_route : new ListTag();
+			this.Tuto_checkpoint_pos = nbt.get("Tuto_checkpoint_pos") instanceof ListTag Tuto_checkpoint_pos ? Tuto_checkpoint_pos : new ListTag();
 		}
 
 		@Override
@@ -484,6 +495,17 @@ public class CacModVariables {
 			nbt.put("Dat_psy_param", this.Dat_psy_param);
 			nbt.putBoolean("Switch_scanner", Switch_scanner);
 			nbt.putDouble("TimS_time", TimS_time);
+			nbt.putDouble("Tuto_checkpoint_index", Tuto_checkpoint_index);
+			{
+				this.Tuto_checkpoint_center = this.Tuto_checkpoint_center == null ? Vec3.ZERO : this.Tuto_checkpoint_center;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Tuto_checkpoint_center.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Tuto_checkpoint_center.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Tuto_checkpoint_center.z()));
+				nbt.put("Tuto_checkpoint_center", listTag);
+			}
+			nbt.put("Tuto_checkpoint_route", this.Tuto_checkpoint_route);
+			nbt.put("Tuto_checkpoint_pos", this.Tuto_checkpoint_pos);
 			return nbt;
 		}
 

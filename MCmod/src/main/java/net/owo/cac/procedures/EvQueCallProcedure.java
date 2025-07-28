@@ -24,35 +24,37 @@ public class EvQueCallProcedure {
 		if (!CacModVariables.MapVariables.get(world).Ev_occuring && !world.isClientSide()) {
 			CacModVariables.MapVariables.get(world).Ev_occuring = true;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			{
-				try {
-					BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_event));
-					StringBuilder jsonstringbuilder = new StringBuilder();
-					String line;
-					while ((line = bufferedReader.readLine()) != null) {
-						jsonstringbuilder.append(line);
+			if (CacModVariables.Log_event.exists()) {
+				{
+					try {
+						BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_event));
+						StringBuilder jsonstringbuilder = new StringBuilder();
+						String line;
+						while ((line = bufferedReader.readLine()) != null) {
+							jsonstringbuilder.append(line);
+						}
+						bufferedReader.close();
+						obj_log = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
+						obj_cac = obj_log.get("cac").getAsJsonObject();
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
-					bufferedReader.close();
-					obj_log = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-					obj_cac = obj_log.get("cac").getAsJsonObject();
-				} catch (IOException e) {
-					e.printStackTrace();
 				}
-			}
-			arr_content = obj_cac.get("content").getAsJsonArray();
-			arr_absolute = obj_cac.get("absolute").getAsJsonArray();
-			arr_relative = obj_cac.get("relative").getAsJsonArray();
-			arr_content.add(CacModVariables.MapVariables.get(world).Ev_content);
-			arr_absolute.add(((int) CacModVariables.MapVariables.get(world).TimA_time));
-			arr_relative.add(((int) CacModVariables.MapVariables.get(world).TimR_time));
-			{
-				com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
-				try {
-					FileWriter fileWriter = new FileWriter(CacModVariables.Log_event);
-					fileWriter.write(mainGSONBuilderVariable.toJson(obj_log));
-					fileWriter.close();
-				} catch (IOException exception) {
-					exception.printStackTrace();
+				arr_content = obj_cac.get("content").getAsJsonArray();
+				arr_absolute = obj_cac.get("absolute").getAsJsonArray();
+				arr_relative = obj_cac.get("relative").getAsJsonArray();
+				arr_content.add(CacModVariables.MapVariables.get(world).Ev_content);
+				arr_absolute.add(((int) CacModVariables.MapVariables.get(world).TimA_time));
+				arr_relative.add(((int) CacModVariables.MapVariables.get(world).TimR_time));
+				{
+					com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+					try {
+						FileWriter fileWriter = new FileWriter(CacModVariables.Log_event);
+						fileWriter.write(mainGSONBuilderVariable.toJson(obj_log));
+						fileWriter.close();
+					} catch (IOException exception) {
+						exception.printStackTrace();
+					}
 				}
 			}
 			{

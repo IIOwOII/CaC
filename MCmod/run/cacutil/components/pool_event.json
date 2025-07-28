@@ -2,6 +2,7 @@
   "test_start": 2,
   "pseudo_start": 100,
   "simulation_start": 2,
+  "tutorial_checkpoint_start": 100,
   "phase_pretrial": 2,
   "phase_preparation": -1,
   "phase_gameplay": 600,
@@ -17,8 +18,10 @@
   "simulation_gameplay": 600,
   "simulation_gameplay_end": 20,
   "simulation_interval": 20,
+  "simulation_end": -1,
+  "tutorial_checkpoint": -1,
+  "tutorial_checkpoint_end": 2,
   "test_end": -1,
   "pseudo_end": -1,
-  "simulation_end": -1,
   "blank": 60
 }

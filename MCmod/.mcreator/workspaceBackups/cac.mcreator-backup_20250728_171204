@@ -3199,6 +3199,84 @@
         ]
       },
       "path": "~/CacTask/Simulation"
+    },
+    {
+      "name": "CmdTutorial",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_tutorial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTutorialCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoCheckpointTouch",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_checkpoint_touch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoCheckpointTouchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoCheckpointStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_checkpoint_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoCheckpointStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [
@@ -3915,6 +3993,30 @@
       "type": "file",
       "scope": "global",
       "value": "new File(\"\")"
+    },
+    {
+      "name": "Tuto_checkpoint_index",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Tuto_checkpoint_center",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Tuto_checkpoint_route",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Tuto_checkpoint_pos",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [
@@ -4038,6 +4140,10 @@
           },
           {
             "name": "Simulation",
+            "children": []
+          },
+          {
+            "name": "Tutorial",
             "children": []
           }
         ]
