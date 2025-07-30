@@ -3264,10 +3264,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -3286,22 +3282,6 @@
           "src/main/java/net/owo/cac/procedures/TutoCheckpointStartProcedure.java"
         ],
         "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
           {
             "name": "world",
             "type": "world"
@@ -3328,6 +3308,50 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoCheckpointEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_checkpoint_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoCheckpointEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvCac",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_cac",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_cac.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "CstAdvancement",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_advancement",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstAdvancement.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4068,6 +4092,12 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Switch_tutorial",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -4118,9 +4148,11 @@
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "block.cac.blk_checkpoint": "Checkpoint",
       "key.cac.cac_key_left": "Left",
+      "advancements.adv_cac.title": "Chasing and Chased",
       "effect.cac.eff_morph_predator": "Predator",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_player_cat": "Predator (Player)",
+      "advancements.adv_cac.descr": "Welcome to the CaC!",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
@@ -4238,7 +4270,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.9",
+    "version": "0.92",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

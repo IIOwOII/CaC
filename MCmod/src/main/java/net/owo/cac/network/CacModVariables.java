@@ -216,6 +216,7 @@ public class CacModVariables {
 		public Vec3 Tuto_checkpoint_center = Vec3.ZERO;
 		public ListTag Tuto_checkpoint_route = new ListTag();
 		public ListTag Tuto_checkpoint_pos = new ListTag();
+		public boolean Switch_tutorial = false;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -345,6 +346,7 @@ public class CacModVariables {
 			}
 			this.Tuto_checkpoint_route = nbt.get("Tuto_checkpoint_route") instanceof ListTag Tuto_checkpoint_route ? Tuto_checkpoint_route : new ListTag();
 			this.Tuto_checkpoint_pos = nbt.get("Tuto_checkpoint_pos") instanceof ListTag Tuto_checkpoint_pos ? Tuto_checkpoint_pos : new ListTag();
+			Switch_tutorial = nbt.getBoolean("Switch_tutorial");
 		}
 
 		@Override
@@ -506,6 +508,7 @@ public class CacModVariables {
 			}
 			nbt.put("Tuto_checkpoint_route", this.Tuto_checkpoint_route);
 			nbt.put("Tuto_checkpoint_pos", this.Tuto_checkpoint_pos);
+			nbt.putBoolean("Switch_tutorial", Switch_tutorial);
 			return nbt;
 		}
 

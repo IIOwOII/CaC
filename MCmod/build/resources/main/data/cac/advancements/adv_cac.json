@@ -1,0 +1,23 @@
+{
+  "display": {
+    "background": "cac:textures/screens/texture_background.png",
+    "icon": {
+      "item": "cac:cac_logo"
+    },
+    "title": {
+      "translate": "advancements.adv_cac.title"
+    },
+    "description": {
+      "translate": "advancements.adv_cac.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_cac_0": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
