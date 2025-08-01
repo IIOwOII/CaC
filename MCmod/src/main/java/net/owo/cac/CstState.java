@@ -11,6 +11,8 @@ public class CstState {
     public static int arrow_up = 0;
     public static int arrow_down = 0;
 
+    public static int[] arrow_pressed = new int[2]; // 0: rot_re, 1: rot_im
+
     public static void switchMeowView() {
     	IsMeowView = (!IsMeowView);
     }

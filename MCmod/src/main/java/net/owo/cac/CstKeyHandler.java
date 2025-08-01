@@ -39,6 +39,17 @@ public class CstKeyHandler {
 			if (CstState.CanMeowMove) {
 	            int rot_re = CstState.arrow_right - CstState.arrow_left;
 	            int rot_im = CstState.arrow_up - CstState.arrow_down;
+
+	            if (rot_re != 0) {
+	            	CstState.arrow_pressed[0] += rot_re;
+	            } else {
+	            	CstState.arrow_pressed[0] = 0;
+	            }
+	            if (rot_im != 0) {
+	            	CstState.arrow_pressed[1] += rot_im;
+	            } else {
+	            	CstState.arrow_pressed[1] = 0;
+	            }
 	
 	            double rot_norm = Math.sqrt(rot_re*rot_re + rot_im*rot_im);
 	
