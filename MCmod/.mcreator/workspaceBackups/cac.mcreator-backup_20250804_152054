@@ -3327,6 +3327,38 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvCac",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_cac",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_cac.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdpReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [
@@ -4067,6 +4099,12 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Switch_tutorial",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -4117,9 +4155,11 @@
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "block.cac.blk_checkpoint": "Checkpoint",
       "key.cac.cac_key_left": "Left",
+      "advancements.adv_cac.title": "Chasing and Chased",
       "effect.cac.eff_morph_predator": "Predator",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_player_cat": "Predator (Player)",
+      "advancements.adv_cac.descr": "Welcome to the CaC!",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",

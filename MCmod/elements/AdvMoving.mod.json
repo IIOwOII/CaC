@@ -2,12 +2,12 @@
   "_fv": 66,
   "_type": "achievement",
   "definition": {
-    "achievementName": "Chasing and Chased",
-    "achievementDescription": "Welcome to the CaC!",
+    "achievementName": "Joystick Moving",
+    "achievementDescription": "Move in 8 directions",
     "achievementIcon": {
       "value": "CUSTOM:CacLogo"
     },
-    "background": "texture_cac_meowtile.png",
+    "background": "Default",
     "disableDisplay": false,
     "showPopup": true,
     "announceToChat": true,
@@ -18,7 +18,7 @@
     "rewardXP": 0,
     "achievementType": "task",
     "parent": {
-      "value": "No parent: root"
+      "value": "CUSTOM:AdvCac"
     },
     "triggerxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"advancement_trigger\" deletable=\"false\" x=\"40\" y=\"80\"><next><block type=\"custom_trigger\"></block></next></block></xml>"
   }

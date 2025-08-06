@@ -3340,6 +3340,38 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdpReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvMoving",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_moving",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_moving.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [
@@ -4080,6 +4112,12 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Switch_tutorial",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -4118,6 +4156,7 @@
       "key.categories.cac": "Chasing and Chased",
       "block.cac.blk_fence": "Fence (No field)",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
+      "advancements.adv_moving.title": "Joystick Moving",
       "entity.cac.ent_mouse": "Prey",
       "key.cac.cac_key_decide": "Decide",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
@@ -4131,6 +4170,7 @@
       "block.cac.blk_checkpoint": "Checkpoint",
       "key.cac.cac_key_left": "Left",
       "advancements.adv_cac.title": "Chasing and Chased",
+      "advancements.adv_moving.descr": "Move in 8 directions",
       "effect.cac.eff_morph_predator": "Predator",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_player_cat": "Predator (Player)",
