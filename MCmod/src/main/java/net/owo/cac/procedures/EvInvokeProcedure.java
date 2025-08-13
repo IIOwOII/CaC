@@ -38,7 +38,7 @@ public class EvInvokeProcedure {
 					CacModVariables.MapVariables.get(world).Switch_que = true;
 					CacModVariables.MapVariables.get(world).syncData(world);
 					TimCountdownProcedure.execute(world, entity);
-					TutoCheckpointStartProcedure.execute(world);
+					TutoCheckpointStartProcedure.execute(world, entity);
 				}
 			} else if (ev_content.startsWith("phase")) {
 				if ((ev_content).equals("phase_pretrial")) {

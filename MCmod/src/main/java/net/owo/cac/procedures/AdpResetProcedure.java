@@ -1,30 +1,23 @@
 package net.owo.cac.procedures;
 
-import net.minecraft.world.scores.criteria.ObjectiveCriteria;
-import net.minecraft.world.scores.Scoreboard;
-import net.minecraft.world.scores.Objective;
+import net.owo.cac.network.CacModVariables;
+
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.chat.Component;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.Advancement;
 
 public class AdpResetProcedure {
-	public static void execute(Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		{
-			Entity _ent = entity;
-			Scoreboard _sc = _ent.level().getScoreboard();
-			Objective _so = _sc.getObjective("adv_moving");
-			if (_so == null)
-				_so = _sc.addObjective("adv_moving", ObjectiveCriteria.DUMMY, Component.literal("adv_moving"), ObjectiveCriteria.RenderType.INTEGER);
-			_sc.getOrCreatePlayerScore(_ent.getScoreboardName(), _so).setScore(0);
-		}
+		CacModVariables.MapVariables.get(world).Tuto_type = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

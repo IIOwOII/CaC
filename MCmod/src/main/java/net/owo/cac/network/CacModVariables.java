@@ -56,6 +56,8 @@ public class CacModVariables {
 	public static File Log_survey = new File("");
 	public static File Pool_psychometric = new File("");
 	public static File Log_scanner = new File("");
+	public static File Pool_script = new File("");
+	public static com.google.gson.JsonArray Scr_beginner = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -216,7 +218,9 @@ public class CacModVariables {
 		public Vec3 Tuto_checkpoint_center = Vec3.ZERO;
 		public ListTag Tuto_checkpoint_route = new ListTag();
 		public ListTag Tuto_checkpoint_pos = new ListTag();
-		public boolean Switch_tutorial = false;
+		public String Dir_behaviors_session = "\"\"";
+		public double Exp_session_reps = 0;
+		public double Tuto_type = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -346,7 +350,9 @@ public class CacModVariables {
 			}
 			this.Tuto_checkpoint_route = nbt.get("Tuto_checkpoint_route") instanceof ListTag Tuto_checkpoint_route ? Tuto_checkpoint_route : new ListTag();
 			this.Tuto_checkpoint_pos = nbt.get("Tuto_checkpoint_pos") instanceof ListTag Tuto_checkpoint_pos ? Tuto_checkpoint_pos : new ListTag();
-			Switch_tutorial = nbt.getBoolean("Switch_tutorial");
+			Dir_behaviors_session = nbt.getString("Dir_behaviors_session");
+			Exp_session_reps = nbt.getDouble("Exp_session_reps");
+			Tuto_type = nbt.getDouble("Tuto_type");
 		}
 
 		@Override
@@ -508,7 +514,9 @@ public class CacModVariables {
 			}
 			nbt.put("Tuto_checkpoint_route", this.Tuto_checkpoint_route);
 			nbt.put("Tuto_checkpoint_pos", this.Tuto_checkpoint_pos);
-			nbt.putBoolean("Switch_tutorial", Switch_tutorial);
+			nbt.putString("Dir_behaviors_session", Dir_behaviors_session);
+			nbt.putDouble("Exp_session_reps", Exp_session_reps);
+			nbt.putDouble("Tuto_type", Tuto_type);
 			return nbt;
 		}
 

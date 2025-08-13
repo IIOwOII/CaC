@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "cac:blk_hurdle",
     "cac:blk_fence",
     "cac:blk_wall",
     "cac:blk_obstacle"

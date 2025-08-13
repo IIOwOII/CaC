@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "cac:block/blk_switchstone"
+    },
+    "blockstate=1": {
+      "model": "cac:block/bls_switchstone_blockstate_0"
+    }
+  }
+}

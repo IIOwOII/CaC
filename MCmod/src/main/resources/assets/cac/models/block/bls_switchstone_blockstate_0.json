@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_switchstone",
+  "textures": {
+    "all": "cac:block/texture_switchstone",
+    "particle": "cac:block/texture_switchstone",
+    "0": "cac:block/texture_switchstone"
+  },
+  "render_type": "cutout"
+}

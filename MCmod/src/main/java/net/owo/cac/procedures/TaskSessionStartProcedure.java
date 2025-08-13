@@ -22,6 +22,8 @@ public class TaskSessionStartProcedure {
 		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_timestamp = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
+		double idx_obj = 0;
+		double idx_dup = 0;
 		CacModVariables.Info_timestamp = new File(CacModVariables.MapVariables.get(world).Dir_behaviors, File.separator + "info_timestamp.json");
 		{
 			try {
@@ -39,7 +41,19 @@ public class TaskSessionStartProcedure {
 			}
 		}
 		EvResetProcedure.execute(world);
-		obj_cac.addProperty((CacModVariables.MapVariables.get(world).Exp_session + "_start"), Calendar.getInstance().getTime().toString());
+		idx_obj = 0;
+		idx_dup = 0;
+		for (int index0 = 0; index0 < (int) obj_cac.size(); index0++) {
+			if (obj_que.keySet().stream().toList().get(((int) idx_obj)).startsWith(CacModVariables.MapVariables.get(world).Exp_session + "_start")) {
+				idx_dup = idx_dup + 1;
+			}
+			idx_obj = idx_obj + 1;
+		}
+		if (idx_dup == 0) {
+			obj_cac.addProperty((CacModVariables.MapVariables.get(world).Exp_session + "_start"), Calendar.getInstance().getTime().toString());
+		} else {
+			obj_cac.addProperty((CacModVariables.MapVariables.get(world).Exp_session + "_start_" + (int) idx_dup), Calendar.getInstance().getTime().toString());
+		}
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {
@@ -50,6 +64,8 @@ public class TaskSessionStartProcedure {
 				exception.printStackTrace();
 			}
 		}
+		CacModVariables.MapVariables.get(world).Exp_session_reps = (int) idx_dup;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		TimResetProcedure.execute(world);
 		IniLogProcedure.execute(world);
 		{

@@ -32,6 +32,8 @@ public class CacModItems {
 	public static final RegistryObject<Item> ENT_PLAYER_CAT_SPAWN_EGG = REGISTRY.register("ent_player_cat_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_PLAYER_CAT, -1, -65536, new Item.Properties()));
 	public static final RegistryObject<Item> ENT_PSEUDO_CAT_SPAWN_EGG = REGISTRY.register("ent_pseudo_cat_spawn_egg", () -> new ForgeSpawnEggItem(CacModEntities.ENT_PSEUDO_CAT, -6710887, -65536, new Item.Properties()));
 	public static final RegistryObject<Item> BLK_CHECKPOINT = block(CacModBlocks.BLK_CHECKPOINT);
+	public static final RegistryObject<Item> BLK_HURDLE = block(CacModBlocks.BLK_HURDLE);
+	public static final RegistryObject<Item> BLK_SWITCHSTONE = block(CacModBlocks.BLK_SWITCHSTONE);
 
 	// Start of user code block custom items
 	// End of user code block custom items

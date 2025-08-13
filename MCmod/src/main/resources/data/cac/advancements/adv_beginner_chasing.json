@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "cac:cac_logo"
+    },
+    "title": {
+      "translate": "advancements.adv_beginner_chasing.title"
+    },
+    "description": {
+      "translate": "advancements.adv_beginner_chasing.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "adv_beginner_chasing_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "cac:adv_beginner"
+}

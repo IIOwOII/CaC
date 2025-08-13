@@ -2,8 +2,6 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraftforge.fml.loading.FMLPaths;
-
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.commands.CommandSourceStack;
@@ -22,8 +20,6 @@ public class SimManageProcedure {
 		com.google.gson.JsonObject obj_que = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
 		CacModVariables.MapVariables.get(world).Exp_subject = "simulation";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + "simulation";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_trial_type = DoubleArgumentType.getDouble(arguments, "type");
 		CacModVariables.MapVariables.get(world).syncData(world);
