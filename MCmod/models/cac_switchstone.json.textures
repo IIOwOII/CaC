@@ -5,6 +5,12 @@
         "0": "texture_switchstone"
       },
       "name": "default"
+    },
+    "off": {
+      "map": {
+        "0": "texture_switchstone_off"
+      },
+      "name": "off"
     }
   }
 }

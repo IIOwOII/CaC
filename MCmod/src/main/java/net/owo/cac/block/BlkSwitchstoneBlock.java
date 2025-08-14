@@ -3,6 +3,7 @@ package net.owo.cac.block;
 
 import org.checkerframework.checker.units.qual.s;
 
+import net.owo.cac.procedures.BlcSwitchstoneEmitProcedure;
 import net.owo.cac.procedures.BlcCheckpointWalkProcedure;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -76,7 +77,11 @@ public class BlkSwitchstoneBlock extends Block {
 
 	@Override
 	public int getSignal(BlockState blockstate, BlockGetter blockAccess, BlockPos pos, Direction direction) {
-		return 15;
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
+		Level world = (Level) blockAccess;
+		return (int) BlcSwitchstoneEmitProcedure.execute(blockstate);
 	}
 
 	@Override

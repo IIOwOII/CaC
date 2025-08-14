@@ -65,7 +65,8 @@
     "isReplaceable": false,
     "canProvidePower": true,
     "emittedRedstonePower": {
-      "fixedValue": 15.0
+      "fixedValue": 15.0,
+      "name": "BlcSwitchstoneEmit"
     },
     "colorOnMap": "DEFAULT",
     "creativePickItem": {

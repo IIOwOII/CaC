@@ -1,786 +1,112 @@
-[13Aug2025 16:18:59.658] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 47.2.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin.config, mixins.cac.json]
-[13Aug2025 16:18:59.662] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.14 by Eclipse Adoptium; OS Linux arch amd64 version 5.15.0-117-generic
-[13Aug2025 16:18:59.788] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
-[13Aug2025 16:18:59.877] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
-[13Aug2025 16:19:00.134] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
-[13Aug2025 16:19:00.306] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/home/owo/.mcreator/gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=CLIENT
-[13Aug2025 16:19:00.374] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA RTX A2000 12GB/PCIe/SSE2 GL version 4.6.0 NVIDIA 560.28.03, NVIDIA Corporation
-[13Aug2025 16:19:00.777] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.2.0/7f9181f85acc66547685a72020713fc8cbde98/javafmllanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[13Aug2025 16:19:00.779] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.2.0/7872f5205685fdd26fae39b1be79b0e60ca5b7bd/lowcodelanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[13Aug2025 16:19:00.780] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.2.0/d501d161cabed08b3c139a2c6217b02a39f3c3e9/mclanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[13Aug2025 16:19:00.782] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.2.0/ffd3c6debac0a388c9e33ac43c9f5eafb91cb466/fmlcore-1.20.1-47.2.0.jar is missing mods.toml file
-[13Aug2025 16:19:00.946] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
-[13Aug2025 16:19:02.432] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by mixins.cac.json is higher than the maximum level supported by this version of mixin (JAVA_13).
-[13Aug2025 16:19:02.432] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[13Aug2025 16:19:02.441] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --assetIndex, 5]
-[13Aug2025 16:19:02.475] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
-[13Aug2025 16:19:02.477] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. NoClassDefFoundError: org/jetbrains/java/decompiler/main/extern/IResultSaver
-[13Aug2025 16:19:02.483] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
-[13Aug2025 16:19:02.484] [main/INFO] [mixin/]: Selecting config mixins.cac.json
-[13Aug2025 16:19:02.488] [main/WARN] [mixin/]: Reference map 'mixins.cac.refmap.json' for mixins.cac.json could not be read. If this is a development environment you can ignore this message
-[13Aug2025 16:19:02.490] [main/INFO] [mixin/]: Selecting config geckolib.mixins.json
-[13Aug2025 16:19:02.928] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using /home/owo/CLAB/CaC/MCmod/build/createSrgToMcp/output.srg
-[13Aug2025 16:19:02.929] [main/INFO] [mixin/]: Preparing mixins.cac.json (1)
-[13Aug2025 16:19:02.973] [main/INFO] [mixin/]: Preparing geckolib.mixins.json (1)
-[13Aug2025 16:19:03.018] [main/INFO] [mixin/]: Prepared 2 mixins in 0.533 sec (266.5ms avg) (0ms load, 0ms transform, 0ms plugin)
-[13Aug2025 16:19:07.057] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 191 milliseconds
-[13Aug2025 16:19:08.881] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/assets/.mcassetsroot' uses unexpected schema
-[13Aug2025 16:19:08.882] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/data/.mcassetsroot' uses unexpected schema
-[13Aug2025 16:19:08.903] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[13Aug2025 16:19:08.910] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[13Aug2025 16:19:09.020] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
-[13Aug2025 16:19:09.330] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.0, for MC 1.20.1 with MCP 20230612.114412
-[13Aug2025 16:19:09.333] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.0 Initialized
-[13Aug2025 16:19:09.865] [Render thread/INFO] [mixin/]: Mixing client.TextureManagerMixin from geckolib.mixins.json into net.minecraft.client.renderer.texture.TextureManager
-[13Aug2025 16:19:10.361] [Render thread/INFO] [mixin/]: Mixing MxnMeowviewMixin from mixins.cac.json into net.minecraft.client.Camera
-[13Aug2025 16:19:10.596] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
-[13Aug2025 16:19:10.929] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
-[13Aug2025 16:19:11.151] [Worker-Main-15/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
-[13Aug2025 16:19:11.171] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[13Aug2025 16:19:11.537] [Worker-Main-1/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture cac:item/texture_cac_wall_icon with size 350x328 limits mip level from 2 to 1
-[13Aug2025 16:19:11.846] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.2.0 Target: 47.4.0
-[13Aug2025 16:19:14.314] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[13Aug2025 16:19:14.314] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[13Aug2025 16:19:14.346] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device Galaxy Buds2 (FB97)
-[13Aug2025 16:19:14.348] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[13Aug2025 16:19:14.528] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x2 minecraft:textures/atlas/blocks.png-atlas
-[13Aug2025 16:19:14.541] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/signs.png-atlas
-[13Aug2025 16:19:14.542] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/shield_patterns.png-atlas
-[13Aug2025 16:19:14.542] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/banner_patterns.png-atlas
-[13Aug2025 16:19:14.543] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x2 minecraft:textures/atlas/armor_trims.png-atlas
-[13Aug2025 16:19:14.547] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x2 minecraft:textures/atlas/decorated_pot.png-atlas
-[13Aug2025 16:19:14.549] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/chest.png-atlas
-[13Aug2025 16:19:14.550] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/shulker_boxes.png-atlas
-[13Aug2025 16:19:14.550] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/beds.png-atlas
-[13Aug2025 16:19:14.700] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[13Aug2025 16:19:14.758] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[13Aug2025 16:19:14.760] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[13Aug2025 16:19:14.760] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[13Aug2025 16:19:15.595] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
-[13Aug2025 16:19:21.057] [Render thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this CLIENT instance
-[13Aug2025 16:19:23.141] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
-[13Aug2025 16:19:23.265] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1278 advancements
-[13Aug2025 16:19:23.761] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.20.1
-[13Aug2025 16:19:23.762] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[13Aug2025 16:19:25.102] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[13Aug2025 16:19:28.152] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:28.189] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:28.207] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:28.225] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:28.243] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:28.243] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:28.263] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:28.624] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:29.133] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[13Aug2025 16:19:29.631] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 24%
-[13Aug2025 16:19:30.119] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 58%
-[13Aug2025 16:19:30.702] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 98%
-[13Aug2025 16:19:30.702] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 5588 ms
-[13Aug2025 16:19:30.705] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
-[13Aug2025 16:19:30.883] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 5, from 10
-[13Aug2025 16:19:30.885] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
-[13Aug2025 16:19:31.001] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
-[13Aug2025 16:19:31.499] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
-[13Aug2025 16:19:31.579] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:3aec8727] logged in with entity id 19 at (-54.40659057815655, 63.0, 3.732601108411452)
-[13Aug2025 16:19:31.667] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[13Aug2025 16:19:32.265] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 146 advancements
-[13Aug2025 16:20:48.355] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Aug2025 16:20:48.380] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[13Aug2025 16:20:48.398] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[13Aug2025 16:20:48.398] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[13Aug2025 16:21:05.212] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 1)]
-[13Aug2025 16:21:05.214] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Command set: scoreboard players add @p tutorial_checkpoint 1
-[13Aug2025 16:21:05.228] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 1)]
-[13Aug2025 16:21:09.105] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Aug2025 16:21:09.117] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[13Aug2025 16:21:09.124] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[13Aug2025 16:21:09.124] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[13Aug2025 16:21:12.664] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Command set: scoreboard players add @p tutorial_checkpoint 1
-[13Aug2025 16:21:12.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 2)]
-[13Aug2025 16:21:12.709] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 2)]
-[13Aug2025 16:21:12.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 3)]
-[13Aug2025 16:21:12.761] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 3)]
-[13Aug2025 16:21:12.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 4)]
-[13Aug2025 16:21:12.807] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 4)]
-[13Aug2025 16:21:12.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 5)]
-[13Aug2025 16:21:12.861] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 5)]
-[13Aug2025 16:21:12.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 6)]
-[13Aug2025 16:21:12.907] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 6)]
-[13Aug2025 16:21:12.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 7)]
-[13Aug2025 16:21:12.966] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 7)]
-[13Aug2025 16:21:13.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 8)]
-[13Aug2025 16:21:13.009] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 8)]
-[13Aug2025 16:21:13.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 9)]
-[13Aug2025 16:21:13.067] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 9)]
-[13Aug2025 16:21:13.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 10)]
-[13Aug2025 16:21:13.109] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 10)]
-[13Aug2025 16:21:13.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 11)]
-[13Aug2025 16:21:13.157] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 11)]
-[13Aug2025 16:21:13.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 12)]
-[13Aug2025 16:21:13.211] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 12)]
-[13Aug2025 16:21:13.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 13)]
-[13Aug2025 16:21:13.259] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 13)]
-[13Aug2025 16:21:13.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 14)]
-[13Aug2025 16:21:13.329] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 14)]
-[13Aug2025 16:21:13.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 15)]
-[13Aug2025 16:21:13.362] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 15)]
-[13Aug2025 16:21:13.414] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 16)]
-[13Aug2025 16:21:13.415] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 16)]
-[13Aug2025 16:21:13.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 17)]
-[13Aug2025 16:21:13.458] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 17)]
-[13Aug2025 16:21:13.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 18)]
-[13Aug2025 16:21:13.519] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 18)]
-[13Aug2025 16:21:13.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 19)]
-[13Aug2025 16:21:13.572] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 19)]
-[13Aug2025 16:21:13.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 20)]
-[13Aug2025 16:21:13.625] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 20)]
-[13Aug2025 16:21:13.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 21)]
-[13Aug2025 16:21:13.658] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 21)]
-[13Aug2025 16:21:13.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 22)]
-[13Aug2025 16:21:13.709] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 22)]
-[13Aug2025 16:21:13.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 23)]
-[13Aug2025 16:21:13.757] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 23)]
-[13Aug2025 16:21:13.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 24)]
-[13Aug2025 16:21:13.815] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 24)]
-[13Aug2025 16:21:13.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 25)]
-[13Aug2025 16:21:13.862] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 25)]
-[13Aug2025 16:21:13.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 26)]
-[13Aug2025 16:21:13.907] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 26)]
-[13Aug2025 16:21:13.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 27)]
-[13Aug2025 16:21:13.967] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 27)]
-[13Aug2025 16:21:14.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 28)]
-[13Aug2025 16:21:14.009] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 28)]
-[13Aug2025 16:21:14.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 29)]
-[13Aug2025 16:21:14.057] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 29)]
-[13Aug2025 16:21:14.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 30)]
-[13Aug2025 16:21:14.112] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 30)]
-[13Aug2025 16:21:14.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 31)]
-[13Aug2025 16:21:14.161] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 31)]
-[13Aug2025 16:21:14.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 32)]
-[13Aug2025 16:21:14.207] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 32)]
-[13Aug2025 16:21:14.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 33)]
-[13Aug2025 16:21:14.272] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 33)]
-[13Aug2025 16:21:14.319] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 34)]
-[13Aug2025 16:21:14.333] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 34)]
-[13Aug2025 16:21:14.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 35)]
-[13Aug2025 16:21:14.362] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 35)]
-[13Aug2025 16:21:14.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 36)]
-[13Aug2025 16:21:14.413] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 36)]
-[13Aug2025 16:21:14.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 37)]
-[13Aug2025 16:21:14.467] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 37)]
-[13Aug2025 16:21:14.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 38)]
-[13Aug2025 16:21:14.509] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 38)]
-[13Aug2025 16:21:14.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 39)]
-[13Aug2025 16:21:14.567] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 39)]
-[13Aug2025 16:21:14.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 40)]
-[13Aug2025 16:21:14.610] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 40)]
-[13Aug2025 16:21:14.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 41)]
-[13Aug2025 16:21:14.657] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 41)]
-[13Aug2025 16:21:14.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 42)]
-[13Aug2025 16:21:14.711] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 42)]
-[13Aug2025 16:21:14.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 43)]
-[13Aug2025 16:21:14.758] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 43)]
-[13Aug2025 16:21:14.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 44)]
-[13Aug2025 16:21:14.818] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 44)]
-[13Aug2025 16:21:14.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 45)]
-[13Aug2025 16:21:14.861] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 45)]
-[13Aug2025 16:21:14.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 46)]
-[13Aug2025 16:21:14.908] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 46)]
-[13Aug2025 16:21:14.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 47)]
-[13Aug2025 16:21:14.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 47)]
-[13Aug2025 16:21:15.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 48)]
-[13Aug2025 16:21:15.009] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 48)]
-[13Aug2025 16:21:15.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 49)]
-[13Aug2025 16:21:15.063] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 49)]
-[13Aug2025 16:21:15.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 50)]
-[13Aug2025 16:21:15.109] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 50)]
-[13Aug2025 16:21:15.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 51)]
-[13Aug2025 16:21:15.167] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 51)]
-[13Aug2025 16:21:15.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 52)]
-[13Aug2025 16:21:15.210] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 52)]
-[13Aug2025 16:21:15.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 53)]
-[13Aug2025 16:21:15.257] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 53)]
-[13Aug2025 16:21:15.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 54)]
-[13Aug2025 16:21:15.311] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 54)]
-[13Aug2025 16:21:15.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 55)]
-[13Aug2025 16:21:15.357] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 55)]
-[13Aug2025 16:21:15.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 56)]
-[13Aug2025 16:21:15.412] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 56)]
-[13Aug2025 16:21:15.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 57)]
-[13Aug2025 16:21:15.458] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 57)]
-[13Aug2025 16:21:15.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 58)]
-[13Aug2025 16:21:15.513] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 58)]
-[13Aug2025 16:21:15.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 59)]
-[13Aug2025 16:21:15.558] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 59)]
-[13Aug2025 16:21:15.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 60)]
-[13Aug2025 16:21:15.615] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 60)]
-[13Aug2025 16:21:15.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 61)]
-[13Aug2025 16:21:15.663] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 61)]
-[13Aug2025 16:21:15.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 62)]
-[13Aug2025 16:21:15.709] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 62)]
-[13Aug2025 16:21:15.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 63)]
-[13Aug2025 16:21:15.764] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 63)]
-[13Aug2025 16:21:15.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 64)]
-[13Aug2025 16:21:15.807] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 64)]
-[13Aug2025 16:21:15.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 65)]
-[13Aug2025 16:21:15.862] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 65)]
-[13Aug2025 16:21:15.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 66)]
-[13Aug2025 16:21:15.909] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 66)]
-[13Aug2025 16:21:15.955] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Aug2025 16:21:15.964] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[13Aug2025 16:21:15.971] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[13Aug2025 16:21:15.972] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[13Aug2025 16:21:16.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 67)]
-[13Aug2025 16:21:16.512] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 67)]
-[13Aug2025 16:21:16.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 68)]
-[13Aug2025 16:21:16.558] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 68)]
-[13Aug2025 16:21:16.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 69)]
-[13Aug2025 16:21:16.611] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 69)]
-[13Aug2025 16:21:16.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 70)]
-[13Aug2025 16:21:16.657] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 70)]
-[13Aug2025 16:21:16.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 71)]
-[13Aug2025 16:21:16.711] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 71)]
-[13Aug2025 16:21:16.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 72)]
-[13Aug2025 16:21:16.765] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 72)]
-[13Aug2025 16:21:16.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 73)]
-[13Aug2025 16:21:16.811] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 73)]
-[13Aug2025 16:21:16.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 74)]
-[13Aug2025 16:21:16.857] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 74)]
-[13Aug2025 16:21:16.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 75)]
-[13Aug2025 16:21:16.909] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 75)]
-[13Aug2025 16:21:16.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 76)]
-[13Aug2025 16:21:16.963] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 76)]
-[13Aug2025 16:21:17.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 77)]
-[13Aug2025 16:21:17.007] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 77)]
-[13Aug2025 16:21:17.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 78)]
-[13Aug2025 16:21:17.060] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 78)]
-[13Aug2025 16:21:17.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 79)]
-[13Aug2025 16:21:17.109] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 79)]
-[13Aug2025 16:21:17.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 80)]
-[13Aug2025 16:21:17.162] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 80)]
-[13Aug2025 16:21:17.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 81)]
-[13Aug2025 16:21:17.209] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 81)]
-[13Aug2025 16:21:17.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 82)]
-[13Aug2025 16:21:17.264] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 82)]
-[13Aug2025 16:21:17.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 83)]
-[13Aug2025 16:21:17.310] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 83)]
-[13Aug2025 16:21:17.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 84)]
-[13Aug2025 16:21:17.357] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 84)]
-[13Aug2025 16:21:17.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 85)]
-[13Aug2025 16:21:17.411] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 85)]
-[13Aug2025 16:21:17.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 86)]
-[13Aug2025 16:21:17.458] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 86)]
-[13Aug2025 16:21:17.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 87)]
-[13Aug2025 16:21:17.510] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 87)]
-[13Aug2025 16:21:17.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 88)]
-[13Aug2025 16:21:17.564] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 88)]
-[13Aug2025 16:21:17.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 89)]
-[13Aug2025 16:21:17.611] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 89)]
-[13Aug2025 16:21:17.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 90)]
-[13Aug2025 16:21:17.657] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 90)]
-[13Aug2025 16:21:17.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 91)]
-[13Aug2025 16:21:17.712] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 91)]
-[13Aug2025 16:21:17.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 92)]
-[13Aug2025 16:21:17.758] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 92)]
-[13Aug2025 16:21:17.810] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 93)]
-[13Aug2025 16:21:17.832] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 93)]
-[13Aug2025 16:21:17.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 94)]
-[13Aug2025 16:21:17.866] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 94)]
-[13Aug2025 16:21:17.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 95)]
-[13Aug2025 16:21:17.909] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 95)]
-[13Aug2025 16:21:17.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 96)]
-[13Aug2025 16:21:17.961] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 96)]
-[13Aug2025 16:21:18.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 97)]
-[13Aug2025 16:21:18.014] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 97)]
-[13Aug2025 16:21:18.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 98)]
-[13Aug2025 16:21:18.060] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 98)]
-[13Aug2025 16:21:18.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 99)]
-[13Aug2025 16:21:18.115] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 99)]
-[13Aug2025 16:21:18.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 100)]
-[13Aug2025 16:21:18.161] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 100)]
-[13Aug2025 16:21:18.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 101)]
-[13Aug2025 16:21:18.214] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 101)]
-[13Aug2025 16:21:18.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 102)]
-[13Aug2025 16:21:18.260] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 102)]
-[13Aug2025 16:21:18.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 103)]
-[13Aug2025 16:21:18.314] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 103)]
-[13Aug2025 16:21:18.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 104)]
-[13Aug2025 16:21:18.360] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 104)]
-[13Aug2025 16:21:18.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 105)]
-[13Aug2025 16:21:18.414] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 105)]
-[13Aug2025 16:21:18.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 106)]
-[13Aug2025 16:21:18.461] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 106)]
-[13Aug2025 16:21:18.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 107)]
-[13Aug2025 16:21:18.508] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 107)]
-[13Aug2025 16:21:18.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 108)]
-[13Aug2025 16:21:18.562] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 108)]
-[13Aug2025 16:21:18.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 109)]
-[13Aug2025 16:21:18.608] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 109)]
-[13Aug2025 16:21:18.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 110)]
-[13Aug2025 16:21:18.661] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 110)]
-[13Aug2025 16:21:18.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 111)]
-[13Aug2025 16:21:18.707] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 111)]
-[13Aug2025 16:21:18.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 112)]
-[13Aug2025 16:21:18.761] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 112)]
-[13Aug2025 16:21:18.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 113)]
-[13Aug2025 16:21:18.806] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 113)]
-[13Aug2025 16:21:18.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 114)]
-[13Aug2025 16:21:18.860] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 114)]
-[13Aug2025 16:21:18.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 115)]
-[13Aug2025 16:21:18.914] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 115)]
-[13Aug2025 16:21:18.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 116)]
-[13Aug2025 16:21:18.961] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 116)]
-[13Aug2025 16:21:19.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 117)]
-[13Aug2025 16:21:19.013] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 117)]
-[13Aug2025 16:21:19.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 118)]
-[13Aug2025 16:21:19.058] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 118)]
-[13Aug2025 16:21:19.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 119)]
-[13Aug2025 16:21:19.111] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 119)]
-[13Aug2025 16:21:19.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 120)]
-[13Aug2025 16:21:19.157] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 120)]
-[13Aug2025 16:21:19.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 121)]
-[13Aug2025 16:21:19.210] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 121)]
-[13Aug2025 16:21:19.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 122)]
-[13Aug2025 16:21:19.264] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 122)]
-[13Aug2025 16:21:19.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 123)]
-[13Aug2025 16:21:19.309] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 123)]
-[13Aug2025 16:21:19.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 124)]
-[13Aug2025 16:21:19.363] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 124)]
-[13Aug2025 16:21:19.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 125)]
-[13Aug2025 16:21:19.408] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 125)]
-[13Aug2025 16:21:19.471] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 126)]
-[13Aug2025 16:21:19.484] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 126)]
-[13Aug2025 16:21:19.513] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 127)]
-[13Aug2025 16:21:19.525] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 127)]
-[13Aug2025 16:21:19.557] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 128)]
-[13Aug2025 16:21:19.565] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 128)]
-[13Aug2025 16:21:19.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 129)]
-[13Aug2025 16:21:19.616] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 129)]
-[13Aug2025 16:21:19.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 130)]
-[13Aug2025 16:21:19.664] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 130)]
-[13Aug2025 16:21:19.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 131)]
-[13Aug2025 16:21:19.707] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 131)]
-[13Aug2025 16:21:19.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 132)]
-[13Aug2025 16:21:19.760] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 132)]
-[13Aug2025 16:21:19.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 133)]
-[13Aug2025 16:21:19.814] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 133)]
-[13Aug2025 16:21:19.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 134)]
-[13Aug2025 16:21:19.860] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 134)]
-[13Aug2025 16:21:19.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 135)]
-[13Aug2025 16:21:19.907] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 135)]
-[13Aug2025 16:21:19.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 136)]
-[13Aug2025 16:21:19.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 136)]
-[13Aug2025 16:21:20.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 137)]
-[13Aug2025 16:21:20.007] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 137)]
-[13Aug2025 16:21:20.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 138)]
-[13Aug2025 16:21:20.061] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 138)]
-[13Aug2025 16:21:20.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 139)]
-[13Aug2025 16:21:20.107] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 139)]
-[13Aug2025 16:21:20.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 140)]
-[13Aug2025 16:21:20.163] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 140)]
-[13Aug2025 16:21:20.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 141)]
-[13Aug2025 16:21:20.209] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 141)]
-[13Aug2025 16:21:20.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 142)]
-[13Aug2025 16:21:20.262] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 142)]
-[13Aug2025 16:21:20.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 143)]
-[13Aug2025 16:21:20.307] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 143)]
-[13Aug2025 16:21:20.357] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 144)]
-[13Aug2025 16:21:20.368] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 144)]
-[13Aug2025 16:21:20.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 145)]
-[13Aug2025 16:21:20.413] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 145)]
-[13Aug2025 16:21:20.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 146)]
-[13Aug2025 16:21:20.467] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 146)]
-[13Aug2025 16:21:20.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 147)]
-[13Aug2025 16:21:20.508] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 147)]
-[13Aug2025 16:21:20.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 148)]
-[13Aug2025 16:21:20.557] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 148)]
-[13Aug2025 16:21:20.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 149)]
-[13Aug2025 16:21:20.612] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 149)]
-[13Aug2025 16:21:20.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 150)]
-[13Aug2025 16:21:20.665] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 150)]
-[13Aug2025 16:21:20.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 151)]
-[13Aug2025 16:21:20.712] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 151)]
-[13Aug2025 16:21:20.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 152)]
-[13Aug2025 16:21:20.757] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 152)]
-[13Aug2025 16:21:20.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 153)]
-[13Aug2025 16:21:20.809] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 153)]
-[13Aug2025 16:21:20.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 154)]
-[13Aug2025 16:21:20.858] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 154)]
-[13Aug2025 16:21:20.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 155)]
-[13Aug2025 16:21:20.907] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 155)]
-[13Aug2025 16:21:20.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 156)]
-[13Aug2025 16:21:20.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 156)]
-[13Aug2025 16:21:21.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 157)]
-[13Aug2025 16:21:21.007] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 157)]
-[13Aug2025 16:21:21.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 158)]
-[13Aug2025 16:21:21.063] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 158)]
-[13Aug2025 16:21:21.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 159)]
-[13Aug2025 16:21:21.111] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 159)]
-[13Aug2025 16:21:21.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 160)]
-[13Aug2025 16:21:21.160] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 160)]
-[13Aug2025 16:21:21.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 161)]
-[13Aug2025 16:21:21.215] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 161)]
-[13Aug2025 16:21:21.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 162)]
-[13Aug2025 16:21:21.263] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 162)]
-[13Aug2025 16:21:21.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 163)]
-[13Aug2025 16:21:21.309] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 163)]
-[13Aug2025 16:21:21.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 164)]
-[13Aug2025 16:21:21.362] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 164)]
-[13Aug2025 16:21:21.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 165)]
-[13Aug2025 16:21:21.408] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 165)]
-[13Aug2025 16:21:21.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 166)]
-[13Aug2025 16:21:21.463] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 166)]
-[13Aug2025 16:21:21.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 167)]
-[13Aug2025 16:21:21.508] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 167)]
-[13Aug2025 16:21:21.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 168)]
-[13Aug2025 16:21:21.556] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 168)]
-[13Aug2025 16:21:21.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 169)]
-[13Aug2025 16:21:21.611] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 169)]
-[13Aug2025 16:21:21.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 170)]
-[13Aug2025 16:21:21.661] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 170)]
-[13Aug2025 16:21:21.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 171)]
-[13Aug2025 16:21:21.715] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 171)]
-[13Aug2025 16:21:21.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 172)]
-[13Aug2025 16:21:21.762] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 172)]
-[13Aug2025 16:21:21.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 173)]
-[13Aug2025 16:21:21.808] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 173)]
-[13Aug2025 16:21:21.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 174)]
-[13Aug2025 16:21:21.858] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 174)]
-[13Aug2025 16:21:21.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 175)]
-[13Aug2025 16:21:21.914] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 175)]
-[13Aug2025 16:21:21.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 176)]
-[13Aug2025 16:21:21.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 176)]
-[13Aug2025 16:21:22.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 177)]
-[13Aug2025 16:21:22.007] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 177)]
-[13Aug2025 16:21:22.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 178)]
-[13Aug2025 16:21:22.064] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 178)]
-[13Aug2025 16:21:22.105] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Aug2025 16:21:22.115] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[13Aug2025 16:21:22.120] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[13Aug2025 16:21:22.121] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[13Aug2025 16:21:25.507] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Command set: scoreboard players add @p tutorial_checkpoint 1
-[13Aug2025 16:21:25.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 179)]
-[13Aug2025 16:21:25.560] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 179)]
-[13Aug2025 16:21:28.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 180)]
-[13Aug2025 16:21:28.658] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 180)]
-[13Aug2025 16:21:28.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 181)]
-[13Aug2025 16:21:28.710] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 181)]
-[13Aug2025 16:21:28.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 182)]
-[13Aug2025 16:21:28.762] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 182)]
-[13Aug2025 16:21:28.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 183)]
-[13Aug2025 16:21:28.807] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 183)]
-[13Aug2025 16:21:28.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 184)]
-[13Aug2025 16:21:28.861] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 184)]
-[13Aug2025 16:21:28.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 185)]
-[13Aug2025 16:21:28.913] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 185)]
-[13Aug2025 16:21:28.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 186)]
-[13Aug2025 16:21:28.957] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 186)]
-[13Aug2025 16:21:29.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 187)]
-[13Aug2025 16:21:29.011] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 187)]
-[13Aug2025 16:21:29.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 188)]
-[13Aug2025 16:21:29.063] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 188)]
-[13Aug2025 16:21:29.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 189)]
-[13Aug2025 16:21:29.107] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 189)]
-[13Aug2025 16:21:29.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 190)]
-[13Aug2025 16:21:29.161] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 190)]
-[13Aug2025 16:21:29.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 191)]
-[13Aug2025 16:21:29.207] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 191)]
-[13Aug2025 16:21:29.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 192)]
-[13Aug2025 16:21:29.259] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 192)]
-[13Aug2025 16:21:29.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 193)]
-[13Aug2025 16:21:29.313] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 193)]
-[13Aug2025 16:21:29.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 194)]
-[13Aug2025 16:21:29.358] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 194)]
-[13Aug2025 16:21:29.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 195)]
-[13Aug2025 16:21:29.411] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 195)]
-[13Aug2025 16:21:29.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 196)]
-[13Aug2025 16:21:29.457] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 196)]
-[13Aug2025 16:21:29.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 197)]
-[13Aug2025 16:21:29.511] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 197)]
-[13Aug2025 16:21:29.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 198)]
-[13Aug2025 16:21:29.556] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 198)]
-[13Aug2025 16:21:29.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 199)]
-[13Aug2025 16:21:29.609] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 199)]
-[13Aug2025 16:21:29.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 200)]
-[13Aug2025 16:21:29.663] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 200)]
-[13Aug2025 16:21:29.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 201)]
-[13Aug2025 16:21:29.707] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 201)]
-[13Aug2025 16:21:29.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 202)]
-[13Aug2025 16:21:29.760] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 202)]
-[13Aug2025 16:21:29.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 203)]
-[13Aug2025 16:21:29.808] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 203)]
-[13Aug2025 16:21:29.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 204)]
-[13Aug2025 16:21:29.860] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 204)]
-[13Aug2025 16:21:29.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 205)]
-[13Aug2025 16:21:29.912] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 205)]
-[13Aug2025 16:21:29.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 206)]
-[13Aug2025 16:21:29.965] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 206)]
-[13Aug2025 16:21:30.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 207)]
-[13Aug2025 16:21:30.011] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 207)]
-[13Aug2025 16:21:30.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 208)]
-[13Aug2025 16:21:30.056] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 208)]
-[13Aug2025 16:21:30.107] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 209)]
-[13Aug2025 16:21:30.109] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 209)]
-[13Aug2025 16:21:31.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 210)]
-[13Aug2025 16:21:31.013] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 210)]
-[13Aug2025 16:21:31.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 211)]
-[13Aug2025 16:21:31.057] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 211)]
-[13Aug2025 16:21:31.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 212)]
-[13Aug2025 16:21:31.114] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 212)]
-[13Aug2025 16:21:31.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 213)]
-[13Aug2025 16:21:31.162] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 213)]
-[13Aug2025 16:21:31.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 214)]
-[13Aug2025 16:21:31.215] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 214)]
-[13Aug2025 16:21:31.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 215)]
-[13Aug2025 16:21:31.261] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 215)]
-[13Aug2025 16:21:31.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 216)]
-[13Aug2025 16:21:31.314] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 216)]
-[13Aug2025 16:21:31.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 217)]
-[13Aug2025 16:21:31.361] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 217)]
-[13Aug2025 16:21:31.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 218)]
-[13Aug2025 16:21:31.414] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 218)]
-[13Aug2025 16:21:31.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 219)]
-[13Aug2025 16:21:31.458] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 219)]
-[13Aug2025 16:21:31.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 220)]
-[13Aug2025 16:21:31.513] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 220)]
-[13Aug2025 16:21:31.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 221)]
-[13Aug2025 16:21:31.558] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 221)]
-[13Aug2025 16:21:31.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 222)]
-[13Aug2025 16:21:31.612] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 222)]
-[13Aug2025 16:21:31.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 223)]
-[13Aug2025 16:21:31.657] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 223)]
-[13Aug2025 16:21:31.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 224)]
-[13Aug2025 16:21:31.710] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 224)]
-[13Aug2025 16:21:31.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 225)]
-[13Aug2025 16:21:31.757] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 225)]
-[13Aug2025 16:21:31.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 226)]
-[13Aug2025 16:21:31.811] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 226)]
-[13Aug2025 16:21:31.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 227)]
-[13Aug2025 16:21:31.865] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 227)]
-[13Aug2025 16:21:31.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 228)]
-[13Aug2025 16:21:31.909] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 228)]
-[13Aug2025 16:21:31.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 229)]
-[13Aug2025 16:21:31.963] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 229)]
-[13Aug2025 16:21:32.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 230)]
-[13Aug2025 16:21:32.008] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 230)]
-[13Aug2025 16:21:32.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 231)]
-[13Aug2025 16:21:32.061] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 231)]
-[13Aug2025 16:21:32.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 232)]
-[13Aug2025 16:21:32.107] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 232)]
-[13Aug2025 16:21:32.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 233)]
-[13Aug2025 16:21:32.156] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 233)]
-[13Aug2025 16:21:32.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 234)]
-[13Aug2025 16:21:32.209] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 234)]
-[13Aug2025 16:21:32.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 235)]
-[13Aug2025 16:21:32.263] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 235)]
-[13Aug2025 16:21:32.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 236)]
-[13Aug2025 16:21:32.309] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 236)]
-[13Aug2025 16:21:32.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 237)]
-[13Aug2025 16:21:32.362] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 237)]
-[13Aug2025 16:21:32.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 238)]
-[13Aug2025 16:21:32.408] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 238)]
-[13Aug2025 16:21:32.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Added 1 to [tutorial_checkpoint] for Dev (now 239)]
-[13Aug2025 16:21:32.461] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Added 1 to [tutorial_checkpoint] for Dev (now 239)]
-[13Aug2025 16:21:38.955] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Aug2025 16:21:38.963] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[13Aug2025 16:21:38.969] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[13Aug2025 16:21:38.970] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[13Aug2025 16:21:45.357] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Command set: scoreboard players remove @p tutorial_checkpoint 1
-[13Aug2025 16:21:46.907] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 238)]
-[13Aug2025 16:21:46.909] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 238)]
-[13Aug2025 16:21:46.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 237)]
-[13Aug2025 16:21:46.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 237)]
-[13Aug2025 16:21:47.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 236)]
-[13Aug2025 16:21:47.016] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 236)]
-[13Aug2025 16:21:47.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 235)]
-[13Aug2025 16:21:47.061] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 235)]
-[13Aug2025 16:21:47.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 234)]
-[13Aug2025 16:21:47.107] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 234)]
-[13Aug2025 16:21:47.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 233)]
-[13Aug2025 16:21:47.161] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 233)]
-[13Aug2025 16:21:47.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 232)]
-[13Aug2025 16:21:47.216] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 232)]
-[13Aug2025 16:21:47.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 231)]
-[13Aug2025 16:21:47.260] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 231)]
-[13Aug2025 16:21:47.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 230)]
-[13Aug2025 16:21:47.315] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 230)]
-[13Aug2025 16:21:47.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 229)]
-[13Aug2025 16:21:47.359] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 229)]
-[13Aug2025 16:21:47.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 228)]
-[13Aug2025 16:21:47.414] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 228)]
-[13Aug2025 16:21:47.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 227)]
-[13Aug2025 16:21:47.459] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 227)]
-[13Aug2025 16:21:47.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 226)]
-[13Aug2025 16:21:47.514] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 226)]
-[13Aug2025 16:21:47.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 225)]
-[13Aug2025 16:21:47.558] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 225)]
-[13Aug2025 16:21:47.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 224)]
-[13Aug2025 16:21:47.612] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 224)]
-[13Aug2025 16:21:47.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 223)]
-[13Aug2025 16:21:47.665] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 223)]
-[13Aug2025 16:21:47.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 222)]
-[13Aug2025 16:21:47.710] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 222)]
-[13Aug2025 16:21:47.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 221)]
-[13Aug2025 16:21:47.764] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 221)]
-[13Aug2025 16:21:47.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 220)]
-[13Aug2025 16:21:47.808] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 220)]
-[13Aug2025 16:21:47.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 219)]
-[13Aug2025 16:21:47.861] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 219)]
-[13Aug2025 16:21:47.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 218)]
-[13Aug2025 16:21:47.914] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 218)]
-[13Aug2025 16:21:47.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 217)]
-[13Aug2025 16:21:47.961] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 217)]
-[13Aug2025 16:21:48.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 216)]
-[13Aug2025 16:21:48.017] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 216)]
-[13Aug2025 16:21:48.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 215)]
-[13Aug2025 16:21:48.062] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 215)]
-[13Aug2025 16:21:48.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 214)]
-[13Aug2025 16:21:48.116] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 214)]
-[13Aug2025 16:21:48.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 213)]
-[13Aug2025 16:21:48.160] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 213)]
-[13Aug2025 16:21:48.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 212)]
-[13Aug2025 16:21:48.213] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 212)]
-[13Aug2025 16:21:48.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 211)]
-[13Aug2025 16:21:48.257] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 211)]
-[13Aug2025 16:21:48.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 210)]
-[13Aug2025 16:21:48.312] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 210)]
-[13Aug2025 16:21:48.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 209)]
-[13Aug2025 16:21:48.365] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 209)]
-[13Aug2025 16:21:48.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 208)]
-[13Aug2025 16:21:48.764] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 208)]
-[13Aug2025 16:21:48.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 207)]
-[13Aug2025 16:21:48.808] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 207)]
-[13Aug2025 16:21:48.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 206)]
-[13Aug2025 16:21:48.861] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 206)]
-[13Aug2025 16:21:48.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 205)]
-[13Aug2025 16:21:48.915] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 205)]
-[13Aug2025 16:21:48.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 204)]
-[13Aug2025 16:21:48.959] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 204)]
-[13Aug2025 16:21:49.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 203)]
-[13Aug2025 16:21:49.013] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 203)]
-[13Aug2025 16:21:49.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 202)]
-[13Aug2025 16:21:49.057] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 202)]
-[13Aug2025 16:21:49.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 201)]
-[13Aug2025 16:21:49.111] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 201)]
-[13Aug2025 16:21:49.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 200)]
-[13Aug2025 16:21:49.165] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 200)]
-[13Aug2025 16:21:49.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 199)]
-[13Aug2025 16:21:49.209] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 199)]
-[13Aug2025 16:21:49.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 198)]
-[13Aug2025 16:21:49.261] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 198)]
-[13Aug2025 16:21:49.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 197)]
-[13Aug2025 16:21:49.315] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 197)]
-[13Aug2025 16:21:49.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 196)]
-[13Aug2025 16:21:49.360] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 196)]
-[13Aug2025 16:21:49.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 195)]
-[13Aug2025 16:21:49.412] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 195)]
-[13Aug2025 16:21:49.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 194)]
-[13Aug2025 16:21:49.460] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 194)]
-[13Aug2025 16:21:49.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 193)]
-[13Aug2025 16:21:49.514] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 193)]
-[13Aug2025 16:21:49.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 192)]
-[13Aug2025 16:21:49.559] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 192)]
-[13Aug2025 16:21:49.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 191)]
-[13Aug2025 16:21:49.613] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 191)]
-[13Aug2025 16:21:49.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 190)]
-[13Aug2025 16:21:49.657] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 190)]
-[13Aug2025 16:21:49.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 189)]
-[13Aug2025 16:21:49.712] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 189)]
-[13Aug2025 16:21:49.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 188)]
-[13Aug2025 16:21:49.765] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 188)]
-[13Aug2025 16:21:49.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 187)]
-[13Aug2025 16:21:49.810] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 187)]
-[13Aug2025 16:21:49.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 186)]
-[13Aug2025 16:21:49.863] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 186)]
-[13Aug2025 16:21:49.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 185)]
-[13Aug2025 16:21:49.907] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 185)]
-[13Aug2025 16:21:49.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 184)]
-[13Aug2025 16:21:49.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 184)]
-[13Aug2025 16:21:50.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 183)]
-[13Aug2025 16:21:50.016] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 183)]
-[13Aug2025 16:21:50.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 182)]
-[13Aug2025 16:21:50.061] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 182)]
-[13Aug2025 16:21:50.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 181)]
-[13Aug2025 16:21:50.116] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 181)]
-[13Aug2025 16:21:50.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 180)]
-[13Aug2025 16:21:50.163] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 180)]
-[13Aug2025 16:21:50.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 179)]
-[13Aug2025 16:21:50.213] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 179)]
-[13Aug2025 16:21:50.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 178)]
-[13Aug2025 16:21:50.563] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 178)]
-[13Aug2025 16:21:50.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 177)]
-[13Aug2025 16:21:50.609] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 177)]
-[13Aug2025 16:21:50.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 176)]
-[13Aug2025 16:21:50.661] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 176)]
-[13Aug2025 16:21:50.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 175)]
-[13Aug2025 16:21:50.711] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 175)]
-[13Aug2025 16:21:50.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 174)]
-[13Aug2025 16:21:50.764] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 174)]
-[13Aug2025 16:21:50.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 173)]
-[13Aug2025 16:21:50.811] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 173)]
-[13Aug2025 16:21:50.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 172)]
-[13Aug2025 16:21:50.864] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 172)]
-[13Aug2025 16:21:50.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 171)]
-[13Aug2025 16:21:50.908] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 171)]
-[13Aug2025 16:21:50.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 170)]
-[13Aug2025 16:21:50.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 170)]
-[13Aug2025 16:21:51.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 169)]
-[13Aug2025 16:21:51.015] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 169)]
-[13Aug2025 16:21:51.056] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 168)]
-[13Aug2025 16:21:51.061] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 168)]
-[13Aug2025 16:21:51.106] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 167)]
-[13Aug2025 16:21:51.115] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 167)]
-[13Aug2025 16:21:51.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 166)]
-[13Aug2025 16:21:51.160] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 166)]
-[13Aug2025 16:21:51.206] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 165)]
-[13Aug2025 16:21:51.216] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 165)]
-[13Aug2025 16:21:51.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 164)]
-[13Aug2025 16:21:51.260] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 164)]
-[13Aug2025 16:21:51.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 163)]
-[13Aug2025 16:21:51.316] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 163)]
-[13Aug2025 16:21:51.356] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 162)]
-[13Aug2025 16:21:51.360] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 162)]
-[13Aug2025 16:21:51.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 161)]
-[13Aug2025 16:21:51.413] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 161)]
-[13Aug2025 16:21:51.456] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 160)]
-[13Aug2025 16:21:51.458] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 160)]
-[13Aug2025 16:21:51.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 159)]
-[13Aug2025 16:21:51.512] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 159)]
-[13Aug2025 16:21:51.556] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 158)]
-[13Aug2025 16:21:51.565] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 158)]
-[13Aug2025 16:21:51.606] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 157)]
-[13Aug2025 16:21:51.610] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 157)]
-[13Aug2025 16:21:51.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 156)]
-[13Aug2025 16:21:51.663] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 156)]
-[13Aug2025 16:21:51.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 155)]
-[13Aug2025 16:21:51.708] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 155)]
-[13Aug2025 16:21:51.756] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 154)]
-[13Aug2025 16:21:51.760] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 154)]
-[13Aug2025 16:21:51.806] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 153)]
-[13Aug2025 16:21:51.814] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 153)]
-[13Aug2025 16:21:51.856] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 152)]
-[13Aug2025 16:21:51.859] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 152)]
-[13Aug2025 16:21:51.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 151)]
-[13Aug2025 16:21:51.915] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 151)]
-[13Aug2025 16:21:51.956] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 150)]
-[13Aug2025 16:21:51.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 150)]
-[13Aug2025 16:21:52.007] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Removed 1 from [tutorial_checkpoint] for Dev (now 149)]
-[13Aug2025 16:21:52.016] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [@: Removed 1 from [tutorial_checkpoint] for Dev (now 149)]
-[13Aug2025 16:21:56.105] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[13Aug2025 16:21:56.113] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[13Aug2025 16:21:56.118] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[13Aug2025 16:21:56.118] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[13Aug2025 16:21:59.660] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
-[13Aug2025 16:21:59.660] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
-[13Aug2025 16:21:59.671] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
-[13Aug2025 16:21:59.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[13Aug2025 16:21:59.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[13Aug2025 16:21:59.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[13Aug2025 16:22:00.142] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[13Aug2025 16:22:00.585] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[13Aug2025 16:22:00.586] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[13Aug2025 16:22:00.619] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[13Aug2025 16:22:00.620] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[13Aug2025 16:22:00.620] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[13Aug2025 16:22:00.620] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
-[13Aug2025 16:22:01.404] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[14Aug2025 17:20:49.217] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 47.2.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin.config, mixins.cac.json]
+[14Aug2025 17:20:49.223] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.14 by Eclipse Adoptium; OS Linux arch amd64 version 5.15.0-117-generic
+[14Aug2025 17:20:49.354] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[14Aug2025 17:20:49.426] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[14Aug2025 17:20:49.638] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[14Aug2025 17:20:49.790] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/home/owo/.mcreator/gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=CLIENT
+[14Aug2025 17:20:49.931] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA RTX A2000 12GB/PCIe/SSE2 GL version 4.6.0 NVIDIA 560.28.03, NVIDIA Corporation
+[14Aug2025 17:20:50.172] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.2.0/7f9181f85acc66547685a72020713fc8cbde98/javafmllanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[14Aug2025 17:20:50.174] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.2.0/7872f5205685fdd26fae39b1be79b0e60ca5b7bd/lowcodelanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[14Aug2025 17:20:50.175] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.2.0/d501d161cabed08b3c139a2c6217b02a39f3c3e9/mclanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[14Aug2025 17:20:50.176] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.2.0/ffd3c6debac0a388c9e33ac43c9f5eafb91cb466/fmlcore-1.20.1-47.2.0.jar is missing mods.toml file
+[14Aug2025 17:20:50.367] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[14Aug2025 17:20:52.001] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by mixins.cac.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[14Aug2025 17:20:52.001] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[14Aug2025 17:20:52.008] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --assetIndex, 5]
+[14Aug2025 17:20:52.033] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
+[14Aug2025 17:20:52.034] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. NoClassDefFoundError: org/jetbrains/java/decompiler/main/extern/IResultSaver
+[14Aug2025 17:20:52.039] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[14Aug2025 17:20:52.040] [main/INFO] [mixin/]: Selecting config mixins.cac.json
+[14Aug2025 17:20:52.043] [main/WARN] [mixin/]: Reference map 'mixins.cac.refmap.json' for mixins.cac.json could not be read. If this is a development environment you can ignore this message
+[14Aug2025 17:20:52.044] [main/INFO] [mixin/]: Selecting config geckolib.mixins.json
+[14Aug2025 17:20:52.297] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using /home/owo/CLAB/CaC/MCmod/build/createSrgToMcp/output.srg
+[14Aug2025 17:20:52.298] [main/INFO] [mixin/]: Preparing mixins.cac.json (1)
+[14Aug2025 17:20:52.331] [main/INFO] [mixin/]: Preparing geckolib.mixins.json (1)
+[14Aug2025 17:20:52.367] [main/INFO] [mixin/]: Prepared 2 mixins in 0.327 sec (163.5ms avg) (0ms load, 0ms transform, 0ms plugin)
+[14Aug2025 17:20:56.260] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 160 milliseconds
+[14Aug2025 17:20:57.826] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/assets/.mcassetsroot' uses unexpected schema
+[14Aug2025 17:20:57.827] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/data/.mcassetsroot' uses unexpected schema
+[14Aug2025 17:20:57.849] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[14Aug2025 17:20:57.856] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[14Aug2025 17:20:57.988] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[14Aug2025 17:20:58.284] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.0, for MC 1.20.1 with MCP 20230612.114412
+[14Aug2025 17:20:58.287] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.0 Initialized
+[14Aug2025 17:20:58.858] [Render thread/INFO] [mixin/]: Mixing client.TextureManagerMixin from geckolib.mixins.json into net.minecraft.client.renderer.texture.TextureManager
+[14Aug2025 17:20:59.252] [Render thread/INFO] [mixin/]: Mixing MxnMeowviewMixin from mixins.cac.json into net.minecraft.client.Camera
+[14Aug2025 17:20:59.464] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
+[14Aug2025 17:20:59.802] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
+[14Aug2025 17:21:00.010] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[14Aug2025 17:21:00.065] [Worker-Main-14/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
+[14Aug2025 17:21:00.260] [Worker-Main-3/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture cac:item/texture_cac_wall_icon with size 350x328 limits mip level from 2 to 1
+[14Aug2025 17:21:02.999] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[14Aug2025 17:21:02.999] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[14Aug2025 17:21:03.111] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device 내장 오디오 아날로그 스테레오
+[14Aug2025 17:21:03.112] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[14Aug2025 17:21:03.264] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x1024x2 minecraft:textures/atlas/blocks.png-atlas
+[14Aug2025 17:21:03.283] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/signs.png-atlas
+[14Aug2025 17:21:03.286] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/shield_patterns.png-atlas
+[14Aug2025 17:21:03.287] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/banner_patterns.png-atlas
+[14Aug2025 17:21:03.289] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x2 minecraft:textures/atlas/armor_trims.png-atlas
+[14Aug2025 17:21:03.293] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x2 minecraft:textures/atlas/decorated_pot.png-atlas
+[14Aug2025 17:21:03.299] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/chest.png-atlas
+[14Aug2025 17:21:03.299] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/beds.png-atlas
+[14Aug2025 17:21:03.300] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/shulker_boxes.png-atlas
+[14Aug2025 17:21:03.474] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[14Aug2025 17:21:03.540] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[14Aug2025 17:21:03.542] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[14Aug2025 17:21:03.543] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[14Aug2025 17:21:04.366] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
+[14Aug2025 17:21:05.558] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.2.0 Target: 47.4.0
+[14Aug2025 17:21:34.583] [Render thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this CLIENT instance
+[14Aug2025 17:21:36.525] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[14Aug2025 17:21:36.687] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1278 advancements
+[14Aug2025 17:21:37.176] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.20.1
+[14Aug2025 17:21:37.177] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[14Aug2025 17:21:38.493] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[14Aug2025 17:21:41.270] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:41.290] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:41.310] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:41.310] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:41.329] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:41.329] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:41.518] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:42.011] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:42.505] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[14Aug2025 17:21:43.013] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 23%
+[14Aug2025 17:21:43.512] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 68%
+[14Aug2025 17:21:43.972] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 5467 ms
+[14Aug2025 17:21:43.975] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[14Aug2025 17:21:44.111] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 5, from 10
+[14Aug2025 17:21:44.113] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[14Aug2025 17:21:44.221] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[14Aug2025 17:21:44.653] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[14Aug2025 17:21:44.754] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:974158da] logged in with entity id 19 at (107.75173416762496, 63.0, 13.980016242003565)
+[14Aug2025 17:21:44.841] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[14Aug2025 17:21:45.388] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 153 advancements
+[14Aug2025 17:22:30.420] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Changed the block at 100, 63, 15]
+[14Aug2025 17:22:30.427] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Changed the block at 100, 63, 15
+[14Aug2025 17:22:33.161] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Changed the block at 100, 63, 15]
+[14Aug2025 17:22:33.170] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Changed the block at 100, 63, 15
+[14Aug2025 17:31:54.025] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[14Aug2025 17:31:54.034] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[14Aug2025 17:31:54.040] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[14Aug2025 17:31:54.041] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[14Aug2025 17:33:07.200] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] There are 1 objective(s): [tutorial_checkpoint]
+[14Aug2025 17:34:52.275] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[14Aug2025 17:34:52.285] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[14Aug2025 17:34:52.289] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[14Aug2025 17:34:52.290] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[14Aug2025 17:34:52.729] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[14Aug2025 17:34:52.729] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[14Aug2025 17:34:52.740] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[14Aug2025 17:34:52.785] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[14Aug2025 17:34:52.786] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[14Aug2025 17:34:52.786] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[14Aug2025 17:34:53.190] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[14Aug2025 17:34:53.648] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[14Aug2025 17:34:53.649] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[14Aug2025 17:34:53.682] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[14Aug2025 17:34:53.682] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[14Aug2025 17:34:53.682] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[14Aug2025 17:34:53.682] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[14Aug2025 17:34:54.485] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

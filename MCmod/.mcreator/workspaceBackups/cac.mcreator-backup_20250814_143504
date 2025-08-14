@@ -3283,6 +3283,10 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3355,20 +3359,11 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
-        ]
-      },
-      "path": "~/CacTask/Tutorial"
-    },
-    {
-      "name": "AdvMoving",
-      "type": "achievement",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "adv_moving",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/cac/advancements/adv_moving.json"
         ]
       },
       "path": "~/CacTask/Tutorial"
@@ -3423,6 +3418,137 @@
           "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_3.json",
           "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_0.json",
           "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_4.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "AdvBeginner",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_beginner",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_beginner.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvBeginnerChasing",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_beginner_chasing",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_beginner_chasing.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvBeginnerChased",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_beginner_chased",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_beginner_chased.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvBeginnerMoving",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_beginner_moving",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_beginner_moving.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvCheckpoint",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_checkpoint",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_checkpoint.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "BlcHurdleTouch",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_hurdle_touch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcHurdleTouchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "AdvRacing",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_racing",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_racing.json"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "BlkSwitchstone",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_switchstone",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
+          "src/main/resources/assets/cac/models/block/blk_switchstone.json",
+          "src/main/resources/assets/cac/blockstates/blk_switchstone.json",
+          "src/main/java/net/owo/cac/block/BlkSwitchstoneBlock.java",
+          "src/main/resources/assets/cac/models/item/blk_switchstone.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlsSwitchstone",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bls_switchstone",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/block/bls_switchstone_blockstate_0.json"
         ]
       },
       "path": "~/CacBlock"
@@ -4168,12 +4294,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Switch_tutorial",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "Dir_behaviors_session",
       "type": "string",
       "scope": "map",
@@ -4196,6 +4316,12 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Tuto_type",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [
@@ -4216,51 +4342,63 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkSwitchstone",
       "~CUSTOM:BlkCheckpoint"
     ]
   },
   "tab_element_order": {},
   "language_map": {
     "en_us": {
+      "advancements.adv_beginner_chased.descr": "Escape from the predator",
+      "advancements.adv_checkpoint.title": "Checkpoint",
+      "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
+      "key.cac.cac_key_camera": "Toggle Camera",
+      "entity.cac.ent_meowcam": "Meowcam",
+      "block.cac.blk_fence": "Fence (No field)",
+      "advancements.adv_racing.title": "Racing",
+      "advancements.adv_beginner_chased.title": "The shrewd prey",
+      "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
+      "entity.cac.ent_mouse": "Prey",
+      "advancements.adv_beginner_moving.descr": "Move in 8 directions",
+      "advancements.adv_racing.descr": "Play the racing tutorial",
+      "effect.cac.eff_stop_move": "Stiffness",
+      "key.cac.cac_key_up": "Up",
+      "advancements.adv_beginner_moving.title": "Joystick Moving",
+      "block.cac.blk_hurdle": "Hurdle",
+      "block.cac.blk_checkpoint": "Checkpoint",
+      "advancements.adv_cac.title": "Chasing and Chased",
+      "effect.cac.eff_morph_predator": "Predator",
+      "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
+      "entity.cac.ent_player_cat": "Predator (Player)",
+      "advancements.adv_beginner_chasing.title": "The veteran predator",
+      "advancements.adv_beginner.descr": "Play the beginner tutorial",
+      "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
+      "block.cac.blk_obstacle": "Obstacle",
+      "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
+      "advancements.adv_checkpoint.descr": "Play the checkpoint tutorial",
+      "key.cac.cac_key_right": "Right",
       "subtitles.cac.snd_silence": "snd_silence",
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
       "key.cac.cac_key_down": "Down",
-      "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
-      "entity.cac.ent_cat": "Predator",
       "item_group.cac.cac_tab": "Chasing and Chased",
-      "key.cac.cac_key_camera": "Toggle Camera",
-      "entity.cac.ent_meowcam": "Meowcam",
       "key.categories.cac": "Chasing and Chased",
-      "block.cac.blk_fence": "Fence (No field)",
-      "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
-      "advancements.adv_moving.title": "Joystick Moving",
-      "entity.cac.ent_mouse": "Prey",
       "key.cac.cac_key_decide": "Decide",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
-      "effect.cac.eff_stop_move": "Stiffness",
       "item.cac.cac_test_item": "Tester",
       "item.cac.cac_logo": "OwO",
-      "key.cac.cac_key_up": "Up",
       "key.cac.cac_key_stopwatch": "Stopwatch",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
-      "block.cac.blk_hurdle": "Hurdle",
       "entity.cac.ent_player_mouse": "Prey (Player)",
-      "block.cac.blk_checkpoint": "Checkpoint",
       "key.cac.cac_key_left": "Left",
-      "advancements.adv_cac.title": "Chasing and Chased",
-      "advancements.adv_moving.descr": "Move in 8 directions",
-      "effect.cac.eff_morph_predator": "Predator",
-      "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
-      "entity.cac.ent_player_cat": "Predator (Player)",
+      "advancements.adv_beginner_chasing.descr": "Catch the prey",
       "advancements.adv_cac.descr": "Welcome to the CaC!",
+      "block.cac.blk_switchstone": "Checkpoint",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
-      "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
-      "block.cac.blk_obstacle": "Obstacle",
-      "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
-      "key.cac.cac_key_right": "Right"
+      "advancements.adv_beginner.title": "Beginner"
     }
   },
   "foldersRoot": {

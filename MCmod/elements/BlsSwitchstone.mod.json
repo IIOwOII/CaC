@@ -5,7 +5,7 @@
     "block": "BlkSwitchstone",
     "blockstateList": [
       {
-        "texture": "texture_switchstone",
+        "texture": "texture_switchstone_off",
         "textureTop": "",
         "textureLeft": "",
         "textureFront": "",
@@ -13,7 +13,7 @@
         "textureBack": "",
         "particleTexture": "",
         "renderType": 2,
-        "customModelName": "cac_switchstone:default",
+        "customModelName": "cac_switchstone:off",
         "luminance": 0,
         "boundingBoxes": [
           {
