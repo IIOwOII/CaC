@@ -6,12 +6,8 @@ public class CstState {
     public static boolean IsMeowMove_old = false; // Is it moved by arrow move right before?
     public static float rot_angle = 0F;
 
-    public static int arrow_right = 0;
-    public static int arrow_left = 0;
-    public static int arrow_up = 0;
-    public static int arrow_down = 0;
-
-    public static int[] arrow_pressed = new int[2]; // 0: rot_re, 1: rot_im
+	public static boolean[] key_pressed = {false, false, false, false, false};
+	public static boolean[] key_pressed_old = {false, false, false, false, false};
 
     public static void switchMeowView() {
     	IsMeowView = (!IsMeowView);
@@ -21,4 +17,15 @@ public class CstState {
     	return IsMeowView;
     }
 
+	public static int getKeyChanged(int KI) {
+		int key_changed = -1;
+		if (!key_pressed_old[KI] && key_pressed[KI]){
+			key_changed = 0; // pressed
+			key_pressed_old[KI] = true;
+		} else if (key_pressed_old[KI] && !key_pressed[KI]) {
+			key_changed = 1; // released
+			key_pressed_old[KI] = false;
+		}
+		return key_changed;
+	}
 }

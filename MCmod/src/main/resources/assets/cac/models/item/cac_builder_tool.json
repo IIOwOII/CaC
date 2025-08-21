@@ -1,0 +1,7 @@
+{
+  "parent": "cac:custom/cac_builder",
+  "textures": {
+    "0": "cac:block/texture_cac_builder",
+    "particle": "cac:item/texture_cac_builder"
+  }
+}

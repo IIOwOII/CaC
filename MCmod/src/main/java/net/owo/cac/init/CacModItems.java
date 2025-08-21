@@ -6,6 +6,7 @@ package net.owo.cac.init;
 
 import net.owo.cac.item.CacTestItemItem;
 import net.owo.cac.item.CacLogoItem;
+import net.owo.cac.item.CacBuilderToolItem;
 import net.owo.cac.CacMod;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -34,6 +35,7 @@ public class CacModItems {
 	public static final RegistryObject<Item> BLK_CHECKPOINT = block(CacModBlocks.BLK_CHECKPOINT);
 	public static final RegistryObject<Item> BLK_HURDLE = block(CacModBlocks.BLK_HURDLE);
 	public static final RegistryObject<Item> BLK_SWITCHSTONE = block(CacModBlocks.BLK_SWITCHSTONE);
+	public static final RegistryObject<Item> CAC_BUILDER_TOOL = REGISTRY.register("cac_builder_tool", () -> new CacBuilderToolItem());
 
 	// Start of user code block custom items
 	// End of user code block custom items

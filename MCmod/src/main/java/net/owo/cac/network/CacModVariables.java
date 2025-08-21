@@ -221,6 +221,10 @@ public class CacModVariables {
 		public String Dir_behaviors_session = "\"\"";
 		public double Exp_session_reps = 0;
 		public double Tuto_type = 0;
+		public Vec3 Builder_pos1 = Vec3.ZERO;
+		public Vec3 Builder_pos2 = Vec3.ZERO;
+		public double Option_builder = 0;
+		public String Option_builder_str = "\"\"";
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -353,6 +357,16 @@ public class CacModVariables {
 			Dir_behaviors_session = nbt.getString("Dir_behaviors_session");
 			Exp_session_reps = nbt.getDouble("Exp_session_reps");
 			Tuto_type = nbt.getDouble("Tuto_type");
+			{
+				ListTag listTag = nbt.getList("Builder_pos1", 6);
+				this.Builder_pos1 = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
+			{
+				ListTag listTag = nbt.getList("Builder_pos2", 6);
+				this.Builder_pos2 = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
+			}
+			Option_builder = nbt.getDouble("Option_builder");
+			Option_builder_str = nbt.getString("Option_builder_str");
 		}
 
 		@Override
@@ -517,6 +531,24 @@ public class CacModVariables {
 			nbt.putString("Dir_behaviors_session", Dir_behaviors_session);
 			nbt.putDouble("Exp_session_reps", Exp_session_reps);
 			nbt.putDouble("Tuto_type", Tuto_type);
+			{
+				this.Builder_pos1 = this.Builder_pos1 == null ? Vec3.ZERO : this.Builder_pos1;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Builder_pos1.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Builder_pos1.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Builder_pos1.z()));
+				nbt.put("Builder_pos1", listTag);
+			}
+			{
+				this.Builder_pos2 = this.Builder_pos2 == null ? Vec3.ZERO : this.Builder_pos2;
+				ListTag listTag = new ListTag();
+				listTag.addTag(0, DoubleTag.valueOf(this.Builder_pos2.x()));
+				listTag.addTag(1, DoubleTag.valueOf(this.Builder_pos2.y()));
+				listTag.addTag(2, DoubleTag.valueOf(this.Builder_pos2.z()));
+				nbt.put("Builder_pos2", listTag);
+			}
+			nbt.putDouble("Option_builder", Option_builder);
+			nbt.putString("Option_builder_str", Option_builder_str);
 			return nbt;
 		}
 
