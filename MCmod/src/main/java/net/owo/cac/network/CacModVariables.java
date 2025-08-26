@@ -225,6 +225,8 @@ public class CacModVariables {
 		public Vec3 Builder_pos2 = Vec3.ZERO;
 		public double Option_builder = 0;
 		public String Option_builder_str = "\"\"";
+		public double Tuto_hurdle_stack_old = 0;
+		public double Tuto_hurdle_stack = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -367,6 +369,8 @@ public class CacModVariables {
 			}
 			Option_builder = nbt.getDouble("Option_builder");
 			Option_builder_str = nbt.getString("Option_builder_str");
+			Tuto_hurdle_stack_old = nbt.getDouble("Tuto_hurdle_stack_old");
+			Tuto_hurdle_stack = nbt.getDouble("Tuto_hurdle_stack");
 		}
 
 		@Override
@@ -549,6 +553,8 @@ public class CacModVariables {
 			}
 			nbt.putDouble("Option_builder", Option_builder);
 			nbt.putString("Option_builder_str", Option_builder_str);
+			nbt.putDouble("Tuto_hurdle_stack_old", Tuto_hurdle_stack_old);
+			nbt.putDouble("Tuto_hurdle_stack", Tuto_hurdle_stack);
 			return nbt;
 		}
 

@@ -3476,10 +3476,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -3679,6 +3675,20 @@
         ]
       },
       "path": "~/CacItem"
+    },
+    {
+      "name": "TutoScoreTick",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_score_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoScoreTickProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [
@@ -4473,6 +4483,12 @@
       "type": "string",
       "scope": "map",
       "value": "\"\""
+    },
+    {
+      "name": "Tuto_hurdle_collision",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -4550,7 +4566,7 @@
       "key.cac.cac_key_left": "Left",
       "advancements.adv_beginner_chasing.descr": "Catch the prey",
       "advancements.adv_cac.descr": "Welcome to the CaC!",
-      "block.cac.blk_switchstone": "Checkpoint",
+      "block.cac.blk_switchstone": "Switch Stone",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
       "advancements.adv_beginner.title": "Beginner"

@@ -22,6 +22,10 @@ public class AdpResetProcedure {
 			return;
 		CacModVariables.MapVariables.get(world).Tuto_type = 0;
 		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Tuto_hurdle_stack = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).Tuto_hurdle_stack_old = 0;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

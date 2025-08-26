@@ -127,6 +127,9 @@
     "onNeighbourBlockChanges": {
       "name": "BlsFenceUpdate"
     },
+    "onEntityCollides": {
+      "name": "BlcHurdleTouch"
+    },
     "generateFeature": false,
     "restrictionBiomes": [],
     "blocksToReplace": [

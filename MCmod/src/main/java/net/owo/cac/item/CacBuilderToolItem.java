@@ -18,7 +18,7 @@ public class CacBuilderToolItem extends AxeItem {
 			}
 
 			public float getSpeed() {
-				return 4f;
+				return 20f;
 			}
 
 			public float getAttackDamageBonus() {
@@ -36,7 +36,7 @@ public class CacBuilderToolItem extends AxeItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 1, -3f, new Item.Properties());
+		}, 1, 6f, new Item.Properties());
 	}
 
 	@Override

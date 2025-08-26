@@ -633,19 +633,7 @@
   },
   "cac:adv_cac": {
     "criteria": {
-      "adv_cac_0": "2025-08-14 14:57:30 +0900"
-    },
-    "done": true
-  },
-  "cac:adv_beginner": {
-    "criteria": {
-      "adv_beginner_0": "2025-08-14 14:57:30 +0900"
-    },
-    "done": true
-  },
-  "cac:adv_beginner_chased": {
-    "criteria": {
-      "adv_beginner_chased_0": "2025-08-14 14:57:30 +0900"
+      "adv_cac_0": "2025-08-26 16:16:39 +0900"
     },
     "done": true
   },

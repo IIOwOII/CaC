@@ -23,6 +23,14 @@ public class TutoManageProcedure {
 			CacModVariables.MapVariables.get(world).Ev_content = "tutorial_checkpoint_start";
 			CacModVariables.MapVariables.get(world).syncData(world);
 			EvQueCallProcedure.execute(world, x, y, z, entity);
+		} else if ((type).equals("debug_racing")) {
+			PrdMeowMoveOnProcedure.execute();
+			AdpResetProcedure.execute(world, entity);
+			CacModVariables.MapVariables.get(world).Tuto_type = 3;
+			CacModVariables.MapVariables.get(world).syncData(world);
+		} else if ((type).equals("debug_end")) {
+			PrdMeowMoveOffProcedure.execute();
+			AdpResetProcedure.execute(world, entity);
 		}
 	}
 }

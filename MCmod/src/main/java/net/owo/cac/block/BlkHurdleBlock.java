@@ -4,6 +4,7 @@ package net.owo.cac.block;
 import org.checkerframework.checker.units.qual.s;
 
 import net.owo.cac.procedures.BlsFenceUpdateProcedure;
+import net.owo.cac.procedures.BlcHurdleTouchProcedure;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
@@ -167,5 +169,11 @@ public class BlkHurdleBlock extends Block {
 	public void neighborChanged(BlockState blockstate, Level world, BlockPos pos, Block neighborBlock, BlockPos fromPos, boolean moving) {
 		super.neighborChanged(blockstate, world, pos, neighborBlock, fromPos, moving);
 		BlsFenceUpdateProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	}
+
+	@Override
+	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
+		super.entityInside(blockstate, world, pos, entity);
+		BlcHurdleTouchProcedure.execute(world);
 	}
 }
