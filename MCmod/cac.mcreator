@@ -3671,6 +3671,42 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "BlkArrowstone",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_arrowstone",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/item/blk_arrowstone.json",
+          "src/main/resources/assets/cac/models/block/blk_arrowstone.json",
+          "src/main/java/net/owo/cac/block/BlkArrowstoneBlock.java",
+          "src/main/resources/assets/cac/blockstates/blk_arrowstone.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_arrowstone.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlsArrowstone",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bls_arrowstone",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/block/bls_arrowstone_blockstate_1.json",
+          "src/main/resources/assets/cac/models/block/bls_arrowstone_blockstate_3.json",
+          "src/main/resources/assets/cac/models/block/bls_arrowstone_blockstate_6.json",
+          "src/main/resources/assets/cac/models/block/bls_arrowstone_blockstate_5.json",
+          "src/main/resources/assets/cac/models/block/bls_arrowstone_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_arrowstone_blockstate_0.json",
+          "src/main/resources/assets/cac/models/block/bls_arrowstone_blockstate_4.json"
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4510,8 +4546,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
@@ -4531,6 +4567,7 @@
       "effect.cac.eff_morph_predator": "Predator",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_player_cat": "Predator (Player)",
+      "block.cac.blk_arrowstone": "Arrow Stone",
       "advancements.adv_beginner_chasing.title": "The veteran predator",
       "advancements.adv_beginner.descr": "Play the beginner tutorial",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",

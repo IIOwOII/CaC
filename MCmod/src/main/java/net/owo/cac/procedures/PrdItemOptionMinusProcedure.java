@@ -15,7 +15,7 @@ public class PrdItemOptionMinusProcedure {
 		double num_option_builder = 0;
 		double num_option_tester = 0;
 		num_option_tester = 3;
-		num_option_builder = 2;
+		num_option_builder = 3;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == CacModItems.CAC_TEST_ITEM.get()) {
 			CacModVariables.MapVariables.get(world).Option_tester = (CacModVariables.MapVariables.get(world).Option_tester - 1) % num_option_tester;
 			CacModVariables.MapVariables.get(world).syncData(world);

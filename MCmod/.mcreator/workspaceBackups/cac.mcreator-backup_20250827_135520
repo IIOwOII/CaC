@@ -1982,19 +1982,6 @@
       "path": "~/CacCommand"
     },
     {
-      "name": "CmdTest",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_test",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTestCommand.java"
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "TaskSpawnOpponent",
       "type": "procedure",
       "compiles": true,
@@ -2959,20 +2946,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "PrdHighlight",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_highlight",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdHighlightProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "TimScanner",
       "type": "procedure",
       "compiles": true,
@@ -3686,7 +3659,16 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TutoScoreTickProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Tutorial"
     }
@@ -4485,10 +4467,16 @@
       "value": "\"\""
     },
     {
-      "name": "Tuto_hurdle_collision",
-      "type": "logic",
+      "name": "Tuto_hurdle_stack_old",
+      "type": "number",
       "scope": "map",
-      "value": "false"
+      "value": "0"
+    },
+    {
+      "name": "Tuto_hurdle_stack",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [

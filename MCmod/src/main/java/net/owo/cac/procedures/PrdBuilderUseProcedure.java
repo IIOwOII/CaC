@@ -5,6 +5,8 @@ import net.owo.cac.network.CacModVariables;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ClipContext;
@@ -20,22 +22,27 @@ public class PrdBuilderUseProcedure {
 		if (entity == null)
 			return;
 		Vec3 pos_block = Vec3.ZERO;
+		pos_block = (new Object() {
+			public Vec3 get(Entity entity, double length) {
+				return Vec3.atLowerCornerOf(entity.level().clip(new ClipContext(entity.getEyePosition(), entity.getEyePosition().add(entity.getLookAngle().scale(length)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, null)).getBlockPos());
+			}
+		}).get(entity, 5);
 		if (CacModVariables.MapVariables.get(world).Option_builder == 0) {
-			pos_block = (new Object() {
-				public Vec3 get(Entity entity, double length) {
-					return Vec3.atLowerCornerOf(entity.level().clip(new ClipContext(entity.getEyePosition(), entity.getEyePosition().add(entity.getLookAngle().scale(length)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, null)).getBlockPos());
-				}
-			}).get(entity, 5);
+			{
+				int _value = (int) (((world.getBlockState(BlockPos.containing(pos_block.x(), pos_block.y(), pos_block.z()))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip8
+						? (world.getBlockState(BlockPos.containing(pos_block.x(), pos_block.y(), pos_block.z()))).getValue(_getip8)
+						: -1) + 1);
+				BlockPos _pos = BlockPos.containing(pos_block.x(), pos_block.y(), pos_block.z());
+				BlockState _bs = world.getBlockState(_pos);
+				if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
+					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
+			}
+		} else if (CacModVariables.MapVariables.get(world).Option_builder == 1) {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("Pos 1: " + pos_block)), true);
 			CacModVariables.MapVariables.get(world).Builder_pos1 = pos_block;
 			CacModVariables.MapVariables.get(world).syncData(world);
-		} else if (CacModVariables.MapVariables.get(world).Option_builder == 1) {
-			pos_block = (new Object() {
-				public Vec3 get(Entity entity, double length) {
-					return Vec3.atLowerCornerOf(entity.level().clip(new ClipContext(entity.getEyePosition(), entity.getEyePosition().add(entity.getLookAngle().scale(length)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, null)).getBlockPos());
-				}
-			}).get(entity, 5);
+		} else if (CacModVariables.MapVariables.get(world).Option_builder == 2) {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.literal(("Pos 2: " + pos_block)), true);
 			CacModVariables.MapVariables.get(world).Builder_pos2 = pos_block;

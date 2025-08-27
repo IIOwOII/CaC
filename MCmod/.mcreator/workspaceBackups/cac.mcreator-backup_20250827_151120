@@ -1982,19 +1982,6 @@
       "path": "~/CacCommand"
     },
     {
-      "name": "CmdTest",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_test",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTestCommand.java"
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "TaskSpawnOpponent",
       "type": "procedure",
       "compiles": true,
@@ -2957,20 +2944,6 @@
         ]
       },
       "path": "~/CacBlock"
-    },
-    {
-      "name": "PrdHighlight",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_highlight",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdHighlightProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCommand"
     },
     {
       "name": "TimScanner",
@@ -4537,8 +4510,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
