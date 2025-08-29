@@ -1,9 +1,0 @@
-{
-  "parent": "cac:custom/cac_arrowstone_nw",
-  "textures": {
-    "all": "cac:block/texture_cac_arrow",
-    "particle": "cac:block/texture_cac_arrow",
-    "0": "cac:block/texture_cac_arrow"
-  },
-  "render_type": "solid"
-}

@@ -10,7 +10,7 @@ import net.owo.cac.block.BlkObstacleBlock;
 import net.owo.cac.block.BlkHurdleBlock;
 import net.owo.cac.block.BlkFenceBlock;
 import net.owo.cac.block.BlkCheckpointBlock;
-import net.owo.cac.block.BlkArrowstoneBlock;
+import net.owo.cac.block.BlkArrowBlock;
 import net.owo.cac.CacMod;
 
 import net.minecraftforge.registries.RegistryObject;
@@ -27,7 +27,7 @@ public class CacModBlocks {
 	public static final RegistryObject<Block> BLK_CHECKPOINT = REGISTRY.register("blk_checkpoint", () -> new BlkCheckpointBlock());
 	public static final RegistryObject<Block> BLK_HURDLE = REGISTRY.register("blk_hurdle", () -> new BlkHurdleBlock());
 	public static final RegistryObject<Block> BLK_SWITCHSTONE = REGISTRY.register("blk_switchstone", () -> new BlkSwitchstoneBlock());
-	public static final RegistryObject<Block> BLK_ARROWSTONE = REGISTRY.register("blk_arrowstone", () -> new BlkArrowstoneBlock());
+	public static final RegistryObject<Block> BLK_ARROW = REGISTRY.register("blk_arrow", () -> new BlkArrowBlock());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }
