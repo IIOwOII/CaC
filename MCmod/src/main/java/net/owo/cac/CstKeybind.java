@@ -16,7 +16,7 @@ import net.owo.cac.CacMod;
 import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class CstKeybind {
+public class CstKeybind {	
     // Store the key mapping reference
     public static final KeyMapping CAC_CAMERA_KEY = new KeyMapping("key.cac.cac_key_camera", GLFW.GLFW_KEY_RIGHT_CONTROL, "key.categories.cac") {
     	int KI = 0;
@@ -26,17 +26,6 @@ public class CstKeybind {
 		public void setDown(boolean isDown) {
 			super.setDown(isDown);
 			CstState.key_pressed[KI] = isDown;
-			/*
-			if (isDownOld != isDown && isDown) {
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(0, 0, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, KI);
-				CAC_CAMERA_KEY_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - CAC_CAMERA_KEY_LASTPRESS);
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(1, dt, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, KI);
-			}
-			*/
 			isDownOld = isDown;
 		}
     };
@@ -48,17 +37,6 @@ public class CstKeybind {
 		public void setDown(boolean isDown) {
 			super.setDown(isDown);
 			CstState.key_pressed[KI] = isDown;
-			/*
-			if (isDownOld != isDown && isDown) {
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(0, 0, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, KI);
-				CAC_RIGHT_KEY_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - CAC_RIGHT_KEY_LASTPRESS);
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(1, dt, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, KI);
-			}
-			*/
 			isDownOld = isDown;
 		}
 	};
@@ -70,17 +48,6 @@ public class CstKeybind {
 		public void setDown(boolean isDown) {
 			super.setDown(isDown);
 			CstState.key_pressed[KI] = isDown;
-			/*
-			if (isDownOld != isDown && isDown) {
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(0, 0, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, KI);
-				CAC_LEFT_KEY_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - CAC_LEFT_KEY_LASTPRESS);
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(1, dt, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, KI);
-			}
-			*/
 			isDownOld = isDown;
 		}
 	};
@@ -92,17 +59,6 @@ public class CstKeybind {
 		public void setDown(boolean isDown) {
 			super.setDown(isDown);
 			CstState.key_pressed[KI] = isDown;
-			/*
-			if (isDownOld != isDown && isDown) {
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(0, 0, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, KI);
-				CAC_UP_KEY_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - CAC_UP_KEY_LASTPRESS);
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(1, dt, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, KI);
-			}
-			*/
 			isDownOld = isDown;
 		}
     };
@@ -114,25 +70,9 @@ public class CstKeybind {
 		public void setDown(boolean isDown) {
 			super.setDown(isDown);
 			CstState.key_pressed[KI] = isDown;
-			/*
-			if (isDownOld != isDown && isDown) {
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(0, 0, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 0, 0, KI);
-				CAC_DOWN_KEY_LASTPRESS = System.currentTimeMillis();
-			} else if (isDownOld != isDown && !isDown) {
-				int dt = (int) (System.currentTimeMillis() - CAC_DOWN_KEY_LASTPRESS);
-				CacMod.PACKET_HANDLER.sendToServer(new CstKeyMessage(1, dt, KI));
-				CstKeyMessage.pressAction(Minecraft.getInstance().player, 1, dt, KI);
-			}
-			*/
 			isDownOld = isDown;
 		}
     };
-    private static long CAC_CAMERA_KEY_LASTPRESS = 0;
-    private static long CAC_RIGHT_KEY_LASTPRESS = 0;
-    private static long CAC_LEFT_KEY_LASTPRESS = 0;
-    private static long CAC_UP_KEY_LASTPRESS = 0;
-    private static long CAC_DOWN_KEY_LASTPRESS = 0;
     
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {

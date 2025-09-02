@@ -56,8 +56,6 @@ public class CacModVariables {
 	public static File Log_survey = new File("");
 	public static File Pool_psychometric = new File("");
 	public static File Log_scanner = new File("");
-	public static File Pool_script = new File("");
-	public static com.google.gson.JsonArray Scr_beginner = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -220,13 +218,16 @@ public class CacModVariables {
 		public ListTag Tuto_checkpoint_pos = new ListTag();
 		public String Dir_behaviors_session = "\"\"";
 		public double Exp_session_reps = 0;
-		public double Tuto_type = 0;
 		public Vec3 Builder_pos1 = Vec3.ZERO;
 		public Vec3 Builder_pos2 = Vec3.ZERO;
 		public double Option_builder = 0;
 		public String Option_builder_str = "\"\"";
 		public double Tuto_hurdle_stack_old = 0;
 		public double Tuto_hurdle_stack = 0;
+		public double Tuto_score = 0;
+		public boolean Tuto_score_running = false;
+		public String Tuto_progress = "\"\"";
+		public boolean Tuto_switch = false;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -358,7 +359,6 @@ public class CacModVariables {
 			this.Tuto_checkpoint_pos = nbt.get("Tuto_checkpoint_pos") instanceof ListTag Tuto_checkpoint_pos ? Tuto_checkpoint_pos : new ListTag();
 			Dir_behaviors_session = nbt.getString("Dir_behaviors_session");
 			Exp_session_reps = nbt.getDouble("Exp_session_reps");
-			Tuto_type = nbt.getDouble("Tuto_type");
 			{
 				ListTag listTag = nbt.getList("Builder_pos1", 6);
 				this.Builder_pos1 = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
@@ -371,6 +371,10 @@ public class CacModVariables {
 			Option_builder_str = nbt.getString("Option_builder_str");
 			Tuto_hurdle_stack_old = nbt.getDouble("Tuto_hurdle_stack_old");
 			Tuto_hurdle_stack = nbt.getDouble("Tuto_hurdle_stack");
+			Tuto_score = nbt.getDouble("Tuto_score");
+			Tuto_score_running = nbt.getBoolean("Tuto_score_running");
+			Tuto_progress = nbt.getString("Tuto_progress");
+			Tuto_switch = nbt.getBoolean("Tuto_switch");
 		}
 
 		@Override
@@ -534,7 +538,6 @@ public class CacModVariables {
 			nbt.put("Tuto_checkpoint_pos", this.Tuto_checkpoint_pos);
 			nbt.putString("Dir_behaviors_session", Dir_behaviors_session);
 			nbt.putDouble("Exp_session_reps", Exp_session_reps);
-			nbt.putDouble("Tuto_type", Tuto_type);
 			{
 				this.Builder_pos1 = this.Builder_pos1 == null ? Vec3.ZERO : this.Builder_pos1;
 				ListTag listTag = new ListTag();
@@ -555,6 +558,10 @@ public class CacModVariables {
 			nbt.putString("Option_builder_str", Option_builder_str);
 			nbt.putDouble("Tuto_hurdle_stack_old", Tuto_hurdle_stack_old);
 			nbt.putDouble("Tuto_hurdle_stack", Tuto_hurdle_stack);
+			nbt.putDouble("Tuto_score", Tuto_score);
+			nbt.putBoolean("Tuto_score_running", Tuto_score_running);
+			nbt.putString("Tuto_progress", Tuto_progress);
+			nbt.putBoolean("Tuto_switch", Tuto_switch);
 			return nbt;
 		}
 

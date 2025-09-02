@@ -72,14 +72,18 @@ public class CstKeyHandler {
     	if (_ent == null)
     		return;
     	@Nullable LivingEntity _livent = (_ent instanceof LivingEntity) ? (LivingEntity) _ent : null;
+    	LevelAccessor world = _ent.level();
+    	MapVariables cacvar = CacModVariables.MapVariables.get(world);
     	
     	if (CstState.CanMeowMove && CstState.IsMeowMove_old) {
     		_ent.setYRot(CstState.rot_angle);
     	}
     	
     	if (event.phase == TickEvent.Phase.END) {
-    		LevelAccessor world = _ent.level();
-    		MapVariables cacvar = CacModVariables.MapVariables.get(world);
+    		// always
+    		if (!world.isClientSide() && world.getServer() != null) {
+    			CstState.KeyTickUpdate();
+    		}
     		
     		// Survey Value
     		if (cacvar.Switch_survey) {

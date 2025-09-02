@@ -126,9 +126,6 @@ Processing entries
 Conflicting propagated mapping for net/owo/cac/network/CacModVariables$MapVariables/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/saveddata/SavedData/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;: save -> m_7176_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
-Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
-Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/entity/Mob/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: mobInteract -> m_6071_
@@ -136,8 +133,44 @@ Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/getAddE
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/travel(Lnet/minecraft/world/phys/Vec3;)V from net/minecraft/world/entity/LivingEntity/travel(Lnet/minecraft/world/phys/Vec3;)V: travel -> m_7023_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
 Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/entity/Mob/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: mobInteract -> m_6071_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/travel(Lnet/minecraft/world/phys/Vec3;)V from net/minecraft/world/entity/LivingEntity/travel(Lnet/minecraft/world/phys/Vec3;)V: travel -> m_7023_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
+Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
+Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
+Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
+Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
+Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
+Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
+Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
+Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
+Conflicting propagated mapping for net/owo/cac/CstKeybind$3/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
+Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
+Conflicting propagated mapping for net/owo/cac/item/CacLogoItem/isCorrectToolForDrops(Lnet/minecraft/world/level/block/state/BlockState;)Z from net/minecraft/world/item/Item/isCorrectToolForDrops(Lnet/minecraft/world/level/block/state/BlockState;)Z: isCorrectToolForDrops -> m_8096_
+Conflicting propagated mapping for net/owo/cac/item/CacTestItemItem/getUseAnimation(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/UseAnim; from net/minecraft/world/item/Item/getUseAnimation(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/UseAnim;: getUseAnimation -> m_6164_
+Conflicting propagated mapping for net/owo/cac/item/CacTestItemItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
+Conflicting propagated mapping for net/owo/cac/CstKeybind$5/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
+Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
 Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
 Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
 Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
@@ -148,109 +181,92 @@ Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/registerG
 Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
 Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
 Conflicting propagated mapping for net/owo/cac/entity/EntMeowcamEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/entity/Mob/mobInteract(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResult;: mobInteract -> m_6071_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/travel(Lnet/minecraft/world/phys/Vec3;)V from net/minecraft/world/entity/LivingEntity/travel(Lnet/minecraft/world/phys/Vec3;)V: travel -> m_7023_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
-Conflicting propagated mapping for net/owo/cac/CstKeybind$3/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerMouseEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
-Conflicting propagated mapping for net/owo/cac/item/CacTestItemItem/getUseAnimation(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/UseAnim; from net/minecraft/world/item/Item/getUseAnimation(Lnet/minecraft/world/item/ItemStack;)Lnet/minecraft/world/item/UseAnim;: getUseAnimation -> m_6164_
-Conflicting propagated mapping for net/owo/cac/item/CacTestItemItem/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder; from net/minecraft/world/item/Item/use(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;)Lnet/minecraft/world/InteractionResultHolder;: use -> m_7203_
-Conflicting propagated mapping for net/owo/cac/item/CacTestItemItem/isFoil(Lnet/minecraft/world/item/ItemStack;)Z from net/minecraft/world/item/Item/isFoil(Lnet/minecraft/world/item/ItemStack;)Z: isFoil -> m_5812_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
-Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
-Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
-Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
-Conflicting propagated mapping for net/owo/cac/item/CacLogoItem/isCorrectToolForDrops(Lnet/minecraft/world/level/block/state/BlockState;)Z from net/minecraft/world/item/Item/isCorrectToolForDrops(Lnet/minecraft/world/level/block/state/BlockState;)Z: isCorrectToolForDrops -> m_8096_
-Conflicting propagated mapping for net/owo/cac/entity/EntPlayerCatEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
-Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
-Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
-Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
-Conflicting propagated mapping for net/owo/cac/CstKeybind$4/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
-Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
 Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
 Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
 Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
-Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/AxeItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
 Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
 Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
 Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
 Conflicting propagated mapping for net/owo/cac/entity/EntMouseEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
-Conflicting propagated mapping for net/owo/cac/CstKeybind$5/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
-Conflicting propagated mapping for net/owo/cac/CstKeybind$2/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
-Conflicting propagated mapping for net/owo/cac/CstKeybind$1/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
+Conflicting propagated mapping for net/owo/cac/item/CacTestItemItem/isFoil(Lnet/minecraft/world/item/ItemStack;)Z from net/minecraft/world/item/Item/isFoil(Lnet/minecraft/world/item/ItemStack;)Z: isFoil -> m_5812_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
-Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
+Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
 Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
 Conflicting propagated mapping for net/owo/cac/entity/EntCatEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)Lnet/minecraft/sounds/SoundEvent;: getHurtSound -> m_7975_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions; from net/minecraft/world/entity/LivingEntity/getDimensions(Lnet/minecraft/world/entity/Pose;)Lnet/minecraft/world/entity/EntityDimensions;: getDimensions -> m_6972_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/readAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: readAdditionalSaveData -> m_7378_
+Conflicting propagated mapping for net/owo/cac/CstKeybind$4/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/entity/Entity/getAddEntityPacket()Lnet/minecraft/network/protocol/Packet;: getAddEntityPacket -> m_5654_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/defineSynchedData()V from net/minecraft/world/entity/Mob/defineSynchedData()V: defineSynchedData -> m_8097_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
+Conflicting propagated mapping for net/owo/cac/CstKeybind$2/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
 Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/isInvulnerableTo(Lnet/minecraft/world/damagesource/DamageSource;)Z from net/minecraft/server/level/ServerPlayer/isInvulnerableTo(Lnet/minecraft/world/damagesource/DamageSource;)Z: isInvulnerableTo -> m_6673_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
+Conflicting propagated mapping for net/owo/cac/CstKeybind$1/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
 Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/canHarmPlayer(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/server/level/ServerPlayer/canHarmPlayer(Lnet/minecraft/world/entity/player/Player;)Z: canHarmPlayer -> m_7099_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
 Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/updateOptions(Lnet/minecraft/network/protocol/game/ServerboundClientInformationPacket;)V from net/minecraft/server/level/ServerPlayer/updateOptions(Lnet/minecraft/network/protocol/game/ServerboundClientInformationPacket;)V: updateOptions -> m_9156_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
 Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V from net/minecraft/server/level/ServerPlayer/displayClientMessage(Lnet/minecraft/network/chat/Component;Z)V: displayClientMessage -> m_5661_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
 Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/die(Lnet/minecraft/world/damagesource/DamageSource;)V from net/minecraft/server/level/ServerPlayer/die(Lnet/minecraft/world/damagesource/DamageSource;)V: die -> m_6667_
 Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/tick()V from net/minecraft/server/level/ServerPlayer/tick()V: tick -> m_8119_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/getServer()Lnet/minecraft/server/MinecraftServer; from net/minecraft/world/entity/Entity/getServer()Lnet/minecraft/server/MinecraftServer;: getServer -> m_20194_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoMouseEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
+Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/item/AxeItem/useOn(Lnet/minecraft/world/item/context/UseOnContext;)Lnet/minecraft/world/InteractionResult;: useOn -> m_6225_
+Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getUses()I from net/minecraft/world/item/Tier/getUses()I: getUses -> m_6609_
+Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getSpeed()F from net/minecraft/world/item/Tier/getSpeed()F: getSpeed -> m_6624_
+Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getRepairIngredient()Lnet/minecraft/world/item/crafting/Ingredient; from net/minecraft/world/item/Tier/getRepairIngredient()Lnet/minecraft/world/item/crafting/Ingredient;: getRepairIngredient -> m_6282_
+Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getEnchantmentValue()I from net/minecraft/world/item/Tier/getEnchantmentValue()I: getEnchantmentValue -> m_6601_
+Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getLevel()I from net/minecraft/world/item/Tier/getLevel()I: getLevel -> m_6604_
+Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getAttackDamageBonus()F from net/minecraft/world/item/Tier/getAttackDamageBonus()F: getAttackDamageBonus -> m_6631_
+Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/awardStat(Lnet/minecraft/stats/Stat;I)V from net/minecraft/server/level/ServerPlayer/awardStat(Lnet/minecraft/stats/Stat;I)V: awardStat -> m_6278_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent; from net/minecraft/world/entity/LivingEntity/getDeathSound()Lnet/minecraft/sounds/SoundEvent;: getDeathSound -> m_5592_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/entity/Mob/addAdditionalSaveData(Lnet/minecraft/nbt/CompoundTag;)V: addAdditionalSaveData -> m_7380_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z from net/minecraft/world/entity/LivingEntity/hurt(Lnet/minecraft/world/damagesource/DamageSource;F)Z: hurt -> m_6469_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/aiStep()V from net/minecraft/world/entity/Mob/aiStep()V: aiStep -> m_8107_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/getMobType()Lnet/minecraft/world/entity/MobType; from net/minecraft/world/entity/LivingEntity/getMobType()Lnet/minecraft/world/entity/MobType;: getMobType -> m_6336_
+Conflicting propagated mapping for net/owo/cac/init/CacModKeyMappings$1/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/registerGoals()V from net/minecraft/world/entity/Mob/registerGoals()V: registerGoals -> m_8099_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/removeWhenFarAway(D)Z from net/minecraft/world/entity/Mob/removeWhenFarAway(D)Z: removeWhenFarAway -> m_6785_
-Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/getServer()Lnet/minecraft/server/MinecraftServer; from net/minecraft/world/entity/Entity/getServer()Lnet/minecraft/server/MinecraftServer;: getServer -> m_20194_
 Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/baseTick()V from net/minecraft/world/entity/Mob/baseTick()V: baseTick -> m_6075_
-Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
-Conflicting propagated mapping for net/minecraftforge/common/util/FakePlayer/awardStat(Lnet/minecraft/stats/Stat;I)V from net/minecraft/server/level/ServerPlayer/awardStat(Lnet/minecraft/stats/Stat;I)V: awardStat -> m_6278_
-Conflicting propagated mapping for net/owo/cac/init/CacModKeyMappings$1/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
 Conflicting propagated mapping for net/owo/cac/potion/EffStopMoveMobEffect/isDurationEffectTick(II)Z from net/minecraft/world/effect/MobEffect/isDurationEffectTick(II)Z: isDurationEffectTick -> m_6584_
 Conflicting propagated mapping for net/owo/cac/potion/EffStopMoveMobEffect/addAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V from net/minecraft/world/effect/MobEffect/addAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V: addAttributeModifiers -> m_6385_
 Conflicting propagated mapping for net/owo/cac/potion/EffStopMoveMobEffect/removeAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V from net/minecraft/world/effect/MobEffect/removeAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V: removeAttributeModifiers -> m_6386_
+Conflicting propagated mapping for net/owo/cac/init/CacModKeyMappings$2/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
 Conflicting propagated mapping for net/owo/cac/potion/EffMorphPredatorMobEffect/isDurationEffectTick(II)Z from net/minecraft/world/effect/MobEffect/isDurationEffectTick(II)Z: isDurationEffectTick -> m_6584_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;: rotate -> m_6843_
+Conflicting propagated mapping for net/owo/cac/entity/EntPseudoCatEntity/tickDeath()V from net/minecraft/world/entity/LivingEntity/tickDeath()V: tickDeath -> m_6153_
 Conflicting propagated mapping for net/owo/cac/potion/EffMorphPredatorMobEffect/addAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V from net/minecraft/world/effect/MobEffect/addAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V: addAttributeModifiers -> m_6385_
 Conflicting propagated mapping for net/owo/cac/potion/EffMorphPreyMobEffect/isDurationEffectTick(II)Z from net/minecraft/world/effect/MobEffect/isDurationEffectTick(II)Z: isDurationEffectTick -> m_6584_
 Conflicting propagated mapping for net/owo/cac/potion/EffMorphPreyMobEffect/addAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V from net/minecraft/world/effect/MobEffect/addAttributeModifiers(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/ai/attributes/AttributeMap;I)V: addAttributeModifiers -> m_6385_
+Conflicting propagated mapping for net/owo/cac/init/CacModKeyMappings$3/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/getVisualShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getVisualShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getVisualShape -> m_5909_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/propagatesSkylightDown(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/block/Block/propagatesSkylightDown(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z: propagatesSkylightDown -> m_7420_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/mirror(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/mirror(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/block/state/BlockState;: mirror -> m_6943_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/getLightBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)I from net/minecraft/world/level/block/state/BlockBehaviour/getLightBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)I: getLightBlock -> m_7753_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
+Conflicting propagated mapping for net/owo/cac/block/BlkArrowBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/Block/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
 Conflicting propagated mapping for net/owo/cac/block/BlkSwitchstoneBlock/isSignalSource(Lnet/minecraft/world/level/block/state/BlockState;)Z from net/minecraft/world/level/block/state/BlockBehaviour/isSignalSource(Lnet/minecraft/world/level/block/state/BlockState;)Z: isSignalSource -> m_7899_
 Conflicting propagated mapping for net/owo/cac/block/BlkSwitchstoneBlock/getVisualShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getVisualShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getVisualShape -> m_5909_
 Conflicting propagated mapping for net/owo/cac/block/BlkSwitchstoneBlock/propagatesSkylightDown(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/block/Block/propagatesSkylightDown(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Z: propagatesSkylightDown -> m_7420_
@@ -259,20 +275,7 @@ Conflicting propagated mapping for net/owo/cac/block/BlkSwitchstoneBlock/getLigh
 Conflicting propagated mapping for net/owo/cac/block/BlkSwitchstoneBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
 Conflicting propagated mapping for net/owo/cac/block/BlkSwitchstoneBlock/getSignal(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)I from net/minecraft/world/level/block/state/BlockBehaviour/getSignal(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)I: getSignal -> m_6378_
 Conflicting propagated mapping for net/owo/cac/block/BlkSwitchstoneBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/Block/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
-Conflicting propagated mapping for net/owo/cac/init/CacModKeyMappings$2/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
-Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getUses()I from net/minecraft/world/item/Tier/getUses()I: getUses -> m_6609_
-Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getSpeed()F from net/minecraft/world/item/Tier/getSpeed()F: getSpeed -> m_6624_
-Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getRepairIngredient()Lnet/minecraft/world/item/crafting/Ingredient; from net/minecraft/world/item/Tier/getRepairIngredient()Lnet/minecraft/world/item/crafting/Ingredient;: getRepairIngredient -> m_6282_
-Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getEnchantmentValue()I from net/minecraft/world/item/Tier/getEnchantmentValue()I: getEnchantmentValue -> m_6601_
-Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getLevel()I from net/minecraft/world/item/Tier/getLevel()I: getLevel -> m_6604_
-Conflicting propagated mapping for net/owo/cac/item/CacBuilderToolItem$1/getAttackDamageBonus()F from net/minecraft/world/item/Tier/getAttackDamageBonus()F: getAttackDamageBonus -> m_6631_
-Conflicting propagated mapping for net/owo/cac/init/CacModKeyMappings$3/setDown(Z)V from net/minecraft/client/KeyMapping/setDown(Z)V: setDown -> m_7249_
-Conflicting propagated mapping for net/minecraftforge/common/ForgeSpawnEggItem/getType(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/EntityType; from net/minecraft/world/item/SpawnEggItem/getType(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/EntityType;: getType -> m_43228_
-Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/shouldShowName(Lnet/minecraft/world/entity/Entity;)Z from net/minecraft/client/renderer/entity/EntityRenderer/shouldShowName(Lnet/minecraft/world/entity/Entity;)Z: shouldShowName -> m_6512_
 Conflicting propagated mapping for net/owo/cac/block/BlkHurdleBlock/onPlace(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onPlace(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onPlace -> m_6807_
-Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation; from net/minecraft/client/renderer/entity/EntityRenderer/getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation;: getTextureLocation -> m_5478_
-Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V from net/minecraft/client/renderer/entity/EntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V: render -> m_7392_
-Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
 Conflicting propagated mapping for net/owo/cac/block/BlkHurdleBlock/entityInside(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)V from net/minecraft/world/level/block/state/BlockBehaviour/entityInside(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)V: entityInside -> m_7892_
 Conflicting propagated mapping for net/owo/cac/block/BlkHurdleBlock/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;: rotate -> m_6843_
 Conflicting propagated mapping for net/owo/cac/block/BlkHurdleBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
@@ -319,6 +322,11 @@ Conflicting propagated mapping for net/owo/cac/block/BlkObstacleBlock/mirror(Lne
 Conflicting propagated mapping for net/owo/cac/block/BlkObstacleBlock/getLightBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)I from net/minecraft/world/level/block/state/BlockBehaviour/getLightBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)I: getLightBlock -> m_7753_
 Conflicting propagated mapping for net/owo/cac/block/BlkObstacleBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
 Conflicting propagated mapping for net/owo/cac/block/BlkObstacleBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/Block/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
+Conflicting propagated mapping for net/minecraftforge/event/BuildCreativeModeTabContentsEvent/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V from net/minecraft/world/item/CreativeModeTab$Output/accept(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/CreativeModeTab$TabVisibility;)V: accept -> m_246267_
+Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/shouldShowName(Lnet/minecraft/world/entity/Entity;)Z from net/minecraft/client/renderer/entity/EntityRenderer/shouldShowName(Lnet/minecraft/world/entity/Entity;)Z: shouldShowName -> m_6512_
+Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation; from net/minecraft/client/renderer/entity/EntityRenderer/getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation;: getTextureLocation -> m_5478_
+Conflicting propagated mapping for software/bernie/geckolib/renderer/GeoEntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V from net/minecraft/client/renderer/entity/EntityRenderer/render(Lnet/minecraft/world/entity/Entity;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V: render -> m_7392_
+Conflicting propagated mapping for net/minecraftforge/common/ForgeSpawnEggItem/getType(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/EntityType; from net/minecraft/world/item/SpawnEggItem/getType(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/EntityType;: getType -> m_43228_
 Conflicting propagated mapping for net/owo/cac/network/CacModVariables$WorldVariables/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/saveddata/SavedData/save(Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/nbt/CompoundTag;: save -> m_7176_
 Adding extras
 Sorting
@@ -334,6 +342,7 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   assets/cac/animations/cac_meowcam.animation.json
   assets/cac/animations/cac_mouse.animation.json
   assets/cac/blockstates/
+  assets/cac/blockstates/blk_arrow.json
   assets/cac/blockstates/blk_checkpoint.json
   assets/cac/blockstates/blk_fence.json
   assets/cac/blockstates/blk_hurdle.json
@@ -348,12 +357,16 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   assets/cac/lang/en_us.json
   assets/cac/models/
   assets/cac/models/block/
+  assets/cac/models/block/blk_arrow.json
   assets/cac/models/block/blk_checkpoint.json
   assets/cac/models/block/blk_fence.json
   assets/cac/models/block/blk_hurdle.json
   assets/cac/models/block/blk_obstacle.json
   assets/cac/models/block/blk_switchstone.json
   assets/cac/models/block/blk_wall.json
+  assets/cac/models/block/bls_arrow_blockstate_0.json
+  assets/cac/models/block/bls_arrow_blockstate_1.json
+  assets/cac/models/block/bls_arrow_blockstate_2.json
   assets/cac/models/block/bls_checkpoint_blockstate_0.json
   assets/cac/models/block/bls_fence_blockstate_0.json
   assets/cac/models/block/bls_fence_blockstate_1.json
@@ -387,6 +400,10 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   assets/cac/models/block/bls_wall_blockstate_4.json
   assets/cac/models/block/bls_wall_blockstate_5.json
   assets/cac/models/custom/
+  assets/cac/models/custom/cac_arrow_curve_left.json
+  assets/cac/models/custom/cac_arrow_curve_right.json
+  assets/cac/models/custom/cac_arrow_diagonal.json
+  assets/cac/models/custom/cac_arrow_straight.json
   assets/cac/models/custom/cac_arrowstone_e.json
   assets/cac/models/custom/cac_arrowstone_n.json
   assets/cac/models/custom/cac_arrowstone_ne.json
@@ -413,6 +430,7 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   assets/cac/models/custom/cac_obstacle_4.json
   assets/cac/models/custom/cac_switchstone.json
   assets/cac/models/item/
+  assets/cac/models/item/blk_arrow.json
   assets/cac/models/item/blk_checkpoint.json
   assets/cac/models/item/blk_fence.json
   assets/cac/models/item/blk_hurdle.json
@@ -451,6 +469,7 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   assets/cac/textures/item/
   assets/cac/textures/item/firework_star.png
   assets/cac/textures/item/owo.png
+  assets/cac/textures/item/texture_cac_arrow_icon.png
   assets/cac/textures/item/texture_cac_builder.png
   assets/cac/textures/item/texture_cac_checkpoint_icon.png
   assets/cac/textures/item/texture_cac_fence_icon.png
@@ -480,6 +499,14 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   assets/cac/textures/screens/text_winprob.png
   assets/cac/textures/screens/texture_background.png
   assets/cac/textures/screens/texture_blank.png
+  assets/cac/textures/screens/texture_cac_direction_1.png
+  assets/cac/textures/screens/texture_cac_direction_2.png
+  assets/cac/textures/screens/texture_cac_direction_3.png
+  assets/cac/textures/screens/texture_cac_direction_4.png
+  assets/cac/textures/screens/texture_cac_direction_5.png
+  assets/cac/textures/screens/texture_cac_direction_6.png
+  assets/cac/textures/screens/texture_cac_direction_7.png
+  assets/cac/textures/screens/texture_cac_direction_8.png
   assets/cac/textures/screens/texture_cac_meowtile.png
   assets/cac/textures/screens/texture_grey.png
   assets/cac/textures/screens/texture_hide_actionbar.png
@@ -498,6 +525,7 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   data/cac/advancements/adv_racing.json
   data/cac/loot_tables/
   data/cac/loot_tables/blocks/
+  data/cac/loot_tables/blocks/blk_arrow.json
   data/cac/loot_tables/blocks/blk_checkpoint.json
   data/cac/loot_tables/blocks/blk_fence.json
   data/cac/loot_tables/blocks/blk_hurdle.json
@@ -530,6 +558,9 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   net/owo/cac/CstRenderHandler.class
   net/owo/cac/CstState.class
   net/owo/cac/block/
+  net/owo/cac/block/BlkArrowBlock$1.class
+  net/owo/cac/block/BlkArrowBlock$2.class
+  net/owo/cac/block/BlkArrowBlock.class
   net/owo/cac/block/BlkCheckpointBlock$1.class
   net/owo/cac/block/BlkCheckpointBlock.class
   net/owo/cac/block/BlkFenceBlock$1.class
@@ -557,8 +588,10 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   net/owo/cac/client/renderer/EntPseudoMouseRenderer.class
   net/owo/cac/client/screens/
   net/owo/cac/client/screens/OvlBlankOverlay.class
+  net/owo/cac/client/screens/OvlDirectionOverlay.class
   net/owo/cac/client/screens/OvlSurrenderOverlay.class
   net/owo/cac/client/screens/OvlSurveyOverlay.class
+  net/owo/cac/client/screens/OvlTutorialOverlay.class
   net/owo/cac/command/
   net/owo/cac/command/CmdCheckCommand.class
   net/owo/cac/command/CmdDebugCommand.class
@@ -680,7 +713,6 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   net/owo/cac/procedures/IniPoolProcedure.class
   net/owo/cac/procedures/IniPoolPsychometricProcedure.class
   net/owo/cac/procedures/IniPoolQueProcedure.class
-  net/owo/cac/procedures/IniPoolScriptProcedure.class
   net/owo/cac/procedures/IniPoolSurveyProcedure.class
   net/owo/cac/procedures/IniPoolTaskProcedure.class
   net/owo/cac/procedures/KeyDecideOnProcedure.class
@@ -710,6 +742,7 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   net/owo/cac/procedures/RecScannerProcedure.class
   net/owo/cac/procedures/RecSurveyProcedure.class
   net/owo/cac/procedures/RtnBlankProcedure.class
+  net/owo/cac/procedures/RtnDirectionScreenProcedure.class
   net/owo/cac/procedures/RtnSurrenderProcedure.class
   net/owo/cac/procedures/RtnSurrenderTypeIIProcedure.class
   net/owo/cac/procedures/RtnSurrenderTypeIProcedure.class
@@ -757,7 +790,5 @@ Writing Output: /home/owo/CLAB/CaC/MCmod/build/reobfJar/output.jar
   net/owo/cac/procedures/TutoCheckpointStartProcedure.class
   net/owo/cac/procedures/TutoCheckpointTouchProcedure.class
   net/owo/cac/procedures/TutoManageProcedure.class
-  net/owo/cac/procedures/TutoScoreTickProcedure$1.class
-  net/owo/cac/procedures/TutoScoreTickProcedure$2.class
   net/owo/cac/procedures/TutoScoreTickProcedure.class
   pack.mcmeta

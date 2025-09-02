@@ -2,6 +2,6 @@
   "_fv": 66,
   "_type": "procedure",
   "definition": {
-    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable type=\"JsonArray\" id=\"arr_test\">arr_test</variable></variables><block type=\"event_trigger\" deletable=\"false\" x=\"151\" y=\"175\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"call_procedure\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" inputs=\"0\"></mutation><field name=\"procedure\">IniLog</field></block></next></block></xml>"
+    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><variables><variable type=\"JsonArray\" id=\"arr_test\">arr_test</variable></variables><block type=\"event_trigger\" deletable=\"false\" x=\"151\" y=\"175\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"controls_if\"><value name=\"IF0\"><block type=\"logic_negate\"><value name=\"BOOL\"><block type=\"world_data_isremote\"></block></value></block></value><statement name=\"DO0\"><block type=\"text_print\"><value name=\"TEXT\"><block type=\"text\"><field name=\"TEXT\">123</field></block></value></block></statement></block></next></block></xml>"
   }
 }

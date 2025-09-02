@@ -31,6 +31,7 @@
   "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
   "advancements.adv_checkpoint.descr": "Play the checkpoint tutorial",
   "key.cac.cac_key_right": "Right",
+  "gui.cac.ovl_direction.label_hi": "hi",
   "subtitles.cac.snd_silence": "snd_silence",
   "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
   "key.cac.cac_key_signal": "Scanner Signal",
