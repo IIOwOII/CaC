@@ -3179,22 +3179,6 @@
             "type": "cmdcontext"
           },
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -3682,19 +3666,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "OvlDirection",
-      "type": "overlay",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ovl_direction",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/client/screens/OvlDirectionOverlay.java"
-        ]
-      },
-      "path": "~/CacScreen"
-    },
-    {
       "name": "RtnDirectionScreen",
       "type": "procedure",
       "compiles": true,
@@ -3721,6 +3692,18 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "CstTutorial",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_tutorial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstTutorial.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4523,7 +4506,7 @@
       "value": "false"
     },
     {
-      "name": "Tuto_progress",
+      "name": "Tuto_content",
       "type": "string",
       "scope": "map",
       "value": "\"\""
@@ -4566,8 +4549,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
@@ -4595,7 +4578,6 @@
       "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
       "advancements.adv_checkpoint.descr": "Play the checkpoint tutorial",
       "key.cac.cac_key_right": "Right",
-      "gui.cac.ovl_direction.label_hi": "hi",
       "subtitles.cac.snd_silence": "snd_silence",
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
@@ -4724,10 +4706,6 @@
       },
       {
         "name": "CacItem",
-        "children": []
-      },
-      {
-        "name": "CacScreen",
         "children": []
       }
     ]

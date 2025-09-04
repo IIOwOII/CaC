@@ -226,7 +226,7 @@ public class CacModVariables {
 		public double Tuto_hurdle_stack = 0;
 		public double Tuto_score = 0;
 		public boolean Tuto_score_running = false;
-		public String Tuto_progress = "\"\"";
+		public String Tuto_content = "\"\"";
 		public boolean Tuto_switch = false;
 
 		public static MapVariables load(CompoundTag tag) {
@@ -373,7 +373,7 @@ public class CacModVariables {
 			Tuto_hurdle_stack = nbt.getDouble("Tuto_hurdle_stack");
 			Tuto_score = nbt.getDouble("Tuto_score");
 			Tuto_score_running = nbt.getBoolean("Tuto_score_running");
-			Tuto_progress = nbt.getString("Tuto_progress");
+			Tuto_content = nbt.getString("Tuto_content");
 			Tuto_switch = nbt.getBoolean("Tuto_switch");
 		}
 
@@ -560,7 +560,7 @@ public class CacModVariables {
 			nbt.putDouble("Tuto_hurdle_stack", Tuto_hurdle_stack);
 			nbt.putDouble("Tuto_score", Tuto_score);
 			nbt.putBoolean("Tuto_score_running", Tuto_score_running);
-			nbt.putString("Tuto_progress", Tuto_progress);
+			nbt.putString("Tuto_content", Tuto_content);
 			nbt.putBoolean("Tuto_switch", Tuto_switch);
 			return nbt;
 		}

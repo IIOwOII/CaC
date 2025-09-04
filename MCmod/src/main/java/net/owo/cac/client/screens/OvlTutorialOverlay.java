@@ -50,8 +50,9 @@ public class OvlTutorialOverlay {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
+		
 		if (cacvar.Tuto_switch) {
-			if (cacvar.Tuto_progress == "moving") {
+			if (cacvar.Tuto_content.equals("moving")) {
 				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/texture_cac_direction_"+Integer.toString(CstTutorial.getMovingOrder())+".png"), w/2-60, h/2-60, 0, 0, 120, 120, 120, 120);
 			}
 		}

@@ -42,6 +42,8 @@ public class CstKeyHandler {
 			}
         	
 			if (CstState.CanMeowMove) {
+				CstState.KeyTickUpdate();
+				
 	            int rot_re = (CstState.key_pressed[1] ? 1 : 0) - (CstState.key_pressed[2] ? 1 : 0);
 	            int rot_im = (CstState.key_pressed[3] ? 1 : 0) - (CstState.key_pressed[4] ? 1 : 0);
 	            double rot_norm = Math.sqrt(rot_re*rot_re + rot_im*rot_im);

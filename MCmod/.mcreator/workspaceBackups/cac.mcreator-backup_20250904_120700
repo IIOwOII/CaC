@@ -3682,19 +3682,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "OvlDirection",
-      "type": "overlay",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ovl_direction",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/client/screens/OvlDirectionOverlay.java"
-        ]
-      },
-      "path": "~/CacScreen"
-    },
-    {
       "name": "RtnDirectionScreen",
       "type": "procedure",
       "compiles": true,
@@ -3721,6 +3708,18 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "CstTutorial",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_tutorial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstTutorial.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4521,18 +4520,6 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
-    },
-    {
-      "name": "Tuto_progress",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Tuto_switch",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
     }
   ],
   "sound_elements": [
@@ -4595,7 +4582,6 @@
       "item.cac.ent_meowcam_spawn_egg": "Meowcam Spawn Egg",
       "advancements.adv_checkpoint.descr": "Play the checkpoint tutorial",
       "key.cac.cac_key_right": "Right",
-      "gui.cac.ovl_direction.label_hi": "hi",
       "subtitles.cac.snd_silence": "snd_silence",
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
@@ -4724,10 +4710,6 @@
       },
       {
         "name": "CacItem",
-        "children": []
-      },
-      {
-        "name": "CacScreen",
         "children": []
       }
     ]

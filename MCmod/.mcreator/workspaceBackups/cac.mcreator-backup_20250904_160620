@@ -3179,22 +3179,6 @@
             "type": "cmdcontext"
           },
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -4522,7 +4506,7 @@
       "value": "false"
     },
     {
-      "name": "Tuto_progress",
+      "name": "Tuto_content",
       "type": "string",
       "scope": "map",
       "value": "\"\""

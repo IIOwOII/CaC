@@ -22,7 +22,7 @@ public class CmdTutorialCommand {
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cac_tutorial")
 
-				.then(Commands.argument("type", StringArgumentType.word()).executes(arguments -> {
+				.then(Commands.argument("type", StringArgumentType.word()).then(Commands.argument("content", StringArgumentType.word()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();
@@ -34,8 +34,8 @@ public class CmdTutorialCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TutoManageProcedure.execute(world, x, y, z, arguments, entity);
+					TutoManageProcedure.execute(world, arguments);
 					return 0;
-				})));
+				}))));
 	}
 }
