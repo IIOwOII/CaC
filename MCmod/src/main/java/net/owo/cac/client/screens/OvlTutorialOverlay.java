@@ -16,11 +16,10 @@ import net.minecraft.client.Minecraft;
 
 import net.owo.cac.CstState;
 import net.owo.cac.CstTutorial;
-import net.owo.cac.network.CacModVariables;
-import net.owo.cac.network.CacModVariables.MapVariables;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.platform.GlStateManager;
+import net.minecraft.client.gui.GuiGraphics;
 
 @Mod.EventBusSubscriber({Dist.CLIENT})
 public class OvlTutorialOverlay {
@@ -42,8 +41,6 @@ public class OvlTutorialOverlay {
 		if (world == null)
 			return;
 		
-		MapVariables cacvar = CacModVariables.MapVariables.get(world);
-		
 		RenderSystem.disableDepthTest();
 		RenderSystem.depthMask(false);
 		RenderSystem.enableBlend();
@@ -51,9 +48,12 @@ public class OvlTutorialOverlay {
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		
-		if (cacvar.Tuto_switch) {
-			if (cacvar.Tuto_content.equals("moving")) {
-				event.getGuiGraphics().blit(new ResourceLocation("cac:textures/screens/texture_cac_direction_"+Integer.toString(CstTutorial.getMovingOrder())+".png"), w/2-60, h/2-60, 0, 0, 120, 120, 120, 120);
+		if (CstTutorial.is_tutorial) {
+			GuiGraphics gg = event.getGuiGraphics();
+			if (CstTutorial.content.equals("book")) {
+				gg.blit(new ResourceLocation("cac:textures/screens/texture_cac_book_"+Integer.toString(CstTutorial.getBookIndex())+".png"), 0, 0, 0, 0, 427, 240, 427, 240);
+			} else if (CstTutorial.content.equals("moving")) {
+				gg.blit(new ResourceLocation("cac:textures/screens/texture_cac_direction_"+Integer.toString(CstTutorial.getMovingOrder())+".png"), w/2-60, h/2-60, 0, 0, 120, 120, 120, 120);
 			}
 		}
 		RenderSystem.depthMask(true);

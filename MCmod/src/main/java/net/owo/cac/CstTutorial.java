@@ -13,18 +13,31 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 
 import net.owo.cac.CstState;
-import net.owo.cac.network.CacModVariables;
-import net.owo.cac.network.CacModVariables.MapVariables;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstTutorial {
+	public static boolean is_tutorial = false;
 	public static String content = "";
 	public static String content_old = "";
 	public static boolean content_changed = false;
-	
-	public static int[] meowmove_footprint = {0,0,0,0,0,0,0,0};
+
+	public static int tuto_idx = 0;
+	public static int book_idx = 0;
 	public static int moving_idx = 0;
 	public static int[] moving_ord = {2,0,5,3,6,1,7,4};
+	public static int[] meowmove_footprint = {0,0,0,0,0,0,0,0};
+
+	public static void resetTutorial() {
+		content = "";
+		content_old = "";
+		tuto_idx = 0;
+		book_idx = 0;
+		moving_idx = 0;
+	}
+	
+	public static int getBookIndex() {
+		return book_idx;
+	}
 	
 	public static int getMovingOrder() {
 		return moving_ord[moving_idx];
@@ -37,15 +50,14 @@ public class CstTutorial {
 	    	if (_ent == null) return;
 	    	LevelAccessor world = _ent.level();
 	    	if (world == null) return;
-	    	
-	    	MapVariables cacvar = CacModVariables.MapVariables.get(world);
-	    	if (!cacvar.Tuto_switch) return;
-			content = cacvar.Tuto_content;
+	    	if (!is_tutorial) return;
 	    	
 			content_changed = (!content.equals(content_old));
 			content_old = content;
-	
-			if (content.equals("moving")) {
+
+			if (content.equals("book") && CstState.getKeyChanged(5) == 0) {
+				book_idx += 1;
+			} else if (content.equals("moving")) {
 				if (content_changed) {
 					meowmove_footprint = CstState.meowmove_tick.clone();
 					moving_idx = 0;
@@ -53,8 +65,6 @@ public class CstTutorial {
 					moving_idx += 1;
 				} else if (moving_idx == 8) {
 					content = "";
-					cacvar.Tuto_content = "";
-					cacvar.syncData(world);
 				}
 			}
 		}

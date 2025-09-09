@@ -15,7 +15,7 @@ public class RecScannerProcedure {
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonArray arr_TR = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_absolute = new com.google.gson.JsonArray();
-		if (CacModVariables.Log_scanner.exists()) {
+		if (CacModVariables.MapVariables.get(world).Log_type.contains("C")) {
 			{
 				try {
 					BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_scanner));

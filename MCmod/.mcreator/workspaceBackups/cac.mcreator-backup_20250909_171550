@@ -2477,38 +2477,6 @@
       "path": "~/CacTask/Record"
     },
     {
-      "name": "CacKeyDecide",
-      "type": "keybind",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cac_key_decide",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/network/CacKeyDecideMessage.java"
-        ]
-      },
-      "path": "~/CacKey"
-    },
-    {
-      "name": "KeyDecideOn",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "key_decide_on",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/KeyDecideOnProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacKey"
-    },
-    {
       "name": "FncManageSurveyOrder",
       "type": "procedure",
       "compiles": true,
@@ -3706,18 +3674,51 @@
       }
     },
     {
-      "name": "TutoSwitchOff",
+      "name": "TutoOn",
       "type": "procedure",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "tuto_switch_off",
+      "registry_name": "tuto_on",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/TutoSwitchOffProcedure.java"
+          "src/main/java/net/owo/cac/procedures/TutoOnProcedure.java"
         ],
         "dependencies": []
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoOff",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_off",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoOffProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "IniPoolTutorial",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_pool_tutorial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniPoolTutorialProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Pool"
     }
   ],
   "variable_elements": [
@@ -4520,16 +4521,10 @@
       "value": "false"
     },
     {
-      "name": "Tuto_content",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Tuto_switch",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
+      "name": "Pool_tutorial",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
     }
   ],
   "sound_elements": [
@@ -4563,8 +4558,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",

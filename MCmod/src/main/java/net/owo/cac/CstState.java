@@ -7,10 +7,10 @@ public class CstState {
     public static int[] meowmove_tick = {0, 0, 0, 0, 0, 0, 0, 0}; // Total tick not reset
     public static float rot_angle = 0F;
 
-	public static boolean[] key_pressed = {false, false, false, false, false};
-	public static boolean[] key_pressed_old = {false, false, false, false, false};
-	public static int[] key_pressed_tick = {0, 0, 0, 0, 0};
-	
+	public static boolean[] key_pressed = {false, false, false, false, false, false};
+	public static boolean[] key_pressed_old = {false, false, false, false, false, false};
+	public static int[] key_pressed_tick = {0, 0, 0, 0};
+
     public static void switchMeowView() {
     	IsMeowView = (!IsMeowView);
     }
@@ -20,7 +20,7 @@ public class CstState {
     }
 
     public static void KeyTickUpdate() {
-    	for (int KI=0; KI<5; KI++) {
+    	for (int KI=0; KI<4; KI++) {
     		if (key_pressed[KI]) {
     			key_pressed_tick[KI] += 1;
     		} else {
@@ -40,7 +40,7 @@ public class CstState {
     	n (0~7) : n*45 degree
     	*/
     	int ang = -1;
-    	int godel = (int) Math.round(Math.pow(2, 1+(key_pressed[1]?1:0)-(key_pressed[2]?1:0)) * Math.pow(3, 1+(key_pressed[3]?1:0)-(key_pressed[4]?1:0)));
+    	int godel = (int) Math.round(Math.pow(2, 1+(key_pressed[0]?1:0)-(key_pressed[1]?1:0)) * Math.pow(3, 1+(key_pressed[2]?1:0)-(key_pressed[3]?1:0)));
 		switch (godel) {
 			case 1: ang = 5; break; // 0,0
 			case 2: ang = 6; break; // 1,0
@@ -53,6 +53,26 @@ public class CstState {
 			case 36: ang = 1; break; // 2,2
 		}
 		return ang;
+    }
+
+    public static void AngleUpdate() {
+    	int ang = getKeyCase();
+    	if (ang == -1) {
+    		return;
+    	}
+    	
+    	float rot = 0.0F;
+    	switch (ang) {
+    		case 0: rot = -90.0F; break;
+    		case 1: rot = -135.0F; break;
+    		case 2: rot = 180.0F; break;
+    		case 3: rot = 135.0F; break;
+    		case 4: rot = 90.0F; break;
+    		case 5: rot = 45.0F; break;
+    		case 6: rot = 0.0F; break;
+    		case 7: rot = -45.0F; break;
+    	}
+    	rot_angle = rot;
     }
 
 	public static int getKeyChanged(int KI) {

@@ -56,6 +56,8 @@ public class CacModVariables {
 	public static File Log_survey = new File("");
 	public static File Pool_psychometric = new File("");
 	public static File Log_scanner = new File("");
+	public static File Pool_tutorial = new File("");
+	public static com.google.gson.JsonArray Tuto_que = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -226,8 +228,7 @@ public class CacModVariables {
 		public double Tuto_hurdle_stack = 0;
 		public double Tuto_score = 0;
 		public boolean Tuto_score_running = false;
-		public String Tuto_content = "\"\"";
-		public boolean Tuto_switch = false;
+		public String Log_type = "\"\"";
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -373,8 +374,7 @@ public class CacModVariables {
 			Tuto_hurdle_stack = nbt.getDouble("Tuto_hurdle_stack");
 			Tuto_score = nbt.getDouble("Tuto_score");
 			Tuto_score_running = nbt.getBoolean("Tuto_score_running");
-			Tuto_content = nbt.getString("Tuto_content");
-			Tuto_switch = nbt.getBoolean("Tuto_switch");
+			Log_type = nbt.getString("Log_type");
 		}
 
 		@Override
@@ -560,8 +560,7 @@ public class CacModVariables {
 			nbt.putDouble("Tuto_hurdle_stack", Tuto_hurdle_stack);
 			nbt.putDouble("Tuto_score", Tuto_score);
 			nbt.putBoolean("Tuto_score_running", Tuto_score_running);
-			nbt.putString("Tuto_content", Tuto_content);
-			nbt.putBoolean("Tuto_switch", Tuto_switch);
+			nbt.putString("Log_type", Log_type);
 			return nbt;
 		}
 

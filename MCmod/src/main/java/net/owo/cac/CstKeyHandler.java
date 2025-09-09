@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.chat.Component;
@@ -34,27 +33,16 @@ public class CstKeyHandler {
 	
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
-		
+    	InputConstants.Key key_forward = InputConstants.getKey("key.keyboard.w");
+    	
         if (event.phase == TickEvent.Phase.END) {
-        	
-			if (CstState.getKeyChanged(0) == 0) {
+			if (CstState.getKeyChanged(4) == 0) {
 				CstState.switchMeowView();
 			}
-        	
 			if (CstState.CanMeowMove) {
 				CstState.KeyTickUpdate();
-				
-	            int rot_re = (CstState.key_pressed[1] ? 1 : 0) - (CstState.key_pressed[2] ? 1 : 0);
-	            int rot_im = (CstState.key_pressed[3] ? 1 : 0) - (CstState.key_pressed[4] ? 1 : 0);
-	            double rot_norm = Math.sqrt(rot_re*rot_re + rot_im*rot_im);
-	            
-	            if (rot_norm != 0) {
-	            	float rot_angle_unsign = (float) (Math.acos(-rot_im / rot_norm) * Mth.RAD_TO_DEG);
-	            	CstState.rot_angle = (rot_re > 0) ? -rot_angle_unsign : rot_angle_unsign;
-	            }
-	            
-	            InputConstants.Key key_forward = InputConstants.getKey("key.keyboard.w");
-	            if ((rot_re != 0) || (rot_im != 0)) {
+				CstState.AngleUpdate();
+	            if (CstState.getKeyCase() != -1) {
 	            	KeyMapping.set(key_forward, true);
 	            	CstState.IsMeowMove_old = true;
 	            } else if (CstState.IsMeowMove_old) {
@@ -65,7 +53,6 @@ public class CstKeyHandler {
         }
         
     }
-
 	
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -98,20 +85,20 @@ public class CstKeyHandler {
 				}
     		} 
     		if (cacvar.Switch_surrender) {
-    			if ((CstState.key_pressed[1]) && (cacvar.Dat_survey_surrender != 1)) {
+    			if ((CstState.key_pressed[0]) && (cacvar.Dat_survey_surrender != 1)) {
     				cacvar.Dat_survey_surrender = 1;
     				cacvar.syncData(world);
-    			} else if ((CstState.key_pressed[2]) && (cacvar.Dat_survey_surrender != 0)) {
+    			} else if ((CstState.key_pressed[1]) && (cacvar.Dat_survey_surrender != 0)) {
     				cacvar.Dat_survey_surrender = 0;
     				cacvar.syncData(world);
     			}
     		} 
     		if ((_livent != null) && ((_livent.getMainHandItem().getItem() == CacModItems.CAC_TEST_ITEM.get()) || (_livent.getMainHandItem().getItem() == CacModItems.CAC_BUILDER_TOOL.get()))) {
-    			if (CstState.getKeyChanged(1) == 0) {
+    			if (CstState.getKeyChanged(0) == 0) {
     				PrdItemOptionPlusProcedure.execute(world, _ent);
     				PrdItemOptionPrintProcedure.execute(world, _ent);
     			}
-    			if (CstState.getKeyChanged(2) == 0) {
+    			if (CstState.getKeyChanged(1) == 0) {
     				PrdItemOptionMinusProcedure.execute(world, _ent);
     				PrdItemOptionPrintProcedure.execute(world, _ent);
     			}

@@ -1,0 +1,15 @@
+{
+  "debug_all": [
+    "book",
+    "moving",
+    "book",
+    "checkpoint",
+    "book",
+    "racing",
+    "book",
+    "chasing",
+    "book",
+    "chased",
+    "finish"
+  ]
+}
