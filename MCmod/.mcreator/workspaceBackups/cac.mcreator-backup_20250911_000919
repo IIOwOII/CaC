@@ -509,6 +509,22 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3143,14 +3159,6 @@
         ],
         "dependencies": [
           {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -3739,6 +3747,25 @@
             "name": "entity",
             "type": "entity"
           },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoStartProcedure.java"
+        ],
+        "dependencies": [
           {
             "name": "world",
             "type": "world"
@@ -4564,12 +4591,6 @@
       "type": "string",
       "scope": "map",
       "value": "\"\""
-    },
-    {
-      "name": "TimR_countdown_time",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
     }
   ],
   "sound_elements": [
@@ -4603,8 +4624,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",

@@ -20,5 +20,8 @@
   "simulation_end": -1,
   "test_end": -1,
   "pseudo_end": -1,
+  "tutorial_init": 100,
+  "tutorial_on": -1,
+  "tutorial_off": 2,
   "blank": 60
 }

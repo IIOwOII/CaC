@@ -7,7 +7,8 @@
   "pseudo_chased": "EPG",
   "simulation_chasing": "EPG",
   "simulation_chased": "EPG",
-  "tuto_debug_all": "",
+  "tutorial_debug_book": "",
+  "tutorial_debug_all": "",
   "chasing": "EPGASCR",
   "chased": "EPGASCR"
 }

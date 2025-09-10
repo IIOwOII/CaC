@@ -6,14 +6,12 @@ import net.minecraft.world.level.LevelAccessor;
 
 import java.io.IOException;
 import java.io.FileReader;
-import java.io.File;
 import java.io.BufferedReader;
 
 public class IniPoolQueProcedure {
 	public static void execute(LevelAccessor world) {
 		com.google.gson.JsonObject obj_que = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
-		CacModVariables.Pool_que = new File(CacModVariables.MapVariables.get(world).Dir_components, File.separator + "pool_que.json");
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_que));
@@ -24,12 +22,14 @@ public class IniPoolQueProcedure {
 				}
 				bufferedReader.close();
 				obj_que = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				obj_session = obj_que.get(CacModVariables.MapVariables.get(world).Exp_session).getAsJsonObject();
+				if (obj_que.get(CacModVariables.MapVariables.get(world).Exp_session).isJsonObject()) {
+					obj_session = obj_que.get(CacModVariables.MapVariables.get(world).Exp_session).getAsJsonObject();
+					CacModVariables.Ev_que = obj_session.get("trial").getAsJsonArray();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		CacModVariables.Ev_que = obj_session.get("trial").getAsJsonArray();
 		CacModVariables.Ev_que_index = 0;
 	}
 }

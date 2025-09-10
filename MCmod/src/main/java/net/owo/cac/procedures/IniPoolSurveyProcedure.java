@@ -9,7 +9,6 @@ import net.minecraft.nbt.DoubleTag;
 
 import java.io.IOException;
 import java.io.FileReader;
-import java.io.File;
 import java.io.BufferedReader;
 
 public class IniPoolSurveyProcedure {
@@ -21,7 +20,6 @@ public class IniPoolSurveyProcedure {
 		double idx = 0;
 		double total_number = 0;
 		String name = "";
-		CacModVariables.Pool_survey = new File(CacModVariables.MapVariables.get(world).Dir_components, File.separator + "pool_survey.json");
 		CacModVariables.MapVariables.get(world).Suv_reference = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Suv_type = new ListTag();

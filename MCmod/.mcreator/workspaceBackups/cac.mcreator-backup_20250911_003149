@@ -1559,25 +1559,6 @@
       "path": "~/CacEvent"
     },
     {
-      "name": "IniPoolEvent",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_event",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolEventProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
-    },
-    {
       "name": "EvInvoke",
       "type": "procedure",
       "compiles": true,
@@ -1611,25 +1592,6 @@
         ]
       },
       "path": "~/CacEvent"
-    },
-    {
-      "name": "IniPoolTask",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_task",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolTaskProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
     },
     {
       "name": "IniPoolPoint",
@@ -3143,10 +3105,6 @@
         ],
         "dependencies": [
           {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -3742,6 +3700,44 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "IniQue",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_que",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniQueProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Pool"
     }
   ],
   "variable_elements": [
@@ -4554,6 +4550,12 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Log_type",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
     }
   ],
   "sound_elements": [

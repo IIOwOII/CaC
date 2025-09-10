@@ -10,7 +10,6 @@ import net.minecraft.nbt.DoubleTag;
 
 import java.io.IOException;
 import java.io.FileReader;
-import java.io.File;
 import java.io.BufferedReader;
 
 public class IniPoolPointProcedure {
@@ -40,7 +39,6 @@ public class IniPoolPointProcedure {
 		double num_checkpoint_interval = 0;
 		ListTag pos_point;
 		ListTag pos_checkpoint;
-		CacModVariables.Pool_point = new File(CacModVariables.MapVariables.get(world).Dir_components, File.separator + "pool_point.json");
 		CacModVariables.MapVariables.get(world).List_spawnpoint_opponent = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
 		{

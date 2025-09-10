@@ -50,8 +50,8 @@ public class OvlTutorialOverlay {
 		
 		if (CstTutorial.is_tutorial) {
 			GuiGraphics gg = event.getGuiGraphics();
-			if (CstTutorial.content.equals("book")) {
-				gg.blit(new ResourceLocation("cac:textures/screens/texture_cac_book_"+Integer.toString(CstTutorial.getBookIndex())+".png"), 0, 0, 0, 0, 427, 240, 427, 240);
+			if (CstTutorial.content.startsWith("book")) {
+				gg.blit(new ResourceLocation("cac:textures/screens/texture_cac_book_"+CstTutorial.getBookName()+".png"), 0, 0, 0, 0, 427, 240, 427, 240);
 			} else if (CstTutorial.content.equals("moving")) {
 				gg.blit(new ResourceLocation("cac:textures/screens/texture_cac_direction_"+Integer.toString(CstTutorial.getMovingOrder())+".png"), w/2-60, h/2-60, 0, 0, 120, 120, 120, 120);
 			}

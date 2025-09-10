@@ -8,7 +8,6 @@ import net.minecraft.nbt.DoubleTag;
 
 import java.io.IOException;
 import java.io.FileReader;
-import java.io.File;
 import java.io.BufferedReader;
 
 public class IniPoolPsychometricProcedure {
@@ -25,7 +24,6 @@ public class IniPoolPsychometricProcedure {
 		double step_gamma = 0;
 		double step_lambda = 0;
 		double param_temp = 0;
-		CacModVariables.Pool_psychometric = new File(CacModVariables.MapVariables.get(world).Dir_components, File.separator + "pool_psychometric.json");
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_psychometric));

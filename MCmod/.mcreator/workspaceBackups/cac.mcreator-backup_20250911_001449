@@ -509,6 +509,22 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3143,14 +3159,6 @@
         ],
         "dependencies": [
           {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -3739,6 +3747,25 @@
             "name": "entity",
             "type": "entity"
           },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoStartProcedure.java"
+        ],
+        "dependencies": [
           {
             "name": "world",
             "type": "world"

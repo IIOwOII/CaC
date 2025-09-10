@@ -14,8 +14,6 @@ public class TimCountdownProcedure {
 			return;
 		CacModVariables.MapVariables.get(world).Switch_countdown = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).TimR_countdown_time = 100;
-		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

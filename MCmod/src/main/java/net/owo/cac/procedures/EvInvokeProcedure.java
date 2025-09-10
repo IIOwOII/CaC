@@ -34,11 +34,6 @@ public class EvInvokeProcedure {
 					CacModVariables.MapVariables.get(world).syncData(world);
 					CacModVariables.Ev_que_loop = true;
 					SimStartProcedure.execute(world);
-				} else if ((ev_content).equals("tutorial_checkpoint_start")) {
-					CacModVariables.MapVariables.get(world).Switch_que = true;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					TimCountdownProcedure.execute(world, entity);
-					TutoCheckpointStartProcedure.execute(world);
 				}
 			} else if (ev_content.startsWith("phase")) {
 				if ((ev_content).equals("phase_pretrial")) {
@@ -84,7 +79,22 @@ public class EvInvokeProcedure {
 					CacModVariables.MapVariables.get(world).syncData(world);
 				}
 			} else if (ev_content.startsWith("tutorial")) {
-				if ((ev_content).equals("tutorial_checkpoint")) {
+				if ((ev_content).equals("tutorial_init")) {
+					CacModVariables.MapVariables.get(world).Switch_que = true;
+					CacModVariables.MapVariables.get(world).syncData(world);
+					TimCountdownProcedure.execute(world, entity);
+					CacModVariables.MapVariables.get(world).Ev_content = "tutorial_on";
+					CacModVariables.MapVariables.get(world).syncData(world);
+				} else if ((ev_content).equals("tutorial_on")) {
+					TutoOnProcedure.execute();
+					TutoStartProcedure.execute(world);
+				} else if ((ev_content).equals("tutorial_off")) {
+					CacModVariables.MapVariables.get(world).Switch_que = false;
+					CacModVariables.MapVariables.get(world).syncData(world);
+					CacModVariables.MapVariables.get(world).Switch_timer = false;
+					CacModVariables.MapVariables.get(world).syncData(world);
+					TutoOffProcedure.execute();
+				} else if ((ev_content).equals("tutorial_checkpoint")) {
 					TutoCheckpointProcedure.execute(world);
 				} else if ((ev_content).equals("tutorial_checkpoint_end")) {
 					CacModVariables.MapVariables.get(world).Switch_que = false;

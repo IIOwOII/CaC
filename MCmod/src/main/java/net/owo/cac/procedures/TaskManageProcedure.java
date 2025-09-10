@@ -37,6 +37,7 @@ public class TaskManageProcedure {
 			CacModVariables.MapVariables.get(world).syncData(world);
 		}
 		IniPoolProcedure.execute(world);
+		IniQueProcedure.execute(world);
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_task));

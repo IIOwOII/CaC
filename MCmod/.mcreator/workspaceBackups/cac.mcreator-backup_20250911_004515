@@ -1559,25 +1559,6 @@
       "path": "~/CacEvent"
     },
     {
-      "name": "IniPoolEvent",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_event",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolEventProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
-    },
-    {
       "name": "EvInvoke",
       "type": "procedure",
       "compiles": true,
@@ -1611,25 +1592,6 @@
         ]
       },
       "path": "~/CacEvent"
-    },
-    {
-      "name": "IniPoolTask",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_task",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolTaskProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
     },
     {
       "name": "IniPoolPoint",
@@ -1741,25 +1703,6 @@
         ]
       },
       "path": "~/CacTimer"
-    },
-    {
-      "name": "IniPoolQue",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_que",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolQueProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
     },
     {
       "name": "EvReset",
@@ -3147,6 +3090,22 @@
             "type": "cmdcontext"
           },
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3702,14 +3661,56 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "IniPoolTutorial",
+      "name": "TutoReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "IniQue",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "ini_pool_tutorial",
+      "registry_name": "ini_que",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolTutorialProcedure.java"
+          "src/main/java/net/owo/cac/procedures/IniQueProcedure.java"
         ],
         "dependencies": [
           {
@@ -4531,6 +4532,12 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Log_type",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
     }
   ],
   "sound_elements": [
@@ -4564,8 +4571,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",

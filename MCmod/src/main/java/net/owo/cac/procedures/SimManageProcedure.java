@@ -6,10 +6,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.commands.CommandSourceStack;
 
-import java.io.IOException;
-import java.io.FileReader;
-import java.io.BufferedReader;
-
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
@@ -17,8 +13,6 @@ public class SimManageProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
-		com.google.gson.JsonObject obj_que = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
 		CacModVariables.MapVariables.get(world).Exp_subject = "simulation";
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Dat_trial_type = DoubleArgumentType.getDouble(arguments, "type");
@@ -40,23 +34,7 @@ public class SimManageProcedure {
 		EvResetProcedure.execute(world);
 		TimResetProcedure.execute(world);
 		IniLogProcedure.execute(world);
-		{
-			try {
-				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_que));
-				StringBuilder jsonstringbuilder = new StringBuilder();
-				String line;
-				while ((line = bufferedReader.readLine()) != null) {
-					jsonstringbuilder.append(line);
-				}
-				bufferedReader.close();
-				obj_que = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				obj_session = obj_que.get(CacModVariables.MapVariables.get(world).Exp_session).getAsJsonObject();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		CacModVariables.MapVariables.get(world).Ev_content = obj_session.get("initial").getAsString();
-		CacModVariables.MapVariables.get(world).syncData(world);
+		IniQueProcedure.execute(world);
 		EvQueCallProcedure.execute(world, x, y, z, entity);
 	}
 }

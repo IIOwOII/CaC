@@ -34,7 +34,7 @@ public class CmdTutorialCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TutoManageProcedure.execute(world, arguments, entity);
+					TutoManageProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				})));
 	}
