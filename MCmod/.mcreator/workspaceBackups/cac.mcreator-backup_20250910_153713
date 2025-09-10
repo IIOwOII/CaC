@@ -3147,6 +3147,10 @@
             "type": "cmdcontext"
           },
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3672,6 +3676,76 @@
           "src/main/java/net/owo/cac/CstTutorial.java"
         ]
       }
+    },
+    {
+      "name": "TutoOn",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_on",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoOnProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoOff",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_off",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoOffProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "IniPoolTutorial",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_pool_tutorial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniPoolTutorialProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "TutoReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [
@@ -4472,6 +4546,24 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Pool_tutorial",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Tuto_que",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Log_type",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
     }
   ],
   "sound_elements": [

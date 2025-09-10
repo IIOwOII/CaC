@@ -1,6 +1,7 @@
 package net.owo.cac;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,6 +34,7 @@ public class CstTutorial {
 		tuto_idx = 0;
 		book_idx = 0;
 		moving_idx = 0;
+		Arrays.fill(meowmove_footprint, 0);
 	}
 	
 	public static int getBookIndex() {

@@ -36,6 +36,11 @@ public class TutoManageProcedure {
 					CacModVariables.MapVariables.get(world).Exp_session = "tuto_" + StringArgumentType.getString(arguments, "type");
 					CacModVariables.MapVariables.get(world).syncData(world);
 					IniLogProcedure.execute(world);
+					EvResetProcedure.execute(world);
+					TimResetProcedure.execute(world);
+					TimCountdownProcedure.execute(world, entity);
+					CacModVariables.MapVariables.get(world).Ev_content = "tutorial_start";
+					CacModVariables.MapVariables.get(world).syncData(world);
 				} else {
 					if (!world.isClientSide() && world.getServer() != null)
 						world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Please check the command!"), false);

@@ -12,14 +12,15 @@ public class TimCountdownProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		PrdMeowViewOnProcedure.execute();
 		CacModVariables.MapVariables.get(world).Switch_countdown = true;
+		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.MapVariables.get(world).TimR_countdown_time = 100;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
 				_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "title @p title \"\uC7A0\uC2DC \uD6C4 \uC2E4\uD5D8\uC774 \uC2DC\uC791\uB429\uB2C8\uB2E4.\"");
+						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "title @p title \"\uC7A0\uC2DC \uD6C4 \uC2DC\uC791\uD569\uB2C8\uB2E4.\"");
 			}
 		}
 	}

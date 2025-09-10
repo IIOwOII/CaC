@@ -229,6 +229,7 @@ public class CacModVariables {
 		public double Tuto_score = 0;
 		public boolean Tuto_score_running = false;
 		public String Log_type = "\"\"";
+		public double TimR_countdown_time = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -375,6 +376,7 @@ public class CacModVariables {
 			Tuto_score = nbt.getDouble("Tuto_score");
 			Tuto_score_running = nbt.getBoolean("Tuto_score_running");
 			Log_type = nbt.getString("Log_type");
+			TimR_countdown_time = nbt.getDouble("TimR_countdown_time");
 		}
 
 		@Override
@@ -561,6 +563,7 @@ public class CacModVariables {
 			nbt.putDouble("Tuto_score", Tuto_score);
 			nbt.putBoolean("Tuto_score_running", Tuto_score_running);
 			nbt.putString("Log_type", Log_type);
+			nbt.putDouble("TimR_countdown_time", TimR_countdown_time);
 			return nbt;
 		}
 
