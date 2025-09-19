@@ -46,28 +46,28 @@ public class PrdTpProcedure {
 							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "tp @p 0.5 90 -49.5 180 90");
 				}
 			}
-		} else if ((pos_name).equals("tuto_beginner")) {
+		} else if ((pos_name).equals("tutorial_beginner")) {
 			{
 				Entity _ent = entity;
 				if (!_ent.level().isClientSide() && _ent.getServer() != null) {
 					_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "tp @p 0.5 64 -49.5");
+							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "tp @p -73.5 63.0 18.5");
 				}
 			}
-		} else if ((pos_name).equals("tuto_checkpoint")) {
+		} else if ((pos_name).equals("tutorial_checkpoint")) {
 			{
 				Entity _ent = entity;
 				if (!_ent.level().isClientSide() && _ent.getServer() != null) {
 					_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "tp @p -76.5 63.0 -78.5");
+							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "tp @p -76.5 64.0 -78.5");
 				}
 			}
-		} else if ((pos_name).equals("tuto_racing")) {
+		} else if ((pos_name).equals("tutorial_racing")) {
 			{
 				Entity _ent = entity;
 				if (!_ent.level().isClientSide() && _ent.getServer() != null) {
 					_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "tp @p 101.5 63.0 18.5 -90.0 0.0");
+							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "tp @p 102.5 63.0 18.5 -90.0 0.0");
 				}
 			}
 		}

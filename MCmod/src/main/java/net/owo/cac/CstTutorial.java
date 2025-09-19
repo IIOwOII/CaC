@@ -14,22 +14,29 @@ import net.minecraftforge.eventbus.api.Event;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.CommandSource;
 
 import net.owo.cac.CstState;
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.network.CacModVariables.MapVariables;
 import net.owo.cac.procedures.EvQueCallProcedure;
 
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstTutorial {
 	public static JsonArray tuto_que = new JsonArray();
+	public static int tuto_idx = 0;
 
+	public static boolean tuto_timer_switch = false;
+	public static int tuto_timer = 0;
+	
 	public static boolean is_tutorial = false;
 	public static String content = "";
 	public static String content_old = "";
 	public static boolean content_changed = false;
-
-	public static int tuto_idx = 0;
+	
 	public static int moving_idx = 0;
 	public static int[] moving_ord = {2,0,5,3,6,1,7,4};
 	public static int[] meowmove_footprint = {0,0,0,0,0,0,0,0};
@@ -38,8 +45,19 @@ public class CstTutorial {
 		content = "";
 		content_old = "";
 		tuto_idx = 0;
+		stopTimer();
 		moving_idx = 0;
 		Arrays.fill(meowmove_footprint, 0);
+	}
+
+	public static void startTimer() {
+		tuto_timer_switch = true;
+		tuto_timer = 0;
+	}
+
+	public static void stopTimer() {
+		tuto_timer_switch = false;
+		tuto_timer = 0;
 	}
 
 	public static void updateTutoQue() {
@@ -55,37 +73,71 @@ public class CstTutorial {
 	}
 	
 	public static int getMovingOrder() {
-		return moving_ord[moving_idx];
+		int ord = 0;
+		if (moving_idx == moving_ord.length) {
+			ord = moving_ord[moving_ord.length-1];
+		} else {
+			ord = moving_ord[moving_idx];
+		}
+		return ord;
 	}
 	
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		if (!is_tutorial) return;
 		if (event.phase == TickEvent.Phase.END) {
 			@Nullable Entity _ent = event.player;
 	    	if (_ent == null) return;
 	    	LevelAccessor world = _ent.level();
 	    	if (world == null) return;
-	    	if (!is_tutorial) return;
+
+			MapVariables cacvar = CacModVariables.MapVariables.get(world);
 	    	
 			content_changed = (!content.equals(content_old));
 			content_old = content;
+
+			if (tuto_timer_switch) {
+				tuto_timer += 1;
+			}
 			
 			if (content.equals("finish")) {
-				CacModVariables.MapVariables.get(world).Ev_content = "tutorial_off";
-				CacModVariables.MapVariables.get(world).syncData(world);
-				EvQueCallProcedure.execute(world, 0, 65, 0, _ent);
-			} else if (content.startsWith("book") && CstState.getKeyChanged(5) == 0) {
-				updateTutoQue();
-			} else if (content.equals("moving")) {
+				cacvar.Ev_content = "tutorial_off";
+				cacvar.syncData(world);
+				EvQueCallProcedure.execute(world, _ent.getX(), _ent.getY(), _ent.getZ(), _ent);
+			} else if (content.startsWith("book")) {
 				if (content_changed) {
-					meowmove_footprint = CstState.meowmove_tick.clone();
-					moving_idx = 0;
-				} else if ((moving_idx < 8) && (CstState.meowmove_tick[moving_ord[moving_idx]] > meowmove_footprint[moving_ord[moving_idx]] + 60)) {
-					moving_idx += 1;
-				} else if (moving_idx == 8) {
+					CstState.CanMeowMove = false;
+				} else if (CstState.getKeyChanged(5) == 0) {
 					updateTutoQue();
 				}
+			} else if (content.equals("moving")) {
+				if (content_changed) {
+					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp tutorial_moving");
+					}
+					meowmove_footprint = CstState.meowmove_tick.clone();
+					cacvar.Msg_actionbar_text = "\uD654\uBA74\uC5D0 \uC9C0\uC2DC\uB41C \uBC29\uD5A5\uB300\uB85C \uACC4\uC18D \uC6C0\uC9C1\uC5EC\uC8FC\uC138\uC694.";
+					cacvar.syncData(world);
+					cacvar.Msg_actionbar_switch = true;
+					cacvar.syncData(world);
+					moving_idx = 0;
+				} else if ((moving_idx < moving_ord.length) && (CstState.meowmove_tick[moving_ord[moving_idx]] > meowmove_footprint[moving_ord[moving_idx]] + 60)) {
+					moving_idx += 1;
+				} else if (moving_idx == moving_ord.length) {
+					cacvar.Msg_actionbar_text = "\uC798\uD588\uC2B5\uB2C8\uB2E4!";
+					cacvar.syncData(world);
+					CstState.CanMeowMove = false;
+					content = "moving_end";
+					startTimer();
+				}
+			} else if (content.equals("moving_end") && (tuto_timer == 100)) {
+				cacvar.Msg_actionbar_switch = false;
+				cacvar.syncData(world);
+				stopTimer();
+				updateTutoQue();
 			}
+			
 		}
 	}
 }

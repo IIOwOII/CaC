@@ -1,9 +1,4 @@
 {
-  "tutorial_debug_book": [
-    "book_empty",
-	  "moving",
-	  "finish"
-  ],
   "tutorial_debug_all": [
     "book_empty",
     "moving",
@@ -15,6 +10,11 @@
     "chasing",
     "book_empty",
     "chased",
+    "finish"
+  ],
+  "tutorial_debug_book": [
+    "book_empty",
+    "moving",
     "finish"
   ]
 }

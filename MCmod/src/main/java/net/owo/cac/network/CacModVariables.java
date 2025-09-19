@@ -210,7 +210,6 @@ public class CacModVariables {
 		public ListTag Psy_param_gamma = new ListTag();
 		public ListTag Psy_param_lambda = new ListTag();
 		public ListTag Psy_likelihood = new ListTag();
-		public boolean Switch_countdown = false;
 		public ListTag Dat_psy_param = new ListTag();
 		public boolean Switch_scanner = false;
 		public double TimS_time = 0;
@@ -229,6 +228,9 @@ public class CacModVariables {
 		public double Tuto_score = 0;
 		public boolean Tuto_score_running = false;
 		public String Log_type = "\"\"";
+		public boolean Msg_countdown_switch = false;
+		public boolean Msg_actionbar_switch = false;
+		public String Msg_actionbar_text = "\"\"";
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -347,7 +349,6 @@ public class CacModVariables {
 			this.Psy_param_gamma = nbt.get("Psy_param_gamma") instanceof ListTag Psy_param_gamma ? Psy_param_gamma : new ListTag();
 			this.Psy_param_lambda = nbt.get("Psy_param_lambda") instanceof ListTag Psy_param_lambda ? Psy_param_lambda : new ListTag();
 			this.Psy_likelihood = nbt.get("Psy_likelihood") instanceof ListTag Psy_likelihood ? Psy_likelihood : new ListTag();
-			Switch_countdown = nbt.getBoolean("Switch_countdown");
 			this.Dat_psy_param = nbt.get("Dat_psy_param") instanceof ListTag Dat_psy_param ? Dat_psy_param : new ListTag();
 			Switch_scanner = nbt.getBoolean("Switch_scanner");
 			TimS_time = nbt.getDouble("TimS_time");
@@ -375,6 +376,9 @@ public class CacModVariables {
 			Tuto_score = nbt.getDouble("Tuto_score");
 			Tuto_score_running = nbt.getBoolean("Tuto_score_running");
 			Log_type = nbt.getString("Log_type");
+			Msg_countdown_switch = nbt.getBoolean("Msg_countdown_switch");
+			Msg_actionbar_switch = nbt.getBoolean("Msg_actionbar_switch");
+			Msg_actionbar_text = nbt.getString("Msg_actionbar_text");
 		}
 
 		@Override
@@ -521,7 +525,6 @@ public class CacModVariables {
 			nbt.put("Psy_param_gamma", this.Psy_param_gamma);
 			nbt.put("Psy_param_lambda", this.Psy_param_lambda);
 			nbt.put("Psy_likelihood", this.Psy_likelihood);
-			nbt.putBoolean("Switch_countdown", Switch_countdown);
 			nbt.put("Dat_psy_param", this.Dat_psy_param);
 			nbt.putBoolean("Switch_scanner", Switch_scanner);
 			nbt.putDouble("TimS_time", TimS_time);
@@ -561,6 +564,9 @@ public class CacModVariables {
 			nbt.putDouble("Tuto_score", Tuto_score);
 			nbt.putBoolean("Tuto_score_running", Tuto_score_running);
 			nbt.putString("Log_type", Log_type);
+			nbt.putBoolean("Msg_countdown_switch", Msg_countdown_switch);
+			nbt.putBoolean("Msg_actionbar_switch", Msg_actionbar_switch);
+			nbt.putString("Msg_actionbar_text", Msg_actionbar_text);
 			return nbt;
 		}
 

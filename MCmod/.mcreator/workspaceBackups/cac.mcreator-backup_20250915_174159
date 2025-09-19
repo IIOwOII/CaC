@@ -509,8 +509,8 @@
         ],
         "dependencies": [
           {
-            "name": "world",
-            "type": "world"
+            "name": "entity",
+            "type": "entity"
           }
         ]
       },
@@ -1559,25 +1559,6 @@
       "path": "~/CacEvent"
     },
     {
-      "name": "IniPoolEvent",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_event",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolEventProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
-    },
-    {
       "name": "EvInvoke",
       "type": "procedure",
       "compiles": true,
@@ -1611,25 +1592,6 @@
         ]
       },
       "path": "~/CacEvent"
-    },
-    {
-      "name": "IniPoolTask",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_task",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolTaskProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
     },
     {
       "name": "IniPoolPoint",
@@ -1741,25 +1703,6 @@
         ]
       },
       "path": "~/CacTimer"
-    },
-    {
-      "name": "IniPoolQue",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_que",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolQueProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
     },
     {
       "name": "EvReset",
@@ -2696,20 +2639,6 @@
       "path": "~/CacTimer"
     },
     {
-      "name": "PrdMeowViewOn",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "prd_meow_view_on",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdMeowViewOnProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "RtnSurrenderTypeI",
       "type": "procedure",
       "compiles": true,
@@ -3142,6 +3071,26 @@
           "src/main/java/net/owo/cac/procedures/TutoManageProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
           {
             "name": "world",
             "type": "world"
@@ -3630,21 +3579,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "RtnDirectionScreen",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_direction_screen",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnDirectionScreenProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "OvlTutorial",
       "type": "overlay",
       "compiles": true,
@@ -3698,25 +3632,6 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "IniPoolTutorial",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_tutorial",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolTutorialProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
-    },
-    {
       "name": "TutoReset",
       "type": "procedure",
       "compiles": true,
@@ -3740,14 +3655,14 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "TutoStart",
+      "name": "IniQue",
       "type": "procedure",
       "compiles": true,
-      "locked_code": true,
-      "registry_name": "tuto_start",
+      "locked_code": false,
+      "registry_name": "ini_que",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/TutoStartProcedure.java"
+          "src/main/java/net/owo/cac/procedures/IniQueProcedure.java"
         ],
         "dependencies": [
           {
@@ -3755,6 +3670,20 @@
             "type": "world"
           }
         ]
+      },
+      "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "TutoQueClone",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_que_clone",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoQueCloneProcedure.java"
+        ],
+        "dependencies": []
       },
       "path": "~/CacTask/Tutorial"
     }
@@ -4572,6 +4501,24 @@
     },
     {
       "name": "Log_type",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_countdown_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Msg_actionbar_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Msg_actionbar_text",
       "type": "string",
       "scope": "map",
       "value": "\"\""

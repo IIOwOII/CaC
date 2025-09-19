@@ -22,6 +22,6 @@
   "pseudo_end": -1,
   "tutorial_init": 100,
   "tutorial_on": -1,
-  "tutorial_off": 2,
+  "tutorial_off": -1,
   "blank": 60
 }

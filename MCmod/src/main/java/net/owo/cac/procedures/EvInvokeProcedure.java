@@ -87,7 +87,6 @@ public class EvInvokeProcedure {
 					CacModVariables.MapVariables.get(world).syncData(world);
 				} else if ((ev_content).equals("tutorial_on")) {
 					TutoOnProcedure.execute();
-					TutoStartProcedure.execute(world);
 				} else if ((ev_content).equals("tutorial_off")) {
 					CacModVariables.MapVariables.get(world).Switch_que = false;
 					CacModVariables.MapVariables.get(world).syncData(world);

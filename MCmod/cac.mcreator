@@ -509,8 +509,8 @@
         ],
         "dependencies": [
           {
-            "name": "world",
-            "type": "world"
+            "name": "entity",
+            "type": "entity"
           }
         ]
       },
@@ -2639,20 +2639,6 @@
       "path": "~/CacTimer"
     },
     {
-      "name": "PrdMeowViewOn",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "prd_meow_view_on",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdMeowViewOnProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "RtnSurrenderTypeI",
       "type": "procedure",
       "compiles": true,
@@ -3593,21 +3579,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "RtnDirectionScreen",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_direction_screen",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnDirectionScreenProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "OvlTutorial",
       "type": "overlay",
       "compiles": true,
@@ -3684,25 +3655,6 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "TutoStart",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "tuto_start",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TutoStartProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Tutorial"
-    },
-    {
       "name": "IniQue",
       "type": "procedure",
       "compiles": true,
@@ -3720,6 +3672,43 @@
         ]
       },
       "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "TutoQueClone",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_que_clone",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoQueCloneProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TimRelativeAddon",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_relative_addon",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimRelativeAddonProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
     }
   ],
   "variable_elements": [
@@ -4408,12 +4397,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Switch_countdown",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "Dat_psy_param",
       "type": "datalist",
       "scope": "map",
@@ -4535,6 +4518,24 @@
     },
     {
       "name": "Log_type",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_countdown_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Msg_actionbar_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Msg_actionbar_text",
       "type": "string",
       "scope": "map",
       "value": "\"\""

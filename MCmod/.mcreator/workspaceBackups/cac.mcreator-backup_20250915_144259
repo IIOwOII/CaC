@@ -2639,20 +2639,6 @@
       "path": "~/CacTimer"
     },
     {
-      "name": "PrdMeowViewOn",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "prd_meow_view_on",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdMeowViewOnProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "RtnSurrenderTypeI",
       "type": "procedure",
       "compiles": true,
@@ -3593,21 +3579,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "RtnDirectionScreen",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_direction_screen",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnDirectionScreenProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "OvlTutorial",
       "type": "overlay",
       "compiles": true,
@@ -3684,14 +3655,14 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "TutoStart",
+      "name": "IniQue",
       "type": "procedure",
       "compiles": true,
-      "locked_code": true,
-      "registry_name": "tuto_start",
+      "locked_code": false,
+      "registry_name": "ini_que",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/TutoStartProcedure.java"
+          "src/main/java/net/owo/cac/procedures/IniQueProcedure.java"
         ],
         "dependencies": [
           {
@@ -3700,7 +3671,35 @@
           }
         ]
       },
+      "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "TutoQueClone",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "tuto_que_clone",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoQueCloneProcedure.java"
+        ],
+        "dependencies": []
+      },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "PrdMeowOn",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "prd_meow_on",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdMeowOnProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacCondition"
     }
   ],
   "variable_elements": [
@@ -4552,8 +4551,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
