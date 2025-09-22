@@ -8,6 +8,7 @@ public class TutoOnProcedure {
 		CstState.IsMeowView = true;
 		CstState.CanMeowMove = true;
 		CstTutorial.is_tutorial = true;
-		CstTutorial.updateTutoQue();
+		CstTutorial.resetTutorial();
+		CstTutorial.initTutoQue();
 	}
 }

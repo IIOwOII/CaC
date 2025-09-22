@@ -28,7 +28,6 @@ public class EvInvokeProcedure {
 					CacModVariables.Ev_que_loop = true;
 					PsyPsiPseudoProcedure.execute(world);
 					TaskPreRunProcedure.execute(world);
-					TimCountdownProcedure.execute(world, entity);
 				} else if ((ev_content).equals("simulation_start")) {
 					CacModVariables.MapVariables.get(world).Switch_que = true;
 					CacModVariables.MapVariables.get(world).syncData(world);
@@ -80,12 +79,16 @@ public class EvInvokeProcedure {
 				}
 			} else if (ev_content.startsWith("tutorial")) {
 				if ((ev_content).equals("tutorial_init")) {
+					CacModVariables.MapVariables.get(world).Msg_title_text = "\uC7A0\uC2DC \uD6C4 \uD29C\uD1A0\uB9AC\uC5BC\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4.";
+					CacModVariables.MapVariables.get(world).syncData(world);
+					CacModVariables.MapVariables.get(world).Msg_titles_switch = true;
+					CacModVariables.MapVariables.get(world).syncData(world);
 					CacModVariables.MapVariables.get(world).Switch_que = true;
 					CacModVariables.MapVariables.get(world).syncData(world);
-					TimCountdownProcedure.execute(world, entity);
 					CacModVariables.MapVariables.get(world).Ev_content = "tutorial_on";
 					CacModVariables.MapVariables.get(world).syncData(world);
 				} else if ((ev_content).equals("tutorial_on")) {
+					TimTitlesClearProcedure.execute(world, entity);
 					TutoOnProcedure.execute();
 				} else if ((ev_content).equals("tutorial_off")) {
 					CacModVariables.MapVariables.get(world).Switch_que = false;
@@ -93,14 +96,6 @@ public class EvInvokeProcedure {
 					CacModVariables.MapVariables.get(world).Switch_timer = false;
 					CacModVariables.MapVariables.get(world).syncData(world);
 					TutoOffProcedure.execute();
-				} else if ((ev_content).equals("tutorial_checkpoint")) {
-					TutoCheckpointProcedure.execute(world);
-				} else if ((ev_content).equals("tutorial_checkpoint_end")) {
-					CacModVariables.MapVariables.get(world).Switch_que = false;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					CacModVariables.MapVariables.get(world).Switch_timer = false;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					TutoCheckpointEndProcedure.execute(world);
 				}
 			} else {
 				if ((ev_content).equals("test_end") && (ev_content).equals("pseudo_end")) {

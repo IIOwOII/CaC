@@ -41,7 +41,6 @@ public class TutoManageProcedure {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Please check the command!"), false);
 		} else {
-			TutoResetProcedure.execute(world, entity);
 			TutoQueCloneProcedure.execute();
 			CacModVariables.MapVariables.get(world).Exp_session = tuto_type;
 			CacModVariables.MapVariables.get(world).syncData(world);

@@ -509,8 +509,8 @@
         ],
         "dependencies": [
           {
-            "name": "world",
-            "type": "world"
+            "name": "entity",
+            "type": "entity"
           }
         ]
       },
@@ -2616,43 +2616,6 @@
       "path": "~/CacTask/Psychometric"
     },
     {
-      "name": "TimCountdown",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_countdown",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimCountdownProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer"
-    },
-    {
-      "name": "PrdMeowViewOn",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "prd_meow_view_on",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdMeowViewOnProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "RtnSurrenderTypeI",
       "type": "procedure",
       "compiles": true,
@@ -3133,25 +3096,6 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "TutoCheckpointStart",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tuto_checkpoint_start",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TutoCheckpointStartProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Tutorial"
-    },
-    {
       "name": "TutoCheckpoint",
       "type": "procedure",
       "compiles": true,
@@ -3162,6 +3106,18 @@
           "src/main/java/net/owo/cac/procedures/TutoCheckpointProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
           {
             "name": "world",
             "type": "world"
@@ -3549,10 +3505,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -3593,21 +3545,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "RtnDirectionScreen",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_direction_screen",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnDirectionScreenProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "OvlTutorial",
       "type": "overlay",
       "compiles": true,
@@ -3623,7 +3560,7 @@
     {
       "name": "CstTutorial",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "cst_tutorial",
       "metadata": {
@@ -3713,6 +3650,48 @@
           "src/main/java/net/owo/cac/procedures/TutoQueCloneProcedure.java"
         ],
         "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TimRelativeAddon",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_relative_addon",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimRelativeAddonProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
+    },
+    {
+      "name": "TutoCheckpointReady",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_checkpoint_ready",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoCheckpointReadyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Tutorial"
     }
@@ -4403,12 +4382,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Switch_countdown",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "Dat_psy_param",
       "type": "datalist",
       "scope": "map",
@@ -4533,6 +4506,36 @@
       "type": "string",
       "scope": "map",
       "value": "\"\""
+    },
+    {
+      "name": "Msg_actionbar_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Msg_actionbar_text",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_title_text",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_subtitle_text",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_titles_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [

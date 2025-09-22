@@ -228,9 +228,11 @@ public class CacModVariables {
 		public double Tuto_score = 0;
 		public boolean Tuto_score_running = false;
 		public String Log_type = "\"\"";
-		public boolean Msg_countdown_switch = false;
 		public boolean Msg_actionbar_switch = false;
 		public String Msg_actionbar_text = "\"\"";
+		public String Msg_title_text = "\"\"";
+		public String Msg_subtitle_text = "\"\"";
+		public boolean Msg_titles_switch = false;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -376,9 +378,11 @@ public class CacModVariables {
 			Tuto_score = nbt.getDouble("Tuto_score");
 			Tuto_score_running = nbt.getBoolean("Tuto_score_running");
 			Log_type = nbt.getString("Log_type");
-			Msg_countdown_switch = nbt.getBoolean("Msg_countdown_switch");
 			Msg_actionbar_switch = nbt.getBoolean("Msg_actionbar_switch");
 			Msg_actionbar_text = nbt.getString("Msg_actionbar_text");
+			Msg_title_text = nbt.getString("Msg_title_text");
+			Msg_subtitle_text = nbt.getString("Msg_subtitle_text");
+			Msg_titles_switch = nbt.getBoolean("Msg_titles_switch");
 		}
 
 		@Override
@@ -564,9 +568,11 @@ public class CacModVariables {
 			nbt.putDouble("Tuto_score", Tuto_score);
 			nbt.putBoolean("Tuto_score_running", Tuto_score_running);
 			nbt.putString("Log_type", Log_type);
-			nbt.putBoolean("Msg_countdown_switch", Msg_countdown_switch);
 			nbt.putBoolean("Msg_actionbar_switch", Msg_actionbar_switch);
 			nbt.putString("Msg_actionbar_text", Msg_actionbar_text);
+			nbt.putString("Msg_title_text", Msg_title_text);
+			nbt.putString("Msg_subtitle_text", Msg_subtitle_text);
+			nbt.putBoolean("Msg_titles_switch", Msg_titles_switch);
 			return nbt;
 		}
 

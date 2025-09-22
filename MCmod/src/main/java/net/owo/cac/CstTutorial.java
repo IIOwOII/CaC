@@ -21,8 +21,14 @@ import net.minecraft.commands.CommandSource;
 import net.owo.cac.CstState;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.network.CacModVariables.MapVariables;
-import net.owo.cac.procedures.EvQueCallProcedure;
 
+import net.owo.cac.procedures.TimActionbarClearProcedure;
+import net.owo.cac.procedures.EvQueCallProcedure;
+import net.owo.cac.procedures.TutoCheckpointReadyProcedure;
+import net.owo.cac.procedures.TutoCheckpointStartProcedure;
+import net.owo.cac.procedures.TutoCheckpointEndProcedure;
+import net.owo.cac.procedures.TutoRacingReadyProcedure;
+import net.owo.cac.procedures.TutoRacingStartProcedure;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstTutorial {
@@ -60,12 +66,21 @@ public class CstTutorial {
 		tuto_timer = 0;
 	}
 
+	public static void initTutoQue() {
+		content = tuto_que.get(0).getAsString();
+	}
+	
 	public static void updateTutoQue() {
-		content = tuto_que.get(tuto_idx).getAsString();
 		tuto_idx += 1;
 		if (tuto_idx == tuto_que.size()) {
 			content = "finish";
+			return;
 		}
+		content = tuto_que.get(tuto_idx).getAsString();
+	}
+
+	public static void undoBookPage() {
+		tuto_que.get(tuto_idx-2).getAsString();
 	}
 	
 	public static String getBookName() {
@@ -136,6 +151,28 @@ public class CstTutorial {
 				cacvar.syncData(world);
 				stopTimer();
 				updateTutoQue();
+			} else if (content.equals("checkpoint")) {
+				if (content_changed) {
+					TutoCheckpointReadyProcedure.execute(world, _ent);
+					startTimer();
+				} else if (tuto_timer == 100) {
+					TutoCheckpointStartProcedure.execute(world, _ent.getX(), _ent.getY(), _ent.getZ(), _ent);
+					stopTimer();
+				} else if (cacvar.Tuto_checkpoint_index == cacvar.Tuto_checkpoint_route.size()) {
+					content = "checkpoint_end";
+					TutoCheckpointEndProcedure.execute(world, _ent.getX(), _ent.getY(), _ent.getZ(), _ent);
+				}
+			} else if (content.equals("checkpoint_end") && CstState.getKeyChanged(5) == 0) {
+				TimActionbarClearProcedure.execute(world);
+				updateTutoQue();
+			} else if (content.equals("racing")) {
+				if (content_changed) {
+					TutoRacingReadyProcedure.execute(world, _ent);
+					startTimer();
+				} else if (tuto_timer == 100) {
+					TutoRacingStartProcedure.execute(world, _ent.getX(), _ent.getY(), _ent.getZ(), _ent);
+					stopTimer();
+				}
 			}
 			
 		}

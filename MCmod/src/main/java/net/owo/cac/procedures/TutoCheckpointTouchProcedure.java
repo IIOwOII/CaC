@@ -38,10 +38,6 @@ public class TutoCheckpointTouchProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			}
-		} else {
-			CacModVariables.MapVariables.get(world).Ev_content = "tutorial_checkpoint_end";
-			CacModVariables.MapVariables.get(world).syncData(world);
-			EvQueImmediateProcedure.execute(world);
 		}
 	}
 }

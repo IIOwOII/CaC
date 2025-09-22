@@ -34,25 +34,19 @@ public class TimRelativeAddonProcedure {
 		if (entity == null)
 			return;
 		if (CacModVariables.MapVariables.get(world).Switch_timer && !world.isClientSide()) {
-			if (CacModVariables.MapVariables.get(world).Msg_countdown_switch) {
+			if (CacModVariables.MapVariables.get(world).Msg_titles_switch) {
 				{
 					Entity _ent = entity;
 					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-						_ent.getServer().getCommands().performPrefixedCommand(
-								new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
-										_ent.level().getServer(), _ent),
-								("title @a subtitle " + new java.text.DecimalFormat("##").format((int) ((CacModVariables.MapVariables.get(world).TimR_que_time - CacModVariables.MapVariables.get(world).TimR_time) / 20 + 1))));
+						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title @a title " + CacModVariables.MapVariables.get(world).Msg_title_text));
 					}
 				}
-				if (CacModVariables.MapVariables.get(world).TimR_que_time - CacModVariables.MapVariables.get(world).TimR_time == 1) {
-					CacModVariables.MapVariables.get(world).Msg_countdown_switch = false;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					{
-						Entity _ent = entity;
-						if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "title @a clear");
-						}
+				{
+					Entity _ent = entity;
+					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title @a subtitle " + CacModVariables.MapVariables.get(world).Msg_subtitle_text));
 					}
 				}
 			}

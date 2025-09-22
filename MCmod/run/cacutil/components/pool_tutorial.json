@@ -9,12 +9,10 @@
     "book_empty",
     "chasing",
     "book_empty",
-    "chased",
-    "finish"
+    "chased"
   ],
   "tutorial_debug_book": [
     "book_empty",
-    "moving",
-    "finish"
+    "moving"
   ]
 }
