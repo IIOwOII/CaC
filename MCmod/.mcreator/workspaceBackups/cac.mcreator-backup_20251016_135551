@@ -3107,6 +3107,22 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3529,7 +3545,7 @@
     {
       "name": "CstTutorial",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "cst_tutorial",
       "metadata": {
@@ -3657,6 +3673,10 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3721,6 +3741,83 @@
         ]
       },
       "path": "~/CacTimer"
+    },
+    {
+      "name": "TimActionbarClear",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_actionbar_clear",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimActionbarClearProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
+    },
+    {
+      "name": "TutoRacingReady",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_racing_ready",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoRacingReadyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoRacingStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_racing_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoRacingStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [

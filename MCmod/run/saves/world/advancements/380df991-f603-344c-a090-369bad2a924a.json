@@ -631,12 +631,6 @@
     },
     "done": true
   },
-  "cac:adv_cac": {
-    "criteria": {
-      "adv_cac_0": "2025-09-15 18:56:26 +0900"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/deepslate_brick_wall_from_deepslate_bricks_stonecutting": {
     "criteria": {
       "has_deepslate_bricks": "2025-09-15 16:43:51 +0900"
@@ -910,6 +904,12 @@
   "minecraft:recipes/building_blocks/polished_deepslate_stairs": {
     "criteria": {
       "has_polished_deepslate": "2025-09-15 16:46:13 +0900"
+    },
+    "done": true
+  },
+  "cac:adv_cac": {
+    "criteria": {
+      "adv_cac_0": "2025-09-15 18:56:26 +0900"
     },
     "done": true
   },

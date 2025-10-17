@@ -3107,6 +3107,22 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3529,7 +3545,7 @@
     {
       "name": "CstTutorial",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "cst_tutorial",
       "metadata": {
@@ -3657,6 +3673,10 @@
         ],
         "dependencies": [
           {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -3675,6 +3695,110 @@
           "src/main/java/net/owo/cac/procedures/TutoCheckpointStartProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TimTitlesClear",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_titles_clear",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimTitlesClearProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
+    },
+    {
+      "name": "TimActionbarClear",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_actionbar_clear",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimActionbarClearProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTimer"
+    },
+    {
+      "name": "TutoRacingReady",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_racing_ready",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoRacingReadyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoRacingStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_racing_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoRacingStartProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
           {
             "name": "x",
             "type": "number"
@@ -4569,8 +4693,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
@@ -4726,6 +4850,10 @@
       },
       {
         "name": "CacItem",
+        "children": []
+      },
+      {
+        "name": "CanLandmark",
         "children": []
       }
     ]
