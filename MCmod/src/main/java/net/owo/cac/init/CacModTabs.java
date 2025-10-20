@@ -23,19 +23,19 @@ public class CacModTabs {
 	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CacMod.MODID);
 	public static final RegistryObject<CreativeModeTab> CAC_TAB = REGISTRY.register("cac_tab",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.cac.cac_tab")).icon(() -> new ItemStack(CacModItems.CAC_LOGO.get())).displayItems((parameters, tabData) -> {
+				tabData.accept(CacModItems.CAC_LOGO.get());
 				tabData.accept(CacModItems.CAC_TEST_ITEM.get());
 				tabData.accept(CacModBlocks.BLK_OBSTACLE.get().asItem());
 				tabData.accept(CacModBlocks.BLK_WALL.get().asItem());
+				tabData.accept(CacModBlocks.BLK_FENCE.get().asItem());
+				tabData.accept(CacModBlocks.BLK_HURDLE.get().asItem());
 				tabData.accept(CacModItems.ENT_MOUSE_SPAWN_EGG.get());
 				tabData.accept(CacModItems.ENT_PLAYER_MOUSE_SPAWN_EGG.get());
 				tabData.accept(CacModItems.ENT_PSEUDO_MOUSE_SPAWN_EGG.get());
-				tabData.accept(CacModBlocks.BLK_FENCE.get().asItem());
-				tabData.accept(CacModItems.CAC_LOGO.get());
 				tabData.accept(CacModItems.ENT_CAT_SPAWN_EGG.get());
 				tabData.accept(CacModItems.ENT_PLAYER_CAT_SPAWN_EGG.get());
 				tabData.accept(CacModItems.ENT_PSEUDO_CAT_SPAWN_EGG.get());
 				tabData.accept(CacModBlocks.BLK_CHECKPOINT.get().asItem());
-				tabData.accept(CacModBlocks.BLK_HURDLE.get().asItem());
 				tabData.accept(CacModBlocks.BLK_SWITCHSTONE.get().asItem());
 				tabData.accept(CacModItems.CAC_BUILDER_TOOL.get());
 				tabData.accept(CacModBlocks.BLK_ARROW.get().asItem());
