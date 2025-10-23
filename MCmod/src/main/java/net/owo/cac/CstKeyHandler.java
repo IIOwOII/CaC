@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.network.chat.Component;
 
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
@@ -105,5 +106,24 @@ public class CstKeyHandler {
     		}
     	}
     	
+    }
+
+    @SubscribeEvent
+    public static void onMouseScroll(InputEvent.MouseScrollingEvent event) {
+		Minecraft mc = Minecraft.getInstance();
+		@Nullable LevelAccessor world = mc.level;
+		@Nullable Entity _ent = mc.player;
+		if (_ent == null || world == null)
+			return;
+    	
+    	double scroll_delta = 0; // 1: up, -1: down
+    	if (scroll_delta == 1) {
+    		PrdItemOptionPlusProcedure.execute(world, _ent);
+    		PrdItemOptionPrintProcedure.execute(world, _ent);
+    	} else if (scroll_delta == -1) {
+    		PrdItemOptionMinusProcedure.execute(world, _ent);
+    		PrdItemOptionPrintProcedure.execute(world, _ent);
+    	}
+    	scroll_delta = 0;
     }
 }

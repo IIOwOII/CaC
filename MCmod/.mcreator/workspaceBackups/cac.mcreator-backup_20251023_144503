@@ -4890,10 +4890,7 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [
-      "world_edit",
-      "geckolib",
-      "structure_gel_api",
-      "world_preview"
+      "geckolib"
     ],
     "currentGenerator": "forge-1.20.1",
     "credits": "Created using mod maker MCreator and Me...",
