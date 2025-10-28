@@ -1,5 +1,17 @@
 package net.owo.cac;
 
+import javax.annotation.Nullable;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Item;
+
+import net.owo.cac.CacMod;
+import net.owo.cac.init.CacModItems;
+
 public class CstState {
     public static boolean IsMeowView = false; // Camera
     public static boolean CanMeowMove = false; // Is it allowed to move by arrow?
@@ -86,4 +98,27 @@ public class CstState {
 		}
 		return key_changed;
 	}
+	
+	public static int getCondition() {
+		Minecraft mc = Minecraft.getInstance();
+		@Nullable LevelAccessor world = mc.level;
+		@Nullable Entity player = mc.player;
+		
+		// -1: world or player is null
+		if (world == null || player == null)
+			return -1;
+
+		// 10: test item
+		// 11: builder
+		Item handed_item = (player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem();
+		if (handed_item == CacModItems.CAC_TEST_ITEM.get()) {
+			return 10;
+		} else if (handed_item == CacModItems.CAC_BUILDER_TOOL.get()) {
+			return 11;
+		}
+
+		// 0: default
+		return 0;
+	}
+	
 }

@@ -511,6 +511,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -3375,75 +3379,6 @@
       }
     },
     {
-      "name": "PrdItemOptionPlus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_plus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPlusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionMinus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_minus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionMinusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionPrint",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_print",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPrintProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
       "name": "PrdBuilderUse",
       "type": "procedure",
       "compiles": true,
@@ -3818,6 +3753,18 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "CstItem",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4712,8 +4659,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",

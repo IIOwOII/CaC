@@ -413,7 +413,7 @@
     {
       "name": "PrdTp",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "prd_tp",
       "metadata": {
@@ -808,7 +808,7 @@
     {
       "name": "TaskManage",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "task_manage",
       "metadata": {
@@ -1030,7 +1030,7 @@
     {
       "name": "PrdCheck",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "prd_check",
       "metadata": {
@@ -1136,7 +1136,7 @@
     {
       "name": "TaskRegister",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "task_register",
       "metadata": {
@@ -1856,7 +1856,7 @@
     {
       "name": "PrdMeowControl",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "prd_meow_control",
       "metadata": {
@@ -1904,7 +1904,7 @@
     {
       "name": "PrdTest",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "prd_test",
       "metadata": {
@@ -2930,7 +2930,7 @@
     {
       "name": "SimManage",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "sim_manage",
       "metadata": {
@@ -3040,7 +3040,7 @@
     {
       "name": "TutoManage",
       "type": "procedure",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "tuto_manage",
       "metadata": {
@@ -3373,75 +3373,6 @@
           "src/main/java/net/owo/cac/CstKeyMessage.java"
         ]
       }
-    },
-    {
-      "name": "PrdItemOptionPlus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_plus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPlusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionMinus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_minus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionMinusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionPrint",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_print",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPrintProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
     },
     {
       "name": "PrdBuilderUse",
@@ -3818,6 +3749,18 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "CstItem",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4890,10 +4833,7 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [
-      "world_edit",
-      "geckolib",
-      "structure_gel_api",
-      "world_preview"
+      "geckolib"
     ],
     "currentGenerator": "forge-1.20.1",
     "credits": "Created using mod maker MCreator and Me...",

@@ -420,7 +420,16 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdTpProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -502,6 +511,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -806,7 +819,32 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TaskManageProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Manager"
     },
@@ -1003,7 +1041,16 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdCheckProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -1100,7 +1147,20 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TaskRegisterProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Manager"
     },
@@ -1807,7 +1867,28 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdMeowControlProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -1834,7 +1915,16 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -2851,7 +2941,32 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/SimManageProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Simulation"
     },
@@ -2936,7 +3051,32 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TutoManageProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Tutorial"
     },
@@ -3237,75 +3377,6 @@
           "src/main/java/net/owo/cac/CstKeyMessage.java"
         ]
       }
-    },
-    {
-      "name": "PrdItemOptionPlus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_plus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPlusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionMinus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_minus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionMinusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionPrint",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_print",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPrintProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
     },
     {
       "name": "PrdBuilderUse",
@@ -3682,6 +3753,18 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "CstItem",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4754,10 +4837,7 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [
-      "world_edit",
-      "geckolib",
-      "structure_gel_api",
-      "world_preview"
+      "geckolib"
     ],
     "currentGenerator": "forge-1.20.1",
     "credits": "Created using mod maker MCreator and Me...",

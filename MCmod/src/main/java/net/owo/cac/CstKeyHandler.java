@@ -5,13 +5,9 @@ import java.util.Arrays;
 import com.mojang.blaze3d.platform.InputConstants;
 import org.lwjgl.glfw.GLFW;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.network.chat.Component;
 
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.client.event.InputEvent;
@@ -21,16 +17,17 @@ import net.minecraftforge.fml.common.Mod;
 
 import net.owo.cac.CstState;
 import net.owo.cac.CstKeybind;
+import net.owo.cac.CstItem;
+
 import net.owo.cac.CacMod;
-import net.owo.cac.init.CacModItems;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.network.CacModVariables.MapVariables;
-import net.owo.cac.procedures.PrdItemOptionPlusProcedure;
-import net.owo.cac.procedures.PrdItemOptionMinusProcedure;
-import net.owo.cac.procedures.PrdItemOptionPrintProcedure;
+
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstKeyHandler {
+	static final int KEY_RIGHT = InputConstants.KEY_RIGHT;
+	static final int KEY_LEFT = InputConstants.KEY_LEFT;
 	
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
@@ -61,7 +58,6 @@ public class CstKeyHandler {
     	_ent = event.player;
     	if (_ent == null)
     		return;
-    	@Nullable LivingEntity _livent = (_ent instanceof LivingEntity) ? (LivingEntity) _ent : null;
     	LevelAccessor world = _ent.level();
     	MapVariables cacvar = CacModVariables.MapVariables.get(world);
     	
@@ -93,21 +89,28 @@ public class CstKeyHandler {
     				cacvar.Dat_survey_surrender = 0;
     				cacvar.syncData(world);
     			}
-    		} 
-    		if ((_livent != null) && ((_livent.getMainHandItem().getItem() == CacModItems.CAC_TEST_ITEM.get()) || (_livent.getMainHandItem().getItem() == CacModItems.CAC_BUILDER_TOOL.get()))) {
-    			if (CstState.getKeyChanged(0) == 0) {
-    				PrdItemOptionPlusProcedure.execute(world, _ent);
-    				PrdItemOptionPrintProcedure.execute(world, _ent);
-    			}
-    			if (CstState.getKeyChanged(1) == 0) {
-    				PrdItemOptionMinusProcedure.execute(world, _ent);
-    				PrdItemOptionPrintProcedure.execute(world, _ent);
-    			}
     		}
     	}
-    	
     }
 
+    @SubscribeEvent
+    public static void onKeyInput(InputEvent.Key event) {
+		int condition = CstState.getCondition();
+		if (condition == -1)
+			return;
+		int key_value = event.getKey();
+		int key_action = event.getAction(); // 0: released, 1: pressed, 2: repeated
+
+		if ((key_action == 1) && (Math.floorDiv(condition, 10) == 1)) {
+			if (key_value == KEY_RIGHT) {
+				CstItem.modifyItemOption(condition, 1);
+			} else if (key_value == KEY_LEFT) {
+				CstItem.modifyItemOption(condition, -1);
+			}
+		}
+    }
+
+	/*
     @SubscribeEvent
     public static void onMouseScroll(InputEvent.MouseScrollingEvent event) {
 		Minecraft mc = Minecraft.getInstance();
@@ -126,4 +129,5 @@ public class CstKeyHandler {
     	}
     	scroll_delta = 0;
     }
+    */
 }

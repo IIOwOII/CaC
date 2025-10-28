@@ -3375,75 +3375,6 @@
       }
     },
     {
-      "name": "PrdItemOptionPlus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_plus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPlusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionMinus",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_minus",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionMinusProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
-      "name": "PrdItemOptionPrint",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_item_option_print",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdItemOptionPrintProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacItem"
-    },
-    {
       "name": "PrdBuilderUse",
       "type": "procedure",
       "compiles": true,
@@ -3818,6 +3749,18 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "CstItem",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4890,7 +4833,6 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [
-      "world_edit",
       "geckolib"
     ],
     "currentGenerator": "forge-1.20.1",
