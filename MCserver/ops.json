@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "uuid": "cd410954-44ae-4603-a765-72a8d7c04e8a",
+    "name": "StarNote",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  }
+]

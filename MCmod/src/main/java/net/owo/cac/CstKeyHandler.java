@@ -96,38 +96,18 @@ public class CstKeyHandler {
     @SubscribeEvent
     public static void onKeyInput(InputEvent.Key event) {
 		int condition = CstState.getCondition();
-		if (condition == -1)
-			return;
+		if (condition == -1) return;
 		int key_value = event.getKey();
 		int key_action = event.getAction(); // 0: released, 1: pressed, 2: repeated
 
 		if ((key_action == 1) && (Math.floorDiv(condition, 10) == 1)) {
+			int item_id = Math.floorMod(condition, 10);
 			if (key_value == KEY_RIGHT) {
-				CstItem.modifyItemOption(condition, 1);
+				CstItem.modifyItemOption(item_id, 1);
 			} else if (key_value == KEY_LEFT) {
-				CstItem.modifyItemOption(condition, -1);
+				CstItem.modifyItemOption(item_id, -1);
 			}
 		}
     }
-
-	/*
-    @SubscribeEvent
-    public static void onMouseScroll(InputEvent.MouseScrollingEvent event) {
-		Minecraft mc = Minecraft.getInstance();
-		@Nullable LevelAccessor world = mc.level;
-		@Nullable Entity _ent = mc.player;
-		if (_ent == null || world == null)
-			return;
-    	
-    	double scroll_delta = 0; // 1: up, -1: down
-    	if (scroll_delta == 1) {
-    		PrdItemOptionPlusProcedure.execute(world, _ent);
-    		PrdItemOptionPrintProcedure.execute(world, _ent);
-    	} else if (scroll_delta == -1) {
-    		PrdItemOptionMinusProcedure.execute(world, _ent);
-    		PrdItemOptionPrintProcedure.execute(world, _ent);
-    	}
-    	scroll_delta = 0;
-    }
-    */
+    
 }

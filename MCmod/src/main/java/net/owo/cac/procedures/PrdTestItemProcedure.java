@@ -17,6 +17,8 @@ public class PrdTestItemProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
+		String option_tester_text = "";
+		option_tester_text = net.owo.cac.CstItem.getItemOptionText(0);
 		if (!world.isClientSide()) {
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
@@ -26,9 +28,9 @@ public class PrdTestItemProcedure {
 				}
 			}
 			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal((CacModVariables.MapVariables.get(world).Option_tester_str + " is executed!")), true);
+				_player.displayClientMessage(Component.literal((option_tester_text + " is executed!")), true);
 		}
-		if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Increase Difficulty")) {
+		if ((option_tester_text).equals("Increase Difficulty")) {
 			if (CacModVariables.MapVariables.get(world).Dat_difficulty_absolute <= 1.5) {
 				CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute + 0.05;
 				CacModVariables.MapVariables.get(world).syncData(world);
@@ -38,7 +40,7 @@ public class PrdTestItemProcedure {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Maximum Speed!"), false);
 			}
-		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("Decrease Difficulty")) {
+		} else if ((option_tester_text).equals("Decrease Difficulty")) {
 			if (CacModVariables.MapVariables.get(world).Dat_difficulty_absolute >= 0.5) {
 				CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute - 0.05;
 				CacModVariables.MapVariables.get(world).syncData(world);
@@ -48,7 +50,7 @@ public class PrdTestItemProcedure {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Minimum Speed!"), false);
 			}
-		} else if ((CacModVariables.MapVariables.get(world).Option_tester_str).equals("AI Switch")) {
+		} else if ((option_tester_text).equals("AI Switch")) {
 			CacModVariables.MapVariables.get(world).Switch_AI = !CacModVariables.MapVariables.get(world).Switch_AI;
 			CacModVariables.MapVariables.get(world).syncData(world);
 			if (CacModVariables.MapVariables.get(world).Switch_AI) {

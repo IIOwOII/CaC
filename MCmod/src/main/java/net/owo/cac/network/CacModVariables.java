@@ -124,8 +124,6 @@ public class CacModVariables {
 
 	public static class MapVariables extends SavedData {
 		public static final String DATA_NAME = "cac_mapvars";
-		public double Option_tester = 0.0;
-		public String Option_tester_str = "\"Reset\"";
 		public ListTag List_obstacle = new ListTag();
 		public Vec3 Pos_offset = Vec3.ZERO;
 		public ListTag List_wall = new ListTag();
@@ -241,8 +239,6 @@ public class CacModVariables {
 		}
 
 		public void read(CompoundTag nbt) {
-			Option_tester = nbt.getDouble("Option_tester");
-			Option_tester_str = nbt.getString("Option_tester_str");
 			this.List_obstacle = nbt.get("List_obstacle") instanceof ListTag List_obstacle ? List_obstacle : new ListTag();
 			{
 				ListTag listTag = nbt.getList("Pos_offset", 6);
@@ -387,8 +383,6 @@ public class CacModVariables {
 
 		@Override
 		public CompoundTag save(CompoundTag nbt) {
-			nbt.putDouble("Option_tester", Option_tester);
-			nbt.putString("Option_tester_str", Option_tester_str);
 			nbt.put("List_obstacle", this.List_obstacle);
 			{
 				this.Pos_offset = this.Pos_offset == null ? Vec3.ZERO : this.Pos_offset;
