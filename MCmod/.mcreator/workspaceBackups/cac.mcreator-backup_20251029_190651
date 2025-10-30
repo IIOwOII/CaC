@@ -511,10 +511,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       },
@@ -3769,18 +3765,6 @@
   ],
   "variable_elements": [
     {
-      "name": "Option_tester",
-      "type": "number",
-      "scope": "map",
-      "value": "0.0"
-    },
-    {
-      "name": "Option_tester_str",
-      "type": "string",
-      "scope": "map",
-      "value": "\"Reset\""
-    },
-    {
       "name": "List_obstacle",
       "type": "datalist",
       "scope": "map",
@@ -4525,18 +4509,6 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "Option_builder",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Option_builder_str",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
       "name": "Tuto_hurdle_stack_old",
       "type": "number",
       "scope": "map",
@@ -4659,8 +4631,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",

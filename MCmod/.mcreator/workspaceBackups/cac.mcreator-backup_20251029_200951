@@ -3761,21 +3761,21 @@
           "src/main/java/net/owo/cac/CstItem.java"
         ]
       }
+    },
+    {
+      "name": "CstRenderComponent",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_render_component",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstRenderComponent.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
-    {
-      "name": "Option_tester",
-      "type": "number",
-      "scope": "map",
-      "value": "0.0"
-    },
-    {
-      "name": "Option_tester_str",
-      "type": "string",
-      "scope": "map",
-      "value": "\"Reset\""
-    },
     {
       "name": "List_obstacle",
       "type": "datalist",
@@ -4519,18 +4519,6 @@
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Option_builder",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Option_builder_str",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
     },
     {
       "name": "Tuto_hurdle_stack_old",

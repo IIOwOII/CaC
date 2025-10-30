@@ -219,8 +219,6 @@ public class CacModVariables {
 		public double Exp_session_reps = 0;
 		public Vec3 Builder_pos1 = Vec3.ZERO;
 		public Vec3 Builder_pos2 = Vec3.ZERO;
-		public double Option_builder = 0;
-		public String Option_builder_str = "\"\"";
 		public double Tuto_hurdle_stack_old = 0;
 		public double Tuto_hurdle_stack = 0;
 		public double Tuto_score = 0;
@@ -367,8 +365,6 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Builder_pos2", 6);
 				this.Builder_pos2 = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
-			Option_builder = nbt.getDouble("Option_builder");
-			Option_builder_str = nbt.getString("Option_builder_str");
 			Tuto_hurdle_stack_old = nbt.getDouble("Tuto_hurdle_stack_old");
 			Tuto_hurdle_stack = nbt.getDouble("Tuto_hurdle_stack");
 			Tuto_score = nbt.getDouble("Tuto_score");
@@ -555,8 +551,6 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Builder_pos2.z()));
 				nbt.put("Builder_pos2", listTag);
 			}
-			nbt.putDouble("Option_builder", Option_builder);
-			nbt.putString("Option_builder_str", Option_builder_str);
 			nbt.putDouble("Tuto_hurdle_stack_old", Tuto_hurdle_stack_old);
 			nbt.putDouble("Tuto_hurdle_stack", Tuto_hurdle_stack);
 			nbt.putDouble("Tuto_score", Tuto_score);
