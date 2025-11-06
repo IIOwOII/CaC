@@ -9,6 +9,7 @@ import net.owo.cac.init.CacModMobEffects;
 import net.owo.cac.init.CacModItems;
 import net.owo.cac.init.CacModEntities;
 import net.owo.cac.init.CacModBlocks;
+import net.owo.cac.init.CacModBlockEntities;
 
 import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.network.NetworkRegistry;
@@ -45,7 +46,7 @@ public class CacMod {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		CacModSounds.REGISTRY.register(bus);
 		CacModBlocks.REGISTRY.register(bus);
-
+		CacModBlockEntities.REGISTRY.register(bus);
 		CacModItems.REGISTRY.register(bus);
 		CacModEntities.REGISTRY.register(bus);
 

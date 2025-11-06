@@ -3761,6 +3761,18 @@
           "src/main/java/net/owo/cac/CstItem.java"
         ]
       }
+    },
+    {
+      "name": "CstRenderComponent",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_render_component",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstRenderComponent.java"
+        ]
+      }
     }
   ],
   "variable_elements": [

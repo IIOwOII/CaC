@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "cac:blk_valuestone",
     "cac:blk_switchstone",
     "cac:blk_checkpoint"
   ]

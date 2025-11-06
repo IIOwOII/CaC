@@ -12,10 +12,10 @@ import net.minecraft.world.entity.player.Player;
 public class CstItem {
 	
 	public static int[] item_option = {0, 0};
-	private static final int[] ITEM_OPTION_MAX = {3, 3};
+	private static final int[] ITEM_OPTION_MAX = {3, 6};
 	private static final String[][] ITEM_OPTION_TEXT = {
 		{"Increase Difficulty", "Decrease Difficulty", "AI Switch"},
-		{"Change Blockstate", "Set 1", "Set 2"}};
+		{"Change Blockstate", "Set 1", "Set 2", "Check Energy", "Give Energy", "Extract Energy"}};
 	
 	public static int getItemOption(int id) {
 		return item_option[id];

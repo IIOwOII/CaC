@@ -39,6 +39,7 @@ public class CacModTabs {
 				tabData.accept(CacModBlocks.BLK_SWITCHSTONE.get().asItem());
 				tabData.accept(CacModItems.CAC_BUILDER_TOOL.get());
 				tabData.accept(CacModBlocks.BLK_ARROW.get().asItem());
+				tabData.accept(CacModBlocks.BLK_VALUESTONE.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent

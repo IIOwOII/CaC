@@ -34,6 +34,7 @@
   "subtitles.cac.snd_silence": "snd_silence",
   "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
   "key.cac.cac_key_signal": "Scanner Signal",
+  "block.cac.blk_valuestone": "Value Stone",
   "key.cac.cac_key_down": "Down",
   "item_group.cac.cac_tab": "CaC",
   "key.categories.cac": "Chasing and Chased",
