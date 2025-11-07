@@ -3773,6 +3773,24 @@
           "src/main/java/net/owo/cac/CstRenderComponent.java"
         ]
       }
+    },
+    {
+      "name": "BlkValuestone",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_valuestone",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/item/blk_valuestone.json",
+          "src/main/resources/assets/cac/models/block/blk_valuestone.json",
+          "src/main/resources/assets/cac/blockstates/blk_valuestone.json",
+          "src/main/java/net/owo/cac/block/BlkValuestoneBlock.java",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_valuestone.json",
+          "src/main/java/net/owo/cac/block/entity/BlkValuestoneBlockEntity.java"
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4611,6 +4629,7 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkValuestone",
       "~CUSTOM:BlkSwitchstone",
       "~CUSTOM:BlkCheckpoint"
     ],
@@ -4635,7 +4654,8 @@
       "BlkCheckpoint",
       "BlkSwitchstone",
       "CacBuilderTool",
-      "BlkArrow"
+      "BlkArrow",
+      "BlkValuestone"
     ]
   },
   "language_map": {
@@ -4675,6 +4695,7 @@
       "subtitles.cac.snd_silence": "snd_silence",
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
+      "block.cac.blk_valuestone": "Value Stone",
       "key.cac.cac_key_down": "Down",
       "item_group.cac.cac_tab": "CaC",
       "key.categories.cac": "Chasing and Chased",

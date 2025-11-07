@@ -5,6 +5,7 @@
   "entity.cac.ent_cat": "Predator",
   "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
   "key.cac.cac_key_camera": "Toggle Camera",
+  "block.cac.blk_tape_block": "Tape Block",
   "entity.cac.ent_meowcam": "Meowcam",
   "block.cac.blk_fence": "Fence (No field)",
   "advancements.adv_racing.title": "Racing",

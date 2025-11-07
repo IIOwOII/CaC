@@ -3791,6 +3791,23 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "BlkTapeBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_tape_block",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/item/blk_tape_block.json",
+          "src/main/resources/assets/cac/models/block/blk_tape_block.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
+          "src/main/resources/assets/cac/blockstates/blk_tape_block.json",
+          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java"
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4629,6 +4646,7 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkTapeBlock",
       "~CUSTOM:BlkValuestone",
       "~CUSTOM:BlkSwitchstone",
       "~CUSTOM:BlkCheckpoint"
@@ -4655,7 +4673,8 @@
       "BlkSwitchstone",
       "CacBuilderTool",
       "BlkArrow",
-      "BlkValuestone"
+      "BlkValuestone",
+      "BlkTapeBlock"
     ]
   },
   "language_map": {
@@ -4666,6 +4685,7 @@
       "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
+      "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_racing.title": "Racing",
@@ -4821,10 +4841,6 @@
       },
       {
         "name": "CacItem",
-        "children": []
-      },
-      {
-        "name": "CanLandmark",
         "children": []
       }
     ]

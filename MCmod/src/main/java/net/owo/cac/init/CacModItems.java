@@ -38,6 +38,7 @@ public class CacModItems {
 	public static final RegistryObject<Item> CAC_BUILDER_TOOL = REGISTRY.register("cac_builder_tool", () -> new CacBuilderToolItem());
 	public static final RegistryObject<Item> BLK_ARROW = block(CacModBlocks.BLK_ARROW);
 	public static final RegistryObject<Item> BLK_VALUESTONE = block(CacModBlocks.BLK_VALUESTONE);
+	public static final RegistryObject<Item> BLK_TAPE_BLOCK = block(CacModBlocks.BLK_TAPE_BLOCK);
 
 	// Start of user code block custom items
 	// End of user code block custom items

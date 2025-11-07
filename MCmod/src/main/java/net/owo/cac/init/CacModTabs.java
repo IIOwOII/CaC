@@ -40,6 +40,7 @@ public class CacModTabs {
 				tabData.accept(CacModItems.CAC_BUILDER_TOOL.get());
 				tabData.accept(CacModBlocks.BLK_ARROW.get().asItem());
 				tabData.accept(CacModBlocks.BLK_VALUESTONE.get().asItem());
+				tabData.accept(CacModBlocks.BLK_TAPE_BLOCK.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent

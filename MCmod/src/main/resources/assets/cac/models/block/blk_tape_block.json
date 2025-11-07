@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_tapeblock",
+  "textures": {
+    "all": "cac:block/texture_cac_tapeblock",
+    "particle": "cac:block/texture_cac_tapeblock",
+    "0": "cac:block/texture_cac_tapeblock"
+  },
+  "render_type": "cutout"
+}
