@@ -17,21 +17,15 @@ public class EvInvokeProcedure {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Event is blank!"), false);
 			} else if (ev_content.endsWith("start")) {
+				CacModVariables.MapVariables.get(world).Switch_que = true;
+				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Ev_que_loop = true;
 				if ((ev_content).equals("test_start")) {
-					CacModVariables.MapVariables.get(world).Switch_que = true;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					CacModVariables.Ev_que_loop = true;
 					TaskPreRunProcedure.execute(world);
 				} else if ((ev_content).equals("pseudo_start")) {
-					CacModVariables.MapVariables.get(world).Switch_que = true;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					CacModVariables.Ev_que_loop = true;
 					PsyPsiPseudoProcedure.execute(world);
 					TaskPreRunProcedure.execute(world);
 				} else if ((ev_content).equals("simulation_start")) {
-					CacModVariables.MapVariables.get(world).Switch_que = true;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					CacModVariables.Ev_que_loop = true;
 					SimStartProcedure.execute(world);
 				}
 			} else if (ev_content.startsWith("phase")) {

@@ -3773,6 +3773,41 @@
           "src/main/java/net/owo/cac/CstRenderComponent.java"
         ]
       }
+    },
+    {
+      "name": "BlkValuestone",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_valuestone",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/item/blk_valuestone.json",
+          "src/main/resources/assets/cac/models/block/blk_valuestone.json",
+          "src/main/resources/assets/cac/blockstates/blk_valuestone.json",
+          "src/main/java/net/owo/cac/block/BlkValuestoneBlock.java",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_valuestone.json",
+          "src/main/java/net/owo/cac/block/entity/BlkValuestoneBlockEntity.java"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlkTapeBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_tape_block",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/item/blk_tape_block.json",
+          "src/main/resources/assets/cac/models/block/blk_tape_block.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
+          "src/main/resources/assets/cac/blockstates/blk_tape_block.json",
+          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java"
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4611,6 +4646,8 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkTapeBlock",
+      "~CUSTOM:BlkValuestone",
       "~CUSTOM:BlkSwitchstone",
       "~CUSTOM:BlkCheckpoint"
     ],
@@ -4635,7 +4672,9 @@
       "BlkCheckpoint",
       "BlkSwitchstone",
       "CacBuilderTool",
-      "BlkArrow"
+      "BlkArrow",
+      "BlkValuestone",
+      "BlkTapeBlock"
     ]
   },
   "language_map": {
@@ -4643,9 +4682,10 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
+      "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_racing.title": "Racing",
@@ -4675,6 +4715,7 @@
       "subtitles.cac.snd_silence": "snd_silence",
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
+      "block.cac.blk_valuestone": "Value Stone",
       "key.cac.cac_key_down": "Down",
       "item_group.cac.cac_tab": "CaC",
       "key.categories.cac": "Chasing and Chased",
@@ -4800,10 +4841,6 @@
       },
       {
         "name": "CacItem",
-        "children": []
-      },
-      {
-        "name": "CanLandmark",
         "children": []
       }
     ]

@@ -16,14 +16,8 @@ public class IniLogProcedure {
 		String log_type = "";
 		CacModVariables.MapVariables.get(world).Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + CacModVariables.MapVariables.get(world).Exp_subject;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		if (CacModVariables.MapVariables.get(world).Exp_session_reps == 0) {
-			CacModVariables.MapVariables.get(world).Dir_behaviors_session = CacModVariables.MapVariables.get(world).Dir_behaviors + "/" + CacModVariables.MapVariables.get(world).Exp_session;
-			CacModVariables.MapVariables.get(world).syncData(world);
-		} else {
-			CacModVariables.MapVariables.get(world).Dir_behaviors_session = CacModVariables.MapVariables.get(world).Dir_behaviors + "/" + CacModVariables.MapVariables.get(world).Exp_session + "_"
-					+ CacModVariables.MapVariables.get(world).Exp_session_reps;
-			CacModVariables.MapVariables.get(world).syncData(world);
-		}
+		CacModVariables.MapVariables.get(world).Dir_behaviors_session = CacModVariables.MapVariables.get(world).Dir_behaviors + "/" + CacModVariables.MapVariables.get(world).Exp_session;
+		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_task));

@@ -40,7 +40,6 @@ public class TaskSessionStartProcedure {
 				e.printStackTrace();
 			}
 		}
-		EvResetProcedure.execute(world);
 		idx_obj = 0;
 		idx_dup = 0;
 		for (int index0 = 0; index0 < (int) obj_cac.size(); index0++) {
@@ -64,27 +63,10 @@ public class TaskSessionStartProcedure {
 				exception.printStackTrace();
 			}
 		}
-		CacModVariables.MapVariables.get(world).Exp_session_reps = (int) idx_dup;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		EvResetProcedure.execute(world);
 		TimResetProcedure.execute(world);
 		IniLogProcedure.execute(world);
-		{
-			try {
-				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_que));
-				StringBuilder jsonstringbuilder = new StringBuilder();
-				String line;
-				while ((line = bufferedReader.readLine()) != null) {
-					jsonstringbuilder.append(line);
-				}
-				bufferedReader.close();
-				obj_que = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				obj_session = obj_que.get(CacModVariables.MapVariables.get(world).Exp_session).getAsJsonObject();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		CacModVariables.MapVariables.get(world).Ev_content = obj_session.get("initial").getAsString();
-		CacModVariables.MapVariables.get(world).syncData(world);
+		IniQueProcedure.execute(world);
 		EvQueCallProcedure.execute(world, x, y, z, entity);
 	}
 }
