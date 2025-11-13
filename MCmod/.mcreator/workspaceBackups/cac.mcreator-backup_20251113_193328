@@ -3791,6 +3791,90 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "BlkTapeBlock",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_tape_block",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/item/blk_tape_block.json",
+          "src/main/resources/assets/cac/models/block/blk_tape_block.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
+          "src/main/resources/assets/cac/blockstates/blk_tape_block.json",
+          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlkValuepatch",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_valuepatch",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/loot_tables/blocks/blk_valuepatch.json",
+          "src/main/resources/assets/cac/models/block/blk_valuepatch.json",
+          "src/main/resources/assets/cac/models/item/blk_valuepatch.json",
+          "src/main/java/net/owo/cac/block/BlkValuepatchBlock.java",
+          "src/main/resources/assets/cac/blockstates/blk_valuepatch.json",
+          "src/main/java/net/owo/cac/block/entity/BlkValuepatchBlockEntity.java"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlsValuepatch",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bls_valuepatch",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_1.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_4.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_3.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_5.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_0.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlcValuepatch",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_valuepatch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcValuepatchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4629,6 +4713,7 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkTapeBlock",
       "~CUSTOM:BlkValuestone",
       "~CUSTOM:BlkSwitchstone",
       "~CUSTOM:BlkCheckpoint"
@@ -4655,7 +4740,9 @@
       "BlkSwitchstone",
       "CacBuilderTool",
       "BlkArrow",
-      "BlkValuestone"
+      "BlkValuestone",
+      "BlkTapeBlock",
+      "BlkValuepatch"
     ]
   },
   "language_map": {
@@ -4663,9 +4750,10 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
+      "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_racing.title": "Racing",
@@ -4699,6 +4787,7 @@
       "key.cac.cac_key_down": "Down",
       "item_group.cac.cac_tab": "CaC",
       "key.categories.cac": "Chasing and Chased",
+      "block.cac.blk_valuepatch": "Value Patch",
       "key.cac.cac_key_decide": "Decide",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "item.cac.cac_test_item": "Tester",
@@ -4821,10 +4910,6 @@
       },
       {
         "name": "CacItem",
-        "children": []
-      },
-      {
-        "name": "CanLandmark",
         "children": []
       }
     ]

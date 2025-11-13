@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "cac:block/blk_valuepatch"
+    },
+    "blockstate=1": {
+      "model": "cac:block/bls_valuepatch_blockstate_0"
+    },
+    "blockstate=2": {
+      "model": "cac:block/bls_valuepatch_blockstate_1"
+    },
+    "blockstate=3": {
+      "model": "cac:block/bls_valuepatch_blockstate_2"
+    },
+    "blockstate=4": {
+      "model": "cac:block/bls_valuepatch_blockstate_3"
+    },
+    "blockstate=5": {
+      "model": "cac:block/bls_valuepatch_blockstate_4"
+    },
+    "blockstate=6": {
+      "model": "cac:block/bls_valuepatch_blockstate_5"
+    }
+  }
+}

@@ -41,6 +41,7 @@ public class CacModTabs {
 				tabData.accept(CacModBlocks.BLK_ARROW.get().asItem());
 				tabData.accept(CacModBlocks.BLK_VALUESTONE.get().asItem());
 				tabData.accept(CacModBlocks.BLK_TAPE_BLOCK.get().asItem());
+				tabData.accept(CacModBlocks.BLK_VALUEPATCH.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent

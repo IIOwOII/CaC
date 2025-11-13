@@ -39,6 +39,7 @@ public class CacModItems {
 	public static final RegistryObject<Item> BLK_ARROW = block(CacModBlocks.BLK_ARROW);
 	public static final RegistryObject<Item> BLK_VALUESTONE = block(CacModBlocks.BLK_VALUESTONE);
 	public static final RegistryObject<Item> BLK_TAPE_BLOCK = block(CacModBlocks.BLK_TAPE_BLOCK);
+	public static final RegistryObject<Item> BLK_VALUEPATCH = block(CacModBlocks.BLK_VALUEPATCH);
 
 	// Start of user code block custom items
 	// End of user code block custom items

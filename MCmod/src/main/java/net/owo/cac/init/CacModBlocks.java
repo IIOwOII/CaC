@@ -6,6 +6,7 @@ package net.owo.cac.init;
 
 import net.owo.cac.block.BlkWallBlock;
 import net.owo.cac.block.BlkValuestoneBlock;
+import net.owo.cac.block.BlkValuepatchBlock;
 import net.owo.cac.block.BlkTapeBlockBlock;
 import net.owo.cac.block.BlkSwitchstoneBlock;
 import net.owo.cac.block.BlkObstacleBlock;
@@ -32,6 +33,7 @@ public class CacModBlocks {
 	public static final RegistryObject<Block> BLK_ARROW = REGISTRY.register("blk_arrow", () -> new BlkArrowBlock());
 	public static final RegistryObject<Block> BLK_VALUESTONE = REGISTRY.register("blk_valuestone", () -> new BlkValuestoneBlock());
 	public static final RegistryObject<Block> BLK_TAPE_BLOCK = REGISTRY.register("blk_tape_block", () -> new BlkTapeBlockBlock());
+	public static final RegistryObject<Block> BLK_VALUEPATCH = REGISTRY.register("blk_valuepatch", () -> new BlkValuepatchBlock());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }
