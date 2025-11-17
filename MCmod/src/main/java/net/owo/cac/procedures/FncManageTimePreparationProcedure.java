@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
 
@@ -11,6 +10,5 @@ public class FncManageTimePreparationProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).TimR_que_time = CacModVariables.MapVariables.get(world).TimR_time + CacModVariables.MapVariables.get(world).Dat_time_preparation * 20;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacMod.LOGGER.info(CacModVariables.MapVariables.get(world).TimR_que_time);
 	}
 }
