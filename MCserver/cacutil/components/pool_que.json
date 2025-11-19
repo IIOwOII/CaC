@@ -1,0 +1,82 @@
+{
+  "test_mixed": {
+    "initial": "test_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "test_end"
+  },
+  "test_chasing": {
+    "initial": "test_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "test_end"
+  },
+  "test_chased": {
+    "initial": "test_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "test_end"
+  },
+  "pseudo_chasing": {
+    "initial": "pseudo_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_survey",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "pseudo_end"
+  },
+  "pseudo_chased": {
+    "initial": "pseudo_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_survey",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "pseudo_end"
+  },
+  "simulation_chasing": {
+    "initial": "simulation_start",
+    "trial": [
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval"
+    ],
+    "ending": "simulation_end"
+  },
+  "simulation_chased": {
+    "initial": "simulation_start",
+    "trial": [
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval"
+    ],
+    "ending": "simulation_end"
+  }
+}

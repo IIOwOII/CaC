@@ -1,0 +1,18 @@
+{
+  "tutorial_debug_all": [
+    "book_empty",
+    "moving",
+    "book_empty",
+    "checkpoint",
+    "book_empty",
+    "racing",
+    "book_empty",
+    "chasing",
+    "book_empty",
+    "chased"
+  ],
+  "tutorial_debug_book": [
+    "book_empty",
+    "moving"
+  ]
+}

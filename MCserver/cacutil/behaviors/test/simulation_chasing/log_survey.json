@@ -1,0 +1,11 @@
+{
+  "cac": {
+    "reference": [
+      "winprob",
+      "perdiff",
+      "stress",
+      "target",
+      "control"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "cac": {
+    "content": [
+      "simulation_start",
+      "simulation_gameplay",
+      "touch",
+      "simulation_gameplay_end",
+      "simulation_interval",
+      "simulation_end"
+    ],
+    "absolute": [
+      0,
+      82,
+      19415,
+      19434,
+      20432,
+      21432
+    ],
+    "relative": [
+      0,
+      2,
+      312,
+      313,
+      333,
+      353
+    ]
+  }
+}
