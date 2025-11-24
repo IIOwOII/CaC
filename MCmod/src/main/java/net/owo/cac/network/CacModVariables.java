@@ -58,6 +58,7 @@ public class CacModVariables {
 	public static File Log_scanner = new File("");
 	public static File Pool_tutorial = new File("");
 	public static com.google.gson.JsonArray Tuto_que = new com.google.gson.JsonArray();
+	public static File Pool_random = new File("");
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -229,6 +230,8 @@ public class CacModVariables {
 		public String Msg_title_text = "\"\"";
 		public String Msg_subtitle_text = "\"\"";
 		public boolean Msg_titles_switch = false;
+		public ListTag List_random_preparation = new ListTag();
+		public ListTag List_random_spawn = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -375,6 +378,8 @@ public class CacModVariables {
 			Msg_title_text = nbt.getString("Msg_title_text");
 			Msg_subtitle_text = nbt.getString("Msg_subtitle_text");
 			Msg_titles_switch = nbt.getBoolean("Msg_titles_switch");
+			this.List_random_preparation = nbt.get("List_random_preparation") instanceof ListTag List_random_preparation ? List_random_preparation : new ListTag();
+			this.List_random_spawn = nbt.get("List_random_spawn") instanceof ListTag List_random_spawn ? List_random_spawn : new ListTag();
 		}
 
 		@Override
@@ -561,6 +566,8 @@ public class CacModVariables {
 			nbt.putString("Msg_title_text", Msg_title_text);
 			nbt.putString("Msg_subtitle_text", Msg_subtitle_text);
 			nbt.putBoolean("Msg_titles_switch", Msg_titles_switch);
+			nbt.put("List_random_preparation", this.List_random_preparation);
+			nbt.put("List_random_spawn", this.List_random_spawn);
 			return nbt;
 		}
 
