@@ -32,8 +32,6 @@ public class CstRenderHandler {
         int w = event.getWindow().getGuiScaledWidth();
 		int h = event.getWindow().getGuiScaledHeight();
 		GuiGraphics gg = event.getGuiGraphics();
-		
-		// CstRenderComponent.renderBar(gg, w/2-48, 8, 0.55F);
     }
 
     @SubscribeEvent

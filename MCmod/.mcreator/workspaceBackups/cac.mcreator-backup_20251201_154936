@@ -1902,29 +1902,6 @@
       "path": "~/CacCommand"
     },
     {
-      "name": "PrdTest",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_test",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "TaskSpawnOpponent",
       "type": "procedure",
       "compiles": true,
@@ -3875,6 +3852,57 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "IniPoolRandom",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_pool_random",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniPoolRandomProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "CmdTest",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTestCommand.java"
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "PrdTest",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/CacCommand"
     }
   ],
   "variable_elements": [
@@ -4693,6 +4721,24 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Pool_random",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "List_random_preparation",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_random_spawn",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [
@@ -4917,7 +4963,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.92",
+    "version": "0.93",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

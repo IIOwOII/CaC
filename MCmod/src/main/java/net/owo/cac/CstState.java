@@ -21,7 +21,7 @@ public class CstState {
 
 	public static boolean[] key_pressed = {false, false, false, false, false, false};
 	public static boolean[] key_pressed_old = {false, false, false, false, false, false};
-	public static int[] key_pressed_tick = {0, 0, 0, 0};
+	public static int[] key_pressed_tick = {0, 0, 0, 0}; // RLUD
 
     public static void switchMeowView() {
     	IsMeowView = (!IsMeowView);

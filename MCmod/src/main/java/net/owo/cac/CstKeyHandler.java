@@ -37,8 +37,8 @@ public class CstKeyHandler {
 			if (CstState.getKeyChanged(4) == 0) {
 				CstState.switchMeowView();
 			}
+			CstState.KeyTickUpdate();
 			if (CstState.CanMeowMove) {
-				CstState.KeyTickUpdate();
 				CstState.AngleUpdate();
 	            if (CstState.getKeyCase() != -1) {
 	            	KeyMapping.set(key_forward, true);
@@ -66,11 +66,6 @@ public class CstKeyHandler {
     	}
     	
     	if (event.phase == TickEvent.Phase.END) {
-    		// always
-    		if (!world.isClientSide() && world.getServer() != null) {
-    			CstState.KeyTickUpdate();
-    		}
-    		
     		// Survey Value
     		if (cacvar.Switch_survey) {
 				if (CstState.key_pressed[1]) {

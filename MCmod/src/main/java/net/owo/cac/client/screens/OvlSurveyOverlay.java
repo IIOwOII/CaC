@@ -55,9 +55,9 @@ public class OvlSurveyOverlay {
 			
 			String suv_name = cacvar.SuvT_name;
 			String suv_type = cacvar.SuvT_type;
-			String suv_label_low = cacvar.SuvT_label_low;
-			String suv_label_mid = cacvar.SuvT_label_mid;
-			String suv_label_high = cacvar.SuvT_label_high;
+			//String suv_label_low = cacvar.SuvT_label_low;
+			//String suv_label_mid = cacvar.SuvT_label_mid;
+			//String suv_label_high = cacvar.SuvT_label_high;
 			
 			double suv_value = cacvar.SuvT_value;
 			double suv_value_pre = cacvar.SuvT_value_pre;
@@ -77,9 +77,9 @@ public class OvlSurveyOverlay {
 			}
 
 			// Label
-			gg.drawString(mc.font, Component.literal(suv_label_low), (w/2-200), (h/2+40), -1, false);
-			gg.drawString(mc.font, Component.literal(suv_label_mid), (w/2), (h/2+40), -1, false);
-			gg.drawString(mc.font, Component.literal(suv_label_high), (w/2+150), (h/2+40), -1, false);
+			//gg.drawString(mc.font, Component.literal(suv_label_low), (w/2-200), (h/2+40), -1, false);
+			//gg.drawString(mc.font, Component.literal(suv_label_mid), (w/2), (h/2+40), -1, false);
+			//gg.drawString(mc.font, Component.literal(suv_label_high), (w/2+150), (h/2+40), -1, false);
 
 			// Survey
 			StringBuilder sb_name = new StringBuilder("cac:textures/screens/text_");

@@ -1902,29 +1902,6 @@
       "path": "~/CacCommand"
     },
     {
-      "name": "PrdTest",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_test",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "TaskSpawnOpponent",
       "type": "procedure",
       "compiles": true,
@@ -3894,6 +3871,50 @@
         ]
       },
       "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "CmdTest",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTestCommand.java"
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "PrdTest",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "CstSurvey",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstSurvey.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4426,24 +4447,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Suv_label_low",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_mid",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_high",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Suv_initial",
       "type": "datalist",
       "scope": "map",
@@ -4484,24 +4487,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "SuvT_label_low",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_mid",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_high",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
     },
     {
       "name": "SuvT_value",

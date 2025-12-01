@@ -25,12 +25,6 @@ public class SuvWaitingProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).SuvT_range_upper = (CacModVariables.MapVariables.get(world).Suv_range_upper.get((int) ord)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).SuvT_label_low = (CacModVariables.MapVariables.get(world).Suv_label_low.get((int) ord)) instanceof StringTag _stringTag ? _stringTag.getAsString() : "";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).SuvT_label_mid = (CacModVariables.MapVariables.get(world).Suv_label_mid.get((int) ord)) instanceof StringTag _stringTag ? _stringTag.getAsString() : "";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).SuvT_label_high = (CacModVariables.MapVariables.get(world).Suv_label_high.get((int) ord)) instanceof StringTag _stringTag ? _stringTag.getAsString() : "";
-		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).SuvT_value = (CacModVariables.MapVariables.get(world).Suv_initial.get((int) ord)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).SuvT_value_pre = (CacModVariables.MapVariables.get(world).SuvT_answer_pre.get((int) ord)) instanceof DoubleTag _doubleTag ? _doubleTag.getAsDouble() : 0.0D;

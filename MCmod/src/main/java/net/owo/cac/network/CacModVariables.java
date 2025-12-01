@@ -186,9 +186,6 @@ public class CacModVariables {
 		public ListTag Suv_type = new ListTag();
 		public ListTag Suv_range_lower = new ListTag();
 		public ListTag Suv_range_upper = new ListTag();
-		public ListTag Suv_label_low = new ListTag();
-		public ListTag Suv_label_mid = new ListTag();
-		public ListTag Suv_label_high = new ListTag();
 		public ListTag Suv_initial = new ListTag();
 		public double SuvT_index = 0;
 		public ListTag SuvT_answer_pre = new ListTag();
@@ -196,9 +193,6 @@ public class CacModVariables {
 		public String SuvT_type = "\"\"";
 		public double SuvT_range_lower = 0;
 		public double SuvT_range_upper = 0;
-		public String SuvT_label_low = "\"\"";
-		public String SuvT_label_mid = "\"\"";
-		public String SuvT_label_high = "\"\"";
 		public double SuvT_value = 0;
 		public double SuvT_value_pre = 0;
 		public double SuvT_time = 0;
@@ -325,9 +319,6 @@ public class CacModVariables {
 			this.Suv_type = nbt.get("Suv_type") instanceof ListTag Suv_type ? Suv_type : new ListTag();
 			this.Suv_range_lower = nbt.get("Suv_range_lower") instanceof ListTag Suv_range_lower ? Suv_range_lower : new ListTag();
 			this.Suv_range_upper = nbt.get("Suv_range_upper") instanceof ListTag Suv_range_upper ? Suv_range_upper : new ListTag();
-			this.Suv_label_low = nbt.get("Suv_label_low") instanceof ListTag Suv_label_low ? Suv_label_low : new ListTag();
-			this.Suv_label_mid = nbt.get("Suv_label_mid") instanceof ListTag Suv_label_mid ? Suv_label_mid : new ListTag();
-			this.Suv_label_high = nbt.get("Suv_label_high") instanceof ListTag Suv_label_high ? Suv_label_high : new ListTag();
 			this.Suv_initial = nbt.get("Suv_initial") instanceof ListTag Suv_initial ? Suv_initial : new ListTag();
 			SuvT_index = nbt.getDouble("SuvT_index");
 			this.SuvT_answer_pre = nbt.get("SuvT_answer_pre") instanceof ListTag SuvT_answer_pre ? SuvT_answer_pre : new ListTag();
@@ -335,9 +326,6 @@ public class CacModVariables {
 			SuvT_type = nbt.getString("SuvT_type");
 			SuvT_range_lower = nbt.getDouble("SuvT_range_lower");
 			SuvT_range_upper = nbt.getDouble("SuvT_range_upper");
-			SuvT_label_low = nbt.getString("SuvT_label_low");
-			SuvT_label_mid = nbt.getString("SuvT_label_mid");
-			SuvT_label_high = nbt.getString("SuvT_label_high");
 			SuvT_value = nbt.getDouble("SuvT_value");
 			SuvT_value_pre = nbt.getDouble("SuvT_value_pre");
 			SuvT_time = nbt.getDouble("SuvT_time");
@@ -501,9 +489,6 @@ public class CacModVariables {
 			nbt.put("Suv_type", this.Suv_type);
 			nbt.put("Suv_range_lower", this.Suv_range_lower);
 			nbt.put("Suv_range_upper", this.Suv_range_upper);
-			nbt.put("Suv_label_low", this.Suv_label_low);
-			nbt.put("Suv_label_mid", this.Suv_label_mid);
-			nbt.put("Suv_label_high", this.Suv_label_high);
 			nbt.put("Suv_initial", this.Suv_initial);
 			nbt.putDouble("SuvT_index", SuvT_index);
 			nbt.put("SuvT_answer_pre", this.SuvT_answer_pre);
@@ -511,9 +496,6 @@ public class CacModVariables {
 			nbt.putString("SuvT_type", SuvT_type);
 			nbt.putDouble("SuvT_range_lower", SuvT_range_lower);
 			nbt.putDouble("SuvT_range_upper", SuvT_range_upper);
-			nbt.putString("SuvT_label_low", SuvT_label_low);
-			nbt.putString("SuvT_label_mid", SuvT_label_mid);
-			nbt.putString("SuvT_label_high", SuvT_label_high);
 			nbt.putDouble("SuvT_value", SuvT_value);
 			nbt.putDouble("SuvT_value_pre", SuvT_value_pre);
 			nbt.putDouble("SuvT_time", SuvT_time);

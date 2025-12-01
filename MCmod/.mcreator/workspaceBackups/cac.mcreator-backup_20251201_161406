@@ -1902,29 +1902,6 @@
       "path": "~/CacCommand"
     },
     {
-      "name": "PrdTest",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_test",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "TaskSpawnOpponent",
       "type": "procedure",
       "compiles": true,
@@ -3875,6 +3852,57 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "IniPoolRandom",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_pool_random",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniPoolRandomProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "CmdTest",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTestCommand.java"
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "PrdTest",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/CacCommand"
     }
   ],
   "variable_elements": [
@@ -4407,24 +4435,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Suv_label_low",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_mid",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_high",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Suv_initial",
       "type": "datalist",
       "scope": "map",
@@ -4465,24 +4475,6 @@
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "SuvT_label_low",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_mid",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_high",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
     },
     {
       "name": "SuvT_value",
@@ -4693,6 +4685,24 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "Pool_random",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "List_random_preparation",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_random_spawn",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [
@@ -4750,8 +4760,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

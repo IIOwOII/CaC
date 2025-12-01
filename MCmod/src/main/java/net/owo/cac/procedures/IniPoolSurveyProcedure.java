@@ -28,12 +28,6 @@ public class IniPoolSurveyProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Suv_range_upper = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Suv_label_low = new ListTag();
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Suv_label_mid = new ListTag();
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Suv_label_high = new ListTag();
-		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Suv_initial = new ListTag();
 		CacModVariables.MapVariables.get(world).syncData(world);
 		idx = 0;
@@ -57,9 +51,6 @@ public class IniPoolSurveyProcedure {
 					CacModVariables.MapVariables.get(world).Suv_range_lower.addTag((int) idx, DoubleTag.valueOf(arr_range.get(0).getAsDouble()));
 					CacModVariables.MapVariables.get(world).Suv_range_upper.addTag((int) idx, DoubleTag.valueOf(arr_range.get(1).getAsDouble()));
 					arr_label = obj_survey_name.get("label").getAsJsonArray();
-					CacModVariables.MapVariables.get(world).Suv_label_low.addTag((int) idx, StringTag.valueOf(arr_label.get(0).getAsString()));
-					CacModVariables.MapVariables.get(world).Suv_label_mid.addTag((int) idx, StringTag.valueOf(arr_label.get(1).getAsString()));
-					CacModVariables.MapVariables.get(world).Suv_label_high.addTag((int) idx, StringTag.valueOf(arr_label.get(2).getAsString()));
 					CacModVariables.MapVariables.get(world).Suv_initial.addTag((int) idx, DoubleTag.valueOf(obj_survey_name.get("initial").getAsDouble()));
 					idx = idx + 1;
 				}
