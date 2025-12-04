@@ -12,8 +12,7 @@ public class TaskPreparationProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Exp_phase = 1;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_phase = 1;
 		CacModVariables.MapVariables.get(world).Switch_trace = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		{

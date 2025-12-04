@@ -22,7 +22,7 @@ public class IniQueProcedure {
 				}
 				bufferedReader.close();
 				obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				obj_session = obj_file.get(CacModVariables.MapVariables.get(world).Exp_session).getAsJsonObject();
+				obj_session = obj_file.get(CacModVariables.Exp_session).getAsJsonObject();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

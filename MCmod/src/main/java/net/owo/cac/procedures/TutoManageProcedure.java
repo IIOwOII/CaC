@@ -42,9 +42,8 @@ public class TutoManageProcedure {
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Please check the command!"), false);
 		} else {
 			TutoQueCloneProcedure.execute();
-			CacModVariables.MapVariables.get(world).Exp_session = tuto_type;
-			CacModVariables.MapVariables.get(world).syncData(world);
-			IniLogProcedure.execute(world);
+			CacModVariables.Exp_session = tuto_type;
+			IniLogProcedure.execute();
 			TimResetProcedure.execute(world);
 			EvResetProcedure.execute(world);
 			CacModVariables.MapVariables.get(world).Ev_content = "tutorial_init";

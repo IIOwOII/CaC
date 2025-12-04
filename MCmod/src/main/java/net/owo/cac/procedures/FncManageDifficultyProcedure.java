@@ -15,19 +15,15 @@ public class FncManageDifficultyProcedure {
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonArray arr_winlose = new com.google.gson.JsonArray();
 		double winlose_pre = 0;
-		session = CacModVariables.MapVariables.get(world).Exp_session;
+		session = CacModVariables.Exp_session;
 		if ((session).equals("test_mixed")) {
-			CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * Math.floor(CacModVariables.MapVariables.get(world).Exp_trial / 2))) / Math.pow(10, 2);
-			CacModVariables.MapVariables.get(world).syncData(world);
-			CacModVariables.MapVariables.get(world).Dat_difficulty_relative = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * Math.floor(CacModVariables.Exp_trial / 2))) / Math.pow(10, 2);
+			CacModVariables.Dat_difficulty_relative = CacModVariables.Dat_difficulty_absolute;
 		} else if ((session).equals("test_chasing") || (session).equals("test_chased")) {
-			CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * CacModVariables.MapVariables.get(world).Exp_trial)) / Math.pow(10, 2);
-			CacModVariables.MapVariables.get(world).syncData(world);
-			CacModVariables.MapVariables.get(world).Dat_difficulty_relative = CacModVariables.MapVariables.get(world).Dat_difficulty_absolute;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * CacModVariables.Exp_trial)) / Math.pow(10, 2);
+			CacModVariables.Dat_difficulty_relative = CacModVariables.Dat_difficulty_absolute;
 		} else if ((session).equals("pseudo_chasing") || (session).equals("pseudo_chased")) {
-			if (CacModVariables.MapVariables.get(world).Exp_trial != 0) {
+			if (CacModVariables.Exp_trial != 0) {
 				{
 					try {
 						BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_gameplay));
@@ -44,24 +40,19 @@ public class FncManageDifficultyProcedure {
 					}
 				}
 				arr_winlose = obj_cac.get("winlose").getAsJsonArray();
-				winlose_pre = arr_winlose.get(((int) (CacModVariables.MapVariables.get(world).Exp_trial - 1))).getAsDouble();
+				winlose_pre = arr_winlose.get(((int) (CacModVariables.Exp_trial - 1))).getAsDouble();
 				if (winlose_pre == 1) {
-					CacModVariables.MapVariables.get(world).Dat_difficulty_relative = Math.round(Math.pow(10, 2) * (CacModVariables.MapVariables.get(world).Dat_difficulty_relative - 0.05)) / Math.pow(10, 2);
-					CacModVariables.MapVariables.get(world).syncData(world);
+					CacModVariables.Dat_difficulty_relative = Math.round(Math.pow(10, 2) * (CacModVariables.Dat_difficulty_relative - 0.05)) / Math.pow(10, 2);
 				} else if (winlose_pre == 0) {
-					CacModVariables.MapVariables.get(world).Dat_difficulty_relative = Math.round(Math.pow(10, 2) * (CacModVariables.MapVariables.get(world).Dat_difficulty_relative + 0.02)) / Math.pow(10, 2);
-					CacModVariables.MapVariables.get(world).syncData(world);
+					CacModVariables.Dat_difficulty_relative = Math.round(Math.pow(10, 2) * (CacModVariables.Dat_difficulty_relative + 0.02)) / Math.pow(10, 2);
 				} else {
-					CacModVariables.MapVariables.get(world).Log_error = "invalid_data";
-					CacModVariables.MapVariables.get(world).syncData(world);
+					CacModVariables.Log_error = "invalid_data";
 					CacErrorProcedure.execute(world);
 				}
 			} else {
-				CacModVariables.MapVariables.get(world).Dat_difficulty_relative = 0.5;
-				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Dat_difficulty_relative = 0.5;
 			}
-			CacModVariables.MapVariables.get(world).Dat_difficulty_absolute = PsyInvpsiLogisticProcedure.execute(world);
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Dat_difficulty_absolute = PsyInvpsiLogisticProcedure.execute();
 		}
 	}
 }

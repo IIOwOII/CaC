@@ -2,15 +2,13 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class RecPositionProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_trial = new com.google.gson.JsonObject();
@@ -20,7 +18,7 @@ public class RecPositionProcedure {
 		com.google.gson.JsonObject obj_preparation = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_player_prep = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_opponent_prep = new com.google.gson.JsonObject();
-		if (CacModVariables.MapVariables.get(world).Log_type.contains("P")) {
+		if (CacModVariables.Log_type.contains("P")) {
 			{
 				try {
 					BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_position));
@@ -60,7 +58,7 @@ public class RecPositionProcedure {
 				obj_gameplay.add("opponent", obj_opponent);
 				obj_trial.add("gameplay", obj_gameplay);
 			}
-			obj_cac.add(("trial_" + (int) CacModVariables.MapVariables.get(world).Exp_trial), obj_trial);
+			obj_cac.add(("trial_" + (int) CacModVariables.Exp_trial), obj_trial);
 			{
 				com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 				try {

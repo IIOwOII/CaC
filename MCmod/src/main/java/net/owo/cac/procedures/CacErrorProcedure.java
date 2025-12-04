@@ -8,7 +8,7 @@ import net.minecraft.network.chat.Component;
 public class CacErrorProcedure {
 	public static void execute(LevelAccessor world) {
 		String log_error = "";
-		log_error = CacModVariables.MapVariables.get(world).Log_error;
+		log_error = CacModVariables.Log_error;
 		if ((log_error).equals("nonexist_file")) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cNo file!"), false);
@@ -25,7 +25,6 @@ public class CacErrorProcedure {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7cTimer is already on!"), false);
 		}
-		CacModVariables.MapVariables.get(world).Log_error = "";
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Log_error = "";
 	}
 }

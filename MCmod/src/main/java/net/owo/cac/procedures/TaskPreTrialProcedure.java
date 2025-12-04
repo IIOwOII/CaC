@@ -12,8 +12,7 @@ public class TaskPreTrialProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Exp_phase = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_phase = 0;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -39,9 +38,9 @@ public class TaskPreTrialProcedure {
 		FncManageSpawnOpponentProcedure.execute(world);
 		FncManageDifficultyProcedure.execute(world);
 		TaskSpawnOpponentProcedure.execute(world);
-		if (CacModVariables.MapVariables.get(world).Dat_trial_type == 0) {
+		if (CacModVariables.Dat_trial_type == 0) {
 			EffApplyMorphPredatorProcedure.execute(entity);
-		} else if (CacModVariables.MapVariables.get(world).Dat_trial_type == 1) {
+		} else if (CacModVariables.Dat_trial_type == 1) {
 			EffApplyMorphPreyProcedure.execute(entity);
 		}
 	}

@@ -18,29 +18,26 @@ public class SimGameplayProcedure {
 		CacModVariables.Dat_pos_opponent_x = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_z = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_r = new com.google.gson.JsonArray();
-		CacModVariables.MapVariables.get(world).Dat_trial_spawnpoint_opponent = CacModVariables.MapVariables.get(world).Exp_trial % 4;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Dat_trial_spawnpoint_opponent = CacModVariables.Exp_trial % 4;
 		TaskSpawnOpponentProcedure.execute(world);
-		if (CacModVariables.MapVariables.get(world).Dat_trial_type == 0) {
+		if (CacModVariables.Dat_trial_type == 0) {
 			if (world instanceof ServerLevel _level) {
 				Entity entityToSpawn = CacModEntities.ENT_PSEUDO_CAT.get().spawn(_level, BlockPos.containing(0.5, 64, -49.5), MobSpawnType.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 				}
 			}
-		} else if (CacModVariables.MapVariables.get(world).Dat_trial_type == 1) {
+		} else if (CacModVariables.Dat_trial_type == 1) {
 			if (world instanceof ServerLevel _level) {
 				Entity entityToSpawn = CacModEntities.ENT_PSEUDO_MOUSE.get().spawn(_level, BlockPos.containing(0.5, 64, -49.5), MobSpawnType.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 				}
 			}
 		}
-		CacModVariables.MapVariables.get(world).Exp_phase = 2;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_phase = 2;
 		CacModVariables.MapVariables.get(world).Switch_AI = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_trace = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time;
 	}
 }

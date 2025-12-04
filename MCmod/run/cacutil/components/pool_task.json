@@ -9,6 +9,6 @@
   "simulation_chased": "EPG",
   "tutorial_debug_book": "",
   "tutorial_debug_all": "",
-  "chasing": "EPGASCR",
-  "chased": "EPGASCR"
+  "chasing": "EPGASUCR",
+  "chased": "EPGASUCR"
 }

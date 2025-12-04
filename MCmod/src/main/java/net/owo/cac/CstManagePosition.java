@@ -47,7 +47,7 @@ public class CstManagePosition {
 				Vec3 pos_player = ent_player.position();
 
 				if (CacModVariables.MapVariables.get(world).Switch_trace) {
-					if (CacModVariables.MapVariables.get(world).Exp_phase == 1) {
+					if (CacModVariables.Exp_phase == 1) {
 						CacModVariables.Dat_pos_time_prep.add((int)CacModVariables.MapVariables.get(world).TimR_time);
 						CacModVariables.Dat_pos_player_x_prep.add((pos_player.x()));
 						CacModVariables.Dat_pos_player_z_prep.add((pos_player.z()));
@@ -56,7 +56,7 @@ public class CstManagePosition {
 						CacModVariables.Dat_pos_opponent_z_prep.add((pos_opponent.z()));
 						CacModVariables.Dat_pos_opponent_r_prep.add((ent_opponent.getYRot()));
 					}
-					if (CacModVariables.MapVariables.get(world).Exp_phase == 2) {
+					if (CacModVariables.Exp_phase == 2) {
 						CacModVariables.Dat_pos_time.add((int)CacModVariables.MapVariables.get(world).TimR_time);
 						CacModVariables.Dat_pos_player_x.add((pos_player.x()));
 						CacModVariables.Dat_pos_player_z.add((pos_player.z()));

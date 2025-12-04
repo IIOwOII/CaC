@@ -19,7 +19,7 @@ public class RecSurveyProcedure {
 		com.google.gson.JsonArray arr_time = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_order = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_answer = new com.google.gson.JsonArray();
-		if (CacModVariables.MapVariables.get(world).Log_type.contains("S")) {
+		if (CacModVariables.Log_type.contains("S")) {
 			{
 				try {
 					BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_survey));
@@ -35,9 +35,7 @@ public class RecSurveyProcedure {
 					e.printStackTrace();
 				}
 			}
-			for (Tag dataelementiterator : CacModVariables.MapVariables.get(world).Dat_survey_order) {
-				arr_order.add((dataelementiterator instanceof IntTag _intTag ? _intTag.getAsInt() : 0));
-			}
+			arr_order.add(0);
 			for (Tag dataelementiterator : CacModVariables.MapVariables.get(world).Dat_survey_time) {
 				arr_time.add((dataelementiterator instanceof IntTag _intTag ? _intTag.getAsInt() : 0));
 			}
@@ -49,7 +47,7 @@ public class RecSurveyProcedure {
 			obj_trial.add("answer", arr_answer);
 			obj_trial.addProperty("surrender", ((int) CacModVariables.MapVariables.get(world).Dat_survey_surrender));
 			obj_trial.addProperty("surrender type", ((int) CacModVariables.MapVariables.get(world).Dat_survey_surrender_type));
-			obj_cac.add(("trial_" + (int) CacModVariables.MapVariables.get(world).Exp_trial), obj_trial);
+			obj_cac.add(("trial_" + (int) CacModVariables.Exp_trial), obj_trial);
 			{
 				com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 				try {

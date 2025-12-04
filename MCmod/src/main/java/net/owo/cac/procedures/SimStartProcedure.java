@@ -12,14 +12,10 @@ public class SimStartProcedure {
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_trace = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Exp_trial = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Exp_phase = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dat_trial_winlose = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dat_time_gameplay = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_trial = 0;
+		CacModVariables.Exp_phase = 0;
+		CacModVariables.Dat_trial_winlose = 0;
+		CacModVariables.Dat_time_gameplay = 0;
 		CacModVariables.Dat_pos_time = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_player_x = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_player_z = new com.google.gson.JsonArray();

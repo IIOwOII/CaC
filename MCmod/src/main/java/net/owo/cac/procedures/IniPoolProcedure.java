@@ -13,18 +13,15 @@ public class IniPoolProcedure {
 	public static void execute(LevelAccessor world) {
 		String dir_components = "";
 		dir_components = FMLPaths.GAMEDIR.get().toString() + "/cacutil/components";
-		CacModVariables.MapVariables.get(world).Dir_components = dir_components;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Dir_components = dir_components;
 		CacModVariables.Pool_event = new File(dir_components, File.separator + "pool_event.json");
 		CacModVariables.Pool_task = new File(dir_components, File.separator + "pool_task.json");
 		CacModVariables.Pool_point = new File(dir_components, File.separator + "pool_point.json");
 		CacModVariables.Pool_que = new File(dir_components, File.separator + "pool_que.json");
-		CacModVariables.Pool_survey = new File(dir_components, File.separator + "pool_survey.json");
 		CacModVariables.Pool_psychometric = new File(dir_components, File.separator + "pool_psychometric.json");
 		CacModVariables.Pool_tutorial = new File(dir_components, File.separator + "pool_tutorial.json");
 		CacModVariables.Pool_random = new File(dir_components, File.separator + "pool_random.json");
 		IniPoolPointProcedure.execute(world);
-		IniPoolSurveyProcedure.execute(world);
 		IniPoolPsychometricProcedure.execute(world);
 		IniPoolRandomProcedure.execute(world);
 		if (CacModVariables.MapVariables.get(world).Switch_debug) {

@@ -16,7 +16,7 @@ public class EvPulseRecordProcedure {
 		com.google.gson.JsonArray arr_content = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_absolute = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_relative = new com.google.gson.JsonArray();
-		if (CacModVariables.MapVariables.get(world).Log_type.contains("E")) {
+		if (CacModVariables.Log_type.contains("E")) {
 			{
 				try {
 					BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_event));

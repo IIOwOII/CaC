@@ -23,7 +23,7 @@ public class EvInvokeProcedure {
 				if ((ev_content).equals("test_start")) {
 					TaskPreRunProcedure.execute(world);
 				} else if ((ev_content).equals("pseudo_start")) {
-					PsyPsiPseudoProcedure.execute(world);
+					PsyPsiPseudoProcedure.execute();
 					TaskPreRunProcedure.execute(world);
 				} else if ((ev_content).equals("simulation_start")) {
 					SimStartProcedure.execute(world);
@@ -38,25 +38,15 @@ public class EvInvokeProcedure {
 				} else if ((ev_content).equals("phase_gameplay_end")) {
 					TaskGameplayEndProcedure.execute(world, x, y, z, entity);
 				} else if ((ev_content).equals("phase_survey")) {
-					CacModVariables.Ev_que_loop = false;
 					TaskSurveyProcedure.execute(world);
 				} else if ((ev_content).equals("phase_surrender")) {
 					TaskSurrenderProcedure.execute(world);
 				} else if ((ev_content).equals("phase_surrender_end")) {
-					CacModVariables.Ev_que_loop = true;
 					TaskSurrenderEndProcedure.execute(world);
 				} else if ((ev_content).equals("phase_interval")) {
 					TaskIntervalProcedure.execute(world, entity);
 				} else if ((ev_content).equals("phase_posttrial")) {
 					TaskPostTrialProcedure.execute(world);
-				}
-			} else if (ev_content.startsWith("survey")) {
-				if ((ev_content).equals("survey_waiting")) {
-					SuvWaitingProcedure.execute(world);
-				} else if ((ev_content).equals("survey_progress")) {
-					SuvProgressProcedure.execute(world);
-				} else if ((ev_content).equals("survey_confirmed")) {
-					SuvConfirmedProcedure.execute(world);
 				}
 			} else if (ev_content.startsWith("simulation")) {
 				if ((ev_content).equals("simulation_gameplay")) {

@@ -509,8 +509,8 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -1902,29 +1902,6 @@
       "path": "~/CacCommand"
     },
     {
-      "name": "PrdTest",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "prd_test",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacCommand"
-    },
-    {
       "name": "TaskSpawnOpponent",
       "type": "procedure",
       "compiles": true,
@@ -2121,25 +2098,6 @@
       "path": "~/CacAI"
     },
     {
-      "name": "IniPoolSurvey",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_survey",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolSurveyProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
-    },
-    {
       "name": "IniLogSurvey",
       "type": "procedure",
       "compiles": true,
@@ -2222,19 +2180,6 @@
         ]
       },
       "path": "~/CacTask/General"
-    },
-    {
-      "name": "OvlSurvey",
-      "type": "overlay",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "ovl_survey",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/client/screens/OvlSurveyOverlay.java"
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
     },
     {
       "name": "KeySignalOn",
@@ -2344,63 +2289,6 @@
       "path": "~/CacCondition"
     },
     {
-      "name": "SuvWaiting",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_waiting",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvWaitingProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
-    },
-    {
-      "name": "SuvProgress",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_progress",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvProgressProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
-    },
-    {
-      "name": "SuvConfirmed",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_confirmed",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvConfirmedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
-    },
-    {
       "name": "RecSurvey",
       "type": "procedure",
       "compiles": true,
@@ -2418,44 +2306,6 @@
         ]
       },
       "path": "~/CacTask/Record"
-    },
-    {
-      "name": "FncManageSurveyOrder",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_manage_survey_order",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncManageSurveyOrderProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Manager"
-    },
-    {
-      "name": "FncManageSurveyReset",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_manage_survey_reset",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncManageSurveyResetProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Manager"
     },
     {
       "name": "OvlSurrender",
@@ -3894,31 +3744,304 @@
         ]
       },
       "path": "~/CacInit/Pool"
+    },
+    {
+      "name": "CmdTest",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTestCommand.java"
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "PrdTest",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prd_test",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PrdTestProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/CacCommand"
+    },
+    {
+      "name": "CstSurvey",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstSurvey.java"
+        ]
+      }
+    },
+    {
+      "name": "IniLogSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Log"
     }
   ],
   "variable_elements": [
     {
-      "name": "List_obstacle",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Pos_offset",
+      "name": "Builder_pos1",
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
     },
     {
-      "name": "List_wall",
+      "name": "Builder_pos2",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Dat_difficulty_absolute",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_difficulty_relative",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_pos_opponent_r",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_r_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_x",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_x_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_z",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_opponent_z_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_player_r",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_player_r_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_player_x",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_player_x_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_player_z",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_player_z_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_time",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_pos_time_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_psy_param",
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
     },
     {
-      "name": "Exp_signal",
+      "name": "Dat_survey_answer",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_survey_order",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_survey_surrender",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_survey_surrender_type",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_survey_time",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_time_gameplay",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_time_interval",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_time_preparation",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_trial_spawnpoint_opponent",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_trial_type",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dat_trial_winlose",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Dir_behaviors",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Dir_behaviors_session",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Dir_components",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Ev_content",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Ev_occuring",
       "type": "logic",
       "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Ev_pulse_content",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Ev_que",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Ev_que_index",
+      "type": "number",
+      "scope": "global",
+      "value": "0"
+    },
+    {
+      "name": "Ev_que_loop",
+      "type": "logic",
+      "scope": "global",
       "value": "false"
     },
     {
@@ -3928,31 +4051,19 @@
       "value": "0"
     },
     {
-      "name": "Log_error",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
       "name": "Exp_session",
       "type": "string",
       "scope": "map",
       "value": "\"none\""
     },
     {
-      "name": "Exp_trial",
+      "name": "Exp_session_reps",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "Switch_AI",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Switch_debug",
+      "name": "Exp_signal",
       "type": "logic",
       "scope": "map",
       "value": "false"
@@ -3964,15 +4075,351 @@
       "value": "\"\""
     },
     {
+      "name": "Exp_trial",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Exp_trial_total",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Info_timestamp",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "List_obstacle",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_random_preparation",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_random_spawn",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_spawnpoint_opponent",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_survey_initial",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_survey_label",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_survey_name",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_survey_range",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_survey_type",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "List_wall",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Log_error",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Log_event",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_gameplay",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_position",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_scanner",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_surrender",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_survey",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Log_type",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Meow_destination",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Meow_dx",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Meow_dz",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "Msg_actionbar_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Msg_actionbar_text",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_subtitle_text",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_title_text",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "Msg_titles_switch",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Pool_event",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Pool_point",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Pool_psychometric",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Pool_que",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Pool_random",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Pool_task",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Pool_tutorial",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Pos_border_end",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_border_start",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_offset",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_opponent",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_opponent_destination",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_player",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Pos_player_destination",
+      "type": "vector",
+      "scope": "map",
+      "value": "Vec3.ZERO"
+    },
+    {
+      "name": "Psy_likelihood",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_param_gamma",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_param_lambda",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_param_m",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_param_w",
+      "type": "datalist",
+      "scope": "map",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Switch_AI",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
       "name": "Switch_blank",
       "type": "logic",
       "scope": "map",
       "value": "false"
     },
     {
-      "name": "TimR_time",
+      "name": "Switch_debug",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Switch_que",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Switch_scanner",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Switch_surrender",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Switch_timer",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "Switch_trace",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "test1",
       "type": "number",
       "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "test2",
+      "type": "number",
+      "scope": "global",
       "value": "0"
     },
     {
@@ -3994,84 +4441,6 @@
       "value": "0"
     },
     {
-      "name": "Exp_trial_total",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Log_event",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Log_position",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Ev_pulse_content",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Dat_trial_type",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_difficulty_absolute",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_difficulty_relative",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_trial_spawnpoint_opponent",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_trial_winlose",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_time_preparation",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_time_gameplay",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Pos_player",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Pos_opponent",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
       "name": "TimD_switch",
       "type": "logic",
       "scope": "map",
@@ -4090,511 +4459,19 @@
       "value": "0"
     },
     {
-      "name": "Pool_event",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Switch_que",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "TimR_que_time",
       "type": "number",
       "scope": "map",
       "value": "0"
     },
     {
-      "name": "Pool_task",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Pool_point",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Dir_components",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Dir_behaviors",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "List_spawnpoint_opponent",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Switch_timer",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Pool_que",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Ev_content",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Ev_que",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Ev_que_loop",
-      "type": "logic",
-      "scope": "global",
-      "value": "false"
-    },
-    {
-      "name": "Ev_que_index",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
-      "name": "Ev_occuring",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Dat_time_interval",
+      "name": "TimR_time",
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Switch_trace",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Dat_pos_player_x",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_z",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_r",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_x",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_z",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_r",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_time",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Log_gameplay",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Dat_pos_time_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_x_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_z_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_r_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Pos_border_start",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Pos_border_end",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Info_timestamp",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Meow_dx",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Meow_dz",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Dat_pos_opponent_x_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_z_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_r_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Pos_player_destination",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Pos_opponent_destination",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Meow_destination",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Pool_survey",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Log_survey",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Dat_survey_surrender",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "List_survey_name",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "List_survey_type",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "List_survey_range",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "List_survey_label",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "List_survey_initial",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Switch_survey",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Dat_survey_order",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_survey_time",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_survey_answer",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_reference",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_type",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_range_lower",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_range_upper",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_low",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_mid",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_high",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_initial",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "SuvT_index",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_answer_pre",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "SuvT_name",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_type",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_range_lower",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_range_upper",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_label_low",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_mid",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_high",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_value",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_value_pre",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_time",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Switch_surrender",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Dat_survey_surrender_type",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Pool_psychometric",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Psy_param_m",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_w",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_gamma",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_lambda",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_likelihood",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_psy_param",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Switch_scanner",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
     },
     {
       "name": "TimS_time",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "Log_scanner",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Tuto_checkpoint_index",
       "type": "number",
       "scope": "map",
       "value": "0"
@@ -4606,10 +4483,10 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "Tuto_checkpoint_route",
-      "type": "datalist",
+      "name": "Tuto_checkpoint_index",
+      "type": "number",
       "scope": "map",
-      "value": "new ListTag()"
+      "value": "0"
     },
     {
       "name": "Tuto_checkpoint_pos",
@@ -4618,28 +4495,16 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Dir_behaviors_session",
-      "type": "string",
+      "name": "Tuto_checkpoint_route",
+      "type": "datalist",
       "scope": "map",
-      "value": "\"\""
+      "value": "new ListTag()"
     },
     {
-      "name": "Exp_session_reps",
+      "name": "Tuto_hurdle_stack",
       "type": "number",
       "scope": "map",
       "value": "0"
-    },
-    {
-      "name": "Builder_pos1",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Builder_pos2",
-      "type": "vector",
-      "scope": "map",
-      "value": "Vec3.ZERO"
     },
     {
       "name": "Tuto_hurdle_stack_old",
@@ -4648,10 +4513,10 @@
       "value": "0"
     },
     {
-      "name": "Tuto_hurdle_stack",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
+      "name": "Tuto_que",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     },
     {
       "name": "Tuto_score",
@@ -4664,72 +4529,6 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
-    },
-    {
-      "name": "Pool_tutorial",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Tuto_que",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Log_type",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Msg_actionbar_switch",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Msg_actionbar_text",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Msg_title_text",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Msg_subtitle_text",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "Msg_titles_switch",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
-      "name": "Pool_random",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "List_random_preparation",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "List_random_spawn",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
     }
   ],
   "sound_elements": [
@@ -4787,8 +4586,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

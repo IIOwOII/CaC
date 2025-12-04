@@ -9,14 +9,13 @@ public class TaskIntervalProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Exp_phase = 4;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_phase = 4;
 		CacModVariables.MapVariables.get(world).Switch_blank = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		FncManageIntervalProcedure.execute(world);
 		EffRemoveMorphProcedure.execute(entity);
-		RecGameplayProcedure.execute(world);
-		RecPositionProcedure.execute(world);
+		RecGameplayProcedure.execute();
+		RecPositionProcedure.execute();
 		RecSurveyProcedure.execute(world);
 	}
 }

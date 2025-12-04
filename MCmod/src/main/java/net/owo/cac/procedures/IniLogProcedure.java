@@ -4,20 +4,16 @@ import net.owo.cac.network.CacModVariables;
 
 import net.minecraftforge.fml.loading.FMLPaths;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class IniLogProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		String log_type = "";
-		CacModVariables.MapVariables.get(world).Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + CacModVariables.MapVariables.get(world).Exp_subject;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dir_behaviors_session = CacModVariables.MapVariables.get(world).Dir_behaviors + "/" + CacModVariables.MapVariables.get(world).Exp_session;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + CacModVariables.Exp_subject;
+		CacModVariables.Dir_behaviors_session = CacModVariables.Dir_behaviors + "/" + CacModVariables.Exp_session;
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_task));
@@ -28,27 +24,29 @@ public class IniLogProcedure {
 				}
 				bufferedReader.close();
 				obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				log_type = obj_file.get(CacModVariables.MapVariables.get(world).Exp_session).getAsString();
-				CacModVariables.MapVariables.get(world).Log_type = obj_file.get(CacModVariables.MapVariables.get(world).Exp_session).getAsString();
-				CacModVariables.MapVariables.get(world).syncData(world);
+				log_type = obj_file.get(CacModVariables.Exp_session).getAsString();
+				CacModVariables.Log_type = obj_file.get(CacModVariables.Exp_session).getAsString();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		if (log_type.contains("E")) {
-			IniLogEventProcedure.execute(world);
+			IniLogEventProcedure.execute();
 		}
 		if (log_type.contains("P")) {
-			IniLogPositionProcedure.execute(world);
+			IniLogPositionProcedure.execute();
 		}
 		if (log_type.contains("G")) {
-			IniLogGameplayProcedure.execute(world);
+			IniLogGameplayProcedure.execute();
 		}
 		if (log_type.contains("S")) {
-			IniLogSurveyProcedure.execute(world);
+			IniLogSurveyProcedure.execute();
+		}
+		if (log_type.contains("U")) {
+			IniLogSurrenderProcedure.execute();
 		}
 		if (log_type.contains("C")) {
-			IniLogScannerProcedure.execute(world);
+			IniLogScannerProcedure.execute();
 		}
 	}
 }

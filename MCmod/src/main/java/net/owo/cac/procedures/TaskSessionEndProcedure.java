@@ -30,7 +30,7 @@ public class TaskSessionEndProcedure {
 				e.printStackTrace();
 			}
 		}
-		obj_cac.addProperty((CacModVariables.MapVariables.get(world).Exp_session + "_end"), Calendar.getInstance().getTime().toString());
+		obj_cac.addProperty((CacModVariables.Exp_session + "_end"), Calendar.getInstance().getTime().toString());
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {

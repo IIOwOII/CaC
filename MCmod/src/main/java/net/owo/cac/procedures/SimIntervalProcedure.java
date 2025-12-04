@@ -10,11 +10,10 @@ public class SimIntervalProcedure {
 		if (entity == null)
 			return;
 		EffRemoveMorphProcedure.execute(entity);
-		RecPositionProcedure.execute(world);
-		RecGameplayProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).Exp_trial = CacModVariables.MapVariables.get(world).Exp_trial + 1;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		if (CacModVariables.MapVariables.get(world).Exp_trial >= CacModVariables.MapVariables.get(world).Exp_trial_total) {
+		RecPositionProcedure.execute();
+		RecGameplayProcedure.execute();
+		CacModVariables.Exp_trial = CacModVariables.Exp_trial + 1;
+		if (CacModVariables.Exp_trial >= CacModVariables.Exp_trial_total) {
 			TaskPostRunProcedure.execute(world);
 		}
 	}

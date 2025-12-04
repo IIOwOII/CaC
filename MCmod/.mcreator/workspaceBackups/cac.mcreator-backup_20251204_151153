@@ -2098,25 +2098,6 @@
       "path": "~/CacAI"
     },
     {
-      "name": "IniPoolSurvey",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_pool_survey",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniPoolSurveyProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacInit/Pool"
-    },
-    {
       "name": "IniLogSurvey",
       "type": "procedure",
       "compiles": true,
@@ -2199,19 +2180,6 @@
         ]
       },
       "path": "~/CacTask/General"
-    },
-    {
-      "name": "OvlSurvey",
-      "type": "overlay",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "ovl_survey",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/client/screens/OvlSurveyOverlay.java"
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
     },
     {
       "name": "KeySignalOn",
@@ -2321,63 +2289,6 @@
       "path": "~/CacCondition"
     },
     {
-      "name": "SuvWaiting",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_waiting",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvWaitingProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
-    },
-    {
-      "name": "SuvProgress",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_progress",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvProgressProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
-    },
-    {
-      "name": "SuvConfirmed",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "suv_confirmed",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/SuvConfirmedProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/General/Survey"
-    },
-    {
       "name": "RecSurvey",
       "type": "procedure",
       "compiles": true,
@@ -2395,44 +2306,6 @@
         ]
       },
       "path": "~/CacTask/Record"
-    },
-    {
-      "name": "FncManageSurveyOrder",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_manage_survey_order",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncManageSurveyOrderProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Manager"
-    },
-    {
-      "name": "FncManageSurveyReset",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_manage_survey_reset",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncManageSurveyResetProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Manager"
     },
     {
       "name": "OvlSurrender",
@@ -3903,6 +3776,37 @@
         ]
       },
       "path": "~/CacCommand"
+    },
+    {
+      "name": "CstSurvey",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstSurvey.java"
+        ]
+      }
+    },
+    {
+      "name": "IniLogSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacInit/Log"
     }
   ],
   "variable_elements": [
@@ -4339,12 +4243,6 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "Pool_survey",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
       "name": "Log_survey",
       "type": "file",
       "scope": "global",
@@ -4387,12 +4285,6 @@
       "value": "new ListTag()"
     },
     {
-      "name": "Switch_survey",
-      "type": "logic",
-      "scope": "map",
-      "value": "false"
-    },
-    {
       "name": "Dat_survey_order",
       "type": "datalist",
       "scope": "map",
@@ -4409,126 +4301,6 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_reference",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_type",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_range_lower",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_range_upper",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_low",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_mid",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_label_high",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Suv_initial",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "SuvT_index",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_answer_pre",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "SuvT_name",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_type",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_range_lower",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_range_upper",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_label_low",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_mid",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_label_high",
-      "type": "string",
-      "scope": "map",
-      "value": "\"\""
-    },
-    {
-      "name": "SuvT_value",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_value_pre",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "SuvT_time",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
     },
     {
       "name": "Switch_surrender",
@@ -4739,6 +4511,12 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Log_surrender",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
     }
   ],
   "sound_elements": [

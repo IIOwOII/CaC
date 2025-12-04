@@ -25,6 +25,6 @@ public class AiMoveCatProcedure {
 		CacModVariables.MapVariables.get(world).Pos_opponent_destination = vec_destination;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		if (entity instanceof Mob _entity)
-			_entity.getNavigation().moveTo((vec_destination.x()), (vec_destination.y()), (vec_destination.z()), (0.565685424949238 * Math.pow(CacModVariables.MapVariables.get(world).Dat_difficulty_absolute, 0.5)));
+			_entity.getNavigation().moveTo((vec_destination.x()), (vec_destination.y()), (vec_destination.z()), (0.565685424949238 * Math.pow(CacModVariables.Dat_difficulty_absolute, 0.5)));
 	}
 }

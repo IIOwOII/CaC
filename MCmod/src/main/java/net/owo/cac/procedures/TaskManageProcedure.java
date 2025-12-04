@@ -20,10 +20,8 @@ public class TaskManageProcedure {
 			return;
 		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
 		String exp_property = "";
-		CacModVariables.MapVariables.get(world).Exp_session = StringArgumentType.getString(arguments, "session");
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Exp_trial_total = DoubleArgumentType.getDouble(arguments, "trial");
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_session = StringArgumentType.getString(arguments, "session");
+		CacModVariables.Exp_trial_total = DoubleArgumentType.getDouble(arguments, "trial");
 		IniPoolProcedure.execute(world);
 		{
 			try {
@@ -35,7 +33,7 @@ public class TaskManageProcedure {
 				}
 				bufferedReader.close();
 				obj_task = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				exp_property = obj_task.get(CacModVariables.MapVariables.get(world).Exp_session).getAsString();
+				exp_property = obj_task.get(CacModVariables.Exp_session).getAsString();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -43,8 +41,7 @@ public class TaskManageProcedure {
 		if (exp_property.contains("C")) {
 			CacModVariables.MapVariables.get(world).Switch_scanner = true;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			CacModVariables.MapVariables.get(world).Exp_signal = false;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Exp_signal = false;
 			CacModVariables.MapVariables.get(world).TimS_time = 0;
 			CacModVariables.MapVariables.get(world).syncData(world);
 		} else {

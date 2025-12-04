@@ -24,7 +24,7 @@ public class EvQueCallProcedure {
 		if (!CacModVariables.MapVariables.get(world).Ev_occuring && !world.isClientSide()) {
 			CacModVariables.MapVariables.get(world).Ev_occuring = true;
 			CacModVariables.MapVariables.get(world).syncData(world);
-			if (CacModVariables.MapVariables.get(world).Log_type.contains("E")) {
+			if (CacModVariables.Log_type.contains("E")) {
 				{
 					try {
 						BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_event));

@@ -26,12 +26,11 @@ public class TimScannerProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world) {
 		if (CacModVariables.MapVariables.get(world).Switch_scanner && !world.isClientSide()) {
-			if (CacModVariables.MapVariables.get(world).Exp_signal) {
+			if (CacModVariables.Exp_signal) {
 				CacModVariables.MapVariables.get(world).TimS_time = CacModVariables.MapVariables.get(world).TimS_time + 1;
 				CacModVariables.MapVariables.get(world).syncData(world);
 				RecScannerProcedure.execute(world);
-				CacModVariables.MapVariables.get(world).Exp_signal = false;
-				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Exp_signal = false;
 			}
 		}
 	}

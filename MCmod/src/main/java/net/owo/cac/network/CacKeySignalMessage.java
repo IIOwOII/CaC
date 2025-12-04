@@ -52,7 +52,7 @@ public class CacKeySignalMessage {
 			return;
 		if (type == 0) {
 
-			KeySignalOnProcedure.execute(world);
+			KeySignalOnProcedure.execute();
 		}
 	}
 

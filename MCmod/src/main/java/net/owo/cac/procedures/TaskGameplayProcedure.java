@@ -12,8 +12,7 @@ public class TaskGameplayProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Exp_phase = 2;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_phase = 2;
 		CacModVariables.MapVariables.get(world).Switch_AI = true;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		{
@@ -24,7 +23,6 @@ public class TaskGameplayProcedure {
 			}
 		}
 		PrdMeowMoveOnProcedure.execute();
-		CacModVariables.MapVariables.get(world).Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time;
 	}
 }

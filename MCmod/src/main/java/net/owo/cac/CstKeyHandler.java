@@ -67,15 +67,6 @@ public class CstKeyHandler {
     	
     	if (event.phase == TickEvent.Phase.END) {
     		// Survey Value
-    		if (cacvar.Switch_survey) {
-				if (CstState.key_pressed[1]) {
-					cacvar.SuvT_value = (cacvar.SuvT_range_upper > cacvar.SuvT_value) ? (cacvar.SuvT_value + 1):(cacvar.SuvT_value);
-    				cacvar.syncData(world);
-				} else if (CstState.key_pressed[2]) {
-					cacvar.SuvT_value = (cacvar.SuvT_range_lower < cacvar.SuvT_value) ? (cacvar.SuvT_value - 1):(cacvar.SuvT_value);
-    				cacvar.syncData(world);
-				}
-    		} 
     		if (cacvar.Switch_surrender) {
     			if ((CstState.key_pressed[0]) && (cacvar.Dat_survey_surrender != 1)) {
     				cacvar.Dat_survey_surrender = 1;

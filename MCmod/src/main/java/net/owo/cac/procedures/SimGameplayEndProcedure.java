@@ -15,21 +15,16 @@ public class SimGameplayEndProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Exp_phase = 2.5;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Exp_phase = 2.5;
 		CacModVariables.MapVariables.get(world).Switch_AI = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
 		CacModVariables.MapVariables.get(world).Switch_trace = false;
 		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time - CacModVariables.MapVariables.get(world).Dat_time_gameplay;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		if (CacModVariables.MapVariables.get(world).Dat_trial_type == 0 && CacModVariables.MapVariables.get(world).Dat_time_gameplay < 600
-				|| CacModVariables.MapVariables.get(world).Dat_trial_type == 1 && CacModVariables.MapVariables.get(world).Dat_time_gameplay >= 600) {
-			CacModVariables.MapVariables.get(world).Dat_trial_winlose = 1;
-			CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time - CacModVariables.Dat_time_gameplay;
+		if (CacModVariables.Dat_trial_type == 0 && CacModVariables.Dat_time_gameplay < 600 || CacModVariables.Dat_trial_type == 1 && CacModVariables.Dat_time_gameplay >= 600) {
+			CacModVariables.Dat_trial_winlose = 1;
 		} else {
-			CacModVariables.MapVariables.get(world).Dat_trial_winlose = 0;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Dat_trial_winlose = 0;
 		}
 		if (!world.isClientSide()) {
 			if (world instanceof Level _level) {

@@ -2,20 +2,18 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.File;
 
 public class IniLogEventProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_event_main = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_event_sub = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_timestamp_main = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_timestamp_sub = new com.google.gson.JsonObject();
 		com.google.gson.JsonArray arr_empty = new com.google.gson.JsonArray();
-		CacModVariables.Log_event = new File(CacModVariables.MapVariables.get(world).Dir_behaviors_session, File.separator + "log_event.json");
+		CacModVariables.Log_event = new File(CacModVariables.Dir_behaviors_session, File.separator + "log_event.json");
 		if (!CacModVariables.Log_event.exists()) {
 			try {
 				CacModVariables.Log_event.getParentFile().mkdirs();
