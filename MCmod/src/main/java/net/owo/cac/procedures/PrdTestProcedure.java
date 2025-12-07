@@ -1,7 +1,5 @@
 package net.owo.cac.procedures;
 
-import net.owo.cac.CacMod;
-
 import net.minecraft.commands.CommandSourceStack;
 
 import com.mojang.brigadier.context.CommandContext;
@@ -12,7 +10,9 @@ public class PrdTestProcedure {
 		String type = "";
 		type = StringArgumentType.getString(arguments, "type");
 		if ((type).equals("survey")) {
-			CacMod.LOGGER.info("survey");
+			net.owo.cac.CstSurvey.startSurvey();
+		} else if ((type).equals("surrender")) {
+			net.owo.cac.CstSurrender.startSurrender();
 		}
 	}
 }

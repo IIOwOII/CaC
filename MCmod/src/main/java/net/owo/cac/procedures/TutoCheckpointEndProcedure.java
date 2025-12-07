@@ -24,7 +24,6 @@ public class TutoCheckpointEndProcedure {
 		}
 		PrdMeowMoveOffProcedure.execute();
 		EffRemoveMorphProcedure.execute(entity);
-		CacModVariables.MapVariables.get(world).Tuto_score_running = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Tuto_score_running = false;
 	}
 }

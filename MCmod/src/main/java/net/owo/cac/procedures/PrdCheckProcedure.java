@@ -23,19 +23,19 @@ public class PrdCheckProcedure {
 		}
 		if ((target).equals("switch")) {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eAI: \u00A7r" + CacModVariables.MapVariables.get(world).Switch_AI)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eAI: \u00A7r" + CacModVariables.Switch_AI)), false);
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eblank: \u00A7r" + CacModVariables.MapVariables.get(world).Switch_blank)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eblank: \u00A7r" + CacModVariables.Switch_blank)), false);
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eque: \u00A7r" + CacModVariables.MapVariables.get(world).Switch_que)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eque: \u00A7r" + CacModVariables.Switch_que)), false);
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7etimer: \u00A7r" + CacModVariables.MapVariables.get(world).Switch_timer)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7etimer: \u00A7r" + CacModVariables.Switch_timer)), false);
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7etrace: \u00A7r" + CacModVariables.MapVariables.get(world).Switch_trace)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7etrace: \u00A7r" + CacModVariables.Switch_trace)), false);
 		}
 		if ((target).equals("event")) {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7econtent: \u00A7r" + CacModVariables.MapVariables.get(world).Ev_content)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7econtent: \u00A7r" + CacModVariables.Ev_content)), false);
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eque: \u00A7r" + CacModVariables.Ev_que)), false);
 			if (!world.isClientSide() && world.getServer() != null)
@@ -43,7 +43,7 @@ public class PrdCheckProcedure {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eloop: \u00A7r" + CacModVariables.Ev_que_loop)), false);
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eoccuring: \u00A7r" + CacModVariables.MapVariables.get(world).Ev_occuring)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eoccuring: \u00A7r" + CacModVariables.Ev_occuring)), false);
 		}
 		if ((target).equals("directory")) {
 			if (!world.isClientSide() && world.getServer() != null)

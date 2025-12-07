@@ -8,7 +8,6 @@
   "phase_gameplay_end": 100,
   "phase_survey": -1,
   "phase_surrender": -1,
-  "phase_surrender_end": -1,
   "phase_interval": -1,
   "phase_posttrial": 2,
   "simulation_gameplay": 600,

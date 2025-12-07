@@ -2,14 +2,13 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 public class TutoRacingReadyProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
 		{
@@ -21,17 +20,11 @@ public class TutoRacingReadyProcedure {
 		}
 		EffApplyMorphPreyProcedure.execute(entity);
 		PrdMeowMoveOffProcedure.execute();
-		CacModVariables.MapVariables.get(world).Tuto_score = 2000;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Msg_title_text = "\uC900\uBE44...";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Msg_subtitle_text = "";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Msg_actionbar_text = "Score : " + new java.text.DecimalFormat("#####").format(CacModVariables.MapVariables.get(world).Tuto_score);
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Msg_actionbar_switch = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Msg_titles_switch = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Tuto_score = 2000;
+		CacModVariables.Msg_title_text = "\uC900\uBE44...";
+		CacModVariables.Msg_subtitle_text = "";
+		CacModVariables.Msg_actionbar_text = "Score : " + new java.text.DecimalFormat("#####").format(CacModVariables.Tuto_score);
+		CacModVariables.Msg_actionbar_switch = true;
+		CacModVariables.Msg_titles_switch = true;
 	}
 }

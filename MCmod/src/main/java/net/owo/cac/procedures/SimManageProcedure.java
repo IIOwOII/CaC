@@ -24,10 +24,10 @@ public class SimManageProcedure {
 			CacModVariables.Exp_session = "simulation_chased";
 		}
 		IniPoolProcedure.execute(world);
-		EvResetProcedure.execute(world);
-		TimResetProcedure.execute(world);
+		EvResetProcedure.execute();
+		TimResetProcedure.execute();
 		IniLogProcedure.execute();
-		IniQueProcedure.execute(world);
+		IniQueProcedure.execute();
 		EvQueCallProcedure.execute(world, x, y, z, entity);
 	}
 }

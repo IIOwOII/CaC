@@ -7,7 +7,8 @@ import net.minecraft.world.level.LevelAccessor;
 public class TaskSurveyProcedure {
 	public static void execute(LevelAccessor world) {
 		CacModVariables.Exp_phase = 3;
-		CacModVariables.MapVariables.get(world).Switch_blank = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		if (world.isClientSide()) {
+			net.owo.cac.CstSurvey.startSurvey();
+		}
 	}
 }

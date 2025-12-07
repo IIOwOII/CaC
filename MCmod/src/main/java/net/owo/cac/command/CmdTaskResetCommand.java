@@ -32,7 +32,7 @@ public class CmdTaskResetCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TaskResetProcedure.execute(world, entity);
+					TaskResetProcedure.execute(entity);
 					return 0;
 				}));
 	}

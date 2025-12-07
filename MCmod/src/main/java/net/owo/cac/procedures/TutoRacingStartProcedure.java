@@ -15,10 +15,9 @@ public class TutoRacingStartProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		TimTitlesClearProcedure.execute(world, entity);
+		TimTitlesClearProcedure.execute(entity);
 		PrdMeowMoveOnProcedure.execute();
-		CacModVariables.MapVariables.get(world).Tuto_score_running = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Tuto_score_running = true;
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {
 				_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.experience_orb.pickup")), SoundSource.NEUTRAL, 1, 1);

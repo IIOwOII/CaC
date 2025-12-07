@@ -31,6 +31,14 @@ public class CstState {
     	return IsMeowView;
     }
 
+	public static void onMeowMove() {
+		CanMeowMove = true;
+	}
+	
+    public static void offMeowMove() {
+    	CanMeowMove = false;
+    }
+
     public static void KeyTickUpdate() {
     	for (int KI=0; KI<4; KI++) {
     		if (key_pressed[KI]) {

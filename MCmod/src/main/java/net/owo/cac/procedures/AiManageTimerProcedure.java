@@ -7,8 +7,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
@@ -16,27 +14,24 @@ public class AiManageTimerProcedure {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			execute(event, event.player.level());
+			execute(event);
 		}
 	}
 
-	public static void execute(LevelAccessor world) {
-		execute(null, world);
+	public static void execute() {
+		execute(null);
 	}
 
-	private static void execute(@Nullable Event event, LevelAccessor world) {
-		if (CacModVariables.MapVariables.get(world).Switch_AI) {
-			if ((CacModVariables.MapVariables.get(world).Pos_opponent.subtract(CacModVariables.MapVariables.get(world).Pos_player)).length() < 4) {
-				CacModVariables.MapVariables.get(world).Time_AI = (CacModVariables.MapVariables.get(world).Time_AI + 1) % 5;
-				CacModVariables.MapVariables.get(world).syncData(world);
+	private static void execute(@Nullable Event event) {
+		if (CacModVariables.Switch_AI) {
+			if ((CacModVariables.Pos_opponent.subtract(CacModVariables.Pos_player)).length() < 4) {
+				CacModVariables.Time_AI = (CacModVariables.Time_AI + 1) % 5;
 			} else {
-				CacModVariables.MapVariables.get(world).Time_AI = (CacModVariables.MapVariables.get(world).Time_AI + 1) % 10;
-				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Time_AI = (CacModVariables.Time_AI + 1) % 10;
 			}
 		} else {
-			if (CacModVariables.MapVariables.get(world).Time_AI != 0) {
-				CacModVariables.MapVariables.get(world).Time_AI = 0;
-				CacModVariables.MapVariables.get(world).syncData(world);
+			if (CacModVariables.Time_AI != 0) {
+				CacModVariables.Time_AI = 0;
 			}
 		}
 	}

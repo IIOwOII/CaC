@@ -7,7 +7,6 @@ import org.lwjgl.glfw.GLFW;
 
 import net.minecraft.client.KeyMapping;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.LevelAccessor;
 
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.client.event.InputEvent;
@@ -16,13 +15,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 
 import net.owo.cac.CstState;
-import net.owo.cac.CstKeybind;
 import net.owo.cac.CstItem;
-
 import net.owo.cac.CacMod;
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.network.CacModVariables.MapVariables;
-
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstKeyHandler {
@@ -58,24 +53,9 @@ public class CstKeyHandler {
     	_ent = event.player;
     	if (_ent == null)
     		return;
-    	LevelAccessor world = _ent.level();
-    	MapVariables cacvar = CacModVariables.MapVariables.get(world);
     	
     	if (CstState.CanMeowMove && CstState.IsMeowMove_old) {
     		_ent.setYRot(CstState.rot_angle);
-    	}
-    	
-    	if (event.phase == TickEvent.Phase.END) {
-    		// Survey Value
-    		if (cacvar.Switch_surrender) {
-    			if ((CstState.key_pressed[0]) && (cacvar.Dat_survey_surrender != 1)) {
-    				cacvar.Dat_survey_surrender = 1;
-    				cacvar.syncData(world);
-    			} else if ((CstState.key_pressed[1]) && (cacvar.Dat_survey_surrender != 0)) {
-    				cacvar.Dat_survey_surrender = 0;
-    				cacvar.syncData(world);
-    			}
-    		}
     	}
     }
 

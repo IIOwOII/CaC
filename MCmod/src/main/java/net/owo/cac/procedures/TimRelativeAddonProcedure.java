@@ -33,26 +33,26 @@ public class TimRelativeAddonProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (CacModVariables.MapVariables.get(world).Switch_timer && !world.isClientSide()) {
-			if (CacModVariables.MapVariables.get(world).Msg_titles_switch) {
+		if (CacModVariables.Switch_timer && !world.isClientSide()) {
+			if (CacModVariables.Msg_titles_switch) {
 				{
 					Entity _ent = entity;
 					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
 						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title @a title " + CacModVariables.MapVariables.get(world).Msg_title_text));
+								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title @a title " + CacModVariables.Msg_title_text));
 					}
 				}
 				{
 					Entity _ent = entity;
 					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
 						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title @a subtitle " + CacModVariables.MapVariables.get(world).Msg_subtitle_text));
+								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("title @a subtitle " + CacModVariables.Msg_subtitle_text));
 					}
 				}
 			}
-			if (CacModVariables.MapVariables.get(world).Msg_actionbar_switch) {
+			if (CacModVariables.Msg_actionbar_switch) {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal(CacModVariables.MapVariables.get(world).Msg_actionbar_text), true);
+					_player.displayClientMessage(Component.literal(CacModVariables.Msg_actionbar_text), true);
 			}
 		}
 	}

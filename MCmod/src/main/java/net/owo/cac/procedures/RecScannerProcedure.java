@@ -2,15 +2,13 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class RecScannerProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonArray arr_TR = new com.google.gson.JsonArray();
@@ -33,8 +31,8 @@ public class RecScannerProcedure {
 			}
 			arr_TR = obj_cac.get("TR").getAsJsonArray();
 			arr_absolute = obj_cac.get("absolute").getAsJsonArray();
-			arr_TR.add(((int) CacModVariables.MapVariables.get(world).TimS_time));
-			arr_absolute.add(((int) CacModVariables.MapVariables.get(world).TimA_time));
+			arr_TR.add(((int) CacModVariables.TimS_time));
+			arr_absolute.add(((int) CacModVariables.TimA_time));
 			{
 				com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 				try {

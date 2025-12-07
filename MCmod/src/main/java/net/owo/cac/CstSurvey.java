@@ -16,13 +16,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.event.TickEvent;
 
 import net.owo.cac.CstState;
 import net.owo.cac.CstRenderComponent;
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.procedures.EvPulseRecordProcedure;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstSurvey {
@@ -43,7 +43,7 @@ public class CstSurvey {
 	// trial by trial
 	public static int[] suv_order = {0,1,2,3,4};
 	public static int[] suv_value = {50,50,50,50,50};
-	public static int[] suv_value_old = {50,50,50,50,50};
+	public static int[] suv_value_prev = {50,50,50,50,50};
 	public static int[] suv_time = {0,0,0,0,0};
 
 	// quiz by quiz (how many times survey progressed within one trial)
@@ -59,10 +59,10 @@ public class CstSurvey {
 			int suv_id = suv_order[idx];
 			CstRenderComponent.renderBar(gg, 200-timer_quiz, 200); // Render timebar
 			renderSurvey(gg, suv_id); // Render text
-			CstRenderComponent.renderSlide(gg, suv_value[suv_id], suv_value_old[suv_id], 100); // Render Slide
+			CstRenderComponent.renderSlide(gg, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
 		}
 	}
-
+	
 	@SubscribeEvent
 	public static void onClientTick(TickEvent.ClientTickEvent event) {
 		if (!IsSurvey) return;
@@ -111,7 +111,7 @@ public class CstSurvey {
 		for(int i=0;i<5;i++) {
 			suv_order[i] = i;
 			suv_value[i] = 50;
-			suv_value_old[i] = 50;
+			suv_value_prev[i] = 50;
 			suv_time[i] = 0;
 		}
 		idx = 0;
@@ -119,10 +119,11 @@ public class CstSurvey {
 	
 	// trial by trial
 	public static void startSurvey() { // phase 3.0
+		CstState.offMeowMove(); // stop moving
 		suv_phase = 30;
 		idx = 0;
 		randomizeOrder();
-		suv_value_old = suv_value.clone();
+		suv_value_prev = suv_value.clone();
 		for(int i=0;i<5;i++) {
 			suv_value[i] = 50;
 		}
@@ -137,16 +138,21 @@ public class CstSurvey {
 		// Recording Data
 		// order, time, answer
 		recordSurvey();
+		CstState.onMeowMove(); // start moving
 	}
 
 	// quiz by quiz
 	public static void waitingSurvey() { // phase 3.3
 		suv_phase = 33; // start of func
 		timer_quiz = 0;
+		CacModVariables.Ev_pulse_content = ("survey_waiting_" + idx);
+		EvPulseRecordProcedure.execute();
 	}
 	public static void progressSurvey() { // phase 3.5
 		suv_phase = 35; // end of func
 		timer_blank = 0;
+		CacModVariables.Ev_pulse_content = ("survey_progress_" + idx);
+		EvPulseRecordProcedure.execute();
 	}
 	public static void confirmSurvey() { // phase 3.7
 		suv_phase = 37; // start of func
@@ -154,7 +160,12 @@ public class CstSurvey {
 		// Intermediate Record
 		int suv_id = suv_order[idx];
 		suv_time[suv_id] = timer_quiz;
-		
+
+		// Event Log Record
+		CacModVariables.Ev_pulse_content = ("survey_confirm_" + idx);
+		EvPulseRecordProcedure.execute();
+
+		// Loop or end
 		idx = idx + 1;
 		if (idx < 5) {
 			waitingSurvey();
@@ -198,7 +209,7 @@ public class CstSurvey {
 			obj_trial.add("order", arr_order);
 			obj_trial.add("time", arr_time);
 			obj_trial.add("answer", arr_answer);
-			obj_cac.add(("trial_" + (int) CacModVariables.Exp_trial), obj_trial);
+			obj_cac.add(("trial_" + (int)CacModVariables.Exp_trial), obj_trial);
 			// Write file
 			Gson GB = new GsonBuilder().setPrettyPrinting().create();
 			try {

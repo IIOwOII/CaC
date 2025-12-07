@@ -2,15 +2,13 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class EvPulseRecordProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_main = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonArray arr_content = new com.google.gson.JsonArray();
@@ -33,11 +31,11 @@ public class EvPulseRecordProcedure {
 				}
 			}
 			arr_content = obj_main.get("content").getAsJsonArray();
-			arr_content.add(CacModVariables.MapVariables.get(world).Ev_pulse_content);
+			arr_content.add(CacModVariables.Ev_pulse_content);
 			arr_absolute = obj_main.get("absolute").getAsJsonArray();
-			arr_absolute.add(((int) CacModVariables.MapVariables.get(world).TimA_time));
+			arr_absolute.add(((int) CacModVariables.TimA_time));
 			arr_relative = obj_main.get("relative").getAsJsonArray();
-			arr_relative.add(((int) CacModVariables.MapVariables.get(world).TimR_time));
+			arr_relative.add(((int) CacModVariables.TimR_time));
 			{
 				com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 				try {
@@ -48,8 +46,7 @@ public class EvPulseRecordProcedure {
 					exception.printStackTrace();
 				}
 			}
-			CacModVariables.MapVariables.get(world).Ev_pulse_content = "";
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Ev_pulse_content = "";
 		}
 	}
 }

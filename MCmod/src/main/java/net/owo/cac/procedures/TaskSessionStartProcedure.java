@@ -63,10 +63,12 @@ public class TaskSessionStartProcedure {
 				exception.printStackTrace();
 			}
 		}
-		EvResetProcedure.execute(world);
-		TimResetProcedure.execute(world);
+		EvResetProcedure.execute();
+		TimResetProcedure.execute();
 		IniLogProcedure.execute();
-		IniQueProcedure.execute(world);
-		EvQueCallProcedure.execute(world, x, y, z, entity);
+		if (!(CacModVariables.Exp_session).equals("tutorial") && !(CacModVariables.Exp_session).equals("presession")) {
+			IniQueProcedure.execute();
+			EvQueCallProcedure.execute(world, x, y, z, entity);
+		}
 	}
 }

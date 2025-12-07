@@ -2,19 +2,17 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 public class TaskGameplayProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 2;
-		CacModVariables.MapVariables.get(world).Switch_AI = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Switch_AI = true;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -23,6 +21,6 @@ public class TaskGameplayProcedure {
 			}
 		}
 		PrdMeowMoveOnProcedure.execute();
-		CacModVariables.Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time;
+		CacModVariables.Dat_time_gameplay = CacModVariables.TimR_time;
 	}
 }

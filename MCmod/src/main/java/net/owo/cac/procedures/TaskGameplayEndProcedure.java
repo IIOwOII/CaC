@@ -17,11 +17,9 @@ public class TaskGameplayEndProcedure {
 			return;
 		CacModVariables.Exp_phase = 2.5;
 		PrdMeowMoveOffProcedure.execute();
-		CacModVariables.MapVariables.get(world).Switch_AI = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Switch_trace = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time - CacModVariables.Dat_time_gameplay;
+		CacModVariables.Switch_AI = false;
+		CacModVariables.Switch_trace = false;
+		CacModVariables.Dat_time_gameplay = CacModVariables.TimR_time - CacModVariables.Dat_time_gameplay;
 		if (CacModVariables.Dat_trial_type == 0 && CacModVariables.Dat_time_gameplay < 600 || CacModVariables.Dat_trial_type == 1 && CacModVariables.Dat_time_gameplay >= 600) {
 			CacModVariables.Dat_trial_winlose = 1;
 		} else {

@@ -2,14 +2,12 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class IniQueProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
 		{
@@ -27,8 +25,7 @@ public class IniQueProcedure {
 				e.printStackTrace();
 			}
 		}
-		CacModVariables.MapVariables.get(world).Ev_content = obj_session.get("initial").getAsString();
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Ev_content = obj_session.get("initial").getAsString();
 		CacModVariables.Ev_que = obj_session.get("trial").getAsJsonArray();
 		CacModVariables.Ev_que_index = 0;
 	}

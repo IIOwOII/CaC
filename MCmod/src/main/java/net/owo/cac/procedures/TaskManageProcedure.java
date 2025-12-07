@@ -39,14 +39,14 @@ public class TaskManageProcedure {
 			}
 		}
 		if (exp_property.contains("C")) {
-			CacModVariables.MapVariables.get(world).Switch_scanner = true;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Switch_scanner = true;
 			CacModVariables.Exp_signal = false;
-			CacModVariables.MapVariables.get(world).TimS_time = 0;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.TimS_time = 0;
 		} else {
-			CacModVariables.MapVariables.get(world).Switch_scanner = false;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.Switch_scanner = false;
+		}
+		if (exp_property.contains("S")) {
+			net.owo.cac.CstSurvey.initSurvey();
 		}
 		TaskSessionStartProcedure.execute(world, x, y, z, entity);
 	}

@@ -20,10 +20,9 @@ public class TutoCheckpointStartProcedure {
 		if (entity == null)
 			return;
 		ListTag pos_checkpoint_initial;
-		TimTitlesClearProcedure.execute(world, entity);
+		TimTitlesClearProcedure.execute(entity);
 		PrdMeowMoveOnProcedure.execute();
-		CacModVariables.MapVariables.get(world).Tuto_score_running = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Tuto_score_running = true;
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {
 				_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.experience_orb.pickup")), SoundSource.NEUTRAL, 1, 1);
@@ -32,9 +31,7 @@ public class TutoCheckpointStartProcedure {
 			}
 		}
 		pos_checkpoint_initial = new ListTag();
-		pos_checkpoint_initial = (CacModVariables.MapVariables.get(world).Tuto_checkpoint_pos.get((CacModVariables.MapVariables.get(world).Tuto_checkpoint_route.get(0)) instanceof IntTag _intTag ? _intTag.getAsInt() : 0)) instanceof ListTag _listTag
-				? _listTag.copy()
-				: new ListTag();
+		pos_checkpoint_initial = (CacModVariables.Tuto_checkpoint_pos.get((CacModVariables.Tuto_checkpoint_route.get(0)) instanceof IntTag _intTag ? _intTag.getAsInt() : 0)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag();
 		{
 			int _value = 1;
 			BlockPos _pos = new BlockPos((pos_checkpoint_initial.get(0)) instanceof IntTag _intTag ? _intTag.getAsInt() : 0, (pos_checkpoint_initial.get(1)) instanceof IntTag _intTag ? _intTag.getAsInt() : 0,

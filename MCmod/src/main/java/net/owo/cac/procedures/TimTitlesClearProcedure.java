@@ -2,22 +2,18 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 public class TimTitlesClearProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Msg_titles_switch = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Msg_title_text = "";
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Msg_subtitle_text = "";
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Msg_titles_switch = false;
+		CacModVariables.Msg_title_text = "";
+		CacModVariables.Msg_subtitle_text = "";
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

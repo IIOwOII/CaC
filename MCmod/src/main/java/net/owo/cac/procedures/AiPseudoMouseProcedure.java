@@ -9,12 +9,12 @@ public class AiPseudoMouseProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (CacModVariables.MapVariables.get(world).Switch_AI && !world.isClientSide()) {
-			if (CacModVariables.MapVariables.get(world).Time_AI == 0) {
+		if (CacModVariables.Switch_AI && !world.isClientSide()) {
+			if (CacModVariables.Time_AI == 0) {
 				AiMovePseudoMouseProcedure.execute(world, entity);
 			}
-			if ((CacModVariables.MapVariables.get(world).Pos_player_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.MapVariables.get(world).Pos_player_destination.subtract((entity.position()))).length() > 0.5) {
-				entity.setDeltaMovement((((CacModVariables.MapVariables.get(world).Pos_player_destination.subtract((entity.position()))).normalize()).scale((0.094280904 * CacModVariables.Dat_difficulty_absolute))));
+			if ((CacModVariables.Pos_player_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.Pos_player_destination.subtract((entity.position()))).length() > 0.5) {
+				entity.setDeltaMovement((((CacModVariables.Pos_player_destination.subtract((entity.position()))).normalize()).scale((0.094280904 * CacModVariables.Dat_difficulty_absolute))));
 			}
 		}
 	}

@@ -85,21 +85,18 @@ public class IniPoolPointProcedure {
 		arr_checkpoint_end = obj_checkpoint.get("end").getAsJsonArray();
 		arr_checkpoint_center = obj_checkpoint.get("center").getAsJsonArray();
 		arr_checkpoint_route = obj_checkpoint.get("route").getAsJsonArray();
-		CacModVariables.MapVariables.get(world).Tuto_checkpoint_center = new Vec3(arr_checkpoint_center.get(0).getAsDouble(), arr_checkpoint_center.get(1).getAsDouble(), arr_checkpoint_center.get(2).getAsDouble());
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Tuto_checkpoint_center = new Vec3(arr_checkpoint_center.get(0).getAsDouble(), arr_checkpoint_center.get(1).getAsDouble(), arr_checkpoint_center.get(2).getAsDouble());
 		num_checkpoint_interval = obj_checkpoint.get("interval").getAsDouble();
-		CacModVariables.MapVariables.get(world).Tuto_checkpoint_route = new ListTag();
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Tuto_checkpoint_route = new ListTag();
 		idx_route = 0;
 		for (int index2 = 0; index2 < (int) arr_checkpoint_route.size(); index2++) {
-			CacModVariables.MapVariables.get(world).Tuto_checkpoint_route.addTag((int) idx_route, IntTag.valueOf((int) arr_checkpoint_route.get(((int) idx_route)).getAsDouble()));
+			CacModVariables.Tuto_checkpoint_route.addTag((int) idx_route, IntTag.valueOf((int) arr_checkpoint_route.get(((int) idx_route)).getAsDouble()));
 			idx_route = idx_route + 1;
 		}
 		vec_checkpoint_start = new Vec3(arr_checkpoint_start.get(0).getAsDouble(), arr_checkpoint_start.get(1).getAsDouble(), arr_checkpoint_start.get(2).getAsDouble());
 		vec_checkpoint_end = new Vec3(arr_checkpoint_end.get(0).getAsDouble(), arr_checkpoint_end.get(1).getAsDouble(), arr_checkpoint_end.get(2).getAsDouble());
-		CacModVariables.MapVariables.get(world).Tuto_checkpoint_pos = new ListTag();
-		CacModVariables.MapVariables.get(world).syncData(world);
-		sy = CacModVariables.MapVariables.get(world).Tuto_checkpoint_center.y();
+		CacModVariables.Tuto_checkpoint_pos = new ListTag();
+		sy = CacModVariables.Tuto_checkpoint_center.y();
 		sx = vec_checkpoint_start.x();
 		sz = vec_checkpoint_start.z();
 		while (sz <= vec_checkpoint_end.z()) {
@@ -108,7 +105,7 @@ public class IniPoolPointProcedure {
 				pos_checkpoint.addTag(0, IntTag.valueOf((int) sx));
 				pos_checkpoint.addTag(1, IntTag.valueOf((int) sy));
 				pos_checkpoint.addTag(2, IntTag.valueOf((int) sz));
-				CacModVariables.MapVariables.get(world).Tuto_checkpoint_pos.addTag(CacModVariables.MapVariables.get(world).Tuto_checkpoint_pos.size(), (pos_checkpoint.copy()));
+				CacModVariables.Tuto_checkpoint_pos.addTag(CacModVariables.Tuto_checkpoint_pos.size(), (pos_checkpoint.copy()));
 				sx = sx + num_checkpoint_interval;
 			}
 			sz = sz + num_checkpoint_interval;

@@ -19,12 +19,11 @@ public class IniPoolProcedure {
 		CacModVariables.Pool_point = new File(dir_components, File.separator + "pool_point.json");
 		CacModVariables.Pool_que = new File(dir_components, File.separator + "pool_que.json");
 		CacModVariables.Pool_psychometric = new File(dir_components, File.separator + "pool_psychometric.json");
-		CacModVariables.Pool_tutorial = new File(dir_components, File.separator + "pool_tutorial.json");
 		CacModVariables.Pool_random = new File(dir_components, File.separator + "pool_random.json");
 		IniPoolPointProcedure.execute(world);
-		IniPoolPsychometricProcedure.execute(world);
+		IniPoolPsychometricProcedure.execute();
 		IniPoolRandomProcedure.execute(world);
-		if (CacModVariables.MapVariables.get(world).Switch_debug) {
+		if (CacModVariables.Switch_debug) {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eDirectory(components): \u00A7r" + dir_components)), false);
 		}

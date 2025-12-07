@@ -49,9 +49,8 @@ public class PrdTestItemProcedure {
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Minimum Speed!"), false);
 			}
 		} else if ((option_tester_text).equals("AI Switch")) {
-			CacModVariables.MapVariables.get(world).Switch_AI = !CacModVariables.MapVariables.get(world).Switch_AI;
-			CacModVariables.MapVariables.get(world).syncData(world);
-			if (CacModVariables.MapVariables.get(world).Switch_AI) {
+			CacModVariables.Switch_AI = !CacModVariables.Switch_AI;
+			if (CacModVariables.Switch_AI) {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("AI On!"), false);
 			} else {

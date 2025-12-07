@@ -21,9 +21,8 @@ public class EvQueCallProcedure {
 		com.google.gson.JsonObject obj_log = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_pool = new com.google.gson.JsonObject();
 		double ev_duration = 0;
-		if (!CacModVariables.MapVariables.get(world).Ev_occuring && !world.isClientSide()) {
-			CacModVariables.MapVariables.get(world).Ev_occuring = true;
-			CacModVariables.MapVariables.get(world).syncData(world);
+		if (!CacModVariables.Ev_occuring && !world.isClientSide()) {
+			CacModVariables.Ev_occuring = true;
 			if (CacModVariables.Log_type.contains("E")) {
 				{
 					try {
@@ -43,9 +42,9 @@ public class EvQueCallProcedure {
 				arr_content = obj_cac.get("content").getAsJsonArray();
 				arr_absolute = obj_cac.get("absolute").getAsJsonArray();
 				arr_relative = obj_cac.get("relative").getAsJsonArray();
-				arr_content.add(CacModVariables.MapVariables.get(world).Ev_content);
-				arr_absolute.add(((int) CacModVariables.MapVariables.get(world).TimA_time));
-				arr_relative.add(((int) CacModVariables.MapVariables.get(world).TimR_time));
+				arr_content.add(CacModVariables.Ev_content);
+				arr_absolute.add(((int) CacModVariables.TimA_time));
+				arr_relative.add(((int) CacModVariables.TimR_time));
 				{
 					com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 					try {
@@ -67,13 +66,12 @@ public class EvQueCallProcedure {
 					}
 					bufferedReader.close();
 					obj_pool = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-					ev_duration = obj_pool.get(CacModVariables.MapVariables.get(world).Ev_content).getAsDouble();
+					ev_duration = obj_pool.get(CacModVariables.Ev_content).getAsDouble();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			CacModVariables.MapVariables.get(world).TimR_que_time = CacModVariables.MapVariables.get(world).TimR_time + ev_duration;
-			CacModVariables.MapVariables.get(world).syncData(world);
+			CacModVariables.TimR_que_time = CacModVariables.TimR_time + ev_duration;
 			EvInvokeProcedure.execute(world, x, y, z, entity);
 		}
 	}

@@ -13,8 +13,7 @@ public class TaskPreparationProcedure {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 1;
-		CacModVariables.MapVariables.get(world).Switch_trace = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Switch_trace = true;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

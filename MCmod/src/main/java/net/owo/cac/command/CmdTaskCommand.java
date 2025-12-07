@@ -23,7 +23,7 @@ public class CmdTaskCommand {
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cac_task")
 
-				.then(Commands.argument("session", StringArgumentType.word()).then(Commands.argument("trial", DoubleArgumentType.doubleArg(1)).executes(arguments -> {
+				.then(Commands.argument("session", StringArgumentType.word()).then(Commands.argument("trial", DoubleArgumentType.doubleArg()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();

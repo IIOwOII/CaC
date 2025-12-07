@@ -143,7 +143,7 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		AiMoveMeowProcedure.execute(this.level(), this);
+		AiMoveMeowProcedure.execute(this);
 		this.refreshDimensions();
 	}
 

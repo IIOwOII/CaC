@@ -5,6 +5,6 @@
     "commandName": "cac_experimental",
     "type": "STANDARD",
     "permissionLevel": "No requirement",
-    "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"call_procedure\"><field name=\"procedure\">PrdExperimental</field></block></next></block></xml>"
+    "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"number_default\"><field name=\"name\">num</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">PrdExperimental</field></block></statement></block></next></block></xml>"
   }
 }

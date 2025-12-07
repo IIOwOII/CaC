@@ -7,8 +7,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
@@ -16,18 +14,17 @@ public class TimDebugProcedure {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			execute(event, event.player.level());
+			execute(event);
 		}
 	}
 
-	public static void execute(LevelAccessor world) {
-		execute(null, world);
+	public static void execute() {
+		execute(null);
 	}
 
-	private static void execute(@Nullable Event event, LevelAccessor world) {
-		if (CacModVariables.MapVariables.get(world).TimD_switch) {
-			CacModVariables.MapVariables.get(world).TimD_time = CacModVariables.MapVariables.get(world).TimD_time + 1;
-			CacModVariables.MapVariables.get(world).syncData(world);
+	private static void execute(@Nullable Event event) {
+		if (CacModVariables.TimD_switch) {
+			CacModVariables.TimD_time = CacModVariables.TimD_time + 1;
 		}
 	}
 }

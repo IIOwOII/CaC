@@ -34,10 +34,8 @@ public class SimGameplayProcedure {
 			}
 		}
 		CacModVariables.Exp_phase = 2;
-		CacModVariables.MapVariables.get(world).Switch_AI = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Switch_trace = true;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.Dat_time_gameplay = CacModVariables.MapVariables.get(world).TimR_time;
+		CacModVariables.Switch_AI = true;
+		CacModVariables.Switch_trace = true;
+		CacModVariables.Dat_time_gameplay = CacModVariables.TimR_time;
 	}
 }

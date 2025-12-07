@@ -2,8 +2,6 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
-
 import java.util.Calendar;
 
 import java.io.IOException;
@@ -12,7 +10,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class TaskSessionEndProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute() {
 		com.google.gson.JsonObject obj_timestamp = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		{
@@ -41,9 +39,7 @@ public class TaskSessionEndProcedure {
 				exception.printStackTrace();
 			}
 		}
-		CacModVariables.MapVariables.get(world).Switch_blank = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Switch_timer = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Switch_blank = false;
+		CacModVariables.Switch_timer = false;
 	}
 }

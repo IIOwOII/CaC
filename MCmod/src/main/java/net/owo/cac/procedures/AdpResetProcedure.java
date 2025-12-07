@@ -2,7 +2,6 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
@@ -13,17 +12,13 @@ import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.Advancement;
 
 public class AdpResetProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		CacModVariables.MapVariables.get(world).Tuto_score_running = false;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Tuto_score = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Tuto_hurdle_stack = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Tuto_hurdle_stack_old = 0;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Tuto_score_running = false;
+		CacModVariables.Tuto_score = 0;
+		CacModVariables.Tuto_hurdle_stack = 0;
+		CacModVariables.Tuto_hurdle_stack_old = 0;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

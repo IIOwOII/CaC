@@ -1,7 +1,0 @@
-{
-  "_fv": 66,
-  "_type": "procedure",
-  "definition": {
-    "procedurexml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"event_trigger\" deletable=\"false\" x=\"40\" y=\"40\"><field name=\"trigger\">no_ext_trigger</field><next><block type=\"variables_set_number\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" is_player_var=\"false\" has_entity=\"false\"></mutation><field name=\"VAR\">global:Dat_survey_surrender</field><value name=\"VAL\"><block type=\"math_number\"><field name=\"NUM\">0</field></block></value><next><block type=\"entity_close_gui\"><value name=\"entity\"><block type=\"entity_from_deps\"></block></value><next><block type=\"variables_set_string\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" is_player_var=\"false\" has_entity=\"false\"></mutation><field name=\"VAR\">global:Ev_pulse_content</field><value name=\"VAL\"><block type=\"text\"><field name=\"TEXT\">vote_surrender</field></block></value><next><block type=\"call_procedure\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" inputs=\"0\"></mutation><field name=\"procedure\">EvPulseRecord</field><next><block type=\"call_procedure\"><mutation xmlns=\"http://www.w3.org/1999/xhtml\" inputs=\"0\"></mutation><field name=\"procedure\">EvQueImmediate</field><next><block type=\"text_print\"><value name=\"TEXT\"><block type=\"math_number\"><field name=\"NUM\">0</field></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>"
-  }
-}

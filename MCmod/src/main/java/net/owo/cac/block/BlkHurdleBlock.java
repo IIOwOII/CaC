@@ -174,6 +174,6 @@ public class BlkHurdleBlock extends Block {
 	@Override
 	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
 		super.entityInside(blockstate, world, pos, entity);
-		BlcHurdleTouchProcedure.execute(world);
+		BlcHurdleTouchProcedure.execute();
 	}
 }

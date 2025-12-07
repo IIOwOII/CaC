@@ -42,13 +42,13 @@ public class CstManagePosition {
 		if (event.phase == TickEvent.Phase.END) {
 			LevelAccessor world = event.player.level();
 			
-			if ((ent_opponent != null && ent_player != null) && (!world.isClientSide())) {
+			if ((ent_opponent != null && ent_player != null) && (world.isClientSide())) {
 				Vec3 pos_opponent = ent_opponent.position();
 				Vec3 pos_player = ent_player.position();
 
-				if (CacModVariables.MapVariables.get(world).Switch_trace) {
+				if (CacModVariables.Switch_trace) {
 					if (CacModVariables.Exp_phase == 1) {
-						CacModVariables.Dat_pos_time_prep.add((int)CacModVariables.MapVariables.get(world).TimR_time);
+						CacModVariables.Dat_pos_time_prep.add((int)CacModVariables.TimR_time);
 						CacModVariables.Dat_pos_player_x_prep.add((pos_player.x()));
 						CacModVariables.Dat_pos_player_z_prep.add((pos_player.z()));
 						CacModVariables.Dat_pos_player_r_prep.add((ent_player.getYRot()));
@@ -57,7 +57,7 @@ public class CstManagePosition {
 						CacModVariables.Dat_pos_opponent_r_prep.add((ent_opponent.getYRot()));
 					}
 					if (CacModVariables.Exp_phase == 2) {
-						CacModVariables.Dat_pos_time.add((int)CacModVariables.MapVariables.get(world).TimR_time);
+						CacModVariables.Dat_pos_time.add((int)CacModVariables.TimR_time);
 						CacModVariables.Dat_pos_player_x.add((pos_player.x()));
 						CacModVariables.Dat_pos_player_z.add((pos_player.z()));
 						CacModVariables.Dat_pos_player_r.add((ent_player.getYRot()));
@@ -67,23 +67,19 @@ public class CstManagePosition {
 					}
 				}
 				
-				if (CacModVariables.MapVariables.get(world).Switch_AI && (pos_opponent.subtract(pos_player)).length() < 1){
-					CacModVariables.MapVariables.get(world).Switch_AI = false;
-					CacModVariables.MapVariables.get(world).syncData(world);
-					CacModVariables.MapVariables.get(world).Ev_pulse_content = "touch";
-					CacModVariables.MapVariables.get(world).syncData(world);
-					if (CacModVariables.MapVariables.get(world).Switch_trace) {
-						EvPulseRecordProcedure.execute(world);
-						EvQueImmediateProcedure.execute(world);
+				if (CacModVariables.Switch_AI && (pos_opponent.subtract(pos_player)).length() < 1){
+					CacModVariables.Switch_AI = false;
+					CacModVariables.Ev_pulse_content = "touch";
+					if (CacModVariables.Switch_trace) {
+						EvPulseRecordProcedure.execute();
+						EvQueImmediateProcedure.execute();
 					}
 					ent_opponent.setDeltaMovement(Vec3.ZERO);
 					ent_player.setDeltaMovement(Vec3.ZERO);
 				}
 				
-				CacModVariables.MapVariables.get(world).Pos_opponent = pos_opponent;
-				CacModVariables.MapVariables.get(world).syncData(world);
-				CacModVariables.MapVariables.get(world).Pos_player = pos_player;
-				CacModVariables.MapVariables.get(world).syncData(world);
+				CacModVariables.Pos_opponent = pos_opponent;
+				CacModVariables.Pos_player = pos_player;
 			}
 		}
 	}

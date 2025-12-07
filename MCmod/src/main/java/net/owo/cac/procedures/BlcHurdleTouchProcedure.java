@@ -2,11 +2,8 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
-
 public class BlcHurdleTouchProcedure {
-	public static void execute(LevelAccessor world) {
-		CacModVariables.MapVariables.get(world).Tuto_hurdle_stack = CacModVariables.MapVariables.get(world).Tuto_hurdle_stack + 1;
-		CacModVariables.MapVariables.get(world).syncData(world);
+	public static void execute() {
+		CacModVariables.Tuto_hurdle_stack = CacModVariables.Tuto_hurdle_stack + 1;
 	}
 }
