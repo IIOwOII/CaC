@@ -42,7 +42,7 @@ public class CstManagePosition {
 		if (event.phase == TickEvent.Phase.END) {
 			LevelAccessor world = event.player.level();
 			
-			if ((ent_opponent != null && ent_player != null) && (world.isClientSide())) {
+			if ((ent_opponent != null && ent_player != null) && (!world.isClientSide())) {
 				Vec3 pos_opponent = ent_opponent.position();
 				Vec3 pos_player = ent_player.position();
 
@@ -93,9 +93,11 @@ public class CstManagePosition {
 			
 		if (_ent instanceof EntCatEntity || _ent instanceof EntMouseEntity) {
 			ent_opponent = _ent;
+			CacMod.LOGGER.info("set");
 		} 
 		if ((_ent instanceof EntPlayerCatEntity || _ent instanceof EntPlayerMouseEntity) || (_ent instanceof EntPseudoCatEntity || _ent instanceof EntPseudoMouseEntity)) {
 			ent_player = _ent;
+			CacMod.LOGGER.info("set");
 		}
 	}
 
@@ -109,9 +111,11 @@ public class CstManagePosition {
 		if (event != null) {
 			if (_ent == ent_opponent) {
 				ent_opponent = null;
+				CacMod.LOGGER.info("off");
 			}
 			if (_ent == ent_player) {
 				ent_player = null;
+				CacMod.LOGGER.info("off");
 			}
 		}
 	}

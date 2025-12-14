@@ -1430,7 +1430,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/AiManageTimerProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacAI"
     },

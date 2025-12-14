@@ -9,8 +9,8 @@ public class AiMouseProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (CacModVariables.Switch_AI && !world.isClientSide()) {
-			if (CacModVariables.Time_AI == 0) {
+		if (!world.isClientSide()) {
+			if (CacModVariables.Switch_AI && CacModVariables.Time_AI == 0) {
 				AiMoveMouseProcedure.execute(world, entity);
 			}
 			if ((CacModVariables.Pos_opponent_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.Pos_opponent_destination.subtract((entity.position()))).length() > 0.5) {

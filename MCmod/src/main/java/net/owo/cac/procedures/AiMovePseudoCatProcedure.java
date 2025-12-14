@@ -19,7 +19,7 @@ public class AiMovePseudoCatProcedure {
 		vec_P = entity.position();
 		vec_P_prime = CacModVariables.Pos_opponent;
 		vec_PP = vec_P_prime.subtract(vec_P);
-		field_sum = field_sum.add((vec_PP.add(((vec_PP.normalize()).scale((1.726872 * CacModVariables.Dat_difficulty_absolute))))));
+		field_sum = field_sum.add((vec_PP.add(((vec_PP.normalize()).scale(1.726872)))));
 		vec_destination = vec_P.add(field_sum);
 		CacModVariables.Pos_player_destination = vec_destination;
 		if (entity instanceof Mob _entity)

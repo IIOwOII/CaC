@@ -1473,6 +1473,16 @@
       "simulation_gameplay",
       "simulation_gameplay_end",
       "simulation_interval",
+      "simulation_end",
+      "simulation_start",
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval",
+      "simulation_end",
+      "simulation_start",
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval",
       "simulation_end"
     ],
     "absolute": [
@@ -2948,7 +2958,17 @@
       8100111,
       8130113,
       8131112,
-      8132111
+      8132111,
+      0,
+      48,
+      30048,
+      31048,
+      32049,
+      0,
+      83,
+      30082,
+      31081,
+      32083
     ],
     "relative": [
       0,
@@ -4423,7 +4443,17 @@
       161856,
       162456,
       162476,
-      162496
+      162496,
+      0,
+      2,
+      602,
+      622,
+      642,
+      0,
+      2,
+      602,
+      622,
+      642
     ]
   }
 }

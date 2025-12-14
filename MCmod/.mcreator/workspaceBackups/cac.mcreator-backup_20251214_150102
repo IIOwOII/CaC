@@ -2543,58 +2543,6 @@
       "path": "~/CacTask/Simulation"
     },
     {
-      "name": "CmdTutorial",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_tutorial",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTutorialCommand.java"
-        ]
-      },
-      "path": "~/CacTask/Tutorial"
-    },
-    {
-      "name": "TutoManage",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tuto_manage",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TutoManageProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "arguments",
-            "type": "cmdcontext"
-          },
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Tutorial"
-    },
-    {
       "name": "TutoCheckpointTouch",
       "type": "procedure",
       "compiles": true,
@@ -2989,20 +2937,6 @@
         "dependencies": []
       },
       "path": "~/CacInit/Pool"
-    },
-    {
-      "name": "TutoQueClone",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "tuto_que_clone",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TutoQueCloneProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Tutorial"
     },
     {
       "name": "TimRelativeAddon",
@@ -3812,12 +3746,6 @@
       "value": "new File(\"\")"
     },
     {
-      "name": "Pool_tutorial",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
       "name": "Pos_border_end",
       "type": "vector",
       "scope": "map",
@@ -4028,12 +3956,6 @@
       "value": "0"
     },
     {
-      "name": "Tuto_que",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
       "name": "Tuto_score",
       "type": "number",
       "scope": "global",
@@ -4101,8 +4023,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

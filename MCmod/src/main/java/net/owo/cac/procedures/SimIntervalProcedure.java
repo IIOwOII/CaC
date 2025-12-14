@@ -12,7 +12,9 @@ public class SimIntervalProcedure {
 		RecPositionProcedure.execute();
 		RecGameplayProcedure.execute();
 		CacModVariables.Exp_trial = CacModVariables.Exp_trial + 1;
-		CacModVariables.Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.8 + Math.floor(CacModVariables.Exp_trial / 10) * 0.01)) / Math.pow(10, 2);
+		if (CacModVariables.Dat_difficulty_relative == 0) {
+			CacModVariables.Dat_difficulty_absolute = Math.round(Math.pow(10, 2) * (0.8 + Math.floor(CacModVariables.Exp_trial / 10) * 0.01)) / Math.pow(10, 2);
+		}
 		if (CacModVariables.Exp_trial >= CacModVariables.Exp_trial_total) {
 			TaskPostRunProcedure.execute();
 		}

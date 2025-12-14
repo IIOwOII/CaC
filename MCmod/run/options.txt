@@ -35,8 +35,8 @@ renderDistance:5
 simulationDistance:12
 entityDistanceScaling:1.0
 guiScale:0
-particles:0
-maxFps:260
+particles:1
+maxFps:120
 graphicsMode:0
 ao:false
 prioritizeChunkUpdates:0
@@ -77,8 +77,8 @@ skipRealms32bitWarning:false
 hideMatchedNames:true
 joinedFirstServer:false
 hideBundleTutorial:false
-syncChunkWrites:false
-showAutosaveIndicator:true
+syncChunkWrites:true
+showAutosaveIndicator:false
 allowServerListing:true
 onlyShowSecureChat:false
 panoramaScrollSpeed:1.0
@@ -127,7 +127,7 @@ key_key.cac.cac_key_decide:key.keyboard.left.control
 key_key.cac.cac_key_signal:key.keyboard.s
 key_key.cac.cac_key_stopwatch:key.keyboard.right.shift
 soundCategory_master:1.0
-soundCategory_music:1.0
+soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0
