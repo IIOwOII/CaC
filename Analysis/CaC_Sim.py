@@ -3,11 +3,11 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
-
+from sklearn.metrics import r2_score
 
 #%%
-def func_logistic(X, a, b, c):
-    return c/(1+np.exp(-b*(X-a)))
+def func_logistic(X, a, b, c, d):
+    return c+((1-d-c)/(1+np.exp(-b*(X-a))))
 
 
 #%%
@@ -30,38 +30,76 @@ c2_wl = np.array(chased['winlose'])
 
 
 #%%
-def plot_rho_t(rho, t, spawn, spawn_idx=-1):
+def plot_rho_t(rho, t, spawn, spawn_idx=0):
     c_x = np.arange(0.8, 1.2, 0.01)
-    if (spawn_idx != -1):
-        rho = rho[spawn==spawn_idx]
-        t = t[spawn==spawn_idx]
+    if (spawn_idx > 0):
+        rho = rho[spawn==(spawn_idx-1)]
+        t = t[spawn==(spawn_idx-1)]
+    elif (spawn_idx < 0):
+        rho = rho[spawn!=(-spawn_idx-1)]
+        t = t[spawn!=(-spawn_idx-1)]
+    t_norm = t/50
     
-    c_mean = []
-    for x in c_x:
-        c_mean.append(np.mean(t[rho==np.round(x,2)]))
-    c_mean = np.array(c_mean)
+    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
     
-    fig, ax = plt.subplots(figsize=(6,4), dpi=300)
-    ax.set_ylim([0,32])
-    ax.set_xlabel('rho')
-    ax.set_ylabel('t')
+    ax.set_xlim([0.78,1.2])
+    ax.set_ylim([-2,52])
+    for side in ['right', 'top', 'bottom']:
+        ax.spines[side].set_visible(False)
     
-    ax.axhline(5, linewidth=1, linestyle='--', color='r')
-    ax.axhline(30, linewidth=1, linestyle='--', color='r')
+    ax.axhline(0, linewidth=0.8, linestyle='-', color='k', zorder=-1)
+    ax.axhline(10, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
+    ax.axhline(20, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
+    ax.axhline(30, linewidth=0.8, linestyle='-.', color='orangered', zorder=-1)
+    ax.axhline(40, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
+    ax.axhline(50, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
     
-    ax.scatter(rho, t, s=4)
-    ax.plot(c_x, c_mean)
+    ax.scatter(rho, t, s=1, color='k', alpha=0.5, zorder=1)
     
-    popt, pcov = curve_fit(func_logistic, rho, t, p0=[1,0,25])
-    ax.plot(c_x, func_logistic(c_x, *popt))
+    popt, pcov = curve_fit(func_logistic, rho, t_norm, p0=[1,0,0,0], 
+                           bounds=([0.8,-100,0,0],[1.2,100,0.2,0.2]), maxfev=20000)
+    ax.plot(c_x, 50*func_logistic(c_x, *popt), color='forestgreen', zorder=2)
     
+    return popt, pcov
+
+
+def plot_rho_p(rho, p, spawn, spawn_idx=0):
+    c_x = np.arange(0.8, 1.2, 0.01)
+    if (spawn_idx > 0):
+        rho = rho[spawn==(spawn_idx-1)]
+        p = p[spawn==(spawn_idx-1)]
+    elif (spawn_idx < 0):
+        rho = rho[spawn!=(-spawn_idx-1)]
+        p = p[spawn!=(-spawn_idx-1)]
+    
+    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
+    ax.set_ylim([-0.1,1.1])
+    ax.set_yticks([0,0.5,1])
+    
+    ax.axhline(0, linewidth=0.5, linestyle='-', color='gray', zorder=-1)
+    ax.axhline(1, linewidth=0.5, linestyle='-', color='gray', zorder=-1)
+    
+    ax.scatter(rho, p, s=1, color='k', zorder=1)
+    
+    popt, pcov = curve_fit(func_logistic, rho, p, p0=[1,0,0,0], 
+                           bounds=([0.8,-100,0,0],[1.2,100,0.2,0.2]), maxfev=20000)
+    c_y = func_logistic(c_x, *popt)
+    
+    ax.plot(c_x, c_y, color='green', zorder=2)
+    
+    return popt, pcov
 
 #%% plot
 
-plot_rho_t(c1_diff, c1_time, c1_spawn)
-plot_rho_t(c2_diff, c2_time, c2_spawn)
+rt1_popt, rt1_pcov = plot_rho_t(c1_diff, c1_time, c1_spawn)
+rt2_popt, rt2_pcov = plot_rho_t(c2_diff, c2_time, c2_spawn)
 
-plot_rho_t(c1_diff, c1_time, c1_spawn, 3)
-plot_rho_t(c2_diff, c2_time, c2_spawn, 3)
+# rp1_popt, rp1_pcov = plot_rho_p(c1_diff, c1_wl, c1_spawn)
+# rp2_popt, rp2_pcov = plot_rho_p(c2_diff, c2_wl, c2_spawn)
 
+#indifference y=0.5인 위치 세로선과 coeff 주기
 plt.show()
+
+
+#%% goodness of fit
+
