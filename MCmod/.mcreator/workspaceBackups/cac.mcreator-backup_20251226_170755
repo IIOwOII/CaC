@@ -2615,25 +2615,6 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "AdpReset",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "adp_reset",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/AdpResetProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacTask/Tutorial"
-    },
-    {
       "name": "BlkHurdle",
       "type": "block",
       "compiles": true,
@@ -3321,6 +3302,75 @@
           "src/main/java/net/owo/cac/CstSurrender.java"
         ]
       }
+    },
+    {
+      "name": "CmdTutorial",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_tutorial",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdTutorialCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoReset",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_reset",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoResetProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoTimer",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_timer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoTimerProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [
@@ -4028,8 +4078,8 @@
       "advancements.adv_beginner_chased.descr": "Escape from the predator",
       "advancements.adv_checkpoint.title": "Checkpoint",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

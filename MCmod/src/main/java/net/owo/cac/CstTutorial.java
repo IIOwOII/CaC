@@ -58,7 +58,6 @@ public class CstTutorial {
 	@SubscribeEvent
 	public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
 		if (!IsTutorial) return;
-		
 		GuiGraphics gg = event.getGuiGraphics();
 		if (tuto_id >= 100) { // book
 			renderBook(gg, tuto_id-100);
@@ -79,26 +78,8 @@ public class CstTutorial {
 		if (event.phase == TickEvent.Phase.END) {
 			if (tuto_id >= 100 && CstState.getKeyChanged(5) == 0) { // book
 				tuto_idx = tuto_idx + 1;
-			} else if (tuto_id == 1) { // moving
+			} else if (tuto_id == 1) { // beginner
 				return;
-			}
-		}
-	}
-
-	@SubscribeEvent
-	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		if (!IsTutorial) return;
-		
-		@Nullable Entity player = event.player;
-		LevelAccessor world = player.level();
-		MinecraftServer server = player.getServer();
-		if ((player == null) || (world == null)) return;
-
-		if (event.phase == TickEvent.Phase.END) {
-			if (tuto_id == 1 && tuto_changed) {
-				if ((!world.isClientSide()) && (server != null)) {
-					server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, player.position(), player.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4, player.getName().getString(), player.getDisplayName(), server, player), "cac_tp tutorial_moving");
-				}
 			}
 		}
 	}

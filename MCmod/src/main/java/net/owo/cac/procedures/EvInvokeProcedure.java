@@ -56,11 +56,6 @@ public class EvInvokeProcedure {
 					CacModVariables.Switch_que = false;
 					CacModVariables.Switch_timer = false;
 				}
-			} else if (ev_content.startsWith("tutorial")) {
-				if ((ev_content).equals("tutorial_init")) {
-					CacModVariables.Msg_title_text = "\uC7A0\uC2DC \uD6C4 \uD29C\uD1A0\uB9AC\uC5BC\uC744 \uC2DC\uC791\uD569\uB2C8\uB2E4.";
-					CacModVariables.Msg_titles_switch = true;
-				}
 			} else {
 				if ((ev_content).equals("test_end") && (ev_content).equals("pseudo_end")) {
 					CacModVariables.Switch_que = false;

@@ -11,7 +11,7 @@ import net.minecraft.commands.CommandSource;
 import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.advancements.Advancement;
 
-public class AdpResetProcedure {
+public class TutoResetProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;

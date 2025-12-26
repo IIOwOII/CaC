@@ -125,6 +125,8 @@ public class CacModVariables {
 	public static double Tuto_hurdle_stack_old = 0;
 	public static double Tuto_score = 0;
 	public static boolean Tuto_score_running = false;
+	public static double Tuto_index = 0;
+	public static boolean TimC_switch = false;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -201,6 +203,7 @@ public class CacModVariables {
 		public Vec3 Pos_border_end = Vec3.ZERO;
 		public Vec3 Pos_border_start = Vec3.ZERO;
 		public Vec3 Pos_offset = Vec3.ZERO;
+		public double TimC_time = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -234,6 +237,7 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Pos_offset", 6);
 				this.Pos_offset = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
+			TimC_time = nbt.getDouble("TimC_time");
 		}
 
 		@Override
@@ -283,6 +287,7 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Pos_offset.z()));
 				nbt.put("Pos_offset", listTag);
 			}
+			nbt.putDouble("TimC_time", TimC_time);
 			return nbt;
 		}
 
