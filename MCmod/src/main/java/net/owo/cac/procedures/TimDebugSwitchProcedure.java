@@ -13,13 +13,13 @@ public class TimDebugSwitchProcedure {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eTime: \u00A7r" + new java.text.DecimalFormat("####").format(CacModVariables.TimD_time))), false);
 			CacModVariables.TimD_switch = false;
-			PrdMeowMoveOffProcedure.execute();
+			MeowMoveOffProcedure.execute();
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eDebug Timer On \u00A7r"), false);
 			CacModVariables.TimD_time = 0;
 			CacModVariables.TimD_switch = true;
-			PrdMeowMoveOnProcedure.execute();
+			MeowMoveOnProcedure.execute();
 		}
 	}
 }

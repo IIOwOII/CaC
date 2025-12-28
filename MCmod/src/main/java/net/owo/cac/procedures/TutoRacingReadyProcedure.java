@@ -19,7 +19,6 @@ public class TutoRacingReadyProcedure {
 			}
 		}
 		EffApplyMorphPreyProcedure.execute(entity);
-		PrdMeowMoveOffProcedure.execute();
 		CacModVariables.Tuto_score = 2000;
 		CacModVariables.Msg_title_text = "\uC900\uBE44...";
 		CacModVariables.Msg_subtitle_text = "";

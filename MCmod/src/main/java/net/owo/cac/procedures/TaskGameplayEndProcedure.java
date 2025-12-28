@@ -16,7 +16,7 @@ public class TaskGameplayEndProcedure {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 2.5;
-		PrdMeowMoveOffProcedure.execute();
+		MeowMoveOffProcedure.execute();
 		CacModVariables.Switch_AI = false;
 		CacModVariables.Switch_trace = false;
 		CacModVariables.Dat_time_gameplay = CacModVariables.TimR_time - CacModVariables.Dat_time_gameplay;

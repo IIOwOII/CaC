@@ -22,7 +22,6 @@ public class TutoCheckpointEndProcedure {
 				_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.experience_orb.pickup")), SoundSource.NEUTRAL, 1, 1, false);
 			}
 		}
-		PrdMeowMoveOffProcedure.execute();
 		EffRemoveMorphProcedure.execute(entity);
 		CacModVariables.Tuto_score_running = false;
 	}

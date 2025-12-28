@@ -21,7 +21,6 @@ public class TutoCheckpointStartProcedure {
 			return;
 		ListTag pos_checkpoint_initial;
 		TimTitlesClearProcedure.execute(entity);
-		PrdMeowMoveOnProcedure.execute();
 		CacModVariables.Tuto_score_running = true;
 		if (world instanceof Level _level) {
 			if (!_level.isClientSide()) {

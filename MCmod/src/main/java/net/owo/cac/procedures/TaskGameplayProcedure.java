@@ -20,7 +20,7 @@ public class TaskGameplayProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "worldborder set 10000000");
 			}
 		}
-		PrdMeowMoveOnProcedure.execute();
+		MeowMoveOnProcedure.execute();
 		CacModVariables.Dat_time_gameplay = CacModVariables.TimR_time;
 	}
 }
