@@ -2,14 +2,13 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 public class TutoBeginnerReadyProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
 		{
@@ -22,8 +21,7 @@ public class TutoBeginnerReadyProcedure {
 		MeowMoveOffProcedure.execute();
 		MeowViewOnProcedure.execute();
 		EffApplyMorphPreyProcedure.execute(entity);
-		CacModVariables.MapVariables.get(world).TimC_time = 100;
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.TimC_time = 100;
 		CacModVariables.TimC_que = "tutorial_beginner";
 		CacModVariables.TimC_switch = true;
 	}

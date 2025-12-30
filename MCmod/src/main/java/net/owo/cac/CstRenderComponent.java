@@ -10,9 +10,6 @@ import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderComponent {
-	public static final int GW = 427;
-	public static final int GH = 240;
-	
 	public static ResourceLocation bar_frame = new ResourceLocation("cac:textures/screens/texture_bar_frame.png");
 	public static ResourceLocation bar_gauge = new ResourceLocation("cac:textures/screens/texture_bar_gauge.png");
 	public static ResourceLocation patch_white = new ResourceLocation("cac:textures/screens/texture_patch_white.png");
@@ -29,49 +26,68 @@ public class CstRenderComponent {
 	public static ResourceLocation button_no = new ResourceLocation("cac:textures/screens/button_no.png");
 
 	// Bar
-	public static void renderBar(GuiGraphics gg, double value, double value_max) {
+	public static void renderBar(GuiGraphics gg, int gw, int gh, double value, double value_max) {
 		int gauge = (int)(96*(value/value_max));
-		gg.blit(bar_frame, GW/2-48, 20, 0, 0, 96, 8, 96, 8);
-		gg.blit(bar_gauge, GW/2-48, 20, 0, 0, gauge, 8, 96, 8);
+		gg.blit(bar_frame, gw/2-48, 20, 0, 0, 96, 8, 96, 8);
+		gg.blit(bar_gauge, gw/2-48, 20, 0, 0, gauge, 8, 96, 8);
 	}
 
 	// Patch (sEEG)
-	public static void renderPatchWhite(GuiGraphics gg) {
-		gg.blit(patch_white, GW-64, 0, 0, 0, 64, 64, 64, 64);
+	public static void renderPatchWhite(GuiGraphics gg, int gw, int gh) {
+		gg.blit(patch_white, gw-64, 0, 0, 0, 64, 64, 64, 64);
 	}
 
-	public static void renderPatchBlack(GuiGraphics gg) {
-		gg.blit(patch_black, GW-64, 0, 0, 0, 64, 64, 64, 64);
+	public static void renderPatchBlack(GuiGraphics gg, int gw, int gh) {
+		gg.blit(patch_black, gw-64, 0, 0, 0, 64, 64, 64, 64);
 	}
 
 	// Blank
-	public static void renderGuiBlank(GuiGraphics gg) {
-		gg.blit(gui_blank, 0, 0, 0, 0, GW, GH, GW, GH);
+	public static void renderGuiBlank(GuiGraphics gg, int gw, int gh) {
+		gg.blit(gui_blank, 0, 0, 0, 0, gw, gh, gw, gh);
 	}
 
-	public static void renderBlank(GuiGraphics gg) {
-		gg.blit(blank, 0, 0, 0, 0, GW, GH, GW, GH);
+	public static void renderBlank(GuiGraphics gg, int gw, int gh) {
+		gg.blit(blank, 0, 0, 0, 0, gw, gh, gw, gh);
 	}
 
 	// Slide
-	public static void renderSlide(GuiGraphics gg, double value, double value_old, double value_max) {
+	public static void renderSlide(GuiGraphics gg, int gw, int gh, double value, double value_old, double value_max) {
 		double ratio = value/value_max;
 		double ratio_old = value_old/value_max;
-		gg.blit(slide_frame, GW/2-200, GH/2+54, 0, 0, 400, 32, 400, 32);
-		gg.blit(slide_trace, GW/2-194+(int)(384*ratio_old), GH/2+60, 0, 0, 4, 20, 4, 20);
-		gg.blit(slide_cursor, GW/2-194+(int)(384*ratio), GH/2+60, 0, 0, 4, 20, 4, 20);
+		gg.blit(slide_frame, gw/2-200, gh/2+54, 0, 0, 400, 32, 400, 32);
+		gg.blit(slide_trace, gw/2-194+(int)(384*ratio_old), gh/2+60, 0, 0, 4, 20, 4, 20);
+		gg.blit(slide_cursor, gw/2-194+(int)(384*ratio), gh/2+60, 0, 0, 4, 20, 4, 20);
 	}
 
 	// Button
-	public static void renderButtonSelect(GuiGraphics gg, int x, int y) {
-		gg.blit(button_select, x, y, 0, 0, 80, 32, 80, 32);
+	public static void renderButtonSelect(GuiGraphics gg, int gw, int gh, int type) {
+		int ox = 0;
+		int oy = gh/2+32;
+		switch (type) {
+			case 0: ox = (gw/4)-40; break;
+			case 1: ox = (gw/4)*3-40; break;
+			case -1: ox = (gw/2)-40; break;
+		}
+		gg.blit(button_select, ox, oy, 0, 0, 80, 32, 80, 32);
 	}
 	
-	public static void renderButtonYes(GuiGraphics gg, int x, int y) {
-		gg.blit(button_yes, x, y, 0, 0, 80, 32, 80, 32);
+	public static void renderButtonYes(GuiGraphics gg, int gw, int gh, int type) {
+		int ox = 0;
+		int oy = gh/2+32;
+		switch (type) {
+			case 0: ox = (gw/4)-40; break;
+			case 1: ox = (gw/4)*3-40; break;
+		}
+		gg.blit(button_yes, ox, oy, 0, 0, 80, 32, 80, 32);
 	}
 
-	public static void renderButtonNo(GuiGraphics gg, int x, int y) {
-		gg.blit(button_no, x, y, 0, 0, 80, 32, 80, 32);
+	public static void renderButtonNo(GuiGraphics gg, int gw, int gh, int type) {
+		int ox = 0;
+		int oy = gh/2+32;
+		switch (type) {
+			case 0: ox = (gw/4)-40; break;
+			case 1: ox = (gw/4)*3-40; break;
+		}
+		gg.blit(button_no, ox, oy, 0, 0, 80, 32, 80, 32);
 	}
 }

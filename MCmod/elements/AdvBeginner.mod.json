@@ -2,8 +2,8 @@
   "_fv": 66,
   "_type": "achievement",
   "definition": {
-    "achievementName": "Beginner",
-    "achievementDescription": "Play the beginner tutorial",
+    "achievementName": "Stickman",
+    "achievementDescription": "The joy sticks in the joystick!",
     "achievementIcon": {
       "value": "CUSTOM:CacLogo"
     },

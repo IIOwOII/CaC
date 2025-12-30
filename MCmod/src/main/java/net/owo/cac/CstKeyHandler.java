@@ -27,7 +27,6 @@ public class CstKeyHandler {
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
     	InputConstants.Key key_forward = InputConstants.getKey("key.keyboard.w");
-    	
         if (event.phase == TickEvent.Phase.END) {
 			if (CstState.getKeyChanged(4) == 0) {
 				CstState.switchMeowView();
@@ -74,6 +73,12 @@ public class CstKeyHandler {
 				CstItem.modifyItemOption(item_id, -1);
 			}
 		}
+    }
+
+    public static void stopMeowMove() {
+    	InputConstants.Key key_forward = InputConstants.getKey("key.keyboard.w");
+    	KeyMapping.set(key_forward, false);
+	    CstState.IsMeowMove_old = false;
     }
     
 }

@@ -7,6 +7,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 
+import net.minecraft.world.level.LevelAccessor;
+
 import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
@@ -14,16 +16,16 @@ public class TutoScoreTickProcedure {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			execute(event);
+			execute(event, event.player.level());
 		}
 	}
 
-	public static void execute() {
-		execute(null);
+	public static void execute(LevelAccessor world) {
+		execute(null, world);
 	}
 
-	private static void execute(@Nullable Event event) {
-		if (CacModVariables.Tuto_score_running) {
+	private static void execute(@Nullable Event event, LevelAccessor world) {
+		if (CacModVariables.Tuto_score_running && !world.isClientSide()) {
 			if (CacModVariables.Tuto_hurdle_stack == CacModVariables.Tuto_hurdle_stack_old) {
 				CacModVariables.Tuto_hurdle_stack = 0;
 				CacModVariables.Tuto_hurdle_stack_old = 0;

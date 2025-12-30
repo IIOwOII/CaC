@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.event.TickEvent;
 
 import net.owo.cac.CstState;
@@ -30,28 +30,30 @@ public class CstSurrender {
 	public static boolean IsSurrender = false;
 	public static int sur_type = 0; // even trial(0,2,4,...) = 0, odd trial(1,3,5,...) = 1, not recorded
 	public static int sur_time = 0;
-	public static double sur_select = 0.5; // left = 0, right = 1, init = 0.5
+	public static int sur_select = -1; // left = 0, right = 1, init = -1
 	public static int sur_answer = 0; // yes = 1, no = 0 (transformed by sur_select)
 	
 	@SubscribeEvent
-	public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
+	public static void onRenderGuiOverlay(RenderGuiEvent.Pre event) {
 		if (!IsSurrender) return;
-		
 		GuiGraphics gg = event.getGuiGraphics();
-		CstRenderComponent.renderBlank(gg); // Render Background
-		gg.blit(surrender_text, 13, 30, 0, 0, 400, 60, 400, 60); // Render Text
+		int gw = event.getWindow().getGuiScaledWidth();
+		int gh = event.getWindow().getGuiScaledHeight();
+		
+		CstRenderComponent.renderBlank(gg, gw, gh); // Render Background
+		gg.blit(surrender_text, gw/2-200, 30, 0, 0, 400, 60, 400, 60); // Render Text
 
 		// left button : x=70, y=140 (OR) right button : x=285, y=140
 		if (sur_type == 0) { // yes is left
-			CstRenderComponent.renderButtonYes(gg, 70, 140);
-			CstRenderComponent.renderButtonNo(gg, 285, 140);
+			CstRenderComponent.renderButtonYes(gg, gw, gh, 0);
+			CstRenderComponent.renderButtonNo(gg, gw, gh, 1);
 		} else if (sur_type == 1) { // no is left
-			CstRenderComponent.renderButtonYes(gg, 285, 140);
-			CstRenderComponent.renderButtonNo(gg, 70, 140);
+			CstRenderComponent.renderButtonYes(gg, gw, gh, 1);
+			CstRenderComponent.renderButtonNo(gg, gw, gh, 0);
 		}
 
 		// selection highlight
-		CstRenderComponent.renderButtonSelect(gg, (int)(70 + 215 * sur_select), 140);
+		CstRenderComponent.renderButtonSelect(gg, gw, gh, sur_select);
 	}
 
 	@SubscribeEvent
@@ -73,7 +75,7 @@ public class CstSurrender {
 	public static void initSurrender() {
 		IsSurrender = false;
 		sur_time = 0;
-		sur_select = 0.5;
+		sur_select = -1;
 	}
 
 	// trial by trial OR surrender by surrender
@@ -81,7 +83,7 @@ public class CstSurrender {
 		CstState.offMeowMove(); // stop moving
 		sur_type = (int)(CacModVariables.Exp_trial % 2);
 		sur_time = 0;
-		sur_select = 0.5;
+		sur_select = -1;
 		IsSurrender = true;
 	}
 	

@@ -18,12 +18,14 @@ public class TutoRacingReadyProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp tutorial_racing");
 			}
 		}
+		MeowMoveOffProcedure.execute();
+		MeowViewOnProcedure.execute();
 		EffApplyMorphPreyProcedure.execute(entity);
-		CacModVariables.Tuto_score = 2000;
-		CacModVariables.Msg_title_text = "\uC900\uBE44...";
-		CacModVariables.Msg_subtitle_text = "";
+		CacModVariables.Tuto_score = 3000;
 		CacModVariables.Msg_actionbar_text = "Score : " + new java.text.DecimalFormat("#####").format(CacModVariables.Tuto_score);
 		CacModVariables.Msg_actionbar_switch = true;
-		CacModVariables.Msg_titles_switch = true;
+		CacModVariables.TimC_time = 100;
+		CacModVariables.TimC_que = "tutorial_racing";
+		CacModVariables.TimC_switch = true;
 	}
 }

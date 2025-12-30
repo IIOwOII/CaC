@@ -1,6 +1,5 @@
 package net.owo.cac.procedures;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
@@ -10,7 +9,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class TutoManageProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		String tuto_name = "";
@@ -27,7 +26,11 @@ public class TutoManageProcedure {
 		} else if ((tuto_name).equals("reset")) {
 			net.owo.cac.CstTutorial.tuto_id = 0;
 		} else if ((tuto_name).equals("beginner")) {
-			TutoBeginnerReadyProcedure.execute(world, entity);
+			TutoBeginnerReadyProcedure.execute(entity);
+		} else if ((tuto_name).equals("checkpoint")) {
+			TutoCheckpointReadyProcedure.execute(entity);
+		} else if ((tuto_name).equals("racing")) {
+			TutoRacingReadyProcedure.execute(entity);
 		}
 	}
 }

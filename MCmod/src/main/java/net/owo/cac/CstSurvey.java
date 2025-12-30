@@ -16,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.event.TickEvent;
 
 import net.owo.cac.CstState;
@@ -50,16 +50,18 @@ public class CstSurvey {
 	public static int idx = 0;
 	
 	@SubscribeEvent
-	public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
+	public static void onRenderGui(RenderGuiEvent.Pre event) {
 		if (!IsSurvey) return;
 		GuiGraphics gg = event.getGuiGraphics();
-		CstRenderComponent.renderBlank(gg); // Render Background
+		int gw = event.getWindow().getGuiScaledWidth();
+		int gh = event.getWindow().getGuiScaledHeight();
+		CstRenderComponent.renderBlank(gg, gw, gh); // Render Background
 		if (suv_phase == 35) {
-			CstRenderComponent.renderGuiBlank(gg);
+			CstRenderComponent.renderGuiBlank(gg, gw, gh);
 			int suv_id = suv_order[idx];
-			CstRenderComponent.renderBar(gg, 200-timer_quiz, 200); // Render timebar
-			renderSurvey(gg, suv_id); // Render text
-			CstRenderComponent.renderSlide(gg, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
+			CstRenderComponent.renderBar(gg, gw, gh, 200-timer_quiz, 200); // Render timebar
+			renderSurvey(gg, gw, gh, suv_id); // Render text
+			CstRenderComponent.renderSlide(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
 		}
 	}
 	
@@ -89,17 +91,18 @@ public class CstSurvey {
 		
 	}
 
-	public static void renderSurvey(GuiGraphics gg, int ID) {
+	public static void renderSurvey(GuiGraphics gg, int gw, int gh, int ID) {
+		int ox = gw/2 - 200;
 		if (ID == 0) {
-			gg.blit(survey_winprob, 13, 30, 0, 0, 400, 60, 400, 60);
+			gg.blit(survey_winprob, ox, 30, 0, 0, 400, 60, 400, 60);
 		} else if (ID == 1) {
-			gg.blit(survey_perdiff, 13, 30, 0, 0, 400, 60, 400, 60);
+			gg.blit(survey_perdiff, ox, 30, 0, 0, 400, 60, 400, 60);
 		} else if (ID == 2) {
-			gg.blit(survey_stress, 13, 30, 0, 0, 400, 60, 400, 60);
+			gg.blit(survey_stress, ox, 30, 0, 0, 400, 60, 400, 60);
 		} else if (ID == 3) {
-			gg.blit(survey_target, 13, 30, 0, 0, 400, 60, 400, 60);
+			gg.blit(survey_target, ox, 30, 0, 0, 400, 60, 400, 60);
 		} else if (ID == 4) {
-			gg.blit(survey_control, 13, 30, 0, 0, 400, 60, 400, 60);
+			gg.blit(survey_control, ox, 30, 0, 0, 400, 60, 400, 60);
 		}
 	}
 

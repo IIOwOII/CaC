@@ -10,7 +10,7 @@ import net.minecraft.nbt.IntTag;
 import net.minecraft.core.BlockPos;
 
 public class TutoCheckpointTouchProcedure {
-	public static void execute(LevelAccessor world) {
+	public static void execute(LevelAccessor world, double x, double y, double z) {
 		ListTag pos_checkpoint;
 		double idx_checkpoint = 0;
 		CacModVariables.Tuto_checkpoint_index = CacModVariables.Tuto_checkpoint_index + 1;
@@ -36,6 +36,8 @@ public class TutoCheckpointTouchProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			}
+		} else {
+			TutoCheckpointEndProcedure.execute(world, x, y, z);
 		}
 	}
 }

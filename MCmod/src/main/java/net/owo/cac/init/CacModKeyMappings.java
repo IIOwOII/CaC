@@ -6,7 +6,6 @@ package net.owo.cac.init;
 
 import org.lwjgl.glfw.GLFW;
 
-import net.owo.cac.network.CacKeyStopwatchMessage;
 import net.owo.cac.network.CacKeySignalMessage;
 import net.owo.cac.CacMod;
 
@@ -34,24 +33,10 @@ public class CacModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping CAC_KEY_STOPWATCH = new KeyMapping("key.cac.cac_key_stopwatch", GLFW.GLFW_KEY_RIGHT_SHIFT, "key.categories.cac") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				CacMod.PACKET_HANDLER.sendToServer(new CacKeyStopwatchMessage(0, 0));
-				CacKeyStopwatchMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
 		event.register(CAC_KEY_SIGNAL);
-		event.register(CAC_KEY_STOPWATCH);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})
@@ -60,7 +45,6 @@ public class CacModKeyMappings {
 		public static void onClientTick(TickEvent.ClientTickEvent event) {
 			if (Minecraft.getInstance().screen == null) {
 				CAC_KEY_SIGNAL.consumeClick();
-				CAC_KEY_STOPWATCH.consumeClick();
 			}
 		}
 	}

@@ -2,8 +2,8 @@
   "_fv": 66,
   "_type": "achievement",
   "definition": {
-    "achievementName": "Racing",
-    "achievementDescription": "Play the racing tutorial",
+    "achievementName": "Rat, the racer",
+    "achievementDescription": "Ready to flight away",
     "achievementIcon": {
       "value": "CUSTOM:CacLogo"
     },

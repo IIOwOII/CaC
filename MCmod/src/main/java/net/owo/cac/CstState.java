@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 
 import net.owo.cac.CacMod;
 import net.owo.cac.init.CacModItems;
+import net.owo.cac.CstKeyHandler;
 
 public class CstState {
     public static boolean IsMeowView = false; // Camera
@@ -37,6 +38,7 @@ public class CstState {
 	
     public static void offMeowMove() {
     	CanMeowMove = false;
+    	CstKeyHandler.stopMeowMove();
     }
 
     public static void KeyTickUpdate() {

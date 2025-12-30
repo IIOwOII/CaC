@@ -2,8 +2,8 @@
   "_fv": 66,
   "_type": "achievement",
   "definition": {
-    "achievementName": "Checkpoint",
-    "achievementDescription": "Play the checkpoint tutorial",
+    "achievementName": "CESCO",
+    "achievementDescription": "Successfully eradicated moles.",
     "achievementIcon": {
       "value": "CUSTOM:CacLogo"
     },

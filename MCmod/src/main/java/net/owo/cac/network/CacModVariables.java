@@ -111,8 +111,6 @@ public class CacModVariables {
 	public static double TimA_time = 0;
 	public static double TimA_time_currtick = 0;
 	public static double TimA_time_oldtick = 0;
-	public static boolean TimD_switch = false;
-	public static double TimD_time = 0;
 	public static double Time_AI = 0;
 	public static double TimR_que_time = 0;
 	public static double TimR_time = 0;
@@ -126,6 +124,7 @@ public class CacModVariables {
 	public static double Tuto_score = 0;
 	public static boolean Tuto_score_running = false;
 	public static boolean TimC_switch = false;
+	public static double TimC_time = 0;
 	public static String TimC_que = "\"\"";
 
 	@SubscribeEvent
@@ -203,7 +202,6 @@ public class CacModVariables {
 		public Vec3 Pos_border_end = Vec3.ZERO;
 		public Vec3 Pos_border_start = Vec3.ZERO;
 		public Vec3 Pos_offset = Vec3.ZERO;
-		public double TimC_time = 0;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -237,7 +235,6 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Pos_offset", 6);
 				this.Pos_offset = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
-			TimC_time = nbt.getDouble("TimC_time");
 		}
 
 		@Override
@@ -287,7 +284,6 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Pos_offset.z()));
 				nbt.put("Pos_offset", listTag);
 			}
-			nbt.putDouble("TimC_time", TimC_time);
 			return nbt;
 		}
 
