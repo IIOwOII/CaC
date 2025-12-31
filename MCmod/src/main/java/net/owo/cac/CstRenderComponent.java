@@ -34,11 +34,11 @@ public class CstRenderComponent {
 
 	// Patch (sEEG)
 	public static void renderPatchWhite(GuiGraphics gg, int gw, int gh) {
-		gg.blit(patch_white, gw-64, 0, 0, 0, 64, 64, 64, 64);
+		gg.blit(patch_white, gw-32, 0, 0, 0, 32, 32, 32, 32);
 	}
 
 	public static void renderPatchBlack(GuiGraphics gg, int gw, int gh) {
-		gg.blit(patch_black, gw-64, 0, 0, 0, 64, 64, 64, 64);
+		gg.blit(patch_black, gw-32, 0, 0, 0, 32, 32, 32, 32);
 	}
 
 	// Blank

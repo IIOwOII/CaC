@@ -1347,52 +1347,6 @@
       }
     },
     {
-      "name": "TimDebug",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_debug",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimDebugProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTimer/Debug"
-    },
-    {
-      "name": "TimDebugSwitch",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_debug_switch",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimDebugSwitchProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer/Debug"
-    },
-    {
-      "name": "CacKeyStopwatch",
-      "type": "keybind",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cac_key_stopwatch",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/network/CacKeyStopwatchMessage.java"
-        ]
-      },
-      "path": "~/CacTimer/Debug"
-    },
-    {
       "name": "IniLogEvent",
       "type": "procedure",
       "compiles": true,
@@ -2829,7 +2783,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TutoScoreTickProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Tutorial"
     },
@@ -2942,39 +2901,6 @@
       "path": "~/CacTask/Tutorial"
     },
     {
-      "name": "TimTitlesClear",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_titles_clear",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimTitlesClearProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacTimer"
-    },
-    {
-      "name": "TimActionbarClear",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_actionbar_clear",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimActionbarClearProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTimer"
-    },
-    {
       "name": "TutoRacingReady",
       "type": "procedure",
       "compiles": true,
@@ -3004,10 +2930,6 @@
           "src/main/java/net/owo/cac/procedures/TutoRacingStartProcedure.java"
         ],
         "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
           {
             "name": "x",
             "type": "number"
@@ -3078,11 +3000,11 @@
       "registry_name": "blk_tape_block",
       "metadata": {
         "files": [
-          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
           "src/main/resources/assets/cac/models/item/blk_tape_block.json",
           "src/main/resources/assets/cac/models/block/blk_tape_block.json",
-          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_tape_block.json"
+          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
+          "src/main/resources/assets/cac/blockstates/blk_tape_block.json",
+          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java"
         ]
       },
       "path": "~/CacBlock"
@@ -3432,6 +3354,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -3510,6 +3436,87 @@
         ]
       },
       "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpRacing",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_racing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpRacingProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "TutoRacingEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_racing_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoRacingEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "BlcTapeWalk",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_tape_walk",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcTapeWalkProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4078,18 +4085,6 @@
       "value": "0"
     },
     {
-      "name": "TimD_switch",
-      "type": "logic",
-      "scope": "global",
-      "value": "false"
-    },
-    {
-      "name": "TimD_time",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
       "name": "Time_AI",
       "type": "number",
       "scope": "global",
@@ -4236,12 +4231,12 @@
       "advancements.adv_exercise.descr": "Become both a prey and a predator.",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
-      "entity.cac.ent_meowcam": "Meowcam",
       "advancements.adv_exercise.title": "Fight or Flight",
+      "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_racing.title": "Rat, the racer",
       "advancements.adv_beginner_chased.title": "The shrewd prey",
@@ -4277,7 +4272,6 @@
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "item.cac.cac_test_item": "Tester",
       "item.cac.cac_logo": "OwO",
-      "key.cac.cac_key_stopwatch": "Stopwatch",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left",
@@ -4373,12 +4367,7 @@
       },
       {
         "name": "CacTimer",
-        "children": [
-          {
-            "name": "Debug",
-            "children": []
-          }
-        ]
+        "children": []
       },
       {
         "name": "CacEvent",
@@ -4401,7 +4390,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.93",
+    "version": "0.95",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",
@@ -4414,7 +4403,7 @@
       "geckolib"
     ],
     "currentGenerator": "forge-1.20.1",
-    "credits": "Created using mod maker MCreator and Me...",
+    "credits": "Created by StarNote using MCreator",
     "modElementsPackage": "net.owo.cac"
   },
   "mcreatorVersion": 202400232117
