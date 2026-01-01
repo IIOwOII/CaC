@@ -23,10 +23,11 @@ public class TutoCheckpointEndProcedure {
 		CacModVariables.Tuto_score_running = false;
 		CacModVariables.Tuto_checkpoint_index = 0;
 		if (CacModVariables.Tuto_score >= 0) {
-			CacModVariables.Msg_actionbar_text = "\u00A7e\uBBF8\uC158 \uC131\uACF5!\u00A7r";
+			CacModVariables.Msg_actionbar_text = "\u00A7e\uC131\uACF5!\u00A7r";
+			net.owo.cac.CstTutorial.completeMission(2, true);
 		} else {
-			CacModVariables.Msg_actionbar_text = "\u00A7e\uBBF8\uC158 \uC2E4\uD328...\u00A7r";
+			CacModVariables.Msg_actionbar_text = "\u00A7e\uC2E4\uD328...\u00A7r";
+			net.owo.cac.CstTutorial.completeMission(2, false);
 		}
-		net.owo.cac.CstTutorial.completeMission(2);
 	}
 }

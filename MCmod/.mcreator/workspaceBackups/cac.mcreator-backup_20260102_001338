@@ -1347,52 +1347,6 @@
       }
     },
     {
-      "name": "TimDebug",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_debug",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimDebugProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTimer/Debug"
-    },
-    {
-      "name": "TimDebugSwitch",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_debug_switch",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimDebugSwitchProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer/Debug"
-    },
-    {
-      "name": "CacKeyStopwatch",
-      "type": "keybind",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cac_key_stopwatch",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/network/CacKeyStopwatchMessage.java"
-        ]
-      },
-      "path": "~/CacTimer/Debug"
-    },
-    {
       "name": "IniLogEvent",
       "type": "procedure",
       "compiles": true,
@@ -1419,25 +1373,6 @@
         "dependencies": []
       },
       "path": "~/CacInit/Log"
-    },
-    {
-      "name": "AiManageTimer",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ai_manage_timer",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/AiManageTimerProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacAI"
     },
     {
       "name": "EvQueCall",
@@ -2312,10 +2247,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/block/BlkCheckpointBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
           "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
+          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2716,11 +2651,11 @@
       "registry_name": "blk_switchstone",
       "metadata": {
         "files": [
-          "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
+          "src/main/resources/assets/cac/models/item/blk_switchstone.json",
           "src/main/resources/assets/cac/models/block/blk_switchstone.json",
-          "src/main/resources/assets/cac/blockstates/blk_switchstone.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
           "src/main/java/net/owo/cac/block/BlkSwitchstoneBlock.java",
-          "src/main/resources/assets/cac/models/item/blk_switchstone.json"
+          "src/main/resources/assets/cac/blockstates/blk_switchstone.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2829,7 +2764,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TutoScoreTickProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacTask/Tutorial"
     },
@@ -2922,57 +2862,12 @@
         ],
         "dependencies": [
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
         ]
       },
       "path": "~/CacTask/Tutorial"
-    },
-    {
-      "name": "TimTitlesClear",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_titles_clear",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimTitlesClearProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacTimer"
-    },
-    {
-      "name": "TimActionbarClear",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_actionbar_clear",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimActionbarClearProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTimer"
     },
     {
       "name": "TutoRacingReady",
@@ -3003,24 +2898,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TutoRacingStartProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacTask/Tutorial"
     },
@@ -3270,6 +3148,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -3428,6 +3310,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -3556,6 +3442,93 @@
         ]
       },
       "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "BlcTapeWalk",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_tape_walk",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcTapeWalkProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "TutoChasingReady",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_chasing_ready",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoChasingReadyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoChasingStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_chasing_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoChasingStartProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TimAi",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tim_ai",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TimAiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
     }
   ],
   "variable_elements": [
@@ -4124,24 +4097,6 @@
       "value": "0"
     },
     {
-      "name": "TimD_switch",
-      "type": "logic",
-      "scope": "global",
-      "value": "false"
-    },
-    {
-      "name": "TimD_time",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
-      "name": "Time_AI",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
       "name": "TimR_que_time",
       "type": "number",
       "scope": "global",
@@ -4224,6 +4179,24 @@
       "type": "string",
       "scope": "global",
       "value": "\"\""
+    },
+    {
+      "name": "TimP_sampling",
+      "type": "number",
+      "scope": "global",
+      "value": "0"
+    },
+    {
+      "name": "TimP_duration",
+      "type": "number",
+      "scope": "global",
+      "value": "0"
+    },
+    {
+      "name": "TimP_timebar",
+      "type": "logic",
+      "scope": "global",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -4234,6 +4207,22 @@
       ],
       "category": "neutral",
       "subtitle": "snd_silence"
+    },
+    {
+      "name": "snd_orb_c7",
+      "files": [
+        "snd_orb_c7"
+      ],
+      "category": "neutral",
+      "subtitle": "snd_orb_c7"
+    },
+    {
+      "name": "snd_orb_a7",
+      "files": [
+        "snd_orb_a7"
+      ],
+      "category": "neutral",
+      "subtitle": "snd_orb_a7"
     }
   ],
   "tag_elements": {
@@ -4282,12 +4271,12 @@
       "advancements.adv_exercise.descr": "Become both a prey and a predator.",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
-      "entity.cac.ent_meowcam": "Meowcam",
       "advancements.adv_exercise.title": "Fight or Flight",
+      "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_racing.title": "Rat, the racer",
       "advancements.adv_beginner_chased.title": "The shrewd prey",
@@ -4298,6 +4287,7 @@
       "key.cac.cac_key_up": "Up",
       "block.cac.blk_hurdle": "Hurdle",
       "item.cac.cac_builder_tool": "Meow Builder",
+      "subtitles.snd_orb_a7": "snd_orb_a7",
       "block.cac.blk_checkpoint": "Checkpoint",
       "advancements.adv_cac.title": "Chasing and Chased",
       "effect.cac.eff_morph_predator": "Predator",
@@ -4323,8 +4313,8 @@
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "item.cac.cac_test_item": "Tester",
       "item.cac.cac_logo": "OwO",
-      "key.cac.cac_key_stopwatch": "Stopwatch",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
+      "subtitles.snd_orb_c7": "snd_orb_c7",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left",
       "advancements.adv_beginner_chasing.descr": "Catch the prey",
@@ -4419,12 +4409,7 @@
       },
       {
         "name": "CacTimer",
-        "children": [
-          {
-            "name": "Debug",
-            "children": []
-          }
-        ]
+        "children": []
       },
       {
         "name": "CacEvent",
@@ -4447,7 +4432,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.93",
+    "version": "0.95",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",
@@ -4460,7 +4445,7 @@
       "geckolib"
     ],
     "currentGenerator": "forge-1.20.1",
-    "credits": "Created using mod maker MCreator and Me...",
+    "credits": "Created by StarNote using MCreator",
     "modElementsPackage": "net.owo.cac"
   },
   "mcreatorVersion": 202400232117

@@ -12,7 +12,7 @@ import net.minecraft.world.level.LevelAccessor;
 import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
-public class AiManageTimerProcedure {
+public class TimAiProcedure {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
@@ -25,16 +25,8 @@ public class AiManageTimerProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world) {
-		if (!world.isClientSide() && CacModVariables.Switch_AI) {
-			if ((CacModVariables.Pos_opponent.subtract(CacModVariables.Pos_player)).length() < 4) {
-				CacModVariables.Time_AI = (CacModVariables.Time_AI + 1) % 5;
-			} else {
-				CacModVariables.Time_AI = (CacModVariables.Time_AI + 1) % 10;
-			}
-		} else {
-			if (CacModVariables.Time_AI != 0) {
-				CacModVariables.Time_AI = 0;
-			}
+		if (CacModVariables.Switch_AI && !world.isClientSide()) {
+			CacModVariables.TimP_sampling = (CacModVariables.TimP_sampling + 1) % 10;
 		}
 	}
 }

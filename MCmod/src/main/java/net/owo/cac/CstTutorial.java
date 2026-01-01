@@ -44,6 +44,7 @@ public class CstTutorial {
 	public static boolean timer_switch = false;
 	public static int adv_id = 0;
 	public static boolean adv_switch = false;
+	public static boolean adv_certificate = false;
 	
 	static ResourceLocation[] tutorial_book = {
 		//new ResourceLocation("cac:textures/screens/texture_book_0.png"),
@@ -85,7 +86,7 @@ public class CstTutorial {
 						moving_idx += 1;
 						moving_footprint[MOVING_ORD[moving_idx]] = CstState.meowmove_tick[MOVING_ORD[moving_idx]];
 					} else {
-						completeMission(tuto_id);
+						completeMission(tuto_id, true);
 					}
 				}
 			}
@@ -101,12 +102,13 @@ public class CstTutorial {
 			if (adv_switch) {
 				if (adv_id == 1) {
 					AdpBeginnerProcedure.execute(_ent);
-				} else if (adv_id == 2) {
+				} else if ((adv_id == 2) && (adv_certificate)) {
 					AdpCheckpointProcedure.execute(_ent);
-				} else if (adv_id == 3) {
+				} else if ((adv_id == 3) && (adv_certificate)) {
 					AdpRacingProcedure.execute(_ent);
 				}
 				adv_switch = false;
+				adv_certificate = false;
 			}
 			if (timer <= 0) {
 				CacModVariables.Msg_actionbar_switch = false;
@@ -125,7 +127,7 @@ public class CstTutorial {
 		gg.blit(tutorial_arrow[ID], gw/2-60, gh/2-60, 0, 0, 120, 120, 120, 120);
 	}
 
-	public static void completeMission(int id) {
+	public static void completeMission(int id, boolean is_win) {
 		tuto_id = 0;
 		if (id == 1) {
 			CstState.offMeowMove();
@@ -135,6 +137,7 @@ public class CstTutorial {
 		timer = 60;
 		timer_switch = true;
 		adv_id = id;
+		adv_certificate = is_win;
 		adv_switch = true;
 	}
 

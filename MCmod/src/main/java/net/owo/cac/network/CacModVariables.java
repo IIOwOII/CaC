@@ -111,7 +111,6 @@ public class CacModVariables {
 	public static double TimA_time = 0;
 	public static double TimA_time_currtick = 0;
 	public static double TimA_time_oldtick = 0;
-	public static double Time_AI = 0;
 	public static double TimR_que_time = 0;
 	public static double TimR_time = 0;
 	public static double TimS_time = 0;
@@ -126,6 +125,9 @@ public class CacModVariables {
 	public static boolean TimC_switch = false;
 	public static double TimC_time = 0;
 	public static String TimC_que = "\"\"";
+	public static double TimP_sampling = 0;
+	public static double TimP_duration = 0;
+	public static boolean TimP_timebar = false;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

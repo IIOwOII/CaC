@@ -2266,10 +2266,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/block/BlkCheckpointBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
           "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
+          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2670,11 +2670,11 @@
       "registry_name": "blk_switchstone",
       "metadata": {
         "files": [
-          "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
+          "src/main/resources/assets/cac/models/item/blk_switchstone.json",
           "src/main/resources/assets/cac/models/block/blk_switchstone.json",
-          "src/main/resources/assets/cac/blockstates/blk_switchstone.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
           "src/main/java/net/owo/cac/block/BlkSwitchstoneBlock.java",
-          "src/main/resources/assets/cac/models/item/blk_switchstone.json"
+          "src/main/resources/assets/cac/blockstates/blk_switchstone.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2881,18 +2881,6 @@
         ],
         "dependencies": [
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -2929,24 +2917,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TutoRacingStartProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacTask/Tutorial"
     },
@@ -3000,11 +2971,11 @@
       "registry_name": "blk_tape_block",
       "metadata": {
         "files": [
+          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
           "src/main/resources/assets/cac/models/item/blk_tape_block.json",
           "src/main/resources/assets/cac/models/block/blk_tape_block.json",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
-          "src/main/resources/assets/cac/blockstates/blk_tape_block.json",
-          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java"
+          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java",
+          "src/main/resources/assets/cac/blockstates/blk_tape_block.json"
         ]
       },
       "path": "~/CacBlock"
@@ -3196,6 +3167,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       },
@@ -3517,6 +3492,43 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "TutoChasingReady",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_chasing_ready",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoChasingReadyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "TutoChasingStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_chasing_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoChasingStartProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Tutorial"
     }
   ],
   "variable_elements": [
@@ -4183,6 +4195,22 @@
       ],
       "category": "neutral",
       "subtitle": "snd_silence"
+    },
+    {
+      "name": "snd_orb_c7",
+      "files": [
+        "snd_orb_c7"
+      ],
+      "category": "neutral",
+      "subtitle": "snd_orb_c7"
+    },
+    {
+      "name": "snd_orb_a7",
+      "files": [
+        "snd_orb_a7"
+      ],
+      "category": "neutral",
+      "subtitle": "snd_orb_a7"
     }
   ],
   "tag_elements": {
@@ -4247,6 +4275,7 @@
       "key.cac.cac_key_up": "Up",
       "block.cac.blk_hurdle": "Hurdle",
       "item.cac.cac_builder_tool": "Meow Builder",
+      "subtitles.snd_orb_a7": "snd_orb_a7",
       "block.cac.blk_checkpoint": "Checkpoint",
       "advancements.adv_cac.title": "Chasing and Chased",
       "effect.cac.eff_morph_predator": "Predator",
@@ -4273,6 +4302,7 @@
       "item.cac.cac_test_item": "Tester",
       "item.cac.cac_logo": "OwO",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
+      "subtitles.snd_orb_c7": "snd_orb_c7",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left",
       "advancements.adv_beginner_chasing.descr": "Catch the prey",

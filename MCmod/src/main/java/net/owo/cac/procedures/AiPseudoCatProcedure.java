@@ -9,8 +9,8 @@ public class AiPseudoCatProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (!world.isClientSide()) {
-			if (CacModVariables.Switch_AI && CacModVariables.Time_AI == 0) {
+		if (CacModVariables.Switch_AI && !world.isClientSide()) {
+			if (CacModVariables.TimP_sampling == 0) {
 				AiMovePseudoCatProcedure.execute(entity);
 			}
 			if ((CacModVariables.Pos_player_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.Pos_player_destination.subtract((entity.position()))).length() > 0.5) {

@@ -7,5 +7,23 @@
         "stream": false
       }
     ]
+  },
+  "snd_orb_c7": {
+    "subtitle": "subtitles.snd_orb_c7",
+    "sounds": [
+      {
+        "name": "cac:snd_orb_c7",
+        "stream": false
+      }
+    ]
+  },
+  "snd_orb_a7": {
+    "subtitle": "subtitles.snd_orb_a7",
+    "sounds": [
+      {
+        "name": "cac:snd_orb_a7",
+        "stream": false
+      }
+    ]
   }
 }
