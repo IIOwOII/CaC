@@ -7,7 +7,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.network.chat.Component;
 
 public class EvInvokeProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		String ev_content = "";
@@ -35,7 +35,7 @@ public class EvInvokeProcedure {
 				} else if ((ev_content).equals("phase_gameplay")) {
 					TaskGameplayProcedure.execute(entity);
 				} else if ((ev_content).equals("phase_gameplay_end")) {
-					TaskGameplayEndProcedure.execute(world, x, y, z, entity);
+					TaskGameplayEndProcedure.execute();
 				} else if ((ev_content).equals("phase_survey")) {
 					TaskSurveyProcedure.execute(world);
 				} else if ((ev_content).equals("phase_surrender")) {
@@ -49,7 +49,7 @@ public class EvInvokeProcedure {
 				if ((ev_content).equals("simulation_gameplay")) {
 					SimGameplayProcedure.execute(world);
 				} else if ((ev_content).equals("simulation_gameplay_end")) {
-					SimGameplayEndProcedure.execute(world, x, y, z, entity);
+					SimGameplayEndProcedure.execute();
 				} else if ((ev_content).equals("simulation_interval")) {
 					SimIntervalProcedure.execute(entity);
 				} else if ((ev_content).equals("simulation_end")) {

@@ -12,7 +12,6 @@ public class TaskGameplayProcedure {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 2;
-		CacModVariables.Switch_AI = true;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -20,7 +19,6 @@ public class TaskGameplayProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "worldborder set 10000000");
 			}
 		}
-		MeowMoveOnProcedure.execute();
-		CacModVariables.Dat_time_gameplay = CacModVariables.TimR_time;
+		AiStartProcedure.execute();
 	}
 }

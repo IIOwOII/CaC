@@ -1,0 +1,142 @@
+package net.owo.cac;
+
+import javax.annotation.Nullable;
+
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.common.Mod;
+
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Entity;
+
+import net.owo.cac.CacMod;
+import net.owo.cac.network.CacModVariables;
+import net.owo.cac.procedures.EvQueImmediateProcedure;
+import net.owo.cac.procedures.EvPulseRecordProcedure;
+import net.owo.cac.procedures.AiEndProcedure;
+
+import net.owo.cac.entity.EntCatEntity;
+import net.owo.cac.entity.EntMouseEntity;
+import net.owo.cac.entity.EntPlayerCatEntity;
+import net.owo.cac.entity.EntPlayerMouseEntity;
+import net.owo.cac.entity.EntPseudoCatEntity;
+import net.owo.cac.entity.EntPseudoMouseEntity;
+
+
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class CstAgent {
+	@Nullable public static Entity ent_opponent = null;
+	@Nullable public static Entity ent_player = null;
+	public static Vec3 pos_opponent = Vec3.ZERO;
+	public static Vec3 pos_player = Vec3.ZERO;
+
+	public static int agent_duration_max = 600;
+	public static int agent_duration = 0;
+	public static double agent_distance = 0;
+	
+	@SubscribeEvent
+	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		LevelAccessor world = event.player.level();
+		@Nullable Entity player = event.player;
+		if ((event.phase == TickEvent.Phase.END) && (!world.isClientSide())) {
+			if (ent_opponent != null && ent_player != null) {
+				pos_opponent = ent_opponent.position();
+				pos_player = ent_player.position();
+				CacModVariables.Pos_opponent = pos_opponent;
+				CacModVariables.Pos_player = pos_player;
+				
+				if (CacModVariables.Switch_trace) {
+					if (CacModVariables.Exp_phase == 1) {
+						CacModVariables.Dat_pos_time_prep.add((int)CacModVariables.TimR_time);
+						CacModVariables.Dat_pos_player_x_prep.add((pos_player.x()));
+						CacModVariables.Dat_pos_player_z_prep.add((pos_player.z()));
+						CacModVariables.Dat_pos_player_r_prep.add((ent_player.getYRot()));
+						CacModVariables.Dat_pos_opponent_x_prep.add((pos_opponent.x()));
+						CacModVariables.Dat_pos_opponent_z_prep.add((pos_opponent.z()));
+						CacModVariables.Dat_pos_opponent_r_prep.add((ent_opponent.getYRot()));
+					}
+					if (CacModVariables.Exp_phase == 2) {
+						CacModVariables.Dat_pos_time.add((int)CacModVariables.TimR_time);
+						CacModVariables.Dat_pos_player_x.add((pos_player.x()));
+						CacModVariables.Dat_pos_player_z.add((pos_player.z()));
+						CacModVariables.Dat_pos_player_r.add((ent_player.getYRot()));
+						CacModVariables.Dat_pos_opponent_x.add((pos_opponent.x()));
+						CacModVariables.Dat_pos_opponent_z.add((pos_opponent.z()));
+						CacModVariables.Dat_pos_opponent_r.add((ent_opponent.getYRot()));
+					}
+				}
+
+				// Move
+				if (CacModVariables.Switch_AI) {
+					agent_duration = agent_duration - 1;
+					agent_distance = (pos_opponent.subtract(pos_player)).length();
+					if ((agent_duration <= 0) || (agent_distance < 1)) {
+						ent_opponent.setDeltaMovement(Vec3.ZERO);
+						ent_player.setDeltaMovement(Vec3.ZERO);
+						if (agent_distance < 1) {
+							CacModVariables.Ev_pulse_content = "touch";
+							EvPulseRecordProcedure.execute();
+						}
+						EvQueImmediateProcedure.execute();
+						AiEndProcedure.execute(world, pos_player.x, pos_player.y, pos_player.z, player);
+						CacModVariables.Switch_AI = false;
+					}
+				}
+				
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public static void onEntitySpawned(EntityJoinLevelEvent event) {
+		@Nullable Entity _ent = event.getEntity();
+		if (_ent == null) return;
+		if (_ent instanceof EntCatEntity || _ent instanceof EntMouseEntity) {
+			ent_opponent = _ent;
+		} 
+		if ((_ent instanceof EntPlayerCatEntity || _ent instanceof EntPlayerMouseEntity) || (_ent instanceof EntPseudoCatEntity || _ent instanceof EntPseudoMouseEntity)) {
+			ent_player = _ent;
+		}
+	}
+
+	@SubscribeEvent
+	public static void onEntityDeath(LivingDeathEvent event) {
+		@Nullable Entity _ent = event.getEntity();
+		if ((event != null) && (_ent != null)) {
+			if (_ent == ent_opponent)
+				ent_opponent = null;
+			if (_ent == ent_player)
+				ent_player = null;
+		}
+	}
+
+	// wind up
+	public static void setDuration(int dur) {
+		agent_duration_max = dur;
+		agent_duration = dur;
+	}
+
+	// total trial time
+	public static int getDuration() {
+		int playtime = agent_duration_max - agent_duration;
+		return playtime;
+	}
+
+	// win or lose
+	public static int getResult() {
+		int result = -1;
+		if (((agent_duration > 0) && (CacModVariables.Dat_trial_type == 0)) || ((agent_duration <= 0) && (CacModVariables.Dat_trial_type == 1))) {
+			result = 1; // win
+		} else if (((agent_duration <= 0) && (CacModVariables.Dat_trial_type == 0)) || ((agent_duration > 0) && (CacModVariables.Dat_trial_type == 1))) {
+			result = 0; // lose
+		}
+		return result;
+	}
+	
+}

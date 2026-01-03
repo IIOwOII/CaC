@@ -503,12 +503,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "arguments",
-            "type": "cmdcontext"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -817,18 +812,6 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -1072,18 +1055,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
           },
           {
             "name": "world",
@@ -1335,18 +1306,6 @@
       "path": "~/CacTask/Manager"
     },
     {
-      "name": "CstManagePosition",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "cst_manage_position",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/CstManagePosition.java"
-        ]
-      }
-    },
-    {
       "name": "IniLogEvent",
       "type": "procedure",
       "compiles": true,
@@ -1390,18 +1349,6 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -1423,18 +1370,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
           },
           {
             "name": "world",
@@ -1512,18 +1447,6 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -1569,28 +1492,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/TaskGameplayEndProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacTask/General"
     },
@@ -2381,18 +2283,6 @@
             "type": "entity"
           },
           {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
             "name": "world",
             "type": "world"
           }
@@ -2410,28 +2300,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/SimGameplayEndProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacTask/Simulation"
     },
@@ -3529,6 +3398,81 @@
         ]
       },
       "path": "~/CacAI"
+    },
+    {
+      "name": "BlcMission",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_mission",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcMissionProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "AiStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiStartProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacAI"
+    },
+    {
+      "name": "CstAgent",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_agent",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstAgent.java"
+        ]
+      }
+    },
+    {
+      "name": "AiEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ai_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AiEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacAI"
     }
   ],
   "variable_elements": [
@@ -4271,12 +4215,12 @@
       "advancements.adv_exercise.descr": "Become both a prey and a predator.",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
-      "advancements.adv_exercise.title": "Fight or Flight",
       "entity.cac.ent_meowcam": "Meowcam",
+      "advancements.adv_exercise.title": "Fight or Flight",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_racing.title": "Rat, the racer",
       "advancements.adv_beginner_chased.title": "The shrewd prey",

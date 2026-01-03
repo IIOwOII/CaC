@@ -26,7 +26,7 @@ public class TimAiProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world) {
 		if (CacModVariables.Switch_AI && !world.isClientSide()) {
-			CacModVariables.TimP_sampling = (CacModVariables.TimP_sampling + 1) % 10;
+			CacModVariables.TimP_sampling = (CacModVariables.TimP_sampling + 1) % 8;
 		}
 	}
 }

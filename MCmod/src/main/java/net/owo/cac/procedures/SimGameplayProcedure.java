@@ -34,8 +34,7 @@ public class SimGameplayProcedure {
 			}
 		}
 		CacModVariables.Exp_phase = 2;
-		CacModVariables.Switch_AI = true;
 		CacModVariables.Switch_trace = true;
-		CacModVariables.Dat_time_gameplay = CacModVariables.TimR_time;
+		AiStartProcedure.execute();
 	}
 }

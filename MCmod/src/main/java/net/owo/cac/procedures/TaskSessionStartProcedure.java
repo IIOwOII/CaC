@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.BufferedReader;
 
 public class TaskSessionStartProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		String que_initial = "";
@@ -68,7 +68,7 @@ public class TaskSessionStartProcedure {
 		IniLogProcedure.execute();
 		if (!(CacModVariables.Exp_session).equals("tutorial") && !(CacModVariables.Exp_session).equals("presession")) {
 			IniQueProcedure.execute();
-			EvQueCallProcedure.execute(world, x, y, z, entity);
+			EvQueCallProcedure.execute(world, entity);
 		}
 	}
 }

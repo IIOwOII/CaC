@@ -11,7 +11,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 public class EvQueCallProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		com.google.gson.JsonArray arr_content = new com.google.gson.JsonArray();
@@ -72,7 +72,7 @@ public class EvQueCallProcedure {
 				}
 			}
 			CacModVariables.TimR_que_time = CacModVariables.TimR_time + ev_duration;
-			EvInvokeProcedure.execute(world, x, y, z, entity);
+			EvInvokeProcedure.execute(world, entity);
 		}
 	}
 }

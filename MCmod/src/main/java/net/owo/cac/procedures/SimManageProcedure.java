@@ -10,7 +10,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class SimManageProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_subject = "simulation";
@@ -33,6 +33,6 @@ public class SimManageProcedure {
 		TimResetProcedure.execute();
 		IniLogProcedure.execute();
 		IniQueProcedure.execute();
-		EvQueCallProcedure.execute(world, x, y, z, entity);
+		EvQueCallProcedure.execute(world, entity);
 	}
 }

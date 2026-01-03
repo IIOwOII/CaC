@@ -15,7 +15,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class TaskManageProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
@@ -48,6 +48,6 @@ public class TaskManageProcedure {
 		if (exp_property.contains("S")) {
 			net.owo.cac.CstSurvey.initSurvey();
 		}
-		TaskSessionStartProcedure.execute(world, x, y, z, entity);
+		TaskSessionStartProcedure.execute(world, entity);
 	}
 }
