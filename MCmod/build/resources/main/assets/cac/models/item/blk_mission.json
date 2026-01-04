@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cac:item/texture_cac_missionblock_icon"
+  },
+  "render_type": "translucent"
+}

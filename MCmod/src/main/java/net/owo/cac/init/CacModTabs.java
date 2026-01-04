@@ -42,11 +42,14 @@ public class CacModTabs {
 				tabData.accept(CacModBlocks.BLK_VALUESTONE.get().asItem());
 				tabData.accept(CacModBlocks.BLK_TAPE_BLOCK.get().asItem());
 				tabData.accept(CacModBlocks.BLK_VALUEPATCH.get().asItem());
+				tabData.accept(CacModBlocks.BLK_MISSION.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent
 	public static void buildTabContentsVanilla(BuildCreativeModeTabContentsEvent tabData) {
-		if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+		if (tabData.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+			tabData.accept(CacModBlocks.BLK_MISSION.get().asItem());
+		} else if (tabData.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
 			tabData.accept(CacModItems.ENT_MEOWCAM_SPAWN_EGG.get());
 		}
 	}

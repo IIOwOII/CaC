@@ -15,7 +15,7 @@ reducedDebugInfo:false
 showSubtitles:false
 directionalAudio:false
 touchscreen:false
-fullscreen:false
+fullscreen:true
 bobView:false
 toggleCrouch:false
 toggleSprint:false
@@ -35,8 +35,8 @@ renderDistance:5
 simulationDistance:12
 entityDistanceScaling:1.0
 guiScale:0
-particles:0
-maxFps:260
+particles:1
+maxFps:120
 graphicsMode:0
 ao:false
 prioritizeChunkUpdates:0
@@ -75,9 +75,9 @@ glDebugVerbosity:1
 skipMultiplayerWarning:false
 skipRealms32bitWarning:false
 hideMatchedNames:true
-joinedFirstServer:true
+joinedFirstServer:false
 hideBundleTutorial:false
-syncChunkWrites:false
+syncChunkWrites:true
 showAutosaveIndicator:true
 allowServerListing:true
 onlyShowSecureChat:false
@@ -126,7 +126,7 @@ key_key.cac.cac_key_camera:key.keyboard.right.control
 key_key.cac.cac_key_decide:key.keyboard.left.control
 key_key.cac.cac_key_signal:key.keyboard.s
 soundCategory_master:1.0
-soundCategory_music:1.0
+soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_missionblock_2g",
+  "textures": {
+    "all": "cac:block/texture_cac_missionblock",
+    "particle": "cac:block/texture_cac_missionblock",
+    "0": "cac:block/texture_cac_missionblock"
+  },
+  "render_type": "cutout"
+}

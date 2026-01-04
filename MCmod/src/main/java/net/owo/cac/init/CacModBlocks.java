@@ -10,6 +10,7 @@ import net.owo.cac.block.BlkValuepatchBlock;
 import net.owo.cac.block.BlkTapeBlockBlock;
 import net.owo.cac.block.BlkSwitchstoneBlock;
 import net.owo.cac.block.BlkObstacleBlock;
+import net.owo.cac.block.BlkMissionBlock;
 import net.owo.cac.block.BlkHurdleBlock;
 import net.owo.cac.block.BlkFenceBlock;
 import net.owo.cac.block.BlkCheckpointBlock;
@@ -34,6 +35,7 @@ public class CacModBlocks {
 	public static final RegistryObject<Block> BLK_VALUESTONE = REGISTRY.register("blk_valuestone", () -> new BlkValuestoneBlock());
 	public static final RegistryObject<Block> BLK_TAPE_BLOCK = REGISTRY.register("blk_tape_block", () -> new BlkTapeBlockBlock());
 	public static final RegistryObject<Block> BLK_VALUEPATCH = REGISTRY.register("blk_valuepatch", () -> new BlkValuepatchBlock());
+	public static final RegistryObject<Block> BLK_MISSION = REGISTRY.register("blk_mission", () -> new BlkMissionBlock());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }
