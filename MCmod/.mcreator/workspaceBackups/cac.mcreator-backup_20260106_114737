@@ -1080,26 +1080,9 @@
             "type": "cmdcontext"
           },
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
-        ]
-      },
-      "path": "~/CacTask/Manager"
-    },
-    {
-      "name": "CmdTaskRegister",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_task_register",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTaskRegisterCommand.java"
         ]
       },
       "path": "~/CacTask/Manager"
@@ -3400,20 +3383,6 @@
       "path": "~/CacAI"
     },
     {
-      "name": "BlcMission",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "blc_mission",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/BlcMissionProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacBlock"
-    },
-    {
       "name": "AiStart",
       "type": "procedure",
       "compiles": true,
@@ -3473,6 +3442,102 @@
         ]
       },
       "path": "~/CacAI"
+    },
+    {
+      "name": "BlkMission",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_mission",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/loot_tables/blocks/blk_mission.json",
+          "src/main/resources/assets/cac/models/item/blk_mission.json",
+          "src/main/resources/assets/cac/models/block/blk_mission.json",
+          "src/main/resources/assets/cac/blockstates/blk_mission.json",
+          "src/main/java/net/owo/cac/block/BlkMissionBlock.java"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlsMission",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bls_mission",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_16.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_10.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_13.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_19.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_27.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_6.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_30.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_9.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_18.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_22.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_11.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_15.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_26.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_8.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_5.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_29.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_4.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_7.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_23.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_14.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_17.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_25.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_1.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_12.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_20.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_28.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_3.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_24.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_0.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_21.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlcMission",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_mission",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcMissionProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "CmdRegister",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_register",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdRegisterCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Manager"
     }
   ],
   "variable_elements": [
@@ -3703,12 +3768,6 @@
       "type": "string",
       "scope": "global",
       "value": "\"none\""
-    },
-    {
-      "name": "Exp_session_reps",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
     },
     {
       "name": "Exp_signal",
@@ -4141,6 +4200,12 @@
       "type": "logic",
       "scope": "global",
       "value": "false"
+    },
+    {
+      "name": "Exp_property",
+      "type": "string",
+      "scope": "global",
+      "value": "\"\""
     }
   ],
   "sound_elements": [
@@ -4177,6 +4242,7 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkMission",
       "~CUSTOM:BlkTapeBlock",
       "~CUSTOM:BlkValuestone",
       "~CUSTOM:BlkSwitchstone",
@@ -4206,7 +4272,8 @@
       "BlkArrow",
       "BlkValuestone",
       "BlkTapeBlock",
-      "BlkValuepatch"
+      "BlkValuepatch",
+      "BlkMission"
     ]
   },
   "language_map": {
@@ -4215,12 +4282,12 @@
       "advancements.adv_exercise.descr": "Become both a prey and a predator.",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
-      "entity.cac.ent_meowcam": "Meowcam",
       "advancements.adv_exercise.title": "Fight or Flight",
+      "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_racing.title": "Rat, the racer",
       "advancements.adv_beginner_chased.title": "The shrewd prey",
@@ -4257,6 +4324,7 @@
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "item.cac.cac_test_item": "Tester",
       "item.cac.cac_logo": "OwO",
+      "block.cac.blk_mission": "Mission Block",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
       "subtitles.snd_orb_c7": "snd_orb_c7",
       "entity.cac.ent_player_mouse": "Prey (Player)",

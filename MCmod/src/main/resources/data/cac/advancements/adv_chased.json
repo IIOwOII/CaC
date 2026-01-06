@@ -4,10 +4,10 @@
       "item": "cac:cac_logo"
     },
     "title": {
-      "translate": "advancements.adv_beginner_chased.title"
+      "translate": "advancements.adv_chased.title"
     },
     "description": {
-      "translate": "advancements.adv_beginner_chased.descr"
+      "translate": "advancements.adv_chased.descr"
     },
     "frame": "task",
     "show_toast": true,
@@ -15,9 +15,9 @@
     "hidden": false
   },
   "criteria": {
-    "adv_beginner_chased_0": {
+    "adv_chased_0": {
       "trigger": "minecraft:impossible"
     }
   },
-  "parent": "cac:adv_beginner"
+  "parent": "cac:adv_cac"
 }

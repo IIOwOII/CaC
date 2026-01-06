@@ -2,8 +2,8 @@
   "_fv": 66,
   "_type": "achievement",
   "definition": {
-    "achievementName": "The veteran predator",
-    "achievementDescription": "Catch the prey",
+    "achievementName": "Honest voter",
+    "achievementDescription": "Thank you for your response!",
     "achievementIcon": {
       "value": "CUSTOM:CacLogo"
     },
@@ -18,7 +18,7 @@
     "rewardXP": 0,
     "achievementType": "task",
     "parent": {
-      "value": "CUSTOM:AdvBeginner"
+      "value": "CUSTOM:AdvCac"
     },
     "triggerxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"advancement_trigger\" deletable=\"false\" x=\"40\" y=\"80\"><next><block type=\"custom_trigger\"></block></next></block></xml>"
   }

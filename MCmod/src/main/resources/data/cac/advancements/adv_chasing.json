@@ -4,10 +4,10 @@
       "item": "cac:cac_logo"
     },
     "title": {
-      "translate": "advancements.adv_beginner_chasing.title"
+      "translate": "advancements.adv_chasing.title"
     },
     "description": {
-      "translate": "advancements.adv_beginner_chasing.descr"
+      "translate": "advancements.adv_chasing.descr"
     },
     "frame": "task",
     "show_toast": true,
@@ -15,9 +15,9 @@
     "hidden": false
   },
   "criteria": {
-    "adv_beginner_chasing_0": {
+    "adv_chasing_0": {
       "trigger": "minecraft:impossible"
     }
   },
-  "parent": "cac:adv_beginner"
+  "parent": "cac:adv_cac"
 }

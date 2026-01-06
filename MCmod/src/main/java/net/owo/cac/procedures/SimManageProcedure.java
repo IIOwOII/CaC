@@ -28,7 +28,6 @@ public class SimManageProcedure {
 		} else if (CacModVariables.Dat_trial_type == 1) {
 			CacModVariables.Exp_session = "simulation_chased";
 		}
-		IniPoolProcedure.execute(world);
 		EvResetProcedure.execute();
 		TimResetProcedure.execute();
 		IniLogProcedure.execute();

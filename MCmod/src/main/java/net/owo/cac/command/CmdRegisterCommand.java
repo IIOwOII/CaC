@@ -17,10 +17,10 @@ import net.minecraft.commands.Commands;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
 @Mod.EventBusSubscriber
-public class CmdTaskRegisterCommand {
+public class CmdRegisterCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("cac_task_register")
+		event.getDispatcher().register(Commands.literal("cac_register")
 
 				.then(Commands.argument("subject", StringArgumentType.word()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
@@ -34,7 +34,7 @@ public class CmdTaskRegisterCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					TaskRegisterProcedure.execute(world, arguments, entity);
+					TaskRegisterProcedure.execute(world, arguments);
 					return 0;
 				})));
 	}

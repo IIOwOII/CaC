@@ -25,7 +25,7 @@ public class IniPoolProcedure {
 		IniPoolRandomProcedure.execute(world);
 		if (CacModVariables.Switch_debug) {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eDirectory(components): \u00A7r" + dir_components)), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eDirectory: \u00A7r" + dir_components)), false);
 		}
 	}
 }

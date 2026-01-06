@@ -63,7 +63,6 @@ public class CacModVariables {
 	public static boolean Ev_que_loop = false;
 	public static double Exp_phase = 0;
 	public static String Exp_session = "\"none\"";
-	public static double Exp_session_reps = 0;
 	public static boolean Exp_signal = false;
 	public static String Exp_subject = "\"\"";
 	public static double Exp_trial = 0;
@@ -128,6 +127,7 @@ public class CacModVariables {
 	public static double TimP_sampling = 0;
 	public static double TimP_duration = 0;
 	public static boolean TimP_timebar = false;
+	public static String Exp_property = "\"\"";
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

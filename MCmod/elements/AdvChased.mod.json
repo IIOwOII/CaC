@@ -2,8 +2,8 @@
   "_fv": 66,
   "_type": "achievement",
   "definition": {
-    "achievementName": "Fight or Flight",
-    "achievementDescription": "Become both a prey and a predator.",
+    "achievementName": "The shrewd prey",
+    "achievementDescription": "Escape from the predator",
     "achievementIcon": {
       "value": "CUSTOM:CacLogo"
     },

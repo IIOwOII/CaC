@@ -16,6 +16,11 @@
     ]
   },
   "tutorial": {
+    "mission": {
+      "beginner": [-216, 64, -291],
+      "checkpoint": [-219, 64, -291],
+      "racing": [-221, 64, -291]
+    },
     "checkpoint": {
       "start": [-91, 63, -93],
       "end": [-63, 63, -65],

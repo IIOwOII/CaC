@@ -1080,26 +1080,9 @@
             "type": "cmdcontext"
           },
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
-        ]
-      },
-      "path": "~/CacTask/Manager"
-    },
-    {
-      "name": "CmdTaskRegister",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_task_register",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTaskRegisterCommand.java"
         ]
       },
       "path": "~/CacTask/Manager"
@@ -2447,32 +2430,6 @@
       "path": "~/CacAdvancement"
     },
     {
-      "name": "AdvBeginnerChasing",
-      "type": "achievement",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "adv_beginner_chasing",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/cac/advancements/adv_beginner_chasing.json"
-        ]
-      },
-      "path": "~/CacAdvancement"
-    },
-    {
-      "name": "AdvBeginnerChased",
-      "type": "achievement",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "adv_beginner_chased",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/cac/advancements/adv_beginner_chased.json"
-        ]
-      },
-      "path": "~/CacAdvancement"
-    },
-    {
       "name": "AdvCheckpoint",
       "type": "achievement",
       "compiles": true,
@@ -3231,19 +3188,6 @@
       "path": "~/CacAdvancement"
     },
     {
-      "name": "AdvExercise",
-      "type": "achievement",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "adv_exercise",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/cac/advancements/adv_exercise.json"
-        ]
-      },
-      "path": "~/CacAdvancement"
-    },
-    {
       "name": "AdpCheckpoint",
       "type": "procedure",
       "compiles": true,
@@ -3542,6 +3486,81 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "CmdRegister",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_register",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdRegisterCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Manager"
+    },
+    {
+      "name": "TutoMissionUpdate",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_mission_update",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoMissionUpdateProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial"
+    },
+    {
+      "name": "AdvChasing",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_chasing",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_chasing.json"
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdvChased",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_chased",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_chased.json"
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdvSurvey",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_survey",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_survey.json"
+        ]
+      },
+      "path": "~/CacAdvancement"
     }
   ],
   "variable_elements": [
@@ -3772,12 +3791,6 @@
       "type": "string",
       "scope": "global",
       "value": "\"none\""
-    },
-    {
-      "name": "Exp_session_reps",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
     },
     {
       "name": "Exp_signal",
@@ -4210,6 +4223,12 @@
       "type": "logic",
       "scope": "global",
       "value": "false"
+    },
+    {
+      "name": "Exp_property",
+      "type": "string",
+      "scope": "global",
+      "value": "\"\""
     }
   ],
   "sound_elements": [
@@ -4282,33 +4301,32 @@
   },
   "language_map": {
     "en_us": {
-      "advancements.adv_beginner_chased.descr": "Escape from the predator",
-      "advancements.adv_exercise.descr": "Become both a prey and a predator.",
+      "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
-      "advancements.adv_exercise.title": "Fight or Flight",
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
+      "advancements.adv_survey.descr": "Thank you for your response!",
       "advancements.adv_racing.title": "Rat, the racer",
-      "advancements.adv_beginner_chased.title": "The shrewd prey",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
       "advancements.adv_racing.descr": "Ready to flight away",
       "effect.cac.eff_stop_move": "Stiffness",
       "key.cac.cac_key_up": "Up",
+      "advancements.adv_chased.title": "The shrewd prey",
       "block.cac.blk_hurdle": "Hurdle",
       "item.cac.cac_builder_tool": "Meow Builder",
       "subtitles.snd_orb_a7": "snd_orb_a7",
       "block.cac.blk_checkpoint": "Checkpoint",
       "advancements.adv_cac.title": "Chasing and Chased",
+      "advancements.adv_chasing.descr": "Catch the prey",
       "effect.cac.eff_morph_predator": "Predator",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_player_cat": "Predator (Player)",
-      "advancements.adv_beginner_chasing.title": "The veteran predator",
       "advancements.adv_beginner.descr": "The joy sticks in the joystick!",
       "item.cac.ent_player_mouse_spawn_egg": "Prey (Player) Spawn Egg",
       "block.cac.blk_arrow": "Arrow guide",
@@ -4322,6 +4340,7 @@
       "block.cac.blk_valuestone": "Value Stone",
       "key.cac.cac_key_down": "Down",
       "item_group.cac.cac_tab": "CaC",
+      "advancements.adv_chased.descr": "Escape from the predator",
       "key.categories.cac": "Chasing and Chased",
       "block.cac.blk_valuepatch": "Value Patch",
       "key.cac.cac_key_decide": "Decide",
@@ -4333,9 +4352,9 @@
       "subtitles.snd_orb_c7": "snd_orb_c7",
       "entity.cac.ent_player_mouse": "Prey (Player)",
       "key.cac.cac_key_left": "Left",
-      "advancements.adv_beginner_chasing.descr": "Catch the prey",
       "advancements.adv_cac.descr": "Welcome to the CaC!",
       "block.cac.blk_switchstone": "Switch Stone",
+      "advancements.adv_chasing.title": "The veteran predator",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
       "advancements.adv_beginner.title": "Stickman"

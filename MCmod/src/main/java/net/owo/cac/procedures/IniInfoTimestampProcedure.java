@@ -12,10 +12,8 @@ import java.io.BufferedReader;
 
 public class IniInfoTimestampProcedure {
 	public static void execute() {
-		com.google.gson.JsonObject obj_timestamp_main = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_timestamp_sub = new com.google.gson.JsonObject();
-		double idx_obj = 0;
-		double idx_dup = 0;
+		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		CacModVariables.Info_timestamp = new File(CacModVariables.Dir_behaviors, File.separator + "info_timestamp.json");
 		if (!CacModVariables.Info_timestamp.exists()) {
 			try {
@@ -24,8 +22,8 @@ public class IniInfoTimestampProcedure {
 			} catch (IOException exception) {
 				exception.printStackTrace();
 			}
-			obj_timestamp_sub.addProperty("register_0", Calendar.getInstance().getTime().toString());
-			obj_timestamp_main.add("cac", obj_timestamp_sub);
+			obj_cac.addProperty("register", Calendar.getInstance().getTime().toString());
+			obj_file.add("cac", obj_cac);
 		} else {
 			{
 				try {
@@ -36,31 +34,19 @@ public class IniInfoTimestampProcedure {
 						jsonstringbuilder.append(line);
 					}
 					bufferedReader.close();
-					obj_timestamp_main = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-					obj_timestamp_sub = obj_timestamp_main.get("cac").getAsJsonObject();
+					obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
+					obj_cac = obj_file.get("cac").getAsJsonObject();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			idx_obj = 0;
-			idx_dup = 0;
-			for (int index0 = 0; index0 < (int) obj_timestamp_sub.size(); index0++) {
-				if (obj_timestamp_sub.keySet().stream().toList().get(((int) idx_obj)).startsWith("register")) {
-					idx_dup = idx_dup + 1;
-				}
-				idx_obj = idx_obj + 1;
-			}
-			if (idx_dup == 0) {
-				obj_timestamp_sub.addProperty("register", Calendar.getInstance().getTime().toString());
-			} else {
-				obj_timestamp_sub.addProperty(("register_" + (int) idx_dup), Calendar.getInstance().getTime().toString());
-			}
+			obj_cac.addProperty("register", Calendar.getInstance().getTime().toString());
 		}
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {
 				FileWriter fileWriter = new FileWriter(CacModVariables.Info_timestamp);
-				fileWriter.write(mainGSONBuilderVariable.toJson(obj_timestamp_main));
+				fileWriter.write(mainGSONBuilderVariable.toJson(obj_file));
 				fileWriter.close();
 			} catch (IOException exception) {
 				exception.printStackTrace();

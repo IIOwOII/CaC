@@ -1080,26 +1080,9 @@
             "type": "cmdcontext"
           },
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "world",
             "type": "world"
           }
-        ]
-      },
-      "path": "~/CacTask/Manager"
-    },
-    {
-      "name": "CmdTaskRegister",
-      "type": "command",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cmd_task_register",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/command/CmdTaskRegisterCommand.java"
         ]
       },
       "path": "~/CacTask/Manager"
@@ -3519,6 +3502,42 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "BlcMission",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_mission",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcMissionProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "CmdRegister",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_register",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdRegisterCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Manager"
     }
   ],
   "variable_elements": [
@@ -3749,12 +3768,6 @@
       "type": "string",
       "scope": "global",
       "value": "\"none\""
-    },
-    {
-      "name": "Exp_session_reps",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
     },
     {
       "name": "Exp_signal",
@@ -4187,6 +4200,12 @@
       "type": "logic",
       "scope": "global",
       "value": "false"
+    },
+    {
+      "name": "Exp_property",
+      "type": "string",
+      "scope": "global",
+      "value": "\"\""
     }
   ],
   "sound_elements": [
