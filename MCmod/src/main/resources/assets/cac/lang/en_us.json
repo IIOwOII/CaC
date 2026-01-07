@@ -1,4 +1,5 @@
 {
+  "advancements.adv_survey.title": "Honest voter",
   "advancements.adv_checkpoint.title": "CESCO",
   "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
   "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
@@ -7,6 +8,7 @@
   "block.cac.blk_tape_block": "Tape Block",
   "entity.cac.ent_meowcam": "Meowcam",
   "block.cac.blk_fence": "Fence (No field)",
+  "advancements.adv_survey.descr": "Thank you for your response!",
   "advancements.adv_racing.title": "Rat, the racer",
   "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
   "entity.cac.ent_mouse": "Prey",

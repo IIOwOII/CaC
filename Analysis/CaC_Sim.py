@@ -7,7 +7,7 @@ from sklearn.metrics import r2_score
 
 #%%
 def func_logistic(X, a, b, c, d):
-    return c+((1-d-c)/(1+np.exp(-b*(X-a))))
+    return c+((1-d-c)/(1+np.exp((X-a)/b)))
 
 
 #%%
@@ -81,8 +81,8 @@ def plot_rho_p(rho, p, spawn, spawn_idx=0):
     
     ax.scatter(rho, p, s=1, color='k', zorder=1)
     
-    popt, pcov = curve_fit(func_logistic, rho, p, p0=[1,0,0,0], 
-                           bounds=([0.8,-100,0,0],[1.2,100,0.2,0.2]), maxfev=20000)
+    popt, pcov = curve_fit(func_logistic, rho, p, p0=[1,0.04,0,0], 
+                           bounds=([0.9,0.005,0,0],[1.1,0.1,0.1,0.1]), maxfev=20000)
     c_y = func_logistic(c_x, *popt)
     
     ax.plot(c_x, c_y, color='green', zorder=2)
@@ -91,11 +91,11 @@ def plot_rho_p(rho, p, spawn, spawn_idx=0):
 
 #%% plot
 
-rt1_popt, rt1_pcov = plot_rho_t(c1_diff, c1_time, c1_spawn)
-rt2_popt, rt2_pcov = plot_rho_t(c2_diff, c2_time, c2_spawn)
+# rt1_popt, rt1_pcov = plot_rho_t(c1_diff, c1_time, c1_spawn)
+# rt2_popt, rt2_pcov = plot_rho_t(c2_diff, c2_time, c2_spawn)
 
-# rp1_popt, rp1_pcov = plot_rho_p(c1_diff, c1_wl, c1_spawn)
-# rp2_popt, rp2_pcov = plot_rho_p(c2_diff, c2_wl, c2_spawn)
+rp1_popt, rp1_pcov = plot_rho_p(c1_diff, c1_wl, c1_spawn)
+rp2_popt, rp2_pcov = plot_rho_p(c2_diff, c2_wl, c2_spawn)
 
 #indifference y=0.5인 위치 세로선과 coeff 주기
 plt.show()

@@ -1957,21 +1957,6 @@
       "path": "~/CacEntity"
     },
     {
-      "name": "PsyPsiLogistic",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "psy_psi_logistic",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PsyPsiLogisticProcedure.java"
-        ],
-        "dependencies": [],
-        "return_type": "number"
-      },
-      "path": "~/CacTask/Psychometric"
-    },
-    {
       "name": "IniPoolPsychometric",
       "type": "procedure",
       "compiles": true,
@@ -1984,20 +1969,6 @@
         "dependencies": []
       },
       "path": "~/CacInit/Pool"
-    },
-    {
-      "name": "PsyLikelihoodReset",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "psy_likelihood_reset",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PsyLikelihoodResetProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Psychometric"
     },
     {
       "name": "RtnSurrenderTypeI",
@@ -3561,6 +3532,60 @@
         ]
       },
       "path": "~/CacAdvancement"
+    },
+    {
+      "name": "PsyQuestInitialize",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_quest_initialize",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyQuestInitializeProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "PsyQuestPrior",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_quest_prior",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyQuestPriorProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "CstPsychometric",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_psychometric",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstPsychometric.java"
+        ]
+      }
+    },
+    {
+      "name": "IniLogFitting",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_fitting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogFittingProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacInit/Log"
     }
   ],
   "variable_elements": [
@@ -4027,36 +4052,6 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "Psy_likelihood",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_gamma",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_lambda",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_m",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_w",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Switch_AI",
       "type": "logic",
       "scope": "global",
@@ -4229,6 +4224,48 @@
       "type": "string",
       "scope": "global",
       "value": "\"\""
+    },
+    {
+      "name": "Log_fitting",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Psy_quest_param_min",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_param_max",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_param_initial",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_gridsize",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_param_step",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_L",
+      "type": "datalist",
+      "scope": "global",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [

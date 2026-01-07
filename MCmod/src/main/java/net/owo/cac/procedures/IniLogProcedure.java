@@ -45,6 +45,9 @@ public class IniLogProcedure {
 		if (log_type.contains("U")) {
 			IniLogSurrenderProcedure.execute();
 		}
+		if (log_type.contains("F")) {
+			IniLogFittingProcedure.execute();
+		}
 		if (log_type.contains("C")) {
 			IniLogScannerProcedure.execute();
 		}

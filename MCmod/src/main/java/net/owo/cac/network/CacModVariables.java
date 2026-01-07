@@ -94,11 +94,6 @@ public class CacModVariables {
 	public static Vec3 Pos_opponent_destination = Vec3.ZERO;
 	public static Vec3 Pos_player = Vec3.ZERO;
 	public static Vec3 Pos_player_destination = Vec3.ZERO;
-	public static ListTag Psy_likelihood = new ListTag();
-	public static ListTag Psy_param_gamma = new ListTag();
-	public static ListTag Psy_param_lambda = new ListTag();
-	public static ListTag Psy_param_m = new ListTag();
-	public static ListTag Psy_param_w = new ListTag();
 	public static boolean Switch_AI = false;
 	public static boolean Switch_blank = false;
 	public static boolean Switch_debug = false;
@@ -128,6 +123,14 @@ public class CacModVariables {
 	public static double TimP_duration = 0;
 	public static boolean TimP_timebar = false;
 	public static String Exp_property = "\"\"";
+	public static File Log_fitting = new File("");
+	public static com.google.gson.JsonArray Psy_quest_grid = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_quest_param_min = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_quest_param_max = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_quest_param_initial = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_quest_gridsize = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_quest_param_step = new com.google.gson.JsonArray();
+	public static ListTag Psy_quest_L = new ListTag();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

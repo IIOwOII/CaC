@@ -1,211 +1,117 @@
-[06Jan2026 11:56:23.267] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 47.2.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin.config, mixins.cac.json]
-[06Jan2026 11:56:23.271] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.14 by Eclipse Adoptium; OS Linux arch amd64 version 5.15.0-117-generic
-[06Jan2026 11:56:23.387] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
-[06Jan2026 11:56:23.458] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
-[06Jan2026 11:56:23.703] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
-[06Jan2026 11:56:23.880] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/home/owo/.mcreator/gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=CLIENT
-[06Jan2026 11:56:24.002] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA RTX A2000 12GB/PCIe/SSE2 GL version 4.6.0 NVIDIA 560.28.03, NVIDIA Corporation
-[06Jan2026 11:56:24.388] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.2.0/7f9181f85acc66547685a72020713fc8cbde98/javafmllanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[06Jan2026 11:56:24.390] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.2.0/7872f5205685fdd26fae39b1be79b0e60ca5b7bd/lowcodelanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[06Jan2026 11:56:24.392] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.2.0/d501d161cabed08b3c139a2c6217b02a39f3c3e9/mclanguage-1.20.1-47.2.0.jar is missing mods.toml file
-[06Jan2026 11:56:24.394] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.2.0/ffd3c6debac0a388c9e33ac43c9f5eafb91cb466/fmlcore-1.20.1-47.2.0.jar is missing mods.toml file
-[06Jan2026 11:56:24.566] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
-[06Jan2026 11:56:25.889] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by mixins.cac.json is higher than the maximum level supported by this version of mixin (JAVA_13).
-[06Jan2026 11:56:25.889] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[06Jan2026 11:56:25.896] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --assetIndex, 5]
-[06Jan2026 11:56:25.924] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
-[06Jan2026 11:56:25.925] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. NoClassDefFoundError: org/jetbrains/java/decompiler/main/extern/IResultSaver
-[06Jan2026 11:56:25.930] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
-[06Jan2026 11:56:25.931] [main/INFO] [mixin/]: Selecting config mixins.cac.json
-[06Jan2026 11:56:25.934] [main/WARN] [mixin/]: Reference map 'mixins.cac.refmap.json' for mixins.cac.json could not be read. If this is a development environment you can ignore this message
-[06Jan2026 11:56:25.935] [main/INFO] [mixin/]: Selecting config geckolib.mixins.json
-[06Jan2026 11:56:26.209] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using /home/owo/CLAB/CaC/MCmod/build/createSrgToMcp/output.srg
-[06Jan2026 11:56:26.210] [main/INFO] [mixin/]: Preparing mixins.cac.json (1)
-[06Jan2026 11:56:26.245] [main/INFO] [mixin/]: Preparing geckolib.mixins.json (1)
-[06Jan2026 11:56:26.283] [main/INFO] [mixin/]: Prepared 2 mixins in 0.352 sec (176.0ms avg) (0ms load, 0ms transform, 0ms plugin)
-[06Jan2026 11:56:30.455] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 202 milliseconds
-[06Jan2026 11:56:32.337] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/assets/.mcassetsroot' uses unexpected schema
-[06Jan2026 11:56:32.338] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/data/.mcassetsroot' uses unexpected schema
-[06Jan2026 11:56:32.362] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[06Jan2026 11:56:32.369] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[06Jan2026 11:56:32.491] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
-[06Jan2026 11:56:32.833] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.0, for MC 1.20.1 with MCP 20230612.114412
-[06Jan2026 11:56:32.835] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.0 Initialized
-[06Jan2026 11:56:33.432] [Render thread/INFO] [mixin/]: Mixing client.TextureManagerMixin from geckolib.mixins.json into net.minecraft.client.renderer.texture.TextureManager
-[06Jan2026 11:56:33.824] [Render thread/INFO] [mixin/]: Mixing MxnMeowviewMixin from mixins.cac.json into net.minecraft.client.Camera
-[06Jan2026 11:56:34.023] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
-[06Jan2026 11:56:34.369] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
-[06Jan2026 11:56:34.531] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[06Jan2026 11:56:34.547] [Worker-Main-24/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
-[06Jan2026 11:56:34.799] [Worker-Main-14/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture cac:item/texture_cac_wall_icon with size 350x328 limits mip level from 2 to 1
-[06Jan2026 11:56:35.400] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.2.0 Target: 47.4.10
-[06Jan2026 11:56:37.503] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[06Jan2026 11:56:37.503] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[06Jan2026 11:56:37.619] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device 내장 오디오 아날로그 스테레오
-[06Jan2026 11:56:37.621] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[06Jan2026 11:56:37.794] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x2048x2 minecraft:textures/atlas/blocks.png-atlas
-[06Jan2026 11:56:37.821] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/signs.png-atlas
-[06Jan2026 11:56:37.823] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/shield_patterns.png-atlas
-[06Jan2026 11:56:37.824] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/banner_patterns.png-atlas
-[06Jan2026 11:56:37.826] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x2 minecraft:textures/atlas/armor_trims.png-atlas
-[06Jan2026 11:56:37.833] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x2 minecraft:textures/atlas/decorated_pot.png-atlas
-[06Jan2026 11:56:37.840] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/chest.png-atlas
-[06Jan2026 11:56:37.841] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/shulker_boxes.png-atlas
-[06Jan2026 11:56:37.841] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/beds.png-atlas
-[06Jan2026 11:56:38.003] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[06Jan2026 11:56:38.072] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[06Jan2026 11:56:38.074] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[06Jan2026 11:56:38.075] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[06Jan2026 11:56:38.957] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
-[06Jan2026 11:57:17.356] [Render thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this CLIENT instance
-[06Jan2026 11:57:19.384] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
-[06Jan2026 11:57:19.507] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1278 advancements
-[06Jan2026 11:57:20.012] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.20.1
-[06Jan2026 11:57:20.013] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[06Jan2026 11:57:21.036] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[06Jan2026 11:57:23.052] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[06Jan2026 11:57:23.072] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[06Jan2026 11:57:23.091] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[06Jan2026 11:57:23.092] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[06Jan2026 11:57:23.092] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[06Jan2026 11:57:23.555] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[06Jan2026 11:57:24.063] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[06Jan2026 11:57:24.563] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 10%
-[06Jan2026 11:57:25.067] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 42%
-[06Jan2026 11:57:25.566] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 75%
-[06Jan2026 11:57:25.968] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 4915 ms
-[06Jan2026 11:57:25.969] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
-[06Jan2026 11:57:26.164] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 5, from 10
-[06Jan2026 11:57:26.167] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
-[06Jan2026 11:57:26.267] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
-[06Jan2026 11:57:26.774] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
-[06Jan2026 11:57:26.888] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:a6f28c01] logged in with entity id 19 at (-212.22594522896486, 63.0, -293.7704565326684)
-[06Jan2026 11:57:26.964] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[06Jan2026 11:57:27.049] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: CaC world Initialized!
-[06Jan2026 11:57:27.317] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] CaC world Initialized!
-[06Jan2026 11:57:27.327] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 345 advancements
-[06Jan2026 11:57:28.592] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[06Jan2026 11:57:28.617] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[06Jan2026 11:57:28.894] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[06Jan2026 11:57:28.894] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[06Jan2026 11:57:39.205] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Creative Mode]
-[06Jan2026 11:57:39.215] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Set own game mode to Creative Mode
-[06Jan2026 11:57:39.569] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[06Jan2026 11:57:39.587] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[06Jan2026 11:57:39.652] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[06Jan2026 11:57:39.652] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[06Jan2026 11:57:57.739] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 8, from 5
-[06Jan2026 12:06:51.124] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:06:51.129] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:06:55.639] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:06:55.651] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:06:56.975] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:06:56.976] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:06:58.567] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:06:58.568] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:00.066] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:00.066] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:01.361] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:01.361] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:27.861] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:27.861] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:29.676] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:29.677] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:31.114] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:31.114] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:32.497] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:32.498] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:35.081] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:35.097] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:36.311] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:36.311] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:48.987] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:48.988] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:50.040] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:50.041] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:51.096] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:51.097] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:52.307] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:52.308] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:53.550] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:53.551] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:07:55.037] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:07:55.037] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:10.074] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:10.083] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:11.887] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:11.888] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:13.549] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:13.550] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:14.667] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:14.668] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:15.824] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:15.836] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:16.948] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:16.948] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:32.191] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:32.199] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:33.742] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:33.743] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:35.205] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:35.205] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:36.533] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:36.543] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:37.780] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:37.781] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:39.375] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:39.386] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:49.752] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:49.753] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:50.954] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:50.954] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:52.093] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:52.093] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:53.274] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:53.283] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:54.401] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:54.402] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:08:55.506] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:08:55.506] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:09:11.348] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:09:11.348] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:09:13.053] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:09:13.066] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:09:14.530] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:09:14.530] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:09:16.024] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:09:16.039] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:09:17.687] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:09:17.687] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:09:19.620] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Gave 1 [Map] to Dev]
-[06Jan2026 12:09:19.620] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Gave 1 [Map] to Dev
-[06Jan2026 12:10:06.569] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[06Jan2026 12:10:06.587] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[06Jan2026 12:10:06.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[06Jan2026 12:10:06.656] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[06Jan2026 12:10:47.069] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[06Jan2026 12:10:47.083] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[06Jan2026 12:10:47.148] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[06Jan2026 12:10:47.148] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[06Jan2026 12:11:40.119] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[06Jan2026 12:11:40.131] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[06Jan2026 12:11:40.193] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[06Jan2026 12:11:40.194] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[06Jan2026 12:12:01.369] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[06Jan2026 12:12:01.380] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[06Jan2026 12:12:01.446] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[06Jan2026 12:12:01.446] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[06Jan2026 12:12:12.225] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
-[06Jan2026 12:12:12.225] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
-[06Jan2026 12:12:12.238] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
-[06Jan2026 12:12:12.271] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[06Jan2026 12:12:12.272] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[06Jan2026 12:12:12.272] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[06Jan2026 12:12:12.737] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[06Jan2026 12:12:12.918] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[06Jan2026 12:12:12.919] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[06Jan2026 12:12:12.951] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[06Jan2026 12:12:12.951] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[06Jan2026 12:12:12.951] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[06Jan2026 12:12:12.951] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
-[06Jan2026 12:12:14.012] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[07Jan2026 19:12:22.750] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 47.2.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin.config, mixins.cac.json]
+[07Jan2026 19:12:22.754] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.14 by Eclipse Adoptium; OS Linux arch amd64 version 5.15.0-117-generic
+[07Jan2026 19:12:22.879] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[07Jan2026 19:12:22.964] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[07Jan2026 19:12:23.182] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[07Jan2026 19:12:23.349] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/home/owo/.mcreator/gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=CLIENT
+[07Jan2026 19:12:23.425] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA RTX A2000 12GB/PCIe/SSE2 GL version 4.6.0 NVIDIA 560.28.03, NVIDIA Corporation
+[07Jan2026 19:12:23.774] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.2.0/7f9181f85acc66547685a72020713fc8cbde98/javafmllanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[07Jan2026 19:12:23.775] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.2.0/7872f5205685fdd26fae39b1be79b0e60ca5b7bd/lowcodelanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[07Jan2026 19:12:23.776] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.2.0/d501d161cabed08b3c139a2c6217b02a39f3c3e9/mclanguage-1.20.1-47.2.0.jar is missing mods.toml file
+[07Jan2026 19:12:23.778] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/owo/.mcreator/gradle/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.2.0/ffd3c6debac0a388c9e33ac43c9f5eafb91cb466/fmlcore-1.20.1-47.2.0.jar is missing mods.toml file
+[07Jan2026 19:12:23.946] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[07Jan2026 19:12:25.310] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by mixins.cac.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[07Jan2026 19:12:25.311] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[07Jan2026 19:12:25.316] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /home/owo/.mcreator/gradle/caches/forge_gradle/assets, --assetIndex, 5]
+[07Jan2026 19:12:25.341] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
+[07Jan2026 19:12:25.343] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. NoClassDefFoundError: org/jetbrains/java/decompiler/main/extern/IResultSaver
+[07Jan2026 19:12:25.348] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[07Jan2026 19:12:25.348] [main/INFO] [mixin/]: Selecting config mixins.cac.json
+[07Jan2026 19:12:25.352] [main/WARN] [mixin/]: Reference map 'mixins.cac.refmap.json' for mixins.cac.json could not be read. If this is a development environment you can ignore this message
+[07Jan2026 19:12:25.353] [main/INFO] [mixin/]: Selecting config geckolib.mixins.json
+[07Jan2026 19:12:25.620] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using /home/owo/CLAB/CaC/MCmod/build/createSrgToMcp/output.srg
+[07Jan2026 19:12:25.620] [main/INFO] [mixin/]: Preparing mixins.cac.json (1)
+[07Jan2026 19:12:25.657] [main/INFO] [mixin/]: Preparing geckolib.mixins.json (1)
+[07Jan2026 19:12:25.694] [main/INFO] [mixin/]: Prepared 2 mixins in 0.345 sec (172.5ms avg) (0ms load, 0ms transform, 0ms plugin)
+[07Jan2026 19:12:29.218] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 188 Datafixer optimizations took 208 milliseconds
+[07Jan2026 19:12:30.959] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/assets/.mcassetsroot' uses unexpected schema
+[07Jan2026 19:12:30.959] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/owo/.mcreator/gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.2.0_mapped_official_1.20.1/forge-1.20.1-47.2.0_mapped_official_1.20.1-recomp.jar%23181!/data/.mcassetsroot' uses unexpected schema
+[07Jan2026 19:12:30.976] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[07Jan2026 19:12:30.981] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[07Jan2026 19:12:31.080] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[07Jan2026 19:12:31.421] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.2.0, for MC 1.20.1 with MCP 20230612.114412
+[07Jan2026 19:12:31.423] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.2.0 Initialized
+[07Jan2026 19:12:31.953] [Render thread/INFO] [mixin/]: Mixing client.TextureManagerMixin from geckolib.mixins.json into net.minecraft.client.renderer.texture.TextureManager
+[07Jan2026 19:12:32.344] [Render thread/INFO] [mixin/]: Mixing MxnMeowviewMixin from mixins.cac.json into net.minecraft.client.Camera
+[07Jan2026 19:12:32.553] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
+[07Jan2026 19:12:32.869] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources
+[07Jan2026 19:12:33.031] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[07Jan2026 19:12:33.072] [Worker-Main-31/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.0.06.hex, loading
+[07Jan2026 19:12:33.326] [Worker-Main-8/WARN] [net.minecraft.client.renderer.texture.SpriteLoader/]: Texture cac:item/texture_cac_wall_icon with size 350x328 limits mip level from 2 to 1
+[07Jan2026 19:12:33.938] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 47.2.0 Target: 47.4.10
+[07Jan2026 19:12:35.853] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[07Jan2026 19:12:35.853] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[07Jan2026 19:12:35.971] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device 내장 오디오 아날로그 스테레오
+[07Jan2026 19:12:35.972] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[07Jan2026 19:12:36.135] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 2048x2048x2 minecraft:textures/atlas/blocks.png-atlas
+[07Jan2026 19:12:36.165] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/signs.png-atlas
+[07Jan2026 19:12:36.167] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/shield_patterns.png-atlas
+[07Jan2026 19:12:36.168] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x2 minecraft:textures/atlas/banner_patterns.png-atlas
+[07Jan2026 19:12:36.169] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x2 minecraft:textures/atlas/armor_trims.png-atlas
+[07Jan2026 19:12:36.177] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x2 minecraft:textures/atlas/decorated_pot.png-atlas
+[07Jan2026 19:12:36.180] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x2 minecraft:textures/atlas/chest.png-atlas
+[07Jan2026 19:12:36.181] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/beds.png-atlas
+[07Jan2026 19:12:36.182] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x2 minecraft:textures/atlas/shulker_boxes.png-atlas
+[07Jan2026 19:12:36.340] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[07Jan2026 19:12:36.404] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[07Jan2026 19:12:36.406] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[07Jan2026 19:12:36.406] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[07Jan2026 19:12:36.686] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: java.lang.RuntimeException: Failed to parse into SignedJWT: 0
+[07Jan2026 19:14:04.834] [Render thread/INFO] [net.minecraftforge.registries.GameData/REGISTRIES]: Injecting existing registry data into this CLIENT instance
+[07Jan2026 19:14:06.926] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[07Jan2026 19:14:07.051] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1278 advancements
+[07Jan2026 19:14:07.594] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.20.1
+[07Jan2026 19:14:07.594] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[07Jan2026 19:14:08.484] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[07Jan2026 19:14:10.947] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:10.967] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:10.987] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:10.987] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:10.987] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:11.006] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:11.495] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:11.997] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[07Jan2026 19:14:12.503] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 15%
+[07Jan2026 19:14:13.002] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 42%
+[07Jan2026 19:14:13.493] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 75%
+[07Jan2026 19:14:13.904] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 5413 ms
+[07Jan2026 19:14:13.908] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[07Jan2026 19:14:14.081] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 8, from 10
+[07Jan2026 19:14:14.083] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[07Jan2026 19:14:14.219] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[07Jan2026 19:14:14.746] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[07Jan2026 19:14:14.832] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:29f72f73] logged in with entity id 19 at (-222.5033706438444, 63.0, -289.27992594813986)
+[07Jan2026 19:14:14.906] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[07Jan2026 19:14:14.979] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: CaC world Initialized!
+[07Jan2026 19:14:15.292] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] CaC world Initialized!
+[07Jan2026 19:14:15.300] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 345 advancements
+[07Jan2026 19:14:16.309] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[07Jan2026 19:14:16.354] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[07Jan2026 19:14:16.573] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[07Jan2026 19:14:16.574] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[07Jan2026 19:14:23.895] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Unknown or incomplete command, see below for error
+[07Jan2026 19:14:23.896] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] ...perimental<--[HERE]
+[07Jan2026 19:14:27.259] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] Unknown or incomplete command, see below for error
+[07Jan2026 19:14:27.259] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] ...perimental<--[HERE]
+[07Jan2026 19:14:28.459] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[07Jan2026 19:14:28.477] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[07Jan2026 19:14:28.543] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[07Jan2026 19:14:28.544] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[07Jan2026 19:14:41.558] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[07Jan2026 19:14:41.573] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[07Jan2026 19:14:41.639] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[07Jan2026 19:14:41.640] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[07Jan2026 19:15:05.929] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[07Jan2026 19:15:05.930] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[07Jan2026 19:15:05.949] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[07Jan2026 19:15:05.984] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[07Jan2026 19:15:05.985] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[07Jan2026 19:15:05.985] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[07Jan2026 19:15:06.706] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[07Jan2026 19:15:06.740] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[07Jan2026 19:15:06.741] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[07Jan2026 19:15:06.778] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[07Jan2026 19:15:06.778] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[07Jan2026 19:15:06.778] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[07Jan2026 19:15:06.778] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[07Jan2026 19:15:07.777] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
