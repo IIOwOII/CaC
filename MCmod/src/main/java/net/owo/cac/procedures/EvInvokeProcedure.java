@@ -22,7 +22,6 @@ public class EvInvokeProcedure {
 				if ((ev_content).equals("test_start")) {
 					TaskPreRunProcedure.execute();
 				} else if ((ev_content).equals("pseudo_start")) {
-					PsyPsiPseudoProcedure.execute();
 					TaskPreRunProcedure.execute();
 				} else if ((ev_content).equals("simulation_start")) {
 					SimStartProcedure.execute();

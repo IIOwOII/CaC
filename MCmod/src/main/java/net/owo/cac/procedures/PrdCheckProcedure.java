@@ -34,8 +34,6 @@ public class PrdCheckProcedure {
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7etrace: \u00A7r" + CacModVariables.Switch_trace)), false);
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eScanner: \u00A7r" + CacModVariables.Switch_scanner)), false);
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eSurrender: \u00A7r" + CacModVariables.Switch_surrender)), false);
 		}
 		if ((target).equals("event")) {
 			if (!world.isClientSide() && world.getServer() != null)

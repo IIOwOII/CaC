@@ -13,7 +13,6 @@ public class TaskResetProcedure {
 		CacModVariables.Switch_timer = false;
 		CacModVariables.Switch_debug = false;
 		CacModVariables.Switch_trace = false;
-		CacModVariables.Switch_surrender = false;
 		CacModVariables.Switch_scanner = false;
 		CacModVariables.TimS_time = 0;
 		CacModVariables.TimR_que_time = 0;

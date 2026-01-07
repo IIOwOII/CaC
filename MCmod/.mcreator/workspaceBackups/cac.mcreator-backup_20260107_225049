@@ -231,7 +231,7 @@
         ],
         "return_type": "vector"
       },
-      "path": "~/CacUtil"
+      "path": "~/CacUtil/Field"
     },
     {
       "name": "CmdInitialize",
@@ -304,7 +304,7 @@
           }
         ]
       },
-      "path": "~/CacUtil"
+      "path": "~/CacUtil/Field"
     },
     {
       "name": "BlsWall",
@@ -557,7 +557,7 @@
           }
         ]
       },
-      "path": "~/CacUtil"
+      "path": "~/CacUtil/Field"
     },
     {
       "name": "FncScanWall",
@@ -577,7 +577,7 @@
           }
         ]
       },
-      "path": "~/CacUtil"
+      "path": "~/CacUtil/Field"
     },
     {
       "name": "FncFieldWall",
@@ -601,7 +601,7 @@
           }
         ]
       },
-      "path": "~/CacUtil"
+      "path": "~/CacUtil/Field"
     },
     {
       "name": "AiCat",
@@ -940,21 +940,6 @@
         "dependencies": []
       },
       "path": "~/CacUtil/Manager"
-    },
-    {
-      "name": "RtnBlank",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_blank",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnBlankProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
     },
     {
       "name": "TaskSessionEnd",
@@ -1894,21 +1879,6 @@
       "path": "~/CacItem"
     },
     {
-      "name": "RtnSurrender",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_surrender",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnSurrenderProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
       "name": "EntCat",
       "type": "animatedentity",
       "compiles": true,
@@ -1969,95 +1939,6 @@
         "dependencies": []
       },
       "path": "~/CacInit/Pool"
-    },
-    {
-      "name": "RtnSurrenderTypeI",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_surrender_type_i",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnSurrenderTypeIProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
-      "name": "RtnSurrenderTypeII",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_surrender_type_ii",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnSurrenderTypeIIProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
-      "name": "RtnSurrenderValueLeft",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_surrender_value_left",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueLeftProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
-      "name": "RtnSurrenderValueRight",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rtn_surrender_value_right",
-      "metadata": {
-        "return_type": "logic",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RtnSurrenderValueRightProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacCondition"
-    },
-    {
-      "name": "PsyInvpsiLogistic",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "psy_invpsi_logistic",
-      "metadata": {
-        "return_type": "number",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PsyInvpsiLogisticProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Psychometric"
-    },
-    {
-      "name": "PsyPsiPseudo",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "psy_psi_pseudo",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PsyPsiPseudoProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Psychometric"
     },
     {
       "name": "BlcCheckpointWalk",
@@ -3572,6 +3453,20 @@
           "src/main/java/net/owo/cac/CstPsychometric.java"
         ]
       }
+    },
+    {
+      "name": "IniLogFitting",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_fitting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogFittingProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacInit/Log"
     }
   ],
   "variable_elements": [
@@ -3589,12 +3484,6 @@
     },
     {
       "name": "Dat_difficulty_absolute",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
-      "name": "Dat_difficulty_relative",
       "type": "number",
       "scope": "global",
       "value": "0"
@@ -3682,24 +3571,6 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_psy_param",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Dat_survey_surrender",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
-      "name": "Dat_survey_surrender_type",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
     },
     {
       "name": "Dat_time_gameplay",
@@ -4038,36 +3909,6 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "Psy_likelihood",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_gamma",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_lambda",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_m",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_param_w",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Switch_AI",
       "type": "logic",
       "scope": "global",
@@ -4093,12 +3934,6 @@
     },
     {
       "name": "Switch_scanner",
-      "type": "logic",
-      "scope": "global",
-      "value": "false"
-    },
-    {
-      "name": "Switch_surrender",
       "type": "logic",
       "scope": "global",
       "value": "false"
@@ -4242,31 +4077,49 @@
       "value": "\"\""
     },
     {
-      "name": "Psy_quest_param_a",
+      "name": "Log_fitting",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
+    },
+    {
+      "name": "Psy_quest_param_min",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_param_max",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_param_step",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_L",
       "type": "datalist",
       "scope": "global",
       "value": "new ListTag()"
     },
     {
-      "name": "Psy_quest_param_b",
-      "type": "datalist",
+      "name": "Psy_quest_param_shape",
+      "type": "jsonarray",
       "scope": "global",
-      "value": "new ListTag()"
+      "value": "new com.google.gson.JsonArray()"
     },
     {
-      "name": "Psy_quest_param_c",
-      "type": "datalist",
+      "name": "Psy_quest_param_prior",
+      "type": "jsonarray",
       "scope": "global",
-      "value": "new ListTag()"
+      "value": "new com.google.gson.JsonArray()"
     },
     {
-      "name": "Psy_quest_param_d",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_quest_grid",
+      "name": "Psy_quest_P",
       "type": "datalist",
       "scope": "global",
       "value": "new ListTag()"
@@ -4345,8 +4198,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
@@ -4433,6 +4286,10 @@
         "children": [
           {
             "name": "Manager",
+            "children": []
+          },
+          {
+            "name": "Field",
             "children": []
           }
         ]

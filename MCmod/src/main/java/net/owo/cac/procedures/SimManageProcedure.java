@@ -18,10 +18,8 @@ public class SimManageProcedure {
 		CacModVariables.Exp_trial_total = DoubleArgumentType.getDouble(arguments, "trial");
 		if (DoubleArgumentType.getDouble(arguments, "difficulty") == 0) {
 			CacModVariables.Dat_difficulty_absolute = 0.8;
-			CacModVariables.Dat_difficulty_relative = 0;
 		} else {
 			CacModVariables.Dat_difficulty_absolute = DoubleArgumentType.getDouble(arguments, "difficulty");
-			CacModVariables.Dat_difficulty_relative = DoubleArgumentType.getDouble(arguments, "difficulty");
 		}
 		if (CacModVariables.Dat_trial_type == 0) {
 			CacModVariables.Exp_session = "simulation_chasing";

@@ -28,7 +28,6 @@ import java.io.File;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModVariables {
 	public static double Dat_difficulty_absolute = 0;
-	public static double Dat_difficulty_relative = 0;
 	public static com.google.gson.JsonArray Dat_pos_opponent_r = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_x = new com.google.gson.JsonArray();
@@ -43,9 +42,6 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_pos_player_z_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_time = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_time_prep = new com.google.gson.JsonArray();
-	public static ListTag Dat_psy_param = new ListTag();
-	public static double Dat_survey_surrender = 0;
-	public static double Dat_survey_surrender_type = 0;
 	public static double Dat_time_gameplay = 0;
 	public static double Dat_time_interval = 0;
 	public static double Dat_time_preparation = 0;
@@ -99,7 +95,6 @@ public class CacModVariables {
 	public static boolean Switch_debug = false;
 	public static boolean Switch_que = false;
 	public static boolean Switch_scanner = false;
-	public static boolean Switch_surrender = false;
 	public static boolean Switch_timer = false;
 	public static boolean Switch_trace = false;
 	public static double TimA_time = 0;
@@ -124,13 +119,13 @@ public class CacModVariables {
 	public static boolean TimP_timebar = false;
 	public static String Exp_property = "\"\"";
 	public static File Log_fitting = new File("");
-	public static com.google.gson.JsonArray Psy_quest_grid = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_quest_param_min = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_quest_param_max = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_quest_param_initial = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_quest_gridsize = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_quest_param_step = new com.google.gson.JsonArray();
 	public static ListTag Psy_quest_L = new ListTag();
+	public static com.google.gson.JsonArray Psy_quest_param_shape = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_quest_param_prior = new com.google.gson.JsonArray();
+	public static ListTag Psy_quest_P = new ListTag();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

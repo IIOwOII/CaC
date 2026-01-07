@@ -12,11 +12,10 @@ public class RecGameplayProcedure {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonArray arr_type = new com.google.gson.JsonArray();
-		com.google.gson.JsonArray arr_difficulty_absolute = new com.google.gson.JsonArray();
-		com.google.gson.JsonArray arr_difficulty_relative = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_spawnpoint_opponent = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_winlose = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_time = new com.google.gson.JsonArray();
+		com.google.gson.JsonArray arr_difficulty = new com.google.gson.JsonArray();
 		if (CacModVariables.Log_type.contains("G")) {
 			{
 				try {
@@ -35,14 +34,12 @@ public class RecGameplayProcedure {
 			}
 			arr_time = obj_cac.get("time").getAsJsonArray();
 			arr_type = obj_cac.get("type").getAsJsonArray();
-			arr_difficulty_absolute = obj_cac.get("difficulty_absolute").getAsJsonArray();
-			arr_difficulty_relative = obj_cac.get("difficulty_relative").getAsJsonArray();
+			arr_difficulty = obj_cac.get("difficulty").getAsJsonArray();
 			arr_spawnpoint_opponent = obj_cac.get("spawnpoint_opponent").getAsJsonArray();
 			arr_winlose = obj_cac.get("winlose").getAsJsonArray();
 			arr_time.add(((int) CacModVariables.Dat_time_gameplay));
 			arr_type.add(((int) CacModVariables.Dat_trial_type));
-			arr_difficulty_absolute.add(CacModVariables.Dat_difficulty_absolute);
-			arr_difficulty_relative.add(CacModVariables.Dat_difficulty_relative);
+			arr_difficulty.add(CacModVariables.Dat_difficulty_absolute);
 			arr_spawnpoint_opponent.add(((int) CacModVariables.Dat_trial_spawnpoint_opponent));
 			arr_winlose.add(((int) CacModVariables.Dat_trial_winlose));
 			{
