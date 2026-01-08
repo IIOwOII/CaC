@@ -3489,12 +3489,6 @@
       "value": "0"
     },
     {
-      "name": "Dat_difficulty_relative",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
       "name": "Dat_pos_opponent_r",
       "type": "jsonarray",
       "scope": "global",
@@ -4123,6 +4117,12 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_quest_P",
+      "type": "datalist",
+      "scope": "global",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [
