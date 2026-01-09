@@ -34,4 +34,26 @@ public class CstPsychometric {
 		
 		return idx;
 	}
+
+	public static double[] softmax(double[] X) {
+		double[] Y = new double[X.length];
+		double Y_sum = 0;
+		for (int i=0; i<X.length; i++) {
+			Y[i] = Math.exp(X[i]);
+			Y_sum += Y[i];
+		}
+		for (int j=0; j<X.length; j++) {
+			Y[j] /= Y_sum;
+		}
+		return Y;
+	}
+
+	public static double logsumexp(double[] X) {
+		double Y_sum = 0;
+		for (int i=0; i<X.length; i++) {
+			Y_sum += Math.exp(X[i]);
+		}
+		return Math.log(Y_sum);
+	}
+	
 }
