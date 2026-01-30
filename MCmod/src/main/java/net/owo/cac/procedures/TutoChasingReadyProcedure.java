@@ -47,7 +47,7 @@ public class TutoChasingReadyProcedure {
 			}
 		}
 		EffApplyMorphPredatorProcedure.execute(entity);
-		CacModVariables.Dat_difficulty_absolute = 0.9;
+		CacModVariables.Dat_difficulty = 0.9;
 		CacModVariables.Switch_AI = false;
 		MeowViewOnProcedure.execute();
 		MeowMoveOffProcedure.execute();

@@ -108,7 +108,6 @@ def plot_rho_mu(rho, t):
     for i, x in enumerate(c_x):
         x = np.around(x, 2)
         c_y[i] = np.mean(t[rho==x])
-    print(c_y)
     T = max(t)
     
     fig, ax = plt.subplots(figsize=(4,3), dpi=300)
@@ -128,6 +127,42 @@ def plot_rho_mu(rho, t):
     ax.scatter(rho, t, s=1, color='k', alpha=0.5, zorder=1)
     ax.plot(c_x, c_y, color='forestgreen', zorder=2)
     
+    return c_y
+
+
+def plot_rho_h(rho, t, task='chasing', corrected_rho=False):
+    # if corrected_rho is true, rho will be rearranged.
+    # (opp./pla.) -> (cat/mouse)
+    c_x = list(set(rho))
+    c_x.sort()
+    c_x = np.array(c_x)
+    c_y = np.zeros(c_x.size)
+    for i, x in enumerate(c_x):
+        x = np.around(x, 2)
+        c_y[i] = 1/np.mean(t[rho==x])
+    
+    if (corrected_rho) and (task=='chasing'):
+        c_x = 1/c_x
+        rho = 1/rho
+    
+    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
+    
+    ax.set_xlim([0.78, 1.21])
+    ax.set_ylim([-0.005, 0.2])
+    ax.set_yticks(np.linspace(0,0.2,5))
+    for side in ['right', 'top', 'bottom']:
+        ax.spines[side].set_visible(False)
+    
+    ax.axhline(0, linewidth=0.8, linestyle='-', color='k', zorder=-1)
+    ax.axhline(1/30, linewidth=0.8, linestyle='-.', color='orangered', zorder=-1)
+    ax.axhline(0.05, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
+    ax.axhline(0.1, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
+    ax.axhline(0.15, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
+    ax.axhline(0.2, linewidth=0.8, linestyle='-.', color='orangered', zorder=-1)
+    
+    ax.scatter(rho, 1/t, s=1, color='k', alpha=0.5, zorder=1)
+    ax.plot(c_x, c_y, color='forestgreen', zorder=2)
+    
 
 #%% plot
 
@@ -137,12 +172,14 @@ def plot_rho_mu(rho, t):
 # rp1_popt, rp1_pcov = plot_rho_p(c1_diff, c1_wl, c1_spawn)
 # rp2_popt, rp2_pcov = plot_rho_p(c2_diff, c2_wl, c2_spawn)
 
-plot_rho_mu(c1_diff, c1_time)
-plot_rho_mu(c2_diff, c2_time)
+# mu1 = plot_rho_mu(c1_diff, c1_time)
+# mu2 = plot_rho_mu(c2_diff, c2_time)
+
+plot_rho_h(c1_diff, c1_time, task='chasing', corrected_rho=False)
+plot_rho_h(c2_diff, c2_time, task='chased')
 
 #indifference y=0.5인 위치 세로선과 coeff 주기
 plt.show()
-
 
 #%% goodness of fit
 

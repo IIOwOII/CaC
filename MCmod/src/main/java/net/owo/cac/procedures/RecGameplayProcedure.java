@@ -39,7 +39,7 @@ public class RecGameplayProcedure {
 			arr_winlose = obj_cac.get("winlose").getAsJsonArray();
 			arr_time.add(((int) CacModVariables.Dat_time_gameplay));
 			arr_type.add(((int) CacModVariables.Dat_trial_type));
-			arr_difficulty.add(CacModVariables.Dat_difficulty_absolute);
+			arr_difficulty.add(CacModVariables.Dat_difficulty);
 			arr_spawnpoint_opponent.add(((int) CacModVariables.Dat_trial_spawnpoint_opponent));
 			arr_winlose.add(((int) CacModVariables.Dat_trial_winlose));
 			{

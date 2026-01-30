@@ -21,8 +21,7 @@ public class IniLogGameplayProcedure {
 			}
 			obj_cac.add("time", arr_empty);
 			obj_cac.add("type", arr_empty);
-			obj_cac.add("difficulty_absolute", arr_empty);
-			obj_cac.add("difficulty_relative", arr_empty);
+			obj_cac.add("difficulty", arr_empty);
 			obj_cac.add("spawnpoint_opponent", arr_empty);
 			obj_cac.add("winlose", arr_empty);
 			obj_file.add("cac", obj_cac);

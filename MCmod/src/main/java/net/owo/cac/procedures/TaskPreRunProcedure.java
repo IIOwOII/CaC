@@ -1,6 +1,7 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CstState;
 
 public class TaskPreRunProcedure {
 	public static void execute() {
@@ -10,7 +11,7 @@ public class TaskPreRunProcedure {
 		CacModVariables.Exp_trial = 0;
 		CacModVariables.Exp_phase = 0;
 		CacModVariables.Dat_trial_type = 0;
-		CacModVariables.Dat_difficulty_absolute = 1;
+		CacModVariables.Dat_difficulty = 1;
 		CacModVariables.Dat_trial_spawnpoint_opponent = 0;
 		CacModVariables.Dat_trial_winlose = 0;
 		CacModVariables.Dat_time_preparation = 0;
@@ -30,5 +31,6 @@ public class TaskPreRunProcedure {
 		CacModVariables.Dat_pos_opponent_x_prep = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_z_prep = new com.google.gson.JsonArray();
 		CacModVariables.Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
+		CstState.IsMeowView = true;
 	}
 }

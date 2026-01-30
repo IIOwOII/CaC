@@ -31,19 +31,19 @@ public class PrdTestItemProcedure {
 				_player.displayClientMessage(Component.literal((option_tester_text + " is executed!")), true);
 		}
 		if ((option_tester_text).equals("Increase Difficulty")) {
-			if (CacModVariables.Dat_difficulty_absolute <= 1.5) {
-				CacModVariables.Dat_difficulty_absolute = CacModVariables.Dat_difficulty_absolute + 0.05;
+			if (CacModVariables.Dat_difficulty <= 1.2) {
+				CacModVariables.Dat_difficulty = CacModVariables.Dat_difficulty + 0.05;
 				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.Dat_difficulty_absolute))), false);
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.Dat_difficulty))), false);
 			} else {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Maximum Speed!"), false);
 			}
 		} else if ((option_tester_text).equals("Decrease Difficulty")) {
-			if (CacModVariables.Dat_difficulty_absolute >= 0.5) {
-				CacModVariables.Dat_difficulty_absolute = CacModVariables.Dat_difficulty_absolute - 0.05;
+			if (CacModVariables.Dat_difficulty >= 0.8) {
+				CacModVariables.Dat_difficulty = CacModVariables.Dat_difficulty - 0.05;
 				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.Dat_difficulty_absolute))), false);
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("Speed Ratio : " + new java.text.DecimalFormat("#.##").format(CacModVariables.Dat_difficulty))), false);
 			} else {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Minimum Speed!"), false);

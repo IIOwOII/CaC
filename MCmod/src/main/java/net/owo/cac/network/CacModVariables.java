@@ -27,7 +27,6 @@ import java.io.File;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModVariables {
-	public static double Dat_difficulty_absolute = 0;
 	public static com.google.gson.JsonArray Dat_pos_opponent_r = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_opponent_x = new com.google.gson.JsonArray();
@@ -126,6 +125,7 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Psy_quest_param_shape = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_quest_param_prior = new com.google.gson.JsonArray();
 	public static ListTag Psy_quest_P = new ListTag();
+	public static double Dat_difficulty = 0;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

@@ -51,7 +51,7 @@ public class CstPsychometric {
 	public static double[] calInfoGain(double H_curr, double[] H_win, double[] H_lose, double[] PI) {
 		double[] EIG = new double[H_win.length];
 		for (int x=0; x<H_win.length; x++){
-			EIG[x] = H_curr - PI[x]*H_win - (1-PI[x])*H_lose;
+			EIG[x] = H_curr - PI[x]*H_win[x] - (1-PI[x])*H_lose[x];
 		}
 		return EIG;
 	}
