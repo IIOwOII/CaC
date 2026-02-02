@@ -33,24 +33,38 @@ c2_wl = np.array(chased['winlose'])
 
 #%%
 def plot_rho_t(rho, t, spawn, spawn_idx=0, task='chasing', func='logistic'):
-    c_x = np.arange(0.8, 1.2, 0.01)
+    # spawnpoint sort
     if (spawn_idx > 0):
         rho = rho[spawn==(spawn_idx-1)]
         t = t[spawn==(spawn_idx-1)]
     elif (spawn_idx < 0):
         rho = rho[spawn!=(-spawn_idx-1)]
         t = t[spawn!=(-spawn_idx-1)]
-        
+    
+    # data normalize
     T = max(t)
     t_norm = t/T
     
-    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
+    # data sort
+    c_x = list(set(rho))
+    c_x.sort()
+    c_x = np.array(c_x)
+    c_y = np.zeros(c_x.size)
+    for i, x in enumerate(c_x):
+        x = np.around(x, 2)
+        c_y[i] = np.mean(t[rho==x])
     
-    ax.set_xlim([0.78,1.2])
-    ax.set_ylim([-0.02*T,1.02*T])
+    # figure setting
+    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
     for side in ['right', 'top', 'bottom']:
         ax.spines[side].set_visible(False)
+    ax.set_xlabel(r'$\rho$' + ' (Difficulty)')
+    ax.set_ylabel(r'$t$' + ' (Trial Time)')
+    ax.set_xlim([0.78,1.2])
+    ax.set_ylim([-0.02*T,1.02*T])
+    ax.set_yticks(np.arange(0,T+1,10))
     
+    # figure design
     ax.axhline(0, linewidth=0.8, linestyle='-', color='k', zorder=-1)
     ax.axhline(10, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
     ax.axhline(20, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
@@ -58,7 +72,9 @@ def plot_rho_t(rho, t, spawn, spawn_idx=0, task='chasing', func='logistic'):
     ax.axhline(40, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
     ax.axhline(50, linewidth=0.4, linestyle='-', color='gray', alpha=0.2, zorder=-1)
     
-    ax.scatter(rho, t, s=1, color='k', alpha=0.5, zorder=1)
+    # plot
+    ax.scatter(rho, t, s=1, color='k', alpha=0.2, zorder=0)
+    ax.scatter(c_x, c_y, s=1, color='blue', zorder=1)
     
     if (func=='logistic'):
         if (task=='chasing'):
@@ -75,29 +91,50 @@ def plot_rho_t(rho, t, spawn, spawn_idx=0, task='chasing', func='logistic'):
     return popt, pcov
 
 
+# Difficulty - Win rate
 def plot_rho_p(rho, p, spawn, spawn_idx=0):
-    c_x = np.arange(0.8, 1.2, 0.01)
+    # spawnpoint sort
     if (spawn_idx > 0):
         rho = rho[spawn==(spawn_idx-1)]
         p = p[spawn==(spawn_idx-1)]
     elif (spawn_idx < 0):
         rho = rho[spawn!=(-spawn_idx-1)]
         p = p[spawn!=(-spawn_idx-1)]
+        
+    # data sort
+    c_x = list(set(rho))
+    c_x.sort()
+    c_x = np.array(c_x)
+    c_y = np.zeros(c_x.size)
+    for i, x in enumerate(c_x):
+        x = np.around(x, 2)
+        c_y[i] = np.mean(p[rho==x])
     
+    # figure setting
     fig, ax = plt.subplots(figsize=(4,3), dpi=300)
-    ax.set_ylim([-0.1,1.1])
+    for side in ['right', 'top', 'bottom']:
+        ax.spines[side].set_visible(False)
+    ax.set_xlabel(r'$\rho$' + ' (Difficulty)')
+    ax.set_ylabel(r'$P$' + ' (Win Rate)')
+    ax.set_xlim([0.78,1.2])
+    ax.set_ylim([-0.02,1.02])
     ax.set_yticks([0,0.5,1])
     
-    ax.axhline(0, linewidth=0.5, linestyle='-', color='gray', zorder=-1)
-    ax.axhline(1, linewidth=0.5, linestyle='-', color='gray', zorder=-1)
+    # figure design
+    ax.axhline(0, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
+    ax.axhline(0.5, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
+    ax.axhline(1, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
     
-    ax.scatter(rho, p, s=1, color='k', zorder=1)
+    # plot
+    ax.scatter(rho, p, s=1, color='gray', alpha=0.2, zorder=0)
+    ax.scatter(c_x, c_y, s=1, color='blue', zorder=1)
     
-    popt, pcov = curve_fit(func_logistic, rho, p, p0=[1,0.04,0,0], 
+    # fitting
+    popt, pcov = curve_fit(func_logistic, c_x, c_y, p0=[1,0.04,0,0], 
                            bounds=([0.9,0.005,0,0],[1.1,0.1,0.1,0.1]), maxfev=20000)
-    c_y = func_logistic(c_x, *popt)
+    PSI_rho_p = func_logistic(c_x, *popt)
     
-    ax.plot(c_x, c_y, color='green', zorder=2)
+    ax.plot(c_x, PSI_rho_p, color='green', zorder=2)
     
     return popt, pcov
 
@@ -166,17 +203,17 @@ def plot_rho_h(rho, t, task='chasing', corrected_rho=False):
 
 #%% plot
 
-# rt1_popt, rt1_pcov = plot_rho_t(c1_diff, c1_time, c1_spawn, task='chasing')
-# rt2_popt, rt2_pcov = plot_rho_t(c2_diff, c2_time, c2_spawn, task='chased')
+rt1_popt, rt1_pcov = plot_rho_t(c1_diff, c1_time, c1_spawn, task='chasing')
+rt2_popt, rt2_pcov = plot_rho_t(c2_diff, c2_time, c2_spawn, task='chased')
 
-# rp1_popt, rp1_pcov = plot_rho_p(c1_diff, c1_wl, c1_spawn)
-# rp2_popt, rp2_pcov = plot_rho_p(c2_diff, c2_wl, c2_spawn)
+rp1_popt, rp1_pcov = plot_rho_p(c1_diff, c1_wl, c1_spawn)
+rp2_popt, rp2_pcov = plot_rho_p(c2_diff, c2_wl, c2_spawn)
 
 # mu1 = plot_rho_mu(c1_diff, c1_time)
 # mu2 = plot_rho_mu(c2_diff, c2_time)
 
-plot_rho_h(c1_diff, c1_time, task='chasing', corrected_rho=False)
-plot_rho_h(c2_diff, c2_time, task='chased')
+# plot_rho_h(c1_diff, c1_time, task='chasing', corrected_rho=False)
+# plot_rho_h(c2_diff, c2_time, task='chased')
 
 #indifference y=0.5인 위치 세로선과 coeff 주기
 plt.show()

@@ -1115,12 +1115,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/FncManageDifficultyProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacUtil/Manager"
     },

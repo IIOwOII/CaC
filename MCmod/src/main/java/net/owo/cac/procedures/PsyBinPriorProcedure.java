@@ -4,7 +4,7 @@ import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.nbt.DoubleTag;
 
-public class PsyQuestPriorProcedure {
+public class PsyBinPriorProcedure {
 	public static void execute() {
 		double Ia = 0;
 		double Ib = 0;
@@ -22,14 +22,14 @@ public class PsyQuestPriorProcedure {
 		double Db = 0;
 		double Dc = 0;
 		double Dd = 0;
-		Ia = CacModVariables.Psy_quest_param_prior.get(0).getAsDouble();
-		Ib = CacModVariables.Psy_quest_param_prior.get(1).getAsDouble();
-		Ic = CacModVariables.Psy_quest_param_prior.get(2).getAsDouble();
-		Id = CacModVariables.Psy_quest_param_prior.get(3).getAsDouble();
-		Ga = CacModVariables.Psy_quest_param_shape.get(0).getAsDouble();
-		Gb = CacModVariables.Psy_quest_param_shape.get(1).getAsDouble();
-		Gc = CacModVariables.Psy_quest_param_shape.get(2).getAsDouble();
-		Gd = CacModVariables.Psy_quest_param_shape.get(3).getAsDouble();
+		Ia = CacModVariables.Psy_bin_param_prior.get(0).getAsDouble();
+		Ib = CacModVariables.Psy_bin_param_prior.get(1).getAsDouble();
+		Ic = CacModVariables.Psy_bin_param_prior.get(2).getAsDouble();
+		Id = CacModVariables.Psy_bin_param_prior.get(3).getAsDouble();
+		Ga = CacModVariables.Psy_bin_param_shape.get(0).getAsDouble();
+		Gb = CacModVariables.Psy_bin_param_shape.get(1).getAsDouble();
+		Gc = CacModVariables.Psy_bin_param_shape.get(2).getAsDouble();
+		Gd = CacModVariables.Psy_bin_param_shape.get(3).getAsDouble();
 		sa = 0;
 		for (int index0 = 0; index0 < (int) Ga; index0++) {
 			Da = Math.pow((sa - Ia) / Ga, 2);
@@ -42,7 +42,7 @@ public class PsyQuestPriorProcedure {
 					sd = 0;
 					for (int index3 = 0; index3 < (int) Gd; index3++) {
 						Dd = Math.pow((sd - Id) / Gd, 2);
-						CacModVariables.Psy_quest_L.setTag((int) net.owo.cac.CstPsychometric.flattenIndex(sa, sb, sc, sd), DoubleTag.valueOf(Math.log(net.owo.cac.CstPsychometric.funcPrior(Da, Db, Dc, Dd))));
+						CacModVariables.Psy_bin_L.setTag((int) net.owo.cac.CstPsychometric.flattenIndex(sa, sb, sc, sd), DoubleTag.valueOf(Math.log(net.owo.cac.CstPsychometric.setPrior(Da, Db, Dc, Dd))));
 						sd = sd + 1;
 					}
 					sc = sc + 1;

@@ -1115,12 +1115,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/FncManageDifficultyProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacUtil/Manager"
     },
@@ -3415,20 +3410,6 @@
       "path": "~/CacAdvancement"
     },
     {
-      "name": "PsyQuestInitialize",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "psy_quest_initialize",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PsyQuestInitializeProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Psychometric"
-    },
-    {
       "name": "PsyQuestPrior",
       "type": "procedure",
       "compiles": true,
@@ -3445,7 +3426,7 @@
     {
       "name": "CstPsychometric",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "cst_psychometric",
       "metadata": {
@@ -3467,6 +3448,34 @@
         "dependencies": []
       },
       "path": "~/CacInit/Log"
+    },
+    {
+      "name": "PsyBinInitialize",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_bin_initialize",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyBinInitializeProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "PsyBinPrior",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_bin_prior",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyBinPriorProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Psychometric"
     }
   ],
   "variable_elements": [
@@ -3481,12 +3490,6 @@
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Dat_difficulty_absolute",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
     },
     {
       "name": "Dat_pos_opponent_r",
@@ -4129,6 +4132,48 @@
       "type": "number",
       "scope": "global",
       "value": "0"
+    },
+    {
+      "name": "Psy_bin_param_max",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_min",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_prior",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_shape",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_step",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_L",
+      "type": "datalist",
+      "scope": "global",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_bin_P",
+      "type": "datalist",
+      "scope": "global",
+      "value": "new ListTag()"
     }
   ],
   "sound_elements": [

@@ -7,17 +7,43 @@ import net.owo.cac.network.CacModVariables;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
-	
-	public static double funcLogistic(double rho, double a, double b, double c, double d) {
-		double y = c + (1-c-d)/(1+Math.exp((rho-a)/b));
-		return y;
+	// Calculate the psychometric function (CDF)
+	public static double calPSI(int func_type, double rho, double m, double w, double gamma, double lambda) {
+		double F = 0;
+		if (func_type == 0) { // Logistic
+			F = funcLogistic(rho, m, w);
+		}
+		return gamma + (1-gamma-lambda)*F;
 	}
 
-	public static double funcPrior(double Da, double Db, double Dc, double Dd) {
+	// Setting the prior
+	public static double setPrior(double Dm, double Dw, double Dgamma, double Dlambda) {
 		// 1/2 * e^(-(a^2+b^2+...)^2/4) + 1/2
-		double D = Math.pow(Da, 2) + Math.pow(Db, 2) + Math.pow(Dc, 2) + Math.pow(Dd, 2);
+		double D = Math.pow(Dm, 2) + Math.pow(Dw, 2) + Math.pow(Dgamma, 2) + Math.pow(Dlambda, 2);
 		double L = 0.5 + 0.5*Math.exp(-D/4);
 		return L;
+	}
+
+	// Flattening Index
+	public static int flattenIndex(double sm, double sw, double sgamma, double slambda) {
+		int SA = (int)sm;
+		int SB = (int)sw;
+		int SC = (int)sgamma;
+		int SD = (int)slambda;
+		int GA = (int)CacModVariables.Psy_bin_param_shape.get(0).getAsDouble();
+		int GB = (int)CacModVariables.Psy_bin_param_shape.get(1).getAsDouble();
+		int GC = (int)CacModVariables.Psy_bin_param_shape.get(2).getAsDouble();
+		int GD = (int)CacModVariables.Psy_bin_param_shape.get(3).getAsDouble();
+		
+		int idx = SA*GB*GC*GD + SB*GC*GD + SC*GD + SD;
+		
+		return idx;
+	}
+
+	// F Candidate
+	public static double funcLogistic(double rho, double m, double w) {
+		double y = 1 / (1 + Math.pow(9, (rho-m)/w));
+		return y;
 	}
 
 	public static double[] calLikelihood(double[] L, double[] P, boolean iswin) {
@@ -71,20 +97,7 @@ public class CstPsychometric {
 		return Z;
 	}
 
-	public static int flattenIndex(double sa, double sb, double sc, double sd) {
-		int SA = (int)sa;
-		int SB = (int)sb;
-		int SC = (int)sc;
-		int SD = (int)sd;
-		int GA = (int)CacModVariables.Psy_quest_param_shape.get(0).getAsDouble();
-		int GB = (int)CacModVariables.Psy_quest_param_shape.get(1).getAsDouble();
-		int GC = (int)CacModVariables.Psy_quest_param_shape.get(2).getAsDouble();
-		int GD = (int)CacModVariables.Psy_quest_param_shape.get(3).getAsDouble();
-		
-		int idx = SA*GB*GC*GD + SB*GC*GD + SC*GD + SD;
-		
-		return idx;
-	}
+	
 
 	public static double[] softmax(double[] X) {
 		double[] Y = new double[X.length];

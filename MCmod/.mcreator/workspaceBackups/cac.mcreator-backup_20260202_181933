@@ -515,10 +515,10 @@
       "registry_name": "ent_mouse",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/client/renderer/EntMouseRenderer.java",
           "src/main/java/net/owo/cac/entity/model/EntMouseModel.java",
-          "src/main/resources/assets/cac/models/item/ent_mouse_spawn_egg.json",
-          "src/main/java/net/owo/cac/entity/EntMouseEntity.java"
+          "src/main/java/net/owo/cac/entity/EntMouseEntity.java",
+          "src/main/java/net/owo/cac/client/renderer/EntMouseRenderer.java",
+          "src/main/resources/assets/cac/models/item/ent_mouse_spawn_egg.json"
         ]
       },
       "path": "~/CacEntity"
@@ -1115,12 +1115,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/FncManageDifficultyProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacUtil/Manager"
     },
@@ -1616,8 +1611,8 @@
         "files": [
           "src/main/java/net/owo/cac/entity/EntPseudoMouseEntity.java",
           "src/main/resources/assets/cac/models/item/ent_pseudo_mouse_spawn_egg.json",
-          "src/main/java/net/owo/cac/entity/model/EntPseudoMouseModel.java",
-          "src/main/java/net/owo/cac/client/renderer/EntPseudoMouseRenderer.java"
+          "src/main/java/net/owo/cac/client/renderer/EntPseudoMouseRenderer.java",
+          "src/main/java/net/owo/cac/entity/model/EntPseudoMouseModel.java"
         ]
       },
       "path": "~/CacEntity"
@@ -1886,10 +1881,10 @@
       "registry_name": "ent_cat",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/entity/EntCatEntity.java",
           "src/main/java/net/owo/cac/client/renderer/EntCatRenderer.java",
-          "src/main/java/net/owo/cac/entity/model/EntCatModel.java",
-          "src/main/resources/assets/cac/models/item/ent_cat_spawn_egg.json"
+          "src/main/resources/assets/cac/models/item/ent_cat_spawn_egg.json",
+          "src/main/java/net/owo/cac/entity/EntCatEntity.java",
+          "src/main/java/net/owo/cac/entity/model/EntCatModel.java"
         ]
       },
       "path": "~/CacEntity"
@@ -1918,9 +1913,9 @@
       "registry_name": "ent_pseudo_cat",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/client/renderer/EntPseudoCatRenderer.java",
-          "src/main/java/net/owo/cac/entity/model/EntPseudoCatModel.java",
           "src/main/java/net/owo/cac/entity/EntPseudoCatEntity.java",
+          "src/main/java/net/owo/cac/entity/model/EntPseudoCatModel.java",
+          "src/main/java/net/owo/cac/client/renderer/EntPseudoCatRenderer.java",
           "src/main/resources/assets/cac/models/item/ent_pseudo_cat_spawn_egg.json"
         ]
       },
@@ -3483,12 +3478,6 @@
       "value": "Vec3.ZERO"
     },
     {
-      "name": "Dat_difficulty_absolute",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
       "name": "Dat_pos_opponent_r",
       "type": "jsonarray",
       "scope": "global",
@@ -4123,6 +4112,12 @@
       "type": "datalist",
       "scope": "global",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Dat_difficulty",
+      "type": "number",
+      "scope": "global",
+      "value": "0"
     }
   ],
   "sound_elements": [
@@ -4198,8 +4193,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

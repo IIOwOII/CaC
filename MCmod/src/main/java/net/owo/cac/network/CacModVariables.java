@@ -118,14 +118,15 @@ public class CacModVariables {
 	public static boolean TimP_timebar = false;
 	public static String Exp_property = "\"\"";
 	public static File Log_fitting = new File("");
-	public static com.google.gson.JsonArray Psy_quest_param_min = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_quest_param_max = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_quest_param_step = new com.google.gson.JsonArray();
-	public static ListTag Psy_quest_L = new ListTag();
-	public static com.google.gson.JsonArray Psy_quest_param_shape = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_quest_param_prior = new com.google.gson.JsonArray();
-	public static ListTag Psy_quest_P = new ListTag();
 	public static double Dat_difficulty = 0;
+	public static com.google.gson.JsonArray Psy_bin_param_max = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_bin_param_min = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_bin_param_prior = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_bin_param_shape = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_bin_param_step = new com.google.gson.JsonArray();
+	public static ListTag Psy_bin_L = new ListTag();
+	public static ListTag Psy_bin_P = new ListTag();
+	public static String Psy_method = "\"\"";
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

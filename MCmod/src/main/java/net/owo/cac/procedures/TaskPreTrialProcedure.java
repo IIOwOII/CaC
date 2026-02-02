@@ -36,7 +36,7 @@ public class TaskPreTrialProcedure {
 		CacModVariables.Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
 		FncManageTasktypeProcedure.execute(world);
 		FncManageSpawnOpponentProcedure.execute(world);
-		FncManageDifficultyProcedure.execute(world);
+		FncManageDifficultyProcedure.execute();
 		TaskSpawnOpponentProcedure.execute(world);
 		if (CacModVariables.Dat_trial_type == 0) {
 			EffApplyMorphPredatorProcedure.execute(entity);
