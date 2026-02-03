@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
 
@@ -13,8 +12,12 @@ public class FncManageTasktypeProcedure {
 			CacModVariables.Dat_trial_type = 0;
 		} else if ((CacModVariables.Exp_session).equals("test_chased") || (CacModVariables.Exp_session).equals("pseudo_chased")) {
 			CacModVariables.Dat_trial_type = 1;
-		} else if ((CacModVariables.Exp_session).equals("presession")) {
-			CacMod.LOGGER.info("temp");
+		} else if ((CacModVariables.Exp_session).equals("fitting")) {
+			if ((CacModVariables.Psy_task).equals("chasing")) {
+				CacModVariables.Dat_trial_type = 0;
+			} else if ((CacModVariables.Psy_task).equals("chased")) {
+				CacModVariables.Dat_trial_type = 1;
+			}
 		} else {
 			CacModVariables.Log_error = "invalid_session";
 			CacErrorProcedure.execute(world);

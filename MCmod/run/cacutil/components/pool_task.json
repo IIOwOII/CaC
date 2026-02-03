@@ -2,7 +2,7 @@
   "test_mixed": "EPGA",
   "test_chasing": "EPGA",
   "test_chased": "EPGA",
-  "presession": "EPGAF",
+  "fitting": "EPGAF",
   "pseudo_chasing": "EPG",
   "pseudo_chased": "EPG",
   "simulation_chasing": "EPG",

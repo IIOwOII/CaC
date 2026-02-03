@@ -19,9 +19,9 @@ public class EvInvokeProcedure {
 			} else if (ev_content.endsWith("start")) {
 				CacModVariables.Switch_que = true;
 				CacModVariables.Ev_que_loop = true;
-				if ((ev_content).equals("test_start")) {
+				if ((ev_content).equals("test_start") || (ev_content).equals("pseudo_start")) {
 					TaskPreRunProcedure.execute();
-				} else if ((ev_content).equals("pseudo_start")) {
+				} else if ((ev_content).equals("fitting_start")) {
 					TaskPreRunProcedure.execute();
 				} else if ((ev_content).equals("simulation_start")) {
 					SimStartProcedure.execute();
@@ -56,7 +56,7 @@ public class EvInvokeProcedure {
 					CacModVariables.Switch_timer = false;
 				}
 			} else {
-				if ((ev_content).equals("test_end") && (ev_content).equals("pseudo_end")) {
+				if ((ev_content).equals("test_end") || (ev_content).equals("pseudo_end")) {
 					CacModVariables.Switch_que = false;
 					TaskSessionEndProcedure.execute();
 				}

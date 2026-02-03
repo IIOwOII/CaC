@@ -1,5 +1,7 @@
 {
+  "method": ["binary", "continuous"],
   "binary": {
+    "function": ["logistic", "weibull"],
     "parameter": {
       "name": ["m", "w", "gamma", "lambda"],
       "min": [0.9, 0.005, 0.0, 0.0],

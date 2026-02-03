@@ -78,5 +78,17 @@
       "simulation_interval"
     ],
     "ending": "simulation_end"
+  },
+  "fitting": {
+    "initial": "fitting_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "fitting_end"
   }
 }

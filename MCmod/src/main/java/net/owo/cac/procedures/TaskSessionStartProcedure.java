@@ -54,7 +54,7 @@ public class TaskSessionStartProcedure {
 		EvResetProcedure.execute();
 		TimResetProcedure.execute();
 		IniLogProcedure.execute();
-		if (!(CacModVariables.Exp_session).equals("tutorial") && !(CacModVariables.Exp_session).equals("presession")) {
+		if (!(CacModVariables.Exp_session).equals("tutorial")) {
 			IniQueProcedure.execute();
 			EvQueCallProcedure.execute(world, entity);
 		}

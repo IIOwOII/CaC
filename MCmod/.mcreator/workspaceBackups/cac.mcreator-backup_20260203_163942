@@ -3410,34 +3410,6 @@
       "path": "~/CacAdvancement"
     },
     {
-      "name": "PsyQuestInitialize",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "psy_quest_initialize",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PsyQuestInitializeProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Psychometric"
-    },
-    {
-      "name": "PsyQuestPrior",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "psy_quest_prior",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/PsyQuestPriorProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Psychometric"
-    },
-    {
       "name": "CstPsychometric",
       "type": "code",
       "compiles": true,
@@ -3462,6 +3434,74 @@
         "dependencies": []
       },
       "path": "~/CacInit/Log"
+    },
+    {
+      "name": "PsyBinInitialize",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_bin_initialize",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyBinInitializeProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "CmdCap",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_cap",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdCapCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "CapManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cap_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/CapManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Psychometric"
+    },
+    {
+      "name": "RecFitting",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rec_fitting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RecFittingProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Record"
     }
   ],
   "variable_elements": [
@@ -4072,52 +4112,64 @@
       "value": "new File(\"\")"
     },
     {
-      "name": "Psy_quest_param_min",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Psy_quest_param_max",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Psy_quest_param_step",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Psy_quest_L",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "Psy_quest_param_shape",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Psy_quest_param_prior",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Psy_quest_P",
-      "type": "datalist",
-      "scope": "global",
-      "value": "new ListTag()"
-    },
-    {
       "name": "Dat_difficulty",
       "type": "number",
       "scope": "global",
       "value": "0"
+    },
+    {
+      "name": "Psy_bin_param_max",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_min",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_prior",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_shape",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_param_step",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_bin_L",
+      "type": "datalist",
+      "scope": "global",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_bin_P",
+      "type": "datalist",
+      "scope": "global",
+      "value": "new ListTag()"
+    },
+    {
+      "name": "Psy_method",
+      "type": "string",
+      "scope": "global",
+      "value": "\"\""
+    },
+    {
+      "name": "Psy_function",
+      "type": "string",
+      "scope": "global",
+      "value": "\"\""
     }
   ],
   "sound_elements": [
