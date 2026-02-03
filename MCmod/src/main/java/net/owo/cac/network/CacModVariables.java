@@ -70,7 +70,6 @@ public class CacModVariables {
 	public static File Log_scanner = new File("");
 	public static File Log_surrender = new File("");
 	public static File Log_survey = new File("");
-	public static String Log_type = "\"\"";
 	public static Vec3 Meow_destination = Vec3.ZERO;
 	public static double Meow_dx = 0;
 	public static double Meow_dz = 0;

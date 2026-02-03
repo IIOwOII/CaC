@@ -23,7 +23,7 @@ public class EvQueCallProcedure {
 		double ev_duration = 0;
 		if (!CacModVariables.Ev_occuring && !world.isClientSide()) {
 			CacModVariables.Ev_occuring = true;
-			if (CacModVariables.Log_type.contains("E")) {
+			if (CacModVariables.Exp_property.contains("E")) {
 				{
 					try {
 						BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_event));

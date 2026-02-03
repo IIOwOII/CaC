@@ -1,10 +1,12 @@
 package net.owo.cac;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.owo.cac.network.CacModVariables;
-import com.google.gson.JsonArray;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
@@ -14,6 +16,7 @@ public class CstPsychometric {
 
 	// parameter list
 	public static int GRIDSIZE = 0;
+	public static int RHOSIZE = 20;
 	public static double[] M;
 	public static double[] W;
 	public static double[] GAMMA;
@@ -21,7 +24,6 @@ public class CstPsychometric {
 
 	// grid of difficulty
 	public static double[] RHO;
-
 
 	// initialize
 	public static void initBin(int func_type) {
@@ -173,23 +175,27 @@ public class CstPsychometric {
 		return y;
 	}
 
-	public static double[] calLikelihood(double[] L, double[] P, boolean iswin) {
-		// L is log likelihood of parameter
-		// P is win probability given difficulty
-		double[] L_next = new double[L.length];
-		double p = 0;
-		double Z_log = Math.log(calZ(L, P, iswin));
-		
-		for (int k=0; k<L.length; k++) {
-			if (iswin) {
-				p = P[k];
-			} else {
-				p = 1 - P[k];
+	// expected win probability
+	public static double[] calExpectedProbability() {
+		double[] ExP = new double[RHOSIZE];
+		double ExP_temp = 0;
+		for (int r=0; r<RHOSIZE; r++) {
+			ExP_temp = 0;
+			for (int k=0; k<GRIDSIZE; k++) {
+				ExP_temp += probability_bin[k][r] * Math.exp(likelihood_bin[k]);
 			}
-			L_next[k] = L[k] + Math.log(p) - Z_log;
+			ExP[r] = ExP_temp;
 		}
-
-		return L_next;
+		return ExP;
+	}
+	
+	// expected win likelihood 
+	public static double[] calExpectedLikelihood() {
+		double[] ExL = new double[GRIDSIZE];
+		double ExL_temp = 0;
+		for (int k=0; k<GRIDSIZE; k++) {
+			ExL_temp = likelihood_bin[k] + Math.log()
+		}
 	}
 
 	public static double calEntropy(double[] L) {
@@ -245,6 +251,7 @@ public class CstPsychometric {
 		return Math.log(Y_sum);
 	}
 
+	// Utils
 	public static int argmax(double[] arr) {
 		int i_max = 0;
 		for (int i=1; i<arr.length; i++) {
@@ -253,5 +260,34 @@ public class CstPsychometric {
 			}
 		}
 		return i_max;
+	}
+	public static int argmin(double[] arr) {
+		int i_min = 0;
+		for (int i=1; i<arr.length; i++) {
+			if (arr[i_min] > arr[i]) {
+				i_min = i;
+			}
+		}
+		return i_min;
+	}
+
+	// transform the L (array) to jsonarray
+	public static JsonArray getLikelihood() {
+		Gson gson = new Gson();
+		JsonArray L = gson.toJsonTree(likelihood_bin).getAsJsonArray();
+		return L;
+	}
+
+	public static JsonArray getBestParam() {
+		int grid_best = argmax(likelihood_bin);
+		int m_best = reshapeIndex(grid_best, 0);
+		int w_best = reshapeIndex(grid_best, 1);
+		int gamma_best = reshapeIndex(grid_best, 2);
+		int lambda_best = reshapeIndex(grid_best, 3);
+
+		int[] param_best = {m_best, w_best, gamma_best, lambda_best};
+		Gson gson = new Gson();
+		JsonArray theta = gson.toJsonTree(param_best).getAsJsonArray();
+		return theta;
 	}
 }

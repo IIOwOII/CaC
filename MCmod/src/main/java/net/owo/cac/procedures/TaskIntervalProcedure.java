@@ -12,7 +12,6 @@ public class TaskIntervalProcedure {
 		CacModVariables.Switch_blank = true;
 		FncManageIntervalProcedure.execute();
 		EffRemoveMorphProcedure.execute(entity);
-		RecGameplayProcedure.execute();
-		RecPositionProcedure.execute();
+		RecManageProcedure.execute();
 	}
 }

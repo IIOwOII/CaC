@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 public class IniLogProcedure {
 	public static void execute() {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
-		String log_type = "";
 		CacModVariables.Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + CacModVariables.Exp_subject;
 		CacModVariables.Dir_behaviors_session = CacModVariables.Dir_behaviors + "/" + CacModVariables.Exp_session;
 		{
@@ -24,31 +23,30 @@ public class IniLogProcedure {
 				}
 				bufferedReader.close();
 				obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				log_type = obj_file.get(CacModVariables.Exp_session).getAsString();
-				CacModVariables.Log_type = obj_file.get(CacModVariables.Exp_session).getAsString();
+				CacModVariables.Exp_property = obj_file.get(CacModVariables.Exp_session).getAsString();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		if (log_type.contains("E")) {
+		if (CacModVariables.Exp_property.contains("E")) {
 			IniLogEventProcedure.execute();
 		}
-		if (log_type.contains("P")) {
+		if (CacModVariables.Exp_property.contains("P")) {
 			IniLogPositionProcedure.execute();
 		}
-		if (log_type.contains("G")) {
+		if (CacModVariables.Exp_property.contains("G")) {
 			IniLogGameplayProcedure.execute();
 		}
-		if (log_type.contains("S")) {
+		if (CacModVariables.Exp_property.contains("S")) {
 			IniLogSurveyProcedure.execute();
 		}
-		if (log_type.contains("U")) {
+		if (CacModVariables.Exp_property.contains("U")) {
 			IniLogSurrenderProcedure.execute();
 		}
-		if (log_type.contains("F")) {
+		if (CacModVariables.Exp_property.contains("F")) {
 			IniLogFittingProcedure.execute();
 		}
-		if (log_type.contains("C")) {
+		if (CacModVariables.Exp_property.contains("C")) {
 			IniLogScannerProcedure.execute();
 		}
 	}
