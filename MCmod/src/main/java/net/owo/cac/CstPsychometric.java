@@ -10,20 +10,25 @@ import net.owo.cac.network.CacModVariables;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
-	public static double[] likelihood_bin;
 	public static double entropy_bin = 0;
-	public static double[][] probability_bin;
+	public static double[] likelihood_bin; // [grid]
+	public static double[][] probability_bin; // [grid][diff]
+	public static double[] expected_P_bin; // [diff]
+	public static double[][][] expected_L_bin; // [grid][diff][win/lose]
+	public static double[][] expected_H_bin; // [diff][win/lose]
+	public static double[] EIG_bin; // [diff]
+	public static double rho_best = 0;
 
 	// parameter list
 	public static int GRIDSIZE = 0;
 	public static int RHOSIZE = 20;
-	public static double[] M;
-	public static double[] W;
-	public static double[] GAMMA;
-	public static double[] LAMBDA;
+	public static double[] M; // [grid]
+	public static double[] W; // [grid]
+	public static double[] GAMMA; //[grid]
+	public static double[] LAMBDA; //[grid]
 
 	// grid of difficulty
-	public static double[] RHO;
+	public static double[] RHO; // [diff]
 
 	// initialize
 	public static void initBin(int func_type) {
@@ -111,6 +116,15 @@ public class CstPsychometric {
 		likelihood_bin = normL(likelihood_bin.clone());
 		entropy_bin = calEntropy(likelihood_bin);
 	}
+
+	// Repeat (Before trial)
+	public static void updateStatus() {
+		calExpectedProbability();
+		calExpectedLikelihood();
+		calExpectedEntropy();
+		calEIG();
+		rho_best = RHO[argmax(EIG_bin)];
+	}
 	
 	// Calculate the psychometric function (CDF)
 	public static double calPSI(int func_type, double rho, double m, double w, double gamma, double lambda) {
@@ -176,7 +190,7 @@ public class CstPsychometric {
 	}
 
 	// expected win probability
-	public static double[] calExpectedProbability() {
+	public static void calExpectedProbability() {
 		double[] ExP = new double[RHOSIZE];
 		double ExP_temp = 0;
 		for (int r=0; r<RHOSIZE; r++) {
@@ -186,15 +200,46 @@ public class CstPsychometric {
 			}
 			ExP[r] = ExP_temp;
 		}
-		return ExP;
+		expected_P_bin = ExP.clone();
 	}
 	
-	// expected win likelihood 
-	public static double[] calExpectedLikelihood() {
-		double[] ExL = new double[GRIDSIZE];
+	// expected likelihood
+	public static void calExpectedLikelihood() {
+		double[][][] ExL = new double[GRIDSIZE][RHOSIZE][2];
 		double ExL_temp = 0;
+		double L = 0;
+		double[] P = new double[RHOSIZE];
 		for (int k=0; k<GRIDSIZE; k++) {
-			ExL_temp = likelihood_bin[k] + Math.log()
+			L = likelihood_bin[k];
+			P = probability_bin[k];
+			for (int r=0; r<RHOSIZE; r++) {
+				ExL[k][r][0] = L + Math.log(P[r]) - Math.log(expected_P_bin[r]);
+				ExL[k][r][1] = L + Math.log(1-P[r]) - Math.log(1-expected_P_bin[r]);
+			}
+		}
+		expected_L_bin = ExL.clone();
+	}
+
+	// expected entropy
+	public static void calExpectedEntropy() {
+		double H_win = 0;
+		double H_lose = 0;
+		for (int r=0; r<RHOSIZE; r++) {
+			H_win = 0;
+			H_lose = 0;
+			for (int k=0; k<GRIDSIZE; k++) {
+				H_win -= (expected_L_bin[k][r][0] * Math.exp(expected_L_bin[k][r][0]));
+				H_lose -= (expected_L_bin[k][r][1] * Math.exp(expected_L_bin[k][r][1]));
+			}
+			expected_H_bin[r][0] = H_win;
+			expected_H_bin[r][1] = H_lose;
+		}
+	}
+
+	// Expected Information gain
+	public static void calEIG() {
+		for (int r=0; r<RHOSIZE; r++) {
+			EIG_bin[r] = entropy_bin - (expected_P_bin[r]*expected_H_bin[r][0]) - ((1-expected_P_bin[r])*expected_H_bin[r][1]);
 		}
 	}
 
@@ -250,7 +295,7 @@ public class CstPsychometric {
 		}
 		return Math.log(Y_sum);
 	}
-
+	
 	// Utils
 	public static int argmax(double[] arr) {
 		int i_max = 0;
@@ -270,7 +315,7 @@ public class CstPsychometric {
 		}
 		return i_min;
 	}
-
+	
 	// transform the L (array) to jsonarray
 	public static JsonArray getLikelihood() {
 		Gson gson = new Gson();

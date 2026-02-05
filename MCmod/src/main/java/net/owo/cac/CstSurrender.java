@@ -109,7 +109,7 @@ public class CstSurrender {
 		JsonObject obj_trial = new JsonObject();
 		Gson GS = new Gson();
 		
-		if (CacModVariables.Log_type.contains("U")) {
+		if (CacModVariables.Exp_property.contains("U")) {
 			// Read Log file and get cac jsonobject
 			try {
 				BufferedReader BR = new BufferedReader(new FileReader(CacModVariables.Log_surrender));

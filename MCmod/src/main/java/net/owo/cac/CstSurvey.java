@@ -188,7 +188,7 @@ public class CstSurvey {
 
 		Gson GS = new Gson();
 		
-		if (CacModVariables.Log_type.contains("S")) {
+		if (CacModVariables.Exp_property.contains("S")) {
 			// Read Log file and get cac jsonobject
 			try {
 				BufferedReader BR = new BufferedReader(new FileReader(CacModVariables.Log_survey));

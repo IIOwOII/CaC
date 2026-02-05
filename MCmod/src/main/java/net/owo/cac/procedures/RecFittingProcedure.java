@@ -33,8 +33,8 @@ public class RecFittingProcedure {
 		obj_history = obj_task.get("history").getAsJsonObject();
 		obj_trial.addProperty("difficulty", CacModVariables.Dat_difficulty);
 		obj_trial.addProperty("entropy", net.owo.cac.CstPsychometric.entropy_bin);
-		obj_trial.addProperty("param_best", net.owo.cac.CstPsychometric.getBestParam());
-		obj_trial.addProperty("likelihood", net.owo.cac.CstPsychometric.getLikelihood());
+		obj_trial.add("param_best", net.owo.cac.CstPsychometric.getBestParam());
+		obj_trial.add("likelihood", net.owo.cac.CstPsychometric.getLikelihood());
 		obj_history.add(("trial_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
