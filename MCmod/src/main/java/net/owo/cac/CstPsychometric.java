@@ -1,21 +1,31 @@
 package net.owo.cac;
 
-import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.BufferedReader;
+
 import com.google.gson.JsonArray;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.owo.cac.network.CacModVariables;
 
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
+	// Current
 	public static double entropy_bin = 0;
 	public static double[] likelihood_bin; // [grid]
-	public static double[][] probability_bin; // [grid][diff]
+	public static double[][] probability_bin; // [diff][grid]
+
+	// Expected
 	public static double[] expected_P_bin; // [diff]
-	public static double[][][] expected_L_bin; // [grid][diff][win/lose]
-	public static double[][] expected_H_bin; // [diff][win/lose]
+	public static double[][][] expected_L_bin; // [win/lose][diff][grid]
+	public static double[][] expected_H_bin; // [win/lose][diff]
 	public static double[] EIG_bin; // [diff]
 	public static double rho_best = 0;
 
@@ -30,17 +40,35 @@ public class CstPsychometric {
 	// grid of difficulty
 	public static double[] RHO; // [diff]
 
+	// usage
 	// initialize
 	public static void initBin(int func_type) {
 		GRIDSIZE = getGridShape(0) * getGridShape(1) * getGridShape(2) * getGridShape(3);
-
 		initBinParam();
 		initBinRho();
 		initBinL();
 		initBinP(func_type);
-
 		initPrior();
 	}
+	// Repeat (Before trial)
+	public static void updateTrialBefore() {
+		expected_P_bin = calExpectedProbability(probability_bin, likelihood_bin);
+		expected_L_bin = calExpectedLikelihood(probability_bin, likelihood_bin, expected_P_bin);
+		expected_H_bin = calExpectedEntropy(expected_L_bin);
+		EIG_bin = calEIG(entropy_bin, expected_P_bin, expected_H_bin);
+		rho_best = RHO[argmax(EIG_bin)];
+		CacModVariables.Dat_difficulty = rho_best;
+		recHistory();
+	}
+	// Repeat (After trial)
+	public static void updateTrialAfter(boolean iswin) {
+		if (iswin) {
+			likelihood_bin = expected_L_bin[0][CacModVariables.Dat_difficulty]
+		}
+	}
+
+
+	// init functions
 	public static void initBinParam() {
 		JsonArray param_min = CacModVariables.Psy_bin_param_min;
 		JsonArray param_max = CacModVariables.Psy_bin_param_max;
@@ -67,32 +95,31 @@ public class CstPsychometric {
 	}
 	public static void initBinRho() {
 		// rho : [0.9, 1.1)_0.01
-		RHO = new double[20];
+		RHO = new double[RHOSIZE];
 		double RHO_min = 0.90;
 		double RHO_step = 0.01;
-		for (int i=0; i<20; i++) {
-			RHO[i] = Math.round((RHO_min + i*RHO_step)*1000) / 1000.0;
+		for (int r=0; r<20; r++) {
+			RHO[r] = Math.round((RHO_min + r*RHO_step)*1000) / 1000.0;
 		}
 	}
-	// initialize binary likelihood
 	public static void initBinL() {
 		likelihood_bin = new double[GRIDSIZE];
 	}
-
-	// initialize grid probability
 	public static void initBinP(int func_type) {
+		probability_bin = new double[RHOSIZE][GRIDSIZE];
 		double P = 0;
-		probability_bin = new double[GRIDSIZE][RHO.length];
-		
+		int[] IDX = new int[4];
 		for (int k=0; k<GRIDSIZE; k++) {
-			for (int r=0; r<RHO.length; r++) {
-				P = calPSI(func_type, RHO[r], reshapeIndex(k,0), reshapeIndex(k,1), reshapeIndex(k,2), reshapeIndex(k,3));
-				probability_bin[k][r] = P;
+			IDX[0] = reshapeIndex(k, 0);
+			IDX[1] = reshapeIndex(k, 1);
+			IDX[2] = reshapeIndex(k, 2);
+			IDX[3] = reshapeIndex(k, 3);
+			for (int r=0; r<RHOSIZE; r++) {
+				P = calPSI(func_type, RHO[r], IDX[0], IDX[1], IDX[2], IDX[3]);
+				probability_bin[r][k] = P;
 			}
 		}
 	}
-
-	// Setting the prior
 	public static void initPrior() {
 		// json get
 		JsonArray param_prior = CacModVariables.Psy_bin_param_prior;
@@ -117,14 +144,45 @@ public class CstPsychometric {
 		entropy_bin = calEntropy(likelihood_bin);
 	}
 
-	// Repeat (Before trial)
-	public static void updateStatus() {
-		calExpectedProbability();
-		calExpectedLikelihood();
-		calExpectedEntropy();
-		calEIG();
-		rho_best = RHO[argmax(EIG_bin)];
+
+	// Recording Data on log file
+	public static void recHistory() {
+		Gson GS = new Gson();
+		JsonObject obj_file = new JsonObject();
+		JsonObject obj_cac = new JsonObject();
+		JsonObject obj_task = new JsonObject();
+		JsonObject obj_history = new JsonObject();
+		JsonObject obj_trial = new JsonObject();
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_fitting));
+			StringBuilder jsonstringbuilder = new StringBuilder();
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+				jsonstringbuilder.append(line);
+			}
+			bufferedReader.close();
+			obj_file = GS.fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
+			obj_cac = obj_file.get("cac").getAsJsonObject();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		obj_task = obj_cac.get((CacModVariables.Psy_task + "_" + CacModVariables.Psy_method + "_" + CacModVariables.Psy_function)).getAsJsonObject();
+		obj_history = obj_task.get("history").getAsJsonObject();
+		obj_trial.addProperty("difficulty", CacModVariables.Dat_difficulty);
+		obj_trial.addProperty("entropy", entropy_bin);
+		obj_trial.add("param_best", getBestParam());
+		obj_trial.add("likelihood", getLikelihood());
+		obj_history.add(("trial_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
+		Gson mainGSONBuilderVariable = new GsonBuilder().setPrettyPrinting().create();
+		try {
+			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
+			fileWriter.write(mainGSONBuilderVariable.toJson(obj_file));
+			fileWriter.close();
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
 	}
+
 	
 	// Calculate the psychometric function (CDF)
 	public static double calPSI(int func_type, double rho, double m, double w, double gamma, double lambda) {
@@ -134,8 +192,13 @@ public class CstPsychometric {
 		}
 		return gamma + (1-gamma-lambda)*F;
 	}
+	public static double funcLogistic(double rho, double m, double w) {
+		double y = 1 / (1 + Math.pow(9, (rho-m)/w));
+		return y;
+	}
+
 	
-	// Flattening Index
+	// Index rearrange
 	public static int flattenIndex(int sm, int sw, int sgamma, int slambda) {
 		int GA = getGridShape(0);
 		int GB = getGridShape(1);
@@ -143,14 +206,12 @@ public class CstPsychometric {
 		int GD = getGridShape(3);
 		return sm*GB*GC*GD + sw*GC*GD + sgamma*GD + slambda;
 	}
-
 	public static int reshapeIndex(int sgrid, int idx_param) {
 		int idx = 0;
 		int GA = getGridShape(0);
 		int GB = getGridShape(1);
 		int GC = getGridShape(2);
 		int GD = getGridShape(3);
-
 		if (idx_param == 3) { // lambda
 			idx = sgrid % GD;
 		} else if (idx_param == 2) { // gamma
@@ -160,13 +221,9 @@ public class CstPsychometric {
 		} else if (idx_param == 0) { // m
 			idx = ((sgrid / GD) / GC) / GB;
 		}
-
 		return idx;
 	}
-
-	public static int getGridShape(int idx) {
-		return CacModVariables.Psy_bin_param_shape.get(idx).getAsInt();
-	}
+	
 
 	// Grid Normalize
 	public static double[] normL(double[] L_hat) {
@@ -182,67 +239,58 @@ public class CstPsychometric {
 		}
 		return L;
 	}
+	
 
-	// F Candidate
-	public static double funcLogistic(double rho, double m, double w) {
-		double y = 1 / (1 + Math.pow(9, (rho-m)/w));
-		return y;
-	}
-
+	// Expected Components
 	// expected win probability
-	public static void calExpectedProbability() {
+	public static double[] calExpectedProbability(double[][] P, double[] L) {
 		double[] ExP = new double[RHOSIZE];
 		double ExP_temp = 0;
 		for (int r=0; r<RHOSIZE; r++) {
 			ExP_temp = 0;
 			for (int k=0; k<GRIDSIZE; k++) {
-				ExP_temp += probability_bin[k][r] * Math.exp(likelihood_bin[k]);
+				ExP_temp += P[r][k] * Math.exp(L[k]);
 			}
 			ExP[r] = ExP_temp;
 		}
-		expected_P_bin = ExP.clone();
+		return ExP;
 	}
-	
 	// expected likelihood
-	public static void calExpectedLikelihood() {
-		double[][][] ExL = new double[GRIDSIZE][RHOSIZE][2];
-		double ExL_temp = 0;
-		double L = 0;
-		double[] P = new double[RHOSIZE];
-		for (int k=0; k<GRIDSIZE; k++) {
-			L = likelihood_bin[k];
-			P = probability_bin[k];
-			for (int r=0; r<RHOSIZE; r++) {
-				ExL[k][r][0] = L + Math.log(P[r]) - Math.log(expected_P_bin[r]);
-				ExL[k][r][1] = L + Math.log(1-P[r]) - Math.log(1-expected_P_bin[r]);
+	public static double[][][] calExpectedLikelihood(double[][] P, double[] L, double[] P_ex) {
+		double[][][] ExL = new double[2][RHOSIZE][GRIDSIZE];
+		for (int r=0; r<RHOSIZE; r++) {
+			for (int k=0; k<GRIDSIZE; k++) {
+				ExL[0][r][k] = L[k] + Math.log(P[r][k]) - Math.log(P_ex[r]);
+				ExL[1][r][k] = L[k] + Math.log(1-P[r][k]) - Math.log(1-P_ex[r]);
 			}
 		}
-		expected_L_bin = ExL.clone();
+		return ExL;
 	}
-
 	// expected entropy
-	public static void calExpectedEntropy() {
+	public static double[][] calExpectedEntropy(double[][][] L_ex) {
+		double[][] ExH = new double[2][RHOSIZE];
 		double H_win = 0;
 		double H_lose = 0;
 		for (int r=0; r<RHOSIZE; r++) {
 			H_win = 0;
 			H_lose = 0;
 			for (int k=0; k<GRIDSIZE; k++) {
-				H_win -= (expected_L_bin[k][r][0] * Math.exp(expected_L_bin[k][r][0]));
-				H_lose -= (expected_L_bin[k][r][1] * Math.exp(expected_L_bin[k][r][1]));
+				H_win -= (L_ex[0][r][k] * Math.exp(L_ex[0][r][k]));
+				H_lose -= (L_ex[1][r][k] * Math.exp(L_ex[1][r][k]));
 			}
-			expected_H_bin[r][0] = H_win;
-			expected_H_bin[r][1] = H_lose;
+			ExH[0][r] = H_win;
+			ExH[1][r] = H_lose;
 		}
+		return ExH;
 	}
-
 	// Expected Information gain
-	public static void calEIG() {
+	public static double[] calEIG(double H, double[] P_ex, double[][] H_ex) {
+		double[] ig = new double[RHOSIZE];
 		for (int r=0; r<RHOSIZE; r++) {
-			EIG_bin[r] = entropy_bin - (expected_P_bin[r]*expected_H_bin[r][0]) - ((1-expected_P_bin[r])*expected_H_bin[r][1]);
+			ig[r] = H - (P_ex[r]*H_ex[0][r]) - ((1-P_ex[r])*H_ex[1][r]);
 		}
+		return ig;
 	}
-
 	public static double calEntropy(double[] L) {
 		// L is log likelihood of parameter (weight)
 		double H = 0;
@@ -252,49 +300,6 @@ public class CstPsychometric {
 		return H;
 	}
 
-	public static double[] calInfoGain(double H_curr, double[] H_win, double[] H_lose, double[] PI) {
-		double[] EIG = new double[H_win.length];
-		for (int x=0; x<H_win.length; x++){
-			EIG[x] = H_curr - PI[x]*H_win[x] - (1-PI[x])*H_lose[x];
-		}
-		return EIG;
-	}
-
-	public static double calZ(double[] L, double[] P, boolean iswin) {
-		// Z is sum of P(x)*P(theta)
-		double Z = 0;
-		double p = 0;
-		for (int k=0; k<L.length; k++) {
-			if (iswin) {
-				p = P[k];
-			} else {
-				p = 1-P[k];
-			}
-			Z += (p * Math.exp(L[k]));
-		}
-		return Z;
-	}
-	
-	public static double[] softmax(double[] X) {
-		double[] Y = new double[X.length];
-		double Y_sum = 0;
-		for (int i=0; i<X.length; i++) {
-			Y[i] = Math.exp(X[i]);
-			Y_sum += Y[i];
-		}
-		for (int j=0; j<X.length; j++) {
-			Y[j] /= Y_sum;
-		}
-		return Y;
-	}
-
-	public static double logsumexp(double[] X) {
-		double Y_sum = 0;
-		for (int i=0; i<X.length; i++) {
-			Y_sum += Math.exp(X[i]);
-		}
-		return Math.log(Y_sum);
-	}
 	
 	// Utils
 	public static int argmax(double[] arr) {
@@ -315,6 +320,7 @@ public class CstPsychometric {
 		}
 		return i_min;
 	}
+
 	
 	// transform the L (array) to jsonarray
 	public static JsonArray getLikelihood() {
@@ -322,7 +328,6 @@ public class CstPsychometric {
 		JsonArray L = gson.toJsonTree(likelihood_bin).getAsJsonArray();
 		return L;
 	}
-
 	public static JsonArray getBestParam() {
 		int grid_best = argmax(likelihood_bin);
 		int m_best = reshapeIndex(grid_best, 0);
@@ -335,4 +340,8 @@ public class CstPsychometric {
 		JsonArray theta = gson.toJsonTree(param_best).getAsJsonArray();
 		return theta;
 	}
+	public static int getGridShape(int idx) {
+		return CacModVariables.Psy_bin_param_shape.get(idx).getAsInt();
+	}
+	
 }
