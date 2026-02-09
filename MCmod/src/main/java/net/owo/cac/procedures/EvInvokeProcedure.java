@@ -43,6 +43,8 @@ public class EvInvokeProcedure {
 					TaskIntervalProcedure.execute(entity);
 				} else if ((ev_content).equals("phase_posttrial")) {
 					TaskPostTrialProcedure.execute();
+				} else if ((ev_content).equals("phase_fitting")) {
+					TaskFittingProcedure.execute();
 				}
 			} else if (ev_content.startsWith("simulation")) {
 				if ((ev_content).equals("simulation_gameplay")) {
@@ -57,6 +59,9 @@ public class EvInvokeProcedure {
 				}
 			} else {
 				if ((ev_content).equals("test_end") || (ev_content).equals("pseudo_end")) {
+					CacModVariables.Switch_que = false;
+					TaskSessionEndProcedure.execute();
+				} else if ((ev_content).equals("fitting_end")) {
 					CacModVariables.Switch_que = false;
 					TaskSessionEndProcedure.execute();
 				}

@@ -3516,6 +3516,18 @@
         "dependencies": []
       },
       "path": "~/CacTask/Record"
+    },
+    {
+      "name": "CstMmap",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "cst_mmap",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstMmap.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -3818,12 +3830,6 @@
       "type": "file",
       "scope": "global",
       "value": "new File(\"\")"
-    },
-    {
-      "name": "Log_type",
-      "type": "string",
-      "scope": "global",
-      "value": "\"\""
     },
     {
       "name": "Meow_destination",

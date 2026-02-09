@@ -9,6 +9,7 @@ import java.nio.channels.FileChannel;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstMmap {
+	/*
 	public static void go() {
 		test();
 	}
@@ -30,4 +31,5 @@ public class CstMmap {
             System.out.println(e.getMessage());
         }
     }
+    */
 }

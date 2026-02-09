@@ -1,6 +1,7 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CacMod;
 
 import java.io.IOException;
 import java.io.FileReader;
@@ -45,6 +46,8 @@ public class FncManageDifficultyProcedure {
 					CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (CacModVariables.Dat_difficulty - 0.02)) / Math.pow(10, 2);
 				}
 			}
+		} else if ((session).equals("fitting")) {
+			CacMod.LOGGER.info(CacModVariables.Dat_difficulty);
 		}
 	}
 }

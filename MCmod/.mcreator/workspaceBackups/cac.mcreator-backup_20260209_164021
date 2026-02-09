@@ -3502,6 +3502,32 @@
         "dependencies": []
       },
       "path": "~/CacTask/Record"
+    },
+    {
+      "name": "RecManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rec_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/RecManageProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Record"
+    },
+    {
+      "name": "CstMmap",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "cst_mmap",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstMmap.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -3804,12 +3830,6 @@
       "type": "file",
       "scope": "global",
       "value": "new File(\"\")"
-    },
-    {
-      "name": "Log_type",
-      "type": "string",
-      "scope": "global",
-      "value": "\"\""
     },
     {
       "name": "Meow_destination",
@@ -4239,8 +4259,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

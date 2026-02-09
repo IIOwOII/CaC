@@ -82,6 +82,7 @@
   "fitting": {
     "initial": "fitting_start",
     "trial": [
+      "phase_fitting",
       "phase_pretrial",
       "phase_preparation",
       "phase_gameplay",

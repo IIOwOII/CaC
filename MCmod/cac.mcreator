@@ -3412,7 +3412,7 @@
     {
       "name": "CstPsychometric",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "cst_psychometric",
       "metadata": {
@@ -3490,20 +3490,6 @@
       "path": "~/CacTask/Psychometric"
     },
     {
-      "name": "RecFitting",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rec_fitting",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RecFittingProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Record"
-    },
-    {
       "name": "RecManage",
       "type": "procedure",
       "compiles": true,
@@ -3528,6 +3514,20 @@
           "src/main/java/net/owo/cac/CstMmap.java"
         ]
       }
+    },
+    {
+      "name": "TaskFitting",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_fitting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskFittingProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/General"
     }
   ],
   "variable_elements": [
@@ -4259,8 +4259,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

@@ -14,7 +14,7 @@ public class RecManageProcedure {
 			RecScannerProcedure.execute();
 		}
 		if (CacModVariables.Exp_property.contains("F")) {
-			RecFittingProcedure.execute();
+			net.owo.cac.CstPsychometric.updateTrialAfter();
 		}
 	}
 }

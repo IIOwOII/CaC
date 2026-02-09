@@ -2,10 +2,11 @@
   "test_start": 2,
   "pseudo_start": 100,
   "simulation_start": 2,
+  "phase_fitting": 60,
   "phase_pretrial": 2,
   "phase_preparation": -1,
   "phase_gameplay": -1,
-  "phase_gameplay_end": 100,
+  "phase_gameplay_end": 60,
   "phase_survey": -1,
   "phase_surrender": -1,
   "phase_interval": -1,
@@ -16,5 +17,6 @@
   "simulation_end": -1,
   "test_end": -1,
   "pseudo_end": -1,
+  "fitting_end": -1,
   "blank": 60
 }

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -13,7 +14,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.owo.cac.network.CacModVariables;
-
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
@@ -40,6 +40,10 @@ public class CstPsychometric {
 	// grid of difficulty
 	public static double[] RHO; // [diff]
 
+	// Terminal Rule
+	public static double[] IG_last = new double[3];
+	public static double IG_THRESHOLD = 0.1;
+
 	// usage
 	// initialize
 	public static void initBin(int func_type) {
@@ -61,9 +65,32 @@ public class CstPsychometric {
 		recHistory();
 	}
 	// Repeat (After trial)
-	public static void updateTrialAfter(boolean iswin) {
-		if (iswin) {
-			likelihood_bin = expected_L_bin[0][CacModVariables.Dat_difficulty]
+	public static void updateTrialAfter() {
+		int winlose = CacModVariables.Dat_trial_winlose;
+		int rho_curr = getRhoIndex(CacModVariables.Dat_difficulty);
+		if (winlose == 1) {
+			updateIG(entropy_bin, expected_H_bin[0][rho_curr]);
+			likelihood_bin = expected_L_bin[0][rho_curr].clone();
+			entropy_bin = expected_H_bin[0][rho_curr];
+		} else if (winlose == 0) {
+			updateIG(entropy_bin, expected_H_bin[1][rho_curr]);
+			likelihood_bin = expected_L_bin[1][rho_curr].clone();
+			entropy_bin = expected_H_bin[1][rho_curr];
+		}
+		checkTerminate();
+	}
+	// Terminate
+	public static void checkTerminate() {
+		int stack = 0;
+		for (int i=0; i<3; i++) {
+			if ((IG_last[i] != 0) && (IG_last[i]<IG_THRESHOLD)) {
+				stack += 1;
+			}
+		}
+		if (stack >= 3) {
+			CacModVariables.Exp_trial_total = 1;
+		} else {
+			CacModVariables.Exp_trial_total = 30;
 		}
 	}
 
@@ -170,9 +197,43 @@ public class CstPsychometric {
 		obj_history = obj_task.get("history").getAsJsonObject();
 		obj_trial.addProperty("difficulty", CacModVariables.Dat_difficulty);
 		obj_trial.addProperty("entropy", entropy_bin);
+		obj_trial.add("EIGs", getEIGs());
 		obj_trial.add("param_best", getBestParam());
 		obj_trial.add("likelihood", getLikelihood());
 		obj_history.add(("trial_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
+		Gson mainGSONBuilderVariable = new GsonBuilder().setPrettyPrinting().create();
+		try {
+			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
+			fileWriter.write(mainGSONBuilderVariable.toJson(obj_file));
+			fileWriter.close();
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
+	}
+	public static void recFinal() {
+		Gson GS = new Gson();
+		JsonObject obj_file = new JsonObject();
+		JsonObject obj_cac = new JsonObject();
+		JsonObject obj_task = new JsonObject();
+		JsonObject obj_final = new JsonObject();
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_fitting));
+			StringBuilder jsonstringbuilder = new StringBuilder();
+			String line;
+			while ((line = bufferedReader.readLine()) != null) {
+				jsonstringbuilder.append(line);
+			}
+			bufferedReader.close();
+			obj_file = GS.fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
+			obj_cac = obj_file.get("cac").getAsJsonObject();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		obj_task = obj_cac.get((CacModVariables.Psy_task + "_" + CacModVariables.Psy_method + "_" + CacModVariables.Psy_function)).getAsJsonObject();
+		obj_final = obj_task.get("final").getAsJsonObject();
+		obj_final.addProperty("entropy", entropy_bin);
+		obj_final.add("param_best", getBestParam());
+		obj_final.add("likelihood", getLikelihood());
 		Gson mainGSONBuilderVariable = new GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
@@ -196,7 +257,7 @@ public class CstPsychometric {
 		double y = 1 / (1 + Math.pow(9, (rho-m)/w));
 		return y;
 	}
-
+	
 	
 	// Index rearrange
 	public static int flattenIndex(int sm, int sw, int sgamma, int slambda) {
@@ -223,6 +284,15 @@ public class CstPsychometric {
 		}
 		return idx;
 	}
+	public static int getRhoIndex(double rho) {
+		int rho_id = -1;
+		for (int r=0; r<RHOSIZE; r++) {
+			if (RHO[r] == rho) {
+				rho_id = r;
+			}
+		}
+		return rho_id;
+	}
 	
 
 	// Grid Normalize
@@ -238,6 +308,24 @@ public class CstPsychometric {
 			L[k] = L_hat[k] - Z;
 		}
 		return L;
+	}
+
+
+	// Update IG
+	public static void updateIG(double H, double H_next) {
+		boolean isfull = true;
+		double IG = H - H_next;
+		for (int i=0; i<3, i++) {
+			if ((IG_last[i] == 0) && (isfull)) {
+				IG_last[i] = IG;
+				isfull = false;
+			}
+		}
+		if (isfull) {
+			IG_last[0] = IG_last[1];
+			IG_last[1] = IG_last[2];
+			IG_last[2] = IG;
+		}
 	}
 	
 
@@ -339,6 +427,11 @@ public class CstPsychometric {
 		Gson gson = new Gson();
 		JsonArray theta = gson.toJsonTree(param_best).getAsJsonArray();
 		return theta;
+	}
+	public static JsonArray getEIGs() {
+		Gson gson = new Gson();
+		JsonArray EIGs = gson.toJsonTree(EIG_bin).getAsJsonArray();
+		return EIGs;
 	}
 	public static int getGridShape(int idx) {
 		return CacModVariables.Psy_bin_param_shape.get(idx).getAsInt();

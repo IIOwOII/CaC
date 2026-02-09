@@ -3412,7 +3412,7 @@
     {
       "name": "CstPsychometric",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "cst_psychometric",
       "metadata": {
@@ -3490,20 +3490,6 @@
       "path": "~/CacTask/Psychometric"
     },
     {
-      "name": "RecFitting",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rec_fitting",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RecFittingProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Record"
-    },
-    {
       "name": "RecManage",
       "type": "procedure",
       "compiles": true,
@@ -3516,6 +3502,32 @@
         "dependencies": []
       },
       "path": "~/CacTask/Record"
+    },
+    {
+      "name": "CstMmap",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "cst_mmap",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstMmap.java"
+        ]
+      }
+    },
+    {
+      "name": "TaskFitting",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_fitting",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskFittingProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/General"
     }
   ],
   "variable_elements": [
@@ -3818,12 +3830,6 @@
       "type": "file",
       "scope": "global",
       "value": "new File(\"\")"
-    },
-    {
-      "name": "Log_type",
-      "type": "string",
-      "scope": "global",
-      "value": "\"\""
     },
     {
       "name": "Meow_destination",
