@@ -40,8 +40,9 @@ public class CapManageProcedure {
 		if ((CacModVariables.Psy_method).equals("binary")) {
 			if ((CacModVariables.Psy_function).equals("logistic")) {
 				net.owo.cac.CstPsychometric.initBin(0);
+				PrdCountdownProcedure.execute();
+				TaskSessionStartProcedure.execute(world, entity);
 			}
 		}
-		TaskSessionStartProcedure.execute(world, entity);
 	}
 }

@@ -30,7 +30,7 @@ public class CstPsychometric {
 	public static double rho_best = 0;
 
 	// parameter list
-	public static int GRIDSIZE = 0;
+	public static int GRIDSIZE = 10000;
 	public static int RHOSIZE = 20;
 	public static double[] M; // [grid]
 	public static double[] W; // [grid]
@@ -43,6 +43,23 @@ public class CstPsychometric {
 	// Terminal Rule
 	public static double[] IG_last = new double[3];
 	public static double IG_THRESHOLD = 0.1;
+
+
+	// Debug
+	public static void debugValue() {
+		initBin(0);
+		updateTrialBefore();
+		for (int r=0; r<RHOSIZE; r++) {
+			System.out.println(probability_bin[r][0]);
+		}
+		System.out.println(likelihood_bin[0]);
+		System.out.println(entropy_bin);
+		for (int r=0; r<RHOSIZE; r++) {
+			System.out.println(expected_P_bin[r]);
+			System.out.println(expected_L_bin[0][r][0]);
+			System.out.println(expected_H_bin[0][r]);
+		}
+	}
 
 	// usage
 	// initialize
@@ -62,11 +79,10 @@ public class CstPsychometric {
 		EIG_bin = calEIG(entropy_bin, expected_P_bin, expected_H_bin);
 		rho_best = RHO[argmax(EIG_bin)];
 		CacModVariables.Dat_difficulty = rho_best;
-		recHistory();
 	}
 	// Repeat (After trial)
 	public static void updateTrialAfter() {
-		int winlose = CacModVariables.Dat_trial_winlose;
+		int winlose = (int) CacModVariables.Dat_trial_winlose;
 		int rho_curr = getRhoIndex(CacModVariables.Dat_difficulty);
 		if (winlose == 1) {
 			updateIG(entropy_bin, expected_H_bin[0][rho_curr]);
@@ -90,7 +106,7 @@ public class CstPsychometric {
 		if (stack >= 3) {
 			CacModVariables.Exp_trial_total = 1;
 		} else {
-			CacModVariables.Exp_trial_total = 30;
+			CacModVariables.Exp_trial_total = 5;
 		}
 	}
 
@@ -125,7 +141,7 @@ public class CstPsychometric {
 		RHO = new double[RHOSIZE];
 		double RHO_min = 0.90;
 		double RHO_step = 0.01;
-		for (int r=0; r<20; r++) {
+		for (int r=0; r<RHOSIZE; r++) {
 			RHO[r] = Math.round((RHO_min + r*RHO_step)*1000) / 1000.0;
 		}
 	}
@@ -142,7 +158,7 @@ public class CstPsychometric {
 			IDX[2] = reshapeIndex(k, 2);
 			IDX[3] = reshapeIndex(k, 3);
 			for (int r=0; r<RHOSIZE; r++) {
-				P = calPSI(func_type, RHO[r], IDX[0], IDX[1], IDX[2], IDX[3]);
+				P = calPSI(func_type, RHO[r], M[IDX[0]], W[IDX[1]], GAMMA[IDX[2]], LAMBDA[IDX[3]]);
 				probability_bin[r][k] = P;
 			}
 		}
@@ -174,7 +190,6 @@ public class CstPsychometric {
 
 	// Recording Data on log file
 	public static void recHistory() {
-		Gson GS = new Gson();
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
 		JsonObject obj_task = new JsonObject();
@@ -188,7 +203,7 @@ public class CstPsychometric {
 				jsonstringbuilder.append(line);
 			}
 			bufferedReader.close();
-			obj_file = GS.fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
+			obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
 			obj_cac = obj_file.get("cac").getAsJsonObject();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -200,8 +215,8 @@ public class CstPsychometric {
 		obj_trial.add("EIGs", getEIGs());
 		obj_trial.add("param_best", getBestParam());
 		obj_trial.add("likelihood", getLikelihood());
-		obj_history.add(("trial_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
-		Gson mainGSONBuilderVariable = new GsonBuilder().setPrettyPrinting().create();
+		obj_history.add(("trial" + "_" + CacModVariables.Exp_trial), obj_trial);
+		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
 			fileWriter.write(mainGSONBuilderVariable.toJson(obj_file));
@@ -315,7 +330,7 @@ public class CstPsychometric {
 	public static void updateIG(double H, double H_next) {
 		boolean isfull = true;
 		double IG = H - H_next;
-		for (int i=0; i<3, i++) {
+		for (int i=0; i<3; i++) {
 			if ((IG_last[i] == 0) && (isfull)) {
 				IG_last[i] = IG;
 				isfull = false;

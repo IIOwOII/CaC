@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 public class PsyBinInitializeProcedure {
 	public static void execute() {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_quest = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_param = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_bin = new com.google.gson.JsonObject();
 		{
@@ -27,7 +26,7 @@ public class PsyBinInitializeProcedure {
 				e.printStackTrace();
 			}
 		}
-		obj_param = obj_quest.get("parameter").getAsJsonObject();
+		obj_param = obj_bin.get("parameter").getAsJsonObject();
 		CacModVariables.Psy_bin_param_min = obj_param.get("min").getAsJsonArray();
 		CacModVariables.Psy_bin_param_max = obj_param.get("max").getAsJsonArray();
 		CacModVariables.Psy_bin_param_step = obj_param.get("step").getAsJsonArray();
