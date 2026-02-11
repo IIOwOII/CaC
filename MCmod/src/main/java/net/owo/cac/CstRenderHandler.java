@@ -6,13 +6,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 
 import net.owo.cac.CstState;
 import net.owo.cac.CstRenderComponent;
-
+import net.owo.cac.network.CacModVariables;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderHandler {
@@ -32,6 +33,14 @@ public class CstRenderHandler {
         int w = event.getWindow().getGuiScaledWidth();
 		int h = event.getWindow().getGuiScaledHeight();
 		GuiGraphics gg = event.getGuiGraphics();
+    }
+
+    @SubscribeEvent
+    public static void onRenderGui(RenderGuiEvent.Pre event) {
+    	GuiGraphics gg = event.getGuiGraphics();
+    	if (CacModVariables.Switch_blank) {
+    		CstRenderComponent.renderBlank(gg, 427, 240);
+    	}
     }
 
     @SubscribeEvent

@@ -14,13 +14,15 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.owo.cac.network.CacModVariables;
+import org.spongepowered.asm.mixin.injection.selectors.ISelectorContext;
+import org.apache.commons.io.IOIndexedException;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
 	// Current
-	public static double entropy_bin = 0;
-	public static double[] likelihood_bin; // [grid]
 	public static double[][] probability_bin; // [diff][grid]
+	public static double[] likelihood_bin; // [grid]
+	public static double entropy_bin = 0;
 
 	// Expected
 	public static double[] expected_P_bin; // [diff]
@@ -44,20 +46,66 @@ public class CstPsychometric {
 	public static double[] IG_last = new double[3];
 	public static double IG_THRESHOLD = 0.1;
 
+	// Safety
+	public static double PMIN = 1.0E-12; // point 12
+	public static double PMAX = 1.0 - 1.0E-12; // point 12
+	
 
 	// Debug
 	public static void debugValue() {
-		initBin(0);
-		updateTrialBefore();
+		// curr
 		for (int r=0; r<RHOSIZE; r++) {
-			System.out.println(probability_bin[r][0]);
+			for (int k=0; k<GRIDSIZE; k++) {
+				if ((Double.isNaN(probability_bin[r][k])) || (Double.isInfinite(probability_bin[r][k]))) {
+					System.out.printf("bug: P %n");
+					System.out.printf("rho: %d %n", r);
+					System.out.printf("grid: %d %n", k);
+					return;
+				}
+			}
 		}
-		System.out.println(likelihood_bin[0]);
-		System.out.println(entropy_bin);
+		for (int k=0; k<GRIDSIZE; k++) {
+			if ((Double.isNaN(likelihood_bin[k])) || (Double.isInfinite(likelihood_bin[k]))) {
+				System.out.printf("bug: L %n");
+				System.out.printf("grid: %d %n", k);
+				return;
+			}
+		}
+		if ((Double.isNaN(entropy_bin)) || (Double.isInfinite(entropy_bin))) {
+			System.out.printf("bug: H %n");
+			return;
+		}
+		// ex
 		for (int r=0; r<RHOSIZE; r++) {
-			System.out.println(expected_P_bin[r]);
-			System.out.println(expected_L_bin[0][r][0]);
-			System.out.println(expected_H_bin[0][r]);
+			if ((Double.isNaN(expected_P_bin[r])) || (Double.isInfinite(expected_P_bin[r]))) {
+				System.out.printf("bug: exP %n");
+				System.out.printf("rho: %d %n", r);
+				return;
+			}
+		}
+		for (int r=0; r<RHOSIZE; r++) {
+			for (int k=0; k<GRIDSIZE; k++) {
+				if (((Double.isNaN(expected_L_bin[0][r][k])) || (Double.isNaN(expected_L_bin[1][r][k]))) || ((Double.isInfinite(expected_L_bin[0][r][k])) || (Double.isInfinite(expected_L_bin[1][r][k])))) {
+					System.out.printf("bug: exL %n");
+					System.out.printf("rho: %d %n", r);
+					System.out.printf("grid: %d %n", k);
+					return;
+				}
+			}
+		}
+		for (int r=0; r<RHOSIZE; r++) {
+			if (((Double.isNaN(expected_H_bin[0][r])) || (Double.isNaN(expected_H_bin[1][r]))) || ((Double.isInfinite(expected_H_bin[0][r])) || (Double.isInfinite(expected_H_bin[1][r])))) {
+				System.out.printf("bug: exH %n");
+				System.out.printf("rho: %d %n", r);
+				return;
+			}
+		}
+		for (int r=0; r<RHOSIZE; r++) {
+			if ((Double.isNaN(EIG_bin[r])) || (Double.isInfinite(EIG_bin[r]))) {
+				System.out.printf("bug: EIG %n");
+				System.out.printf("rho: %d %n", r);
+				return;
+			}
 		}
 	}
 
@@ -97,16 +145,16 @@ public class CstPsychometric {
 	}
 	// Terminate
 	public static void checkTerminate() {
-		int stack = 0;
-		for (int i=0; i<3; i++) {
-			if ((IG_last[i] != 0) && (IG_last[i]<IG_THRESHOLD)) {
-				stack += 1;
+		boolean isend = true;
+		for (int i=0; i<IG_last.length; i++) {
+			if ((IG_last[i] >= IG_THRESHOLD) || (IG_last[i] == 0)) {
+				isend = false;
 			}
 		}
-		if (stack >= 3) {
+		if (isend) {
 			CacModVariables.Exp_trial_total = 1;
 		} else {
-			CacModVariables.Exp_trial_total = 5;
+			CacModVariables.Exp_trial_total = 10;
 		}
 	}
 
@@ -215,7 +263,7 @@ public class CstPsychometric {
 		obj_trial.add("EIGs", getEIGs());
 		obj_trial.add("param_best", getBestParam());
 		obj_trial.add("likelihood", getLikelihood());
-		obj_history.add(("trial" + "_" + CacModVariables.Exp_trial), obj_trial);
+		obj_history.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
@@ -361,10 +409,24 @@ public class CstPsychometric {
 	// expected likelihood
 	public static double[][][] calExpectedLikelihood(double[][] P, double[] L, double[] P_ex) {
 		double[][][] ExL = new double[2][RHOSIZE][GRIDSIZE];
+		double sp = 0;
+		double sp_ex = 0;
 		for (int r=0; r<RHOSIZE; r++) {
+			sp_ex = P_ex[r];
+			if (sp_ex < PMIN) {
+				sp_ex = PMIN;
+			} else if (sp_ex > PMAX) {
+				sp_ex = PMAX;
+			}
 			for (int k=0; k<GRIDSIZE; k++) {
-				ExL[0][r][k] = L[k] + Math.log(P[r][k]) - Math.log(P_ex[r]);
-				ExL[1][r][k] = L[k] + Math.log(1-P[r][k]) - Math.log(1-P_ex[r]);
+				sp = P[r][k];
+				if (sp < PMIN) {
+					sp = PMIN;
+				} else if (sp > PMAX) {
+					sp = PMAX;
+				}
+				ExL[0][r][k] = L[k] + Math.log(sp) - Math.log(sp_ex);
+				ExL[1][r][k] = L[k] + Math.log(1-sp) - Math.log(1-sp_ex);
 			}
 		}
 		return ExL;

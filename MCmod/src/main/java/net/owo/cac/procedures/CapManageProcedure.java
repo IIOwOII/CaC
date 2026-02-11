@@ -37,11 +37,21 @@ public class CapManageProcedure {
 				e.printStackTrace();
 			}
 		}
-		if ((CacModVariables.Psy_method).equals("binary")) {
-			if ((CacModVariables.Psy_function).equals("logistic")) {
-				net.owo.cac.CstPsychometric.initBin(0);
-				PrdCountdownProcedure.execute();
-				TaskSessionStartProcedure.execute(world, entity);
+		if ((CacModVariables.Psy_task).equals("debug")) {
+			if ((CacModVariables.Psy_method).equals("binary")) {
+				if ((CacModVariables.Psy_function).equals("logistic")) {
+					net.owo.cac.CstPsychometric.initBin(0);
+					net.owo.cac.CstPsychometric.updateTrialBefore();
+					net.owo.cac.CstPsychometric.debugValue();
+				}
+			}
+		} else if ((CacModVariables.Psy_task).equals("chasing") || (CacModVariables.Psy_task).equals("chased")) {
+			if ((CacModVariables.Psy_method).equals("binary")) {
+				if ((CacModVariables.Psy_function).equals("logistic")) {
+					net.owo.cac.CstPsychometric.initBin(0);
+					PrdCountdownProcedure.execute();
+					TaskSessionStartProcedure.execute(world, entity);
+				}
 			}
 		}
 	}

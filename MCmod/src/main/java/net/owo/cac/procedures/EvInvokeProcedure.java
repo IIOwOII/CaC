@@ -63,6 +63,7 @@ public class EvInvokeProcedure {
 					TaskSessionEndProcedure.execute();
 				} else if ((ev_content).equals("fitting_end")) {
 					CacModVariables.Switch_que = false;
+					net.owo.cac.CstPsychometric.recFinal();
 					TaskSessionEndProcedure.execute();
 				}
 			}
