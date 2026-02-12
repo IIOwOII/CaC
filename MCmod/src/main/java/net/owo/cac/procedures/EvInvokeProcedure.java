@@ -25,6 +25,8 @@ public class EvInvokeProcedure {
 					TaskPreRunProcedure.execute();
 				} else if ((ev_content).equals("simulation_start")) {
 					SimStartProcedure.execute();
+				} else if ((ev_content).equals("main_start")) {
+					TaskPreRunProcedure.execute();
 				}
 			} else if (ev_content.startsWith("phase")) {
 				if ((ev_content).equals("phase_pretrial")) {
@@ -64,6 +66,9 @@ public class EvInvokeProcedure {
 				} else if ((ev_content).equals("fitting_end")) {
 					CacModVariables.Switch_que = false;
 					net.owo.cac.CstPsychometric.recFinal();
+					TaskSessionEndProcedure.execute();
+				} else if ((ev_content).equals("main_end")) {
+					CacModVariables.Switch_que = false;
 					TaskSessionEndProcedure.execute();
 				}
 			}

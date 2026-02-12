@@ -3542,6 +3542,38 @@
         "dependencies": []
       },
       "path": "~/CacTimer"
+    },
+    {
+      "name": "CmdCac",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_cac",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdCacCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Main"
+    },
+    {
+      "name": "CacManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cac_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/CacManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/CacTask/Main"
     }
   ],
   "variable_elements": [
@@ -4198,6 +4230,12 @@
       "type": "string",
       "scope": "global",
       "value": "\"\""
+    },
+    {
+      "name": "Psy_bin_param_best",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [
@@ -4395,6 +4433,10 @@
           {
             "name": "Tutorial",
             "children": []
+          },
+          {
+            "name": "Main",
+            "children": []
           }
         ]
       },
@@ -4440,7 +4482,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "0.95",
+    "version": "0.96",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

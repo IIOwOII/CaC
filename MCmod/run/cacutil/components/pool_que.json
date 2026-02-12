@@ -91,5 +91,31 @@
       "phase_posttrial"
     ],
     "ending": "fitting_end"
+  },
+  "chasing": {
+    "initial": "main_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_survey",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "main_end"
+  },
+  "chased": {
+    "initial": "main_start",
+    "trial": [
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_survey",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "main_end"
   }
 }

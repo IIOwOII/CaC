@@ -3542,6 +3542,46 @@
         "dependencies": []
       },
       "path": "~/CacTimer"
+    },
+    {
+      "name": "CmdCac",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_cac",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdCacCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Main"
+    },
+    {
+      "name": "CacManage",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cac_manage",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/CacManageProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          },
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Main"
     }
   ],
   "variable_elements": [
@@ -4198,6 +4238,12 @@
       "type": "string",
       "scope": "global",
       "value": "\"\""
+    },
+    {
+      "name": "Psy_bin_param_best",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [
@@ -4273,8 +4319,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
@@ -4394,6 +4440,10 @@
           },
           {
             "name": "Tutorial",
+            "children": []
+          },
+          {
+            "name": "Main",
             "children": []
           }
         ]

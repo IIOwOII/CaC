@@ -126,6 +126,7 @@ public class CacModVariables {
 	public static String Psy_method = "\"\"";
 	public static String Psy_function = "\"\"";
 	public static String Psy_task = "\"\"";
+	public static com.google.gson.JsonArray Psy_bin_param_best = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

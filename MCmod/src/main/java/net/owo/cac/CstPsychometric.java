@@ -154,7 +154,7 @@ public class CstPsychometric {
 		if (isend) {
 			CacModVariables.Exp_trial_total = 1;
 		} else {
-			CacModVariables.Exp_trial_total = 10;
+			CacModVariables.Exp_trial_total = 20;
 		}
 	}
 
@@ -241,7 +241,6 @@ public class CstPsychometric {
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
 		JsonObject obj_task = new JsonObject();
-		JsonObject obj_history = new JsonObject();
 		JsonObject obj_trial = new JsonObject();
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_fitting));
@@ -257,13 +256,12 @@ public class CstPsychometric {
 			e.printStackTrace();
 		}
 		obj_task = obj_cac.get((CacModVariables.Psy_task + "_" + CacModVariables.Psy_method + "_" + CacModVariables.Psy_function)).getAsJsonObject();
-		obj_history = obj_task.get("history").getAsJsonObject();
 		obj_trial.addProperty("difficulty", CacModVariables.Dat_difficulty);
 		obj_trial.addProperty("entropy", entropy_bin);
 		obj_trial.add("EIGs", getEIGs());
 		obj_trial.add("param_best", getBestParam());
 		obj_trial.add("likelihood", getLikelihood());
-		obj_history.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
+		obj_task.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);

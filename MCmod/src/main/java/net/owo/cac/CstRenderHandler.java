@@ -38,9 +38,9 @@ public class CstRenderHandler {
     @SubscribeEvent
     public static void onRenderGui(RenderGuiEvent.Pre event) {
     	GuiGraphics gg = event.getGuiGraphics();
-    	if (CacModVariables.Switch_blank) {
-    		CstRenderComponent.renderBlank(gg, 427, 240);
-    	}
+    	int gw = event.getWindow().getGuiScaledWidth();
+		int gh = event.getWindow().getGuiScaledHeight();
+    	if (CacModVariables.Switch_blank) CstRenderComponent.renderBlank(gg, gw, gh);
     }
 
     @SubscribeEvent
