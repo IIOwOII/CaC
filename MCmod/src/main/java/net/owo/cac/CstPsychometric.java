@@ -19,28 +19,50 @@ import org.apache.commons.io.IOIndexedException;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
+	// Type
+	public static int task_type = -1;
+	public static int method_type = -1;
+	public static int func_type = -1;
+	
 	// Current
 	public static double[][] probability_bin; // [diff][grid]
 	public static double[] likelihood_bin; // [grid]
 	public static double entropy_bin = 0;
+	
+	public static double[][] probability_con; // [diff][grid]
+	public static double[] likelihood_con; // [grid]
+	public static double entropy_con = 0; // PSI
+	
 
 	// Expected
 	public static double[] expected_P_bin; // [diff]
 	public static double[][][] expected_L_bin; // [win/lose][diff][grid]
 	public static double[][] expected_H_bin; // [win/lose][diff]
 	public static double[] EIG_bin; // [diff]
+	
+	public static double[] expected_P_con; // [diff]
+	public static double[][][] expected_L_con; // [win/lose][diff][grid]
+	public static double[][] expected_H_con; // [win/lose][diff]
+	public static double[] EIG_con; // [diff]
+	
 	public static double rho_best = 0;
 
 	// parameter list
 	public static int GRIDSIZE = 10000;
-	public static int RHOSIZE = 20;
 	public static double[] M; // [grid]
 	public static double[] W; // [grid]
 	public static double[] GAMMA; //[grid]
 	public static double[] LAMBDA; //[grid]
 
+	public static int GRIDCON = 800;
+	public static double[] K; // [grid]
+	public static double[] A; // [grid]
+	public static double[] B; // [grid]
+
 	// grid of difficulty
+	public static int RHOSIZE = 20;
 	public static double[] RHO; // [diff]
+	public static double T = 30; // terminate time
 
 	// Terminal Rule
 	public static double[] IG_last = new double[3];
@@ -51,73 +73,20 @@ public class CstPsychometric {
 	public static double PMAX = 1.0 - 1.0E-12; // point 12
 	
 
-	// Debug
-	public static void debugValue() {
-		// curr
-		for (int r=0; r<RHOSIZE; r++) {
-			for (int k=0; k<GRIDSIZE; k++) {
-				if ((Double.isNaN(probability_bin[r][k])) || (Double.isInfinite(probability_bin[r][k]))) {
-					System.out.printf("bug: P %n");
-					System.out.printf("rho: %d %n", r);
-					System.out.printf("grid: %d %n", k);
-					return;
-				}
-			}
-		}
-		for (int k=0; k<GRIDSIZE; k++) {
-			if ((Double.isNaN(likelihood_bin[k])) || (Double.isInfinite(likelihood_bin[k]))) {
-				System.out.printf("bug: L %n");
-				System.out.printf("grid: %d %n", k);
-				return;
-			}
-		}
-		if ((Double.isNaN(entropy_bin)) || (Double.isInfinite(entropy_bin))) {
-			System.out.printf("bug: H %n");
-			return;
-		}
-		// ex
-		for (int r=0; r<RHOSIZE; r++) {
-			if ((Double.isNaN(expected_P_bin[r])) || (Double.isInfinite(expected_P_bin[r]))) {
-				System.out.printf("bug: exP %n");
-				System.out.printf("rho: %d %n", r);
-				return;
-			}
-		}
-		for (int r=0; r<RHOSIZE; r++) {
-			for (int k=0; k<GRIDSIZE; k++) {
-				if (((Double.isNaN(expected_L_bin[0][r][k])) || (Double.isNaN(expected_L_bin[1][r][k]))) || ((Double.isInfinite(expected_L_bin[0][r][k])) || (Double.isInfinite(expected_L_bin[1][r][k])))) {
-					System.out.printf("bug: exL %n");
-					System.out.printf("rho: %d %n", r);
-					System.out.printf("grid: %d %n", k);
-					return;
-				}
-			}
-		}
-		for (int r=0; r<RHOSIZE; r++) {
-			if (((Double.isNaN(expected_H_bin[0][r])) || (Double.isNaN(expected_H_bin[1][r]))) || ((Double.isInfinite(expected_H_bin[0][r])) || (Double.isInfinite(expected_H_bin[1][r])))) {
-				System.out.printf("bug: exH %n");
-				System.out.printf("rho: %d %n", r);
-				return;
-			}
-		}
-		for (int r=0; r<RHOSIZE; r++) {
-			if ((Double.isNaN(EIG_bin[r])) || (Double.isInfinite(EIG_bin[r]))) {
-				System.out.printf("bug: EIG %n");
-				System.out.printf("rho: %d %n", r);
-				return;
-			}
-		}
-	}
-
 	// usage
 	// initialize
-	public static void initBin(int func_type) {
-		GRIDSIZE = getGridShape(0) * getGridShape(1) * getGridShape(2) * getGridShape(3);
+	public static void initPsy() {
+		initRho();
+		if (method_type == 0) {
+			initBin();
+		}
+	}
+	public static void initBin() {
+		GRIDSIZE = getBinShape(0) * getBinShape(1) * getBinShape(2) * getBinShape(3);
 		initBinParam();
-		initBinRho();
 		initBinL();
-		initBinP(func_type);
-		initPrior();
+		initBinP();
+		initBinPrior();
 	}
 	// Repeat (Before trial)
 	public static void updateTrialBefore() {
@@ -160,13 +129,25 @@ public class CstPsychometric {
 
 
 	// init functions
+	// diff
+	public static void initRho() {
+		// rho : [0.9, 1.1)_0.01
+		RHO = new double[RHOSIZE];
+		double RHO_min = 0.90;
+		double RHO_step = 0.01;
+		for (int r=0; r<RHOSIZE; r++) {
+			RHO[r] = Math.round((RHO_min + r*RHO_step)*1000) / 1000.0;
+		}
+	}
+
+	// param
 	public static void initBinParam() {
 		JsonArray param_min = CacModVariables.Psy_bin_param_min;
 		JsonArray param_max = CacModVariables.Psy_bin_param_max;
 		JsonArray param_step = CacModVariables.Psy_bin_param_step;
 		
 		for (int i=0; i<4; i++) {
-			double P[] = new double[getGridShape(i)];
+			double P[] = new double[getBinShape(i)];
 			double p_min = param_min.get(i).getAsDouble();
 			double p_max = param_max.get(i).getAsDouble();
 			double p_step = param_step.get(i).getAsDouble();
@@ -184,19 +165,39 @@ public class CstPsychometric {
 			}
 		}
 	}
-	public static void initBinRho() {
-		// rho : [0.9, 1.1)_0.01
-		RHO = new double[RHOSIZE];
-		double RHO_min = 0.90;
-		double RHO_step = 0.01;
-		for (int r=0; r<RHOSIZE; r++) {
-			RHO[r] = Math.round((RHO_min + r*RHO_step)*1000) / 1000.0;
+	public static void initConParam() {
+		JsonArray param_min = CacModVariables.Psy_con_param_min;
+		JsonArray param_max = CacModVariables.Psy_con_param_max;
+		JsonArray param_step = CacModVariables.Psy_con_param_step;
+		
+		for (int i=0; i<3; i++) {
+			double P[] = new double[getConShape(i)];
+			double p_min = param_min.get(i).getAsDouble();
+			double p_max = param_max.get(i).getAsDouble();
+			double p_step = param_step.get(i).getAsDouble();
+			for (int k=0; k<P.length; k++) {
+				P[k] = Math.round((p_min + k*p_step)*1000) / 1000.0;
+			}
+			if (i==0) {
+				K = P.clone();
+			} else if (i==1) {
+				A = P.clone();
+			} else if (i==2) {
+				B = P.clone();
+			}
 		}
 	}
+
+	// likelihood
 	public static void initBinL() {
 		likelihood_bin = new double[GRIDSIZE];
 	}
-	public static void initBinP(int func_type) {
+	public static void initConL() {
+		likelihood_con = new double[GRIDCON];
+	}
+
+	// Prob
+	public static void initBinP() {
 		probability_bin = new double[RHOSIZE][GRIDSIZE];
 		double P = 0;
 		int[] IDX = new int[4];
@@ -211,7 +212,23 @@ public class CstPsychometric {
 			}
 		}
 	}
-	public static void initPrior() {
+	public static void initConP() {
+		probability_con = new double[RHOSIZE][GRIDCON];
+		double P = 0;
+		int[] IDX = new int[3];
+		for (int k=0; k<GRIDCON; k++) {
+			IDX[0] = reshapeConIndex(k, 0);
+			IDX[1] = reshapeConIndex(k, 1);
+			IDX[2] = reshapeConIndex(k, 2);
+			for (int r=0; r<RHOSIZE; r++) {
+				P = calPolyExpPSI(RHO[r], K[IDX[0]], A[IDX[1]], B[IDX[2]]);
+				probability_con[r][k] = P;
+			}
+		}
+	}
+
+	// Prior
+	public static void initBinPrior() {
 		// json get
 		JsonArray param_prior = CacModVariables.Psy_bin_param_prior;
 		int pm = param_prior.get(0).getAsInt();
@@ -221,10 +238,10 @@ public class CstPsychometric {
 		
 		// 1/2 * e^(-(a^2+b^2+...)^2/4) + 1/2
 		double D_sq = 0;
-		for (int sm=0; sm<getGridShape(0); sm++) {
-			for (int sw=0; sw<getGridShape(1); sw++) {
-				for (int sgamma=0; sgamma<getGridShape(2); sgamma++) {
-					for (int slambda=0; slambda<getGridShape(3); slambda++) {
+		for (int sm=0; sm<getBinShape(0); sm++) {
+			for (int sw=0; sw<getBinShape(1); sw++) {
+				for (int sgamma=0; sgamma<getBinShape(2); sgamma++) {
+					for (int slambda=0; slambda<getBinShape(3); slambda++) {
 						D_sq = Math.pow(sm-pm, 2) + Math.pow(sw-pw, 2) + Math.pow(sgamma-pgamma, 2) + Math.pow(slambda-plambda, 2);
 						likelihood_bin[flattenIndex(sm, sw, sgamma, slambda)] = Math.log(0.5 + 0.5*Math.exp(-D_sq/4));
 					}
@@ -233,6 +250,26 @@ public class CstPsychometric {
 		}
 		likelihood_bin = normL(likelihood_bin.clone());
 		entropy_bin = calEntropy(likelihood_bin);
+	}
+	public static void initConPrior() {
+		// json get
+		JsonArray param_prior = CacModVariables.Psy_con_param_prior;
+		int pk = param_prior.get(0).getAsInt();
+		int pa = param_prior.get(1).getAsInt();
+		int pb = param_prior.get(2).getAsInt();
+		
+		// 1/2 * e^(-(a^2+b^2+...)^2/4) + 1/2
+		double D_sq = 0;
+		for (int sk=0; sk<getConShape(0); sk++) {
+			for (int sa=0; sa<getConShape(1); sa++) {
+				for (int sb=0; sb<getConShape(2); sb++) {
+					D_sq = Math.pow(sk-pk, 2) + Math.pow(sa-pa, 2) + Math.pow(sb-pb, 2);
+					likelihood_con[flattenConIndex(sk, sa, sb)] = Math.log(0.5 + 0.5*Math.exp(-D_sq/4));
+				}
+			}
+		}
+		likelihood_con = normL(likelihood_con.clone());
+		entropy_con = calEntropy(likelihood_con);
 	}
 
 
@@ -304,7 +341,6 @@ public class CstPsychometric {
 			exception.printStackTrace();
 		}
 	}
-
 	
 	// Calculate the psychometric function (CDF)
 	public static double calPSI(int func_type, double rho, double m, double w, double gamma, double lambda) {
@@ -314,6 +350,34 @@ public class CstPsychometric {
 		}
 		return gamma + (1-gamma-lambda)*F;
 	}
+	public static double calPolyExpPSI(double rho, double k, double a, double b) {
+		// rho is original rho
+		double rho_hat = 0;
+		double P_hit = 0;
+		double series = 0;
+		double X = 0;
+		if (task_type == 0) { // chasing
+			rho_hat = 1/rho;
+		} else if (task_type == 1) { // chased
+			rho_hat = rho;
+		}
+		X = calX(T, rho_hat, k, a, b);
+		for (int i=0; i<(int)k; i++) {
+			series += (Math.pow(X,i)/factorial(i));
+		}
+		P_hit = 1 - Math.exp(-X) * series;
+		if (task_type == 0) {
+			return P_hit;
+		} else if (task_type == 1) {
+			return 1-P_hit;
+		}
+	}
+	public static double calX(double t, double rho_hat, double k, double a, double b) {
+		// x = kt/mu
+		double x = 0;
+		x = k*t*((b/10)*rho_hat - (a/15));
+		return x;
+	}
 	public static double funcLogistic(double rho, double m, double w) {
 		double y = 1 / (1 + Math.pow(9, (rho-m)/w));
 		return y;
@@ -321,19 +385,36 @@ public class CstPsychometric {
 	
 	
 	// Index rearrange
+	public static int getRhoIndex(double rho) {
+		int rho_id = -1;
+		for (int r=0; r<RHOSIZE; r++) {
+			if (RHO[r] == rho) {
+				rho_id = r;
+			}
+		}
+		return rho_id;
+	}
+	
 	public static int flattenIndex(int sm, int sw, int sgamma, int slambda) {
-		int GA = getGridShape(0);
-		int GB = getGridShape(1);
-		int GC = getGridShape(2);
-		int GD = getGridShape(3);
+		int GA = getBinShape(0);
+		int GB = getBinShape(1);
+		int GC = getBinShape(2);
+		int GD = getBinShape(3);
 		return sm*GB*GC*GD + sw*GC*GD + sgamma*GD + slambda;
 	}
+	public static int flattenConIndex(int sk, int sa, int sb) {
+		int GA = getConShape(0);
+		int GB = getConShape(1);
+		int GC = getConShape(2);
+		return sk*GB*GC + sa*GC + sb;
+	}
+	
 	public static int reshapeIndex(int sgrid, int idx_param) {
 		int idx = 0;
-		int GA = getGridShape(0);
-		int GB = getGridShape(1);
-		int GC = getGridShape(2);
-		int GD = getGridShape(3);
+		int GA = getBinShape(0);
+		int GB = getBinShape(1);
+		int GC = getBinShape(2);
+		int GD = getBinShape(3);
 		if (idx_param == 3) { // lambda
 			idx = sgrid % GD;
 		} else if (idx_param == 2) { // gamma
@@ -345,14 +426,19 @@ public class CstPsychometric {
 		}
 		return idx;
 	}
-	public static int getRhoIndex(double rho) {
-		int rho_id = -1;
-		for (int r=0; r<RHOSIZE; r++) {
-			if (RHO[r] == rho) {
-				rho_id = r;
-			}
+	public static int reshapeConIndex(int sgrid, int idx_param) {
+		int idx = 0;
+		int GA = getConShape(0);
+		int GB = getConShape(1);
+		int GC = getConShape(2);
+		if (idx_param == 2) { // b
+			idx = sgrid % GC;
+		} else if (idx_param == 1) { // a
+			idx = (sgrid / GC) % GB;
+		} else if (idx_param == 0) { // k
+			idx = (sgrid / GC) / GB;
 		}
-		return rho_id;
+		return idx;
 	}
 	
 
@@ -483,6 +569,14 @@ public class CstPsychometric {
 		}
 		return i_min;
 	}
+	public static int factorial(int n) {
+		int value = 1;
+		if (n==0) return value;
+		for (int k=1; k<n+1; k++) {
+			value *= k;
+		}
+		return value;
+	}
 
 	
 	// transform the L (array) to jsonarray
@@ -508,8 +602,70 @@ public class CstPsychometric {
 		JsonArray EIGs = gson.toJsonTree(EIG_bin).getAsJsonArray();
 		return EIGs;
 	}
-	public static int getGridShape(int idx) {
+	
+	public static int getBinShape(int idx) {
 		return CacModVariables.Psy_bin_param_shape.get(idx).getAsInt();
 	}
-	
+	public static int getConShape(int idx) {
+		return CacModVariables.Psy_con_param_shape.get(idx).getAsInt();
+	}
+
+
+	// Debug
+	public static void debugValue() {
+		// curr
+		for (int r=0; r<RHOSIZE; r++) {
+			for (int k=0; k<GRIDSIZE; k++) {
+				if ((Double.isNaN(probability_bin[r][k])) || (Double.isInfinite(probability_bin[r][k]))) {
+					System.out.printf("bug: P %n");
+					System.out.printf("rho: %d %n", r);
+					System.out.printf("grid: %d %n", k);
+					return;
+				}
+			}
+		}
+		for (int k=0; k<GRIDSIZE; k++) {
+			if ((Double.isNaN(likelihood_bin[k])) || (Double.isInfinite(likelihood_bin[k]))) {
+				System.out.printf("bug: L %n");
+				System.out.printf("grid: %d %n", k);
+				return;
+			}
+		}
+		if ((Double.isNaN(entropy_bin)) || (Double.isInfinite(entropy_bin))) {
+			System.out.printf("bug: H %n");
+			return;
+		}
+		// ex
+		for (int r=0; r<RHOSIZE; r++) {
+			if ((Double.isNaN(expected_P_bin[r])) || (Double.isInfinite(expected_P_bin[r]))) {
+				System.out.printf("bug: exP %n");
+				System.out.printf("rho: %d %n", r);
+				return;
+			}
+		}
+		for (int r=0; r<RHOSIZE; r++) {
+			for (int k=0; k<GRIDSIZE; k++) {
+				if (((Double.isNaN(expected_L_bin[0][r][k])) || (Double.isNaN(expected_L_bin[1][r][k]))) || ((Double.isInfinite(expected_L_bin[0][r][k])) || (Double.isInfinite(expected_L_bin[1][r][k])))) {
+					System.out.printf("bug: exL %n");
+					System.out.printf("rho: %d %n", r);
+					System.out.printf("grid: %d %n", k);
+					return;
+				}
+			}
+		}
+		for (int r=0; r<RHOSIZE; r++) {
+			if (((Double.isNaN(expected_H_bin[0][r])) || (Double.isNaN(expected_H_bin[1][r]))) || ((Double.isInfinite(expected_H_bin[0][r])) || (Double.isInfinite(expected_H_bin[1][r])))) {
+				System.out.printf("bug: exH %n");
+				System.out.printf("rho: %d %n", r);
+				return;
+			}
+		}
+		for (int r=0; r<RHOSIZE; r++) {
+			if ((Double.isNaN(EIG_bin[r])) || (Double.isInfinite(EIG_bin[r]))) {
+				System.out.printf("bug: EIG %n");
+				System.out.printf("rho: %d %n", r);
+				return;
+			}
+		}
+	}
 }
