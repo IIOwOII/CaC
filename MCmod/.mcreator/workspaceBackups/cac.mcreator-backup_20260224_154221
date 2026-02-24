@@ -3582,6 +3582,20 @@
         ]
       },
       "path": "~/CacTask/Main"
+    },
+    {
+      "name": "PsyConInitialize",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_con_initialize",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyConInitializeProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Psychometric"
     }
   ],
   "variable_elements": [
@@ -4241,6 +4255,36 @@
     },
     {
       "name": "Psy_bin_param_best",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_con_param_min",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_con_param_max",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_con_param_step",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_con_param_shape",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_con_param_prior",
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"

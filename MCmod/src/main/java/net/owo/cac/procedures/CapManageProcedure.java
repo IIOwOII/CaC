@@ -39,8 +39,12 @@ public class CapManageProcedure {
 		}
 		if ((CacModVariables.Psy_method).equals("binary")) {
 			net.owo.cac.CstPsychometric.method_type = 0;
+		} else if ((CacModVariables.Psy_method).equals("continuous")) {
+			net.owo.cac.CstPsychometric.method_type = 1;
+		} else if ((CacModVariables.Psy_method).equals("both")) {
+			net.owo.cac.CstPsychometric.method_type = 2;
 		}
-		if ((CacModVariables.Psy_function).equals("logistic")) {
+		if ((CacModVariables.Psy_function).equals("default")) {
 			net.owo.cac.CstPsychometric.func_type = 0;
 		}
 		if ((CacModVariables.Psy_task).equals("debug")) {

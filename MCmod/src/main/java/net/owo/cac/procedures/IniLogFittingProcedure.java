@@ -49,7 +49,7 @@ public class IniLogFittingProcedure {
 				e.printStackTrace();
 			}
 		}
-		obj_cac.add((CacModVariables.Psy_task + "_" + CacModVariables.Psy_method + "_" + CacModVariables.Psy_function), obj_task);
+		obj_cac.add(CacModVariables.Psy_task, obj_task);
 		obj_task.add("final", obj_final);
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
