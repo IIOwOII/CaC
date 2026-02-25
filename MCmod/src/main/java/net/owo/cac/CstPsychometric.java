@@ -52,16 +52,17 @@ public class CstPsychometric {
 	public static double rho_best = 0;
 
 	// parameter list
-	public static int GRIDSIZE = 10000;
+	public static int GRIDSIZE = 160000;
 	public static double[] M; // [grid]
 	public static double[] W; // [grid]
 	public static double[] GAMMA; //[grid]
 	public static double[] LAMBDA; //[grid]
 
-	public static int GRIDCON = 800;
-	public static double[] K; // [grid]
-	public static double[] A; // [grid]
-	public static double[] B; // [grid]
+	public static int GRIDCON = 180000;
+	public static double[] CON_K; // [grid]
+	public static double[] CON_M; //[grid]
+	public static double[] CON_H; // [grid]
+	public static double[] CON_W; // [grid]
 
 	// grid of difficulty
 	public static int RHOSIZE = 20;
@@ -110,7 +111,7 @@ public class CstPsychometric {
 		initBinPrior();
 	}
 	public static void initCon() {
-		GRIDCON = getConShape(0) * getConShape(1) * getConShape(2);
+		GRIDCON = getConShape(0) * getConShape(1) * getConShape(2) * getConShape(3);
 		initConParam();
 		initConL();
 		initConP(); // CDF
@@ -229,7 +230,7 @@ public class CstPsychometric {
 		JsonArray param_max = CacModVariables.Psy_con_param_max;
 		JsonArray param_step = CacModVariables.Psy_con_param_step;
 		
-		for (int i=0; i<3; i++) {
+		for (int i=0; i<4; i++) {
 			double P[] = new double[getConShape(i)];
 			double p_min = param_min.get(i).getAsDouble();
 			double p_max = param_max.get(i).getAsDouble();
@@ -238,11 +239,13 @@ public class CstPsychometric {
 				P[k] = Math.round((p_min + k*p_step)*1000) / 1000.0;
 			}
 			if (i==0) {
-				K = P.clone();
+				CON_K = P.clone();
 			} else if (i==1) {
-				A = P.clone();
+				CON_M = P.clone();
 			} else if (i==2) {
-				B = P.clone();
+				CON_H = P.clone();
+			} else if (i==3) {
+				CON_W = P.clone();
 			}
 		}
 	}
@@ -274,13 +277,14 @@ public class CstPsychometric {
 	public static void initConP() {
 		probability_con = new double[RHOSIZE][GRIDCON];
 		double P = 0;
-		int[] IDX = new int[3];
+		int[] IDX = new int[4];
 		for (int k=0; k<GRIDCON; k++) {
 			IDX[0] = reshapeConIndex(k, 0);
 			IDX[1] = reshapeConIndex(k, 1);
 			IDX[2] = reshapeConIndex(k, 2);
+			IDX[3] = reshapeConIndex(k, 3);
 			for (int r=0; r<RHOSIZE; r++) {
-				P = calPolyExpPSI(RHO[r], K[IDX[0]], A[IDX[1]], B[IDX[2]]);
+				P = calPolyExpPSI(RHO[r], CON_K[IDX[0]], CON_M[IDX[1]], CON_H[IDX[2]], CON_W[IDX[3]]);
 				probability_con[r][k] = P;
 			}
 		}
@@ -289,18 +293,19 @@ public class CstPsychometric {
 		X_coef = new double[RHOSIZE][GRIDCON];
 		double coef = 0;
 		double rho_hat = 0;
-		int[] IDX = new int[3];
+		int[] IDX = new int[4];
 		for (int k=0; k<GRIDCON; k++) {
 			IDX[0] = reshapeConIndex(k, 0);
 			IDX[1] = reshapeConIndex(k, 1);
 			IDX[2] = reshapeConIndex(k, 2);
+			IDX[3] = reshapeConIndex(k, 3);
 			for (int r=0; r<RHOSIZE; r++) {
 				if (task_type == 0) {
 					rho_hat = 1/RHO[r];
 				} else if (task_type == 1) {
 					rho_hat = RHO[r];
 				}
-				coef = calXcoef(rho_hat, K[IDX[0]], A[IDX[1]], B[IDX[2]]);
+				coef = calXcoef(rho_hat, CON_K[IDX[0]], CON_M[IDX[1]], CON_H[IDX[2]], CON_W[IDX[3]]);
 				X_coef[r][k] = coef;
 			}
 		}
@@ -334,16 +339,19 @@ public class CstPsychometric {
 		// json get
 		JsonArray param_prior = CacModVariables.Psy_con_param_prior;
 		int pk = param_prior.get(0).getAsInt();
-		int pa = param_prior.get(1).getAsInt();
-		int pb = param_prior.get(2).getAsInt();
+		int pm = param_prior.get(1).getAsInt();
+		int ph = param_prior.get(2).getAsInt();
+		int pw = param_prior.get(3).getAsInt();
 		
 		// 1/2 * e^(-(a^2+b^2+...)^2/4) + 1/2
 		double D_sq = 0;
 		for (int sk=0; sk<getConShape(0); sk++) {
-			for (int sa=0; sa<getConShape(1); sa++) {
-				for (int sb=0; sb<getConShape(2); sb++) {
-					D_sq = Math.pow(sk-pk, 2) + Math.pow(sa-pa, 2) + Math.pow(sb-pb, 2);
-					likelihood_con[flattenConIndex(sk, sa, sb)] = Math.log(0.5 + 0.5*Math.exp(-D_sq/4));
+			for (int sm=0; sm<getConShape(1); sm++) {
+				for (int sh=0; sh<getConShape(2); sh++) {
+					for (int sw=0; sw<getConShape(3); sw++) {
+						D_sq = Math.pow(sk-pk, 2) + Math.pow(sm-pm, 2) + Math.pow(sh-ph, 2) + Math.pow(sw-pw, 2);
+						likelihood_con[flattenConIndex(sk, sm, sh, sw)] = Math.log(0.5 + 0.5*Math.exp(-D_sq/4));
+					}
 				}
 			}
 		}
@@ -427,7 +435,7 @@ public class CstPsychometric {
 			e.printStackTrace();
 		}
 		
-		obj_task = obj_cac.get((CacModVariables.Psy_task + "_" + CacModVariables.Psy_method + "_" + CacModVariables.Psy_function)).getAsJsonObject();
+		obj_task = obj_cac.get((CacModVariables.Psy_task)).getAsJsonObject();
 		obj_final = obj_task.get("final").getAsJsonObject();
 
 		if (method_bin) {
@@ -461,7 +469,7 @@ public class CstPsychometric {
 		}
 		return gamma + (1-gamma-lambda)*F;
 	}
-	public static double calPolyExpPSI(double rho, double k, double a, double b) {
+	public static double calPolyExpPSI(double rho, double k, double m, double h, double w) {
 		// rho is original rho
 		double PSI = 0;
 		double rho_hat = 0;
@@ -473,7 +481,7 @@ public class CstPsychometric {
 		} else if (task_type == 1) { // chased
 			rho_hat = rho;
 		}
-		X = calX(T, rho_hat, k, a, b);
+		X = calX(T, rho_hat, k, m, h, w);
 		for (int i=0; i<(int)k; i++) {
 			series += (Math.pow(X,i)/factorial(i));
 		}
@@ -490,24 +498,32 @@ public class CstPsychometric {
 		}
 		return PSI;
 	}
-	public static double calX(double t, double rho_hat, double k, double a, double b) {
+	public static double calX(double t, double rho_hat, double k, double m, double h, double w) {
 		// x = kt/mu
 		double x = 0;
-		x = k*t*((b/10.0)*rho_hat - (a/15.0));
+		x = (k*t)/calMu(rho_hat, k, h, w);
 		return x;
 	}
-	public static double calXcoef(double rho_hat, double k, double a, double b) {
+	public static double calXcoef(double rho_hat, double k, double m, double h, double w) {
 		// x = kt/mu
 		// calculate k/mu
 		double x_coef = 0;
-		x_coef = ((b*k*rho_hat)/10.0) - ((a*k)/15);
+		x_coef = k/calMu(rho_hat, k, h, w);
 		return x_coef;
 	}
 	public static double funcLogistic(double rho, double m, double w) {
 		double y = 1 / (1 + Math.pow(9, (rho-m)/w));
 		return y;
 	}
-	
+	public static double calMu(double rho_hat, double k, double m, double h, double w) {
+		double mu = 0;
+		if (rho_hat >= (h-w)+(w/(10.0-m))) {
+			mu = T*(m+(1.0/(1+((rho_hat-h)/w))));
+		} else {
+			mu = 10.0*T;
+		}
+		return mu;
+	}
 	
 	// Index rearrange
 	public static int getRhoIndex(double rho) {
@@ -527,11 +543,12 @@ public class CstPsychometric {
 		int GD = getBinShape(3);
 		return sm*GB*GC*GD + sw*GC*GD + sgamma*GD + slambda;
 	}
-	public static int flattenConIndex(int sk, int sa, int sb) {
+	public static int flattenConIndex(int sk, int sm, int sh, int sw) {
 		int GA = getConShape(0);
 		int GB = getConShape(1);
 		int GC = getConShape(2);
-		return sk*GB*GC + sa*GC + sb;
+		int GD = getConShape(3);
+		return sk*GB*GC*GD + sm*GC*GD + sh*GD + sw;
 	}
 	
 	public static int reshapeIndex(int sgrid, int idx_param) {
@@ -556,12 +573,15 @@ public class CstPsychometric {
 		int GA = getConShape(0);
 		int GB = getConShape(1);
 		int GC = getConShape(2);
-		if (idx_param == 2) { // b
-			idx = sgrid % GC;
-		} else if (idx_param == 1) { // a
-			idx = (sgrid / GC) % GB;
+		int GD = getConShape(3);
+		if (idx_param == 3) { // w
+			idx = sgrid % GD;
+		} else if (idx_param == 2) { // h
+			idx = (sgrid / GD) % GC;
+		} else if (idx_param == 1) { // m
+			idx = ((sgrid / GD) / GC) % GB;
 		} else if (idx_param == 0) { // k
-			idx = (sgrid / GC) / GB;
+			idx = ((sgrid / GD) / GC) / GB;
 		}
 		return idx;
 	}
@@ -874,9 +894,10 @@ public class CstPsychometric {
 	public static JsonArray getConBestParam() {
 		int grid_best = argmax(likelihood_con);
 		int k_best = reshapeConIndex(grid_best, 0);
-		int a_best = reshapeConIndex(grid_best, 0);
-		int b_best = reshapeConIndex(grid_best, 0);
-		int[] param_best = {k_best, a_best, b_best};
+		int m_best = reshapeConIndex(grid_best, 1);
+		int h_best = reshapeConIndex(grid_best, 2);
+		int w_best = reshapeConIndex(grid_best, 3);
+		int[] param_best = {k_best, m_best, h_best, w_best};
 		
 		Gson gson = new Gson();
 		JsonArray theta = gson.toJsonTree(param_best).getAsJsonArray();
