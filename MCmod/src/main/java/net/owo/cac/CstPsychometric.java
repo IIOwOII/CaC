@@ -467,7 +467,13 @@ public class CstPsychometric {
 		if (func_type == 0) { // Logistic
 			F = funcLogistic(rho, m, w);
 		}
-		return gamma + (1-gamma-lambda)*F;
+		PSI = gamma + (1-gamma-lambda)*F;
+		if (PSI < PMIN) {
+			PSI = PMIN;
+		} else if (PSI > PMAX) {
+			PSI = PMAX;
+		}
+		return PSI;
 	}
 	public static double calPolyExpPSI(double rho, double k, double m, double h, double w) {
 		// rho is original rho
