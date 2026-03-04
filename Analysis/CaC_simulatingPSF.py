@@ -1,11 +1,106 @@
 #%% Library
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 import json
 import itertools
 import math
-import copy
+
+
+#%% final variables
+TASK = 0
+T = 30
+TPS = 20
+P_MIN = 1.0E-12
+P_MAX = 1 - 1.0E-12
+
+
+#%% plotting
+# plot util
+def plot_setting(xlabel, ylabel, xlim=[0.78,1.2], ylim=[-0.02,1.02], yticks=[0,0.5,1], yticklabels=[0,0.5,1]):
+    # figure setting
+    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
+    for side in ['right', 'top', 'bottom']:
+        ax.spines[side].set_visible(False)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.set_xlim(xlim)
+    ax.set_ylim(ylim)
+    ax.set_yticks(yticks)
+    ax.set_yticklabels(yticklabels)
+    
+    # figure design
+    ax.axhline(0, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
+    ax.axhline(0.5, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
+    ax.axhline(1, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
+    return fig, ax
+
+
+# Difficulty - Win rate
+def plot_rho_p(rho, wl):     
+    # data sort
+    data = np.vstack((rho, wl))
+    sorted_idx = np.argsort(data)
+    sorted_data = data[:, sorted_idx[0]]
+    
+    # duple remove
+    c_rho = np.unique(rho)
+    c_p = np.array([np.mean(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
+    
+    # plot
+    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)',
+                           ylabel=r'$P$'+' (Win Rate)')
+    ax.scatter(data[0], data[1], s=1, color='gray', alpha=0.2, zorder=0)
+    ax.scatter(c_rho, c_p, s=1, color='blue', zorder=1)
+    
+    # fitting
+    # popt, pcov = curve_fit(func_logistic, c_x, c_y, p0=[1,0.04,0,0], 
+    #                         bounds=([0.9,0.005,0,0],[1.1,0.1,0.1,0.1]), maxfev=20000)
+    # PSI_rho_p = func_logistic(c_x, *popt)
+    
+    # ax.plot(c_x, PSI_rho_p, color='green', zorder=2)
+    
+    # return popt, pcov
+    
+
+# Difficulty - time
+def plot_rho_t(rho, t):
+    # data normalize (T=30)
+    t = t/T
+    
+    # data sort
+    data = np.vstack((rho, t))
+    sorted_idx = np.argsort(data)
+    sorted_data = data[:, sorted_idx[0]]
+    
+    # duple remove
+    c_rho = np.unique(rho)
+    c_t = np.array([np.mean(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
+    
+    # figure setting
+    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)',
+                           ylabel=r'$t$'+' (Trial Time)',
+                           yticklabels=[0,15,30])
+    
+    # plot
+    ax.scatter(rho, t, s=1, color='k', alpha=0.2, zorder=0)
+    ax.scatter(c_rho, c_t, s=1, color='blue', zorder=1)
+    
+
+# trial - NIG
+def plot_trial_nig(nig):
+    # data
+    c_n = np.arange(nig.shape[0])
+    c_nig = nig
+    
+    # figure setting
+    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)',
+                           ylabel=r'$NIG$'+' (Normalized information gain)')
+    
+    # plot
+    ax.plot(c_n, c_nig, color='blue', zorder=1)
+    
 
 #%% Functions
 def reshape_index(sgrid, idx_param, method):
@@ -54,15 +149,18 @@ def cal_Polyexp_PSI(rho_hat, theta):
     k = theta[:,0].astype(int)
     
     # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
-    X_T = X_COEF * T
+    X_T = X_COEF * T # [diff][grid]
     k_max = max(k)
     K_arange = np.tile(np.arange(k_max), reps=[theta.shape[0], 1]).T
     K_mask = K_arange < k
     vec_fact = np.vectorize(math.factorial)
     K_fact = 1/vec_fact(K_arange)
-    SERIES = np.sum((X_T**K_arange)*(K_fact*K_mask), axis=0)
+    
+    S_T = np.zeros((rho_hat.shape[0], theta.shape[0]))
+    for i, X in enumerate(X_T):
+        S_T[i] = np.sum((X**K_arange)*(K_fact*K_mask), axis=0)
 
-    P_hit = 1 - np.exp(-X_T)*SERIES
+    P_hit = 1 - np.exp(-X_T)*S_T
     P_hit[P_hit<P_MIN] = P_MIN
     P_hit[P_hit>P_MAX] = P_MAX
     
@@ -72,6 +170,16 @@ def cal_Polyexp_PSI(rho_hat, theta):
         PSI = 1-P_hit
     return PSI
 
+
+def cal_Polyexp_L(L, rho_idx, t, theta):
+    k = theta[:,0].astype(int)
+    X = X_COEF[rho_idx] * t # [grid]
+    vec_fact = np.vectorize(math.factorial)
+    
+    L_update = L + k*np.log(X) - X - np.log(t) - np.log(vec_fact(k-1))
+    L_update = norm_L(L_update)
+    return L_update
+    
 
 def cal_Mu(rho_hat, theta):
     # theta = [k, m, h, w]
@@ -91,15 +199,38 @@ def cal_X_coef(theta):
     k = theta[:,0]
     x_coef = k/MU
     return x_coef
+    
+
+def cal_ExP(P, L):
+    ExP = np.sum(P * np.exp(L), axis=1)
+    return ExP
 
 
-#%% Param load
-TASK = 0
-T = 30
-P_MIN = 1.0E-12
-P_MAX = 1 - 1.0E-12
+def cal_ExL(P, L, P_ex):
+    P_ex = P_ex.reshape(-1,1)
+    ExL = np.array([L+np.log(P)-np.log(P_ex), L+np.log(1-P)-np.log(1-P_ex)])
+    return ExL
 
+
+def cal_ExH(L_ex):
+    ExH = -np.sum(L_ex * np.exp(L_ex), axis=2)
+    return ExH
+
+
+def cal_EIG(H, P_ex, H_ex):
+    EIG = H - P_ex * H_ex[0] - (1-P_ex)*H_ex[1]
+    return EIG
+
+
+def cal_H(L):
+    H = -np.sum(L*np.exp(L))
+    return H
+
+
+#%% file load
+# Param load
 dir_comp = '../MCmod/run/cacutil/components'
+dir_beh = '../MCmod/run/cacutil/behaviors'
 
 with open(f'{dir_comp}/pool_psychometric.json', 'r') as f_psy:
     pool_psy = json.load(f_psy)
@@ -107,42 +238,58 @@ psy_bin = pool_psy['binary']['parameter']
 psy_con = pool_psy['continuous']['parameter']
 f_psy.close()
 
+# sim load
+with open(f'{dir_beh}/simulation/log_gameplay.json') as f_sim:
+    sim = json.load(f_sim)['cac']
+sim_type = np.array(sim['type'])
+sim_rho = np.array(sim['difficulty'])
+sim_wl = np.array(sim['winlose'])
+sim_t = np.array(sim['time'])
+sim_spawn = np.array(sim['spawnpoint_opponent'])
+f_sim.close()
 
-#%%
+# tick to sec
+sim_t = sim_t/TPS
+sim_t[sim_t>T] = T
+
+# filter type
+mask_task = (sim_type==TASK)
+sim_rho = sim_rho[mask_task]
+sim_wl = sim_wl[mask_task]
+sim_t = sim_t[mask_task]
+sim_spawn = sim_spawn[mask_task]
+sim_data_size = sim_rho.shape[0]
+sim_data_idx = np.random.permutation(np.arange(sim_data_size))
+
+# plotting raw data
+plot_rho_p(sim_rho, sim_wl)
+plot_rho_t(sim_rho, sim_t)
+
+
+#%% Initialize
 # Constant
-RHO = np.round(np.linspace(0.9, 1.09, 20), 2)
+RHO_SIZE = 40
+RHO = np.round(np.linspace(0.8, 1.19, RHO_SIZE), 2)
 if (TASK == 0):
     RHO_HAT = 1.0/RHO
 elif (TASK == 1):
     RHO_HAT = RHO
-RHO_SIZE = 20
+
 GRID_BIN = np.product(psy_bin['shape']) # flatten
 GRID_CON = np.product(psy_con['shape']) # flatten
-
+H_MAX_bin = np.log(GRID_BIN)
+H_MAX_con = np.log(GRID_CON)
 
 # Current
 P_bin = np.zeros((GRID_BIN, RHO_SIZE)) # [diff][grid]
 L_bin = np.zeros(GRID_BIN) # [grid]
-H_bin = 0
+H_bin = H_MAX_bin
 
 P_con = np.zeros((GRID_CON, RHO_SIZE)) # [diff][grid]
 L_con = np.zeros(GRID_CON) # [grid]
-H_con = 0
+H_con = H_MAX_con
 
 
-# Expected
-ExP_bin = np.zeros(RHO_SIZE) # [diff]
-ExL_bin = np.zeros((2, RHO_SIZE, GRID_BIN)) # [win/lose][diff][grid]
-ExH_bin = np.zeros((2, RHO_SIZE, GRID_BIN)) # [win/lose][diff]
-EIG_bin = np.zeros(RHO_SIZE) # [diff]
-
-ExP_con = np.zeros(RHO_SIZE) # [diff]
-ExL_con = np.zeros((2, RHO_SIZE, GRID_CON)) # [win/lose][diff][grid]
-ExH_con = np.zeros((2, RHO_SIZE, GRID_CON)) # [win/lose][diff]
-EIG_con = np.zeros(RHO_SIZE) # [diff]
-
-
-#%% Initialize
 # init Param
 theta_bin = []
 theta_con = []
@@ -173,40 +320,60 @@ P_bin = cal_PSI(RHO, theta_bin)
 P_con = cal_Polyexp_PSI(RHO_HAT, theta_con)
 
 
-
-    
 #%%
-def cal_ExP(P, L):
-    ExP = np.sum(P * np.exp(L), axis=1)
-    return ExP
+# history
+IG_bin = []
+IG_con = []
+rho_best_bin = []
+rho_best_con = []
 
-
-def cal_ExL(P, L, P_ex):
-    ExL = np.array([L+np.log(P)-np.log(P_ex), L+np.log(1-P)-np.log(1-P_ex)])
-    return ExL
-
-
-def cal_ExH(L_ex):
-    ExH = -np.sum(L_ex * np.exp(L_ex), axis=2)
-    return ExH
-
-
-def cal_EIG(H, P_ex, H_ex):
-    EIG = H - P_ex * H_ex[0] - (1-P_ex)*H_ex[1]
-    return EIG
-
-
-def cal_H(L):
-    H = -np.sum(L*np.exp(L))
-    return H
-
-
-def update_conL(L, rho_curr, winlose):
-    if (winlose == 1):
-        wl = 0
-    elif (winlose == 0):
-        wl = 1
-    if (TASK == 0 and winlose == 0) or (TASK == 1 and winlose == 1):
-        L_update = copy.deepcopy(ExL_con[wl][rho_curr])
+# simul fitting by sim data
+for trial_num in range(sim_data_size):
+    # update trial before
+    ExP_bin = cal_ExP(P_bin, L_bin)
+    ExL_bin = cal_ExL(P_bin, L_bin, ExP_bin)
+    ExH_bin = cal_ExH(ExL_bin)
+    EIG_bin = cal_EIG(H_bin, ExP_bin, ExH_bin)
+    rho_best_bin.append(RHO[np.argmax(EIG_bin)])
+    ExP_con = cal_ExP(P_con, L_con)
+    ExL_con = cal_ExL(P_con, L_con, ExP_con)
+    ExH_con = cal_ExH(ExL_con)
+    EIG_con = cal_EIG(H_con, ExP_con, ExH_con)
+    rho_best_con.append(RHO[np.argmax(EIG_con)])
+    
+    # sampling data (trial result)
+    sam_idx = sim_data_idx[trial_num]
+    sam_rho = sim_rho[sam_idx]
+    sam_wl = sim_wl[sam_idx]
+    sam_t = sim_t[sam_idx]
+    
+    # update trial after
+    if (sam_wl == 0):
+        wl_idx = 1
+    elif (sam_wl == 1):
+        wl_idx = 0
+    rho_idx = np.where(RHO==sam_rho)[0][0]
+    
+    IG_bin.append(H_bin - ExH_bin[wl_idx][rho_idx])
+    L_bin = np.copy(ExL_bin[wl_idx][rho_idx])
+    H_bin = ExH_bin[wl_idx][rho_idx]
+    
+    L_con_past = np.copy(L_con)
+    H_con_past = H_con
+    if ((TASK == 0 and sam_wl == 0) or (TASK == 1 and sam_wl == 1)):
+        L_con = np.copy(ExL_con[wl_idx][rho_idx])
+        H_con = ExH_con[wl_idx][rho_idx]
     else:
-        L_update = L + reshape_index()
+        L_con = cal_Polyexp_L(L_con_past, rho_idx, sam_t, theta_con)
+        H_con = cal_H(L_con)
+    IG_con.append(H_con_past - H_con)
+    
+    print(f'---trial {trial_num}---')
+    print(f'difficulty: {sam_rho}')
+    print(f'time: {sam_t}')
+    print(f'winlose: {sam_wl}')
+
+
+# Normalized information gain
+NIG_bin = np.array(IG_bin)/H_MAX_bin
+NIG_con = np.array(IG_con)/H_MAX_con

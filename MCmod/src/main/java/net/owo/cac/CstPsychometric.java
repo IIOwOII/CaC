@@ -29,11 +29,11 @@ public class CstPsychometric {
 	// Current
 	public static double[][] probability_bin; // [diff][grid]
 	public static double[] likelihood_bin; // [grid]
-	public static double entropy_bin = 0;
+	public static double entropy_bin = math.log(GRIDSIZE);
 	
 	public static double[][] probability_con; // [diff][grid]
 	public static double[] likelihood_con; // [grid]
-	public static double entropy_con = 0; // PSI
+	public static double entropy_con = math.log(GRIDCON); // PSI
 	
 
 	// Expected
