@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from mpl_toolkits.mplot3d import Axes3D
 
 import json
 import itertools
@@ -18,17 +19,17 @@ P_MAX = 1 - 1.0E-12
 
 #%% plotting
 # plot util
-def plot_setting(xlabel, ylabel, xlim=[0.78,1.2], ylim=[-0.02,1.02], yticks=[0,0.5,1], yticklabels=[0,0.5,1]):
+def plot_setting(xlabel, ylabel, xlim=None, ylim=None, yticks=None, yticklabels=None):
     # figure setting
     fig, ax = plt.subplots(figsize=(4,3), dpi=300)
     for side in ['right', 'top', 'bottom']:
         ax.spines[side].set_visible(False)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
-    ax.set_xlim(xlim)
-    ax.set_ylim(ylim)
-    ax.set_yticks(yticks)
-    ax.set_yticklabels(yticklabels)
+    if (xlim != None): ax.set_xlim(xlim)
+    if (ylim != None): ax.set_ylim(ylim)
+    if (yticks != None): ax.set_yticks(yticks)
+    if (yticklabels != None): ax.set_yticklabels(yticklabels)
     
     # figure design
     ax.axhline(0, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
@@ -38,7 +39,7 @@ def plot_setting(xlabel, ylabel, xlim=[0.78,1.2], ylim=[-0.02,1.02], yticks=[0,0
 
 
 # Difficulty - Win rate
-def plot_rho_p(rho, wl):     
+def plot_rho_p(rho, wl, rho_fit, PSI_fit):
     # data sort
     data = np.vstack((rho, wl))
     sorted_idx = np.argsort(data)
@@ -50,27 +51,21 @@ def plot_rho_p(rho, wl):
     
     # plot
     fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)',
-                           ylabel=r'$P$'+' (Win Rate)')
+                           ylabel=r'$\Psi$'+' (Win Rate)',
+                           xlim=[0.78,1.2], ylim=[-0.02,1.02],
+                           yticks=[0,0.5,1], yticklabels=[0,0.5,1])
     ax.scatter(data[0], data[1], s=1, color='gray', alpha=0.2, zorder=0)
     ax.scatter(c_rho, c_p, s=1, color='blue', zorder=1)
-    
-    # fitting
-    # popt, pcov = curve_fit(func_logistic, c_x, c_y, p0=[1,0.04,0,0], 
-    #                         bounds=([0.9,0.005,0,0],[1.1,0.1,0.1,0.1]), maxfev=20000)
-    # PSI_rho_p = func_logistic(c_x, *popt)
-    
-    # ax.plot(c_x, PSI_rho_p, color='green', zorder=2)
-    
-    # return popt, pcov
+    ax.plot(rho_fit, PSI_fit, linewidth=1, color='green', zorder=2)
     
 
 # Difficulty - time
-def plot_rho_t(rho, t):
+def plot_rho_t(rho, t_data, rho_fit, mu_fit):
     # data normalize (T=30)
-    t = t/T
+    t_data = t_data/T
     
     # data sort
-    data = np.vstack((rho, t))
+    data = np.vstack((rho, t_data))
     sorted_idx = np.argsort(data)
     sorted_data = data[:, sorted_idx[0]]
     
@@ -81,12 +76,14 @@ def plot_rho_t(rho, t):
     # figure setting
     fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)',
                            ylabel=r'$t$'+' (Trial Time)',
-                           yticklabels=[0,15,30])
+                           xlim=[0.78,1.2], ylim=[-0.02,1.7],
+                           yticks=[0,0.5,1,1.5], yticklabels=[0,15,30,45])
     
     # plot
-    ax.scatter(rho, t, s=1, color='k', alpha=0.2, zorder=0)
+    ax.scatter(rho, t_data, s=1, color='k', alpha=0.2, zorder=0)
     ax.scatter(c_rho, c_t, s=1, color='blue', zorder=1)
-    
+    ax.plot(rho_fit, mu_fit/T, linewidth=1, color='green', zorder=2)
+
 
 # trial - NIG
 def plot_trial_nig(nig):
@@ -100,7 +97,51 @@ def plot_trial_nig(nig):
     
     # plot
     ax.plot(c_n, c_nig, color='blue', zorder=1)
+
+
+def plot_theta_L(L, theta_shape, theta_prior, theta_name=None):
+    # caution: theta length is 4.
+    # theta info
+    theta_shape = np.array(theta_shape)
+    theta_prior = np.array(theta_prior)
+    theta_num = theta_shape.shape[0]
+    theta_min = -theta_prior
+    theta_max = theta_shape - theta_prior
     
+    # Data
+    c_theta = []
+    c_L = []
+    L = L.reshape(theta_shape)
+    L_axis = np.arange(theta_num)
+    for i in range(theta_num):
+        c_theta.append(np.arange(theta_min[i], theta_max[i]))
+        sum_axis = tuple(np.delete(L_axis, i))
+        c_L.append(np.log(np.sum(np.exp(L), axis=sum_axis)))
+    
+    # figure setting
+    fig, ax = plot_setting(xlabel=r'$\Delta\theta$'+' (Parameter distance)',
+                           ylabel=r'$L$'+' (Normalized log likelihood)')
+    
+    # plot
+    for j in range(theta_num):
+        line = ax.plot(c_theta[j], c_L[j])
+        if (theta_name != None):
+            line[0].set_label(theta_name[j])
+    if (theta_name != None): plt.legend()
+    
+        
+def plot_trial_H(H):
+    # data
+    c_n = np.arange(H.shape[0])
+    c_h = H
+    
+    # figure setting
+    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)',
+                           ylabel=r'$H$'+' (Entropy)')
+    
+    # plot
+    ax.plot(c_n, c_h, color='blue', zorder=1)
+
 
 #%% Functions
 def reshape_index(sgrid, idx_param, method):
@@ -129,6 +170,11 @@ def norm_L(L_hat):
     return L
 
 
+def norm_H(H_hat, gridsize):
+    H = H_hat/np.log(gridsize)
+    return H
+
+
 def cal_PSI(rho, theta):
     # theta = [m, w, gamma, lambda]
     rho = np.repeat(rho.reshape(-1,1), theta.shape[0], axis=-1)
@@ -143,6 +189,22 @@ def cal_PSI(rho, theta):
     return P
 
 
+# rho - t
+def cal_estimated_time(rho_hat, theta_star):
+    k = int(theta_star[0])
+    theta_star = np.expand_dims(theta_star, axis=0)
+    mu = cal_Mu(rho_hat, theta_star).T[0]
+    
+    # x^k * e^(-x) / t * (k-1)!
+    c_t = np.expand_dims(np.arange(1, 51), axis=1)
+    x = (k/mu)*c_t
+    
+    # t-rho
+    psi = ((x**k) * np.exp(-x)) / (c_t * math.factorial(k-1))
+    return psi
+
+
+# rho - P
 def cal_Polyexp_PSI(rho_hat, theta):
     # theta = [k, m, h, w]
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
@@ -261,10 +323,6 @@ sim_spawn = sim_spawn[mask_task]
 sim_data_size = sim_rho.shape[0]
 sim_data_idx = np.random.permutation(np.arange(sim_data_size))
 
-# plotting raw data
-plot_rho_p(sim_rho, sim_wl)
-plot_rho_t(sim_rho, sim_t)
-
 
 #%% Initialize
 # Constant
@@ -322,10 +380,14 @@ P_con = cal_Polyexp_PSI(RHO_HAT, theta_con)
 
 #%%
 # history
+Hs_bin = []
+Hs_con = []
 IG_bin = []
 IG_con = []
 rho_best_bin = []
 rho_best_con = []
+thetas_best_bin = []
+thetas_best_con = []
 
 # simul fitting by sim data
 for trial_num in range(sim_data_size):
@@ -340,6 +402,12 @@ for trial_num in range(sim_data_size):
     ExH_con = cal_ExH(ExL_con)
     EIG_con = cal_EIG(H_con, ExP_con, ExH_con)
     rho_best_con.append(RHO[np.argmax(EIG_con)])
+    
+    # log save
+    Hs_bin.append(H_bin)
+    Hs_con.append(H_con)
+    thetas_best_bin.append(theta_bin[np.argmax(L_bin)])
+    thetas_best_con.append(theta_con[np.argmax(L_con)])
     
     # sampling data (trial result)
     sam_idx = sim_data_idx[trial_num]
@@ -377,3 +445,17 @@ for trial_num in range(sim_data_size):
 # Normalized information gain
 NIG_bin = np.array(IG_bin)/H_MAX_bin
 NIG_con = np.array(IG_con)/H_MAX_con
+
+theta_star_bin = theta_bin[np.argmax(L_bin)]
+theta_star_con = theta_con[np.argmax(L_con)]
+
+
+# plotting raw data and fit data
+PSI_fit_bin = P_bin[:, np.argmax(L_bin)]
+PSI_fit_con = P_con[:, np.argmax(L_con)]
+MU_fit_con = MU[:, np.argmax(L_con)]
+
+
+plot_rho_p(sim_rho, sim_wl, RHO, PSI_fit_bin)
+plot_rho_p(sim_rho, sim_wl, RHO, PSI_fit_con)
+plot_rho_t(sim_rho, sim_t, RHO, MU_fit_con)
