@@ -34,7 +34,7 @@ public class CmdTestCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					PrdTestProcedure.execute(arguments);
+					PrdTestProcedure.execute(arguments, entity);
 					return 0;
 				})));
 	}

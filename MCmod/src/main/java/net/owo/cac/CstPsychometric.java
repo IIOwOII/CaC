@@ -14,8 +14,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.owo.cac.network.CacModVariables;
-import org.spongepowered.asm.mixin.injection.selectors.ISelectorContext;
-import org.apache.commons.io.IOIndexedException;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
@@ -25,16 +23,34 @@ public class CstPsychometric {
 	public static int func_type = -1;
 	public static boolean method_bin = false;
 	public static boolean method_con = false;
-	
+
+	// parameter list
+	public static int GRIDSIZE = 160000;
+	public static double[] M; // [grid]
+	public static double[] W; // [grid]
+	public static double[] GAMMA; //[grid]
+	public static double[] LAMBDA; //[grid]
+
+	public static int GRIDCON = 160000;
+	public static double[] CON_K; // [grid]
+	public static double[] CON_M; //[grid]
+	public static double[] CON_H; // [grid]
+	public static double[] CON_W; // [grid]
+
+	// grid of difficulty
+	public static int RHOSIZE = 20;
+	public static double[] RHO; // [diff]
+	public static double T = 30; // terminate time
+	public static double[][] X_coef; // [diff][grid]
+
 	// Current
 	public static double[][] probability_bin; // [diff][grid]
 	public static double[] likelihood_bin; // [grid]
-	public static double entropy_bin = math.log(GRIDSIZE);
+	public static double entropy_bin = Math.log(GRIDSIZE); // PSI
 	
 	public static double[][] probability_con; // [diff][grid]
 	public static double[] likelihood_con; // [grid]
-	public static double entropy_con = math.log(GRIDCON); // PSI
-	
+	public static double entropy_con = Math.log(GRIDCON); // PSI
 
 	// Expected
 	public static double[] expected_P_bin; // [diff]
@@ -51,25 +67,6 @@ public class CstPsychometric {
 	public static double rho_best_con = 0;
 	public static double rho_best = 0;
 
-	// parameter list
-	public static int GRIDSIZE = 160000;
-	public static double[] M; // [grid]
-	public static double[] W; // [grid]
-	public static double[] GAMMA; //[grid]
-	public static double[] LAMBDA; //[grid]
-
-	public static int GRIDCON = 180000;
-	public static double[] CON_K; // [grid]
-	public static double[] CON_M; //[grid]
-	public static double[] CON_H; // [grid]
-	public static double[] CON_W; // [grid]
-
-	// grid of difficulty
-	public static int RHOSIZE = 20;
-	public static double[] RHO; // [diff]
-	public static double T = 30; // terminate time
-	public static double[][] X_coef; // [diff][grid]
-
 	// Terminal Rule
 	public static double[] IG_bin_last = new double[3];
 	public static double[] IG_con_last = new double[3];
@@ -85,23 +82,20 @@ public class CstPsychometric {
 	// usage
 	// initialize
 	public static void initPsy() {
+		TRIAL_MAX = 10;
 		initRho();
 		if (method_type == 0) {
 			method_bin = true;
-			method_con = false;
+			method_con = true;
 		} else if (method_type == 1) {
+			method_bin = true;
+			method_con = false;
+		} else if (method_type == 2) {
 			method_bin = false;
 			method_con = true;
-		} else if (method_type == 2) {
-			method_bin = true;
-			method_con = true;
 		}
-		if (method_bin) {
-			initBin();
-		}
-		if (method_con) {
-			initCon();
-		}
+		if (method_bin) initBin();
+		if (method_con) initCon();
 	}
 	public static void initBin() {
 		GRIDSIZE = getBinShape(0) * getBinShape(1) * getBinShape(2) * getBinShape(3);
@@ -141,7 +135,7 @@ public class CstPsychometric {
 		} else if (!method_bin && method_con) {
 			rho_best = rho_best_con;
 		} else if (method_bin && method_con) { //both
-			rho_best = rho_best_bin; // temp
+			rho_best = rho_best_con; // temp
 		}
 		CacModVariables.Dat_difficulty = rho_best;
 	}
@@ -164,7 +158,7 @@ public class CstPsychometric {
 		}
 		if (method_con) {
 			H_past = entropy_con;
-			likelihood_con = updateConLikelihood(likelihood_con);
+			likelihood_con = updateConLikelihood(likelihood_con.clone());
 			entropy_con = updateConEntropy(likelihood_con);
 			updateConIG(H_past, entropy_con);
 		}
@@ -174,6 +168,8 @@ public class CstPsychometric {
 	
 	// Terminate
 	public static void checkTerminate() {
+		CacModVariables.Exp_trial_total = TRIAL_MAX;
+		/*
 		boolean isend = true;
 		for (int i=0; i<IG_last.length; i++) {
 			if ((IG_last[i] >= IG_THRESHOLD) || (IG_last[i] == 0)) {
@@ -185,6 +181,7 @@ public class CstPsychometric {
 		} else {
 			CacModVariables.Exp_trial_total = TRIAL_MAX;
 		}
+		*/
 	}
 
 
@@ -196,7 +193,7 @@ public class CstPsychometric {
 		double RHO_min = 0.90;
 		double RHO_step = 0.01;
 		for (int r=0; r<RHOSIZE; r++) {
-			RHO[r] = Math.round((RHO_min + r*RHO_step)*1000) / 1000.0;
+			RHO[r] = Math.round((RHO_min + r*RHO_step)*100.0) / 100.0;
 		}
 	}
 
@@ -212,7 +209,7 @@ public class CstPsychometric {
 			double p_max = param_max.get(i).getAsDouble();
 			double p_step = param_step.get(i).getAsDouble();
 			for (int k=0; k<P.length; k++) {
-				P[k] = Math.round((p_min + k*p_step)*1000) / 1000.0;
+				P[k] = Math.round((p_min + k*p_step)*100.0) / 100.0;
 			}
 			if (i==0) {
 				M = P.clone();
@@ -390,7 +387,7 @@ public class CstPsychometric {
 			obj_method_bin.addProperty("entropy", entropy_bin);
 			obj_method_bin.add("EIGs", getEIGs());
 			obj_method_bin.add("param_best", getBestParam());
-			obj_method_bin.add("likelihood", getLikelihood());
+			//obj_method_bin.add("likelihood", getLikelihood());
 			obj_trial.add(("binary"), obj_method_bin);
 		}
 		if (method_con) {
@@ -398,7 +395,7 @@ public class CstPsychometric {
 			obj_method_con.addProperty("entropy", entropy_con);
 			obj_method_con.add("EIGs", getConEIGs());
 			obj_method_con.add("param_best", getConBestParam());
-			obj_method_con.add("likelihood", getConLikelihood());
+			//obj_method_con.add("likelihood", getConLikelihood());
 			obj_trial.add(("continuous"), obj_method_con);
 		}
 		
@@ -413,7 +410,6 @@ public class CstPsychometric {
 		}
 	}
 	public static void recFinal() {
-		Gson GS = new Gson();
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
 		JsonObject obj_task = new JsonObject();
@@ -429,7 +425,7 @@ public class CstPsychometric {
 				jsonstringbuilder.append(line);
 			}
 			bufferedReader.close();
-			obj_file = GS.fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
+			obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
 			obj_cac = obj_file.get("cac").getAsJsonObject();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -451,7 +447,7 @@ public class CstPsychometric {
 			obj_final.add(("continuous"), obj_method_con);
 		}
 		
-		Gson mainGSONBuilderVariable = new GsonBuilder().setPrettyPrinting().create();
+		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
 			fileWriter.write(mainGSONBuilderVariable.toJson(obj_file));
@@ -463,6 +459,7 @@ public class CstPsychometric {
 	
 	// Calculate the psychometric function (CDF)
 	public static double calPSI(int func_type, double rho, double m, double w, double gamma, double lambda) {
+		double PSI = 0;
 		double F = 0;
 		if (func_type == 0) { // Logistic
 			F = funcLogistic(rho, m, w);
@@ -507,14 +504,14 @@ public class CstPsychometric {
 	public static double calX(double t, double rho_hat, double k, double m, double h, double w) {
 		// x = kt/mu
 		double x = 0;
-		x = (k*t)/calMu(rho_hat, k, h, w);
+		x = (k*t)/calMu(rho_hat, k, m, h, w);
 		return x;
 	}
 	public static double calXcoef(double rho_hat, double k, double m, double h, double w) {
 		// x = kt/mu
 		// calculate k/mu
 		double x_coef = 0;
-		x_coef = k/calMu(rho_hat, k, h, w);
+		x_coef = k/calMu(rho_hat, k, m, h, w);
 		return x_coef;
 	}
 	public static double funcLogistic(double rho, double m, double w) {
@@ -534,6 +531,7 @@ public class CstPsychometric {
 	// Index rearrange
 	public static int getRhoIndex(double rho) {
 		int rho_id = -1;
+		rho = Math.round(rho*100.0)/100.0;
 		for (int r=0; r<RHOSIZE; r++) {
 			if (RHO[r] == rho) {
 				rho_id = r;
@@ -677,7 +675,8 @@ public class CstPsychometric {
 			for (int g=0; g<GRIDCON; g++) {
 				coef = X_coef[rho_curr][g];
 				x = coef * t;
-				k = K[reshapeConIndex(g, 0)];
+				k = CON_K[reshapeConIndex(g, 0)];
+				
 				L_update[g] = L[g] + k*Math.log(x) - x - Math.log(t) - Math.log((double)(factorial(k-1)));
 			}
 			L_update = normL(L_update.clone());
@@ -860,16 +859,55 @@ public class CstPsychometric {
 		}
 		return i_min;
 	}
-	public static int factorial(double m) {
+	public static long factorial(int n) {
+		// 20! < 2^63
+		long value = 1L;
+		if (n==0) return value; // 0!=1
+		for (int k=1; k<n+1; k++) {
+			value *= k;
+		}
+		return value;
+	}
+	public static long factorial(double m) {
+		// 20! < 2^63
 		int n = (int)m;
-		int value = 1;
-		if (n==0) return value;
+		long value = 1L;
+		if (n==0) return value; // 0!=1
 		for (int k=1; k<n+1; k++) {
 			value *= k;
 		}
 		return value;
 	}
 
+	// get rho given estimated win rate P_target.
+	public static int getEstimatedRho(double P_target){
+		int grid_best = argmax(likelihood_bin);
+		int rho_est_idx = 0;
+		double prob_diff = Math.abs(probability_bin[0][grid_best] - P_target);
+		double prob_diff_temp = 0;
+		for (int r=1; r<RHOSIZE; r++) {
+			prob_diff_temp = Math.abs(probability_bin[r][grid_best] - P_target);
+			if (prob_diff > prob_diff_temp) {
+				rho_est_idx = r;
+				prob_diff = prob_diff_temp;
+			}
+		}
+		return rho_est_idx;
+	}
+	public static int getConEstimatedRho(double P_target){
+		int grid_best = argmax(likelihood_con);
+		int rho_est_idx = 0;
+		double prob_diff = Math.abs(probability_con[0][grid_best] - P_target);
+		double prob_diff_temp = 0;
+		for (int r=1; r<RHOSIZE; r++) {
+			prob_diff_temp = Math.abs(probability_con[r][grid_best] - P_target);
+			if (prob_diff > prob_diff_temp) {
+				rho_est_idx = r;
+				prob_diff = prob_diff_temp;
+			}
+		}
+		return rho_est_idx;
+	}
 	
 	// transform the L (array) to jsonarray
 	// get L

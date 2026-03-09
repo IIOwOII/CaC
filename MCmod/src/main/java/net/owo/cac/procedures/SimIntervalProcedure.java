@@ -8,10 +8,10 @@ public class SimIntervalProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
+		CacModVariables.Exp_phase = 4;
 		EffRemoveMorphProcedure.execute(entity);
 		RecManageProcedure.execute();
 		CacModVariables.Exp_trial = CacModVariables.Exp_trial + 1;
-		CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (0.8 + Math.floor(CacModVariables.Exp_trial / 10) * 0.01)) / Math.pow(10, 2);
 		if (CacModVariables.Exp_trial >= CacModVariables.Exp_trial_total) {
 			TaskPostRunProcedure.execute();
 		}

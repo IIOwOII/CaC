@@ -46,7 +46,9 @@ public class FncManageDifficultyProcedure {
 					CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (CacModVariables.Dat_difficulty - 0.02)) / Math.pow(10, 2);
 				}
 			}
-		} else if ((session).equals("fitting")) {
+		} else if ((session).equals("simulation_chasing") || (session).equals("simulation_chased")) {
+			CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (0.8 + 0.4 * (CacModVariables.Exp_trial / CacModVariables.Exp_trial_total))) / Math.pow(10, 2);
+		} else if ((session).equals("fitting") || (session).equals("simulation_psf")) {
 			CacMod.LOGGER.info(CacModVariables.Dat_difficulty);
 		}
 	}

@@ -23,6 +23,6 @@ public class AiMovePseudoMouseProcedure {
 		vec_destination = (entity.position()).add(field_sum);
 		CacModVariables.Pos_player_destination = vec_destination;
 		if (entity instanceof Mob _entity)
-			_entity.getNavigation().moveTo((vec_destination.x()), (vec_destination.y()), (vec_destination.z()), 0.565685424949238);
+			_entity.getNavigation().moveTo((vec_destination.x()), (vec_destination.y()), (vec_destination.z()), 0.48989794855);
 	}
 }

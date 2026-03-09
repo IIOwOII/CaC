@@ -216,8 +216,8 @@ public class EntMeowcamEntity extends PathfinderMob implements GeoEntity {
 
 	@Override
 	public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-		data.add(new AnimationController<>(this, "movement", 4, this::movementPredicate));
-		data.add(new AnimationController<>(this, "procedure", 4, this::procedurePredicate));
+		data.add(new AnimationController<>(this, "movement", 2, this::movementPredicate));
+		data.add(new AnimationController<>(this, "procedure", 2, this::procedurePredicate));
 	}
 
 	@Override

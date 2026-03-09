@@ -9,6 +9,12 @@ import itertools
 import math
 
 
+#%% Color Map (MANIM)
+COLOR_BLUE_C = '#58C4DD'
+COLOR_GREEN_C = '#83C167'
+COLOR_YELLOW_C = '#F7D96F'
+
+
 #%% final variables
 TASK = 0
 T = 30
@@ -19,22 +25,34 @@ P_MAX = 1 - 1.0E-12
 
 #%% plotting
 # plot util
-def plot_setting(xlabel, ylabel, xlim=None, ylim=None, yticks=None, yticklabels=None):
+def plot_setting(**kwargs):
     # figure setting
     fig, ax = plt.subplots(figsize=(4,3), dpi=300)
     for side in ['right', 'top', 'bottom']:
         ax.spines[side].set_visible(False)
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
-    if (xlim != None): ax.set_xlim(xlim)
-    if (ylim != None): ax.set_ylim(ylim)
-    if (yticks != None): ax.set_yticks(yticks)
-    if (yticklabels != None): ax.set_yticklabels(yticklabels)
+    
+    # additional setting
+    if ('title' in kwargs): ax.set_title(kwargs['title'])
+    if ('xlabel' in kwargs): ax.set_xlabel(kwargs['xlabel'])
+    if ('ylabel' in kwargs): ax.set_ylabel(kwargs['ylabel'])
+    if ('xlim' in kwargs):
+        xlim = kwargs['xlim']
+        xrange = xlim[1] - xlim[0]
+        ax.set_xlim([xlim[0]-0.02*xrange, xlim[1]+0.02*xrange])
+    if ('ylim' in kwargs):
+        ylim = kwargs['ylim']
+        yrange = ylim[1] - ylim[0]
+        ax.set_ylim([ylim[0]-0.02*yrange, ylim[1]+0.02*yrange])
+    if ('xticks' in kwargs): ax.set_xticks(kwargs['xticks'])
+    if ('yticks' in kwargs): ax.set_yticks(kwargs['yticks'])
+    if ('xticklabels' in kwargs): ax.set_xticklabels(kwargs['xticklabels'])
+    if ('yticklabels' in kwargs): ax.set_yticklabels(kwargs['yticklabels'])
     
     # figure design
     ax.axhline(0, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
-    ax.axhline(0.5, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
-    ax.axhline(1, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
+    if ('yticks' in kwargs):
+        for ytick in kwargs['yticks']:
+            ax.axhline(ytick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
     return fig, ax
 
 
@@ -50,14 +68,15 @@ def plot_rho_p(rho, wl, rho_fit, PSI_fit):
     c_p = np.array([np.mean(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
     
     # plot
-    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)',
+    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
                            ylabel=r'$\Psi$'+' (Win Rate)',
-                           xlim=[0.78,1.2], ylim=[-0.02,1.02],
-                           yticks=[0,0.5,1], yticklabels=[0,0.5,1])
+                           xlim=[0.8, 1.2], ylim=[0, 1],
+                           yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1])
     ax.scatter(data[0], data[1], s=1, color='gray', alpha=0.2, zorder=0)
-    ax.scatter(c_rho, c_p, s=1, color='blue', zorder=1)
-    ax.plot(rho_fit, PSI_fit, linewidth=1, color='green', zorder=2)
-    
+    ax.scatter(c_rho, c_p, s=1, color=COLOR_BLUE_C, zorder=1)
+    ax.plot(rho_fit, PSI_fit, linewidth=1, color=COLOR_GREEN_C, zorder=2)
+    return fig, ax
+
 
 # Difficulty - time
 def plot_rho_t(rho, t_data, rho_fit, mu_fit):
@@ -74,15 +93,17 @@ def plot_rho_t(rho, t_data, rho_fit, mu_fit):
     c_t = np.array([np.mean(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
     
     # figure setting
-    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)',
+    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
                            ylabel=r'$t$'+' (Trial Time)',
-                           xlim=[0.78,1.2], ylim=[-0.02,1.7],
-                           yticks=[0,0.5,1,1.5], yticklabels=[0,15,30,45])
+                           xlim=[0.8, 1.2], ylim=[0.0, 1.67],
+                           yticks=[0, 0.5, 1, 1.5], yticklabels=[0, 15, 30, 45])
     
     # plot
+    ax.axhline(1, linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, zorder=-1)
     ax.scatter(rho, t_data, s=1, color='k', alpha=0.2, zorder=0)
-    ax.scatter(c_rho, c_t, s=1, color='blue', zorder=1)
-    ax.plot(rho_fit, mu_fit/T, linewidth=1, color='green', zorder=2)
+    ax.scatter(c_rho, c_t, s=1, color=COLOR_BLUE_C, zorder=1)
+    ax.plot(rho_fit, mu_fit/T, linewidth=1, color=COLOR_GREEN_C, zorder=2)
+    return fig, ax
 
 
 # trial - NIG
@@ -92,14 +113,51 @@ def plot_trial_nig(nig):
     c_nig = nig
     
     # figure setting
-    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)',
+    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', 
                            ylabel=r'$NIG$'+' (Normalized information gain)')
     
     # plot
-    ax.plot(c_n, c_nig, color='blue', zorder=1)
+    ax.plot(c_n, c_nig, color=COLOR_BLUE_C, zorder=1)
+    return fig, ax
 
 
-def plot_theta_L(L, theta_shape, theta_prior, theta_name=None):
+# trial - rho best
+def plot_trial_rho(sampled_rho):
+    # data
+    sampled_rho = np.array(sampled_rho)
+    c_n = np.arange(sampled_rho.shape[0])
+    c_rho = sampled_rho
+    
+    # figure setting
+    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', 
+                           ylabel=r'$\rho$'+' (Difficulty maximize IG)',
+                           xlim=[0, c_n.shape[0]], ylim=[0.8, 1.2],
+                           yticks=np.arange(0.8, 1.21, 0.1))
+    
+    # plot
+    ax.plot(c_n, c_rho, color=COLOR_BLUE_C, zorder=1)
+    return fig, ax
+    
+
+# trial - entropy
+def plot_trial_H(Hs):
+    # data
+    c_n = np.arange(Hs.shape[0])
+    c_h = Hs
+    h_max = np.log(160000) # temp
+    
+    # figure setting
+    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', ylabel=r'$H$'+' (Entropy)',
+                           xlim=[0, c_n.shape[0]], ylim=[0, h_max],
+                           yticks=np.arange(2, h_max, 2))
+    
+    # plot
+    ax.plot(c_n, c_h, color=COLOR_BLUE_C, zorder=1)
+    return fig, ax
+
+
+# parameter likelihood
+def plot_theta_L(L, theta_shape, theta_prior, theta_name):
     # caution: theta length is 4.
     # theta info
     theta_shape = np.array(theta_shape)
@@ -125,22 +183,9 @@ def plot_theta_L(L, theta_shape, theta_prior, theta_name=None):
     # plot
     for j in range(theta_num):
         line = ax.plot(c_theta[j], c_L[j])
-        if (theta_name != None):
-            line[0].set_label(theta_name[j])
-    if (theta_name != None): plt.legend()
-    
-        
-def plot_trial_H(H):
-    # data
-    c_n = np.arange(H.shape[0])
-    c_h = H
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)',
-                           ylabel=r'$H$'+' (Entropy)')
-    
-    # plot
-    ax.plot(c_n, c_h, color='blue', zorder=1)
+        line[0].set_label(theta_name[j])
+    plt.legend()
+    return fig, ax
 
 
 #%% Functions
@@ -191,7 +236,7 @@ def cal_PSI(rho, theta):
 
 # rho - t
 def cal_estimated_time(rho_hat, theta_star):
-    k = int(theta_star[0])
+    k = theta_star[0]
     theta_star = np.expand_dims(theta_star, axis=0)
     mu = cal_Mu(rho_hat, theta_star).T[0]
     
@@ -200,7 +245,7 @@ def cal_estimated_time(rho_hat, theta_star):
     x = (k/mu)*c_t
     
     # t-rho
-    psi = ((x**k) * np.exp(-x)) / (c_t * math.factorial(k-1))
+    psi = ((x**k) * np.exp(-x)) / (c_t * math.gamma(k))
     return psi
 
 
@@ -208,15 +253,15 @@ def cal_estimated_time(rho_hat, theta_star):
 def cal_Polyexp_PSI(rho_hat, theta):
     # theta = [k, m, h, w]
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
-    k = theta[:,0].astype(int)
+    k = theta[:,0]
     
     # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
     X_T = X_COEF * T # [diff][grid]
     k_max = max(k)
     K_arange = np.tile(np.arange(k_max), reps=[theta.shape[0], 1]).T
     K_mask = K_arange < k
-    vec_fact = np.vectorize(math.factorial)
-    K_fact = 1/vec_fact(K_arange)
+    vec_fact = np.vectorize(math.gamma)
+    K_fact = 1/vec_fact(K_arange+1)
     
     S_T = np.zeros((rho_hat.shape[0], theta.shape[0]))
     for i, X in enumerate(X_T):
@@ -234,11 +279,11 @@ def cal_Polyexp_PSI(rho_hat, theta):
 
 
 def cal_Polyexp_L(L, rho_idx, t, theta):
-    k = theta[:,0].astype(int)
+    k = theta[:,0]
     X = X_COEF[rho_idx] * t # [grid]
-    vec_fact = np.vectorize(math.factorial)
+    vec_fact = np.vectorize(math.gamma)
     
-    L_update = L + k*np.log(X) - X - np.log(t) - np.log(vec_fact(k-1))
+    L_update = L + k*np.log(X) - X - np.log(t) - np.log(vec_fact(k))
     L_update = norm_L(L_update)
     return L_update
     
@@ -333,10 +378,11 @@ if (TASK == 0):
 elif (TASK == 1):
     RHO_HAT = RHO
 
-GRID_BIN = np.product(psy_bin['shape']) # flatten
-GRID_CON = np.product(psy_con['shape']) # flatten
+GRID_BIN = np.prod(psy_bin['shape']) # flatten
+GRID_CON = np.prod(psy_con['shape']) # flatten
 H_MAX_bin = np.log(GRID_BIN)
 H_MAX_con = np.log(GRID_CON)
+
 
 # Current
 P_bin = np.zeros((GRID_BIN, RHO_SIZE)) # [diff][grid]
@@ -389,8 +435,17 @@ rho_best_con = []
 thetas_best_bin = []
 thetas_best_con = []
 
+# Sampled data
+trace_rho = np.array([])
+trace_wl = np.array([])
+trace_t = np.array([])
+
+# sample number
+# sample_size = 20
+sample_size = sim_data_size
+
 # simul fitting by sim data
-for trial_num in range(sim_data_size):
+for trial_num in range(sample_size):
     # update trial before
     ExP_bin = cal_ExP(P_bin, L_bin)
     ExL_bin = cal_ExL(P_bin, L_bin, ExP_bin)
@@ -436,6 +491,27 @@ for trial_num in range(sim_data_size):
         H_con = cal_H(L_con)
     IG_con.append(H_con_past - H_con)
     
+    # plotting raw data and fit data
+    PSI_fit_bin = P_bin[:, np.argmax(L_bin)]
+    PSI_fit_con = P_con[:, np.argmax(L_con)]
+    MU_fit_con = MU[:, np.argmax(L_con)]
+    
+    # Sampled data
+    trace_rho = np.append(trace_rho, sam_rho)
+    trace_wl = np.append(trace_wl, sam_wl)
+    trace_t = np.append(trace_t, sam_t)
+    
+    # plotting
+    fig1, ax1 = plot_rho_p(trace_rho, trace_wl, RHO, PSI_fit_bin)
+    fig2, ax2 = plot_rho_p(trace_rho, trace_wl, RHO, PSI_fit_con)
+    fig3, ax3 = plot_rho_t(trace_rho, trace_t, RHO, MU_fit_con)
+    ax1.set_title('Binary')
+    ax2.set_title('Continuous')
+    ax3.set_title('Continuous')
+    plt.show()
+    
+    # print log
+    print(' ')
     print(f'---trial {trial_num}---')
     print(f'difficulty: {sam_rho}')
     print(f'time: {sam_t}')
@@ -446,16 +522,32 @@ for trial_num in range(sim_data_size):
 NIG_bin = np.array(IG_bin)/H_MAX_bin
 NIG_con = np.array(IG_con)/H_MAX_con
 
+
+# Get best parameter
 theta_star_bin = theta_bin[np.argmax(L_bin)]
 theta_star_con = theta_con[np.argmax(L_con)]
 
 
-# plotting raw data and fit data
-PSI_fit_bin = P_bin[:, np.argmax(L_bin)]
-PSI_fit_con = P_con[:, np.argmax(L_con)]
-MU_fit_con = MU[:, np.argmax(L_con)]
+# Additional Plot
+fig_Hb, ax_Hb = plot_trial_H(np.array(Hs_bin))
+fig_Hc, ax_Hc = plot_trial_H(np.array(Hs_con))
+ax_Hb.axhline(np.log(GRID_BIN), linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, alpha=0.3, zorder=-1)
+ax_Hc.axhline(np.log(GRID_CON), linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, alpha=0.3, zorder=-1)
+ax_Hb.set_title('Entropy of binary')
+ax_Hc.set_title('Entropy of continuous')
 
 
-plot_rho_p(sim_rho, sim_wl, RHO, PSI_fit_bin)
-plot_rho_p(sim_rho, sim_wl, RHO, PSI_fit_con)
-plot_rho_t(sim_rho, sim_t, RHO, MU_fit_con)
+# plot rho best
+fig_Rb, ax_Rb = plot_trial_rho(np.array(rho_best_bin))
+fig_Rc, ax_Rc = plot_trial_rho(np.array(rho_best_con))
+ax_Rb.set_title(r'$\rho^{*}$' + ' (binary)')
+ax_Rc.set_title(r'$\rho^{*}$' + ' (continuous)')
+
+
+# parameter likelihood
+fig_Lb, ax_Lb = plot_theta_L(L_bin, psy_bin['shape'], psy_bin['prior'], psy_bin['name'])
+fig_Lc, ax_Lc = plot_theta_L(L_con, psy_con['shape'], psy_con['prior'], psy_con['name'])
+ax_Lb.axvline(0, linewidth=0.3, linestyle='-.', color='k', alpha=0.3, zorder=-1) # prior
+ax_Lc.axvline(0, linewidth=0.3, linestyle='-.', color='k', alpha=0.3, zorder=-1) # prior
+ax_Lb.set_title('Log likelihood of '+ r'$\theta$' + ' (binary)')
+ax_Lc.set_title('Log likelihood of '+ r'$\theta$' + ' (continuous)')

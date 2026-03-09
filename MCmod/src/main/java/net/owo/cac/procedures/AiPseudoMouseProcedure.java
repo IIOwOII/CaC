@@ -14,7 +14,7 @@ public class AiPseudoMouseProcedure {
 				AiMovePseudoMouseProcedure.execute(world, entity);
 			}
 			if ((CacModVariables.Pos_player_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.Pos_player_destination.subtract((entity.position()))).length() > 0.5) {
-				entity.setDeltaMovement((((CacModVariables.Pos_player_destination.subtract((entity.position()))).normalize()).scale((0.094280904 * CacModVariables.Dat_difficulty))));
+				entity.setDeltaMovement((((CacModVariables.Pos_player_destination.subtract((entity.position()))).normalize()).scale((0.081649658 * CacModVariables.Dat_difficulty))));
 			}
 		}
 	}

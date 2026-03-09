@@ -219,11 +219,11 @@ public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.08);
+		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.06);
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 32);
 		return builder;
 	}
 
@@ -280,8 +280,8 @@ public class EntPlayerMouseEntity extends PathfinderMob implements GeoEntity {
 
 	@Override
 	public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-		data.add(new AnimationController<>(this, "movement", 4, this::movementPredicate));
-		data.add(new AnimationController<>(this, "procedure", 4, this::procedurePredicate));
+		data.add(new AnimationController<>(this, "movement", 2, this::movementPredicate));
+		data.add(new AnimationController<>(this, "procedure", 2, this::procedurePredicate));
 	}
 
 	@Override

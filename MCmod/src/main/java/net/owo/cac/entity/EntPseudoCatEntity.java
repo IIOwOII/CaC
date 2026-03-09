@@ -180,7 +180,7 @@ public class EntPseudoCatEntity extends PathfinderMob implements GeoEntity {
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 32);
 		return builder;
 	}
 
@@ -237,8 +237,8 @@ public class EntPseudoCatEntity extends PathfinderMob implements GeoEntity {
 
 	@Override
 	public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-		data.add(new AnimationController<>(this, "movement", 4, this::movementPredicate));
-		data.add(new AnimationController<>(this, "procedure", 4, this::procedurePredicate));
+		data.add(new AnimationController<>(this, "movement", 2, this::movementPredicate));
+		data.add(new AnimationController<>(this, "procedure", 2, this::procedurePredicate));
 	}
 
 	@Override

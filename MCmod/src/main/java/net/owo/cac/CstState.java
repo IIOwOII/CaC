@@ -49,7 +49,6 @@ public class CstState {
     			key_pressed_tick[KI] = 0;
     		}
     	}
-    	
     	int ang = getKeyCase();
     	if (ang != -1) {
     		meowmove_tick[ang] += 1;

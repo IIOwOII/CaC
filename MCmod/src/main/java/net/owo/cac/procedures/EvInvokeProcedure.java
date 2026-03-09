@@ -49,15 +49,21 @@ public class EvInvokeProcedure {
 					TaskFittingProcedure.execute();
 				}
 			} else if (ev_content.startsWith("simulation")) {
-				if ((ev_content).equals("simulation_gameplay")) {
-					SimGameplayProcedure.execute(world);
+				if ((ev_content).equals("simulation_pretrial")) {
+					SimPreTrialProcedure.execute(world);
+				} else if ((ev_content).equals("simulation_gameplay")) {
+					SimGameplayProcedure.execute();
 				} else if ((ev_content).equals("simulation_gameplay_end")) {
 					SimGameplayEndProcedure.execute();
 				} else if ((ev_content).equals("simulation_interval")) {
 					SimIntervalProcedure.execute(entity);
+				} else if ((ev_content).equals("simulation_fitting")) {
+					SimFittingProcedure.execute();
 				} else if ((ev_content).equals("simulation_end")) {
 					CacModVariables.Switch_que = false;
 					CacModVariables.Switch_timer = false;
+					net.owo.cac.CstPsychometric.recFinal();
+					TaskSessionEndProcedure.execute();
 				}
 			} else {
 				if ((ev_content).equals("test_end") || (ev_content).equals("pseudo_end")) {

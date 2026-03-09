@@ -12,7 +12,7 @@ public class FncManageTasktypeProcedure {
 			CacModVariables.Dat_trial_type = 0;
 		} else if ((CacModVariables.Exp_session).equals("chased") || (CacModVariables.Exp_session).equals("test_chased") || (CacModVariables.Exp_session).equals("pseudo_chased")) {
 			CacModVariables.Dat_trial_type = 1;
-		} else if ((CacModVariables.Exp_session).equals("fitting")) {
+		} else if ((CacModVariables.Exp_session).equals("fitting") || (CacModVariables.Exp_session).equals("simulation_psf")) {
 			if ((CacModVariables.Psy_task).equals("chasing")) {
 				CacModVariables.Dat_trial_type = 0;
 			} else if ((CacModVariables.Psy_task).equals("chased")) {

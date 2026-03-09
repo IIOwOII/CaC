@@ -64,6 +64,7 @@
   "simulation_chasing": {
     "initial": "simulation_start",
     "trial": [
+      "simulation_pretrial",
       "simulation_gameplay",
       "simulation_gameplay_end",
       "simulation_interval"
@@ -73,6 +74,18 @@
   "simulation_chased": {
     "initial": "simulation_start",
     "trial": [
+      "simulation_pretrial",
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval"
+    ],
+    "ending": "simulation_end"
+  },
+  "simulation_psf": {
+    "initial": "simulation_start",
+    "trial": [
+      "simulation_fitting",
+      "simulation_pretrial",
       "simulation_gameplay",
       "simulation_gameplay_end",
       "simulation_interval"
