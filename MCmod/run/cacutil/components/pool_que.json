@@ -81,7 +81,7 @@
     ],
     "ending": "simulation_end"
   },
-  "simulation_psf": {
+  "simulation_fit_chasing": {
     "initial": "simulation_start",
     "trial": [
       "simulation_fitting",
@@ -90,7 +90,36 @@
       "simulation_gameplay_end",
       "simulation_interval"
     ],
-    "ending": "simulation_end"
+    "ending": "fitting_end"
+  },
+  "simulation_fit_chased": {
+    "initial": "simulation_start",
+    "trial": [
+      "simulation_fitting",
+      "simulation_pretrial",
+      "simulation_gameplay",
+      "simulation_gameplay_end",
+      "simulation_interval"
+    ],
+    "ending": "fitting_end"
+  },
+  "demo_chasing": {
+    "initial": "demo_start",
+    "trial": [
+      "demo_pretrial",
+      "demo_gameplay",
+      "demo_posttrial"
+    ],
+    "ending": "demo_end"
+  },
+  "demo_chased": {
+    "initial": "demo_start",
+    "trial": [
+      "demo_pretrial",
+      "demo_gameplay",
+      "demo_posttrial"
+    ],
+    "ending": "demo_end"
   },
   "fitting": {
     "initial": "fitting_start",

@@ -36,9 +36,11 @@ public class CstAgent {
 	public static Vec3 pos_opponent = Vec3.ZERO;
 	public static Vec3 pos_player = Vec3.ZERO;
 
+	public static int TIMELIMIT = 600;
 	public static int agent_duration_max = 600;
 	public static int agent_duration = 0;
 	public static double agent_distance = 0;
+	public static int TimP_sample = 0;
 	
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -74,6 +76,7 @@ public class CstAgent {
 
 				// Move
 				if (CacModVariables.Switch_AI) {
+					TimP_sample = (TimP_sample + 1) % 4; // move time
 					agent_duration = agent_duration - 1;
 					agent_distance = (pos_opponent.subtract(pos_player)).length();
 					if ((agent_duration <= 0) || (agent_distance < 1)) {
@@ -131,12 +134,13 @@ public class CstAgent {
 	// win or lose
 	public static int getResult() {
 		int result = -1;
-		if (((agent_duration > 0) && (CacModVariables.Dat_trial_type == 0)) || ((agent_duration <= 0) && (CacModVariables.Dat_trial_type == 1))) {
+		int playtime = getDuration();
+		if (((playtime < TIMELIMIT) && (CacModVariables.Dat_trial_type == 0)) || ((playtime >= TIMELIMIT) && (CacModVariables.Dat_trial_type == 1))) {
 			result = 1; // win
-		} else if (((agent_duration <= 0) && (CacModVariables.Dat_trial_type == 0)) || ((agent_duration > 0) && (CacModVariables.Dat_trial_type == 1))) {
+		} else if (((playtime >= TIMELIMIT) && (CacModVariables.Dat_trial_type == 0)) || ((playtime < TIMELIMIT) && (CacModVariables.Dat_trial_type == 1))) {
 			result = 0; // lose
 		}
 		return result;
 	}
-	
+
 }

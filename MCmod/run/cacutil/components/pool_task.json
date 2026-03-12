@@ -7,7 +7,10 @@
   "pseudo_chased": "EPG",
   "simulation_chasing": "EPG",
   "simulation_chased": "EPG",
-  "simulation_psf": "EPGF",
+  "simulation_fit_chasing": "EPGF",
+  "simulation_fit_chased": "EPGF",
+  "demo_chasing": "",
+  "demo_chased": "",
   "tutorial": "E",
   "chasing": "EPGASUCR",
   "chased": "EPGASUCR"

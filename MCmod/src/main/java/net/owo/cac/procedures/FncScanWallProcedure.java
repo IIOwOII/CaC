@@ -27,16 +27,16 @@ public class FncScanWallProcedure {
 		double bx_offset = 0;
 		double bz_offset = 0;
 		Vec3 vec_SE = Vec3.ZERO;
-		bx_offset = Math.round(CacModVariables.MapVariables.get(world).Pos_offset.x() - 0.5);
-		bz_offset = Math.round(CacModVariables.MapVariables.get(world).Pos_offset.z() - 0.5);
-		offset_y = CacModVariables.MapVariables.get(world).Pos_offset.y();
-		vec_SE = CacModVariables.MapVariables.get(world).Pos_border_end.subtract(CacModVariables.MapVariables.get(world).Pos_border_start);
+		bx_offset = Math.round(CacModVariables.Pos_offset.x() - 0.5);
+		bz_offset = Math.round(CacModVariables.Pos_offset.z() - 0.5);
+		offset_y = CacModVariables.Pos_offset.y();
+		vec_SE = CacModVariables.Pos_border_end.subtract(CacModVariables.Pos_border_start);
 		list_line = new ListTag();
 		list_vertice_temp = new ListTag();
 		list_line_temp = new ListTag();
-		sx = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.x() - 0.5);
+		sx = Math.round(CacModVariables.Pos_border_start.x() - 0.5);
 		for (int index0 = 0; index0 < (int) (vec_SE.x() + 1); index0++) {
-			sz = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.z() - 0.5);
+			sz = Math.round(CacModVariables.Pos_border_start.z() - 0.5);
 			block_prev = (world.getBlockState(BlockPos.containing(sx, offset_y, sz - 1)));
 			block_curr = (world.getBlockState(BlockPos.containing(sx, offset_y, sz)));
 			for (int index1 = 0; index1 < (int) (vec_SE.z() + 1); index1++) {
@@ -69,9 +69,9 @@ public class FncScanWallProcedure {
 			}
 			sx = sx + 1;
 		}
-		sz = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.z() - 0.5);
+		sz = Math.round(CacModVariables.Pos_border_start.z() - 0.5);
 		for (int index2 = 0; index2 < (int) (vec_SE.z() + 1); index2++) {
-			sx = Math.round(CacModVariables.MapVariables.get(world).Pos_border_start.x() - 0.5);
+			sx = Math.round(CacModVariables.Pos_border_start.x() - 0.5);
 			block_prev = (world.getBlockState(BlockPos.containing(sx - 1, offset_y, sz)));
 			block_curr = (world.getBlockState(BlockPos.containing(sx, offset_y, sz)));
 			for (int index3 = 0; index3 < (int) (vec_SE.x() + 1); index3++) {

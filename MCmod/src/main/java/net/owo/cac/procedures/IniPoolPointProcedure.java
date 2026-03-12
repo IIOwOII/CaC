@@ -59,14 +59,11 @@ public class IniPoolPointProcedure {
 				e.printStackTrace();
 			}
 		}
-		CacModVariables.MapVariables.get(world).Pos_offset = new Vec3(arr_offset.get(0).getAsDouble(), arr_offset.get(1).getAsDouble(), arr_offset.get(2).getAsDouble());
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Pos_offset = new Vec3(arr_offset.get(0).getAsDouble(), arr_offset.get(1).getAsDouble(), arr_offset.get(2).getAsDouble());
 		arr_border_start = obj_border.get("start").getAsJsonArray();
 		arr_border_end = obj_border.get("end").getAsJsonArray();
-		CacModVariables.MapVariables.get(world).Pos_border_start = new Vec3(arr_border_start.get(0).getAsDouble(), arr_border_start.get(1).getAsDouble(), arr_border_start.get(2).getAsDouble());
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).Pos_border_end = new Vec3(arr_border_end.get(0).getAsDouble(), arr_border_end.get(1).getAsDouble(), arr_border_end.get(2).getAsDouble());
-		CacModVariables.MapVariables.get(world).syncData(world);
+		CacModVariables.Pos_border_start = new Vec3(arr_border_start.get(0).getAsDouble(), arr_border_start.get(1).getAsDouble(), arr_border_start.get(2).getAsDouble());
+		CacModVariables.Pos_border_end = new Vec3(arr_border_end.get(0).getAsDouble(), arr_border_end.get(1).getAsDouble(), arr_border_end.get(2).getAsDouble());
 		arr_opponent = obj_spawnpoint.get("opponent").getAsJsonArray();
 		idx_point = 0;
 		for (int index0 = 0; index0 < (int) arr_opponent.size(); index0++) {

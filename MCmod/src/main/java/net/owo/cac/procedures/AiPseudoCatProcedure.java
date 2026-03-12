@@ -10,10 +10,10 @@ public class AiPseudoCatProcedure {
 		if (entity == null)
 			return;
 		if (CacModVariables.Switch_AI && !world.isClientSide()) {
-			if (CacModVariables.TimP_sampling == 0) {
+			if (net.owo.cac.CstAgent.TimP_sample == 3) {
 				AiMovePseudoCatProcedure.execute(entity);
 			}
-			if ((CacModVariables.Pos_player_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.Pos_player_destination.subtract((entity.position()))).length() > 0.5) {
+			if ((CacModVariables.Pos_player_destination.subtract((entity.position()))).length() < 1 && (CacModVariables.Pos_player_destination.subtract((entity.position()))).length() > 0.5) {
 				entity.setDeltaMovement((((CacModVariables.Pos_player_destination.subtract((entity.position()))).normalize()).scale((0.081649658 * CacModVariables.Dat_difficulty))));
 			}
 		}

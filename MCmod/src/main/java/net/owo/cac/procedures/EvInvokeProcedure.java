@@ -19,14 +19,12 @@ public class EvInvokeProcedure {
 			} else if (ev_content.endsWith("start")) {
 				CacModVariables.Switch_que = true;
 				CacModVariables.Ev_que_loop = true;
-				if ((ev_content).equals("test_start") || (ev_content).equals("pseudo_start")) {
-					TaskPreRunProcedure.execute();
-				} else if ((ev_content).equals("fitting_start")) {
+				if ((ev_content).equals("main_start") || (ev_content).equals("fitting_start") || (ev_content).equals("test_start") || (ev_content).equals("pseudo_start")) {
 					TaskPreRunProcedure.execute();
 				} else if ((ev_content).equals("simulation_start")) {
 					SimStartProcedure.execute();
-				} else if ((ev_content).equals("main_start")) {
-					TaskPreRunProcedure.execute();
+				} else if ((ev_content).equals("demo_start")) {
+					DemoStartProcedure.execute();
 				}
 			} else if (ev_content.startsWith("phase")) {
 				if ((ev_content).equals("phase_pretrial")) {
@@ -61,9 +59,18 @@ public class EvInvokeProcedure {
 					SimFittingProcedure.execute();
 				} else if ((ev_content).equals("simulation_end")) {
 					CacModVariables.Switch_que = false;
-					CacModVariables.Switch_timer = false;
-					net.owo.cac.CstPsychometric.recFinal();
 					TaskSessionEndProcedure.execute();
+				}
+			} else if (ev_content.startsWith("demo")) {
+				if ((ev_content).equals("demo_pretrial")) {
+					DemoPreTrialProcedure.execute(world);
+				} else if ((ev_content).equals("demo_gameplay")) {
+					DemoGameplayProcedure.execute();
+				} else if ((ev_content).equals("demo_posttrial")) {
+					DemoPostTrialProcedure.execute(world, entity);
+				} else if ((ev_content).equals("demo_end")) {
+					CacModVariables.Switch_que = false;
+					CacModVariables.Switch_timer = false;
 				}
 			} else {
 				if ((ev_content).equals("test_end") || (ev_content).equals("pseudo_end")) {

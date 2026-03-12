@@ -84,6 +84,9 @@ public class CacModVariables {
 	public static File Pool_que = new File("");
 	public static File Pool_random = new File("");
 	public static File Pool_task = new File("");
+	public static Vec3 Pos_border_end = Vec3.ZERO;
+	public static Vec3 Pos_border_start = Vec3.ZERO;
+	public static Vec3 Pos_offset = Vec3.ZERO;
 	public static Vec3 Pos_opponent = Vec3.ZERO;
 	public static Vec3 Pos_opponent_destination = Vec3.ZERO;
 	public static Vec3 Pos_player = Vec3.ZERO;
@@ -112,9 +115,6 @@ public class CacModVariables {
 	public static boolean TimC_switch = false;
 	public static double TimC_time = 0;
 	public static String TimC_que = "\"\"";
-	public static double TimP_sampling = 0;
-	public static double TimP_duration = 0;
-	public static boolean TimP_timebar = false;
 	public static String Exp_property = "\"\"";
 	public static File Log_fitting = new File("");
 	public static double Dat_difficulty = 0;
@@ -205,9 +205,6 @@ public class CacModVariables {
 		public ListTag List_random_spawn = new ListTag();
 		public ListTag List_spawnpoint_opponent = new ListTag();
 		public ListTag List_wall = new ListTag();
-		public Vec3 Pos_border_end = Vec3.ZERO;
-		public Vec3 Pos_border_start = Vec3.ZERO;
-		public Vec3 Pos_offset = Vec3.ZERO;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -229,18 +226,6 @@ public class CacModVariables {
 			this.List_random_spawn = nbt.get("List_random_spawn") instanceof ListTag List_random_spawn ? List_random_spawn : new ListTag();
 			this.List_spawnpoint_opponent = nbt.get("List_spawnpoint_opponent") instanceof ListTag List_spawnpoint_opponent ? List_spawnpoint_opponent : new ListTag();
 			this.List_wall = nbt.get("List_wall") instanceof ListTag List_wall ? List_wall : new ListTag();
-			{
-				ListTag listTag = nbt.getList("Pos_border_end", 6);
-				this.Pos_border_end = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
-			}
-			{
-				ListTag listTag = nbt.getList("Pos_border_start", 6);
-				this.Pos_border_start = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
-			}
-			{
-				ListTag listTag = nbt.getList("Pos_offset", 6);
-				this.Pos_offset = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
-			}
 		}
 
 		@Override
@@ -266,30 +251,6 @@ public class CacModVariables {
 			nbt.put("List_random_spawn", this.List_random_spawn);
 			nbt.put("List_spawnpoint_opponent", this.List_spawnpoint_opponent);
 			nbt.put("List_wall", this.List_wall);
-			{
-				this.Pos_border_end = this.Pos_border_end == null ? Vec3.ZERO : this.Pos_border_end;
-				ListTag listTag = new ListTag();
-				listTag.addTag(0, DoubleTag.valueOf(this.Pos_border_end.x()));
-				listTag.addTag(1, DoubleTag.valueOf(this.Pos_border_end.y()));
-				listTag.addTag(2, DoubleTag.valueOf(this.Pos_border_end.z()));
-				nbt.put("Pos_border_end", listTag);
-			}
-			{
-				this.Pos_border_start = this.Pos_border_start == null ? Vec3.ZERO : this.Pos_border_start;
-				ListTag listTag = new ListTag();
-				listTag.addTag(0, DoubleTag.valueOf(this.Pos_border_start.x()));
-				listTag.addTag(1, DoubleTag.valueOf(this.Pos_border_start.y()));
-				listTag.addTag(2, DoubleTag.valueOf(this.Pos_border_start.z()));
-				nbt.put("Pos_border_start", listTag);
-			}
-			{
-				this.Pos_offset = this.Pos_offset == null ? Vec3.ZERO : this.Pos_offset;
-				ListTag listTag = new ListTag();
-				listTag.addTag(0, DoubleTag.valueOf(this.Pos_offset.x()));
-				listTag.addTag(1, DoubleTag.valueOf(this.Pos_offset.y()));
-				listTag.addTag(2, DoubleTag.valueOf(this.Pos_offset.z()));
-				nbt.put("Pos_offset", listTag);
-			}
 			return nbt;
 		}
 

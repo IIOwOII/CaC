@@ -16,17 +16,17 @@ def func_exponential(X, a):
 #%%
 dir_main = '../MCmod/run/cacutil/behaviors/simulation'
 
-with open(f'{dir_main}/simulation_chasing/log_gameplay.json', 'r') as f1:
+with open(f'{dir_main}/simulation_psf/log_gameplay.json', 'r') as f1:
     chasing = json.load(f1)['cac']
-with open(f'{dir_main}/simulation_chased/log_gameplay.json', 'r') as f2:
+with open(f'{dir_main}/simulation_psf/log_gameplay.json', 'r') as f2:
     chased = json.load(f2)['cac']
 
-c1_diff = np.array(chasing['difficulty_absolute'])
+c1_diff = np.array(chasing['difficulty'])
 c1_time = np.array(chasing['time'])/20
 c1_spawn = np.array(chasing['spawnpoint_opponent'])
 c1_wl = np.array(chasing['winlose'])
 
-c2_diff = np.array(chased['difficulty_absolute'])
+c2_diff = np.array(chased['difficulty_'])
 c2_time = np.array(chased['time'])/20
 c2_spawn = np.array(chased['spawnpoint_opponent'])
 c2_wl = np.array(chased['winlose'])

@@ -32,9 +32,9 @@ public class FncFieldWallProcedure {
 		list_vertice_start = new ListTag();
 		list_vertice_end = new ListTag();
 		vec_field = Vec3.ZERO;
-		vec_P = (entity.position()).subtract(CacModVariables.MapVariables.get(world).Pos_offset);
+		vec_P = (entity.position()).subtract(CacModVariables.Pos_offset);
 		list_line = CacModVariables.MapVariables.get(world).List_wall.copy();
-		sca_K = 10;
+		sca_K = 8;
 		for (Tag dataelementiterator : list_line) {
 			list_vertice_start = (((dataelementiterator instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).get(0)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).copy();
 			list_vertice_end = (((dataelementiterator instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).get(1)) instanceof ListTag _listTag ? _listTag.copy() : new ListTag()).copy();
@@ -45,7 +45,7 @@ public class FncFieldWallProcedure {
 			sca_L_B = vec_PB.dot(basis_u);
 			vec_H = ((vec_PB.scale(sca_L_A)).subtract((vec_PA.scale(sca_L_B)))).scale((1 / (vec_PA.subtract(vec_PB)).length()));
 			sca_D = vec_H.length();
-			if (sca_D < 0.01) {
+			if (sca_D < 0.1) {
 				vec_subfield = basis_u.scale((sca_K * (1 / sca_L_A - 1 / sca_L_B)));
 			} else {
 				basis_n = vec_H.normalize();

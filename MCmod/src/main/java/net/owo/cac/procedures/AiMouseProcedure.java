@@ -10,10 +10,10 @@ public class AiMouseProcedure {
 		if (entity == null)
 			return;
 		if (CacModVariables.Switch_AI && !world.isClientSide()) {
-			if (CacModVariables.TimP_sampling == 0) {
+			if (net.owo.cac.CstAgent.TimP_sample == 1) {
 				AiMoveMouseProcedure.execute(world, entity);
 			}
-			if ((CacModVariables.Pos_opponent_destination.subtract((entity.position()))).length() <= 1 && (CacModVariables.Pos_opponent_destination.subtract((entity.position()))).length() > 0.5) {
+			if ((CacModVariables.Pos_opponent_destination.subtract((entity.position()))).length() < 1 && (CacModVariables.Pos_opponent_destination.subtract((entity.position()))).length() > 0.5) {
 				entity.setDeltaMovement((((CacModVariables.Pos_opponent_destination.subtract((entity.position()))).normalize()).scale((0.081649658 * CacModVariables.Dat_difficulty))));
 			}
 		}

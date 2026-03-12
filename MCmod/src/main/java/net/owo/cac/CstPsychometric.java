@@ -38,7 +38,7 @@ public class CstPsychometric {
 	public static double[] CON_W; // [grid]
 
 	// grid of difficulty
-	public static int RHOSIZE = 20;
+	public static int RHOSIZE = 40;
 	public static double[] RHO; // [diff]
 	public static double T = 30; // terminate time
 	public static double[][] X_coef; // [diff][grid]
@@ -82,7 +82,6 @@ public class CstPsychometric {
 	// usage
 	// initialize
 	public static void initPsy() {
-		TRIAL_MAX = 10;
 		initRho();
 		if (method_type == 0) {
 			method_bin = true;
@@ -168,8 +167,6 @@ public class CstPsychometric {
 	
 	// Terminate
 	public static void checkTerminate() {
-		CacModVariables.Exp_trial_total = TRIAL_MAX;
-		/*
 		boolean isend = true;
 		for (int i=0; i<IG_last.length; i++) {
 			if ((IG_last[i] >= IG_THRESHOLD) || (IG_last[i] == 0)) {
@@ -181,16 +178,14 @@ public class CstPsychometric {
 		} else {
 			CacModVariables.Exp_trial_total = TRIAL_MAX;
 		}
-		*/
 	}
-
 
 	// init functions
 	// diff
 	public static void initRho() {
-		// rho : [0.9, 1.1)_0.01
+		// rho : [0.8, 1.2)_0.01
 		RHO = new double[RHOSIZE];
-		double RHO_min = 0.90;
+		double RHO_min = 0.80;
 		double RHO_step = 0.01;
 		for (int r=0; r<RHOSIZE; r++) {
 			RHO[r] = Math.round((RHO_min + r*RHO_step)*100.0) / 100.0;
@@ -312,19 +307,20 @@ public class CstPsychometric {
 	public static void initBinPrior() {
 		// json get
 		JsonArray param_prior = CacModVariables.Psy_bin_param_prior;
-		int pm = param_prior.get(0).getAsInt();
-		int pw = param_prior.get(1).getAsInt();
-		int pgamma = param_prior.get(2).getAsInt();
-		int plambda = param_prior.get(3).getAsInt();
-		
-		// 1/2 * e^(-(a^2+b^2+...)^2/4) + 1/2
+		double[] prior = new double[4];
+		int[] shape = new int[4];
+		for (int i=0; i<4; i++) {
+			prior[i] = param_prior.get(i).getAsDouble();
+			shape[i] = getBinShape(i);
+		}
+		// 1/2 * e^(-(a^2+b^2+...)^2/2) + 1/2
 		double D_sq = 0;
-		for (int sm=0; sm<getBinShape(0); sm++) {
-			for (int sw=0; sw<getBinShape(1); sw++) {
-				for (int sgamma=0; sgamma<getBinShape(2); sgamma++) {
-					for (int slambda=0; slambda<getBinShape(3); slambda++) {
-						D_sq = Math.pow(sm-pm, 2) + Math.pow(sw-pw, 2) + Math.pow(sgamma-pgamma, 2) + Math.pow(slambda-plambda, 2);
-						likelihood_bin[flattenIndex(sm, sw, sgamma, slambda)] = Math.log(0.5 + 0.5*Math.exp(-D_sq/4));
+		for (int a=0; a<shape[0]; a++) {
+			for (int b=0; b<shape[1]; b++) {
+				for (int c=0; c<shape[2]; c++) {
+					for (int d=0; d<shape[3]; d++) {
+						D_sq = Math.pow((a-prior[0])/shape[0],2) + Math.pow((b-prior[1])/shape[1],2) + Math.pow((c-prior[2])/shape[2],2) + Math.pow((d-prior[3])/shape[3],2);
+						likelihood_bin[flattenIndex(a,b,c,d)] = Math.log(0.5+0.5*Math.exp(-D_sq/2));
 					}
 				}
 			}
@@ -335,19 +331,20 @@ public class CstPsychometric {
 	public static void initConPrior() {
 		// json get
 		JsonArray param_prior = CacModVariables.Psy_con_param_prior;
-		int pk = param_prior.get(0).getAsInt();
-		int pm = param_prior.get(1).getAsInt();
-		int ph = param_prior.get(2).getAsInt();
-		int pw = param_prior.get(3).getAsInt();
-		
-		// 1/2 * e^(-(a^2+b^2+...)^2/4) + 1/2
+		double[] prior = new double[4];
+		int[] shape = new int[4];
+		for (int i=0; i<4; i++) {
+			prior[i] = param_prior.get(i).getAsDouble();
+			shape[i] = getConShape(i);
+		}
+		// 1/2 * e^(-(a^2+b^2+...)^2/2) + 1/2
 		double D_sq = 0;
-		for (int sk=0; sk<getConShape(0); sk++) {
-			for (int sm=0; sm<getConShape(1); sm++) {
-				for (int sh=0; sh<getConShape(2); sh++) {
-					for (int sw=0; sw<getConShape(3); sw++) {
-						D_sq = Math.pow(sk-pk, 2) + Math.pow(sm-pm, 2) + Math.pow(sh-ph, 2) + Math.pow(sw-pw, 2);
-						likelihood_con[flattenConIndex(sk, sm, sh, sw)] = Math.log(0.5 + 0.5*Math.exp(-D_sq/4));
+		for (int a=0; a<shape[0]; a++) {
+			for (int b=0; b<shape[1]; b++) {
+				for (int c=0; c<shape[2]; c++) {
+					for (int d=0; d<shape[3]; d++) {
+						D_sq = Math.pow((a-prior[0])/shape[0],2) + Math.pow((b-prior[1])/shape[1],2) + Math.pow((c-prior[2])/shape[2],2) + Math.pow((d-prior[3])/shape[3],2);
+						likelihood_con[flattenConIndex(a,b,c,d)] = Math.log(0.5+0.5*Math.exp(-D_sq/2));
 					}
 				}
 			}

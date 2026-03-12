@@ -32,7 +32,7 @@ public class FncFieldObstacleProcedure {
 		list_vertice_start = new ListTag();
 		list_vertice_end = new ListTag();
 		vec_field = Vec3.ZERO;
-		vec_P = (entity.position()).subtract(CacModVariables.MapVariables.get(world).Pos_offset);
+		vec_P = (entity.position()).subtract(CacModVariables.Pos_offset);
 		list_line = CacModVariables.MapVariables.get(world).List_obstacle.copy();
 		sca_K = 3;
 		for (Tag dataelementiterator : list_line) {
