@@ -2,11 +2,15 @@ package net.owo.cac;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.phys.Vec3;
 
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderComponent {
@@ -89,5 +93,54 @@ public class CstRenderComponent {
 			case 1: ox = (gw/4)*3-40; break;
 		}
 		gg.blit(button_no, ox, oy, 0, 0, 80, 32, 80, 32);
+	}
+
+	// Color define
+	public static float[] getColor(char color) {
+        float[] c_map = {0F, 0F, 0F};
+		if (color == 'k') {
+		} else if (color == 'r') {
+			c_map[0] = 1F;
+		} else if (color == 'g') {
+			c_map[1] = 1F;
+		} else if (color == 'b') {
+			c_map[2] = 1F;
+		} else if (color == 'x') {
+			// RED_A: #F7A1A3
+			c_map[0] = 0.9686F;
+			c_map[1] = 0.6314F;
+			c_map[2] = 0.6392F;
+		} else if (color == 'y') {
+			// RED_C: #FC6255
+			c_map[0] = 0.9882F;
+			c_map[1] = 0.3843F;
+			c_map[2] = 0.3333F;
+		} else if (color == 'z') {
+			// YELLOW_B: #FFEA94
+			c_map[0] = 1F;
+			c_map[1] = 0.9176F;
+			c_map[2] = 0.5804F;
+		}
+		return c_map;
+	}
+	
+	// Draw line
+	public static void renderLine(PoseStack ps, VertexConsumer vc, Vec3 vec_start, Vec3 vec_end, char color) {
+		PoseStack.Pose pose = ps.last();
+		Vec3 vec_N = Vec3.ZERO;
+		vec_N = vec_end.subtract(vec_start).normalize();
+		float[] c_map = getColor(color);
+		
+		// start
+		vc.vertex(pose.pose(), (float)vec_start.x(), (float)vec_start.y(), (float)vec_start.z());
+		vc.color(c_map[0], c_map[1], c_map[2], 1F);
+		vc.normal(pose.normal(), (float)vec_N.x(), (float)vec_N.y(), (float)vec_N.z());
+		vc.endVertex();
+
+		// end
+		vc.vertex(pose.pose(), (float)vec_end.x(), (float)vec_end.y(), (float)vec_end.z());
+		vc.color(c_map[0], c_map[1], c_map[2], 1F);
+		vc.normal(pose.normal(), (float)vec_N.x(), (float)vec_N.y(), (float)vec_N.z());
+		vc.endVertex();
 	}
 }

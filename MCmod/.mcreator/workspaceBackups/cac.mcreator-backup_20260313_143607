@@ -503,7 +503,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -3711,7 +3716,7 @@
     {
       "name": "CstField",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "cst_field",
       "metadata": {

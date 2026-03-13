@@ -20,9 +20,9 @@ import net.owo.cac.CacMod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstField {
+	public static boolean show_field = false;
 	public static ArrayList<ArrayList<Vec3>> list_obstacle = new ArrayList<>();
 	public static ArrayList<ArrayList<Vec3>> list_wall = new ArrayList<>();
-	
 	public static Vec3 pos_border_start = new Vec3(-15.5, 64.0, -65.5);
 	public static Vec3 pos_border_end = new Vec3(16.5, 64.0, -33.5);
 	
@@ -41,6 +41,99 @@ public class CstField {
 		}
 	}
 
+	public static Vec3 calFieldObstacle(double sca_k, Vec3 pos_p) {
+		if (list_obstacle.size() == 0) return Vec3.ZERO;
+		Vec3 vec_p = Vec3.ZERO;
+		vec_p = new Vec3(pos_p.x()-0.5, 64.0, pos_p.z()-0.5);
+		
+		Vec3 vec_a = Vec3.ZERO;
+		Vec3 vec_b = Vec3.ZERO;
+		Vec3 basis_u = Vec3.ZERO;
+		Vec3 basis_n = Vec3.ZERO;
+		Vec3 vec_h = Vec3.ZERO;
+		Vec3 vec_u = Vec3.ZERO;
+		Vec3 vec_n = Vec3.ZERO;
+		Vec3 vec_field = Vec3.ZERO;
+		double l_a = 0;
+		double l_b = 0;
+		double L = 0;
+		double D = 0;
+		double R_a = 0;
+		double R_b = 0;
+		for (int i=0; i<list_obstacle.size(); i++) {
+			vec_a = (list_obstacle.get(i).get(0)).subtract(vec_p);
+			vec_b = (list_obstacle.get(i).get(1)).subtract(vec_p);
+			R_a = vec_a.length();
+			R_b = vec_b.length();
+			L = (vec_a.subtract(vec_b)).length();
+			basis_u = (vec_a.subtract(vec_b)).normalize();
+			l_a = vec_a.dot(basis_u);
+			l_b = vec_b.dot(basis_u);
+			vec_h = (vec_b.scale(l_a/L)).subtract(vec_a.scale(l_b/L));
+			D = vec_h.length();
+			
+			vec_u = basis_u.scale(sca_k*((1/R_a)-(1/R_b)));
+			if (D > 0.1) {
+				basis_n = vec_h.normalize();
+				vec_n = basis_n.scale(sca_k*((l_a/(D*R_a))-(l_b/(D*R_b))));
+				vec_field = vec_field.add(vec_u.subtract(vec_n));
+			} else {
+				vec_field = vec_field.add(vec_u);
+			}
+		}
+		return vec_field;
+	}
+
+	public static Vec3 calFieldWall(double sca_k, Vec3 pos_p) {
+		if (list_wall.size() == 0) return Vec3.ZERO;
+		Vec3 vec_p = Vec3.ZERO;
+		vec_p = new Vec3(pos_p.x()-0.5, 64.0, pos_p.z()-0.5);
+		
+		Vec3 vec_a = Vec3.ZERO;
+		Vec3 vec_b = Vec3.ZERO;
+		Vec3 basis_u = Vec3.ZERO;
+		Vec3 basis_n = Vec3.ZERO;
+		Vec3 vec_h = Vec3.ZERO;
+		Vec3 vec_u = Vec3.ZERO;
+		Vec3 vec_n = Vec3.ZERO;
+		Vec3 vec_field = Vec3.ZERO;
+		double l_a = 0;
+		double l_b = 0;
+		double L = 0;
+		double D = 0;
+		double R_a = 0;
+		double R_b = 0;
+		for (int i=0; i<list_wall.size(); i++) {
+			vec_a = (list_wall.get(i).get(0)).subtract(vec_p);
+			vec_b = (list_wall.get(i).get(1)).subtract(vec_p);
+			R_a = vec_a.length();
+			R_b = vec_b.length();
+			L = (vec_a.subtract(vec_b)).length();
+			basis_u = (vec_a.subtract(vec_b)).normalize();
+			l_a = vec_a.dot(basis_u);
+			l_b = vec_b.dot(basis_u);
+			vec_h = (vec_b.scale(l_a/L)).subtract(vec_a.scale(l_b/L));
+			D = vec_h.length();
+			
+			vec_u = basis_u.scale(sca_k*((1/R_a)-(1/R_b)));
+			if (D > 0.1) {
+				basis_n = vec_h.normalize();
+				vec_n = basis_n.scale(sca_k*((l_a/(D*R_a))-(l_b/(D*R_b))));
+				vec_field = vec_field.add(vec_u.subtract(vec_n));
+			} else {
+				vec_field = vec_field.add(vec_u);
+			}
+		}
+		return vec_field;
+	}
+
+	public static Vec3 calFieldPlayer(double sca_k, Vec3 vec_pp) {
+		double R_sqr = vec_pp.lengthSqr();
+		Vec3 vec_field = Vec3.ZERO;
+		vec_field = vec_pp.scale(sca_k/R_sqr);
+		return vec_field;
+	}
+	
 	public static void scanObstacle(LevelAccessor world) {
 		// variables
 		BlockState block_curr = Blocks.AIR.defaultBlockState();
