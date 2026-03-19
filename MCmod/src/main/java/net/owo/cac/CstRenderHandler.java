@@ -1,5 +1,7 @@
 package net.owo.cac;
 
+import java.util.ArrayList;
+
 import net.minecraft.client.gui.GuiGraphics;
 
 import net.minecraftforge.fml.common.Mod;
@@ -27,6 +29,8 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderHandler {
+	public static ArrayList<Vec3> vec_nodes = new ArrayList<>();
+	
     @SubscribeEvent
     public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
     	// Check if this is the hotbar overlay
@@ -67,7 +71,8 @@ public class CstRenderHandler {
     	VertexConsumer vc = bs.getBuffer(RenderType.lines());
     	Vec3 vec_cam = event.getCamera().getPosition();
 
-    	if (CstField.show_field) {
+		if (CstAgent.ent_opponent == null || CstAgent.ent_player == null) return;
+		if (CstField.show_field) {
     		Vec3 vec_p_prime = CstAgent.pos_player;
     		Vec3 vec_p = CstAgent.pos_opponent;
     		
@@ -89,5 +94,30 @@ public class CstRenderHandler {
     		CstRenderComponent.renderLine(ps, vc, vec_p.subtract(vec_cam), vec_pp.subtract(vec_cam), 'z');
     		CstRenderComponent.renderLine(ps, vc, vec_p.subtract(vec_cam), vec_field.subtract(vec_cam), 'b');
     	}
+    	if (CstAgent.show_path) {
+    		Vec3 node_curr = Vec3.ZERO;
+    		Vec3 node_next = Vec3.ZERO;
+    		Vec3 vec_p_prime = CstAgent.pos_player;
+    		Vec3 vec_p = CstAgent.pos_opponent;
+    		ArrayList<Vec3> path_p = CstAgent.path_opponent;
+    		ArrayList<Vec3> path_p_prime = CstAgent.path_player;
+    		
+			if (path_p.size() >= 2) {
+				for (int i=0; i<path_p.size()-1; i++) {
+					node_curr = (path_p.get(i)).add(new Vec3(0.5, 0, 0.5));
+	    			node_next = (path_p.get(i+1)).add(new Vec3(0.5, 0, 0.5));
+	    			CstRenderComponent.renderLine(ps, vc, node_curr.subtract(vec_cam), node_next.subtract(vec_cam), 'g');
+	    		}
+			}
+			if (path_p_prime.size() >= 2) {
+				for (int j=0; j<path_p_prime.size()-1; j++) {
+					node_curr = (path_p_prime.get(j)).add(new Vec3(0.5, 0, 0.5));
+	    			node_next = (path_p_prime.get(j+1)).add(new Vec3(0.5, 0, 0.5));
+	    			CstRenderComponent.renderLine(ps, vc, node_curr.subtract(vec_cam), node_next.subtract(vec_cam), 'g');
+	    		}
+			}
+    	}
+    	
     }
+    
 }

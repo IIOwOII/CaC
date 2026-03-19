@@ -1,5 +1,6 @@
 package net.owo.cac;
 
+import java.util.ArrayList;
 import javax.annotation.Nullable;
 
 import net.minecraftforge.api.distmarker.Dist;
@@ -11,11 +12,16 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
+import net.minecraft.world.level.pathfinder.Node;
+import net.minecraft.world.level.pathfinder.Path;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 
 import net.owo.cac.CacMod;
+import net.owo.cac.CstField;
+import net.owo.cac.CstRenderHandler;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.procedures.EvQueImmediateProcedure;
 import net.owo.cac.procedures.EvPulseRecordProcedure;
@@ -31,16 +37,21 @@ import net.owo.cac.entity.EntPseudoMouseEntity;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstAgent {
+	public static ArrayList<Vec3> path_opponent = new ArrayList<>();
+	public static ArrayList<Vec3> path_player = new ArrayList<>();
+	
 	@Nullable public static Entity ent_opponent = null;
 	@Nullable public static Entity ent_player = null;
 	public static Vec3 pos_opponent = Vec3.ZERO;
 	public static Vec3 pos_player = Vec3.ZERO;
-
-	public static int TIMELIMIT = 600;
+	
 	public static int agent_duration_max = 600;
 	public static int agent_duration = 0;
 	public static double agent_distance = 0;
+
+	public static int TIMELIMIT = 600;
 	public static int TimP_sample = 0;
+	public static boolean show_path = false;
 	
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -118,6 +129,70 @@ public class CstAgent {
 				ent_player = null;
 		}
 	}
+
+
+	// AI move
+	public static Vec3 destPrey(boolean is_opponent) {
+		Vec3 vec_p_prime = Vec3.ZERO;
+		Vec3 vec_p = Vec3.ZERO;
+		if (is_opponent) {
+			vec_p_prime = pos_player;
+			vec_p = pos_opponent;
+		} else { // false : pseudomouse
+			vec_p_prime = pos_opponent;
+			vec_p = pos_player;
+		}
+		Vec3 field_obstacle = CstField.calFieldObstacle(3, vec_p);
+		Vec3 field_wall = CstField.calFieldWall(8, vec_p);
+		Vec3 field_player = CstField.calFieldPlayer(12, vec_p.subtract(vec_p_prime));
+		Vec3 field_sum = Vec3.ZERO;
+		field_sum = field_sum.add(field_obstacle);
+		field_sum = field_sum.add(field_wall);
+		field_sum = field_sum.add(field_player);
+		Vec3 vec_destination = vec_p.add(field_sum);
+		return vec_destination;
+	}
+	public static Vec3 destPredator(boolean is_opponent) {
+		Vec3 vec_p_prime = Vec3.ZERO;
+		Vec3 vec_p = Vec3.ZERO;
+		if (is_opponent) {
+			vec_p_prime = pos_player;
+			vec_p = pos_opponent;
+		} else { // false : pseudocat
+			vec_p_prime = pos_opponent;
+			vec_p = pos_player;
+		}
+		Vec3 vec_destination = vec_p_prime;
+		return vec_destination;
+	}
+
+	
+	// get nodes Pathfinders
+	public static ArrayList getPath(Entity entity, boolean is_opponent) {
+		@Nullable Path path = null;
+		ArrayList<Vec3> vec_nodes = new ArrayList<>();
+		Vec3 pos_node = Vec3.ZERO;
+		if (entity instanceof Mob mob) path = mob.getNavigation().getPath();
+		if (path == null) {
+			if (is_opponent) {
+				path_opponent = new ArrayList<>();
+			} else {
+				path_player = new ArrayList<>();
+			}
+			return vec_nodes;
+		}
+		for (int i=0; i<path.getNodeCount(); i++) {
+			pos_node = path.getNode(i).asVec3();
+			vec_nodes.add(pos_node);
+		}
+		if (is_opponent) {
+			path_opponent = new ArrayList<>(vec_nodes);
+		} else {
+			path_player = new ArrayList<>(vec_nodes);
+		}
+		return vec_nodes;
+	}
+
 
 	// wind up
 	public static void setDuration(int dur) {

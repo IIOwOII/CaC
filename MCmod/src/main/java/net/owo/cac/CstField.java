@@ -131,6 +131,9 @@ public class CstField {
 		double R_sqr = vec_pp.lengthSqr();
 		Vec3 vec_field = Vec3.ZERO;
 		vec_field = vec_pp.scale(sca_k/R_sqr);
+		if (vec_field.length() > 50) {
+			vec_field = (vec_field.normalize()).scale(50.0);
+		}
 		return vec_field;
 	}
 	
