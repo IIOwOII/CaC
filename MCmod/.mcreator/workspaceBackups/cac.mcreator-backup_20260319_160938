@@ -210,30 +210,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "FncFieldObstacle",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_field_obstacle",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncFieldObstacleProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "return_type": "vector"
-      },
-      "path": "~/CacUtil/Field"
-    },
-    {
       "name": "CmdInitialize",
       "type": "command",
       "compiles": true,
@@ -285,26 +261,6 @@
         ]
       },
       "path": "~/CacBlock"
-    },
-    {
-      "name": "FncFieldPlayer",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_field_player",
-      "metadata": {
-        "return_type": "vector",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncFieldPlayerProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
     },
     {
       "name": "BlsWall",
@@ -545,70 +501,6 @@
       "path": "~/CacEntity"
     },
     {
-      "name": "FncScanObstacle",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_scan_obstacle",
-      "metadata": {
-        "return_type": "datalist",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncScanObstacleProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
-    },
-    {
-      "name": "FncScanWall",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_scan_wall",
-      "metadata": {
-        "return_type": "datalist",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncScanWallProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
-    },
-    {
-      "name": "FncFieldWall",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_field_wall",
-      "metadata": {
-        "return_type": "vector",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncFieldWallProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
-    },
-    {
       "name": "AiCat",
       "type": "procedure",
       "compiles": true,
@@ -763,7 +655,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "TaskGameplay",
@@ -944,7 +836,7 @@
         ],
         "dependencies": []
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "TaskSessionEnd",
@@ -1108,7 +1000,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "FncManageDifficulty",
@@ -1122,7 +1014,7 @@
         ],
         "dependencies": []
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "TaskPreTrial",
@@ -1164,7 +1056,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "EvQueImmediate",
@@ -1739,10 +1631,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       },
@@ -3952,12 +3840,6 @@
       "value": "new File(\"\")"
     },
     {
-      "name": "List_obstacle",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "List_random_preparation",
       "type": "datalist",
       "scope": "map",
@@ -3971,12 +3853,6 @@
     },
     {
       "name": "List_spawnpoint_opponent",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "List_wall",
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
@@ -4469,8 +4345,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
@@ -4553,17 +4429,8 @@
         "children": []
       },
       {
-        "name": "CacUtil",
-        "children": [
-          {
-            "name": "Manager",
-            "children": []
-          },
-          {
-            "name": "Field",
-            "children": []
-          }
-        ]
+        "name": "CacFunction",
+        "children": []
       },
       {
         "name": "CacTask",

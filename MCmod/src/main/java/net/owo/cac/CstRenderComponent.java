@@ -120,6 +120,11 @@ public class CstRenderComponent {
 			c_map[0] = 1F;
 			c_map[1] = 0.9176F;
 			c_map[2] = 0.5804F;
+		} else if (color == 'w') {
+			// GRAY_B: #BBBBBB
+			c_map[0] = 0.7333F;
+			c_map[1] = 0.7333F;
+			c_map[2] = 0.7333F;
 		}
 		return c_map;
 	}
@@ -143,4 +148,5 @@ public class CstRenderComponent {
 		vc.normal(pose.normal(), (float)vec_N.x(), (float)vec_N.y(), (float)vec_N.z());
 		vc.endVertex();
 	}
+
 }

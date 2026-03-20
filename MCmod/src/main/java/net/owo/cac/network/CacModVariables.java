@@ -200,11 +200,9 @@ public class CacModVariables {
 		public static final String DATA_NAME = "cac_mapvars";
 		public Vec3 Builder_pos1 = Vec3.ZERO;
 		public Vec3 Builder_pos2 = Vec3.ZERO;
-		public ListTag List_obstacle = new ListTag();
 		public ListTag List_random_preparation = new ListTag();
 		public ListTag List_random_spawn = new ListTag();
 		public ListTag List_spawnpoint_opponent = new ListTag();
-		public ListTag List_wall = new ListTag();
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -221,11 +219,9 @@ public class CacModVariables {
 				ListTag listTag = nbt.getList("Builder_pos2", 6);
 				this.Builder_pos2 = new Vec3(listTag.getDouble(0), listTag.getDouble(1), listTag.getDouble(2));
 			}
-			this.List_obstacle = nbt.get("List_obstacle") instanceof ListTag List_obstacle ? List_obstacle : new ListTag();
 			this.List_random_preparation = nbt.get("List_random_preparation") instanceof ListTag List_random_preparation ? List_random_preparation : new ListTag();
 			this.List_random_spawn = nbt.get("List_random_spawn") instanceof ListTag List_random_spawn ? List_random_spawn : new ListTag();
 			this.List_spawnpoint_opponent = nbt.get("List_spawnpoint_opponent") instanceof ListTag List_spawnpoint_opponent ? List_spawnpoint_opponent : new ListTag();
-			this.List_wall = nbt.get("List_wall") instanceof ListTag List_wall ? List_wall : new ListTag();
 		}
 
 		@Override
@@ -246,11 +242,9 @@ public class CacModVariables {
 				listTag.addTag(2, DoubleTag.valueOf(this.Builder_pos2.z()));
 				nbt.put("Builder_pos2", listTag);
 			}
-			nbt.put("List_obstacle", this.List_obstacle);
 			nbt.put("List_random_preparation", this.List_random_preparation);
 			nbt.put("List_random_spawn", this.List_random_spawn);
 			nbt.put("List_spawnpoint_opponent", this.List_spawnpoint_opponent);
-			nbt.put("List_wall", this.List_wall);
 			return nbt;
 		}
 

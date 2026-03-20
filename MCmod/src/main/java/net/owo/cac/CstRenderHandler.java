@@ -116,6 +116,7 @@ public class CstRenderHandler {
 	    			CstRenderComponent.renderLine(ps, vc, node_curr.subtract(vec_cam), node_next.subtract(vec_cam), 'g');
 	    		}
 			}
+			CstRenderComponent.renderLine(ps, vc, vec_p.subtract(vec_cam), vec_p_prime.subtract(vec_cam), 'w');
     	}
     	
     }

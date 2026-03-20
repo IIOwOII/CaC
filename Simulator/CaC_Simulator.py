@@ -5,9 +5,11 @@
 import pygame as pg
 
 import os
+import time
 import numpy as np
 import pickle
 import itertools
+import json
 
 from copy import deepcopy
 
@@ -97,7 +99,7 @@ class Vec2: # 2차원 벡터 클래스
         return Vec2(_cos * self.x - _sin * self.y, _sin * self.x + _cos * self.y)
 
 
-#%% Game System
+#%% Environment
 def util_directory():
     return os.getcwd()
 
@@ -113,11 +115,11 @@ def util_image_load(img):
     return surface.convert_alpha()
 
 
-#%% Environment
 class Env_CaC_Simulator:
     def __init__(self, map_size=(33,33), mode_render='human'):
         # Vanila MC
         self.TPS = 20
+        self.playtick = 0
         
         #
         self.map_x = map_size[0]
@@ -142,7 +144,7 @@ class Env_CaC_Simulator:
         
         # map
         self.W = np.zeros(map_size)
-        self.w_size = 1/8 # hitbox size of wall 
+        self.w_size = 1 # hitbox size of wall 
         
         # Cursor
         self.mx = 0 # px
@@ -150,6 +152,7 @@ class Env_CaC_Simulator:
         self.mw = 2 # wheel
         
         # Entity
+        self.T = 600 # end time
         self.rho_A = 1.00
         self.E_switch_render = False
         self.E_switch_play = False
@@ -197,10 +200,11 @@ class Env_CaC_Simulator:
         self.menu.buttons = [
             Button(func='save', pos=(offset_w,20), text='Save', condition=['edit']),
             Button(func='load', pos=(offset_w,80), text='Load', condition=['edit']),
-            Button(func='reset', pos=(offset_w,140), text='Reset', condition=['play']),
+            Button(func='reset', pos=(offset_w,140), text='Reset', condition=['edit', 'play']),
             Button(func='spd_down', pos=(offset_w,200), text='<', condition=['play'], size=(40,40)),
             Button(func='spd_up', pos=(self.screen_w-60,200), text='>', condition=['play'], size=(40,40)),
-            Button(func='play/stop', pos=(offset_w,260), text='Play/Stop', condition=['play'])]
+            Button(func='play/stop', pos=(offset_w,260), text='Play/Stop', condition=['play']),
+            Button(func='load_json', pos=(offset_w,320), text='Load json', condition=['edit'])]
         
         # Entity
         self.E_predator.set_sprite('spr_predator.png')
@@ -214,35 +218,27 @@ class Env_CaC_Simulator:
         self.tick_render()
         self.menu.tick()
         if self.E_switch_play:
+            self.playtick += 1
             self.E_predator.tick()
             self.E_prey.tick()
+            if (self.playtick % 4 == 3): self.E_predator.update_path()
+            if (self.playtick % 4 == 1): self.E_prey.update_path()
+            if ((self.playtick == self.T) 
+                or (self.E_prey.P.distance(self.E_predator.P) < 0.5)): 
+                self.util_play_or_stop()
         self.clock.tick(self.TPS)
     
     def tick_render(self):
-        # Background
-        self.screen.fill((0,0,0))
-        
-        # Grass
+        # UI
+        self.screen.fill((0,0,0)) # Background
         pg.draw.rect(self.screen, self.color['grass'][self.mode_map], 
-                     (0, 0, self.map_x*self.px, self.map_y*self.px))
-        
-        # Wall and obstacle
-        self.render_wall()
-        
-        # Spawn point
-        if (self.mode_map == 0):
-            self.render_spawnpoint()
-        
-        # Entity path
-        if (self.mode_map==2):
-            self.render_path()
-        
-        # Menu
-        self.render_menu()
-        
-        # submenu
-        if (self.mode_game==0):
-            self.render_editor()
+                     (0, 0, self.map_x*self.px, self.map_y*self.px)) # Grass
+        self.render_wall() # Wall and obstacle
+        if (self.mode_map==0): self.render_spawnpoint() # Spawn point
+        if (self.mode_map==2): self.render_path() # Entity path
+        self.render_menu() # Menu
+        if (self.mode_game==0): self.render_editor() # submenu
+        self.render_description() # Description
         
         # Grid
         for i in range(self.map_x+1):
@@ -255,9 +251,6 @@ class Env_CaC_Simulator:
         # Entity
         self.E_predator.render()
         self.E_prey.render()
-        
-        # Description
-        self.render_description()
         
         # Render Update
         pg.display.update()
@@ -279,6 +272,9 @@ class Env_CaC_Simulator:
         text_block = self.font.render(
             text=f'Block: {self.block_list[(self.mw%6)]}', antialias=True, color=self.color['font'])
         self.screen.blit(text_block, tuple(offset+Vec2(20,100)))
+        text_tick = self.font.render(
+            text=f'Tick: {self.playtick}', antialias=True, color=self.color['font'])
+        self.screen.blit(text_tick, tuple(offset+Vec2(20,140)))
     
     def render_spawnpoint(self):
         if np.any(self.W == -1):
@@ -356,7 +352,6 @@ class Env_CaC_Simulator:
         
         if (action==1):
             self.menu.call_button()
-            
         
     def step_build(self, pos, tile):
         # 0: None
@@ -373,15 +368,19 @@ class Env_CaC_Simulator:
         if (func=='save'):
             self.util_save()
         elif (func=='load'):
+            self.W[:] = 0
             self.util_load()
         elif (func=='reset'):
             self.util_reset()
         elif (func=='spd_down'):
-            self.util_adjust_speed(-0.02)
+            self.util_adjust_speed(-0.01)
         elif (func=='spd_up'):
-            self.util_adjust_speed(0.02)
+            self.util_adjust_speed(0.01)
         elif (func=='play/stop'):
             self.util_play_or_stop()
+        elif (func=='load_json'):
+            self.W[:] = 0
+            self.util_load_json()
         
     
     def util_px2block(self, pos_px):
@@ -485,11 +484,37 @@ class Env_CaC_Simulator:
             self.W = pickle.load(f)
         
     def util_reset(self):
-        # categorize map
-        self.util_categorize_map()
-        # reset entity
-        self.E_predator.reset()
-        self.E_prey.reset()
+        if (self.mode_game == 0):
+            self.W[:] = 0
+        elif (self.mode_game == 1):
+            self.util_categorize_map() # categorize map
+            self.E_predator.reset() # reset entity
+            self.E_prey.reset() # reset entity
+    
+    def util_load_json(self):
+        dir_info = '../MCmod/run/cacutil/components/info_obstacle.json'
+        dir_pool = '../MCmod/run/cacutil/components/pool_point.json'
+        with open(dir_info, 'r') as f: dat_map = json.load(f)
+        with open(dir_pool, 'r') as f: dat_pool = json.load(f)
+        
+        vec_start = Vec2.vec2int(Vec2(*dat_map['border'][0]))
+        dat_spawn = dat_pool['spawnpoint']
+        for pla in dat_spawn['player']:
+            sp_pla = Vec2(pla[0], pla[2]) - Vec2(0.5, 0.5)
+            sp_pla = Vec2.vec2int(sp_pla-vec_start)
+            self.W[sp_pla.x, sp_pla.y] = -1
+        for opp in dat_spawn['opponent']:
+            sp_opp = Vec2(opp[0], opp[2]) - Vec2(0.5, 0.5)
+            sp_opp = Vec2.vec2int(sp_opp-vec_start)
+            self.W[sp_opp.x, sp_opp.y] = -2
+        for obs in dat_map['obstacle_point']:
+            vec_obs = Vec2(*obs)
+            vec_obs = Vec2.vec2int(vec_obs-vec_start)
+            self.W[vec_obs.x, vec_obs.y] = 2
+        for wal in dat_map['wall_point']:
+            vec_wal = Vec2(*wal)
+            vec_wal = Vec2.vec2int(vec_wal-vec_start)
+            self.W[vec_wal.x, vec_wal.y] = 1
     
     def util_adjust_speed(self, delta):
         self.rho_A += delta
@@ -497,6 +522,8 @@ class Env_CaC_Simulator:
     
     def util_play_or_stop(self):
         self.E_switch_play = (not self.E_switch_play)
+        if (self.E_switch_play):
+            self.playtick = 0
         
     def mode_change(self, mode_type):
         mode_types = ['game', 'map']
@@ -537,9 +564,6 @@ class Env_CaC_Simulator:
                           'wall': 10,
                           'obstacle': 3}
             
-            # Field
-            self.timer = 0
-            
             # Pathfinder
             self.pathfinder = Pathfinder()
         
@@ -566,11 +590,7 @@ class Env_CaC_Simulator:
             self.P = Vec2(*self.spawnpoint[idx])
             
         def tick(self):
-            self.timer += 1
-            if (self.timer == 20):
-                self.timer = 0
-                self.update_path()
-            elif (self.pathfinder.que_move):
+            if (self.pathfinder.que_move):
                 flag = self.pathfinder.que_move[-1]
                 self.move(flag)
                 if self.P.distance(flag) < 0.1:
@@ -754,7 +774,7 @@ class Node:
             self.f = self.g + self.h
 
 
-#%% Button
+#%% Menu
 class Button():
     def __init__(self, func, pos=(0,0), size=(200,40), text='', condition=[]):
         self.func = func
@@ -771,7 +791,6 @@ class Button():
         self.spr = self.spr_default
 
 
-#%% Menu
 class Menu():
     def __init__(self, env):
         self.env = env
@@ -880,12 +899,32 @@ def Field_line(vec_r, k=1, f='1/r'):
     
     return field
 
-#%%
+
+#%% Timer
+class Timer():
+    def __init__(self):
+        self.t = time.time()
+        self.t_old = time.time()
+    
+    def record(self):
+        self.t_old = self.t
+    
+    def update(self):
+        self.t = time.time()
+    
+    def diff(self):
+        return self.t - self.t_old
+
+
+#%% Execute
 env = Env_CaC_Simulator()
+SPT = 1/env.TPS # second per tick
+TimA = Timer()
 
 env_switch = True
 while env_switch:
-    env.tick()
+    TimA.update()
+    if (TimA.diff() >= SPT): env.tick()
     for event in pg.event.get():
         if (event.type == pg.QUIT):
             env_switch = False

@@ -1,7 +1,5 @@
 package net.owo.cac.procedures;
 
-import net.owo.cac.network.CacModVariables;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -16,7 +14,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -37,14 +34,6 @@ public class PrdInitializeProcedure {
 		if (entity == null)
 			return;
 		IniPoolProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).List_obstacle = new ListTag();
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).List_wall = new ListTag();
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).List_obstacle = FncScanObstacleProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).syncData(world);
-		CacModVariables.MapVariables.get(world).List_wall = FncScanWallProcedure.execute(world);
-		CacModVariables.MapVariables.get(world).syncData(world);
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

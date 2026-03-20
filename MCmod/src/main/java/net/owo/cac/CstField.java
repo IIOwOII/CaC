@@ -1,7 +1,5 @@
 package net.owo.cac;
 
-import java.util.ArrayList;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -17,12 +15,24 @@ import net.owo.cac.network.CacModVariables;
 import net.owo.cac.init.CacModBlocks;
 import net.owo.cac.CacMod;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileWriter;
+
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstField {
 	public static boolean show_field = false;
 	public static ArrayList<ArrayList<Vec3>> list_obstacle = new ArrayList<>();
 	public static ArrayList<ArrayList<Vec3>> list_wall = new ArrayList<>();
+	public static ArrayList<Vec3> points_obstacle = new ArrayList<>();
+	public static ArrayList<Vec3> points_wall = new ArrayList<>();
 	public static Vec3 pos_border_start = new Vec3(-15.5, 64.0, -65.5);
 	public static Vec3 pos_border_end = new Vec3(16.5, 64.0, -33.5);
 	
@@ -41,6 +51,70 @@ public class CstField {
 		}
 	}
 
+	// record
+	public static JsonArray vec2arr(Vec3 vec) {
+		JsonArray arr = new JsonArray();
+		arr.add(vec.x());
+		arr.add(vec.z());
+		return arr;
+	}
+	public static void recObstacle() {
+		JsonObject obj_file = new JsonObject();
+		JsonArray arr_border = new JsonArray();
+		JsonArray arr_obstacle = new JsonArray();
+		JsonArray arr_wall = new JsonArray();
+		JsonArray arr_obstacle_point = new JsonArray();
+		JsonArray arr_wall_point = new JsonArray();
+		JsonArray arr_temp = new JsonArray();
+
+		// create file
+		File Info_obstacle = new File(CacModVariables.Dir_components, File.separator + "info_obstacle.json");
+		try {
+			Info_obstacle.getParentFile().mkdirs();
+			Info_obstacle.createNewFile();
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
+
+		// add components
+		arr_border.add(vec2arr(pos_border_start));
+		arr_border.add(vec2arr(pos_border_end));
+		for (int i=0; i<list_obstacle.size(); i++) {
+			arr_temp = new JsonArray();
+			arr_temp.add(vec2arr(list_obstacle.get(i).get(0)));
+			arr_temp.add(vec2arr(list_obstacle.get(i).get(1)));
+			arr_obstacle.add(arr_temp.deepCopy());
+		}
+		for (int j=0; j<list_wall.size(); j++) {
+			arr_temp = new JsonArray();
+			arr_temp.add(vec2arr(list_wall.get(j).get(0)));
+			arr_temp.add(vec2arr(list_wall.get(j).get(1)));
+			arr_wall.add(arr_temp.deepCopy());
+		}
+		for (int i=0; i<points_obstacle.size(); i++) {
+			arr_obstacle_point.add(vec2arr(points_obstacle.get(i)));
+		}
+		for (int j=0; j<points_wall.size(); j++) {
+			arr_wall_point.add(vec2arr(points_wall.get(j)));
+		}
+
+		// write
+		obj_file.add("border", arr_border);
+		obj_file.add("obstacle", arr_obstacle);
+		obj_file.add("wall", arr_wall);
+		obj_file.add("obstacle_point", arr_obstacle_point);
+		obj_file.add("wall_point", arr_wall_point);
+		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+		try {
+			FileWriter fileWriter = new FileWriter(Info_obstacle);
+			fileWriter.write(mainGSONBuilderVariable.toJson(obj_file));
+			fileWriter.close();
+		} catch (IOException exception) {
+			exception.printStackTrace();
+		}
+	}
+	
+	// calculate field
 	public static Vec3 calFieldObstacle(double sca_k, Vec3 pos_p) {
 		if (list_obstacle.size() == 0) return Vec3.ZERO;
 		Vec3 vec_p = Vec3.ZERO;
@@ -83,7 +157,6 @@ public class CstField {
 		}
 		return vec_field;
 	}
-
 	public static Vec3 calFieldWall(double sca_k, Vec3 pos_p) {
 		if (list_wall.size() == 0) return Vec3.ZERO;
 		Vec3 vec_p = Vec3.ZERO;
@@ -126,7 +199,6 @@ public class CstField {
 		}
 		return vec_field;
 	}
-
 	public static Vec3 calFieldPlayer(double sca_k, Vec3 vec_pp) {
 		double R_sqr = vec_pp.lengthSqr();
 		Vec3 vec_field = Vec3.ZERO;
@@ -136,7 +208,8 @@ public class CstField {
 		}
 		return vec_field;
 	}
-	
+
+	// Scan Obstacle
 	public static void scanObstacle(LevelAccessor world) {
 		// variables
 		BlockState block_curr = Blocks.AIR.defaultBlockState();
@@ -170,10 +243,12 @@ public class CstField {
 				iswall_end = false;
 				block_next = (world.getBlockState(BlockPos.containing(cx, oy, cz+1)));
 				if (block_curr.getBlock() == CacModBlocks.BLK_OBSTACLE.get()) { // obstacle
+					points_obstacle.add(new Vec3(cx, oy, cz));
 					if (!(block_prev.getBlock() == CacModBlocks.BLK_OBSTACLE.get())) ispoint_start = true;
 					if (!(block_next.getBlock() == CacModBlocks.BLK_OBSTACLE.get())) ispoint_end = true;
 				}
 				if (block_curr.getBlock() == CacModBlocks.BLK_WALL.get()) { // wall
+					points_wall.add(new Vec3(cx, oy, cz));
 					if (!(block_prev.getBlock() == CacModBlocks.BLK_WALL.get())) iswall_start = true;
 					if (!(block_next.getBlock() == CacModBlocks.BLK_WALL.get())) iswall_end = true;
 				}

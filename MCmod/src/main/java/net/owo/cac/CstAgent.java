@@ -172,7 +172,9 @@ public class CstAgent {
 		@Nullable Path path = null;
 		ArrayList<Vec3> vec_nodes = new ArrayList<>();
 		Vec3 pos_node = Vec3.ZERO;
-		if (entity instanceof Mob mob) path = mob.getNavigation().getPath();
+		if (entity instanceof Mob mob) {
+			path = mob.getNavigation().getPath();
+		}
 		if (path == null) {
 			if (is_opponent) {
 				path_opponent = new ArrayList<>();

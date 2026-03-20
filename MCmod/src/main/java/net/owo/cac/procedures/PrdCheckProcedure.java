@@ -53,13 +53,5 @@ public class PrdCheckProcedure {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7ebehaviors: \u00A7r" + CacModVariables.Dir_behaviors)), false);
 		}
-		if ((target).equals("point")) {
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eobstacles: \u00A7r" + new java.text.DecimalFormat("##").format(CacModVariables.MapVariables.get(world).List_obstacle.size()))), false);
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7ewalls: \u00A7r" + new java.text.DecimalFormat("##").format(CacModVariables.MapVariables.get(world).List_wall.size()))), false);
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7espawns: \u00A7r" + new java.text.DecimalFormat("##").format(CacModVariables.MapVariables.get(world).List_spawnpoint_opponent.size()))), false);
-		}
 	}
 }
