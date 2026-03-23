@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import net.owo.cac.CstState;
 import net.owo.cac.CstItem;
+import net.owo.cac.CstReplay;
 import net.owo.cac.CacMod;
 import net.owo.cac.network.CacModVariables;
 
@@ -30,6 +31,9 @@ public class CstKeyHandler {
         if (event.phase == TickEvent.Phase.END) {
 			if (CstState.getKeyChanged(4) == 0) {
 				CstState.switchMeowView();
+			}
+			if (CstState.getKeyChanged(6) == 0) {
+				CstReplay.toggleRecording(24);
 			}
 			CstState.KeyTickUpdate();
 			if (CstState.CanMeowMove) {

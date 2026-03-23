@@ -3603,6 +3603,18 @@
           "src/main/java/net/owo/cac/CstField.java"
         ]
       }
+    },
+    {
+      "name": "CstReplay",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_replay",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstReplay.java"
+        ]
+      }
     }
   ],
   "variable_elements": [

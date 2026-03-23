@@ -84,6 +84,17 @@ public class CstKeybind {
 			isDownOld = isDown;
 		}
     };
+    public static final KeyMapping CAC_RECORD_KEY = new KeyMapping("key.cac.cac_key_record", GLFW.GLFW_KEY_RIGHT_SHIFT, "key.categories.cac") {
+    	int KI = 6;
+		boolean isDownOld = false;
+		
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			CstState.key_pressed[KI] = isDown;
+			isDownOld = isDown;
+		}
+    };
     
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
@@ -93,5 +104,6 @@ public class CstKeybind {
         event.register(CAC_DOWN_KEY);
         event.register(CAC_CAMERA_KEY);
         event.register(CAC_DECIDE_KEY);
+        event.register(CAC_RECORD_KEY);
     }
 }

@@ -210,30 +210,6 @@
       "path": "~/CacBlock"
     },
     {
-      "name": "FncFieldObstacle",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_field_obstacle",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncFieldObstacleProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ],
-        "return_type": "vector"
-      },
-      "path": "~/CacUtil/Field"
-    },
-    {
       "name": "CmdInitialize",
       "type": "command",
       "compiles": true,
@@ -285,26 +261,6 @@
         ]
       },
       "path": "~/CacBlock"
-    },
-    {
-      "name": "FncFieldPlayer",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_field_player",
-      "metadata": {
-        "return_type": "vector",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncFieldPlayerProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
     },
     {
       "name": "BlsWall",
@@ -503,12 +459,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -543,70 +494,6 @@
         ]
       },
       "path": "~/CacEntity"
-    },
-    {
-      "name": "FncScanObstacle",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_scan_obstacle",
-      "metadata": {
-        "return_type": "datalist",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncScanObstacleProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
-    },
-    {
-      "name": "FncScanWall",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_scan_wall",
-      "metadata": {
-        "return_type": "datalist",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncScanWallProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
-    },
-    {
-      "name": "FncFieldWall",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "fnc_field_wall",
-      "metadata": {
-        "return_type": "vector",
-        "files": [
-          "src/main/java/net/owo/cac/procedures/FncFieldWallProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacUtil/Field"
     },
     {
       "name": "AiCat",
@@ -763,7 +650,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "TaskGameplay",
@@ -944,7 +831,7 @@
         ],
         "dependencies": []
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "TaskSessionEnd",
@@ -1108,7 +995,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "FncManageDifficulty",
@@ -1122,7 +1009,7 @@
         ],
         "dependencies": []
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "TaskPreTrial",
@@ -1164,7 +1051,7 @@
           }
         ]
       },
-      "path": "~/CacUtil/Manager"
+      "path": "~/CacFunction"
     },
     {
       "name": "EvQueImmediate",
@@ -3716,6 +3603,18 @@
           "src/main/java/net/owo/cac/CstField.java"
         ]
       }
+    },
+    {
+      "name": "CstReplay",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_replay",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstReplay.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -3948,12 +3847,6 @@
       "value": "new File(\"\")"
     },
     {
-      "name": "List_obstacle",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
       "name": "List_random_preparation",
       "type": "datalist",
       "scope": "map",
@@ -3967,12 +3860,6 @@
     },
     {
       "name": "List_spawnpoint_opponent",
-      "type": "datalist",
-      "scope": "map",
-      "value": "new ListTag()"
-    },
-    {
-      "name": "List_wall",
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
@@ -4549,17 +4436,8 @@
         "children": []
       },
       {
-        "name": "CacUtil",
-        "children": [
-          {
-            "name": "Manager",
-            "children": []
-          },
-          {
-            "name": "Field",
-            "children": []
-          }
-        ]
+        "name": "CacFunction",
+        "children": []
       },
       {
         "name": "CacTask",
