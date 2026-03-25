@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "cac:ent_mouse",
+    "cac:ent_player_mouse",
+    "cac:ent_pseudo_mouse"
+  ]
+}

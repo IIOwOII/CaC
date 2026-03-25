@@ -33,18 +33,16 @@ import net.owo.cac.network.CacModVariables;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstReplay {
- // it can be closed (such like file io)
     // The status of recording
     private static final AtomicBoolean RECORDING = new AtomicBoolean(false); // If render system uses multithreads, we need to make the one group value from them.
     private static final AtomicBoolean STOP_REQUEST = new AtomicBoolean(false);
 
     // Queue
     private static Thread writerThread;
-    private static final int POOL_MAX = 8;
+    private static final int POOL_MAX = 16;
     private static final BlockingQueue<FramePacket> POOL_FRAME = new ArrayBlockingQueue<>(POOL_MAX);
     private static final ArrayDeque<ByteBuffer> POOL_BUFFER = new ArrayDeque<>();
     private static final Object STATE_LOCK = new Object();
-    
 
     // file
     private static FileChannel fileChannel;
@@ -118,7 +116,7 @@ public class CstReplay {
 		        	StandardOpenOption.WRITE);
 
 				// pool reset
-				for (int i=0; i<4; i++) {
+				for (int i=0; i<POOL_MAX; i++) {
                     POOL_BUFFER.add(BufferUtils.createByteBuffer(BPF));
                 }
                 STOP_REQUEST.set(false);
@@ -128,7 +126,6 @@ public class CstReplay {
 		        writerThread = new Thread(CstReplay::writeFrame, "cac-replay-writer"); // thread allocate
 		        writerThread.setDaemon(false);
 		        writerThread.start();
-		        RECORDING.set(true);
 
 				// go!
 		        CacMod.LOGGER.info("Recording started: {}x{} @ {}fps", WIDTH, HEIGHT, FPS);
@@ -195,9 +192,12 @@ public class CstReplay {
         // GPU to CPU(ByteBuffer)
         ByteBuffer buffer = borrowBuffer(); // create the empty buffer to contain RGB24
 		if (buffer == null) {
-			// if frame pool and buffer pool are stucked, frame drop
-			frameDropped++;
+			frameDropped++; // if frame pool and buffer pool are stucked, frame drop
 			T_QUE += NPF;
+            if (t_curr-T_QUE > NPF*4L) { // if render lag is very long, time que adjusted
+                T_QUE = t_curr + NPF;
+            }
+            return;
 		}
 
         try {
@@ -228,12 +228,6 @@ public class CstReplay {
         	recycleBuffer(buffer);
         	CacMod.LOGGER.error("Failed to capture frame.", e);
             stopRecording();
-        } finally {
-			T_QUE += NPF;
-			// if render lag is very long, time que adjusted
-            if (t_curr-T_QUE > NPF*4L) {
-                T_QUE = t_curr + NPF;
-            }
         }
     }
 
@@ -279,7 +273,7 @@ public class CstReplay {
 
 	//
 	private static void writeMetadata() {
-        long duration = (T_END > T_START) ? (T_END - T_START) : 0L;
+        double duration = (T_END > T_START) ? (T_END-T_START)/1_000_000_000.0 : 0.0;
         try (BufferedWriter bw = Files.newBufferedWriter(
                 fileMeta,
                 StandardOpenOption.CREATE,
