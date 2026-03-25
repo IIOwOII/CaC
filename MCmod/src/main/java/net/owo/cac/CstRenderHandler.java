@@ -16,6 +16,7 @@ import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.owo.cac.CstState;
 import net.owo.cac.CstField;
 import net.owo.cac.CstAgent;
+import net.owo.cac.CstReplay;
 import net.owo.cac.CstRenderComponent;
 import net.owo.cac.network.CacModVariables;
 
@@ -54,6 +55,11 @@ public class CstRenderHandler {
     	int gw = event.getWindow().getGuiScaledWidth();
 		int gh = event.getWindow().getGuiScaledHeight();
     	if (CacModVariables.Switch_blank) CstRenderComponent.renderBlank(gg, gw, gh);
+    }
+
+    @SubscribeEvent
+    public static void onRenderGuiPose(RenderGuiEvent.Post event) {
+    	if (CstReplay.isRecording()) CstReplay.readFrame();
     }
 
     @SubscribeEvent
