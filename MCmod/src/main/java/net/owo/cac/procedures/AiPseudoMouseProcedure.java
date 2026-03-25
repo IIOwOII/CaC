@@ -10,6 +10,7 @@ public class AiPseudoMouseProcedure {
 		if (entity == null)
 			return;
 		if (CacModVariables.Switch_AI && !world.isClientSide()) {
+			net.owo.cac.CstAgent.getPath(entity, false, false);
 			if (net.owo.cac.CstAgent.TimP_sample == 1) {
 				AiMovePseudoMouseProcedure.execute(entity);
 			}

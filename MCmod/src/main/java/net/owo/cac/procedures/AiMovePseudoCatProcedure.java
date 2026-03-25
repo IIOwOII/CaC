@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CstAgent;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.entity.Mob;
@@ -16,6 +15,5 @@ public class AiMovePseudoCatProcedure {
 		CacModVariables.Pos_player_destination = vec_destination;
 		if (entity instanceof Mob _entity)
 			_entity.getNavigation().moveTo((vec_destination.x()), (vec_destination.y()), (vec_destination.z()), 0.48989794855);
-		CstAgent.getPath(entity, false);
 	}
 }

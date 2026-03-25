@@ -1,0 +1,2 @@
+ffmpeg -f rawvideo -pix_fmt rgb24 -video_size 854x480 -framerate 24 -i replay.meow -vf vflip out.avi
+ffmpeg -f rawvideo -pix_fmt rgb24 -video_size 1920x1080 -framerate 24 -i replay.meow -vf vflip out.avi

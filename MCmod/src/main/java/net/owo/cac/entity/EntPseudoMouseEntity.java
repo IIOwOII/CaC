@@ -162,7 +162,7 @@ public class EntPseudoMouseEntity extends PathfinderMob implements GeoEntity {
 
 	@Override
 	public EntityDimensions getDimensions(Pose p_33597_) {
-		return super.getDimensions(p_33597_).scale((float) 1);
+		return super.getDimensions(p_33597_).scale((float) 0.5);
 	}
 
 	@Override
@@ -180,7 +180,7 @@ public class EntPseudoMouseEntity extends PathfinderMob implements GeoEntity {
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 32);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
 		return builder;
 	}
 
@@ -237,8 +237,8 @@ public class EntPseudoMouseEntity extends PathfinderMob implements GeoEntity {
 
 	@Override
 	public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-		data.add(new AnimationController<>(this, "movement", 2, this::movementPredicate));
-		data.add(new AnimationController<>(this, "procedure", 2, this::procedurePredicate));
+		data.add(new AnimationController<>(this, "movement", 4, this::movementPredicate));
+		data.add(new AnimationController<>(this, "procedure", 4, this::procedurePredicate));
 	}
 
 	@Override

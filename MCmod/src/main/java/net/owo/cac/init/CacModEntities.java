@@ -35,9 +35,9 @@ public class CacModEntities {
 	public static final RegistryObject<EntityType<EntMeowcamEntity>> ENT_MEOWCAM = register("ent_meowcam", EntityType.Builder.<EntMeowcamEntity>of(EntMeowcamEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
 			.setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntMeowcamEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPseudoMouseEntity>> ENT_PSEUDO_MOUSE = register("ent_pseudo_mouse", EntityType.Builder.<EntPseudoMouseEntity>of(EntPseudoMouseEntity::new, MobCategory.CREATURE)
-			.setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(EntPseudoMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
+			.setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntPseudoMouseEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntCatEntity>> ENT_CAT = register("ent_cat",
-			EntityType.Builder.<EntCatEntity>of(EntCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(EntCatEntity::new).fireImmune().sized(0.5f, 0.5f));
+			EntityType.Builder.<EntCatEntity>of(EntCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true).setTrackingRange(256).setUpdateInterval(3).setCustomClientFactory(EntCatEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPlayerCatEntity>> ENT_PLAYER_CAT = register("ent_player_cat", EntityType.Builder.<EntPlayerCatEntity>of(EntPlayerCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)
 			.setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(EntPlayerCatEntity::new).fireImmune().sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<EntPseudoCatEntity>> ENT_PSEUDO_CAT = register("ent_pseudo_cat", EntityType.Builder.<EntPseudoCatEntity>of(EntPseudoCatEntity::new, MobCategory.CREATURE).setShouldReceiveVelocityUpdates(true)

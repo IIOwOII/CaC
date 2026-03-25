@@ -10,6 +10,7 @@ public class AiPseudoCatProcedure {
 		if (entity == null)
 			return;
 		if (CacModVariables.Switch_AI && !world.isClientSide()) {
+			net.owo.cac.CstAgent.getPath(entity, false, true);
 			if (net.owo.cac.CstAgent.TimP_sample == 3) {
 				AiMovePseudoCatProcedure.execute(entity);
 			}
