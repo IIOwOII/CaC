@@ -1,9 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "cac:ent_player_cat",
-    "cac:ent_player_mouse",
-    "cac:ent_pseudo_cat",
-    "cac:ent_pseudo_mouse"
-  ]
-}

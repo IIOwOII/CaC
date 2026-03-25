@@ -39,10 +39,6 @@ import net.owo.cac.entity.EntPseudoMouseEntity;
 public class CstAgent {
 	public static ArrayList<Vec3> path_opponent = new ArrayList<>();
 	public static ArrayList<Vec3> path_player = new ArrayList<>();
-
-	// tag (-1: null, 0: cat, 1: mouse
-	public static int tag_opponent = -1;
-	public static int tag_player = -1;
 	
 	@Nullable public static Entity ent_opponent = null;
 	@Nullable public static Entity ent_player = null;
@@ -172,7 +168,7 @@ public class CstAgent {
 
 	
 	// get nodes Pathfinders
-	public static void getPath(Entity entity, boolean is_opponent, boolean is_predator) {
+	public static ArrayList getPath(Entity entity, boolean is_opponent) {
 		@Nullable Path path = null;
 		ArrayList<Vec3> vec_nodes = new ArrayList<>();
 		Vec3 pos_node = Vec3.ZERO;
@@ -185,7 +181,7 @@ public class CstAgent {
 			} else {
 				path_player = new ArrayList<>();
 			}
-			return;
+			return vec_nodes;
 		}
 		for (int i=0; i<path.getNodeCount(); i++) {
 			pos_node = path.getNode(i).asVec3();
@@ -196,12 +192,7 @@ public class CstAgent {
 		} else {
 			path_player = new ArrayList<>(vec_nodes);
 		}
-		return;
-	}
-
-	// if cat arrive dest. but not catch, force to move
-	public static void pushPredator(Entity entity) {
-		return;
+		return vec_nodes;
 	}
 
 
