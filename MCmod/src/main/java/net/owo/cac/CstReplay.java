@@ -63,6 +63,26 @@ public class CstReplay {
 	private static long frameLoaded = 0;
     private static long frameWritten = 0;
     private static long frameDropped = 0;
+
+    //
+    public static String fileName = "replay";
+
+	//
+	ProcessBuilder pb = new ProcessBuilder(
+	    "ffmpeg",
+	    "-y",
+	    "-f", "rawvideo",
+	    "-pix_fmt", "rgb24",
+	    "-s", WIDTH + "x" + HEIGHT,
+	    "-r", String.valueOf(FPS),
+	    "-i", fileName+".meow",
+	    "-vf", "vflip",
+	    "-c:v", "libx264rgb",
+	    "-preset", "veryfast",
+	    "-crf", "18",
+	    fileName+"mp4"
+	);
+	Process process = pb.start();
 	
 	// get state of recording
 	public static boolean isRecording() {

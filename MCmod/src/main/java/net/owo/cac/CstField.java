@@ -119,7 +119,6 @@ public class CstField {
 		if (list_obstacle.size() == 0) return Vec3.ZERO;
 		Vec3 vec_p = Vec3.ZERO;
 		vec_p = new Vec3(pos_p.x()-0.5, 64.0, pos_p.z()-0.5);
-		
 		Vec3 vec_a = Vec3.ZERO;
 		Vec3 vec_b = Vec3.ZERO;
 		Vec3 basis_u = Vec3.ZERO;
