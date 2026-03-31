@@ -10,8 +10,8 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-import net.owo.cac.procedures.AiCatProcedure;
 import net.owo.cac.init.CacModEntities;
+import net.owo.cac.CstAgent;
 
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
@@ -86,7 +86,7 @@ public class EntCatEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-
+		this.goalSelector.addGoal(1, CstAgent.getInstance().new ChasingGoal(this));
 	}
 
 	@Override
@@ -156,7 +156,6 @@ public class EntCatEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		AiCatProcedure.execute(this.level(), this);
 		this.refreshDimensions();
 	}
 

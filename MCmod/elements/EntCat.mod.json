@@ -106,12 +106,9 @@
     "raidCelebrationSound": {
       "value": ""
     },
-    "onMobTickUpdate": {
-      "name": "AiCat"
-    },
     "hasAI": true,
     "aiBase": "(none)",
-    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"></block></xml>",
+    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"44\" y=\"80\"><next><block type=\"java_code\"><field name=\"CODE\">this.goalSelector.addGoal(1, CstAgent.getInstance().new ChasingGoal(this));</field></block></next></block></xml>",
     "model": "cac_cat.geo.json",
     "groupName": "",
     "animation1": "anim_stay",

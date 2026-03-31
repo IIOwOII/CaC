@@ -82,7 +82,6 @@ public class CstReplay {
 	    "-crf", "18",
 	    fileName+"mp4"
 	);
-	Process process = pb.start();
 	
 	// get state of recording
 	public static boolean isRecording() {
