@@ -11,7 +11,6 @@ import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.animatable.GeoEntity;
 
 import net.owo.cac.init.CacModEntities;
-import net.owo.cac.CstAgent;
 
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
@@ -86,7 +85,7 @@ public class EntCatEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	protected void registerGoals() {
 		super.registerGoals();
-		this.goalSelector.addGoal(1, CstAgent.getInstance().new ChasingGoal(this));
+
 	}
 
 	@Override
@@ -179,7 +178,7 @@ public class EntCatEntity extends PathfinderMob implements GeoEntity {
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 32);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
 		return builder;
 	}
 

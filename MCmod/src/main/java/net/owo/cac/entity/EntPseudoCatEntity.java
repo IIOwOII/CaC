@@ -10,7 +10,6 @@ import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-import net.owo.cac.procedures.AiPseudoCatProcedure;
 import net.owo.cac.init.CacModEntities;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -156,7 +155,6 @@ public class EntPseudoCatEntity extends PathfinderMob implements GeoEntity {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		AiPseudoCatProcedure.execute(this.level(), this);
 		this.refreshDimensions();
 	}
 
@@ -180,7 +178,7 @@ public class EntPseudoCatEntity extends PathfinderMob implements GeoEntity {
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 32);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
 		return builder;
 	}
 

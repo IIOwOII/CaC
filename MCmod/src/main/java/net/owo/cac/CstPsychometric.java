@@ -134,7 +134,7 @@ public class CstPsychometric {
 		} else if (!method_bin && method_con) {
 			rho_best = rho_best_con;
 		} else if (method_bin && method_con) { //both
-			rho_best = rho_best_con; // temp
+			rho_best = Math.round((rho_best_con+rho_best_bin) * 50.0) / 100.0; // temp
 		}
 		CacModVariables.Dat_difficulty = rho_best;
 	}

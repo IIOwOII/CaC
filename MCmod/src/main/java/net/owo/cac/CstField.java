@@ -29,6 +29,7 @@ import java.io.FileWriter;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstField {
 	public static final double MAX_FIELD = 50.0;
+	
 	public static boolean show_field = false;
 	public static ArrayList<ArrayList<Vec3>> list_obstacle = new ArrayList<>();
 	public static ArrayList<ArrayList<Vec3>> list_wall = new ArrayList<>();
@@ -188,7 +189,7 @@ public class CstField {
 		}
 		return vec_field;
 	}
-	public static Vec3 calFieldPlayer(double sca_k, Vec3 vec_pp) {
+	public static Vec3 calFieldPredator(double sca_k, Vec3 vec_pp) {
 		double R_sqr = vec_pp.lengthSqr();
 		Vec3 vec_field = Vec3.ZERO;
 		vec_field = vec_pp.scale(sca_k/R_sqr);

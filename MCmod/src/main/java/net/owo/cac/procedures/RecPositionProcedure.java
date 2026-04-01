@@ -12,12 +12,12 @@ public class RecPositionProcedure {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_trial = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_player = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_opponent = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_gameplay = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_preparation = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_player_prep = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_opponent_prep = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_prey = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_predator = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_prey_prep = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_predator_prep = new com.google.gson.JsonObject();
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_position));
@@ -34,27 +34,27 @@ public class RecPositionProcedure {
 			}
 		}
 		if (!CacModVariables.Dat_pos_time_prep.isEmpty()) {
-			obj_player_prep.add("x", CacModVariables.Dat_pos_player_x_prep);
-			obj_player_prep.add("z", CacModVariables.Dat_pos_player_z_prep);
-			obj_player_prep.add("r", CacModVariables.Dat_pos_player_r_prep);
-			obj_opponent_prep.add("x", CacModVariables.Dat_pos_opponent_x_prep);
-			obj_opponent_prep.add("z", CacModVariables.Dat_pos_opponent_z_prep);
-			obj_opponent_prep.add("r", CacModVariables.Dat_pos_opponent_r_prep);
+			obj_prey_prep.add("x", CacModVariables.Dat_prey_x_prep);
+			obj_prey_prep.add("z", CacModVariables.Dat_prey_z_prep);
+			obj_prey_prep.add("r", CacModVariables.Dat_prey_r_prep);
+			obj_predator_prep.add("x", CacModVariables.Dat_predator_x_prep);
+			obj_predator_prep.add("z", CacModVariables.Dat_predator_z_prep);
+			obj_predator_prep.add("r", CacModVariables.Dat_predator_r_prep);
 			obj_preparation.add("time", CacModVariables.Dat_pos_time_prep);
-			obj_preparation.add("player", obj_player_prep);
-			obj_preparation.add("opponent", obj_opponent_prep);
+			obj_preparation.add("prey", obj_prey_prep);
+			obj_preparation.add("predator", obj_predator_prep);
 			obj_trial.add("preparation", obj_preparation);
 		}
 		if (!CacModVariables.Dat_pos_time.isEmpty()) {
-			obj_player.add("x", CacModVariables.Dat_pos_player_x);
-			obj_player.add("z", CacModVariables.Dat_pos_player_z);
-			obj_player.add("r", CacModVariables.Dat_pos_player_r);
-			obj_opponent.add("x", CacModVariables.Dat_pos_opponent_x);
-			obj_opponent.add("z", CacModVariables.Dat_pos_opponent_z);
-			obj_opponent.add("r", CacModVariables.Dat_pos_opponent_r);
+			obj_prey.add("x", CacModVariables.Dat_prey_x);
+			obj_prey.add("z", CacModVariables.Dat_prey_z);
+			obj_prey.add("r", CacModVariables.Dat_prey_r);
+			obj_predator.add("x", CacModVariables.Dat_predator_x);
+			obj_predator.add("z", CacModVariables.Dat_predator_z);
+			obj_predator.add("r", CacModVariables.Dat_predator_r);
 			obj_gameplay.add("time", CacModVariables.Dat_pos_time);
-			obj_gameplay.add("player", obj_player);
-			obj_gameplay.add("opponent", obj_opponent);
+			obj_gameplay.add("prey", obj_prey);
+			obj_gameplay.add("predator", obj_predator);
 			obj_trial.add("gameplay", obj_gameplay);
 		}
 		obj_cac.add(("trial_" + (int) CacModVariables.Exp_trial), obj_trial);

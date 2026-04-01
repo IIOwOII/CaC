@@ -223,7 +223,7 @@ public class EntPlayerCatEntity extends PathfinderMob implements GeoEntity {
 		builder = builder.add(Attributes.MAX_HEALTH, 0);
 		builder = builder.add(Attributes.ARMOR, 0);
 		builder = builder.add(Attributes.ATTACK_DAMAGE, 0);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 32);
+		builder = builder.add(Attributes.FOLLOW_RANGE, 64);
 		return builder;
 	}
 

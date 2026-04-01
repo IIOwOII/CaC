@@ -76,23 +76,23 @@ public class CstRenderHandler {
     	PoseStack ps = event.getPoseStack();
     	VertexConsumer vc = bs.getBuffer(RenderType.lines());
     	Vec3 vec_cam = event.getCamera().getPosition();
-
-		if (CstAgent.ent_opponent == null || CstAgent.ent_player == null) return;
+		
+		if (CstAgent.ent_predator == null || CstAgent.ent_prey == null) return;
 		if (CstField.show_field) {
-    		Vec3 vec_p_prime = CstAgent.pos_player;
-    		Vec3 vec_p = CstAgent.pos_opponent;
+    		Vec3 vec_p_prime = CstAgent.ent_predator.position();
+    		Vec3 vec_p = CstAgent.ent_prey.position();
     		
 			Vec3 field_obstacle = CstField.calFieldObstacle(3, vec_p);
 			Vec3 field_wall = CstField.calFieldWall(8, vec_p);
-			Vec3 field_player = CstField.calFieldPlayer(12, vec_p.subtract(vec_p_prime));
+			Vec3 field_predator = CstField.calFieldPredator(12, vec_p.subtract(vec_p_prime));
 			Vec3 field_sum = Vec3.ZERO;
 			field_sum = field_sum.add(field_obstacle);
 			field_sum = field_sum.add(field_wall);
-			field_sum = field_sum.add(field_player);
+			field_sum = field_sum.add(field_predator);
     		
     		Vec3 vec_po = vec_p.add(field_obstacle);
     		Vec3 vec_pw = vec_p.add(field_wall);
-    		Vec3 vec_pp = vec_p.add(field_player);
+    		Vec3 vec_pp = vec_p.add(field_predator);
     		Vec3 vec_field = vec_p.add(field_sum);
     		
     		CstRenderComponent.renderLine(ps, vc, vec_p.subtract(vec_cam), vec_po.subtract(vec_cam), 'x');
@@ -103,10 +103,9 @@ public class CstRenderHandler {
     	if (CstAgent.show_path) {
     		Vec3 node_curr = Vec3.ZERO;
     		Vec3 node_next = Vec3.ZERO;
-    		Vec3 vec_p_prime = CstAgent.pos_player;
-    		Vec3 vec_p = CstAgent.pos_opponent;
-    		ArrayList<Vec3> path_p = CstAgent.path_opponent;
-    		ArrayList<Vec3> path_p_prime = CstAgent.path_player;
+    		CstAgent.getPath();
+    		ArrayList<Vec3> path_p = CstAgent.path_prey;
+    		ArrayList<Vec3> path_p_prime = CstAgent.path_predator;
     		
 			if (path_p.size() >= 2) {
 				for (int i=0; i<path_p.size()-1; i++) {
@@ -122,7 +121,6 @@ public class CstRenderHandler {
 	    			CstRenderComponent.renderLine(ps, vc, node_curr.subtract(vec_cam), node_next.subtract(vec_cam), 'g');
 	    		}
 			}
-			CstRenderComponent.renderLine(ps, vc, vec_p.subtract(vec_cam), vec_p_prime.subtract(vec_cam), 'w');
     	}
     	
     }

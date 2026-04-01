@@ -20,20 +20,7 @@ public class TaskPreTrialProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp task");
 			}
 		}
-		CacModVariables.Dat_pos_time = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_x = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_z = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_r = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_x = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_z = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_r = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_time_prep = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_x_prep = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_z_prep = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_r_prep = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_x_prep = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_z_prep = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
+		FncResetDatPosProcedure.execute();
 		FncManageTasktypeProcedure.execute(world);
 		FncManageSpawnOpponentProcedure.execute(world);
 		FncManageDifficultyProcedure.execute();

@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.pathfinder.Node;
 import net.minecraft.world.level.pathfinder.Path;
@@ -18,6 +19,9 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.resources.ResourceLocation;
 
 import net.owo.cac.CacMod;
 import net.owo.cac.CstField;
@@ -25,7 +29,7 @@ import net.owo.cac.CstRenderHandler;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.procedures.EvQueImmediateProcedure;
 import net.owo.cac.procedures.EvPulseRecordProcedure;
-import net.owo.cac.procedures.AiEndProcedure;
+import net.owo.cac.procedures.MeowMoveOffProcedure;
 
 import net.owo.cac.entity.EntCatEntity;
 import net.owo.cac.entity.EntMouseEntity;
@@ -33,133 +37,89 @@ import net.owo.cac.entity.EntPlayerCatEntity;
 import net.owo.cac.entity.EntPlayerMouseEntity;
 import net.owo.cac.entity.EntPseudoCatEntity;
 import net.owo.cac.entity.EntPseudoMouseEntity;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.core.BlockPos;
 
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstAgent {
-	static CstAgent instance;
-	
-	public static final double CONST_SPEED = 0.48989794855;
-	public static ArrayList<Vec3> path_opponent = new ArrayList<>();
-	public static ArrayList<Vec3> path_player = new ArrayList<>();
-	
-	@Nullable public static Entity ent_opponent = null;
-	@Nullable public static Entity ent_player = null;
-	
-	@Nullable public static PathfinderMob ent_predator = null;
-	@Nullable public static PathfinderMob ent_prey = null;
-	
-	public static Vec3 pos_opponent = Vec3.ZERO;
-	public static Vec3 pos_player = Vec3.ZERO;
+	public static int TIMELIMIT = 600;
+	public static double CONST_SPEED = 0.48989794855;
+	public static int CONST_PERIOD = 4; //
+
+	@Nullable public static Mob ent_predator = null;
+	@Nullable public static Mob ent_prey = null;
+	public static int label_predator = -1;
+	public static int label_prey = -1;
+	public static ArrayList<Vec3> path_predator = new ArrayList<>();
+	public static ArrayList<Vec3> path_prey = new ArrayList<>();
 	
 	public static int agent_duration_max = 600;
 	public static int agent_duration = 0;
 	public static double agent_distance = 0;
-
-	public static int TIMELIMIT = 600;
-	public static int TimP_sample = 0;
-	public static boolean show_path = false;
-
-	public CstAgent() {
-		instance = this;
-	}
-
-	public static CstAgent getInstance() {
-		return instance;
-	}
 	
-	public class ChasingGoal extends Goal {
-	    private final PathfinderMob mob;
-	    private int timer;
-		
-	    public ChasingGoal(PathfinderMob mob) {
-	        this.mob = mob;
-	    }
-	    
-	    @Override
-	    public boolean canUse() {
-	        return ent_prey != null && ent_prey.isAlive();
-	    }
-	    
-	    @Override
-	    public boolean canContinueToUse() {
-	        return ent_prey != null && ent_prey.isAlive();
-	    }
-	    
-	    @Override
-	    public void start() {
-	        this.timer = 0;
-	    }
-	    
-	    @Override
-	    public void stop() {
-	        mob.getNavigation().stop();
-	    }
-	    
-	    @Override
-	    public void tick() {
-	        if (mob.level().isClientSide()) return;
-	        if (ent_prey == null || !CacModVariables.Switch_AI) return;
-	        mob.getLookControl().setLookAt(ent_prey, 30.0F, 30.0F);
-	        if (--timer <= 0) {
-	            timer = 4;
-	            mob.getNavigation().moveTo(ent_prey, CONST_SPEED * Math.pow(CacModVariables.Dat_difficulty, 0.5));
-	        }
-	    }
-	}
+	public static boolean show_path = false;
+	public static int timAi = 0;
+	
+	public static boolean getSwitchAi() {return CacModVariables.Switch_AI;}
+	public static double getRho() {return CacModVariables.Dat_difficulty;}
 	
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		LevelAccessor world = event.player.level();
 		@Nullable Entity player = event.player;
-		if ((event.phase == TickEvent.Phase.END) && (!world.isClientSide())) {
-			if (ent_opponent != null && ent_player != null) {
-				pos_opponent = ent_opponent.position();
-				pos_player = ent_player.position();
-				CacModVariables.Pos_opponent = pos_opponent;
-				CacModVariables.Pos_player = pos_player;
-				
-				if (CacModVariables.Switch_trace) {
-					if (CacModVariables.Exp_phase == 1) {
-						CacModVariables.Dat_pos_time_prep.add((int)CacModVariables.TimR_time);
-						CacModVariables.Dat_pos_player_x_prep.add((pos_player.x()));
-						CacModVariables.Dat_pos_player_z_prep.add((pos_player.z()));
-						CacModVariables.Dat_pos_player_r_prep.add((ent_player.getYRot()));
-						CacModVariables.Dat_pos_opponent_x_prep.add((pos_opponent.x()));
-						CacModVariables.Dat_pos_opponent_z_prep.add((pos_opponent.z()));
-						CacModVariables.Dat_pos_opponent_r_prep.add((ent_opponent.getYRot()));
-					}
-					if (CacModVariables.Exp_phase == 2) {
-						CacModVariables.Dat_pos_time.add((int)CacModVariables.TimR_time);
-						CacModVariables.Dat_pos_player_x.add((pos_player.x()));
-						CacModVariables.Dat_pos_player_z.add((pos_player.z()));
-						CacModVariables.Dat_pos_player_r.add((ent_player.getYRot()));
-						CacModVariables.Dat_pos_opponent_x.add((pos_opponent.x()));
-						CacModVariables.Dat_pos_opponent_z.add((pos_opponent.z()));
-						CacModVariables.Dat_pos_opponent_r.add((ent_opponent.getYRot()));
-					}
+		LevelAccessor world = event.player.level();
+		if (world.isClientSide() || ent_predator == null || ent_prey == null) return;
+		if (event.phase == TickEvent.Phase.END) {
+			if (CacModVariables.Switch_trace) {
+				if (CacModVariables.Exp_phase == 1) {
+					CacModVariables.Dat_pos_time_prep.add((int)CacModVariables.TimR_time);
+					CacModVariables.Dat_predator_x_prep.add(ent_predator.getX());
+					CacModVariables.Dat_predator_z_prep.add(ent_predator.getZ());
+					CacModVariables.Dat_predator_r_prep.add((ent_predator.getYRot()));
+					CacModVariables.Dat_prey_x_prep.add(ent_prey.getX());
+					CacModVariables.Dat_prey_z_prep.add(ent_prey.getZ());
+					CacModVariables.Dat_prey_r_prep.add(ent_prey.getYRot());
+				} else if (CacModVariables.Exp_phase == 2) {
+					CacModVariables.Dat_pos_time.add((int)CacModVariables.TimR_time);
+					CacModVariables.Dat_predator_x.add(ent_predator.getX());
+					CacModVariables.Dat_predator_z.add(ent_predator.getZ());
+					CacModVariables.Dat_predator_r.add(ent_predator.getYRot());
+					CacModVariables.Dat_prey_x.add(ent_prey.getX());
+					CacModVariables.Dat_prey_z.add(ent_prey.getZ());
+					CacModVariables.Dat_prey_r.add(ent_prey.getYRot());
 				}
-
-				// Move
-				if (CacModVariables.Switch_AI) {
-					TimP_sample = (TimP_sample + 1) % 4; // move time
-					agent_duration = agent_duration - 1;
-					agent_distance = (pos_opponent.subtract(pos_player)).length();
-					if ((agent_duration <= 0) || (agent_distance < 1)) {
-						ent_opponent.setDeltaMovement(Vec3.ZERO);
-						ent_player.setDeltaMovement(Vec3.ZERO);
-						if (agent_distance < 1) {
-							CacModVariables.Ev_pulse_content = "touch";
-							EvPulseRecordProcedure.execute();
+			}
+			
+			// Move
+			if (getSwitchAi()) {
+				timAi++;
+				tickPredator(world);
+				tickPrey(world);
+				agent_duration = agent_duration - 1;
+				agent_distance = ((ent_predator.position()).subtract(ent_prey.position())).length();
+				if ((agent_duration <= 0) || (agent_distance < 1)) { // end
+					ent_predator.setDeltaMovement(Vec3.ZERO);
+					ent_prey.setDeltaMovement(Vec3.ZERO);
+					if (agent_distance < 1) {
+						CacModVariables.Ev_pulse_content = "touch";
+						EvPulseRecordProcedure.execute();
+					}
+					EvQueImmediateProcedure.execute();
+					MeowMoveOffProcedure.execute();
+					CacModVariables.Dat_time_gameplay = getDuration();
+					CacModVariables.Dat_trial_winlose = getResult();
+					// Sound
+					if (world instanceof Level _level) {
+						if (CacModVariables.Dat_trial_winlose == 1) {
+							_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_orb_a7")), SoundSource.NEUTRAL, 1, 1);
+						} else if (CacModVariables.Dat_trial_winlose == 0) {
+							_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_orb_c7")), SoundSource.NEUTRAL, 1, 1);
 						}
-						EvQueImmediateProcedure.execute();
-						AiEndProcedure.execute(world, pos_player.x, pos_player.y, pos_player.z, player);
-						CacModVariables.Switch_AI = false;
 					}
+					// Switch off
+					CacModVariables.Switch_AI = false;
+					CacModVariables.Switch_trace = false;
+					timAi = 0;
 				}
-				
 			}
 		}
 	}
@@ -168,90 +128,117 @@ public class CstAgent {
 	public static void onEntitySpawned(EntityJoinLevelEvent event) {
 		if (event.getLevel().isClientSide()) return;
 		@Nullable Entity _ent = event.getEntity();
-		
 		if (_ent == null) return;
-		if (_ent instanceof EntCatEntity || _ent instanceof EntPlayerCatEntity || _ent instanceof EntPseudoCatEntity) {
-			ent_predator = (_ent instanceof PathfinderMob pent ? pent : null);
+		if (_ent instanceof EntCatEntity) {
+			ent_predator = (_ent instanceof Mob pent ? pent : null);
+			label_predator = 0;
 		}
-		if (_ent instanceof EntMouseEntity || _ent instanceof EntPlayerMouseEntity || _ent instanceof EntPseudoMouseEntity) {
-			ent_prey = (_ent instanceof PathfinderMob pent ? pent : null);
+		if (_ent instanceof EntPlayerCatEntity) {
+			ent_predator = (_ent instanceof Mob pent ? pent : null);
+			label_predator = 1;
 		}
-		if (_ent instanceof EntCatEntity || _ent instanceof EntMouseEntity) ent_opponent = _ent;
-		if (_ent instanceof EntPlayerCatEntity || _ent instanceof EntPlayerMouseEntity || _ent instanceof EntPseudoCatEntity || _ent instanceof EntPseudoMouseEntity) ent_player = _ent;
+		if (_ent instanceof EntPseudoCatEntity) {
+			ent_predator = (_ent instanceof Mob pent ? pent : null);
+			label_predator = 2;
+		}
+		if (_ent instanceof EntMouseEntity) {
+			ent_prey = (_ent instanceof Mob pent ? pent : null);
+			label_prey = 0;
+		}
+		if (_ent instanceof EntPlayerMouseEntity) {
+			ent_prey = (_ent instanceof Mob pent ? pent : null);
+			label_prey = 1;
+		}
+		if (_ent instanceof EntPseudoMouseEntity) {
+			ent_prey = (_ent instanceof Mob pent ? pent : null);
+			label_prey = 2;
+		}
 	}
 
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
 		@Nullable Entity _ent = event.getEntity();
 		if (event == null || _ent == null) return;
-		if (_ent == ent_opponent) ent_opponent = null;
-		if (_ent == ent_player) ent_player = null;
-		if (_ent == ent_predator) ent_predator = null;
-		if (_ent == ent_prey) ent_prey = null;
+		if (_ent == ent_predator) {
+			ent_predator = null;
+			label_predator = -1;
+		}
+		if (_ent == ent_prey) {
+			ent_prey = null;
+			label_prey = -1;
+		}
 	}
 
+
 	// AI move
-	public static Vec3 destPrey(boolean is_opponent) {
-		Vec3 vec_p_prime = Vec3.ZERO;
-		Vec3 vec_p = Vec3.ZERO;
-		if (is_opponent) {
-			vec_p_prime = pos_player;
-			vec_p = pos_opponent;
-		} else { // false : pseudomouse
-			vec_p_prime = pos_opponent;
-			vec_p = pos_player;
+	public static void tickPredator(LevelAccessor world) {
+		if (label_predator == 0) {
+			movePredator(world, CONST_SPEED * Math.pow(getRho(), 0.5));
+		} else if (label_predator == 2) {
+			movePredator(world, CONST_SPEED);
 		}
-		Vec3 field_obstacle = CstField.calFieldObstacle(3, vec_p);
-		Vec3 field_wall = CstField.calFieldWall(5, vec_p);
-		Vec3 field_player = CstField.calFieldPlayer(10, vec_p.subtract(vec_p_prime));
+	}
+	public static void movePredator(LevelAccessor world, double speed) {
+		if (world.isClientSide() || ent_prey == null || ent_predator == null) return;
+		ent_predator.getNavigation().moveTo(ent_prey, speed);
+	}
+
+	public static void tickPrey(LevelAccessor world) {
+		if (label_prey == 0) {
+			movePrey(world, CONST_SPEED * Math.pow(getRho(), 0.5));
+		} else if (label_prey == 2) {
+			movePrey(world, CONST_SPEED);
+		}
+	}
+	public static void movePrey(LevelAccessor world, double speed) {
+		if (world.isClientSide() || ent_prey == null || ent_predator == null) return;
+		Vec3 dest = destPrey();
+		ent_prey.getNavigation().moveTo(dest.x(), dest.y(), dest.z(), speed);
+	}
+	public static Vec3 destPrey() {
+		Vec3 vec_predator = Vec3.ZERO;
+		Vec3 vec_prey = Vec3.ZERO;
+		vec_predator = ent_predator.position();
+		vec_prey = ent_prey.position();
+		
+		Vec3 field_obstacle = CstField.calFieldObstacle(3, vec_prey);
+		Vec3 field_wall = CstField.calFieldWall(7, vec_prey);
+		Vec3 field_predator = CstField.calFieldPredator(10, vec_prey.subtract(vec_predator));
 		Vec3 field_sum = Vec3.ZERO;
 		field_sum = field_sum.add(field_obstacle);
 		field_sum = field_sum.add(field_wall);
-		field_sum = field_sum.add(field_player);
-		Vec3 vec_destination = vec_p.add(field_sum);
-		return vec_destination;
-	}
-	public static Vec3 destPredator(boolean is_opponent) {
-		Vec3 vec_p_prime = Vec3.ZERO;
-		Vec3 vec_p = Vec3.ZERO;
-		if (is_opponent) {
-			vec_p_prime = pos_player;
-			vec_p = pos_opponent;
-		} else { // false : pseudocat
-			vec_p_prime = pos_opponent;
-			vec_p = pos_player;
-		}
-		Vec3 vec_destination = vec_p_prime;
+		field_sum = field_sum.add(field_predator);
+		Vec3 vec_destination = vec_prey.add(field_sum);
 		return vec_destination;
 	}
 
 	
 	// get nodes Pathfinders
-	public static ArrayList getPath(Entity entity, boolean is_opponent) {
-		@Nullable Path path = null;
-		ArrayList<Vec3> vec_nodes = new ArrayList<>();
-		Vec3 pos_node = Vec3.ZERO;
-		if (entity instanceof Mob mob) {
-			path = mob.getNavigation().getPath();
-		}
-		if (path == null) {
-			if (is_opponent) {
-				path_opponent = new ArrayList<>();
-			} else {
-				path_player = new ArrayList<>();
+	public static void getPath() {
+		@Nullable Path rawpath_predator = null;
+		@Nullable Path rawpath_prey = null;
+		ArrayList<Vec3> node_predator = new ArrayList<>();
+		ArrayList<Vec3> node_prey = new ArrayList<>();
+		
+		if (ent_predator != null) rawpath_predator = ent_predator.getNavigation().getPath();
+		if (ent_prey != null) rawpath_prey = ent_prey.getNavigation().getPath();
+		
+		if (rawpath_predator != null) {
+			for (int i=0; i<rawpath_predator.getNodeCount(); i++) {
+				node_predator.add(rawpath_predator.getNode(i).asVec3());
 			}
-			return vec_nodes;
-		}
-		for (int i=0; i<path.getNodeCount(); i++) {
-			pos_node = path.getNode(i).asVec3();
-			vec_nodes.add(pos_node);
-		}
-		if (is_opponent) {
-			path_opponent = new ArrayList<>(vec_nodes);
+			path_predator = new ArrayList<>(node_predator);
 		} else {
-			path_player = new ArrayList<>(vec_nodes);
+			path_predator = new ArrayList<>();
 		}
-		return vec_nodes;
+		if (rawpath_prey != null) {
+			for (int i=0; i<rawpath_prey.getNodeCount(); i++) {
+				node_prey.add(rawpath_prey.getNode(i).asVec3());
+			}
+			path_prey = new ArrayList<>(node_prey);
+		} else {
+			path_prey = new ArrayList<>();
+		}
 	}
 
 

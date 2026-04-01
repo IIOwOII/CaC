@@ -12,13 +12,7 @@ import net.minecraft.core.BlockPos;
 public class SimPreTrialProcedure {
 	public static void execute(LevelAccessor world) {
 		CacModVariables.Exp_phase = 0;
-		CacModVariables.Dat_pos_time = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_x = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_z = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_player_r = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_x = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_z = new com.google.gson.JsonArray();
-		CacModVariables.Dat_pos_opponent_r = new com.google.gson.JsonArray();
+		FncResetDatPosProcedure.execute();
 		FncManageTasktypeProcedure.execute(world);
 		FncManageSpawnOpponentProcedure.execute(world);
 		FncManageDifficultyProcedure.execute();

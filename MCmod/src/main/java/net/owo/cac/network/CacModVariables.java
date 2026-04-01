@@ -27,18 +27,6 @@ import java.io.File;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CacModVariables {
-	public static com.google.gson.JsonArray Dat_pos_opponent_r = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_opponent_r_prep = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_opponent_x = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_opponent_x_prep = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_opponent_z = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_opponent_z_prep = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_player_r = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_player_r_prep = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_player_x = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_player_x_prep = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_player_z = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Dat_pos_player_z_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_time = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_pos_time_prep = new com.google.gson.JsonArray();
 	public static double Dat_time_gameplay = 0;
@@ -132,6 +120,18 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Psy_con_param_step = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_shape = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_prior = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_prey_x = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_prey_z = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_prey_r = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_predator_x = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_predator_z = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_predator_r = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_prey_x_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_prey_z_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_prey_r_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_predator_x_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_predator_z_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_predator_r_prep = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
