@@ -231,39 +231,6 @@ def norm_H(H_hat, gridsize):
     return H
 
 
-def pseudo_PSI(rho):
-    if (TASK == 0):
-        theta = np.array([1.00177304e+00, 2.02693684e-02, 9.07413139e-02, 8.13989299e-24])
-    elif (TASK == 1):
-        theta = np.array([9.93701671e-01, 2.52427771e-02, 3.08789991e-13, 5.10370566e-02])
-    m, w, gam, lam = theta
-    
-    P = gam + (1-gam-lam)/(1+(9**((rho-m)/w)))
-    wl = np.random.choice([1,0], size=1, p=[P,1-P])[0]
-    return wl
-
-
-def pseudo_psi(rho, wl):
-    if (TASK == 0):
-        theta = np.array([2, 0.11960667, 0.99273994, 0.02168749])
-        rho_hat = 1/rho
-    elif (TASK == 1):
-        theta = np.array([2, 0.1, 0.96890564, 0.05031042])
-        rho_hat = rho
-    k, m, h, w = theta
-    mu = np.where(rho_hat >= (h-w)+w/(10.0-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*10.0)
-    ts = np.arange(0.1, T, 0.1)
-    
-    x = (k*ts)/mu
-    P = ((x**k)*np.exp(-x))/(ts*math.gamma(k))
-    P = P/np.sum(P) # normalize
-    if (TASK == 0 and wl == 0) or (TASK == 1 and wl == 1):
-        t = T
-    else:
-        t = np.random.choice(ts, size=1, p=P)[0]
-    return t
-    
-
 def cal_gaussian(x, mu, sigma):
     P = (1/(np.sqrt(2*np.pi)*sigma)) * np.exp(-0.5*((x-mu)/sigma)**2)
     return P
@@ -281,6 +248,24 @@ def cal_PSI(rho, theta):
 
 
 # rho - P
+def cal_Polyexp_PSI_opt(rho_hat, theta_star):
+    k, m, h, w = theta_star # theta = [k, m, h, w]
+    # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
+    k = round(k)
+    X = k*(1+(rho_hat-h)/w)/(1+m)
+    series = 0
+    for i in range(k):
+        series += (X**i)/math.gamma(i+1)
+    P_hit = 1 - np.exp(-X)*series
+    P_hit[P_hit<P_MIN] = P_MIN
+    P_hit[P_hit>P_MAX] = P_MAX
+    if (TASK == 0):
+        PSI = P_hit
+    elif (TASK == 1):
+        PSI = 1-P_hit
+    return PSI
+    
+
 def cal_Polyexp_PSI(rho_hat, theta):
     # theta = [k, m, h, w]
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
@@ -364,72 +349,120 @@ def cal_H(L):
     return H
 
 
+#%% true distribution
+def pseudo_sig(rho):
+    if (TASK == 0):
+        theta = np.array([10, 0.11420823, 1.00868292, 0.1436978 ])
+        rho_hat = 1/rho
+    elif (TASK == 1):
+        theta = np.array([11,  0.09327324,  1.00918455,  0.19635029])
+        rho_hat = rho
+    k, m, h, w = theta
+    mu = np.where(rho_hat >= (h-w)+w/(10.0-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*10.0)
+    dt = 0.1
+    ts = np.round(np.arange(0.1, T, dt), 2)
+    
+    x = (k*ts)/mu
+    dP = dt*(((x**k)*np.exp(-x))/(ts*math.gamma(k)))
+    P_over_T = 1-np.sum(dP)
+    P_given_inT = dP/np.sum(dP)
+    
+    is_over = np.random.choice([True, False], size=1, p=[P_over_T, 1-P_over_T])[0]
+    if (is_over):
+        t = T
+        if (TASK==0): wl = 0
+        elif (TASK==1): wl = 1
+    else:
+        t = np.random.choice(ts, size=1, p=P_given_inT)[0]
+        if (TASK==0): wl = 1
+        elif (TASK==1): wl = 0
+    return t, wl
+
+def pseudo_psi(rho):
+    if (TASK == 0):
+        theta = np.array([10, 0.11420823, 1.00868292, 0.1436978 ])
+        rho_hat = 1/rho
+    elif (TASK == 1):
+        theta = np.array([11,  0.09327324,  1.00918455,  0.19635029])
+        rho_hat = rho
+    k, m, h, w = theta
+    mu = np.where(rho_hat >= (h-w)+w/(10.0-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*10.0)
+    dt = 0.1
+    ts = np.round(np.arange(0.1, T, dt), 2)
+    
+    x = (k*ts)/mu
+    dP = dt*(((x**k)*np.exp(-x))/(ts*math.gamma(k)))
+    P_over_T = 1-np.sum(dP)
+    P_given_inT = dP/np.sum(dP)
+    
+    is_over = np.random.choice([True, False], size=1, p=[P_over_T, 1-P_over_T])[0]
+    if (is_over):
+        t = T
+        if (TASK==0): wl = 0
+        elif (TASK==1): wl = 1
+    else:
+        t = np.random.choice(ts, size=1, p=P_given_inT)[0]
+        if (TASK==0): wl = 1
+        elif (TASK==1): wl = 0
+    return t, wl
+
+'''
+def pseudo_PSI(rho):
+    if (TASK == 0):
+        theta = np.array([1.00177304e+00, 2.02693684e-02, 9.07413139e-02, 8.13989299e-24])
+    elif (TASK == 1):
+        theta = np.array([9.93701671e-01, 2.52427771e-02, 3.08789991e-13, 5.10370566e-02])
+    m, w, gam, lam = theta
+    
+    P = gam + (1-gam-lam)/(1+(9**((rho-m)/w)))
+    wl = np.random.choice([1,0], size=1, p=[P,1-P])[0]
+    return wl
+'''
+
 #%% Color Map (MANIM)
+COLOR_RED_C = '#FC6255'
 COLOR_BLUE_C = '#58C4DD'
 COLOR_GREEN_C = '#83C167'
 COLOR_YELLOW_C = '#F7D96F'
+COLOR_PURPLE_C = '#9A72AC'
+COLOR_GOLD_C = '#F0AC5F'
 
 
 #%% final variables
-TASK = 1
+TASK = 0
+RHO_POLICY = 'con'
+dir_comp = '../MCmod/run/cacutil/components'
+dir_beh = '../MCmod/run/cacutil/behaviors'
+
+
+# hyp
 T = 30
 TPS = 20
 P_MIN = 1.0E-12
 P_MAX = 1 - 1.0E-12
+if (TASK == 0): name_task = 'chasing'
+elif (TASK == 1): name_task = 'chased'
+RHO_SIZE = 41
+RHO = np.round(np.linspace(0.8, 1.2, RHO_SIZE), 2)
+if (TASK == 0): RHO_HAT = 1.0/RHO
+elif (TASK == 1): RHO_HAT = RHO
 
 
-#%% file load
 # Param load
-dir_comp = '../MCmod/run/cacutil/components'
-dir_beh = '../MCmod/run/cacutil/behaviors'
-if (TASK == 0):
-    name_task = 'chasing'
-elif (TASK == 1):
-    name_task = 'chased'
-
 with open(f'{dir_comp}/pool_psychometric.json', 'r') as f_psy:
     pool_psy = json.load(f_psy)
 psy_bin = pool_psy['binary']['parameter']
 psy_con = pool_psy['continuous']['parameter']
 f_psy.close()
 
-# sim load
-with open(f'{dir_beh}/simulation/simulation_{name_task}/log_gameplay.json') as f_sim:
-    sim = json.load(f_sim)['cac']
-sim_type = np.array(sim['type'])
-sim_rho = np.array(sim['difficulty'])
-sim_wl = np.array(sim['winlose'])
-sim_t = np.array(sim['time'])
-sim_spawn = np.array(sim['spawnpoint_opponent'])
-f_sim.close()
 
-# tick to sec
-sim_t = sim_t/TPS
-sim_t[sim_t>T] = T
-
-# filter type
-mask_task = (sim_type==TASK)
-sim_rho = sim_rho[mask_task]
-sim_wl = sim_wl[mask_task]
-sim_t = sim_t[mask_task]
-sim_spawn = sim_spawn[mask_task]
-sim_data_size = sim_rho.shape[0]
-sim_data_idx = np.random.permutation(np.arange(sim_data_size))
-
-
-#%% Initialize
 # Constant
-RHO_SIZE = 41
-RHO = np.round(np.linspace(0.8, 1.20, RHO_SIZE), 2)
-if (TASK == 0):
-    RHO_HAT = 1.0/RHO
-elif (TASK == 1):
-    RHO_HAT = RHO
-
 GRID_BIN = np.prod(psy_bin['shape']) # flatten
 GRID_CON = np.prod(psy_con['shape']) # flatten
+GRID_BC = np.prod(psy_con['shape']) # flatten
 H_MAX_bin = np.log(GRID_BIN)
 H_MAX_con = np.log(GRID_CON)
+H_MAX_bc = np.log(GRID_BC)
 
 
 # Current
@@ -441,6 +474,10 @@ P_con = np.zeros((GRID_CON, RHO_SIZE)) # [diff][grid]
 L_con = np.zeros(GRID_CON) # [grid]
 H_con = H_MAX_con
 
+P_bc = np.zeros((GRID_BC, RHO_SIZE)) # [diff][grid]
+L_bc = np.zeros(GRID_BC) # [grid]
+H_bc = H_MAX_bc
+
 
 # init Param
 theta_bin = []
@@ -448,85 +485,103 @@ theta_con = []
 for i in range(4):
     theta_bin.append(np.round(np.linspace(psy_bin['min'][i], psy_bin['max'][i]-psy_bin['step'][i], psy_bin['shape'][i]), 3))
     theta_con.append(np.round(np.linspace(psy_con['min'][i], psy_con['max'][i]-psy_con['step'][i], psy_con['shape'][i]), 3))
-
 theta_bin = np.array(list(itertools.product(*theta_bin)))
 theta_con = np.array(list(itertools.product(*theta_con)))
-theta_bin_idx = np.array(list(itertools.product(*[np.arange(psy_bin['shape'][i]) for i in range(4)])))
-theta_con_idx = np.array(list(itertools.product(*[np.arange(psy_con['shape'][i]) for i in range(4)])))
+theta_bc = np.copy(theta_con)
+
 
 
 # init Prior
 theta_bin_prior = np.array(psy_bin['prior'])
 theta_con_prior = np.array(psy_con['prior'])
-
+theta_bin_idx = np.array(list(itertools.product(*[np.arange(psy_bin['shape'][i]) for i in range(4)])))
+theta_con_idx = np.array(list(itertools.product(*[np.arange(psy_con['shape'][i]) for i in range(4)])))
 L_bin = np.log(0.5+0.5*np.exp(-np.sum(((theta_bin_idx-theta_bin_prior)/np.array(psy_bin['shape']))**2, axis=-1)/2.0))
 L_con = np.log(0.5+0.5*np.exp(-np.sum(((theta_con_idx-theta_con_prior)/np.array(psy_con['shape']))**2, axis=-1)/2.0))
+
 L_bin = norm_L(L_bin)
 L_con = norm_L(L_con)
+L_bc = np.copy(L_con)
 
 
 # init P, X coef
 MU = cal_Mu(RHO_HAT, theta_con)
 X_COEF = cal_X_coef(theta_con)
+
 P_bin = cal_PSI(RHO, theta_bin)
 P_con = cal_Polyexp_PSI(RHO_HAT, theta_con)
+P_bc = np.copy(P_con)
 
 
 #%%
 # history
 Hs_bin = []
 Hs_con = []
+Hs_bc = []
+
 IG_bin = []
 IG_con = []
+IG_bc = []
+
 rho_best_bin = []
 rho_best_con = []
+rho_best_bc = []
+
 thetas_best_bin = []
 thetas_best_con = []
+thetas_best_bc = []
+
 
 # Sampled data
 trace_rho = np.array([])
 trace_wl = np.array([])
 trace_t = np.array([])
 
-# sample number
-sample_size = 20
-# sample_size = sim_data_size
 
-# simul fitting by sim data
-for trial_num in range(sample_size):
-    # update trial before
+# simul fitting by pseudo distribution
+trial_num = 0
+while True:
+    ### update trial before ----------------
     ExP_bin = cal_ExP(P_bin, L_bin)
     ExL_bin = cal_ExL(P_bin, L_bin, ExP_bin)
     ExH_bin = cal_ExH(ExL_bin)
     EIG_bin = cal_EIG(H_bin, ExP_bin, ExH_bin)
     rho_best_bin.append(RHO[np.argmax(EIG_bin)])
+    
     ExP_con = cal_ExP(P_con, L_con)
     ExL_con = cal_ExL(P_con, L_con, ExP_con)
     ExH_con = cal_ExH(ExL_con)
     EIG_con = cal_EIG(H_con, ExP_con, ExH_con)
     rho_best_con.append(RHO[np.argmax(EIG_con)])
     
+    ExP_bc = cal_ExP(P_bc, L_bc)
+    ExL_bc = cal_ExL(P_bc, L_bc, ExP_bc)
+    ExH_bc = cal_ExH(ExL_bc)
+    EIG_bc = cal_EIG(H_bc, ExP_bc, ExH_bc)
+    rho_best_bc.append(RHO[np.argmax(EIG_bc)])
+    
     # set rho best
-    rho_best = RHO[np.argmax(EIG_con)]
+    if (RHO_POLICY == 'bin'): rho_best = RHO[np.argmax(EIG_bin)]
+    elif (RHO_POLICY == 'con'): rho_best = RHO[np.argmax(EIG_con)]
+    elif (RHO_POLICY == 'bc'): rho_best = RHO[np.argmax(EIG_bc)]
+    elif (RHO_POLICY == 'mix'): 
+        rho_best = np.round((RHO[np.argmax(EIG_bin)]+RHO[np.argmax(EIG_con)]+RHO[np.argmax(EIG_bc)])/3, 2)
     
     # log save
     Hs_bin.append(H_bin)
     Hs_con.append(H_con)
+    Hs_bc.append(H_bc)
     thetas_best_bin.append(theta_bin[np.argmax(L_bin)])
     thetas_best_con.append(theta_con[np.argmax(L_con)])
+    thetas_best_bc.append(theta_bc[np.argmax(L_bc)])
     
-    ## sampling data (trial result)
-    # using simul data
-    sam_idx = sim_data_idx[trial_num]
-    sam_rho = sim_rho[sam_idx]
-    sam_wl = sim_wl[sam_idx]
-    sam_t = sim_t[sam_idx]
-    # using pseudo distribution
-    # sam_rho = rho_best
-    # sam_wl = pseudo_PSI(sam_rho)
-    # sam_t = pseudo_psi(sam_rho, sam_wl)
     
-    # update trial after
+    ### trial result -------------------------
+    sam_rho = rho_best
+    sam_t, sam_wl = pseudo_psi(sam_rho)
+    
+    
+    ### update trial after -------------------
     if (sam_wl == 0): wl_idx = 1
     elif (sam_wl == 1): wl_idx = 0
     rho_idx = np.where(RHO==sam_rho)[0][0]
@@ -545,24 +600,32 @@ for trial_num in range(sample_size):
         H_con = cal_H(L_con)
     IG_con.append(H_con_past - H_con)
     
+    IG_bc.append(H_bc - ExH_bc[wl_idx][rho_idx])
+    L_bc = np.copy(ExL_bc[wl_idx][rho_idx])
+    H_bc = ExH_bc[wl_idx][rho_idx]
+    
+    
     # plotting raw data and fit data
     PSI_fit_bin = P_bin[:, np.argmax(L_bin)]
     PSI_fit_con = P_con[:, np.argmax(L_con)]
     MU_fit_con = MU[:, np.argmax(L_con)]
+    PSI_fit_bc = P_bc[:, np.argmax(L_bc)]
     
-    # Sampled data
+    # save the trial result
     trace_rho = np.append(trace_rho, sam_rho)
     trace_wl = np.append(trace_wl, sam_wl)
     trace_t = np.append(trace_t, sam_t)
     
-    # plotting
-    fig1, ax1 = plot_rho_p(trace_rho, trace_wl, RHO, PSI_fit_bin)
-    fig2, ax2 = plot_rho_p(trace_rho, trace_wl, RHO, PSI_fit_con)
-    fig3, ax3 = plot_rho_t(trace_rho, trace_t, RHO, MU_fit_con)
-    ax1.set_title('Binary')
-    ax2.set_title('Continuous')
-    ax3.set_title('Continuous')
-    plt.show()
+    # # plotting
+    # fig1, ax1 = plot_rho_p(trace_rho, trace_wl, RHO, PSI_fit_bin)
+    # fig2, ax2 = plot_rho_p(trace_rho, trace_wl, RHO, PSI_fit_con)
+    # fig3, ax3 = plot_rho_t(trace_rho, trace_t, RHO, MU_fit_con)
+    # fig4, ax4 = plot_rho_p(trace_rho, trace_wl, RHO, PSI_fit_bc)
+    # ax1.set_title(f'Binary (CDF) N={trial_num+1}')
+    # ax2.set_title(f'Continuous (CDF) N={trial_num+1}')
+    # ax3.set_title(f'Continuous (PDF) N={trial_num+1}')
+    # ax4.set_title(f'Bin method, Con function (CDF) N={trial_num+1}')
+    # plt.show()
     
     # print log
     print(' ')
@@ -570,38 +633,93 @@ for trial_num in range(sample_size):
     print(f'difficulty: {sam_rho}')
     print(f'time: {sam_t}')
     print(f'winlose: {sam_wl}')
+    print(f'Entropy: {H_bin:.5}, {H_con:.5}, {H_bc:.5}')
+    print(f'Info Gain: {IG_bin[-1]:.5}, {IG_con[-1]:.5}, {IG_bc[-1]:.5}')
+    
+    
+    ### check terminate ------------------
+    if (RHO_POLICY == 'bin'): IG_check = np.array(IG_bin)
+    elif (RHO_POLICY == 'con'): IG_check = np.array(IG_con)
+    elif (RHO_POLICY == 'bc'): IG_check = np.array(IG_bc)
+    elif (RHO_POLICY == 'mix'):
+        IG_check = (np.array(IG_bin) + np.array(IG_con) + np.array(IG_bc))/3
+        
+    if (trial_num >= 5 and (np.all(IG_check[-3:]<0.08) and np.all(IG_check[-3:]>0))):
+        break
+    trial_num += 1
 
 
 # Normalized information gain
 NIG_bin = np.array(IG_bin)/H_MAX_bin
 NIG_con = np.array(IG_con)/H_MAX_con
+NIG_bc = np.array(IG_bc)/H_MAX_bc
 
 
 # Get best parameter
 theta_star_bin = theta_bin[np.argmax(L_bin)]
 theta_star_con = theta_con[np.argmax(L_con)]
+theta_star_bc = theta_bc[np.argmax(L_bc)]
 
 
 # Additional Plot
 fig_Hb, ax_Hb = plot_trial_H(np.array(Hs_bin))
 fig_Hc, ax_Hc = plot_trial_H(np.array(Hs_con))
+fig_Hbc, ax_Hbc = plot_trial_H(np.array(Hs_bc))
 ax_Hb.axhline(np.log(GRID_BIN), linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, alpha=0.3, zorder=-1)
 ax_Hc.axhline(np.log(GRID_CON), linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, alpha=0.3, zorder=-1)
+ax_Hbc.axhline(np.log(GRID_BC), linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, alpha=0.3, zorder=-1)
 ax_Hb.set_title('Entropy of binary')
 ax_Hc.set_title('Entropy of continuous')
+ax_Hbc.set_title('Entropy of bin and con')
 
 
 # plot rho best
 fig_Rb, ax_Rb = plot_trial_rho(np.array(rho_best_bin))
 fig_Rc, ax_Rc = plot_trial_rho(np.array(rho_best_con))
+fig_Rbc, ax_Rbc = plot_trial_rho(np.array(rho_best_bc))
 ax_Rb.set_title(r'$\rho^{*}$' + ' (binary)')
 ax_Rc.set_title(r'$\rho^{*}$' + ' (continuous)')
+ax_Rbc.set_title(r'$\rho^{*}$' + ' (bc)')
 
 
 # parameter likelihood
 fig_Lb, ax_Lb = plot_theta_L(L_bin, psy_bin['shape'], psy_bin['prior'], psy_bin['name'])
 fig_Lc, ax_Lc = plot_theta_L(L_con, psy_con['shape'], psy_con['prior'], psy_con['name'])
+fig_Lbc, ax_Lbc = plot_theta_L(L_bc, psy_con['shape'], psy_con['prior'], psy_con['name'])
 ax_Lb.axvline(0, linewidth=0.3, linestyle='-.', color='k', alpha=0.3, zorder=-1) # prior
 ax_Lc.axvline(0, linewidth=0.3, linestyle='-.', color='k', alpha=0.3, zorder=-1) # prior
+ax_Lbc.axvline(0, linewidth=0.3, linestyle='-.', color='k', alpha=0.3, zorder=-1) # prior
 ax_Lb.set_title('Log likelihood of '+ r'$\theta$' + ' (binary)')
 ax_Lc.set_title('Log likelihood of '+ r'$\theta$' + ' (continuous)')
+ax_Lbc.set_title('Log likelihood of '+ r'$\theta$' + ' (bc)')
+
+
+#%% Plot Optimal
+# Difficulty - Win rate
+trace_rw = np.vstack((trace_rho, trace_wl)) # data sort
+sorted_trace_rw = trace_rw[:, np.argsort(trace_rw)[0]]
+c_rho = np.unique(trace_rho) # duple remove
+c_p = np.array([np.mean(sorted_trace_rw[1], where=(sorted_trace_rw[0]==r)) for r in c_rho])
+fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
+                       ylabel=r'$\Psi$'+' (Win Rate)',
+                       xlim=[0.8, 1.2], ylim=[0, 1],
+                       yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1]) # plot
+ax.scatter(trace_rw[0], trace_rw[1], s=1, color='gray', alpha=0.2, zorder=0)
+ax.scatter(c_rho, c_p, s=1, color=COLOR_BLUE_C, zorder=1)
+ax.plot(RHO, PSI_fit_bin, linewidth=1, color=COLOR_RED_C, zorder=2, label='Binary')
+ax.plot(RHO, PSI_fit_con, linewidth=1, color=COLOR_GOLD_C, zorder=2, label='Continuous')
+ax.plot(RHO, PSI_fit_bc, linewidth=1, color=COLOR_PURPLE_C, zorder=2, label='BnC')
+
+theta_true = np.array([10, 0.11420823, 1.00868292, 0.1436978 ])
+PSI_true = cal_Polyexp_PSI_opt(RHO_HAT, theta_true)
+ax.plot(RHO, PSI_true, linewidth=1, color=COLOR_GREEN_C, zorder=3, label='True')
+
+
+ax.legend()
+plt.show()
+
+
+def R_squared(P_true, P_pred):
+    P_mean = np.mean(P_true)
+    R_sq = 1 - (np.sum((P_true-P_pred)**2)/np.sum((P_true-P_mean)**2))
+    return R_sq

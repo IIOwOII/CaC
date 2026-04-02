@@ -12,7 +12,6 @@ public class IniLogFittingProcedure {
 	public static void execute() {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_final = new com.google.gson.JsonObject();
 		CacModVariables.Log_fitting = new File(CacModVariables.Dir_behaviors_session, File.separator + "log_fitting.json");
 		if (!CacModVariables.Log_fitting.exists()) {
@@ -49,8 +48,7 @@ public class IniLogFittingProcedure {
 				e.printStackTrace();
 			}
 		}
-		obj_cac.add(CacModVariables.Psy_task, obj_task);
-		obj_task.add("final", obj_final);
+		obj_cac.add("final", obj_final);
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 			try {

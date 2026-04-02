@@ -22,12 +22,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
 
 import net.owo.cac.CacMod;
 import net.owo.cac.CstField;
 import net.owo.cac.CstRenderHandler;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.procedures.EvQueImmediateProcedure;
+import net.owo.cac.procedures.EffApplyStopMoveProcedure;
 import net.owo.cac.procedures.EvPulseRecordProcedure;
 import net.owo.cac.procedures.MeowMoveOffProcedure;
 
@@ -37,7 +39,7 @@ import net.owo.cac.entity.EntPlayerCatEntity;
 import net.owo.cac.entity.EntPlayerMouseEntity;
 import net.owo.cac.entity.EntPseudoCatEntity;
 import net.owo.cac.entity.EntPseudoMouseEntity;
-import net.minecraft.core.BlockPos;
+
 
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -97,8 +99,7 @@ public class CstAgent {
 				agent_duration = agent_duration - 1;
 				agent_distance = ((ent_predator.position()).subtract(ent_prey.position())).length();
 				if ((agent_duration <= 0) || (agent_distance < 1)) { // end
-					ent_predator.setDeltaMovement(Vec3.ZERO);
-					ent_prey.setDeltaMovement(Vec3.ZERO);
+					EffApplyStopMoveProcedure.execute(player);
 					if (agent_distance < 1) {
 						CacModVariables.Ev_pulse_content = "touch";
 						EvPulseRecordProcedure.execute();
@@ -180,7 +181,17 @@ public class CstAgent {
 	}
 	public static void movePredator(LevelAccessor world, double speed) {
 		if (world.isClientSide() || ent_prey == null || ent_predator == null) return;
-		ent_predator.getNavigation().moveTo(ent_prey, speed);
+		Vec3 dest = destPredator();
+		ent_predator.getNavigation().moveTo(dest.x(), dest.y(), dest.z(), speed);
+	}
+	public static Vec3 destPredator() {
+		Vec3 vec_predator = Vec3.ZERO;
+		Vec3 vec_prey = Vec3.ZERO;
+		vec_predator = ent_predator.position();
+		vec_prey = ent_prey.position();
+		Vec3 vec_pp = vec_prey.subtract(vec_predator);
+		Vec3 vec_destination = vec_prey.add(vec_pp.normalize());
+		return vec_destination;
 	}
 
 	public static void tickPrey(LevelAccessor world) {

@@ -71,12 +71,12 @@ public class CstPsychometric {
 	public static double[] IG_bin_last = new double[3];
 	public static double[] IG_con_last = new double[3];
 	public static double[] IG_last = new double[3];
-	public static double IG_THRESHOLD = 0.1;
+	public static double IG_THRESHOLD = 0.05;
 
 	// Safety
 	public static double PMIN = 1.0E-12; // point 12
 	public static double PMAX = 1.0 - 1.0E-12; // point 12
-	public static double TRIAL_MAX = 10;
+	public static double TRIAL_MAX = 20;
 	
 
 	// usage
@@ -358,7 +358,6 @@ public class CstPsychometric {
 	public static void recHistory() {
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
-		JsonObject obj_task = new JsonObject();
 		JsonObject obj_trial = new JsonObject();
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
@@ -377,7 +376,6 @@ public class CstPsychometric {
 			e.printStackTrace();
 		}
 		
-		obj_task = obj_cac.get((CacModVariables.Psy_task)).getAsJsonObject();
 		obj_trial.addProperty("difficulty", CacModVariables.Dat_difficulty);
 		if (method_bin) {
 			obj_method_bin.addProperty("rho_best", rho_best_bin);
@@ -396,7 +394,7 @@ public class CstPsychometric {
 			obj_trial.add(("continuous"), obj_method_con);
 		}
 		
-		obj_task.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
+		obj_cac.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
@@ -409,7 +407,6 @@ public class CstPsychometric {
 	public static void recFinal() {
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
-		JsonObject obj_task = new JsonObject();
 		JsonObject obj_final = new JsonObject();
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
@@ -428,8 +425,7 @@ public class CstPsychometric {
 			e.printStackTrace();
 		}
 		
-		obj_task = obj_cac.get((CacModVariables.Psy_task)).getAsJsonObject();
-		obj_final = obj_task.get("final").getAsJsonObject();
+		obj_final = obj_cac.get("final").getAsJsonObject();
 
 		if (method_bin) {
 			obj_method_bin.addProperty("entropy", entropy_bin);
@@ -613,7 +609,7 @@ public class CstPsychometric {
 		} else if (!method_bin && method_con) {
 			IG_last = IG_con_last.clone();
 		} else if (method_bin && method_con) {
-			IG_last = IG_bin_last.clone(); // temp
+			IG_last = IG_con_last.clone(); // temp
 		}
 	}
 	public static void updateBinIG(double H, double H_next) {

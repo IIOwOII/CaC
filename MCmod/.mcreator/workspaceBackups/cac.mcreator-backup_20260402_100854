@@ -450,12 +450,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -3576,6 +3571,20 @@
           "src/main/java/net/owo/cac/CstRecord.java"
         ]
       }
+    },
+    {
+      "name": "FncResetDatPos",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fnc_reset_dat_pos",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/FncResetDatPosProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacFunction"
     }
   ],
   "variable_elements": [
@@ -3590,78 +3599,6 @@
       "type": "vector",
       "scope": "map",
       "value": "Vec3.ZERO"
-    },
-    {
-      "name": "Dat_pos_opponent_r",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_r_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_x",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_x_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_z",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_opponent_z_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_r",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_r_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_x",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_x_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_z",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Dat_pos_player_z_prep",
-      "type": "jsonarray",
-      "scope": "global",
-      "value": "new com.google.gson.JsonArray()"
     },
     {
       "name": "Dat_pos_time",
@@ -4238,6 +4175,78 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_prey_x",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_prey_z",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_prey_r",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_predator_x",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_predator_z",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_predator_r",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_prey_x_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_prey_z_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_prey_r_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_predator_x_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_predator_z_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Dat_predator_r_prep",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [
@@ -4313,8 +4322,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
