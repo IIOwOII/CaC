@@ -450,12 +450,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -3562,18 +3557,6 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/CstReplay.java"
-        ]
-      }
-    },
-    {
-      "name": "CstRecord",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "cst_record",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/CstRecord.java"
         ]
       }
     },
