@@ -430,7 +430,7 @@
     {
       "name": "CmdExperimental",
       "type": "command",
-      "compiles": false,
+      "compiles": true,
       "locked_code": false,
       "registry_name": "cmd_experimental",
       "metadata": {
@@ -3015,7 +3015,7 @@
     {
       "name": "CstAgent",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "cst_agent",
       "metadata": {
@@ -3557,18 +3557,6 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/CstReplay.java"
-        ]
-      }
-    },
-    {
-      "name": "CstRecord",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "cst_record",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/CstRecord.java"
         ]
       }
     },
@@ -4322,8 +4310,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
