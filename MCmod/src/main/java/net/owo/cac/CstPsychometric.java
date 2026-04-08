@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.owo.cac.network.CacModVariables;
+import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
@@ -21,6 +22,7 @@ public class CstPsychometric {
 	public static int task_type = -1;
 	public static int method_type = -1;
 	public static int func_type = -1;
+	public static int trial_type = -1; // in this trial, chasing(0)? or chased(1)?
 	public static boolean method_bin = false;
 	public static boolean method_con = false;
 
@@ -43,6 +45,7 @@ public class CstPsychometric {
 	public static double T = 30; // terminate time
 	public static double[][] X_coef; // [diff][grid]
 
+	// Data
 	// Current
 	public static double[][] probability_bin; // [diff][grid]
 	public static double[] likelihood_bin; // [grid]
@@ -68,21 +71,25 @@ public class CstPsychometric {
 	public static double rho_best = 0;
 
 	// Terminal Rule
-	public static double[] IG_bin_last = new double[3];
-	public static double[] IG_con_last = new double[3];
-	public static double[] IG_last = new double[3];
 	public static double IG_THRESHOLD = 0.05;
+
+	// Traces
+	public static ArrayList<Double> trace_IG_bin = new ArrayList<>();
+	public static ArrayList<Double> trace_IG_con = new ArrayList<>();
+	public static ArrayList<Double> trace_maxEIG_bin = new ArrayList<>();
+	public static ArrayList<Double> trace_maxEIG_con = new ArrayList<>();
 
 	// Safety
 	public static double PMIN = 1.0E-12; // point 12
 	public static double PMAX = 1.0 - 1.0E-12; // point 12
-	public static double TRIAL_MAX = 20;
+	public static double TRIAL_MAX = 30;
 	
 
 	// usage
 	// initialize
 	public static void initPsy() {
 		initRho();
+		initTrace();
 		if (method_type == 0) {
 			method_bin = true;
 			method_con = true;
@@ -120,6 +127,7 @@ public class CstPsychometric {
 			expected_H_bin = calExpectedEntropy(expected_L_bin);
 			EIG_bin = calEIG(entropy_bin, expected_P_bin, expected_H_bin);
 			rho_best_bin = RHO[argmax(EIG_bin)];
+			trace_maxEIG_bin.add(max(EIG_bin));
 		}
 		if (method_con) {
 			expected_P_con = calExpectedConProbability(probability_con, likelihood_con);
@@ -127,6 +135,7 @@ public class CstPsychometric {
 			expected_H_con = calExpectedConEntropy(expected_L_con);
 			EIG_con = calEIG(entropy_con, expected_P_con, expected_H_con);
 			rho_best_con = RHO[argmax(EIG_con)];
+			trace_maxEIG_con.add(max(EIG_con));
 		}
 		
 		if (method_bin && !method_con) {
@@ -134,7 +143,7 @@ public class CstPsychometric {
 		} else if (!method_bin && method_con) {
 			rho_best = rho_best_con;
 		} else if (method_bin && method_con) { //both
-			rho_best = Math.round((rho_best_con+rho_best_bin) * 50.0) / 100.0; // temp
+			rho_best = rho_best_con;
 		}
 		CacModVariables.Dat_difficulty = rho_best;
 	}
@@ -161,15 +170,26 @@ public class CstPsychometric {
 			entropy_con = updateConEntropy(likelihood_con);
 			updateConIG(H_past, entropy_con);
 		}
-		updateIG();
 		checkTerminate();
 	}
 	
 	// Terminate
 	public static void checkTerminate() {
+		ArrayList<Double> EIG_check = new ArrayList<>();
+		if (method_con) {
+			EIG_check = trace_maxEIG_con;
+		} else {
+			EIG_check = trace_maxEIG_bin;
+		}
+		int size = EIG_check.size();
+		if (size < 5) {
+			CacModVariables.Exp_trial_total = TRIAL_MAX;
+			return;
+		}
+		
 		boolean isend = true;
-		for (int i=0; i<IG_last.length; i++) {
-			if ((IG_last[i] >= IG_THRESHOLD) || (IG_last[i] == 0)) {
+		for (int i=size-3; i<size; i++) {
+			if (EIG_check.get(i) >= IG_THRESHOLD) {
 				isend = false;
 			}
 		}
@@ -190,6 +210,13 @@ public class CstPsychometric {
 		for (int r=0; r<RHOSIZE; r++) {
 			RHO[r] = Math.round((RHO_min + r*RHO_step)*100.0) / 100.0;
 		}
+	}
+	// trace
+	public static void initTrace() {
+		trace_IG_bin = new ArrayList<>();
+		trace_IG_con = new ArrayList<>();
+		trace_maxEIG_bin = new ArrayList<>();
+		trace_maxEIG_con = new ArrayList<>();
 	}
 
 	// param
@@ -358,6 +385,7 @@ public class CstPsychometric {
 	public static void recHistory() {
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
+		JsonObject obj_task = new JsonObject();
 		JsonObject obj_trial = new JsonObject();
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
@@ -372,6 +400,11 @@ public class CstPsychometric {
 			bufferedReader.close();
 			obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
 			obj_cac = obj_file.get("cac").getAsJsonObject();
+			if (trial_type == 0) {
+				obj_task = obj_cac.get("chasing").getAsJsonObject();
+			} else if (trial_type == 1) {
+				obj_task = obj_cac.get("chased").getAsJsonObject();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -394,7 +427,7 @@ public class CstPsychometric {
 			obj_trial.add(("continuous"), obj_method_con);
 		}
 		
-		obj_cac.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
+		obj_task.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
@@ -407,6 +440,7 @@ public class CstPsychometric {
 	public static void recFinal() {
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
+		JsonObject obj_task = new JsonObject();
 		JsonObject obj_final = new JsonObject();
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
@@ -421,11 +455,16 @@ public class CstPsychometric {
 			bufferedReader.close();
 			obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
 			obj_cac = obj_file.get("cac").getAsJsonObject();
+			if (trial_type == 0) {
+				obj_task = obj_cac.get("chasing").getAsJsonObject();
+			} else if (trial_type == 1) {
+				obj_task = obj_cac.get("chased").getAsJsonObject();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		obj_final = obj_cac.get("final").getAsJsonObject();
+		obj_final = obj_task.get("final").getAsJsonObject();
 
 		if (method_bin) {
 			obj_method_bin.addProperty("entropy", entropy_bin);
@@ -602,47 +641,13 @@ public class CstPsychometric {
 
 	// Update
 	// Info gain
-	public static void updateIG() {
-		// please update binig conig before
-		if (method_bin && !method_con) {
-			IG_last = IG_bin_last.clone();
-		} else if (!method_bin && method_con) {
-			IG_last = IG_con_last.clone();
-		} else if (method_bin && method_con) {
-			IG_last = IG_con_last.clone(); // temp
-		}
-	}
 	public static void updateBinIG(double H, double H_next) {
-		boolean isfull = true;
 		double IG = H - H_next;
-		for (int i=0; i<IG_bin_last.length; i++) {
-			if ((IG_bin_last[i] == 0) && (isfull)) {
-				IG_bin_last[i] = IG;
-				isfull = false;
-			}
-		}
-		if (isfull) {
-			for (int i=0; i<IG_bin_last.length-1; i++) {
-				IG_bin_last[i] = IG_bin_last[i+1];
-			}
-			IG_bin_last[IG_bin_last.length-1] = IG;
-		}
+		trace_IG_bin.add(IG);
 	}
 	public static void updateConIG(double H, double H_next) {
-		boolean isfull = true;
 		double IG = H - H_next;
-		for (int i=0; i<IG_con_last.length; i++) {
-			if ((IG_con_last[i] == 0) && (isfull)) {
-				IG_con_last[i] = IG;
-				isfull = false;
-			}
-		}
-		if (isfull) {
-			for (int i=0; i<IG_con_last.length-1; i++) {
-				IG_con_last[i] = IG_con_last[i+1];
-			}
-			IG_con_last[IG_con_last.length-1] = IG;
-		}
+		trace_IG_con.add(IG);
 	}
 
 	// con L
@@ -834,6 +839,15 @@ public class CstPsychometric {
 	
 	
 	// Utils
+	public static double max(double[] arr) {
+		double v_max = arr[0];
+		for (int i=1; i<arr.length; i++) {
+			if (v_max < arr[i]) {
+				v_max = arr[i];
+			}
+		}
+		return v_max;
+	}
 	public static int argmax(double[] arr) {
 		int i_max = 0;
 		for (int i=1; i<arr.length; i++) {

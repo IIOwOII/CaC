@@ -121,7 +121,11 @@ def plot_psi_heatmap(dat_t, dat_rho, fit_theta):
     dt = 0.1
     ts = np.round(np.arange(dt, 50+dt, dt), 2)
     rh = np.round(np.arange(0.8, 1.21, 0.01), 2)
-    z = cal_Polyexp_psi_opt(ts, rh, fit_theta)
+    if (TASK == 0): 
+        rhh = 1/rh
+    if (TASK == 1):
+        rhh = rh
+    z = cal_Polyexp_psi_opt(ts, rhh, fit_theta)
     
     c_t = np.array([np.where(ts==t)[0][0] for t in dat_t])
     c_rho = np.array([np.where(rh==r)[0][0] for r in dat_rho])
@@ -137,7 +141,8 @@ def plot_psi_heatmap(dat_t, dat_rho, fit_theta):
     
     # plot heatmap
     ax.imshow(z, origin='lower', aspect='auto', cmap='YlGn')
-    ax.scatter(c_rho, c_t, s=1, color='k', zorder=1)
+    ax.axhline(299, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=1)
+    ax.scatter(c_rho, c_t, s=1, color='k', zorder=2)
     
 
 # trial - NIG
@@ -187,6 +192,24 @@ def plot_trial_H(Hs):
     
     # plot
     ax.plot(c_n, c_h, color=COLOR_BLUE_C, zorder=1)
+    return fig, ax
+
+
+# trial - maxEIG
+def plot_trial_maxEIG(maxEIGs):
+    # data
+    c_n = np.arange(maxEIGs.shape[0])
+    c_eig = maxEIGs
+    eig_max = max(maxEIGs)
+    
+    # figure setting
+    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', ylabel=r'$maxEIG$'+' (max expected info gain)',
+                           xlim=[0, c_n.shape[0]], ylim=[0, eig_max],
+                           yticks=np.arange(0, eig_max, 0.05))
+    
+    # plot
+    ax.plot(c_n, c_eig, color=COLOR_BLUE_C, zorder=1)
+    ax.axhline(0.05, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=2)
     return fig, ax
 
 
@@ -458,7 +481,7 @@ COLOR_GOLD_C = '#F0AC5F'
 
 
 #%% final variables
-TASK = 1
+TASK = 0
 RHO_POLICY = 'con'
 dir_comp = '../MCmod/run/cacutil/components'
 dir_beh = '../MCmod/run/cacutil/behaviors'
@@ -772,6 +795,7 @@ PSI_true = cal_Polyexp_PSI_opt(RHO_HAT, THETA_TRUE)
 ax.plot(RHO, PSI_true, linewidth=1, color=COLOR_GREEN_C, zorder=3, label='True')
 
 plot_psi_heatmap(trace_t, trace_rho, THETA_TRUE)
+plot_trial_maxEIG(np.array(EIG_max_con))
 
 ax.legend()
 plt.show()

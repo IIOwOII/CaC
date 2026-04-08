@@ -52,12 +52,19 @@ public class CapManageProcedure {
 			net.owo.cac.CstPsychometric.updateTrialBefore();
 			net.owo.cac.CstPsychometric.debugValue();
 		} else if ((CacModVariables.Psy_task).equals("chasing")) {
+			net.owo.cac.CstPsychometric.trial_type = 0;
 			net.owo.cac.CstPsychometric.task_type = 0;
 			net.owo.cac.CstPsychometric.initPsy();
 			PrdCountdownProcedure.execute();
 			TaskSessionStartProcedure.execute(world, entity);
 		} else if ((CacModVariables.Psy_task).equals("chased")) {
+			net.owo.cac.CstPsychometric.trial_type = 1;
 			net.owo.cac.CstPsychometric.task_type = 1;
+			net.owo.cac.CstPsychometric.initPsy();
+			PrdCountdownProcedure.execute();
+			TaskSessionStartProcedure.execute(world, entity);
+		} else if ((CacModVariables.Psy_task).equals("both")) {
+			net.owo.cac.CstPsychometric.task_type = 2;
 			net.owo.cac.CstPsychometric.initPsy();
 			PrdCountdownProcedure.execute();
 			TaskSessionStartProcedure.execute(world, entity);

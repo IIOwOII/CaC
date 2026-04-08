@@ -15,7 +15,7 @@ reducedDebugInfo:false
 showSubtitles:false
 directionalAudio:false
 touchscreen:false
-fullscreen:false
+fullscreen:true
 bobView:false
 toggleCrouch:false
 toggleSprint:false
@@ -124,7 +124,7 @@ key_key.cac.cac_key_up:key.keyboard.up
 key_key.cac.cac_key_down:key.keyboard.down
 key_key.cac.cac_key_camera:key.keyboard.right.control
 key_key.cac.cac_key_decide:key.keyboard.left.control
-key_key.cac.cac_key_record:key.keyboard.right.shift
+key_key.cac.cac_key_record:key.keyboard.unknown
 key_key.cac.cac_key_signal:key.keyboard.s
 soundCategory_master:1.0
 soundCategory_music:0.0

@@ -3561,18 +3561,6 @@
       }
     },
     {
-      "name": "CstRecord",
-      "type": "code",
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "cst_record",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/CstRecord.java"
-        ]
-      }
-    },
-    {
       "name": "FncResetDatPos",
       "type": "procedure",
       "compiles": true,
