@@ -24,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 
 import net.owo.cac.CacMod;
 import net.owo.cac.CstField;
@@ -112,7 +113,7 @@ public class CstAgent {
 					if (world instanceof Level _level) {
 						if (CacModVariables.Dat_trial_winlose == 1) {
 							if (player instanceof Player _player)
-								_player.displayClientMessage(Component.literal("\u00A72\uC131\uACF5! \u00A7r"), true);
+								_player.displayClientMessage(Component.literal("\u00A79\uC131\uACF5! \u00A7r"), true);
 							_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_orb_a7")), SoundSource.NEUTRAL, 1, 1);
 						} else if (CacModVariables.Dat_trial_winlose == 0) {
 							if (player instanceof Player _player)

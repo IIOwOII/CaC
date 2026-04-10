@@ -28,7 +28,7 @@ public class CstKeyHandler {
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
     	InputConstants.Key key_forward = InputConstants.getKey("key.keyboard.w");
-        if (event.phase == TickEvent.Phase.END) {
+        if (event.phase == TickEvent.Phase.START) {
 			if (CstState.getKeyChanged(4) == 0) {
 				CstState.switchMeowView();
 			}

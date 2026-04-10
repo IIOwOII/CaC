@@ -82,7 +82,7 @@ public class CstPsychometric {
 	// Safety
 	public static double PMIN = 1.0E-12; // point 12
 	public static double PMAX = 1.0 - 1.0E-12; // point 12
-	public static double TRIAL_MAX = 30;
+	public static double TRIAL_MAX = 25;
 	
 
 	// usage

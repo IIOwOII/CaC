@@ -55,7 +55,7 @@ def plot_rho_p(rho, wl, rho_fit, PSI_fit):
     # plot
     fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
                            ylabel=r'$\Psi$'+' (Win Rate)',
-                           xlim=[0.8, 1.2], ylim=[0, 1],
+                           xlim=[0.7, 1.3], ylim=[0, 1],
                            yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1])
     ax.scatter(data[0], data[1], s=1, color='gray', alpha=0.2, zorder=0)
     ax.scatter(c_rho, c_p, s=1, color=COLOR_BLUE_C, zorder=1)
@@ -80,7 +80,7 @@ def plot_rho_t(rho, t_data, rho_fit, mu_fit):
     # figure setting
     fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
                            ylabel=r'$t$'+' (Trial Time)',
-                           xlim=[0.8, 1.2], ylim=[0.0, 1.67],
+                           xlim=[0.7, 1.3], ylim=[0.0, 1.67],
                            yticks=[0, 0.5, 1, 1.5], yticklabels=[0, 15, 30, 45])
     
     # plot
@@ -94,7 +94,7 @@ def plot_rho_t(rho, t_data, rho_fit, mu_fit):
 def plot_psi_heatmap(dat_t, dat_rho, fit_theta):
     dt = 0.1
     ts = np.round(np.arange(dt, 50+dt, dt), 2)
-    rh = np.round(np.arange(0.8, 1.21, 0.01), 2)
+    rh = np.round(np.arange(0.7, 1.31, 0.01), 2)
     if (TASK == 0): 
         rhh = 1/rh
     if (TASK == 1):
@@ -104,11 +104,11 @@ def plot_psi_heatmap(dat_t, dat_rho, fit_theta):
     c_rho = np.array([np.where(rh==r)[0][0] for r in dat_rho])
     
     # figure setting
-    fig, ax = plt.subplots(figsize=(4,4), dpi=300)
+    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
     
-    ax.set_xticks([0, 10, 20, 30, 40])
+    ax.set_xticks([0, 10, 20, 30, 40, 50, 60])
     ax.set_yticks([99, 199, 299, 399, 499])
-    ax.set_xticklabels([0.8, 0.9, 1.0, 1.1, 1.2])
+    ax.set_xticklabels([0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3])
     ax.set_yticklabels([10, 20, 30, 40, 50])
     ax.set_xlabel(r'$\rho$'+' (Difficulty)')
     ax.set_ylabel(r'$t$'+' (Trial Time)')
@@ -144,8 +144,8 @@ def plot_trial_rho(sampled_rho):
     # figure setting
     fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', 
                            ylabel=r'$\rho$'+' (Difficulty maximize IG)',
-                           xlim=[0, c_n.shape[0]], ylim=[0.8, 1.2],
-                           yticks=np.arange(0.8, 1.21, 0.1))
+                           xlim=[0, c_n.shape[0]], ylim=[0.7, 1.3],
+                           yticks=np.arange(0.7, 1.31, 0.1))
     
     # plot
     ax.plot(c_n, c_rho, color=COLOR_BLUE_C, zorder=1)
@@ -270,14 +270,14 @@ def cal_Polyexp_psi_opt(t, rho_hat, theta_star):
     k, m, h, w = theta_star
     # x^k * e^-x / t * (k-1)!
     rho_hat, t = np.meshgrid(rho_hat, t)
-    x = np.where(rho_hat>=(h-w)+w/(20.0-m), (k*t/T)*(1+(rho_hat-h)/w)/(1+m), k*t/(20.0*T))
+    x = np.where(rho_hat>=(h-w)+w/(50.0-m), (k*t/T)*(1+(rho_hat-h)/w)/(1+m), k*t/(50.0*T))
     psi = ((x**k)*np.exp(-x))/(t*math.gamma(k))
     return psi
 
 
 def cal_Mu(rho_hat, theta):
     # theta = [k, m, h, w]
-    M = 20.0
+    M = 50.0
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
     _, m, h, w = theta.T
     mu = np.where(rho_hat >= (h-w)+w/(M-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), M*T)
@@ -306,13 +306,13 @@ T = 30
 TPS = 20
 P_MIN = 1.0E-12
 P_MAX = 1 - 1.0E-12
-RHO_SIZE = 40
-RHO = np.round(np.linspace(0.8, 1.19, RHO_SIZE), 2)
+RHO_SIZE = 60
+RHO = np.round(np.linspace(0.7, 1.29, RHO_SIZE), 2)
 
 
 #%% final variables
 TASK = 0
-SUBJECT = 'cju01'
+SUBJECT = 'cju02'
 RHO_POLICY = 'con'
 
 
@@ -425,7 +425,7 @@ c_rho = np.unique(trace_rho) # duple remove
 c_p = np.array([np.mean(sorted_trace_rw[1], where=(sorted_trace_rw[0]==r)) for r in c_rho])
 fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
                        ylabel=r'$\Psi$'+' (Win Rate)',
-                       xlim=[0.8, 1.2], ylim=[0, 1],
+                       xlim=[0.7, 1.3], ylim=[0, 1],
                        yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1]) # plot
 ax.scatter(trace_rw[0], trace_rw[1], s=1, color='gray', alpha=0.2, zorder=0)
 ax.scatter(c_rho, c_p, s=1, color=COLOR_BLUE_C, zorder=1)

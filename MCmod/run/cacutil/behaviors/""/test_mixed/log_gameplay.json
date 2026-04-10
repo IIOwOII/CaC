@@ -1,0 +1,19 @@
+{
+  "cac": {
+    "time": [
+      169
+    ],
+    "type": [
+      0
+    ],
+    "difficulty": [
+      0.9
+    ],
+    "spawnpoint_opponent": [
+      2
+    ],
+    "winlose": [
+      1
+    ]
+  }
+}

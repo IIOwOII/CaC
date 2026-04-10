@@ -1,0 +1,37 @@
+{
+  "cac": {
+    "content": [
+      "test_start",
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "touch",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial",
+      "test_end"
+    ],
+    "absolute": [
+      0,
+      21,
+      124,
+      4122,
+      12521,
+      12572,
+      15571,
+      16570,
+      16671
+    ],
+    "relative": [
+      0,
+      2,
+      4,
+      84,
+      252,
+      253,
+      313,
+      333,
+      335
+    ]
+  }
+}
