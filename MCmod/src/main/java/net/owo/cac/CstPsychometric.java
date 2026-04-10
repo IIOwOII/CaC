@@ -27,13 +27,13 @@ public class CstPsychometric {
 	public static boolean method_con = false;
 
 	// parameter list
-	public static int GRIDSIZE = 160000;
+	public static int GRIDSIZE = 180000;
 	public static double[] M; // [grid]
 	public static double[] W; // [grid]
 	public static double[] GAMMA; //[grid]
 	public static double[] LAMBDA; //[grid]
 
-	public static int GRIDCON = 160000;
+	public static int GRIDCON = 180000;
 	public static double[] CON_K; // [grid]
 	public static double[] CON_M; //[grid]
 	public static double[] CON_H; // [grid]
@@ -188,7 +188,7 @@ public class CstPsychometric {
 		}
 		
 		boolean isend = true;
-		for (int i=size-3; i<size; i++) {
+		for (int i=size-5; i<size; i++) {
 			if (EIG_check.get(i) >= IG_THRESHOLD) {
 				isend = false;
 			}
@@ -552,10 +552,10 @@ public class CstPsychometric {
 	}
 	public static double calMu(double rho_hat, double k, double m, double h, double w) {
 		double mu = 0;
-		if (rho_hat >= (h-w)+(w/(10.0-m))) {
+		if (rho_hat >= (h-w)+(w/(50.0-m))) {
 			mu = T*(m+(1.0/(1+((rho_hat-h)/w))));
 		} else {
-			mu = 10.0*T;
+			mu = 50.0*T;
 		}
 		return mu;
 	}

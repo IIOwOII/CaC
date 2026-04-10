@@ -63,31 +63,6 @@ def plot_rho_p(rho, wl, rho_fit, PSI_fit):
     ax.plot(rho_fit, PSI_fit, linewidth=1, color=COLOR_GREEN_C, zorder=2)
     return fig, ax
 
-def rho_t(rho, t_data):
-    # data normalize (T=30)
-    t_data = t_data/T
-    
-    # data sort
-    data = np.vstack((rho, t_data))
-    sorted_idx = np.argsort(data)
-    sorted_data = data[:, sorted_idx[0]]
-    
-    # duple remove
-    c_rho = np.unique(rho)
-    mu = np.array([np.mean(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
-    var = np.array([np.var(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
-                           ylabel=r'$t$'+' (Trial Time)',
-                           xlim=[0.8, 1.2], ylim=[0.0, 1.67],
-                           yticks=[0, 0.5, 1, 1.5], yticklabels=[0, 15, 30, 45])
-    
-    # plot
-    ax.axhline(1, linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, zorder=-1)
-    ax.scatter(rho, t_data, s=1, color='k', alpha=0.2, zorder=0)
-    ax.scatter(c_rho, mu, s=1, color=COLOR_BLUE_C, zorder=1)
-    return mu, var
 
 # Difficulty - time
 def plot_rho_t(rho, t_data, rho_fit, mu_fit):
@@ -183,7 +158,7 @@ def plot_trial_H(Hs):
     # data
     c_n = np.arange(Hs.shape[0])
     c_h = Hs
-    h_max = np.log(160000) # temp
+    h_max = np.log(180000) # temp
     
     # figure setting
     fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', ylabel=r'$H$'+' (Entropy)',
@@ -297,10 +272,11 @@ def cal_PSI(rho, theta):
 def cal_Polyexp_PSI(rho_hat, theta):
     # theta = [k, m, h, w]
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
-    k, m, _, _ = theta.T
+    k, m, h, w = theta.T
     
     # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
-    X_T = X_COEF * (T-m*T) # [diff][grid]
+    X_T = X_COEF*T
+    # X_T = X_COEF * T # [diff][grid]
     k_max = max(k)
     K_arange = np.tile(np.arange(k_max), reps=[theta.shape[0], 1]).T
     K_mask = K_arange < k
@@ -323,19 +299,19 @@ def cal_Polyexp_PSI(rho_hat, theta):
 
 
 def cal_Polyexp_L(L, rho_idx, t, theta):
-    # X = k*(t-m*T)/(mu-m*T)
-    k, m, _, _ = theta.T
-    x = np.where(t>m*T, X_COEF[rho_idx]*(t-m*T), P_MIN) # [grid]
+    # X = k*t/mu
+    k, m, h, w = theta.T
+    x = X_COEF[rho_idx] * t # [grid]
     vec_fact = np.vectorize(math.gamma)
     
-    L_update = L + np.where(t>m*T, k*np.log(x)-x-np.log(t)-np.log(vec_fact(k)), np.log(P_MIN))
+    L_update = L + k*np.log(x)-x-np.log(t)-np.log(vec_fact(k))
     L_update = norm_L(L_update)
     return L_update
     
 
 def cal_Mu(rho_hat, theta):
     # theta = [k, m, h, w]
-    M = 10.0
+    M = 20.0
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
     _, m, h, w = theta.T
     mu = np.where(rho_hat >= (h-w)+w/(M-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), M*T)
@@ -344,10 +320,10 @@ def cal_Mu(rho_hat, theta):
 
 def cal_X_coef(theta):
     # theta = [k, m, h, w]
-    # X = k*(t-m*T)/(mu-m*T)
-    # coef : k/(mu-m*T)
+    # X = k*t/mu
+    # coef : k/mu
     k, m, _, _ = theta.T
-    x_coef = k/(MU-m*T)
+    x_coef = k/MU
     return x_coef
     
 
@@ -399,45 +375,17 @@ def cal_Polyexp_psi_opt(t, rho_hat, theta_star):
     k, m, h, w = theta_star
     # x^k * e^-x / t * (k-1)!
     rho_hat, t = np.meshgrid(rho_hat, t)
-    x = np.where(rho_hat>=(h-w)+w/(10.0-m), (k*t/T)*(1+(rho_hat-h)/w)/(1+m), k*t/(10.0*T))
+    x = np.where(rho_hat>=(h-w)+w/(20.0-m), (k*t/T)*(1+(rho_hat-h)/w)/(1+m), k*t/(20.0*T))
     psi = ((x**k)*np.exp(-x))/(t*math.gamma(k))
     return psi
 
-
-def pseudo_sig(rho):
-    if (TASK == 0):
-        theta = np.array([10, 0.11420823, 1.00868292, 0.1436978 ])
-        rho_hat = 1/rho
-    elif (TASK == 1):
-        theta = np.array([11,  0.09327324,  1.00918455,  0.19635029])
-        rho_hat = rho
-    k, m, h, w = theta
-    mu = np.where(rho_hat >= (h-w)+w/(10.0-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*10.0)
-    dt = 0.1
-    ts = np.round(np.arange(0.1, T, dt), 2)
-    
-    x = (k*ts)/mu
-    dP = dt*(((x**k)*np.exp(-x))/(ts*math.gamma(k)))
-    P_over_T = 1-np.sum(dP)
-    P_given_inT = dP/np.sum(dP)
-    
-    is_over = np.random.choice([True, False], size=1, p=[P_over_T, 1-P_over_T])[0]
-    if (is_over):
-        t = T
-        if (TASK==0): wl = 0
-        elif (TASK==1): wl = 1
-    else:
-        t = np.random.choice(ts, size=1, p=P_given_inT)[0]
-        if (TASK==0): wl = 1
-        elif (TASK==1): wl = 0
-    return t, wl
 
 def pseudo_psi(rho):
     if (TASK == 0): rho_hat = 1/rho
     elif (TASK == 1): rho_hat = rho
     theta = THETA_TRUE
     k, m, h, w = theta
-    mu = np.where(rho_hat >= (h-w)+(w/(10.0-m)), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*10.0)
+    mu = np.where(rho_hat >= (h-w)+(w/(20.0-m)), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*20.0)
     dt = 0.1
     ts = np.round(np.arange(0.1, T, dt), 2)
     
@@ -481,15 +429,16 @@ COLOR_GOLD_C = '#F0AC5F'
 
 
 #%% final variables
-TASK = 0
+TASK = 1
 RHO_POLICY = 'con'
+
 dir_comp = '../MCmod/run/cacutil/components'
 dir_beh = '../MCmod/run/cacutil/behaviors'
 
 if (TASK == 0):
-    THETA_TRUE = np.array([10, 0.11420823, 1.00868292, 0.1436978 ])
+    THETA_TRUE = np.array([14, 0.13, 1.09, 0.21 ])
 elif (TASK == 1):
-    THETA_TRUE = np.array([11,  0.09327324,  1.00918455,  0.19635029])
+    THETA_TRUE = np.array([11,  0.09,  0.96,  0.20])
 
 # hyp
 T = 30
@@ -552,8 +501,8 @@ theta_bin_prior = np.array(psy_bin['prior'])
 theta_con_prior = np.array(psy_con['prior'])
 theta_bin_idx = np.array(list(itertools.product(*[np.arange(psy_bin['shape'][i]) for i in range(4)])))
 theta_con_idx = np.array(list(itertools.product(*[np.arange(psy_con['shape'][i]) for i in range(4)])))
-# L_bin = np.log(0.5+0.5*np.exp(-np.sum(((theta_bin_idx-theta_bin_prior)/np.array(psy_bin['shape']))**2, axis=-1)/2.0))
-# L_con = np.log(0.5+0.5*np.exp(-np.sum(((theta_con_idx-theta_con_prior)/np.array(psy_con['shape']))**2, axis=-1)/2.0))
+L_bin = np.log(0.5+0.5*np.exp(-np.sum(((theta_bin_idx-theta_bin_prior)/np.array(psy_bin['shape']))**2, axis=-1)/2.0))
+L_con = np.log(0.5+0.5*np.exp(-np.sum(((theta_con_idx-theta_con_prior)/np.array(psy_con['shape']))**2, axis=-1)/2.0))
 
 L_bin = norm_L(L_bin)
 L_con = norm_L(L_con)
@@ -702,7 +651,7 @@ while True:
     print(f'Entropy: {H_bin:.5}, {H_con:.5}, {H_bc:.5}')
     print(f'Info Gain: {IG_bin[-1]:.5}, {IG_con[-1]:.5}, {IG_bc[-1]:.5}')
     print(f'Max Expected Info Gain: {EIG_max_bin[-1]:.5}, {EIG_max_con[-1]:.5}, {EIG_max_bc[-1]:.5}')
-    
+    print(f'{thetas_best_con[trial_num]}')
     
     ### check terminate ------------------
     if (RHO_POLICY == 'bin'): 

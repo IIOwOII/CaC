@@ -157,7 +157,7 @@ def plot_trial_H(Hs):
     # data
     c_n = np.arange(Hs.shape[0])
     c_h = Hs
-    h_max = np.log(160000) # temp
+    h_max = np.log(180000) # temp
     
     # figure setting
     fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', ylabel=r'$H$'+' (Entropy)',
@@ -227,7 +227,7 @@ def cal_Polyexp_PSI(rho_hat, theta):
     k, m, _, _ = theta.T
     
     # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
-    X_T = X_COEF * (T-m*T) # [diff][grid]
+    X_T = X_COEF * T # [diff][grid]
     k_max = max(k)
     K_arange = np.tile(np.arange(k_max), reps=[theta.shape[0], 1]).T
     K_mask = K_arange < k
@@ -270,14 +270,14 @@ def cal_Polyexp_psi_opt(t, rho_hat, theta_star):
     k, m, h, w = theta_star
     # x^k * e^-x / t * (k-1)!
     rho_hat, t = np.meshgrid(rho_hat, t)
-    x = np.where(rho_hat>=(h-w)+w/(10.0-m), (k*t/T)*(1+(rho_hat-h)/w)/(1+m), k*t/(10.0*T))
+    x = np.where(rho_hat>=(h-w)+w/(20.0-m), (k*t/T)*(1+(rho_hat-h)/w)/(1+m), k*t/(20.0*T))
     psi = ((x**k)*np.exp(-x))/(t*math.gamma(k))
     return psi
 
 
 def cal_Mu(rho_hat, theta):
     # theta = [k, m, h, w]
-    M = 10.0
+    M = 20.0
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
     _, m, h, w = theta.T
     mu = np.where(rho_hat >= (h-w)+w/(M-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), M*T)
@@ -286,10 +286,10 @@ def cal_Mu(rho_hat, theta):
 
 def cal_X_coef(theta):
     # theta = [k, m, h, w]
-    # X = k*(t-m*T)/(mu-m*T)
-    # coef : k/(mu-m*T)
+    # X = k*t/mu
+    # coef : k/mu
     k, m, _, _ = theta.T
-    x_coef = k/(MU-m*T)
+    x_coef = k/MU
     return x_coef
 
 
@@ -312,12 +312,16 @@ RHO = np.round(np.linspace(0.8, 1.19, RHO_SIZE), 2)
 
 #%% final variables
 TASK = 0
-SUBJECT = 'pbj10'
+SUBJECT = 'cju01'
 RHO_POLICY = 'con'
 
 
-if (TASK == 0): RHO_HAT = 1.0/RHO
-elif (TASK == 1): RHO_HAT = RHO
+if (TASK == 0): 
+    RHO_HAT = 1.0/RHO
+    TASK_NAME = 'chasing'
+elif (TASK == 1): 
+    RHO_HAT = RHO
+    TASK_NAME = 'chased'
 dir_comp = '../MCmod/run/cacutil/components'
 dir_beh = '../MCmod/run/cacutil/behaviors'
 
@@ -385,8 +389,8 @@ trace_wl = dat_play['winlose']
 
 total_trial = len(trace_t)
 for i in range(total_trial):
-    if not f'trial_{i}' in dat_fit['chasing']: break
-    dat = dat_fit['chasing'][f'trial_{i}']['continuous']
+    if not f'trial_{i}' in dat_fit[f'{TASK_NAME}']: break
+    dat = dat_fit[f'{TASK_NAME}'][f'trial_{i}']['continuous']
     trace_rho.append(dat['rho_best'])
     trace_H.append(dat['entropy'])
     trace_maxEIG.append(max(dat['EIGs']))
@@ -431,11 +435,11 @@ ax.plot(RHO, PSI_fit_con, linewidth=1, color=COLOR_GOLD_C, zorder=2, label='Cont
 #PSI_true = cal_Polyexp_PSI_opt(RHO_HAT, THETA_TRUE)
 #ax.plot(RHO, PSI_true, linewidth=1, color=COLOR_GREEN_C, zorder=3, label='True')
 
-#plot_psi_heatmap(trace_t, trace_rho, theta_star)
+plot_psi_heatmap(trace_t, trace_rho, theta_star)
 
-for i in range(total_trial):
-    plot_psi_heatmap(trace_t[:(i+1)], trace_rho[:(i+1)], theta_con[np.where(np.all(theta_con_idx == trace_theta[i], axis=1))[0][0]])
-    plt.show()
+# for i in range(total_trial):
+#     plot_psi_heatmap(trace_t[:(i+1)], trace_rho[:(i+1)], theta_con[np.where(np.all(theta_con_idx == trace_theta[i], axis=1))[0][0]])
+#     plt.show()
 
 plot_trial_maxEIG(trace_maxEIG)
 
