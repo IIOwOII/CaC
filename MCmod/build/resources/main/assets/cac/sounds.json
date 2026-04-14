@@ -25,5 +25,14 @@
         "stream": false
       }
     ]
+  },
+  "snd_bbyong": {
+    "subtitle": "subtitles.snd_bbyong",
+    "sounds": [
+      {
+        "name": "cac:snd_bbyong",
+        "stream": false
+      }
+    ]
   }
 }

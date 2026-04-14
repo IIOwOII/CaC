@@ -2,6 +2,7 @@ package net.owo.cac;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -24,6 +25,7 @@ import net.owo.cac.procedures.AdpBeginnerProcedure;
 import net.owo.cac.procedures.AdpCheckpointProcedure;
 import net.owo.cac.procedures.AdpRacingProcedure;
 
+
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstTutorial {
 	/*
@@ -35,6 +37,9 @@ public class CstTutorial {
 	*/
 	static final int[] TUTO_QUE = {100,101,102,1,103};
 	static int[] MOVING_ORD = {2,0,5,3,6,1,7,4};
+	
+	private static Vec3 TUTO_BEGINNER_OFFSET = new Vec3(-73.5, 63.0, 18.5);
+	private static int TUTO_BEGINNER_RADIUS = 9;
 
 	public static int tuto_id = 0;
 	public static int moving_idx = 0;
@@ -95,10 +100,19 @@ public class CstTutorial {
 	
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-		if (!timer_switch) return;
 		Entity _ent = event.player;
 		LevelAccessor world = _ent.level();
-		if ((event.phase == TickEvent.Phase.END) && (!_ent.level().isClientSide())) {
+		if (world.isClientSide() || _ent == null) return;
+		if (event.phase == TickEvent.Phase.END) {
+			/*
+			if (tuto_id == 1) {
+				Vec3 pos = (_ent.position()).subtract(TUTO_BEGINNER_OFFSET);
+				if (Math.abs(pos.x()) >= TUTO_BEGINNER_RADIUS || Math.abs(pos.z()) >= TUTO_BEGINNER_RADIUS) {
+					
+				}
+			}
+			*/
+			if (!timer_switch) return;
 			if (adv_switch) {
 				if (adv_id == 1) {
 					AdpBeginnerProcedure.execute(_ent);

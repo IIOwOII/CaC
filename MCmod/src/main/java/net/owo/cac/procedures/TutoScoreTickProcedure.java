@@ -30,11 +30,12 @@ public class TutoScoreTickProcedure {
 				CacModVariables.Tuto_hurdle_stack = 0;
 				CacModVariables.Tuto_hurdle_stack_old = 0;
 				CacModVariables.Tuto_score = Math.round(CacModVariables.Tuto_score - 1);
+				CacModVariables.Msg_actionbar_text = "Score : " + new java.text.DecimalFormat("#####").format(CacModVariables.Tuto_score);
 			} else {
 				CacModVariables.Tuto_hurdle_stack_old = CacModVariables.Tuto_hurdle_stack;
 				CacModVariables.Tuto_score = Math.round(CacModVariables.Tuto_score - 4);
+				CacModVariables.Msg_actionbar_text = "\u00A7cScore : " + new java.text.DecimalFormat("#####").format(CacModVariables.Tuto_score);
 			}
-			CacModVariables.Msg_actionbar_text = "Score : " + new java.text.DecimalFormat("#####").format(CacModVariables.Tuto_score);
 		}
 	}
 }

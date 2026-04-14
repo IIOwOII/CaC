@@ -19,5 +19,5 @@
       "trigger": "minecraft:impossible"
     }
   },
-  "parent": "cac:adv_cac"
+  "parent": "cac:adv_racing"
 }
