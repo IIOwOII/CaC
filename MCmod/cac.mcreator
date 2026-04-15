@@ -2010,7 +2010,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "TutoCheckpointEnd",
@@ -2041,7 +2041,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "AdvCac",
@@ -2272,7 +2272,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Util"
     },
     {
       "name": "BlkArrow",
@@ -2349,7 +2349,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "TutoCheckpointStart",
@@ -2368,7 +2368,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "TutoRacingReady",
@@ -2387,7 +2387,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "TutoRacingStart",
@@ -2401,7 +2401,7 @@
         ],
         "dependencies": []
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "CstItem",
@@ -2653,10 +2653,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       },
@@ -2679,7 +2675,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Util"
     },
     {
       "name": "TimCountdown",
@@ -2785,7 +2781,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "TutoBeginnerStart",
@@ -2799,7 +2795,7 @@
         ],
         "dependencies": []
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "MsgManager",
@@ -2845,7 +2841,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Util"
     },
     {
       "name": "AdpBeginner",
@@ -2933,7 +2929,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Practice"
     },
     {
       "name": "BlcTapeWalk",
@@ -2965,43 +2961,6 @@
         ]
       },
       "path": "~/CacBlock"
-    },
-    {
-      "name": "TutoChasingReady",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tuto_chasing_ready",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TutoChasingReadyProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTask/Tutorial"
-    },
-    {
-      "name": "TutoChasingStart",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tuto_chasing_start",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TutoChasingStartProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Tutorial"
     },
     {
       "name": "AiStart",
@@ -3181,7 +3140,7 @@
           }
         ]
       },
-      "path": "~/CacTask/Tutorial"
+      "path": "~/CacTask/Tutorial/Util"
     },
     {
       "name": "AdvChasing",
@@ -3578,6 +3537,95 @@
         "dependencies": []
       },
       "path": "~/CacFunction"
+    },
+    {
+      "name": "AdpChasing",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_chasing",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpChasingProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpChased",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_chased",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpChasedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpSurvey",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpSurveyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdvSurrender",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_surrender",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_surrender.json"
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
     }
   ],
   "variable_elements": [
@@ -4323,8 +4371,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
@@ -4357,11 +4405,13 @@
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
       "block.cac.blk_valuestone": "Value Stone",
+      "advancements.adv_surrender.title": "Continue?",
       "key.cac.cac_key_down": "Down",
       "item_group.cac.cac_tab": "CaC",
       "advancements.adv_chased.descr": "Escape from the predator",
       "key.categories.cac": "Chasing and Chased",
       "block.cac.blk_valuepatch": "Value Patch",
+      "advancements.adv_surrender.descr": "Insert 100 won and start again!",
       "key.cac.cac_key_decide": "Decide",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "item.cac.cac_test_item": "Tester",
@@ -4437,7 +4487,16 @@
           },
           {
             "name": "Tutorial",
-            "children": []
+            "children": [
+              {
+                "name": "Util",
+                "children": []
+              },
+              {
+                "name": "Practice",
+                "children": []
+              }
+            ]
           },
           {
             "name": "Main",

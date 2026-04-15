@@ -19,11 +19,25 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.client.event.RenderGuiEvent;
 
 import net.owo.cac.CstState;
+import net.owo.cac.CstAgent;
+import net.owo.cac.CstSurvey;
+import net.owo.cac.CstSurrender;
 import net.owo.cac.network.CacModVariables;
+
 import net.owo.cac.procedures.TutoComebackProcedure;
 import net.owo.cac.procedures.AdpBeginnerProcedure;
 import net.owo.cac.procedures.AdpCheckpointProcedure;
 import net.owo.cac.procedures.AdpRacingProcedure;
+import net.owo.cac.procedures.AdpChasingProcedure;
+import net.owo.cac.procedures.AdpChasedProcedure;
+import net.owo.cac.procedures.AdpSurveyProcedure;
+import net.owo.cac.procedures.AdpSurrenderProcedure;
+import net.owo.cac.procedures.MeowViewOnProcedure;
+import net.owo.cac.procedures.MeowMoveOnProcedure;
+import net.owo.cac.procedures.TaskSpawnOpponentProcedure;
+import net.owo.cac.procedures.EffApplyMorphPredatorProcedure;
+import net.owo.cac.procedures.EffApplyMorphPreyProcedure;
+import net.owo.cac.procedures.EffRemoveMorphProcedure;
 
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -32,6 +46,12 @@ public class CstTutorial {
 	1: moving
 	2: checkpoint
 	3: racing
+	10: chasing inst
+	15: chasing no inst
+	20: chased inst
+	25: chased no inst
+	30: survey
+	40: surrender
 	100: book_0
 	101: book_1 ...
 	*/
@@ -40,11 +60,11 @@ public class CstTutorial {
 	
 	private static Vec3 TUTO_BEGINNER_OFFSET = new Vec3(-73.5, 63.0, 18.5);
 	private static int TUTO_BEGINNER_RADIUS = 9;
-
+	
 	public static int tuto_id = 0;
 	public static int moving_idx = 0;
 	public static int[] moving_footprint = {0,0,0,0,0,0,0,0};
-
+	
 	public static int timer = 0;
 	public static boolean timer_switch = false;
 	public static int adv_id = 0;
@@ -104,6 +124,12 @@ public class CstTutorial {
 		LevelAccessor world = _ent.level();
 		if (world.isClientSide() || _ent == null) return;
 		if (event.phase == TickEvent.Phase.END) {
+			if (tuto_id == 10 && CstState.getKeyChanged(5) == 0) { // Chasing Prep
+				chasingGameTutorial(_ent);
+			}
+			if (tuto_id == 20 && CstState.getKeyChanged(5) == 0) { // Chased Prep
+				chasedGameTutorial(_ent);
+			}
 			/*
 			if (tuto_id == 1) {
 				Vec3 pos = (_ent.position()).subtract(TUTO_BEGINNER_OFFSET);
@@ -120,6 +146,14 @@ public class CstTutorial {
 					AdpCheckpointProcedure.execute(_ent);
 				} else if ((adv_id == 3) && (adv_certificate)) {
 					AdpRacingProcedure.execute(_ent);
+				} else if ((adv_id == 4) && (adv_certificate)) {
+					AdpChasingProcedure.execute(_ent);
+				} else if ((adv_id == 5) && (adv_certificate)) {
+					AdpChasedProcedure.execute(_ent);
+				} else if ((adv_id == 6) && (adv_certificate)) {
+					AdpSurveyProcedure.execute(_ent);
+				} else if ((adv_id == 7) && (adv_certificate)) {
+					AdpSurrenderProcedure.execute(_ent);
 				}
 				adv_switch = false;
 				adv_certificate = false;
@@ -173,5 +207,91 @@ public class CstTutorial {
 
 	public static void racingTutorial() {
 		tuto_id = 3;
+	}
+
+	public static void chasingPrepTutorial(Entity entity) {
+		if (entity == null) return;
+		LevelAccessor world = entity.level();
+		if (world == null || world.isClientSide()) return;
+		MinecraftServer server = entity.getServer();
+		if (server == null) return;
+		
+		tuto_id = 10;
+		CacModVariables.Switch_AI = false;
+		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "cac_tp task");
+		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 8");
+		MeowViewOnProcedure.execute();
+		MeowMoveOnProcedure.execute();
+		CacModVariables.Dat_trial_spawnpoint_opponent = 0;
+		CacModVariables.Dat_trial_type = 0;
+		CacModVariables.Dat_difficulty = 0.8;
+		TaskSpawnOpponentProcedure.execute(world);
+		EffApplyMorphPredatorProcedure.execute(entity);
+		CacModVariables.Msg_actionbar_text = "\uACE0\uC591\uC774\uB97C \uC870\uC885\uD558\uC5EC \uC950\uC758 \uC704\uCE58\uB97C \uBBF8\uB9AC \uD655\uC778\uD558\uACE0 \uC790\uB9AC\uB97C \uC7A1\uC73C\uC138\uC694.\\n\uC900\uBE44\uB418\uBA74 \u00A7e\uACB0\uC815 \uBC84\uD2BC\u00A7r\uC744 \uB20C\uB7EC \uC2DC\uC791\uD558\uAE30.";
+		CacModVariables.Msg_actionbar_switch = true;
+	}
+	public static void chasingGameTutorial(Entity entity) {
+		if (entity == null) return;
+		LevelAccessor world = entity.level();
+		if (world == null || world.isClientSide()) return;
+		MinecraftServer server = entity.getServer();
+		if (server == null) return;
+		
+		tuto_id = 11;
+		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 10000000");
+		CacModVariables.Msg_actionbar_text = "\uC950\uAC00 \uB3C4\uB9DD\uCE69\uB2C8\uB2E4! \uC81C\uC2DC\uAC04 \uC548\uC5D0 \uC7A1\uC544\uC8FC\uC138\uC694.";
+		CstAgent.setDuration(600);
+		CacModVariables.Switch_AI = true;
+	}
+	public static void chasingEndTutorial(Entity entity) {
+		CacModVariables.Msg_actionbar_switch = false;
+		tuto_id = 12;
+		EffRemoveMorphProcedure.execute(entity);
+	}
+
+	public static void chasedPrepTutorial(Entity entity) {
+		if (entity == null) return;
+		LevelAccessor world = entity.level();
+		if (world == null || world.isClientSide()) return;
+		MinecraftServer server = entity.getServer();
+		if (server == null) return;
+		
+		tuto_id = 20;
+		CacModVariables.Switch_AI = false;
+		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "cac_tp task");
+		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 8");
+		MeowViewOnProcedure.execute();
+		MeowMoveOnProcedure.execute();
+		CacModVariables.Dat_trial_spawnpoint_opponent = 2;
+		CacModVariables.Dat_trial_type = 1;
+		CacModVariables.Dat_difficulty = 0.8;
+		TaskSpawnOpponentProcedure.execute(world);
+		EffApplyMorphPreyProcedure.execute(entity);
+		CacModVariables.Msg_actionbar_text = "\uC950\uB97C \uC870\uC885\uD558\uC5EC \uACE0\uC591\uC774\uC758 \uC704\uCE58\uB97C \uBBF8\uB9AC \uD655\uC778\uD558\uACE0 \uC790\uB9AC\uB97C \uC7A1\uC73C\uC138\uC694.\\n\uC900\uBE44\uB418\uBA74 \u00A7e\uACB0\uC815 \uBC84\uD2BC\u00A7r\uC744 \uB20C\uB7EC \uC2DC\uC791\uD558\uAE30.";
+		CacModVariables.Msg_actionbar_switch = true;
+	}
+	public static void chasedGameTutorial(Entity entity) {
+		if (entity == null) return;
+		LevelAccessor world = entity.level();
+		if (world == null || world.isClientSide()) return;
+		MinecraftServer server = entity.getServer();
+		if (server == null) return;
+		
+		tuto_id = 21;
+		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 10000000");
+		CacModVariables.Msg_actionbar_text = "\uACE0\uC591\uC774\uAC00 \uCAD3\uC544\uC635\uB2C8\uB2E4! \uC81C\uC2DC\uAC04 \uB3D9\uC548 \uB3C4\uB9DD\uCE58\uC138\uC694.";
+		CstAgent.setDuration(600);
+		CacModVariables.Switch_AI = true;
+	}
+	public static void chasedEndTutorial(Entity entity) {
+		CacModVariables.Msg_actionbar_switch = false;
+		tuto_id = 22;
+		EffRemoveMorphProcedure.execute(entity);
 	}
 }

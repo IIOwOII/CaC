@@ -1812,10 +1812,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/block/BlkCheckpointBlock.java",
-          "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
           "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
-          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2152,11 +2152,11 @@
       "registry_name": "blk_switchstone",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/item/blk_switchstone.json",
-          "src/main/resources/assets/cac/models/block/blk_switchstone.json",
           "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
+          "src/main/resources/assets/cac/models/block/blk_switchstone.json",
+          "src/main/resources/assets/cac/blockstates/blk_switchstone.json",
           "src/main/java/net/owo/cac/block/BlkSwitchstoneBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_switchstone.json"
+          "src/main/resources/assets/cac/models/item/blk_switchstone.json"
         ]
       },
       "path": "~/CacBlock"
@@ -4266,6 +4266,14 @@
       ],
       "category": "neutral",
       "subtitle": "snd_orb_a7"
+    },
+    {
+      "name": "snd_bbyong",
+      "files": [
+        "snd_bbyong"
+      ],
+      "category": "neutral",
+      "subtitle": "snd_bbyong"
     }
   ],
   "tag_elements": {
@@ -4315,8 +4323,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "entity.cac.ent_cat": "Predator",
+      "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
@@ -4369,6 +4377,7 @@
       "advancements.adv_chasing.title": "The veteran predator",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
+      "subtitles.snd_bbyong": "snd_bbyong",
       "advancements.adv_beginner.title": "Stickman"
     }
   },
