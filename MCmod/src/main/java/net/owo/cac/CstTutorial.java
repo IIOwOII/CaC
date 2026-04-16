@@ -58,9 +58,6 @@ public class CstTutorial {
 	static final int[] TUTO_QUE = {100,101,102,1,103};
 	static int[] MOVING_ORD = {2,0,5,3,6,1,7,4};
 	
-	private static Vec3 TUTO_BEGINNER_OFFSET = new Vec3(-73.5, 63.0, 18.5);
-	private static int TUTO_BEGINNER_RADIUS = 9;
-	
 	public static int tuto_id = 0;
 	public static int moving_idx = 0;
 	public static int[] moving_footprint = {0,0,0,0,0,0,0,0};
@@ -130,14 +127,6 @@ public class CstTutorial {
 			if (tuto_id == 20 && CstState.getKeyChanged(5) == 0) { // Chased Prep
 				chasedGameTutorial(_ent);
 			}
-			/*
-			if (tuto_id == 1) {
-				Vec3 pos = (_ent.position()).subtract(TUTO_BEGINNER_OFFSET);
-				if (Math.abs(pos.x()) >= TUTO_BEGINNER_RADIUS || Math.abs(pos.z()) >= TUTO_BEGINNER_RADIUS) {
-					
-				}
-			}
-			*/
 			if (!timer_switch) return;
 			if (adv_switch) {
 				if (adv_id == 1) {
@@ -207,6 +196,16 @@ public class CstTutorial {
 
 	public static void racingTutorial() {
 		tuto_id = 3;
+	}
+
+	public static void surveyTutorial() {
+		tuto_id = 30;
+		CstSurvey.startSurvey();
+	}
+
+	public static void surrenderTutorial() {
+		tuto_id = 40;
+		CstSurrender.startSurrender();
 	}
 
 	public static void chasingPrepTutorial(Entity entity) {

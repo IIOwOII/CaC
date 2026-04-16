@@ -48,8 +48,10 @@ public class FncManageDifficultyProcedure {
 			}
 		} else if ((session).equals("simulation_chasing") || (session).equals("simulation_chased")) {
 			CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (0.8 + 0.4 * (CacModVariables.Exp_trial / CacModVariables.Exp_trial_total))) / Math.pow(10, 2);
-		} else if ((session).equals("fitting") || (session).equals("simulation_fit_chasing") || (session).equals("simulation_fit_chased")) {
+		} else if ((session).equals("fitting_chasing") || (session).equals("fitting_chased") || (session).equals("simulation_fit_chasing") || (session).equals("simulation_fit_chased")) {
 			CacMod.LOGGER.info(CacModVariables.Dat_difficulty);
+		} else if ((session).equals("chasing") || (session).equals("chased")) {
+			CacModVariables.Dat_difficulty = 0;
 		}
 	}
 }

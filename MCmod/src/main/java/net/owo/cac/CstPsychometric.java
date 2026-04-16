@@ -22,7 +22,6 @@ public class CstPsychometric {
 	public static int task_type = -1;
 	public static int method_type = -1;
 	public static int func_type = -1;
-	public static int trial_type = -1; // in this trial, chasing(0)? or chased(1)?
 	public static boolean method_bin = false;
 	public static boolean method_con = false;
 
@@ -71,7 +70,8 @@ public class CstPsychometric {
 	public static double rho_best = 0;
 
 	// Terminal Rule
-	public static double IG_THRESHOLD = 0.05;
+	public static double IG_THRESHOLD = 0.05; // How much the maximum IG must be less than.
+	public static int RAW_THRESHOLD = 5; // How many consecutive trials are required to satisfy the conditions.
 
 	// Traces
 	public static ArrayList<Double> trace_IG_bin = new ArrayList<>();
@@ -83,8 +83,20 @@ public class CstPsychometric {
 	public static double PMIN = 1.0E-12; // point 12
 	public static double PMAX = 1.0 - 1.0E-12; // point 12
 	public static double TRIAL_MAX = 25;
+
+	// Fitted Data
+	public static double[] THETA_STAR = new double[4]; // k, m, h, w
 	
 
+	// Using Fitted parameter
+	public static void calFitPSI() {
+		JsonArray arr_theta = CacModVariables.Dat_theta.deepCopy();
+		THETA_STAR = new double[4];
+		for (int i=0; i<4; i++) {
+			THETA_STAR[i] = arr_theta.get(i).getAsDouble();
+		}
+	}
+	
 	// usage
 	// initialize
 	public static void initPsy() {
@@ -188,7 +200,7 @@ public class CstPsychometric {
 		}
 		
 		boolean isend = true;
-		for (int i=size-5; i<size; i++) {
+		for (int i=size-RAW_THRESHOLD; i<size; i++) {
 			if (EIG_check.get(i) >= IG_THRESHOLD) {
 				isend = false;
 			}
@@ -385,7 +397,6 @@ public class CstPsychometric {
 	public static void recHistory() {
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
-		JsonObject obj_task = new JsonObject();
 		JsonObject obj_trial = new JsonObject();
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
@@ -400,11 +411,6 @@ public class CstPsychometric {
 			bufferedReader.close();
 			obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
 			obj_cac = obj_file.get("cac").getAsJsonObject();
-			if (trial_type == 0) {
-				obj_task = obj_cac.get("chasing").getAsJsonObject();
-			} else if (trial_type == 1) {
-				obj_task = obj_cac.get("chased").getAsJsonObject();
-			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -427,7 +433,7 @@ public class CstPsychometric {
 			obj_trial.add(("continuous"), obj_method_con);
 		}
 		
-		obj_task.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
+		obj_cac.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
@@ -440,7 +446,6 @@ public class CstPsychometric {
 	public static void recFinal() {
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
-		JsonObject obj_task = new JsonObject();
 		JsonObject obj_final = new JsonObject();
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
@@ -455,16 +460,11 @@ public class CstPsychometric {
 			bufferedReader.close();
 			obj_file = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
 			obj_cac = obj_file.get("cac").getAsJsonObject();
-			if (trial_type == 0) {
-				obj_task = obj_cac.get("chasing").getAsJsonObject();
-			} else if (trial_type == 1) {
-				obj_task = obj_cac.get("chased").getAsJsonObject();
-			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		obj_final = obj_task.get("final").getAsJsonObject();
+		obj_final = obj_cac.get("final").getAsJsonObject();
 
 		if (method_bin) {
 			obj_method_bin.addProperty("entropy", entropy_bin);

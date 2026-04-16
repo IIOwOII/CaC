@@ -20,6 +20,7 @@ import net.minecraftforge.event.TickEvent;
 
 import net.owo.cac.CstState;
 import net.owo.cac.CstRenderComponent;
+import net.owo.cac.CstTutorial;
 import net.owo.cac.network.CacModVariables;
 
 
@@ -91,6 +92,9 @@ public class CstSurrender {
 		IsSurrender = false;
 		recordSurrender();
 		CstState.onMeowMove(); // start moving
+		if (CstTutorial.tuto_id == 40) { // is tutorial?
+			CstTutorial.completeMission(7, true);
+		}
 	}
 	
 	public static void confirmSurrender() {

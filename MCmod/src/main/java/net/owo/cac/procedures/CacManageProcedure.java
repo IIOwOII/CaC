@@ -20,12 +20,12 @@ public class CacManageProcedure {
 		if (entity == null)
 			return;
 		String psy_type = "";
+		File log_fitting = new File("");
 		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_fit = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_psy = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_final = new com.google.gson.JsonObject();
-		File log_fitting = new File("");
+		com.google.gson.JsonObject obj_method = new com.google.gson.JsonObject();
 		CacModVariables.Exp_session = StringArgumentType.getString(arguments, "task");
 		{
 			try {
@@ -42,11 +42,7 @@ public class CacManageProcedure {
 				e.printStackTrace();
 			}
 		}
-		CacModVariables.Psy_task = StringArgumentType.getString(arguments, "task");
-		CacModVariables.Psy_method = StringArgumentType.getString(arguments, "method");
-		CacModVariables.Psy_function = StringArgumentType.getString(arguments, "function");
-		psy_type = CacModVariables.Psy_task + "_" + CacModVariables.Psy_method + "_" + CacModVariables.Psy_function;
-		log_fitting = new File((CacModVariables.Dir_behaviors + "/fitting"), File.separator + "log_fitting.json");
+		log_fitting = new File((CacModVariables.Dir_behaviors + "/fitting_" + CacModVariables.Exp_session), File.separator + "log_fitting.json");
 		if (log_fitting.exists()) {
 			{
 				try {
@@ -63,11 +59,25 @@ public class CacManageProcedure {
 					e.printStackTrace();
 				}
 			}
-			obj_psy = obj_cac.get(psy_type).getAsJsonObject();
-			obj_final = obj_psy.get("final").getAsJsonObject();
-			CacModVariables.Psy_bin_param_best = obj_final.get("param_best").getAsJsonArray();
-			PrdCountdownProcedure.execute();
-			TaskSessionStartProcedure.execute(world, entity);
+			obj_final = obj_cac.get("final").getAsJsonObject();
+			if (obj_final.get("continuous").isJsonObject()) {
+				obj_method = obj_final.get("continuous").getAsJsonObject();
+				CacModVariables.Dat_theta = obj_method.get("param_best").getAsJsonArray();
+				if (CacModVariables.Exp_property.contains("C")) {
+					CacModVariables.Switch_scanner = true;
+					CacModVariables.Exp_signal = false;
+					CacModVariables.TimS_time = 0;
+				} else {
+					CacModVariables.Switch_scanner = false;
+				}
+				if (CacModVariables.Exp_property.contains("S")) {
+					net.owo.cac.CstSurvey.initSurvey();
+				}
+				TaskSessionStartProcedure.execute(world, entity);
+			} else {
+				if (!world.isClientSide() && world.getServer() != null)
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Only continuous!"), false);
+			}
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("No fitting file!"), false);

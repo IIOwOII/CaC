@@ -3539,27 +3539,125 @@
       "path": "~/CacFunction"
     },
     {
-      "name": "TutoChasingPreparation",
+      "name": "AdpChasing",
       "type": "procedure",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tuto_chasing_preparation",
+      "registry_name": "adp_chasing",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/procedures/TutoChasingPreparationProcedure.java"
+          "src/main/java/net/owo/cac/procedures/AdpChasingProcedure.java"
         ],
         "dependencies": [
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       },
-      "path": "~/CacTask/Tutorial/Experiment"
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpChased",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_chased",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpChasedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpSurvey",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_survey",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpSurveyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdvSurrender",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_surrender",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_surrender.json"
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpSurrender",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_surrender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpSurrenderProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdvMaster",
+      "type": "achievement",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adv_master",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/advancements/adv_master.json"
+        ]
+      },
+      "path": "~/CacAdvancement"
+    },
+    {
+      "name": "AdpMaster",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "adp_master",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/AdpMasterProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacAdvancement"
     }
   ],
   "variable_elements": [
@@ -4325,6 +4423,7 @@
       "block.cac.blk_checkpoint": "Checkpoint",
       "advancements.adv_cac.title": "Chasing and Chased",
       "advancements.adv_chasing.descr": "Catch the prey",
+      "advancements.adv_master.descr": "Could you call me a doctor instead of a master?",
       "effect.cac.eff_morph_predator": "Predator",
       "item.cac.ent_cat_spawn_egg": "Predator Spawn Egg",
       "entity.cac.ent_player_cat": "Predator (Player)",
@@ -4339,16 +4438,19 @@
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
       "key.cac.cac_key_signal": "Scanner Signal",
       "block.cac.blk_valuestone": "Value Stone",
+      "advancements.adv_surrender.title": "Continue?",
       "key.cac.cac_key_down": "Down",
       "item_group.cac.cac_tab": "CaC",
       "advancements.adv_chased.descr": "Escape from the predator",
       "key.categories.cac": "Chasing and Chased",
       "block.cac.blk_valuepatch": "Value Patch",
+      "advancements.adv_surrender.descr": "Insert 100 won and start again!",
       "key.cac.cac_key_decide": "Decide",
       "item.cac.ent_mouse_spawn_egg": "Prey Spawn Egg",
       "item.cac.cac_test_item": "Tester",
       "item.cac.cac_logo": "OwO",
       "block.cac.blk_mission": "Mission Block",
+      "advancements.adv_master.title": "The master of CaC",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
       "subtitles.snd_orb_c7": "snd_orb_c7",
       "key.cac.cac_key_record": "Toggle Record",
@@ -4426,10 +4528,6 @@
               },
               {
                 "name": "Practice",
-                "children": []
-              },
-              {
-                "name": "Experiment",
                 "children": []
               }
             ]

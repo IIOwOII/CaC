@@ -21,6 +21,7 @@ import net.minecraftforge.event.TickEvent;
 
 import net.owo.cac.CstState;
 import net.owo.cac.CstRenderComponent;
+import net.owo.cac.CstTutorial;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.procedures.EvPulseRecordProcedure;
 
@@ -142,6 +143,9 @@ public class CstSurvey {
 		// order, time, answer
 		recordSurvey();
 		CstState.onMeowMove(); // start moving
+		if (CstTutorial.tuto_id == 30) { // is tutorial?
+			CstTutorial.completeMission(6, true);
+		}
 	}
 
 	// quiz by quiz

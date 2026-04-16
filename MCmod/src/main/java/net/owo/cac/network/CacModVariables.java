@@ -114,7 +114,6 @@ public class CacModVariables {
 	public static String Psy_method = "\"\"";
 	public static String Psy_function = "\"\"";
 	public static String Psy_task = "\"\"";
-	public static com.google.gson.JsonArray Psy_bin_param_best = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_min = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_max = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_step = new com.google.gson.JsonArray();
@@ -132,6 +131,7 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Dat_predator_x_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_predator_z_prep = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Dat_predator_r_prep = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Dat_theta = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

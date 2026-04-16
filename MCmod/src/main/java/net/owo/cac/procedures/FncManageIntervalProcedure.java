@@ -5,13 +5,9 @@ import net.owo.cac.CacMod;
 
 public class FncManageIntervalProcedure {
 	public static void execute() {
-		if ((CacModVariables.Exp_session).equals("test_mixed") || (CacModVariables.Exp_session).equals("test_chasing") || (CacModVariables.Exp_session).equals("test_chased")) {
+		if (CacModVariables.Exp_session.startsWith("test") || CacModVariables.Exp_session.startsWith("pseudo")) {
 			CacModVariables.Dat_time_interval = 1;
-		} else if ((CacModVariables.Exp_session).equals("pseudo_chasing") || (CacModVariables.Exp_session).equals("pseudo_chased")) {
-			CacModVariables.Dat_time_interval = 1;
-		} else if ((CacModVariables.Exp_session).equals("fitting")) {
-			CacModVariables.Dat_time_interval = 3;
-		} else if ((CacModVariables.Exp_session).equals("chasing") || (CacModVariables.Exp_session).equals("chased")) {
+		} else if (CacModVariables.Exp_session.startsWith("fitting") || (CacModVariables.Exp_session).equals("chasing") || (CacModVariables.Exp_session).equals("chased")) {
 			CacModVariables.Dat_time_interval = 3;
 		}
 		CacModVariables.Switch_blank = true;

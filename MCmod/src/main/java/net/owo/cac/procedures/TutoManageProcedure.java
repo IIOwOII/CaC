@@ -36,6 +36,10 @@ public class TutoManageProcedure {
 			net.owo.cac.CstTutorial.chasingPrepTutorial(entity);
 		} else if ((tuto_name).equals("chased")) {
 			net.owo.cac.CstTutorial.chasedPrepTutorial(entity);
+		} else if ((tuto_name).equals("survey")) {
+			net.owo.cac.CstTutorial.surveyTutorial();
+		} else if ((tuto_name).equals("surrender")) {
+			net.owo.cac.CstTutorial.surrenderTutorial();
 		}
 	}
 }

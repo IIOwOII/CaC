@@ -121,7 +121,20 @@
     ],
     "ending": "demo_end"
   },
-  "fitting": {
+  "fitting_chasing": {
+    "initial": "fitting_start",
+    "trial": [
+      "phase_fitting",
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial"
+    ],
+    "ending": "fitting_end"
+  },
+  "fitting_chased": {
     "initial": "fitting_start",
     "trial": [
       "phase_fitting",
@@ -142,6 +155,7 @@
       "phase_gameplay",
       "phase_gameplay_end",
       "phase_survey",
+      "phase_surrender",
       "phase_interval",
       "phase_posttrial"
     ],
@@ -155,6 +169,7 @@
       "phase_gameplay",
       "phase_gameplay_end",
       "phase_survey",
+      "phase_surrender",
       "phase_interval",
       "phase_posttrial"
     ],
