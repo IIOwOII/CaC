@@ -358,7 +358,7 @@ def cal_Polyexp_PSI_opt(rho_hat, theta_star):
     k, m, h, w = theta_star # theta = [k, m, h, w]
     # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
     k = round(k)
-    X = k*(1+(rho_hat-h)/w)/(1+m)
+    X = np.where(rho_hat>=(h-w)+w/(50.0-m), k/(m+(1.0/(1+((rho_hat-h)/w)))), k/50.0)
     series = 0
     for i in range(k):
         series += (X**i)/math.gamma(i+1)
@@ -375,7 +375,7 @@ def cal_Polyexp_psi_opt(t, rho_hat, theta_star):
     k, m, h, w = theta_star
     # x^k * e^-x / t * (k-1)!
     rho_hat, t = np.meshgrid(rho_hat, t)
-    x = np.where(rho_hat>=(h-w)+w/(20.0-m), (k*t/T)*(1+(rho_hat-h)/w)/(1+m), k*t/(20.0*T))
+    x = np.where(rho_hat>=(h-w)+w/(50.0-m), (k*t)/(T*(m+(1.0/(1+((rho_hat-h)/w))))), k*t/(50.0*T))
     psi = ((x**k)*np.exp(-x))/(t*math.gamma(k))
     return psi
 
@@ -385,7 +385,7 @@ def pseudo_psi(rho):
     elif (TASK == 1): rho_hat = rho
     theta = THETA_TRUE
     k, m, h, w = theta
-    mu = np.where(rho_hat >= (h-w)+(w/(20.0-m)), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*20.0)
+    mu = np.where(rho_hat >= (h-w)+(w/(50.0-m)), T*(m+(1.0/(1+((rho_hat-h)/w)))), T*50.0)
     dt = 0.1
     ts = np.round(np.arange(0.1, T, dt), 2)
     
@@ -429,7 +429,7 @@ COLOR_GOLD_C = '#F0AC5F'
 
 
 #%% final variables
-TASK = 1
+TASK = 0
 RHO_POLICY = 'con'
 
 dir_comp = '../MCmod/run/cacutil/components'
