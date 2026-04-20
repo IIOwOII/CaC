@@ -253,7 +253,7 @@ def cal_Polyexp_PSI_opt(rho_hat, theta_star):
     k, m, h, w = theta_star # theta = [k, m, h, w]
     # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
     k = round(k)
-    X = np.where(rho_hat>=(h-w)+w/(50.0-m), k/(m+(1.0/(1+((rho_hat-h)/w)))), k/50.0)
+    X = np.where(rho_hat>=(h-w)+w/(M-m), k/(m+(1.0/(1+((rho_hat-h)/w)))), k/M)
     series = 0
     for i in range(k):
         series += (X**i)/math.gamma(i+1)
@@ -270,14 +270,13 @@ def cal_Polyexp_psi_opt(t, rho_hat, theta_star):
     k, m, h, w = theta_star
     # x^k * e^-x / t * (k-1)!
     rho_hat, t = np.meshgrid(rho_hat, t)
-    x = np.where(rho_hat>=(h-w)+w/(50.0-m), (k*t)/(T*(m+(1.0/(1+((rho_hat-h)/w))))), k*t/(50.0*T))
+    x = np.where(rho_hat>=(h-w)+w/(M-m), (k*t)/(T*(m+(1.0/(1+((rho_hat-h)/w))))), k*t/(M*T))
     psi = ((x**k)*np.exp(-x))/(t*math.gamma(k))
     return psi
 
 
 def cal_Mu(rho_hat, theta):
     # theta = [k, m, h, w]
-    M = 50.0
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
     _, m, h, w = theta.T
     mu = np.where(rho_hat >= (h-w)+w/(M-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), M*T)
@@ -308,7 +307,7 @@ P_MIN = 1.0E-12
 P_MAX = 1 - 1.0E-12
 RHO_SIZE = 60
 RHO = np.round(np.linspace(0.7, 1.29, RHO_SIZE), 2)
-
+M = 100.0
 
 #%% final variables
 TASK = 0

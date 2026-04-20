@@ -39,7 +39,7 @@ public class CstPsychometric {
 	public static double[] CON_W; // [grid]
 
 	// grid of difficulty
-	public static int RHOSIZE = 40;
+	public static int RHOSIZE = 60;
 	public static double[] RHO; // [diff]
 	public static double T = 30; // terminate time
 	public static double[][] X_coef; // [diff][grid]
@@ -80,21 +80,169 @@ public class CstPsychometric {
 	public static ArrayList<Double> trace_maxEIG_con = new ArrayList<>();
 
 	// Safety
+	public static double MU_MAX = 100; // mu < 100*T
+	public static double RHO_MAX = 1.30;
+	public static double RHO_MIN = 0.70;
 	public static double PMIN = 1.0E-12; // point 12
 	public static double PMAX = 1.0 - 1.0E-12; // point 12
 	public static double TRIAL_MAX = 25;
 
 	// Fitted Data
 	public static double[] THETA_STAR = new double[4]; // k, m, h, w
-	
+	public static ArrayList<Integer> trace_winlose = new ArrayList<>();
+	public static ArrayList<Double> trace_rho = new ArrayList<>();
+	public static ArrayList<Double> trace_P = new ArrayList<>();
+	public static ArrayList<Integer> trace_level = new ArrayList<>();
 
 	// Using Fitted parameter
-	public static void calFitPSI() {
+	// Theta Star Load
+	public static void loadThetaStar() {
 		JsonArray arr_theta = CacModVariables.Dat_theta.deepCopy();
 		THETA_STAR = new double[4];
 		for (int i=0; i<4; i++) {
 			THETA_STAR[i] = arr_theta.get(i).getAsDouble();
 		}
+		// chasing? or chased?
+		task_type = (int)CacModVariables.Dat_trial_type;
+		trace_winlose = new ArrayList<>();
+		trace_rho = new ArrayList<>();
+		trace_P = new ArrayList<>();
+		trace_level = new ArrayList<>();
+	}
+	public static double calFitPSI(double rho) {
+		double P = 0;
+		double rho_hat = 0;
+		k = THETA_STAR[0];
+		m = THETA_STAR[1];
+		h = THETA_STAR[2];
+		w = THETA_STAR[3];
+		if (task_type == 0) {
+			rho_hat = 1/rho;
+		} else if (task_type == 1) {
+			rho_hat = rho;
+		}
+		double X = 0;
+		if (rho_hat >= (h-w)+w/(MU_MAX-m)) {
+			X = k/(m+(1/(1+((rho_hat-h)/w))));
+		} else {
+			X = k/MU_MAX;
+			rho_hat = (h-w) + w/(MU_MAX-m);
+			if (task_type == 0) {
+				rho = 1/rho_hat;
+			} else if (task_type == 1) {
+				rho = rho_hat;
+			}
+			CacMod.LOGGER.info("rho out of range! adjusted rho: " + new java.text.DecimalFormat("##.####").format(rho));
+		}
+		double series = 0;
+		for (int i=0; i<(int)k; i++) {
+			series += Math.pow(X, i)/factorial(i);
+		}
+		double P_hat = Math.exp(-X) * series;
+		if (task_type == 0) {
+			P = 1-P_hat;
+		} else if (task_type == 1) {
+			P = P_hat;
+		}
+		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
+		return P;
+	}
+	public static double calFitInversePSI(double P) {
+		double P_hat = 0;
+		double series = 0;
+		k = THETA_STAR[0];
+		m = THETA_STAR[1];
+		h = THETA_STAR[2];
+		w = THETA_STAR[3];
+		int num_iter = 10;
+		double X = k;
+		if (task_type == 0) {
+			P_hat = 1 - P;
+		} else if (task_type == 1) {
+			P_hat = P;
+		}
+		for (int j=0; j<num_iter; j++) {
+			for (int i=0; i<(int)k; i++) {
+				series += Math.pow(X, i)/factorial(i);
+			}
+			series -= Math.exp(X)*P_hat;
+			X = X + (factorial(k-1)/Math.pow(X, k-1)) * series;
+		}
+		double rho_hat = h+w*((1/((k/X)-m))-1);
+		double rho = 0;
+		if (task_type == 0) {
+			rho = 1/rho_hat;
+		} else if (task_type == 1) {
+			rho = rho_hat;
+		}
+		if (rho > RHO_MAX) {
+			CacMod.LOGGER.info("Max rho!" + new java.text.DecimalFormat("##.####").format(rho));
+			rho = RHO_MAX;
+		} else if (rho < RHO_MIN) {
+			CacMod.LOGGER.info("Min rho!" + new java.text.DecimalFormat("##.####").format(rho));
+			rho = RHO_MIN;
+		}
+		rho = Math.round(rho*10000.0) / 10000.0; // 4 decimals
+		return rho;
+	}
+	
+	// Adjusting Difficulty
+	public static void adjustRho() {
+		/*
+		0.75 3/4, 0.6 3/5, 0.5 3/6, 0.4 2/5, 0.25 1/4
+		 */
+		boolean raw_lose = false;
+		int wl_prev = -1;
+		int lv_prev = -1;
+		int lv = -1;
+		double P_target = -1;
+		double rho_next = -1;
+		int tnum = trace_winlose.size();
+		
+		if (tnum > 0) {
+			wl_prev = trace_winlose.get(tnum-1).getAsInt();
+			lv_prev = trace_level.get(tnum-1).getAsInt();
+			if (wl_prev == 0) { // lose before
+				if (tnum < 5 || lv_prev == 1) {
+					lv = lv_prev;
+				} else {
+					raw_lose = true;
+					for (int i=0; i<5; i++) {
+						if (trace_winlose.get(tnum-i-1).getAsInt() == 1) {
+							raw_lose = false;
+						}
+					}
+					if (raw_lose) { // 5 raw lose
+						lv = lv_prev - 1;
+					} else {
+						lv = lv_prev;
+					}
+				}
+			} else if (wl_prev == 1) { // win before
+				lv = lv_prev + 1;
+			}
+		} else if (tnum == 0) { // first trial
+			lv = 1;
+		}
+		
+		if (lv > 1) {
+			P_target = Math.round(10000.0/lv) / 10000.0;
+		} else if (lv == 1) {
+			P_target = 0.75;
+		}
+		rho_next = calFitInversePSI(P_target);
+
+		trace_level.add(lv);
+		trace_rho.add(rho_next);
+		trace_P.add(P_target);
+		CacModVariables.Dat_difficulty = rho_next;
+	}
+
+	// get result from CstAgent
+	public static void msgResult(int wl) {
+		int tnum = trace_level.size();
+		if (tnum == 0) return;
+		trace_winlose.add(wl);
 	}
 	
 	// usage
@@ -217,10 +365,9 @@ public class CstPsychometric {
 	public static void initRho() {
 		// rho : [0.8, 1.2)_0.01
 		RHO = new double[RHOSIZE];
-		double RHO_min = 0.80;
 		double RHO_step = 0.01;
 		for (int r=0; r<RHOSIZE; r++) {
-			RHO[r] = Math.round((RHO_min + r*RHO_step)*100.0) / 100.0;
+			RHO[r] = Math.round((RHO_MIN + r*RHO_step)*100.0) / 100.0;
 		}
 	}
 	// trace
@@ -552,10 +699,10 @@ public class CstPsychometric {
 	}
 	public static double calMu(double rho_hat, double k, double m, double h, double w) {
 		double mu = 0;
-		if (rho_hat >= (h-w)+(w/(50.0-m))) {
+		if (rho_hat >= (h-w)+(w/(MU_MAX-m))) {
 			mu = T*(m+(1.0/(1+((rho_hat-h)/w))));
 		} else {
-			mu = 50.0*T;
+			mu = MU_MAX*T;
 		}
 		return mu;
 	}

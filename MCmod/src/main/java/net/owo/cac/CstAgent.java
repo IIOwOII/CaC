@@ -30,6 +30,7 @@ import net.owo.cac.CacMod;
 import net.owo.cac.CstField;
 import net.owo.cac.CstRenderHandler;
 import net.owo.cac.CstTutorial;
+import net.owo.cac.CstPsychometric;
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.procedures.EvQueImmediateProcedure;
 import net.owo.cac.procedures.EffApplyStopMoveProcedure;
@@ -124,6 +125,7 @@ public class CstAgent {
 					MeowMoveOffProcedure.execute();
 					CacModVariables.Dat_time_gameplay = getDuration();
 					CacModVariables.Dat_trial_winlose = getResult();
+					CstPsychometric.msgResult(getResult());
 					// Sound and message
 					if (world instanceof Level _level) {
 						if (CacModVariables.Dat_trial_winlose == 1) {

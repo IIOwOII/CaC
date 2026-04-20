@@ -43,6 +43,7 @@ public class CacManageProcedure {
 			}
 		}
 		log_fitting = new File((CacModVariables.Dir_behaviors + "/fitting_" + CacModVariables.Exp_session), File.separator + "log_fitting.json");
+		FncManageTasktypeProcedure.execute(world);
 		if (log_fitting.exists()) {
 			{
 				try {
@@ -63,6 +64,8 @@ public class CacManageProcedure {
 			if (obj_final.get("continuous").isJsonObject()) {
 				obj_method = obj_final.get("continuous").getAsJsonObject();
 				CacModVariables.Dat_theta = obj_method.get("param_best").getAsJsonArray();
+				net.owo.cac.CstPsychometric.loadThetaStar();
+				CacModVariables.Exp_trial_total = 30;
 				if (CacModVariables.Exp_property.contains("C")) {
 					CacModVariables.Switch_scanner = true;
 					CacModVariables.Exp_signal = false;
