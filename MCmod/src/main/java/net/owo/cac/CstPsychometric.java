@@ -91,7 +91,6 @@ public class CstPsychometric {
 	public static double[] THETA_STAR = new double[4]; // k, m, h, w
 	public static ArrayList<Integer> trace_winlose = new ArrayList<>();
 	public static ArrayList<Double> trace_rho = new ArrayList<>();
-	public static ArrayList<Double> trace_P = new ArrayList<>();
 	public static ArrayList<Integer> trace_level = new ArrayList<>();
 
 	// Using Fitted parameter
@@ -106,7 +105,6 @@ public class CstPsychometric {
 		task_type = (int)CacModVariables.Dat_trial_type;
 		trace_winlose = new ArrayList<>();
 		trace_rho = new ArrayList<>();
-		trace_P = new ArrayList<>();
 		trace_level = new ArrayList<>();
 	}
 	public static double calFitPSI(double rho) {
@@ -185,6 +183,28 @@ public class CstPsychometric {
 		rho = Math.round(rho*10000.0) / 10000.0; // 4 decimals
 		return rho;
 	}
+	public static double calFitPercentile(double rho, double tick) {
+		double P = 0;
+		double rho_hat = 0;
+		k = THETA_STAR[0];
+		m = THETA_STAR[1];
+		h = THETA_STAR[2];
+		w = THETA_STAR[3];
+		if (task_type == 0) {
+			rho_hat = 1/rho;
+		} else if (task_type == 1) {
+			rho_hat = rho;
+		}
+		t = tick/20.0;
+		x = (k*t/T)*(1.0/(m+(1.0/(1+((rho_hat-h)/w)))));
+		double series = 0;
+		for (int i=0; i<(int)k; i++) {
+			series += Math.pow(x, i)/factorial(i);
+		}
+		P = 1 - series * Math.exp(-x);
+		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
+		return P;
+	}
 	
 	// Adjusting Difficulty
 	public static void adjustRho() {
@@ -203,7 +223,7 @@ public class CstPsychometric {
 			wl_prev = trace_winlose.get(tnum-1).getAsInt();
 			lv_prev = trace_level.get(tnum-1).getAsInt();
 			if (wl_prev == 0) { // lose before
-				if (tnum < 5 || lv_prev == 1) {
+				if (tnum < 5 || lv_prev == 1) { // least level or under 5 trials
 					lv = lv_prev;
 				} else {
 					raw_lose = true;
@@ -234,14 +254,13 @@ public class CstPsychometric {
 
 		trace_level.add(lv);
 		trace_rho.add(rho_next);
-		trace_P.add(P_target);
 		CacModVariables.Dat_difficulty = rho_next;
 	}
 
 	// get result from CstAgent
 	public static void msgResult(int wl) {
 		int tnum = trace_level.size();
-		if (tnum == 0) return;
+		if (tnum == 0) return; // if not chasing and chased
 		trace_winlose.add(wl);
 	}
 	

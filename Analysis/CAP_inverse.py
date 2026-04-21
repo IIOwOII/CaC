@@ -2,6 +2,7 @@ import math
 import numpy as np
 
 M = 100
+T = 30
 
 def cal_PSI(rho, theta):
     k, m, h, w = theta
@@ -59,10 +60,70 @@ def cal_PSI_inverse(P, theta):
     rho = np.round(rho, 4)
     print(f'Win rate: {P} -> Difficulty: {rho}')
     return rho
-        
-TASK = 1
-p = 0.25
+
+def cal_PSI_inverse_t(P, rho, theta):
+    k, m, h, w = theta
+    num_iter = 10
+    X = k
+    for j in range(num_iter):
+        series = 0
+        for i in range(k):
+            series += (X**i)/math.gamma(i+1)
+        series -= math.exp(X) * (1-P)
+        X = X + (math.gamma(k)/(X**(k-1))) * series
+    if (TASK == 0):
+        rho_hat = 1/rho
+    elif (TASK == 1):
+        rho_hat = rho
+    if (rho_hat >= (h-w) + w/(M-m)):
+        t = (X/k) * (m+(1/(1+((rho_hat-h)/w)))) * T
+    else:
+        t = (X/k) * M*T
+        print('time become infinite! Adjusted by maximum mean time.')
+    t = np.round(t, 4)
+    print(f'Percentile: {P}, Difficulty: {rho} -> Until Time: {t}')
+    return t
+
+def cal_Percentile(rho, t, theta):
+    k, m, h, w = theta
+    if (TASK == 0):
+        rho_hat = 1/rho
+    elif (TASK == 1):
+        rho_hat = rho
+    x = (k*t/T)*(1.0/(m+(1.0/(1+((rho_hat-h)/w)))))
+    series = 0
+    for i in range(k):
+        series += (x**i)/math.gamma(i+1)
+    P = 1 - series * np.exp(-x)
+    P = np.round(P, 4)
+    print(f'Difficulty: {rho}, Time: {t} -> Percentile: {P}')
+    return P
+
+def cal_Percentile_Mu(rho, theta):
+    k, m, h, w = theta
+    if (TASK == 0):
+        rho_hat = 1/rho
+    elif (TASK == 1):
+        rho_hat = rho
+    series = 0
+    for i in range(k):
+        series += (k**i)/math.gamma(i+1)
+    P = 1 - series * np.exp(-k)
+    P = np.round(P, 4)
+    Mu = (m+(1.0/(1+((rho_hat-h)/w)))) * T
+    print(f'Difficulty: {rho}, Mean Time: {Mu} -> Percentile: {P}')
+    return P
+
+
 theta_star = [10, 0.1, 1.05, 0.16]
+TASK = 0
+p = 0.5
+r = 0.9423
+
 
 rho = cal_PSI_inverse(p, theta_star)
 P = cal_PSI(rho, theta_star)
+
+t = cal_PSI_inverse_t(p, r, theta_star)
+per = cal_Percentile(r, 30, theta_star)
+per_mu = cal_Percentile_Mu(r, theta_star)

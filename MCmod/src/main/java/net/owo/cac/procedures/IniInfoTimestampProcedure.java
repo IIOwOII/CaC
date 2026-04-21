@@ -45,12 +45,12 @@ public class IniInfoTimestampProcedure {
 				}
 			}
 			for (int index0 = 0; index0 < (int) obj_cac.size(); index0++) {
-				if (obj_cac.keySet().stream().toList().get(((int) num_idx)).contains("register")) {
+				if (obj_cac.keySet().stream().toList().get(((int) num_idx)).startsWith("re-register")) {
 					num_rep = num_rep + 1;
 				}
 				num_idx = num_idx + 1;
 			}
-			obj_cac.addProperty(("register_" + new java.text.DecimalFormat("##").format(num_rep)), Calendar.getInstance().getTime().toString());
+			obj_cac.addProperty(("re-register_" + new java.text.DecimalFormat("##").format(num_rep)), Calendar.getInstance().getTime().toString());
 		}
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
