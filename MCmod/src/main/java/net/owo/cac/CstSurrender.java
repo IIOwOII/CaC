@@ -23,6 +23,7 @@ import net.owo.cac.CstRenderComponent;
 import net.owo.cac.CstTutorial;
 import net.owo.cac.network.CacModVariables;
 
+import net.owo.cac.procedures.EvQueImmediateProcedure;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstSurrender {
@@ -41,7 +42,7 @@ public class CstSurrender {
 		int gw = event.getWindow().getGuiScaledWidth();
 		int gh = event.getWindow().getGuiScaledHeight();
 		
-		CstRenderComponent.renderBlank(gg, gw, gh); // Render Background
+		CstRenderComponent.renderBlankLightgrey(gg, gw, gh); // Render Background
 		gg.blit(surrender_text, gw/2-200, 30, 0, 0, 400, 60, 400, 60); // Render Text
 
 		// left button : x=70, y=140 (OR) right button : x=285, y=140
@@ -89,12 +90,13 @@ public class CstSurrender {
 	}
 	
 	public static void endSurrender() {
-		IsSurrender = false;
 		recordSurrender();
 		CstState.onMeowMove(); // start moving
 		if (CstTutorial.tuto_id == 40) { // is tutorial?
 			CstTutorial.completeMission(7, true);
 		}
+		EvQueImmediateProcedure.execute();
+		IsSurrender = false;
 	}
 	
 	public static void confirmSurrender() {

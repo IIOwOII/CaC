@@ -23,18 +23,31 @@ import net.owo.cac.CstState;
 import net.owo.cac.CstRenderComponent;
 import net.owo.cac.CstTutorial;
 import net.owo.cac.network.CacModVariables;
+
 import net.owo.cac.procedures.EvPulseRecordProcedure;
+import net.owo.cac.procedures.EvQueImmediateProcedure;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstSurvey {
+	/*
 	private static final String[] SUV_TYPE = {
 		"winprob", "perdiff", "stress", "target", "control"};
-	
 	static ResourceLocation survey_winprob = new ResourceLocation("cac:textures/screens/text_winprob.png");
 	static ResourceLocation survey_perdiff = new ResourceLocation("cac:textures/screens/text_perdiff.png");
 	static ResourceLocation survey_stress = new ResourceLocation("cac:textures/screens/text_stress.png");
 	static ResourceLocation survey_target = new ResourceLocation("cac:textures/screens/text_target.png");
 	static ResourceLocation survey_control = new ResourceLocation("cac:textures/screens/text_control.png");
+	*/
+	static ResourceLocation[] SURVEY_LIST = {
+		new ResourceLocation("cac:textures/screens/text_survey_1.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_2.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_3.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_4.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_5.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_6.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_7.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_8.png")
+	};
 	
 	public static boolean IsSurvey = false;
 	public static int timer_quiz = 0;
@@ -42,10 +55,10 @@ public class CstSurvey {
 	public static int suv_phase = 30;
 
 	// trial by trial
-	public static int[] suv_order = {0,1,2,3,4};
-	public static int[] suv_value = {50,50,50,50,50};
-	public static int[] suv_value_prev = {50,50,50,50,50};
-	public static int[] suv_time = {0,0,0,0,0};
+	public static int[] suv_order;
+	public static int[] suv_value;
+	public static int[] suv_value_prev;
+	public static int[] suv_time;
 
 	// quiz by quiz (how many times survey progressed within one trial)
 	public static int idx = 0;
@@ -56,13 +69,14 @@ public class CstSurvey {
 		GuiGraphics gg = event.getGuiGraphics();
 		int gw = event.getWindow().getGuiScaledWidth();
 		int gh = event.getWindow().getGuiScaledHeight();
-		CstRenderComponent.renderBlank(gg, gw, gh); // Render Background
+		CstRenderComponent.renderBlank(gg, gw, gh); // Render Cross blank
 		if (suv_phase == 35) {
-			CstRenderComponent.renderGuiBlank(gg, gw, gh);
+			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			int suv_id = suv_order[idx];
 			CstRenderComponent.renderBar(gg, gw, gh, 200-timer_quiz, 200); // Render timebar
 			renderSurvey(gg, gw, gh, suv_id); // Render text
 			CstRenderComponent.renderSlide(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
+			CstRenderComponent.renderSlideText(gg, gw, gh); // Render Slide Text
 		}
 	}
 	
@@ -94,17 +108,7 @@ public class CstSurvey {
 
 	public static void renderSurvey(GuiGraphics gg, int gw, int gh, int ID) {
 		int ox = gw/2 - 200;
-		if (ID == 0) {
-			gg.blit(survey_winprob, ox, 30, 0, 0, 400, 60, 400, 60);
-		} else if (ID == 1) {
-			gg.blit(survey_perdiff, ox, 30, 0, 0, 400, 60, 400, 60);
-		} else if (ID == 2) {
-			gg.blit(survey_stress, ox, 30, 0, 0, 400, 60, 400, 60);
-		} else if (ID == 3) {
-			gg.blit(survey_target, ox, 30, 0, 0, 400, 60, 400, 60);
-		} else if (ID == 4) {
-			gg.blit(survey_control, ox, 30, 0, 0, 400, 60, 400, 60);
-		}
+		gg.blit(SURVEY_LIST[ID], ox, 30, 0, 0, 400, 60, 400, 60);
 	}
 
 	// reset (initialize: use when debugging or start experiment)
@@ -112,7 +116,11 @@ public class CstSurvey {
 		IsSurvey = false;
 		timer_quiz = 0;
 		timer_blank = 0;
-		for(int i=0;i<5;i++) {
+		suv_order = new int[SURVEY_LIST.length];
+		suv_value = new int[SURVEY_LIST.length];
+		suv_value_prev = new int[SURVEY_LIST.length];
+		suv_time = new int[SURVEY_LIST.length];
+		for(int i=0; i<SURVEY_LIST.length; i++) {
 			suv_order[i] = i;
 			suv_value[i] = 50;
 			suv_value_prev[i] = 50;
@@ -128,7 +136,7 @@ public class CstSurvey {
 		idx = 0;
 		randomizeOrder();
 		suv_value_prev = suv_value.clone();
-		for(int i=0;i<5;i++) {
+		for(int i=0;i<SURVEY_LIST.length;i++) {
 			suv_value[i] = 50;
 		}
 		timer_blank = 0;
@@ -137,15 +145,12 @@ public class CstSurvey {
 	}
 	public static void endSurvey() {
 		suv_phase = 30; // phase reset
-		IsSurvey = false;
-		
-		// Recording Data
-		// order, time, answer
 		recordSurvey();
-		CstState.onMeowMove(); // start moving
 		if (CstTutorial.tuto_id == 30) { // is tutorial?
 			CstTutorial.completeMission(6, true);
 		}
+		EvQueImmediateProcedure.execute(); // next event
+		IsSurvey = false;
 	}
 
 	// quiz by quiz
@@ -174,7 +179,7 @@ public class CstSurvey {
 
 		// Loop or end
 		idx = idx + 1;
-		if (idx < 5) {
+		if (idx < SURVEY_LIST.length) {
 			waitingSurvey();
 		} else {
 			endSurvey();
@@ -208,7 +213,7 @@ public class CstSurvey {
 				e.printStackTrace();
 			}
 			// Data Stack
-			for (int i=0; i<5; i++) {
+			for (int i=0; i<SURVEY_LIST.length; i++) {
 				arr_order.add(suv_order[i]);
 				arr_time.add(suv_time[i]);
 				arr_answer.add(suv_value[i]);

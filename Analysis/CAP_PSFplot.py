@@ -311,7 +311,7 @@ M = 100.0
 
 #%% final variables
 TASK = 0
-SUBJECT = 'cju02'
+SUBJECT = 'PBJ'
 RHO_POLICY = 'con'
 
 
@@ -324,11 +324,11 @@ elif (TASK == 1):
 dir_comp = '../MCmod/run/cacutil/components'
 dir_beh = '../MCmod/run/cacutil/behaviors'
 
-with open(f'{dir_beh}/{SUBJECT}/fitting/log_fitting.json', 'r') as f_fit:
+with open(f'{dir_beh}/{SUBJECT}/fitting_{TASK_NAME}/log_fitting.json', 'r') as f_fit:
     dat_fit = json.load(f_fit)['cac']
 f_fit.close()
 
-with open(f'{dir_beh}/{SUBJECT}/fitting/log_gameplay.json', 'r') as f_play:
+with open(f'{dir_beh}/{SUBJECT}/fitting_{TASK_NAME}/log_gameplay.json', 'r') as f_play:
     dat_play = json.load(f_play)['cac']
 f_play.close()
 
@@ -388,8 +388,8 @@ trace_wl = dat_play['winlose']
 
 total_trial = len(trace_t)
 for i in range(total_trial):
-    if not f'trial_{i}' in dat_fit[f'{TASK_NAME}']: break
-    dat = dat_fit[f'{TASK_NAME}'][f'trial_{i}']['continuous']
+    if not f'trial_{i}' in dat_fit: break
+    dat = dat_fit[f'trial_{i}']['continuous']
     trace_rho.append(dat['rho_best'])
     trace_H.append(dat['entropy'])
     trace_maxEIG.append(max(dat['EIGs']))

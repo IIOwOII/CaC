@@ -17,6 +17,7 @@ public class PrdTestProcedure {
 		String type = "";
 		type = StringArgumentType.getString(arguments, "type");
 		if ((type).equals("survey")) {
+			net.owo.cac.CstSurvey.initSurvey();
 			net.owo.cac.CstSurvey.startSurvey();
 		} else if ((type).equals("surrender")) {
 			net.owo.cac.CstSurrender.startSurrender();

@@ -18,12 +18,15 @@ public class CstRenderComponent {
 	public static ResourceLocation bar_gauge = new ResourceLocation("cac:textures/screens/texture_bar_gauge.png");
 	public static ResourceLocation patch_white = new ResourceLocation("cac:textures/screens/texture_patch_white.png");
 	public static ResourceLocation patch_black = new ResourceLocation("cac:textures/screens/texture_patch_black.png");
-	
-	public static ResourceLocation gui_blank = new ResourceLocation("cac:textures/screens/gui_blank.png");
+
+	public static ResourceLocation blank_lightgrey = new ResourceLocation("cac:textures/screens/texture_lightgrey.png");
 	public static ResourceLocation blank = new ResourceLocation("cac:textures/screens/texture_blank.png");
+	public static ResourceLocation gui_blank = new ResourceLocation("cac:textures/screens/gui_blank.png");
 	public static ResourceLocation slide_frame = new ResourceLocation("cac:textures/screens/texture_slide.png");
 	public static ResourceLocation slide_trace = new ResourceLocation("cac:textures/screens/texture_slide_trace.png");
 	public static ResourceLocation slide_cursor = new ResourceLocation("cac:textures/screens/texture_slide_cursor.png");
+	public static ResourceLocation slide_text_right = new ResourceLocation("cac:textures/screens/text_slide_right.png");
+	public static ResourceLocation slide_text_left = new ResourceLocation("cac:textures/screens/text_slide_left.png");
 
 	public static ResourceLocation button_select = new ResourceLocation("cac:textures/screens/button_select.png");
 	public static ResourceLocation button_yes = new ResourceLocation("cac:textures/screens/button_yes.png");
@@ -54,6 +57,10 @@ public class CstRenderComponent {
 		gg.blit(blank, 0, 0, 0, 0, gw, gh, gw, gh);
 	}
 
+	public static void renderBlankLightgrey(GuiGraphics gg, int gw, int gh) {
+		gg.blit(blank_lightgrey, 0, 0, 0, 0, gw, gh, gw, gh);
+	}
+
 	// Slide
 	public static void renderSlide(GuiGraphics gg, int gw, int gh, double value, double value_old, double value_max) {
 		double ratio = value/value_max;
@@ -61,6 +68,12 @@ public class CstRenderComponent {
 		gg.blit(slide_frame, gw/2-200, gh/2+54, 0, 0, 400, 32, 400, 32);
 		gg.blit(slide_trace, gw/2-194+(int)(384*ratio_old), gh/2+60, 0, 0, 4, 20, 4, 20);
 		gg.blit(slide_cursor, gw/2-194+(int)(384*ratio), gh/2+60, 0, 0, 4, 20, 4, 20);
+	}
+
+	// Slide Text
+	public static void renderSlideText(GuiGraphics gg, int gw, int gh) {
+		gg.blit(slide_text_left, gw/2-200, gh/2+86, 0, 0, 100, 30, 100, 30);
+		gg.blit(slide_text_right, gw/2+100, gh/2+86, 0, 0, 100, 30, 100, 30);
 	}
 
 	// Button

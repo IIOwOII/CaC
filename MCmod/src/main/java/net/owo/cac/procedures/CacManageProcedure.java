@@ -63,9 +63,9 @@ public class CacManageProcedure {
 			obj_final = obj_cac.get("final").getAsJsonObject();
 			if (obj_final.get("continuous").isJsonObject()) {
 				obj_method = obj_final.get("continuous").getAsJsonObject();
-				CacModVariables.Dat_theta = obj_method.get("param_best").getAsJsonArray();
+				CacModVariables.Dat_theta = obj_method.get("theta").getAsJsonArray();
 				net.owo.cac.CstPsychometric.loadThetaStar();
-				CacModVariables.Exp_trial_total = 30;
+				CacModVariables.Exp_trial_total = 2;
 				if (CacModVariables.Exp_property.contains("C")) {
 					CacModVariables.Switch_scanner = true;
 					CacModVariables.Exp_signal = false;

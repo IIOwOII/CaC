@@ -51,7 +51,7 @@ public class FncManageDifficultyProcedure {
 		} else if ((session).equals("fitting_chasing") || (session).equals("fitting_chased") || (session).equals("simulation_fit_chasing") || (session).equals("simulation_fit_chased")) {
 			CacMod.LOGGER.info(CacModVariables.Dat_difficulty);
 		} else if ((session).equals("chasing") || (session).equals("chased")) {
-			net.owo.cac.CstPsychometric.adjustRho();
+			CacModVariables.Dat_difficulty = net.owo.cac.CstPsychometric.adjustRho();
 		}
 	}
 }

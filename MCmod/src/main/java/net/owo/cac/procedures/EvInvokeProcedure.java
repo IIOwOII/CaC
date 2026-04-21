@@ -36,9 +36,9 @@ public class EvInvokeProcedure {
 				} else if ((ev_content).equals("phase_gameplay_end")) {
 					TaskGameplayEndProcedure.execute();
 				} else if ((ev_content).equals("phase_survey")) {
-					TaskSurveyProcedure.execute(world);
+					TaskSurveyProcedure.execute();
 				} else if ((ev_content).equals("phase_surrender")) {
-					TaskSurrenderProcedure.execute(world);
+					TaskSurrenderProcedure.execute();
 				} else if ((ev_content).equals("phase_interval")) {
 					TaskIntervalProcedure.execute(entity);
 				} else if ((ev_content).equals("phase_posttrial")) {
