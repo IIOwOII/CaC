@@ -27,16 +27,16 @@ public class CstPsychometric {
 
 	// parameter list
 	public static int GRIDSIZE = 180000;
-	public static double[] M; // [grid]
-	public static double[] W; // [grid]
-	public static double[] GAMMA; //[grid]
-	public static double[] LAMBDA; //[grid]
+	public static double[] M; // [shape]
+	public static double[] W; // [shape]
+	public static double[] GAMMA; // [shape]
+	public static double[] LAMBDA; // [shape]
 
 	public static int GRIDCON = 180000;
-	public static double[] CON_K; // [grid]
-	public static double[] CON_M; //[grid]
-	public static double[] CON_H; // [grid]
-	public static double[] CON_W; // [grid]
+	public static double[] CON_K; // [shape]
+	public static double[] CON_M; //[shape]
+	public static double[] CON_H; // [shape]
+	public static double[] CON_W; // [shape]
 
 	// grid of difficulty
 	public static int RHOSIZE = 60;
@@ -165,8 +165,8 @@ public class CstPsychometric {
 		
 		int num_iter = 10;
 		double X = k;
-		double series = 0;
 		for (int j=0; j<num_iter; j++) {
+			double series = 0;
 			for (int i=0; i<(int)k; i++) {
 				series += Math.pow(X, i)/factorial(i);
 			}
@@ -593,19 +593,21 @@ public class CstPsychometric {
 		
 		obj_trial.addProperty("difficulty", CacModVariables.Dat_difficulty);
 		if (method_bin) {
-			obj_method_bin.addProperty("rho_best", rho_best_bin);
 			obj_method_bin.addProperty("entropy", entropy_bin);
-			obj_method_bin.add("EIGs", getEIGs());
 			obj_method_bin.add("param_best", getBestParam());
-			//obj_method_bin.add("likelihood", getLikelihood());
+			obj_method_bin.add("theta", getBestTheta());
+			obj_method_bin.addProperty("rho_best", rho_best_bin);
+			obj_method_bin.add("EIGs", getEIGs());
+			obj_method_bin.add("likelihood", getLikelihood());
 			obj_trial.add(("binary"), obj_method_bin);
 		}
 		if (method_con) {
-			obj_method_con.addProperty("rho_best", rho_best_con);
 			obj_method_con.addProperty("entropy", entropy_con);
-			obj_method_con.add("EIGs", getConEIGs());
 			obj_method_con.add("param_best", getConBestParam());
-			//obj_method_con.add("likelihood", getConLikelihood());
+			obj_method_con.add("theta", getConBestTheta());
+			obj_method_con.addProperty("rho_best", rho_best_con);
+			obj_method_con.add("EIGs", getConEIGs());
+			obj_method_con.add("likelihood", getConLikelihood());
 			obj_trial.add(("continuous"), obj_method_con);
 		}
 		
@@ -645,12 +647,14 @@ public class CstPsychometric {
 		if (method_bin) {
 			obj_method_bin.addProperty("entropy", entropy_bin);
 			obj_method_bin.add("param_best", getBestParam());
+			obj_method_bin.add("theta", getBestTheta());
 			obj_method_bin.add("likelihood", getLikelihood());
 			obj_final.add(("binary"), obj_method_bin);
 		}
 		if (method_con) {
 			obj_method_con.addProperty("entropy", entropy_con);
 			obj_method_con.add("param_best", getConBestParam());
+			obj_method_con.add("theta", getConBestTheta());
 			obj_method_con.add("likelihood", getConLikelihood());
 			obj_final.add(("continuous"), obj_method_con);
 		}
@@ -1128,6 +1132,30 @@ public class CstPsychometric {
 		
 		Gson gson = new Gson();
 		JsonArray theta = gson.toJsonTree(param_best).getAsJsonArray();
+		return theta;
+	}
+	public static JsonArray getBestTheta() {
+		int grid_best = argmax(likelihood_bin);
+		double m_best = M[reshapeIndex(grid_best, 0)];
+		double w_best = W[reshapeIndex(grid_best, 1)];
+		double gamma_best = GAMMA[reshapeIndex(grid_best, 2)];
+		double lambda_best = LAMBDA[reshapeIndex(grid_best, 3)];
+		double[] theta_best = {m_best, w_best, gamma_best, lambda_best};
+		
+		Gson gson = new Gson();
+		JsonArray theta = gson.toJsonTree(theta_best).getAsJsonArray();
+		return theta;
+	}
+	public static JsonArray getConBestTheta() {
+		int grid_best = argmax(likelihood_con);
+		double k_best = CON_K[reshapeConIndex(grid_best, 0)];
+		double m_best = CON_M[reshapeConIndex(grid_best, 1)];
+		double h_best = CON_H[reshapeConIndex(grid_best, 2)];
+		double w_best = CON_W[reshapeConIndex(grid_best, 3)];
+		double[] theta_best = {k_best, m_best, h_best, w_best};
+		
+		Gson gson = new Gson();
+		JsonArray theta = gson.toJsonTree(theta_best).getAsJsonArray();
 		return theta;
 	}
 

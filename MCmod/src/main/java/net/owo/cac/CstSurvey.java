@@ -108,7 +108,7 @@ public class CstSurvey {
 
 	public static void renderSurvey(GuiGraphics gg, int gw, int gh, int ID) {
 		int ox = gw/2 - 200;
-		gg.blit(SURVEY_LIST[ID], ox, 30, 0, 0, 400, 60, 400, 60);
+		gg.blit(SURVEY_LIST[ID], ox, 60, 0, 0, 400, 60, 400, 60);
 	}
 
 	// reset (initialize: use when debugging or start experiment)

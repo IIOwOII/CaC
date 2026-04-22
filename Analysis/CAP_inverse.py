@@ -115,15 +115,15 @@ def cal_Percentile_Mu(rho, theta):
     return P
 
 
-theta_star = [10, 0.1, 1.05, 0.16]
+theta_star = [10, 0.1, 1.00, 0.15]
 TASK = 0
 p = 0.5
-r = 0.9423
+r = 0.9957
 
 
 rho = cal_PSI_inverse(p, theta_star)
 P = cal_PSI(rho, theta_star)
 
 t = cal_PSI_inverse_t(p, r, theta_star)
-per = cal_Percentile(r, 30, theta_star)
+per = cal_Percentile(r, 421/20, theta_star)
 per_mu = cal_Percentile_Mu(r, theta_star)

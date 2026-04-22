@@ -76,6 +76,7 @@ public class CacManageProcedure {
 				if (CacModVariables.Exp_property.contains("S")) {
 					net.owo.cac.CstSurvey.initSurvey();
 				}
+				PrdCountdownProcedure.execute();
 				TaskSessionStartProcedure.execute(world, entity);
 			} else {
 				if (!world.isClientSide() && world.getServer() != null)

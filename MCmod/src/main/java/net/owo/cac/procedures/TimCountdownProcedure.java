@@ -40,6 +40,9 @@ public class TimCountdownProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						("title @a title " + new java.text.DecimalFormat("##").format(Math.ceil(CacModVariables.TimC_time / 20))));
+			if (world instanceof ServerLevel _level)
+				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+						("subtitle @a title " + "\uC7A0\uC2DC \uD6C4 \uC2DC\uC791\uD569\uB2C8\uB2E4."));
 			CacModVariables.TimC_time = CacModVariables.TimC_time - 1;
 			if (CacModVariables.TimC_time % 20 == 0 && CacModVariables.TimC_time <= 60) {
 				if (world instanceof Level _level) {
