@@ -40,6 +40,8 @@ public class TutoManageProcedure {
 			net.owo.cac.CstTutorial.surveyTutorial();
 		} else if ((tuto_name).equals("surrender")) {
 			net.owo.cac.CstTutorial.surrenderTutorial();
+		} else if ((tuto_name).equals("book")) {
+			net.owo.cac.CstTutorial.tuto_id = 10;
 		}
 	}
 }

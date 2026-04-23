@@ -19,4 +19,5 @@ public class CacModSounds {
 	public static final RegistryObject<SoundEvent> SND_ORB_C7 = REGISTRY.register("snd_orb_c7", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("cac", "snd_orb_c7")));
 	public static final RegistryObject<SoundEvent> SND_ORB_A7 = REGISTRY.register("snd_orb_a7", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("cac", "snd_orb_a7")));
 	public static final RegistryObject<SoundEvent> SND_BBYONG = REGISTRY.register("snd_bbyong", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("cac", "snd_bbyong")));
+	public static final RegistryObject<SoundEvent> SND_BOOKPAGE = REGISTRY.register("snd_bookpage", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("cac", "snd_bookpage")));
 }

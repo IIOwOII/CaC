@@ -4339,6 +4339,14 @@
       ],
       "category": "neutral",
       "subtitle": "snd_bbyong"
+    },
+    {
+      "name": "snd_bookpage",
+      "files": [
+        "snd_bookpage"
+      ],
+      "category": "neutral",
+      "subtitle": "snd_bookpage"
     }
   ],
   "tag_elements": {
@@ -4402,6 +4410,7 @@
       "effect.cac.eff_stop_move": "Stiffness",
       "key.cac.cac_key_up": "Up",
       "advancements.adv_chased.title": "The shrewd prey",
+      "subtitles.snd_bookpage": "snd_bookpage",
       "block.cac.blk_hurdle": "Hurdle",
       "item.cac.cac_builder_tool": "Meow Builder",
       "subtitles.snd_orb_a7": "snd_orb_a7",

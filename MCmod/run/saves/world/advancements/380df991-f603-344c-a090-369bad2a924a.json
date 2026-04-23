@@ -909,12 +909,6 @@
     },
     "done": true
   },
-  "cac:adv_cac": {
-    "criteria": {
-      "adv_cac_0": "2025-09-15 18:56:26 +0900"
-    },
-    "done": true
-  },
   "minecraft:recipes/decorations/lime_stained_glass_pane_from_glass_pane": {
     "criteria": {
       "has_glass_pane": "2025-12-21 16:19:12 +0900"
@@ -1773,27 +1767,9 @@
     },
     "done": true
   },
-  "cac:adv_checkpoint": {
-    "criteria": {
-      "adv_checkpoint_0": "2025-12-30 16:37:02 +0900"
-    },
-    "done": true
-  },
-  "cac:adv_racing": {
-    "criteria": {
-      "adv_racing_0": "2025-12-30 17:06:01 +0900"
-    },
-    "done": true
-  },
   "minecraft:recipes/building_blocks/mangrove_planks": {
     "criteria": {
       "has_logs": "2026-01-01 00:22:50 +0900"
-    },
-    "done": true
-  },
-  "cac:adv_beginner": {
-    "criteria": {
-      "adv_beginner_0": "2026-01-01 00:24:50 +0900"
     },
     "done": true
   },
@@ -1902,6 +1878,18 @@
   "minecraft:recipes/redstone/jungle_fence_gate": {
     "criteria": {
       "has_planks": "2026-01-30 12:04:35 +0900"
+    },
+    "done": true
+  },
+  "cac:adv_cac": {
+    "criteria": {
+      "adv_cac_0": "2026-04-23 18:32:52 +0900"
+    },
+    "done": true
+  },
+  "cac:adv_beginner": {
+    "criteria": {
+      "adv_beginner_0": "2026-04-23 18:36:57 +0900"
     },
     "done": true
   },

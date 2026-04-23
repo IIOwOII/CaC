@@ -38,6 +38,7 @@ public class CstSurvey {
 	static ResourceLocation survey_target = new ResourceLocation("cac:textures/screens/text_target.png");
 	static ResourceLocation survey_control = new ResourceLocation("cac:textures/screens/text_control.png");
 	*/
+	/*
 	static ResourceLocation[] SURVEY_LIST = {
 		new ResourceLocation("cac:textures/screens/text_survey_1.png"),
 		new ResourceLocation("cac:textures/screens/text_survey_2.png"),
@@ -47,6 +48,13 @@ public class CstSurvey {
 		new ResourceLocation("cac:textures/screens/text_survey_6.png"),
 		new ResourceLocation("cac:textures/screens/text_survey_7.png"),
 		new ResourceLocation("cac:textures/screens/text_survey_8.png")
+	};
+	*/
+	static ResourceLocation[] SURVEY_LIST = {
+		new ResourceLocation("cac:textures/screens/text_survey_short_1.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_short_2.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_short_3.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_short_4.png")
 	};
 	
 	public static boolean IsSurvey = false;

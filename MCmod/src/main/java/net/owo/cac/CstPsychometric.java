@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.util.ArrayList;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,7 +15,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import net.owo.cac.network.CacModVariables;
-import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstPsychometric {
@@ -218,50 +218,46 @@ public class CstPsychometric {
 	
 	// Adjusting Difficulty
 	public static double adjustRho() {
-		/*
-		0.75 3/4, 0.6 3/5, 0.5 3/6, 0.4 2/5, 0.25 1/4
-		 */
-		boolean raw_lose = false;
-		int wl_prev = -1;
-		int lv_prev = -1;
+		int LV_MIN = 0;
+		int LV_MAX = 10;
+		int NUM_RAWLOSE = 3;
+
 		int lv = -1;
-		double P_target = -1;
-		double rho_next = -1;
 		int tnum = trace_winlose.size();
-		
-		if (tnum > 0) {
-			wl_prev = trace_winlose.get(tnum-1);
-			lv_prev = trace_level.get(tnum-1);
-			if (wl_prev == 0) { // lose before
-				if (tnum < 5 || lv_prev == 1) { // least level or under 5 trials
-					lv = lv_prev;
-				} else {
-					raw_lose = true;
-					for (int i=0; i<5; i++) {
-						if (trace_winlose.get(tnum-i-1) == 1) {
-							raw_lose = false;
+		if (tnum == 0) { // first trial
+			lv = LV_MIN;
+		} else { // not first trial
+			int wl_prev = trace_winlose.get(tnum-1);
+			int lv_prev = trace_level.get(tnum-1);
+			if (wl_prev == 1) { // win before
+				lv = (lv_prev < LV_MAX) ? lv_prev+1 : LV_MAX;
+			} else { // lose before
+				if (tnum > NUM_RAWLOSE) { // trial process more than rawlose cond
+					boolean IS_RAWLOSE = true;
+					for (int i=0; i<NUM_RAWLOSE; i++) {
+						if (trace_winlose.get(tnum-1-i) == 1) {
+							IS_RAWLOSE = false;
 						}
 					}
-					if (raw_lose) { // 5 raw lose
-						lv = lv_prev - 1;
-					} else {
+					if (IS_RAWLOSE) { // rawlose
+						lv = (lv_prev > LV_MIN) ? lv_prev-1 : LV_MIN;
+					} else { // not rawlose
 						lv = lv_prev;
 					}
+				} else { // trial is less than rawlose cond
+					lv = lv_prev;
 				}
-			} else if (wl_prev == 1) { // win before
-				lv = lv_prev + 1;
 			}
-		} else if (tnum == 0) { // first trial
-			lv = 1;
 		}
-		
+		double P_target = 0.85 - 0.07*lv;
+		/*
 		if (lv > 1) {
-			P_target = Math.round(10000.0/lv) / 10000.0;
+			double P_target = Math.round(10000.0/lv) / 10000.0;
 		} else if (lv == 1) {
-			P_target = 0.75;
+			double P_target = 0.75;
 		}
-		rho_next = calFitInversePSI(P_target);
-
+		*/
+		double rho_next = calFitInversePSI(P_target);
 		trace_level.add(lv);
 		trace_rho.add(rho_next);
 		return rho_next;

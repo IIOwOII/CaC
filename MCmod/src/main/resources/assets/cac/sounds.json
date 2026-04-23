@@ -34,5 +34,14 @@
         "stream": false
       }
     ]
+  },
+  "snd_bookpage": {
+    "subtitle": "subtitles.snd_bookpage",
+    "sounds": [
+      {
+        "name": "cac:snd_bookpage",
+        "stream": false
+      }
+    ]
   }
 }
