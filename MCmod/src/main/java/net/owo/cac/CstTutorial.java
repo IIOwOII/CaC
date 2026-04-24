@@ -26,6 +26,7 @@ import net.owo.cac.CstState;
 import net.owo.cac.CstAgent;
 import net.owo.cac.CstSurvey;
 import net.owo.cac.CstSurrender;
+import net.owo.cac.CstRenderComponent;
 import net.owo.cac.network.CacModVariables;
 
 import net.owo.cac.procedures.TutoBeginnerReadyProcedure;
@@ -110,10 +111,13 @@ public class CstTutorial {
 			renderArrow(gg, gw, gh, MOVING_ORD[moving_idx]);
 		}
 		if (tuto_id == 10) {
+			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_MOVING[book_id]);
 		} else if (tuto_id == 20) {
+			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_CHECKPOINT[book_id]);
 		} else if (tuto_id == 30) {
+			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_RACING[book_id]);
 		}
 	}
@@ -247,7 +251,7 @@ public class CstTutorial {
 
 	// Rendering
 	public static void renderBook(GuiGraphics gg, int gw, int gh, ResourceLocation book) {
-		gg.blit(book, 0, 0, 0, 0, gw, gh, gw, gh);
+		gg.blit(book, gw/2-180, gh/2-120, 0, 0, 360, 240, 360, 240);
 	}
 
 	public static void renderArrow(GuiGraphics gg, int gw, int gh, int ID) {
