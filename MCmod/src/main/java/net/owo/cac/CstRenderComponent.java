@@ -32,6 +32,9 @@ public class CstRenderComponent {
 	public static ResourceLocation button_yes = new ResourceLocation("cac:textures/screens/button_yes.png");
 	public static ResourceLocation button_no = new ResourceLocation("cac:textures/screens/button_no.png");
 
+	public static ResourceLocation icon_meowcam = new ResourceLocation("cac:textures/screens/icon_meowcam.png");
+	public static ResourceLocation icon_meowcam_off = new ResourceLocation("cac:textures/screens/icon_meowcam_off.png");
+	
 	// Bar
 	public static void renderBar(GuiGraphics gg, int gw, int gh, double value, double value_max) {
 		int gauge = (int)(96*(value/value_max));
@@ -108,6 +111,14 @@ public class CstRenderComponent {
 		gg.blit(button_no, ox, oy, 0, 0, 80, 32, 80, 32);
 	}
 
+	// icon
+	public static void renderIconMeowcam(GuiGraphics gg) {
+		gg.blit(icon_meowcam, 0, 0, 0, 0, 24, 24, 24, 24);
+	}
+	public static void renderIconMeowcamOff(GuiGraphics gg) {
+		gg.blit(icon_meowcam_off, 0, 0, 0, 0, 24, 24, 24, 24);
+	}
+
 	// Color define
 	public static float[] getColor(char color) {
         float[] c_map = {0F, 0F, 0F};
@@ -161,5 +172,47 @@ public class CstRenderComponent {
 		vc.normal(pose.normal(), (float)vec_N.x(), (float)vec_N.y(), (float)vec_N.z());
 		vc.endVertex();
 	}
+	public static void renderLine(PoseStack ps, VertexConsumer vc, double sx, double sy, double sz, double ex, double ey, double ez, char color) {
+		Vec3 vec_start = new Vec3(sx, sy, sz);
+		Vec3 vec_end = new Vec3(ex, ey, ez);
+		
+		PoseStack.Pose pose = ps.last();
+		Vec3 vec_N = Vec3.ZERO;
+		vec_N = vec_end.subtract(vec_start).normalize();
+		float[] c_map = getColor(color);
+		
+		// start
+		vc.vertex(pose.pose(), (float)vec_start.x(), (float)vec_start.y(), (float)vec_start.z());
+		vc.color(c_map[0], c_map[1], c_map[2], 1F);
+		vc.normal(pose.normal(), (float)vec_N.x(), (float)vec_N.y(), (float)vec_N.z());
+		vc.endVertex();
 
+		// end
+		vc.vertex(pose.pose(), (float)vec_end.x(), (float)vec_end.y(), (float)vec_end.z());
+		vc.color(c_map[0], c_map[1], c_map[2], 1F);
+		vc.normal(pose.normal(), (float)vec_N.x(), (float)vec_N.y(), (float)vec_N.z());
+		vc.endVertex();
+	}
+
+	// Draw Box
+	public static void renderBox(PoseStack ps, VertexConsumer vc, Vec3 vec_offset, char color) {
+		double x = vec_offset.x();
+		double y = vec_offset.y();
+		double z = vec_offset.z();
+
+		renderLine(ps, vc, x, y, z, x+1, y, z, color);
+		renderLine(ps, vc, x, y, z, x, y, z+1, color);
+		renderLine(ps, vc, x+1, y, z, x+1, y, z+1, color);
+		renderLine(ps, vc, x, y, z+1, x+1, y, z+1, color);
+		
+		renderLine(ps, vc, x, y, z, x, y+1, z, color);
+		renderLine(ps, vc, x+1, y, z, x+1, y+1, z, color);
+		renderLine(ps, vc, x, y, z+1, x, y+1, z+1, color);
+		renderLine(ps, vc, x+1, y, z+1, x+1, y+1, z+1, color);
+		
+		renderLine(ps, vc, x, y+1, z, x+1, y+1, z, color);
+		renderLine(ps, vc, x, y+1, z, x, y+1, z+1, color);
+		renderLine(ps, vc, x+1, y+1, z, x+1, y+1, z+1, color);
+		renderLine(ps, vc, x, y+1, z+1, x+1, y+1, z+1, color);
+	}
 }

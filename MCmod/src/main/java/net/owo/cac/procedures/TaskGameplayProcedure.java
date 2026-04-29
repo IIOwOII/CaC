@@ -12,6 +12,7 @@ public class TaskGameplayProcedure {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 2;
+		CacModVariables.Switch_blank = false;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

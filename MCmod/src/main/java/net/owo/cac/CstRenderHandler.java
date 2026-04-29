@@ -31,6 +31,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderHandler {
 	public static ArrayList<Vec3> vec_nodes = new ArrayList<>();
+	public static int camicon_timer = 0;
 	
     @SubscribeEvent
     public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
@@ -60,6 +61,15 @@ public class CstRenderHandler {
     @SubscribeEvent
     public static void onRenderGuiPose(RenderGuiEvent.Post event) {
     	if (CstReplay.isRecording()) CstReplay.readFrame();
+    	if (camicon_timer > 0) {
+    		GuiGraphics gg = event.getGuiGraphics();
+    		if (CstReplay.is_record) {
+    			CstRenderComponent.renderIconMeowcam(gg);
+    		} else {
+    			CstRenderComponent.renderIconMeowcamOff(gg);
+    		}
+    		camicon_timer--;
+    	}
     }
 
     @SubscribeEvent
@@ -82,9 +92,9 @@ public class CstRenderHandler {
     		Vec3 vec_p_prime = CstAgent.ent_predator.position();
     		Vec3 vec_p = CstAgent.ent_prey.position();
     		
-			Vec3 field_obstacle = CstField.calFieldObstacle(3, vec_p);
-			Vec3 field_wall = CstField.calFieldWall(8, vec_p);
-			Vec3 field_predator = CstField.calFieldPredator(12, vec_p.subtract(vec_p_prime));
+			Vec3 field_obstacle = CstField.calFieldObstacle(CstAgent.SCA_OBSTACLE, vec_p);
+			Vec3 field_wall = CstField.calFieldWall(CstAgent.SCA_WALL, vec_p);
+			Vec3 field_predator = CstField.calFieldPredator(CstAgent.SCA_PREDATOR, vec_p.subtract(vec_p_prime));
 			Vec3 field_sum = Vec3.ZERO;
 			field_sum = field_sum.add(field_obstacle);
 			field_sum = field_sum.add(field_wall);
@@ -121,6 +131,12 @@ public class CstRenderHandler {
 	    			CstRenderComponent.renderLine(ps, vc, node_curr.subtract(vec_cam), node_next.subtract(vec_cam), 'g');
 	    		}
 			}
+    	}
+    	if (CstField.show_obstacle) {
+    		if (CstField.points_obstacle.size() == 0) return;
+    		for (int i=0; i<CstField.points_obstacle.size(); i++) {
+    			CstRenderComponent.renderBox(ps, vc, (CstField.points_obstacle.get(i)).subtract(vec_cam), 'g');
+    		}
     	}
     	
     }

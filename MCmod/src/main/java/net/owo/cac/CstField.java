@@ -28,9 +28,11 @@ import java.io.FileWriter;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstField {
-	public static final double MAX_FIELD = 50.0;
+	public static final double MAX_FIELD = 30.0;
+	public static final double MAX_FIELD_PLAYER = 10.0;
 	
 	public static boolean show_field = false;
+	public static boolean show_obstacle = false;
 	public static ArrayList<ArrayList<Vec3>> list_obstacle = new ArrayList<>();
 	public static ArrayList<ArrayList<Vec3>> list_wall = new ArrayList<>();
 	public static ArrayList<Vec3> points_obstacle = new ArrayList<>();
@@ -119,7 +121,7 @@ public class CstField {
 	// calculate field
 	public static Vec3 calFieldObstacle(double sca_k, Vec3 pos_p) {
 		if (list_obstacle.size() == 0) return Vec3.ZERO;
-		double alpha = Math.pow(MAX_FIELD/(2*sca_k), 2);
+		// double alpha = Math.pow(MAX_FIELD/(2*sca_k), 2);
 		Vec3 vec_p = Vec3.ZERO;
 		vec_p = new Vec3(pos_p.x()-0.5, 64.0, pos_p.z()-0.5);
 		Vec3 vec_a = Vec3.ZERO;
@@ -141,21 +143,25 @@ public class CstField {
 			R_ab = R_a*R_b;
 			vec_m = (vec_a.scale(-R_b/(R_a+R_b))).add(vec_b.scale(-R_a/(R_a+R_b)));
 			basis_m = vec_m.normalize();
-			
+			/*
 			cond_w = (0.5*(Math.pow(R_a,2)+Math.pow(R_b,2)) - alpha*Math.pow(R_ab,2))/(1+alpha*R_ab);
 			if (vec_a.dot(vec_b) < cond_w) { // over than MAX
 				vec_field = vec_field.add(basis_m.scale(MAX_FIELD));
 				continue;
 			}
+			*/
 			cos_w = Math.pow(0.5 + (vec_a.dot(vec_b))/(2*R_ab), 0.5);
 			R_w = (vec_b.subtract(vec_a)).length();
-			vec_field = vec_field.add(basis_m.scale((sca_k*R_w)/(R_ab*cos_w)));			
+			vec_field = vec_field.add(basis_m.scale((sca_k*R_w)/(R_ab*cos_w)));
+		}
+		if (vec_field.length() > MAX_FIELD) {
+			vec_field = (vec_field.normalize()).scale(MAX_FIELD);
 		}
 		return vec_field;
 	}
 	public static Vec3 calFieldWall(double sca_k, Vec3 pos_p) {
 		if (list_wall.size() == 0) return Vec3.ZERO;
-		double alpha = Math.pow(MAX_FIELD/(2*sca_k), 2);
+		// double alpha = Math.pow(MAX_FIELD/(2*sca_k), 2);
 		Vec3 vec_p = Vec3.ZERO;
 		vec_p = new Vec3(pos_p.x()-0.5, 64.0, pos_p.z()-0.5);
 		Vec3 vec_a = Vec3.ZERO;
@@ -177,15 +183,19 @@ public class CstField {
 			R_ab = R_a*R_b;
 			vec_m = (vec_a.scale(-R_b/(R_a+R_b))).add(vec_b.scale(-R_a/(R_a+R_b)));
 			basis_m = vec_m.normalize();
-			
+			/*
 			cond_w = (0.5*(Math.pow(R_a,2)+Math.pow(R_b,2)) - alpha*Math.pow(R_ab,2))/(1+alpha*R_ab);
 			if (vec_a.dot(vec_b) < cond_w) { // over than MAX
 				vec_field = vec_field.add(basis_m.scale(MAX_FIELD));
 				continue;
 			}
+			*/
 			cos_w = Math.pow(0.5 + (vec_a.dot(vec_b))/(2*R_ab), 0.5);
 			R_w = (vec_b.subtract(vec_a)).length();
 			vec_field = vec_field.add(basis_m.scale((sca_k*R_w)/(R_ab*cos_w)));
+		}
+		if (vec_field.length() > MAX_FIELD) {
+			vec_field = (vec_field.normalize()).scale(MAX_FIELD);
 		}
 		return vec_field;
 	}
@@ -193,8 +203,8 @@ public class CstField {
 		double R_sqr = vec_pp.lengthSqr();
 		Vec3 vec_field = Vec3.ZERO;
 		vec_field = vec_pp.scale(sca_k/R_sqr);
-		if (vec_field.length() > MAX_FIELD) {
-			vec_field = (vec_field.normalize()).scale(MAX_FIELD);
+		if (vec_field.length() > MAX_FIELD_PLAYER) {
+			vec_field = (vec_field.normalize()).scale(MAX_FIELD_PLAYER);
 		}
 		return vec_field;
 	}
@@ -217,6 +227,12 @@ public class CstField {
 		int bx1 = (int) Math.round(pos_border_end.x() - 0.5); // bound pos x (end)
 		int bz0 = (int) Math.round(pos_border_start.z() - 0.5); // bound pos z (start)
 		int bz1 = (int) Math.round(pos_border_end.z() - 0.5); // bound pos z (end)
+
+		// reset
+		list_obstacle.clear();
+		list_wall.clear();
+		points_obstacle.clear();
+		points_wall.clear();
 
 		// scan
 		Vec3 vec_vertice_temp = Vec3.ZERO;

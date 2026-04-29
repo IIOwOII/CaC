@@ -20,7 +20,7 @@ public class SimManageProcedure {
 		String sim_type = "";
 		CacModVariables.Exp_subject = "simulation";
 		CacModVariables.Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + CacModVariables.Exp_subject;
-		IniInfoTimestampProcedure.execute();
+		IniInfoTimestampProcedure.execute(world);
 		sim_type = StringArgumentType.getString(arguments, "type");
 		CacModVariables.Exp_trial_total = DoubleArgumentType.getDouble(arguments, "trial");
 		if ((sim_type).equals("chasing")) {

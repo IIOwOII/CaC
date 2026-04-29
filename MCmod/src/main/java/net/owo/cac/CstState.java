@@ -1,6 +1,7 @@
 package net.owo.cac;
 
 import javax.annotation.Nullable;
+import java.io.File;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.LevelAccessor;
@@ -14,6 +15,8 @@ import net.owo.cac.init.CacModItems;
 import net.owo.cac.CstKeyHandler;
 
 public class CstState {
+	public static boolean IsPause = false;
+	
     public static boolean IsMeowView = false; // Camera
     public static boolean CanMeowMove = false; // Is it allowed to move by arrow?
     public static boolean IsMeowMove_old = false; // Is it moved by arrow move right before?
@@ -24,6 +27,10 @@ public class CstState {
 	public static boolean[] key_pressed_old = {false, false, false, false, false, false, false};
 	public static int[] key_pressed_tick = {0, 0, 0, 0}; // RLUD
 
+	public static void switchPause() {
+		IsPause = (!IsPause);
+	}
+	
     public static void switchMeowView() {
     	IsMeowView = (!IsMeowView);
     }
@@ -129,5 +136,17 @@ public class CstState {
 		// 0: default
 		return 0;
 	}
-	
+
+	public static int getNumFiles(String path, String name, String extension) {
+		File dir_file = new File(path);
+		String[] names_file = dir_file.list();
+		int num_file = 0;
+		if (names_file.length == 0) return num_file;
+		for (String name_file : names_file) {
+			if (name_file.contains(name) && name_file.endsWith(extension)) {
+				num_file++;
+			}
+		}
+		return num_file;
+	}
 }

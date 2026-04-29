@@ -3,7 +3,7 @@
   "_type": "potioneffect",
   "definition": {
     "effectName": "Prey",
-    "icon": "icon_silverfish",
+    "icon": "icon_mouse_raw_big",
     "color": {
       "value": -1,
       "falpha": 0.0

@@ -4,6 +4,7 @@ import net.owo.cac.network.CacModVariables;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.network.chat.Component;
 import net.minecraft.commands.CommandSourceStack;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class CapManageProcedure {
 		if (entity == null)
 			return;
 		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
+		boolean is_available = false;
 		CacModVariables.Exp_session = "fitting_" + StringArgumentType.getString(arguments, "task");
 		CacModVariables.Psy_task = StringArgumentType.getString(arguments, "task");
 		CacModVariables.Psy_method = StringArgumentType.getString(arguments, "method");
@@ -33,6 +35,7 @@ public class CapManageProcedure {
 				bufferedReader.close();
 				obj_task = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
 				CacModVariables.Exp_property = obj_task.get(CacModVariables.Exp_session).getAsString();
+				is_available = obj_task.get(CacModVariables.Exp_session).isJsonPrimitive() ? obj_task.get(CacModVariables.Exp_session).getAsJsonPrimitive().isString() : false;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -49,29 +52,32 @@ public class CapManageProcedure {
 			net.owo.cac.CstPsychometric.method_type = 1;
 		} else if ((CacModVariables.Psy_method).equals("continuous")) {
 			net.owo.cac.CstPsychometric.method_type = 2;
+		} else {
+			is_available = false;
 		}
 		if ((CacModVariables.Psy_function).equals("default")) {
 			net.owo.cac.CstPsychometric.func_type = 0;
+		} else {
+			is_available = false;
 		}
-		if ((CacModVariables.Psy_task).equals("debug")) {
+		if ((CacModVariables.Psy_task).equals("interleaved")) {
+			net.owo.cac.CstPsychometric.task_type = 2;
 			net.owo.cac.CstPsychometric.initPsy();
-			net.owo.cac.CstPsychometric.updateTrialBefore();
-			net.owo.cac.CstPsychometric.debugValue();
 		} else if ((CacModVariables.Psy_task).equals("chasing")) {
 			net.owo.cac.CstPsychometric.task_type = 0;
 			net.owo.cac.CstPsychometric.initPsy();
-			PrdCountdownProcedure.execute();
-			TaskSessionStartProcedure.execute(world, entity);
 		} else if ((CacModVariables.Psy_task).equals("chased")) {
 			net.owo.cac.CstPsychometric.task_type = 1;
 			net.owo.cac.CstPsychometric.initPsy();
+		} else {
+			is_available = false;
+		}
+		if (is_available && !(CacModVariables.Exp_subject).equals("none")) {
 			PrdCountdownProcedure.execute();
 			TaskSessionStartProcedure.execute(world, entity);
-		} else if ((CacModVariables.Psy_task).equals("interleaved")) {
-			net.owo.cac.CstPsychometric.task_type = 2;
-			net.owo.cac.CstPsychometric.initPsy();
-			PrdCountdownProcedure.execute();
-			TaskSessionStartProcedure.execute(world, entity);
+		} else {
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eUnavailable task name or not registered!\u00A7r"), false);
 		}
 	}
 }

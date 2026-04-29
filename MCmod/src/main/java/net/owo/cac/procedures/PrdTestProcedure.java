@@ -21,7 +21,7 @@ public class PrdTestProcedure {
 			net.owo.cac.CstSurvey.startSurvey();
 		} else if ((type).equals("surrender")) {
 			net.owo.cac.CstSurrender.startSurrender();
-		} else if ((type).equals("meowmove")) {
+		} else if ((type).equals("move")) {
 			MeowViewOnProcedure.execute();
 			MeowMoveOnProcedure.execute();
 		} else if ((type).equals("ai")) {
@@ -55,6 +55,16 @@ public class PrdTestProcedure {
 				net.owo.cac.CstField.show_field = true;
 				if (entity instanceof Player _player && !_player.level().isClientSide())
 					_player.displayClientMessage(Component.literal("show field"), true);
+			}
+		} else if ((type).equals("obstacle")) {
+			if (net.owo.cac.CstField.show_obstacle) {
+				net.owo.cac.CstField.show_obstacle = false;
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("hide obstacle"), true);
+			} else {
+				net.owo.cac.CstField.show_obstacle = true;
+				if (entity instanceof Player _player && !_player.level().isClientSide())
+					_player.displayClientMessage(Component.literal("show obstacle"), true);
 			}
 		} else if ((type).equals("predator")) {
 			EffApplyMorphPredatorProcedure.execute(entity);

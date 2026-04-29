@@ -10,6 +10,7 @@ public class TaskPostRunProcedure {
 	public static void execute() {
 		com.google.gson.JsonObject obj_que = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_session = new com.google.gson.JsonObject();
+		CacModVariables.Switch_blank = true;
 		CacModVariables.Ev_que_loop = false;
 		{
 			try {

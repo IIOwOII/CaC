@@ -49,7 +49,11 @@ import net.owo.cac.entity.EntPseudoMouseEntity;
 public class CstAgent {
 	public static int TIMELIMIT = 600;
 	public static double CONST_SPEED = 0.48989794855;
-	public static int CONST_PERIOD = 4; //
+	public static int CONST_PERIOD = 2; //
+
+	public static double SCA_PREDATOR = 15;
+	public static double SCA_WALL = 9;
+	public static double SCA_OBSTACLE = 5;
 
 	@Nullable public static Mob ent_predator = null;
 	@Nullable public static Mob ent_prey = null;
@@ -99,6 +103,12 @@ public class CstAgent {
 				timAi++;
 				tickPredator(world);
 				tickPrey(world);
+				/*
+				if (timAi % CONST_PERIOD == 0) {
+					tickPredator(world);
+					tickPrey(world);
+				}
+				*/
 				agent_duration = agent_duration - 1;
 				agent_distance = ((ent_predator.position()).subtract(ent_prey.position())).length();
 				if ((agent_duration <= 0) || (agent_distance < 1)) { // end
@@ -234,17 +244,51 @@ public class CstAgent {
 		vec_predator = ent_predator.position();
 		vec_prey = ent_prey.position();
 		
-		Vec3 field_obstacle = CstField.calFieldObstacle(3, vec_prey);
-		Vec3 field_wall = CstField.calFieldWall(7, vec_prey);
-		Vec3 field_predator = CstField.calFieldPredator(10, vec_prey.subtract(vec_predator));
+		Vec3 field_obstacle = CstField.calFieldObstacle(SCA_OBSTACLE, vec_prey);
+		Vec3 field_wall = CstField.calFieldWall(SCA_WALL, vec_prey);
+		Vec3 field_predator = CstField.calFieldPredator(SCA_PREDATOR, vec_prey.subtract(vec_predator));
 		Vec3 field_sum = Vec3.ZERO;
 		field_sum = field_sum.add(field_obstacle);
 		field_sum = field_sum.add(field_wall);
 		field_sum = field_sum.add(field_predator);
+		if (field_sum.length() < 1 && (vec_prey.subtract(vec_predator)).length() < 2) { // emergency
+			Vec3 vec_destination = vec_prey.add(emergencyPrey());
+			return vec_destination;
+		}
 		Vec3 vec_destination = vec_prey.add(field_sum);
 		return vec_destination;
 	}
-
+	public static Vec3 emergencyPrey() {
+		Vec3 vec_runaway = Vec3.ZERO;
+		Vec3 vec_hazard = ((ent_predator.position()).subtract(ent_prey.position())).normalize();
+		for (int i=0; i<16; i++) {
+			float rot = 90.0F - 5.0F*i;
+			vec_runaway = (vec_hazard.yRot(rot)).scale(4);
+			if (isWalkable(vec_runaway)) {
+				return vec_runaway;
+			}
+			vec_runaway = (vec_hazard.yRot(-rot)).scale(4);
+			if (isWalkable(vec_runaway)) {
+				return vec_runaway;
+			}
+		}
+		return Vec3.ZERO;
+	}
+	private static boolean isWalkable(Vec3 vec) {
+		Level world = ent_prey.level();
+		BlockPos pos = new BlockPos((int)(vec.x()), (int)(vec.y()), (int)(vec.z()));
+        BlockPos below = pos.below();
+        if (!world.getBlockState(below).isSolid()) {
+            return false;
+        }
+        if (!world.getBlockState(pos).isAir()) {
+            return false;
+        }
+        if (!world.getBlockState(pos.above()).isAir()) {
+            return false;
+        }
+        return true;
+    }
 	
 	// get nodes Pathfinders
 	public static void getPath() {

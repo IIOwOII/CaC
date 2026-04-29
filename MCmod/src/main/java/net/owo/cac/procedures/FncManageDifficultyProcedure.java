@@ -18,7 +18,7 @@ public class FncManageDifficultyProcedure {
 		if ((session).equals("test_mixed")) {
 			CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * Math.floor(CacModVariables.Exp_trial / 2))) / Math.pow(10, 2);
 		} else if ((session).equals("test_chasing") || (session).equals("test_chased")) {
-			CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (0.9 + 0.02 * CacModVariables.Exp_trial)) / Math.pow(10, 2);
+			CacModVariables.Dat_difficulty = Math.round(Math.pow(10, 2) * (1 + 0.02 * CacModVariables.Exp_trial)) / Math.pow(10, 2);
 		} else if ((session).equals("pseudo_chasing") || (session).equals("pseudo_chased")) {
 			if (CacModVariables.Exp_trial == 0) {
 				CacModVariables.Dat_difficulty = 1;

@@ -44,7 +44,7 @@ public class CacManageProcedure {
 		}
 		log_fitting = new File((CacModVariables.Dir_behaviors + "/fitting_" + CacModVariables.Exp_session), File.separator + "log_fitting.json");
 		FncManageTasktypeProcedure.execute(world);
-		if (log_fitting.exists()) {
+		if (log_fitting.exists() && !(CacModVariables.Exp_subject).equals("none")) {
 			{
 				try {
 					BufferedReader bufferedReader = new BufferedReader(new FileReader(log_fitting));
@@ -84,7 +84,7 @@ public class CacManageProcedure {
 			}
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("No fitting file!"), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eNo fitting file of not registered!\u00A7r"), false);
 		}
 	}
 }

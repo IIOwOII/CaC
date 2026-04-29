@@ -13,6 +13,7 @@ public class TaskPreTrialProcedure {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 0;
+		CacModVariables.Switch_blank = true;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

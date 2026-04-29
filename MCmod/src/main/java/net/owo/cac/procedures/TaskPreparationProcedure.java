@@ -13,6 +13,7 @@ public class TaskPreparationProcedure {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 1;
+		CacModVariables.Switch_blank = false;
 		CacModVariables.Switch_trace = true;
 		{
 			Entity _ent = entity;

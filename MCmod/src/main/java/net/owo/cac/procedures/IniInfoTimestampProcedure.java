@@ -2,6 +2,9 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.network.chat.Component;
+
 import java.util.Calendar;
 
 import java.io.IOException;
@@ -11,7 +14,7 @@ import java.io.File;
 import java.io.BufferedReader;
 
 public class IniInfoTimestampProcedure {
-	public static void execute() {
+	public static void execute(LevelAccessor world) {
 		com.google.gson.JsonObject obj_file = new com.google.gson.JsonObject();
 		com.google.gson.JsonObject obj_cac = new com.google.gson.JsonObject();
 		double num_rep = 0;
@@ -51,6 +54,8 @@ public class IniInfoTimestampProcedure {
 				num_idx = num_idx + 1;
 			}
 			obj_cac.addProperty(("re-register_" + new java.text.DecimalFormat("##").format(num_rep)), Calendar.getInstance().getTime().toString());
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eRe-registered!\u00A7r"), false);
 		}
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
