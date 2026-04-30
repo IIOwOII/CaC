@@ -262,14 +262,17 @@ public class CstAgent {
 		Vec3 vec_runaway = Vec3.ZERO;
 		Vec3 vec_hazard = ((ent_predator.position()).subtract(ent_prey.position())).normalize();
 		for (int i=0; i<16; i++) {
-			float rot = 90.0F - 5.0F*i;
-			vec_runaway = (vec_hazard.yRot(rot)).scale(4);
-			if (isWalkable(vec_runaway)) {
-				return vec_runaway;
-			}
-			vec_runaway = (vec_hazard.yRot(-rot)).scale(4);
-			if (isWalkable(vec_runaway)) {
-				return vec_runaway;
+			for (int j=0; j<4; j++) {
+				float rot = 90.0F - 5.0F*i;
+				double sca = 5.0-j;
+				vec_runaway = (vec_hazard.yRot(rot)).scale(sca);
+				if (isWalkable(vec_runaway)) {
+					return vec_runaway;
+				}
+				vec_runaway = (vec_hazard.yRot(-rot)).scale(sca);
+				if (isWalkable(vec_runaway)) {
+					return vec_runaway;
+				}
 			}
 		}
 		return Vec3.ZERO;
