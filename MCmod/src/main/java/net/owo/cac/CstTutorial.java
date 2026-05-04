@@ -295,6 +295,7 @@ public class CstTutorial {
 
 	public static void surveyTutorial() {
 		tuto_id = 61;
+		CstSurvey.initSurvey();
 		CstSurvey.startSurvey();
 	}
 

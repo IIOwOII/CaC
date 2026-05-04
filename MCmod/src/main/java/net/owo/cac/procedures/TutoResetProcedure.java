@@ -19,6 +19,7 @@ public class TutoResetProcedure {
 		CacModVariables.Tuto_score = 0;
 		CacModVariables.Tuto_hurdle_stack = 0;
 		CacModVariables.Tuto_hurdle_stack_old = 0;
+		CacModVariables.Msg_actionbar_switch = false;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
