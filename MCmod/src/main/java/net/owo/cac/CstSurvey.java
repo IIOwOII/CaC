@@ -51,10 +51,10 @@ public class CstSurvey {
 	};
 	*/
 	static ResourceLocation[] SURVEY_LIST = {
-		new ResourceLocation("cac:textures/screens/text_survey_short_1.png"),
-		new ResourceLocation("cac:textures/screens/text_survey_short_2.png"),
-		new ResourceLocation("cac:textures/screens/text_survey_short_3.png"),
-		new ResourceLocation("cac:textures/screens/text_survey_short_4.png")
+		new ResourceLocation("cac:textures/screens/text_survey_revised_1.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_revised_2.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_revised_3.png"),
+		new ResourceLocation("cac:textures/screens/text_survey_revised_4.png")
 	};
 	
 	public static boolean IsSurvey = false;

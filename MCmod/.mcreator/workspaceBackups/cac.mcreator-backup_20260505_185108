@@ -450,7 +450,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -3738,6 +3743,23 @@
         "dependencies": []
       },
       "path": "~/CacCommand"
+    },
+    {
+      "name": "BlkFlag",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_flag",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/block/BlkFlagBlock.java",
+          "src/main/resources/assets/cac/models/item/blk_flag.json",
+          "src/main/resources/assets/cac/models/block/blk_flag.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_flag.json",
+          "src/main/resources/assets/cac/blockstates/blk_flag.json"
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4452,6 +4474,7 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkFlag",
       "~CUSTOM:BlkMission",
       "~CUSTOM:BlkTapeBlock",
       "~CUSTOM:BlkValuestone",
@@ -4483,7 +4506,8 @@
       "BlkValuestone",
       "BlkTapeBlock",
       "BlkValuepatch",
-      "BlkMission"
+      "BlkMission",
+      "BlkFlag"
     ]
   },
   "language_map": {
@@ -4541,6 +4565,7 @@
       "block.cac.blk_mission": "Mission Block",
       "advancements.adv_master.title": "The master of CaC",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
+      "block.cac.blk_flag": "Flag",
       "subtitles.snd_orb_c7": "snd_orb_c7",
       "key.cac.cac_key_record": "Toggle Record",
       "entity.cac.ent_player_mouse": "Prey (Player)",
@@ -4673,7 +4698,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "1.1",
+    "version": "1.3",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

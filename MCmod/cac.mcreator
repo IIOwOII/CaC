@@ -450,7 +450,12 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -1802,10 +1807,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/block/BlkCheckpointBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
           "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
+          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2142,11 +2147,11 @@
       "registry_name": "blk_switchstone",
       "metadata": {
         "files": [
-          "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
+          "src/main/resources/assets/cac/models/item/blk_switchstone.json",
           "src/main/resources/assets/cac/models/block/blk_switchstone.json",
-          "src/main/resources/assets/cac/blockstates/blk_switchstone.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
           "src/main/java/net/owo/cac/block/BlkSwitchstoneBlock.java",
-          "src/main/resources/assets/cac/models/item/blk_switchstone.json"
+          "src/main/resources/assets/cac/blockstates/blk_switchstone.json"
         ]
       },
       "path": "~/CacBlock"
@@ -3738,6 +3743,90 @@
         "dependencies": []
       },
       "path": "~/CacCommand"
+    },
+    {
+      "name": "BlkFlag",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_flag",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/block/BlkFlagBlock.java",
+          "src/main/resources/assets/cac/models/item/blk_flag.json",
+          "src/main/resources/assets/cac/models/block/blk_flag.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_flag.json",
+          "src/main/resources/assets/cac/blockstates/blk_flag.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlsFlag",
+      "type": "blockstates",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bls_flag",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/cac/models/block/bls_flag_blockstate_0.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlcFlagWalk",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blc_flag_walk",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/BlcFlagWalkProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "blockstate",
+            "type": "blockstate"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "TutoFlagTouch",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_flag_touch",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoFlagTouchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial/Practice"
     }
   ],
   "variable_elements": [
@@ -4452,6 +4541,7 @@
       "~CUSTOM:BlkObstacle"
     ],
     "BLOCKS:minecraft:mineable/pickaxe": [
+      "~CUSTOM:BlkFlag",
       "~CUSTOM:BlkMission",
       "~CUSTOM:BlkTapeBlock",
       "~CUSTOM:BlkValuestone",
@@ -4483,7 +4573,8 @@
       "BlkValuestone",
       "BlkTapeBlock",
       "BlkValuepatch",
-      "BlkMission"
+      "BlkMission",
+      "BlkFlag"
     ]
   },
   "language_map": {
@@ -4491,8 +4582,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
@@ -4541,6 +4632,7 @@
       "block.cac.blk_mission": "Mission Block",
       "advancements.adv_master.title": "The master of CaC",
       "item.cac.ent_pseudo_mouse_spawn_egg": "Prey (Pseudo) Spawn Egg",
+      "block.cac.blk_flag": "Flag",
       "subtitles.snd_orb_c7": "snd_orb_c7",
       "key.cac.cac_key_record": "Toggle Record",
       "entity.cac.ent_player_mouse": "Prey (Player)",
@@ -4673,7 +4765,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "1.1",
+    "version": "1.3",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "cac:blk_flag",
     "cac:blk_mission",
     "cac:blk_tape_block",
     "cac:blk_valuestone",

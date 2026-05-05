@@ -41,6 +41,7 @@ public class CacModItems {
 	public static final RegistryObject<Item> BLK_TAPE_BLOCK = block(CacModBlocks.BLK_TAPE_BLOCK);
 	public static final RegistryObject<Item> BLK_VALUEPATCH = block(CacModBlocks.BLK_VALUEPATCH);
 	public static final RegistryObject<Item> BLK_MISSION = block(CacModBlocks.BLK_MISSION);
+	public static final RegistryObject<Item> BLK_FLAG = block(CacModBlocks.BLK_FLAG);
 
 	// Start of user code block custom items
 	// End of user code block custom items

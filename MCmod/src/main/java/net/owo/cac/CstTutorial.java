@@ -51,16 +51,19 @@ import net.owo.cac.procedures.EffRemoveMorphProcedure;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstTutorial {
 	/*
-	10: moving
-	20: checkpoint
-	30: racing
-	40: chasing inst
-	50: chased inst
-	60: survey
-	70: surrender
+	10: moving (legacy)
+	20: checkpoint (legacy)
+	30: racing (legacy)
+	40: chasing (legacy)
+	50: chased (legacy)
+	60: survey (legacy)
+	70: surrender (legacy)
+	110: practice
+	120: main
 	*/
 	public static int tuto_id = 0;
 	public static int book_id = 0;
+	public static int prac_id = 0;
 	
 	public static int timer = 0;
 	public static boolean timer_switch = false;
@@ -264,7 +267,7 @@ public class CstTutorial {
 		if (id == 1) {
 			CstState.offMeowMove();
 			CacModVariables.Msg_actionbar_switch = true;
-			CacModVariables.Msg_actionbar_text = "\uC798\uD588\uC2B5\uB2C8\uB2E4!";
+			CacModVariables.Msg_actionbar_text = "\uC88B\uC2B5\uB2C8\uB2E4!";
 		}
 		timer = 60;
 		timer_switch = true;
@@ -276,11 +279,17 @@ public class CstTutorial {
 	public static int getTutorialID() {
 		return tuto_id;
 	}
-	
+
+	public static void practiceTutorial() {
+		tuto_id = 110;
+		prac_id = 0;
+	}
+
+	// (Legacy)
 	public static void movingTutorial() {
 		moving_footprint = CstState.meowmove_tick.clone();
 		moving_idx = 0;
-		CacModVariables.Msg_actionbar_text = "\uD654\uBA74\uC5D0 \uC9C0\uC2DC\uB41C \uBC29\uD5A5\uB300\uB85C \uACC4\uC18D \uC6C0\uC9C1\uC5EC\uC8FC\uC138\uC694.";
+		CacModVariables.Msg_actionbar_text = "\uD654\uC0B4\uD45C \uCABD\uC73C\uB85C \uC6C0\uC9C1\uC5EC\uC8FC\uC138\uC694!";
 		CacModVariables.Msg_actionbar_switch = true;
 		tuto_id = 11;
 	}
