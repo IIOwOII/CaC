@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "cac:block/blk_flag"
+    },
+    "blockstate=1": {
+      "model": "cac:block/bls_flag_blockstate_0"
+    }
+  }
+}

@@ -67,6 +67,8 @@ public class TimCountdownProcedure {
 					TutoCheckpointStartProcedure.execute(world);
 				} else if ((CacModVariables.TimC_que).equals("tutorial_racing")) {
 					TutoRacingStartProcedure.execute();
+				} else if ((CacModVariables.TimC_que).equals("tutorial_practice")) {
+					TutoPracticeStartProcedure.execute(world);
 				}
 				CacModVariables.TimC_que = "";
 				if (world instanceof ServerLevel _level)

@@ -25,7 +25,6 @@ public class TutoManageProcedure {
 			}
 		} else if ((tuto_name).equals("reset")) {
 			TutoResetProcedure.execute(entity);
-			net.owo.cac.CstTutorial.tuto_id = 0;
 		} else if ((tuto_name).equals("beginner")) {
 			TutoBeginnerReadyProcedure.execute(entity);
 		} else if ((tuto_name).equals("checkpoint")) {
@@ -42,6 +41,8 @@ public class TutoManageProcedure {
 			net.owo.cac.CstTutorial.surrenderTutorial();
 		} else if ((tuto_name).equals("book")) {
 			net.owo.cac.CstTutorial.tuto_id = 10;
+		} else if ((tuto_name).equals("practice")) {
+			TutoPracticeReadyProcedure.execute(entity);
 		}
 	}
 }

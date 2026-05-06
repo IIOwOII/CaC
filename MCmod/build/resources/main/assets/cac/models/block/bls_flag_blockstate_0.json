@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_flag",
+  "textures": {
+    "all": "cac:block/texture_cac_flag",
+    "particle": "cac:block/texture_cac_flag",
+    "0": "cac:block/texture_cac_flag"
+  },
+  "render_type": "cutout"
+}

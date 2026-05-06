@@ -35,5 +35,6 @@ public class TutoResetProcedure {
 					_player.getAdvancements().award(_adv, criteria);
 			}
 		}
+		net.owo.cac.CstTutorial.tuto_id = 0;
 	}
 }

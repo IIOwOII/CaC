@@ -13,12 +13,13 @@ import java.io.BufferedReader;
 
 public class TutoFlagTouchProcedure {
 	public static void execute(LevelAccessor world) {
-		com.google.gson.JsonObject obj_point = new com.google.gson.JsonObject();
-		com.google.gson.JsonObject obj_prac = new com.google.gson.JsonObject();
 		double prac_id = 0;
 		com.google.gson.JsonArray arr_route = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_pos = new com.google.gson.JsonArray();
 		com.google.gson.JsonArray arr_end = new com.google.gson.JsonArray();
+		com.google.gson.JsonObject obj_point = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_prac = new com.google.gson.JsonObject();
+		com.google.gson.JsonObject obj_tuto = new com.google.gson.JsonObject();
 		net.owo.cac.CstTutorial.prac_id++;
 		prac_id = net.owo.cac.CstTutorial.prac_id;
 		{
@@ -31,11 +32,12 @@ public class TutoFlagTouchProcedure {
 				}
 				bufferedReader.close();
 				obj_point = new com.google.gson.Gson().fromJson(jsonstringbuilder.toString(), com.google.gson.JsonObject.class);
-				obj_prac = obj_point.get("practice").getAsJsonObject();
+				obj_tuto = obj_point.get("tutorial").getAsJsonObject();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		obj_prac = obj_tuto.get("practice").getAsJsonObject();
 		arr_route = obj_prac.get("route").getAsJsonArray();
 		if (prac_id < arr_route.size()) {
 			arr_pos = arr_route.get(((int) prac_id)).getAsJsonArray();
@@ -47,7 +49,7 @@ public class TutoFlagTouchProcedure {
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 			}
 		} else {
-			arr_end = obj_prac.get("end").getAsJsonArray();
+			net.owo.cac.CstTutorial.prac_id = -1;
 		}
 	}
 }
