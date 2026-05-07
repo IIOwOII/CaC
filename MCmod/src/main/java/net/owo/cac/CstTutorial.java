@@ -60,6 +60,7 @@ public class CstTutorial {
 	70: surrender (legacy)
 	110: practice
 	120: main
+	200: fMRI (total)
 	*/
 	public static int tuto_id = 0;
 	public static int book_id = 0;
@@ -304,7 +305,7 @@ public class CstTutorial {
 
 	public static void surveyTutorial() {
 		tuto_id = 61;
-		CstSurvey.initSurvey();
+		CstSurvey.initSurvey(false);
 		CstSurvey.startSurvey();
 	}
 
@@ -330,10 +331,10 @@ public class CstTutorial {
 		MeowMoveOnProcedure.execute();
 		CacModVariables.Dat_trial_spawnpoint_opponent = 0;
 		CacModVariables.Dat_trial_type = 0;
-		CacModVariables.Dat_difficulty = 0.8;
+		CacModVariables.Dat_difficulty = 0.7;
 		TaskSpawnOpponentProcedure.execute(world);
 		EffApplyMorphPredatorProcedure.execute(entity);
-		CacModVariables.Msg_actionbar_text = "\uACE0\uC591\uC774\uB97C \uC870\uC885\uD558\uC5EC \uC950\uC758 \uC704\uCE58\uB97C \uBBF8\uB9AC \uD655\uC778\uD558\uACE0 \uC790\uB9AC\uB97C \uC7A1\uC73C\uC138\uC694.\\n\uC900\uBE44\uB418\uBA74 \u00A7e\uACB0\uC815 \uBC84\uD2BC\u00A7r\uC744 \uB20C\uB7EC \uC2DC\uC791\uD558\uAE30.";
+		CacModVariables.Msg_actionbar_text = "\uC950\uAC00 \uC5B4\uB514\uC788\uB294\uC9C0 \uCC3E\uACE0, \u00A7e\uD655\uC778 \uBC84\uD2BC\u00A7r\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694!";
 		CacModVariables.Msg_actionbar_switch = true;
 	}
 	public static void chasingGameTutorial(Entity entity) {
@@ -346,7 +347,7 @@ public class CstTutorial {
 		tuto_id = 42;
 		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
 			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 10000000");
-		CacModVariables.Msg_actionbar_text = "\uC950\uAC00 \uB3C4\uB9DD\uCE69\uB2C8\uB2E4! \uC81C\uC2DC\uAC04 \uC548\uC5D0 \uC7A1\uC544\uC8FC\uC138\uC694.";
+		CacModVariables.Msg_actionbar_text = "\uC950\uAC00 \uB3C4\uB9DD\uAC11\uB2C8\uB2E4! \uC81C\uD55C \uC2DC\uAC04 \uC548\uC5D0 \uC7A1\uC544\uC8FC\uC138\uC694.";
 		CstAgent.setDuration(600);
 		CacModVariables.Switch_AI = true;
 	}
@@ -373,10 +374,10 @@ public class CstTutorial {
 		MeowMoveOnProcedure.execute();
 		CacModVariables.Dat_trial_spawnpoint_opponent = 2;
 		CacModVariables.Dat_trial_type = 1;
-		CacModVariables.Dat_difficulty = 0.8;
+		CacModVariables.Dat_difficulty = 0.7;
 		TaskSpawnOpponentProcedure.execute(world);
 		EffApplyMorphPreyProcedure.execute(entity);
-		CacModVariables.Msg_actionbar_text = "\uC950\uB97C \uC870\uC885\uD558\uC5EC \uACE0\uC591\uC774\uC758 \uC704\uCE58\uB97C \uBBF8\uB9AC \uD655\uC778\uD558\uACE0 \uC790\uB9AC\uB97C \uC7A1\uC73C\uC138\uC694.\\n\uC900\uBE44\uB418\uBA74 \u00A7e\uACB0\uC815 \uBC84\uD2BC\u00A7r\uC744 \uB20C\uB7EC \uC2DC\uC791\uD558\uAE30.";
+		CacModVariables.Msg_actionbar_text = "\uACE0\uC591\uC774\uAC00 \uC5B4\uB514\uC788\uB294\uC9C0 \uCC3E\uACE0, \u00A7e\uD655\uC778 \uBC84\uD2BC\u00A7r\uC744 \uB20C\uB7EC\uC8FC\uC138\uC694!";
 		CacModVariables.Msg_actionbar_switch = true;
 	}
 	public static void chasedGameTutorial(Entity entity) {
@@ -389,7 +390,7 @@ public class CstTutorial {
 		tuto_id = 52;
 		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
 			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 10000000");
-		CacModVariables.Msg_actionbar_text = "\uACE0\uC591\uC774\uAC00 \uCAD3\uC544\uC635\uB2C8\uB2E4! \uC81C\uC2DC\uAC04 \uB3D9\uC548 \uB3C4\uB9DD\uCE58\uC138\uC694.";
+		CacModVariables.Msg_actionbar_text = "\uACE0\uC591\uC774\uAC00 \uCAD3\uC544\uC635\uB2C8\uB2E4! \uC81C\uD55C \uC2DC\uAC04 \uB3D9\uC548 \uB3C4\uB9DD\uCE58\uC138\uC694.";
 		CstAgent.setDuration(600);
 		CacModVariables.Switch_AI = true;
 	}

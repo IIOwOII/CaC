@@ -4098,6 +4098,12 @@
       "value": "false"
     },
     {
+      "name": "Exp_mode",
+      "type": "string",
+      "scope": "global",
+      "value": "none"
+    },
+    {
       "name": "Exp_phase",
       "type": "number",
       "scope": "global",
@@ -4396,12 +4402,6 @@
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"
-    },
-    {
-      "name": "Psy_function",
-      "type": "string",
-      "scope": "global",
-      "value": "\"\""
     },
     {
       "name": "Psy_method",

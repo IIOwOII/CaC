@@ -23,7 +23,6 @@ public class CapManageProcedure {
 		CacModVariables.Exp_session = "fitting_" + StringArgumentType.getString(arguments, "task");
 		CacModVariables.Psy_task = StringArgumentType.getString(arguments, "task");
 		CacModVariables.Psy_method = StringArgumentType.getString(arguments, "method");
-		CacModVariables.Psy_function = StringArgumentType.getString(arguments, "function");
 		{
 			try {
 				BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Pool_task));
@@ -43,20 +42,12 @@ public class CapManageProcedure {
 		if ((CacModVariables.Psy_method).equals(".")) {
 			CacModVariables.Psy_method = "continuous";
 		}
-		if ((CacModVariables.Psy_function).equals(".")) {
-			CacModVariables.Psy_function = "default";
-		}
 		if ((CacModVariables.Psy_method).equals("both")) {
 			net.owo.cac.CstPsychometric.method_type = 0;
 		} else if ((CacModVariables.Psy_method).equals("binary")) {
 			net.owo.cac.CstPsychometric.method_type = 1;
 		} else if ((CacModVariables.Psy_method).equals("continuous")) {
 			net.owo.cac.CstPsychometric.method_type = 2;
-		} else {
-			is_available = false;
-		}
-		if ((CacModVariables.Psy_function).equals("default")) {
-			net.owo.cac.CstPsychometric.func_type = 0;
 		} else {
 			is_available = false;
 		}

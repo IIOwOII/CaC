@@ -20,6 +20,6 @@ public class PrdExperimentalProcedure {
 			CacMod.LOGGER.info(new java.text.SimpleDateFormat("yyMMdd").format(Calendar.getInstance().getTime()) + "_" + CacModVariables.Exp_subject + "_" + new java.text.DecimalFormat("##").format(0));
 		}
 		if (!world.isClientSide() && world.getServer() != null)
-			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\uD654\uC0B4\uD45C \uCABD\uC73C\uB85C \uC6C0\uC9C1\uC5EC\uC8FC\uC138\uC694!"), false);
+			world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(""), false);
 	}
 }

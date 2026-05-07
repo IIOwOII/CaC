@@ -83,11 +83,9 @@ public class CstRenderComponent {
 	public static void renderButtonSelect(GuiGraphics gg, int gw, int gh, int type) {
 		int ox = 0;
 		int oy = gh/2+32;
-		switch (type) {
-			case 0: ox = (gw/4)-40; break;
-			case 1: ox = (gw/4)*3-40; break;
-			case -1: ox = (gw/2)-40; break;
-		}
+		if (type == 0) {ox = (gw/4)-40;}
+		else if (type == 1) {ox = (gw/4)*3-40;}
+		else {return;}
 		gg.blit(button_select, ox, oy, 0, 0, 80, 32, 80, 32);
 	}
 	

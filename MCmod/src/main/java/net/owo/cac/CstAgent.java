@@ -112,18 +112,15 @@ public class CstAgent {
 				agent_duration = agent_duration - 1;
 				agent_distance = ((ent_predator.position()).subtract(ent_prey.position())).length();
 				if ((agent_duration <= 0) || (agent_distance < 1)) { // end
-					if (CstTutorial.tuto_id >= 10 || CstTutorial.tuto_id < 30) {
-						if (CstTutorial.tuto_id == 11) { // chasing tuto
+					// Tutorial
+					if (CstTutorial.tuto_id >= 40 || CstTutorial.tuto_id < 60) {
+						if (CstTutorial.tuto_id == 42) { // chasing tuto
 							CstTutorial.chasingEndTutorial(player);
-							if (getResult() == 1) {
-								CstTutorial.completeMission(4, true);
-							}
+							if (getResult() == 1) {CstTutorial.completeMission(4, true);}
 						}
-						if (CstTutorial.tuto_id == 21) { // chased tuto
+						if (CstTutorial.tuto_id == 52) { // chased tuto
 							CstTutorial.chasedEndTutorial(player);
-							if (getResult() == 1) {
-								CstTutorial.completeMission(5, true);
-							}
+							if (getResult() == 1) {CstTutorial.completeMission(5, true);}
 						}
 					}
 					EffApplyStopMoveProcedure.execute(player);

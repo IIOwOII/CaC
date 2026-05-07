@@ -21,7 +21,6 @@ public class CstPsychometric {
 	// Type
 	public static int task_type = -1;
 	public static int method_type = -1;
-	public static int func_type = -1;
 	public static boolean method_bin = false;
 	public static boolean method_con = false;
 
@@ -472,7 +471,7 @@ public class CstPsychometric {
 			IDX[2] = reshapeIndex(k, 2);
 			IDX[3] = reshapeIndex(k, 3);
 			for (int r=0; r<RHOSIZE; r++) {
-				P = calPSI(func_type, RHO[r], M[IDX[0]], W[IDX[1]], GAMMA[IDX[2]], LAMBDA[IDX[3]]);
+				P = calPSI(RHO[r], M[IDX[0]], W[IDX[1]], GAMMA[IDX[2]], LAMBDA[IDX[3]]);
 				probability_bin[r][k] = P;
 			}
 		}
@@ -666,12 +665,11 @@ public class CstPsychometric {
 	}
 	
 	// Calculate the psychometric function (CDF)
-	public static double calPSI(int func_type, double rho, double m, double w, double gamma, double lambda) {
+	public static double calPSI(double rho, double m, double w, double gamma, double lambda) {
 		double PSI = 0;
 		double F = 0;
-		if (func_type == 0) { // Logistic
-			F = funcLogistic(rho, m, w);
-		}
+		// Logistic
+		F = funcLogistic(rho, m, w);
 		PSI = gamma + (1-gamma-lambda)*F;
 		if (PSI < PMIN) {
 			PSI = PMIN;

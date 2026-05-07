@@ -58,6 +58,7 @@ public class CstSurvey {
 	};
 	
 	public static boolean IsSurvey = false;
+	public static boolean IsTimer = false;
 	public static int timer_quiz = 0;
 	public static int timer_blank = 0;
 	public static int suv_phase = 30;
@@ -81,7 +82,9 @@ public class CstSurvey {
 		if (suv_phase == 35) {
 			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			int suv_id = suv_order[idx];
-			CstRenderComponent.renderBar(gg, gw, gh, 200-timer_quiz, 200); // Render timebar
+			if (IsTimer) {
+				CstRenderComponent.renderBar(gg, gw, gh, 200-timer_quiz, 200); // Render timebar
+			}
 			renderSurvey(gg, gw, gh, suv_id); // Render text
 			CstRenderComponent.renderSlide(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
 			CstRenderComponent.renderSlideText(gg, gw, gh); // Render Slide Text
@@ -99,7 +102,7 @@ public class CstSurvey {
 					suv_value[suv_id] = suv_value[suv_id] + 1;
 				if ((CstState.key_pressed[1]) && (suv_value[suv_id] > 0))
 					suv_value[suv_id] = suv_value[suv_id] - 1;
-				if ((CstState.key_pressed[5]) || (timer_quiz >= 200))
+				if ((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer))
 					confirmSurvey();
 			} else if (suv_phase == 33) {
 				timer_blank = timer_blank + 1;
@@ -110,18 +113,15 @@ public class CstSurvey {
 		}
 	}
 
-	public static void randomizeOrder() {
-		
-	}
-
 	public static void renderSurvey(GuiGraphics gg, int gw, int gh, int ID) {
 		int ox = gw/2 - 200;
 		gg.blit(SURVEY_LIST[ID], ox, 60, 0, 0, 400, 60, 400, 60);
 	}
 
 	// reset (initialize: use when debugging or start experiment)
-	public static void initSurvey() {
+	public static void initSurvey(boolean is_timer) {
 		IsSurvey = false;
+		IsTimer = is_timer;
 		timer_quiz = 0;
 		timer_blank = 0;
 		suv_order = new int[SURVEY_LIST.length];
@@ -142,7 +142,6 @@ public class CstSurvey {
 		CstState.offMeowMove(); // stop moving
 		suv_phase = 30;
 		idx = 0;
-		randomizeOrder();
 		suv_value_prev = suv_value.clone();
 		for(int i=0;i<SURVEY_LIST.length;i++) {
 			suv_value[i] = 50;

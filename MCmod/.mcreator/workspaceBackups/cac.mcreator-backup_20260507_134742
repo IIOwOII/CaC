@@ -2448,11 +2448,11 @@
       "registry_name": "blk_tape_block",
       "metadata": {
         "files": [
-          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
           "src/main/resources/assets/cac/models/item/blk_tape_block.json",
           "src/main/resources/assets/cac/models/block/blk_tape_block.json",
-          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_tape_block.json"
+          "src/main/resources/data/cac/loot_tables/blocks/blk_tape_block.json",
+          "src/main/resources/assets/cac/blockstates/blk_tape_block.json",
+          "src/main/java/net/owo/cac/block/BlkTapeBlockBlock.java"
         ]
       },
       "path": "~/CacBlock"
@@ -3753,10 +3753,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/block/BlkFlagBlock.java",
-          "src/main/resources/assets/cac/models/item/blk_flag.json",
-          "src/main/resources/assets/cac/models/block/blk_flag.json",
           "src/main/resources/data/cac/loot_tables/blocks/blk_flag.json",
-          "src/main/resources/assets/cac/blockstates/blk_flag.json"
+          "src/main/resources/assets/cac/blockstates/blk_flag.json",
+          "src/main/resources/assets/cac/models/item/blk_flag.json",
+          "src/main/resources/assets/cac/models/block/blk_flag.json"
         ]
       },
       "path": "~/CacBlock"
@@ -3818,6 +3818,75 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/procedures/TutoFlagTouchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial/Practice"
+    },
+    {
+      "name": "TutoPracticeEnd",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_practice_end",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoPracticeEndProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial/Practice"
+    },
+    {
+      "name": "TutoPracticeReady",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_practice_ready",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoPracticeReadyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/CacTask/Tutorial/Practice"
+    },
+    {
+      "name": "TutoPracticeStart",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tuto_practice_start",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TutoPracticeStartProcedure.java"
         ],
         "dependencies": [
           {
@@ -4582,8 +4651,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",

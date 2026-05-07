@@ -2,6 +2,11 @@ package net.owo.cac;
 
 import javax.annotation.Nullable;
 import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.LevelAccessor;
@@ -10,9 +15,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 
+import net.minecraftforge.fml.loading.FMLPaths;
+
 import net.owo.cac.CacMod;
 import net.owo.cac.init.CacModItems;
 import net.owo.cac.CstKeyHandler;
+
 
 public class CstState {
 	public static boolean IsPause = false;
@@ -26,6 +34,29 @@ public class CstState {
 	public static boolean[] key_pressed = {false, false, false, false, false, false, false};
 	public static boolean[] key_pressed_old = {false, false, false, false, false, false, false};
 	public static int[] key_pressed_tick = {0, 0, 0, 0}; // RLUD
+
+	public static void changeOption() {
+		String dir_option = FMLPaths.GAMEDIR.get().toString() + "/options.txt";
+		String dir_cacopt = FMLPaths.GAMEDIR.get().toString() + "/cacutil/components/info_options.txt";
+		String dir_tempopt = FMLPaths.GAMEDIR.get().toString() + "options_temp.txt";
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(dir_cacopt));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(dir_tempopt))) {
+			String line;
+			while ((line = br.readLine()) != null) {
+                bw.write(line);
+                bw.newLine();
+            }
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		File file_origin = new File(dir_option);
+        File file_new = new File(dir_tempopt);
+        if (file_origin.delete()) {
+            file_new.renameTo(file_origin);
+        }
+	}
 
 	public static void switchPause() {
 		IsPause = (!IsPause);

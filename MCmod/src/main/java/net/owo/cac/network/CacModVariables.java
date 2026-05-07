@@ -58,6 +58,7 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Ev_que = new com.google.gson.JsonArray();
 	public static double Ev_que_index = 0;
 	public static boolean Ev_que_loop = false;
+	public static String Exp_mode = "none";
 	public static double Exp_phase = 0;
 	public static String Exp_property = "\"\"";
 	public static String Exp_session = "none";
@@ -105,7 +106,6 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Psy_con_param_prior = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_shape = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_step = new com.google.gson.JsonArray();
-	public static String Psy_function = "\"\"";
 	public static String Psy_method = "\"\"";
 	public static String Psy_task = "\"\"";
 	public static boolean Switch_AI = false;

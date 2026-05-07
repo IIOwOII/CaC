@@ -32,8 +32,6 @@ public class SimManageProcedure {
 		} else if ((sim_type).equals("fit_chasing") || (sim_type).equals("fit_chased")) {
 			CacModVariables.Psy_method = "both";
 			net.owo.cac.CstPsychometric.method_type = 0;
-			CacModVariables.Psy_function = "default";
-			net.owo.cac.CstPsychometric.func_type = 0;
 			if ((sim_type).equals("fit_chasing")) {
 				CacModVariables.Exp_session = "simulation_fit_chasing";
 				CacModVariables.Psy_task = "chasing";

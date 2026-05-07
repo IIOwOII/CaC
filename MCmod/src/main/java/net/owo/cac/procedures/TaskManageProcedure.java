@@ -48,7 +48,7 @@ public class TaskManageProcedure {
 				CacModVariables.Switch_scanner = false;
 			}
 			if (CacModVariables.Exp_property.contains("S")) {
-				net.owo.cac.CstSurvey.initSurvey();
+				net.owo.cac.CstSurvey.initSurvey(false);
 			}
 			TaskSessionStartProcedure.execute(world, entity);
 		} else {
