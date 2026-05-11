@@ -72,7 +72,7 @@ public class CstPsychometric {
 	public static double IG_THRESHOLD = 0.05; // How much the maximum IG must be less than.
 	public static int RAW_THRESHOLD = 5; // How many consecutive trials are required to satisfy the conditions.
 
-	// Traces
+	// Traces (fit)
 	public static ArrayList<Double> trace_IG_bin = new ArrayList<>();
 	public static ArrayList<Double> trace_IG_con = new ArrayList<>();
 	public static ArrayList<Double> trace_maxEIG_bin = new ArrayList<>();
@@ -88,9 +88,16 @@ public class CstPsychometric {
 
 	// Fitted Data
 	public static double[] THETA_STAR = new double[4]; // k, m, h, w
+
+	// Traces (main)
 	public static ArrayList<Integer> trace_winlose = new ArrayList<>();
 	public static ArrayList<Double> trace_rho = new ArrayList<>();
 	public static ArrayList<Integer> trace_level = new ArrayList<>();
+	public static ArrayList<Integer> trace_score = new ArrayList<>();
+
+	// Score
+	public static boolean score_positive = true; // positive stack? or negative?
+	public static boolean score_switch = false;
 
 	// Using Fitted parameter
 	// Theta Star Load
@@ -105,6 +112,7 @@ public class CstPsychometric {
 		trace_winlose = new ArrayList<>();
 		trace_rho = new ArrayList<>();
 		trace_level = new ArrayList<>();
+		trace_score = new ArrayList<>();
 	}
 	
 	public static double calFitPSI(double rho) {
@@ -267,6 +275,21 @@ public class CstPsychometric {
 		int tnum = trace_level.size();
 		if (tnum == 0) return; // if not chasing and chased
 		trace_winlose.add(wl);
+		if (score_switch) updateScore(wl);
+	}
+
+	public static void updateScore(int wl) {
+		int tnum = trace_level.size();
+		int score_last = 0;
+		if (tnum > 1) {
+			score_last = trace_score.get(tnum-1);
+		}
+		if (score_positive) {
+			score_last += wl;
+		} else {
+			score_last += (wl-1);
+		}
+		trace_score.add(score_last);
 	}
 	
 	// usage

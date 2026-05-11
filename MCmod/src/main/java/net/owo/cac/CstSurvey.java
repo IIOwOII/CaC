@@ -22,6 +22,7 @@ import net.minecraftforge.event.TickEvent;
 import net.owo.cac.CstState;
 import net.owo.cac.CstRenderComponent;
 import net.owo.cac.CstTutorial;
+import net.owo.cac.CstPsychometric;
 import net.owo.cac.network.CacModVariables;
 
 import net.owo.cac.procedures.EvPulseRecordProcedure;
@@ -88,6 +89,9 @@ public class CstSurvey {
 			renderSurvey(gg, gw, gh, suv_id); // Render text
 			CstRenderComponent.renderSlide(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
 			CstRenderComponent.renderSlideText(gg, gw, gh); // Render Slide Text
+		} else if (suv_phase == 31) {
+			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
+			CstRenderComponent.renderScoreboard(gg, gw, gh);
 		}
 	}
 	
@@ -148,7 +152,11 @@ public class CstSurvey {
 		}
 		timer_blank = 0;
 		IsSurvey = true;
-		waitingSurvey();
+		if (!CstPsychometric.score_switch) {
+			waitingSurvey();
+		} else {
+			showScore();
+		}
 	}
 	public static void endSurvey() {
 		suv_phase = 30; // phase reset
@@ -158,6 +166,12 @@ public class CstSurvey {
 		}
 		EvQueImmediateProcedure.execute(); // next event
 		IsSurvey = false;
+	}
+
+	// scoreboard show
+	public static void showScore() { // phase 3.1
+		suv_phase = 31;
+		
 	}
 
 	// quiz by quiz

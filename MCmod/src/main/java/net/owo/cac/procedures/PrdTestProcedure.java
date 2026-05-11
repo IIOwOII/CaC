@@ -21,6 +21,10 @@ public class PrdTestProcedure {
 			net.owo.cac.CstSurvey.startSurvey();
 		} else if ((type).equals("surrender")) {
 			net.owo.cac.CstSurrender.startSurrender();
+		} else if ((type).equals("score")) {
+			net.owo.cac.CstSurvey.IsSurvey = true;
+			net.owo.cac.CstPsychometric.trace_score.add(net.owo.cac.CstPsychometric.trace_score.size());
+			net.owo.cac.CstSurvey.showScore();
 		} else if ((type).equals("move")) {
 			MeowViewOnProcedure.execute();
 			MeowMoveOnProcedure.execute();

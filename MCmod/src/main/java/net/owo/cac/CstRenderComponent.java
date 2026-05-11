@@ -9,6 +9,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 
+import net.owo.cac.CstPsychometric;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
@@ -32,6 +34,11 @@ public class CstRenderComponent {
 	public static ResourceLocation button_yes = new ResourceLocation("cac:textures/screens/button_yes.png");
 	public static ResourceLocation button_no = new ResourceLocation("cac:textures/screens/button_no.png");
 
+	public static ResourceLocation scoreboard = new ResourceLocation("cac:textures/screens/texture_scoreboard.png");
+	public static ResourceLocation scoreaxis = new ResourceLocation("cac:textures/screens/texture_scoreaxis.png");
+	public static ResourceLocation dot_default = new ResourceLocation("cac:textures/screens/dot_default.png");
+	public static ResourceLocation dot_lime = new ResourceLocation("cac:textures/screens/dot_lime.png");
+	
 	public static ResourceLocation icon_meowcam = new ResourceLocation("cac:textures/screens/icon_meowcam.png");
 	public static ResourceLocation icon_meowcam_off = new ResourceLocation("cac:textures/screens/icon_meowcam_off.png");
 	
@@ -115,6 +122,39 @@ public class CstRenderComponent {
 	}
 	public static void renderIconMeowcamOff(GuiGraphics gg) {
 		gg.blit(icon_meowcam_off, 0, 0, 0, 0, 24, 24, 24, 24);
+	}
+
+	// Scoreboard
+	public static void renderScoreboard(GuiGraphics gg, int gw, int gh) {
+		gg.blit(scoreboard, (gw/2)-192, (gh/2)-108, 0, 0, 384, 216, 384, 216);
+		int baseline = (gh/2);
+		if (CstPsychometric.score_positive) {
+			baseline += 90;
+		} else {
+			baseline -= 90;
+		}
+		gg.blit(scoreaxis, (gw/2)-180, baseline-9, 0, 0, 360, 18, 360, 18);
+		renderScore(gg, gw, gh, baseline-9);
+	}
+	public static void renderScore(GuiGraphics gg, int gw, int gh, int axis_y) {
+		int score_size = CstPsychometric.trace_score.size();
+		int score_temp = 0;
+		int x_tick = 10; // 320
+		int y_step = 10; // 180
+		if (score_size > 1) {
+			int score_x_offset = (gw/2) - (score_size-1)*(x_tick/2);
+			for (int i=0; i<score_size-1; i++) {
+				score_temp = CstPsychometric.trace_score.get(i);
+				int score_x = score_x_offset + x_tick*i;
+				int score_y = axis_y - score_temp*y_step;
+				gg.blit(dot_default, score_x, score_y, 0, 0, 8, 8, 8, 8);
+			}
+			score_temp = CstPsychometric.trace_score.get(score_size-1);
+			gg.blit(dot_lime, score_x_offset + x_tick*(score_size-1), axis_y - score_temp*y_step, 0, 0, 8, 8, 8, 8);
+		} else if (score_size == 1) {
+			score_temp = CstPsychometric.trace_score.get(0);
+			gg.blit(dot_lime, (gw/2), axis_y - score_temp*y_step, 0, 0, 8, 8, 8, 8);
+		}
 	}
 
 	// Color define

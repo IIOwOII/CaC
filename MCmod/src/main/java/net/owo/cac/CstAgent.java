@@ -69,6 +69,7 @@ public class CstAgent {
 	public static boolean show_path = false;
 	public static int timAi = 0;
 	
+	// 
 	public static boolean getSwitchAi() {return CacModVariables.Switch_AI;}
 	public static double getRho() {return CacModVariables.Dat_difficulty;}
 	
@@ -342,5 +343,4 @@ public class CstAgent {
 		}
 		return result;
 	}
-	
 }

@@ -15,7 +15,7 @@ public class TaskRegisterProcedure {
 	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments) {
 		CacModVariables.Exp_subject = StringArgumentType.getString(arguments, "subject");
 		CacModVariables.Exp_mode = StringArgumentType.getString(arguments, "mode");
-		if ((CacModVariables.Exp_mode).equals("fmri") || (CacModVariables.Exp_mode).equals("seeg")) {
+		if ((CacModVariables.Exp_mode).equals("fmri") || (CacModVariables.Exp_mode).equals("seeg") || (CacModVariables.Exp_mode).equals("beh")) {
 			CacModVariables.Dir_behaviors = FMLPaths.GAMEDIR.get().toString() + "/cacutil/behaviors/" + StringArgumentType.getString(arguments, "subject");
 			IniInfoTimestampProcedure.execute(world);
 			if (!world.isClientSide() && world.getServer() != null)
@@ -24,7 +24,7 @@ public class TaskRegisterProcedure {
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eDirectory: \u00A7r" + CacModVariables.Dir_behaviors)), false);
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7ePlease check the exp mode! (fmri, seeg)\u00A7r"), false);
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7ePlease check the exp mode! (fmri, seeg, beh)\u00A7r"), false);
 		}
 	}
 }
