@@ -38,6 +38,9 @@ public class CstRenderComponent {
 	public static ResourceLocation scoreaxis = new ResourceLocation("cac:textures/screens/texture_scoreaxis.png");
 	public static ResourceLocation dot_default = new ResourceLocation("cac:textures/screens/dot_default.png");
 	public static ResourceLocation dot_lime = new ResourceLocation("cac:textures/screens/dot_lime.png");
+	public static ResourceLocation line_r = new ResourceLocation("cac:textures/screens/texture_line_r.png");
+	public static ResourceLocation line_ru = new ResourceLocation("cac:textures/screens/texture_line_ru.png");
+	public static ResourceLocation line_rd = new ResourceLocation("cac:textures/screens/texture_line_rd.png");
 	
 	public static ResourceLocation icon_meowcam = new ResourceLocation("cac:textures/screens/icon_meowcam.png");
 	public static ResourceLocation icon_meowcam_off = new ResourceLocation("cac:textures/screens/icon_meowcam_off.png");
@@ -139,21 +142,30 @@ public class CstRenderComponent {
 	public static void renderScore(GuiGraphics gg, int gw, int gh, int axis_y) {
 		int score_size = CstPsychometric.trace_score.size();
 		int score_temp = 0;
+		int score_diff = 0;
 		int x_tick = 10; // 320
 		int y_step = 10; // 180
 		if (score_size > 1) {
 			int score_x_offset = (gw/2) - (score_size-1)*(x_tick/2);
 			for (int i=0; i<score_size-1; i++) {
 				score_temp = CstPsychometric.trace_score.get(i);
+				score_diff = CstPsychometric.trace_score.get(i+1) - score_temp;
 				int score_x = score_x_offset + x_tick*i;
 				int score_y = axis_y - score_temp*y_step;
-				gg.blit(dot_default, score_x, score_y, 0, 0, 8, 8, 8, 8);
+				if (score_diff == 1) {
+					gg.blit(line_ru, score_x-10, score_y-10, 0, 0, 20, 20, 20, 20);
+				} else if (score_diff == 0) {
+					gg.blit(line_r, score_x-10, score_y-10, 0, 0, 20, 20, 20, 20);
+				} else if (score_diff == -1) {
+					gg.blit(line_rd, score_x-10, score_y-10, 0, 0, 20, 20, 20, 20);
+				}
+				gg.blit(dot_default, score_x-4, score_y-4, 0, 0, 8, 8, 8, 8);
 			}
 			score_temp = CstPsychometric.trace_score.get(score_size-1);
-			gg.blit(dot_lime, score_x_offset + x_tick*(score_size-1), axis_y - score_temp*y_step, 0, 0, 8, 8, 8, 8);
+			gg.blit(dot_lime, score_x_offset+x_tick*(score_size-1)-4, axis_y-score_temp*y_step-4, 0, 0, 8, 8, 8, 8);
 		} else if (score_size == 1) {
 			score_temp = CstPsychometric.trace_score.get(0);
-			gg.blit(dot_lime, (gw/2), axis_y - score_temp*y_step, 0, 0, 8, 8, 8, 8);
+			gg.blit(dot_lime, (gw/2)-4, axis_y-score_temp*y_step-4, 0, 0, 8, 8, 8, 8);
 		}
 	}
 
