@@ -137,7 +137,7 @@ public class CstRenderComponent {
 			baseline -= 90;
 		}
 		gg.blit(scoreaxis, (gw/2)-180, baseline-9, 0, 0, 360, 18, 360, 18);
-		renderScore(gg, gw, gh, baseline-9);
+		renderScore(gg, gw, gh, baseline);
 	}
 	public static void renderScore(GuiGraphics gg, int gw, int gh, int axis_y) {
 		int score_size = CstPsychometric.trace_score.size();

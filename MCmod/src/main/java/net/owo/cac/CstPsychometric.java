@@ -70,7 +70,7 @@ public class CstPsychometric {
 
 	// Terminal Rule
 	public static double IG_THRESHOLD = 0.05; // How much the maximum IG must be less than.
-	public static int RAW_THRESHOLD = 5; // How many consecutive trials are required to satisfy the conditions.
+	public static int RAW_THRESHOLD = 3; // How many consecutive trials are required to satisfy the conditions.
 
 	// Traces (fit)
 	public static ArrayList<Double> trace_IG_bin = new ArrayList<>();
@@ -227,7 +227,7 @@ public class CstPsychometric {
 	public static double adjustRho() {
 		int LV_MIN = 0;
 		int LV_MAX = 10;
-		int NUM_RAWLOSE = 3;
+		int NUM_RAWLOSE = 4;
 
 		int lv = -1;
 		int tnum = trace_winlose.size();
@@ -275,14 +275,16 @@ public class CstPsychometric {
 		int tnum = trace_level.size();
 		if (tnum == 0) return; // if not chasing and chased
 		trace_winlose.add(wl);
-		if (score_switch) updateScore(wl);
+		if (score_switch) {
+			updateScore(wl);
+		}
 	}
 
 	public static void updateScore(int wl) {
 		int tnum = trace_level.size();
 		int score_last = 0;
 		if (tnum > 1) {
-			score_last = trace_score.get(tnum-1);
+			score_last = trace_score.get(tnum-2);
 		}
 		if (score_positive) {
 			score_last += wl;

@@ -5,6 +5,6 @@
     "commandName": "cac_score",
     "type": "STANDARD",
     "permissionLevel": "No requirement",
-    "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"logic\"><field name=\"name\">switch</field><statement name=\"args\"><block type=\"logic\"><field name=\"name\">positive</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\"></field></block></statement></block></statement></block></next></block></xml>"
+    "argsxml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"args_start\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"logic\"><field name=\"name\">switch</field><statement name=\"args\"><block type=\"logic\"><field name=\"name\">positive</field><statement name=\"args\"><block type=\"call_procedure\"><field name=\"procedure\">CacScore</field></block></statement></block></statement></block></next></block></xml>"
   }
 }

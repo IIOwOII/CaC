@@ -3896,6 +3896,52 @@
         ]
       },
       "path": "~/CacTask/Tutorial/Practice"
+    },
+    {
+      "name": "TaskScore",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "task_score",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/TaskScoreProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/General"
+    },
+    {
+      "name": "CmdScore",
+      "type": "command",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cmd_score",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/command/CmdScoreCommand.java"
+        ]
+      },
+      "path": "~/CacTask/Main"
+    },
+    {
+      "name": "CacScore",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cac_score",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/CacScoreProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "arguments",
+            "type": "cmdcontext"
+          }
+        ]
+      },
+      "path": "~/CacTask/Main"
     }
   ],
   "variable_elements": [

@@ -62,6 +62,7 @@ public class CstSurvey {
 	public static boolean IsTimer = false;
 	public static int timer_quiz = 0;
 	public static int timer_blank = 0;
+	public static int timer_score = 0;
 	public static int suv_phase = 30;
 
 	// trial by trial
@@ -112,6 +113,11 @@ public class CstSurvey {
 				timer_blank = timer_blank + 1;
 				if (timer_blank >= 20) {
 					progressSurvey();
+				}
+			} else if (suv_phase == 31) {
+				timer_score = timer_score + 1;
+				if (timer_score >= 60) {
+					waitingSurvey();
 				}
 			}
 		}
@@ -170,8 +176,10 @@ public class CstSurvey {
 
 	// scoreboard show
 	public static void showScore() { // phase 3.1
+		timer_score = 0;
 		suv_phase = 31;
-		
+		CacModVariables.Ev_pulse_content = ("show_score");
+		EvPulseRecordProcedure.execute();
 	}
 
 	// quiz by quiz
