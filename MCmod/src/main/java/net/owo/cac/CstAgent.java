@@ -49,6 +49,7 @@ import net.owo.cac.entity.EntPseudoMouseEntity;
 public class CstAgent {
 	public static int TIMELIMIT = 600;
 	public static double CONST_SPEED = 0.48989794855;
+	public static double CONST_DELTA = 0.1295154;
 	public static int CONST_PERIOD = 2; //
 
 	public static double SCA_PREDATOR = 15;
@@ -211,8 +212,25 @@ public class CstAgent {
 	}
 	public static void movePredator(LevelAccessor world, double speed) {
 		if (world.isClientSide() || ent_prey == null || ent_predator == null) return;
-		Vec3 dest = destPredator();
-		ent_predator.getNavigation().moveTo(dest.x(), dest.y(), dest.z(), speed);
+		double sf = 1;
+		if (label_predator == 0) {
+			sf = getRho();
+		}
+		Vec3 vec_pp = (ent_prey.position()).subtract(ent_predator.position());
+		double dist2d = Math.sqrt(Math.pow(vec_pp.x(), 2) + Math.pow(vec_pp.z(), 2));
+		if (dist2d > 2) {
+			Vec3 dest = destPredator();
+			ent_predator.getNavigation().moveTo(dest.x(), dest.y(), dest.z(), speed);
+		} else if (dist2d > 0.001) {
+			ent_predator.getNavigation().stop();
+			double vx = vec_pp.x() / dist2d * CONST_DELTA * sf;
+			double vz = vec_pp.z() / dist2d * CONST_DELTA * sf;
+			float yaw = (float)(Math.atan2(vec_pp.z(), vec_pp.x()) * 180.0 / Math.PI) - 90.0F;
+			ent_predator.setDeltaMovement(vx, ent_predator.getDeltaMovement().y, vz);
+			ent_predator.setYRot(yaw);
+			ent_predator.yBodyRot = yaw;
+			ent_predator.yHeadRot = yaw;
+		}
 	}
 	public static Vec3 destPredator() {
 		Vec3 vec_predator = Vec3.ZERO;
@@ -220,7 +238,7 @@ public class CstAgent {
 		vec_predator = ent_predator.position();
 		vec_prey = ent_prey.position();
 		Vec3 vec_pp = vec_prey.subtract(vec_predator);
-		Vec3 vec_destination = vec_prey.add(vec_pp.normalize());
+		Vec3 vec_destination = vec_prey.add((vec_pp.normalize()).scale(0.5));
 		return vec_destination;
 	}
 
