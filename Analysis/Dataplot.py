@@ -1,8 +1,7 @@
 #%% Library
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.colors import LinearSegmentedColormap
 
 import json
 import itertools
@@ -10,7 +9,8 @@ import math
 
 #%% plotting
 class meowfig:
-    def __init__(self, nrows=1, ncols=1, figsize=(4,3), dpi=300, design=True, **kwargs):
+    def __init__(self, nrows=1, ncols=1, figsize=(4,3), dpi=300, 
+                 design=True, grid=False, **kwargs):
         """
         Parameters
         ----------
@@ -26,6 +26,7 @@ class meowfig:
         # essential
         self.dpi = dpi
         self.design = design
+        self.grid = grid
         self.nrows = nrows
         self.ncols = ncols
         self.figsize = (figsize[0]*ncols, figsize[1]*nrows)
@@ -86,88 +87,12 @@ class meowfig:
                 if (self.yticks != None):
                     for ytick in self.yticks:
                         ax.axhline(ytick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
-
-# plot util
-def plot_setting(**kwargs):
-    # figure setting
-    fig, ax = plt.subplots(figsize=(4,3), dpi=300)
-    for side in ['right', 'top', 'bottom']:
-        ax.spines[side].set_visible(False)
-    
-    # additional setting
-    if ('title' in kwargs): ax.set_title(kwargs['title'])
-    if ('xlabel' in kwargs): ax.set_xlabel(kwargs['xlabel'])
-    if ('ylabel' in kwargs): ax.set_ylabel(kwargs['ylabel'])
-    if ('xlim' in kwargs):
-        xlim = kwargs['xlim']
-        xrange = xlim[1] - xlim[0]
-        ax.set_xlim([xlim[0]-0.02*xrange, xlim[1]+0.02*xrange])
-    if ('ylim' in kwargs):
-        ylim = kwargs['ylim']
-        yrange = ylim[1] - ylim[0]
-        ax.set_ylim([ylim[0]-0.02*yrange, ylim[1]+0.02*yrange])
-    if ('xticks' in kwargs): ax.set_xticks(kwargs['xticks'])
-    if ('yticks' in kwargs): ax.set_yticks(kwargs['yticks'])
-    if ('xticklabels' in kwargs): ax.set_xticklabels(kwargs['xticklabels'])
-    if ('yticklabels' in kwargs): ax.set_yticklabels(kwargs['yticklabels'])
-    
-    # figure design
-    ax.axhline(0, linewidth=0.6, linestyle='-', color='gray', zorder=-1)
-    if ('yticks' in kwargs):
-        for ytick in kwargs['yticks']:
-            ax.axhline(ytick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
-    return fig, ax
+                if (self.xticks != None) and (self.grid):
+                    for xtick in self.xticks:
+                        ax.axvline(xtick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
 
 
-# Difficulty - Win rate
-def plot_rho_p(rho, wl, rho_fit, PSI_fit):
-    # data sort
-    data = np.vstack((rho, wl))
-    sorted_idx = np.argsort(data)
-    sorted_data = data[:, sorted_idx[0]]
-    
-    # duple remove
-    c_rho = np.unique(rho)
-    c_p = np.array([np.mean(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
-    
-    # plot
-    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
-                           ylabel=r'$\Psi$'+' (Win Rate)',
-                           xlim=[0.7, 1.3], ylim=[0, 1],
-                           yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1])
-    ax.scatter(data[0], data[1], s=1, color='gray', alpha=0.2, zorder=0)
-    ax.scatter(c_rho, c_p, s=1, color=COLOR_BLUE_C, zorder=1)
-    ax.plot(rho_fit, PSI_fit, linewidth=1, color=COLOR_GREEN_C, zorder=2)
-    return fig, ax
-
-
-# Difficulty - time
-def plot_rho_t(rho, t_data, rho_fit, mu_fit):
-    # data normalize (T=30)
-    t_data = t_data/T
-    
-    # data sort
-    data = np.vstack((rho, t_data))
-    sorted_idx = np.argsort(data)
-    sorted_data = data[:, sorted_idx[0]]
-    
-    # duple remove
-    c_rho = np.unique(rho)
-    c_t = np.array([np.mean(sorted_data[1], where=(sorted_data[0]==r)) for r in c_rho])
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
-                           ylabel=r'$t$'+' (Trial Time)',
-                           xlim=[0.7, 1.3], ylim=[0.0, 1.67],
-                           yticks=[0, 0.5, 1, 1.5], yticklabels=[0, 15, 30, 45])
-    
-    # plot
-    ax.axhline(1, linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, zorder=-1)
-    ax.scatter(rho, t_data, s=1, color='k', alpha=0.2, zorder=0)
-    ax.scatter(c_rho, c_t, s=1, color=COLOR_BLUE_C, zorder=1)
-    ax.plot(rho_fit, mu_fit/T, linewidth=1, color=COLOR_GREEN_C, zorder=2)
-    return fig, ax
-
+#%% Util
 def psi_heatmap(dat_t, dat_rho, fit_theta, task_name):
     dt = 0.1
     ts = np.round(np.arange(dt, 50+dt, dt), 2)
@@ -179,105 +104,26 @@ def psi_heatmap(dat_t, dat_rho, fit_theta, task_name):
     c_rho = np.array([np.where(rh==r)[0][0] for r in dat_rho])
     return z, c_rho, c_t
     
-# trial - NIG
-def plot_trial_nig(nig):
-    # data
-    c_n = np.arange(nig.shape[0])
-    c_nig = nig
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', 
-                           ylabel=r'$NIG$'+' (Normalized information gain)')
-    
-    # plot
-    ax.plot(c_n, c_nig, color=COLOR_BLUE_C, zorder=1)
-    return fig, ax
-
-
-# trial - rho best
-def plot_trial_rho(sampled_rho):
-    # data
-    sampled_rho = np.array(sampled_rho)
-    c_n = np.arange(sampled_rho.shape[0])
-    c_rho = sampled_rho
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', 
-                           ylabel=r'$\rho$'+' (Difficulty maximize IG)',
-                           xlim=[0, c_n.shape[0]], ylim=[0.7, 1.3],
-                           yticks=np.arange(0.7, 1.31, 0.1))
-    
-    # plot
-    ax.plot(c_n, c_rho, color=COLOR_BLUE_C, zorder=1)
-    return fig, ax
-    
-
-# trial - entropy
-def plot_trial_H(Hs):
-    # data
-    c_n = np.arange(Hs.shape[0])
-    c_h = Hs
-    h_max = np.log(180000) # temp
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', ylabel=r'$H$'+' (Entropy)',
-                           xlim=[0, c_n.shape[0]], ylim=[0, h_max],
-                           yticks=np.arange(2, h_max, 2))
-    
-    # plot
-    ax.plot(c_n, c_h, color=COLOR_BLUE_C, zorder=1)
-    return fig, ax
-
-
-# parameter likelihood
-def plot_theta_L(L, theta_shape, theta_prior, theta_name):
-    # caution: theta length is 4.
-    # theta info
-    theta_shape = np.array(theta_shape)
-    theta_prior = np.array(theta_prior)
-    theta_num = theta_shape.shape[0]
-    theta_min = -theta_prior
-    theta_max = theta_shape - theta_prior
-    
-    # Data
-    c_theta = []
-    c_L = []
-    L = L.reshape(theta_shape)
-    L_axis = np.arange(theta_num)
-    for i in range(theta_num):
-        c_theta.append(np.arange(theta_min[i], theta_max[i]))
-        sum_axis = tuple(np.delete(L_axis, i))
-        c_L.append(np.log(np.sum(np.exp(L), axis=sum_axis)))
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$\Delta\theta$'+' (Parameter distance)',
-                           ylabel=r'$L$'+' (Normalized log likelihood)')
-    
-    # plot
-    for j in range(theta_num):
-        line = ax.plot(c_theta[j], c_L[j])
-        line[0].set_label(theta_name[j])
-    plt.legend()
-    return fig, ax
-
-
-# trial - maxEIG
-def plot_trial_maxEIG(maxEIGs):
-    # data
-    c_n = np.arange(maxEIGs.shape[0])
-    c_eig = maxEIGs
-    eig_max = max(maxEIGs)
-    
-    # figure setting
-    fig, ax = plot_setting(xlabel=r'$N$'+' (Trial)', ylabel=r'$maxEIG$'+' (max expected info gain)',
-                           xlim=[0, c_n.shape[0]], ylim=[0, eig_max],
-                           yticks=np.arange(0, eig_max, 0.05))
-    
-    # plot
-    ax.plot(c_n, c_eig, color=COLOR_BLUE_C, zorder=1)
-    ax.axhline(0.05, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=2)
-    return fig, ax
-
+# surrender vote interval making
+def sort_surrender(trace_vote):
+    # if n=0, 4, 5, 8 is surrender,
+    # return [0,1], [4,6], [8,9]
+    N = trace_vote.shape[0]
+    range_vote = []
+    range_vote_temp = [-1, -1]
+    if (trace_vote[0]==0): # if surrender on first trial
+        range_vote_temp[0] = 0
+    for i in range(1, N):
+        if (trace_vote[i-1]==1 and trace_vote[i]==0):
+            range_vote_temp[0] = i
+        if (trace_vote[i-1]==0 and trace_vote[i]==1):
+            range_vote_temp[1] = i
+            range_vote.append(range_vote_temp.copy())
+            range_vote_temp = [-1, -1]
+    if range_vote_temp[0] != -1: # if surrender on last trial
+        range_vote_temp[1] = N
+        range_vote.append(range_vote_temp.copy())
+    return range_vote
 
 #%% Functions
 # rho - P
@@ -338,7 +184,6 @@ def cal_Mu(rho_hat, theta):
     mu = np.where(rho_hat >= (h-w)+w/(M-m), T*(m+(1.0/(1+((rho_hat-h)/w)))), M*T)
     return mu
 
-
 def cal_X_coef(theta):
     # theta = [k, m, h, w]
     # X = k*t/mu
@@ -347,7 +192,7 @@ def cal_X_coef(theta):
     x_coef = k/MU
     return x_coef
 
-
+        
 #%% Color Map (MANIM)
 COLOR_RED_C = '#FC6255'
 COLOR_BLUE_C = '#58C4DD'
@@ -355,6 +200,8 @@ COLOR_GREEN_C = '#83C167'
 COLOR_YELLOW_C = '#F7D96F'
 COLOR_PURPLE_C = '#9A72AC'
 COLOR_GOLD_C = '#F0AC5F'
+COLOR_JERRY = LinearSegmentedColormap.from_list('jerry', ['#A46E24','#CA8628','#E9A547'])
+COLOR_TOM = LinearSegmentedColormap.from_list('tom', ['#6D6C6D','#998999','#CAC4C4'])
 
 # hyp
 T = 30
@@ -366,6 +213,12 @@ RHO = np.round(np.linspace(0.7, 1.29, RHO_SIZE), 2)
 M = 100.0
 dir_comp = '../MCmod/run/cacutil/components'
 dir_beh = '../../CaC_Data'
+
+# Point load
+with open(f'{dir_comp}/pool_point.json', 'r') as f:
+    pool_point = json.load(f)
+border_start = pool_point['border']['start']
+border_end = pool_point['border']['end']
 
 # Param load
 with open(f'{dir_comp}/pool_psychometric.json', 'r') as f_psy:
@@ -406,7 +259,9 @@ for TASK_NAME in ['chasing', 'chased']:
     dat_suv = []
     dat_play = []
     dat_sur = []
+    dat_pos = []
     
+    # Trace (fit)
     ftra_length = []
     ftra_wl = []
     ftra_t = []
@@ -417,10 +272,33 @@ for TASK_NAME in ['chasing', 'chased']:
     ftra_rho_wl = []
     ftra_rho_wl_sorted = []
     
+    # Trace (main)
+    tra_wl = []
+    tra_t = []
+    tra_rho = []
+    tra_rho_wl = []
+    tra_rho_wl_sorted = []
+    
+    # Trace (survey & surrender)
+    stra_score = []
+    stra_score_t = []
+    stra_vote = []
+    stra_vote_t = []
+    stra_vote_range = []
+    
+    # Trace (theta)
     theta_star = []
     theta_PSI = []
     
-    for subj in SUBJECTS:
+    # Trace (Position)
+    ptra_pred_x = np.full((len(SUBJECTS), 20, 600), np.nan)
+    ptra_pred_z = np.full((len(SUBJECTS), 20, 600), np.nan)
+    ptra_pred_r = np.full((len(SUBJECTS), 20, 600), np.nan)
+    ptra_prey_x = np.full((len(SUBJECTS), 20, 600), np.nan)
+    ptra_prey_z = np.full((len(SUBJECTS), 20, 600), np.nan)
+    ptra_prey_r = np.full((len(SUBJECTS), 20, 600), np.nan)
+    
+    for idx, subj in enumerate(SUBJECTS):
         with open(f'{dir_beh}/{subj}/fitting_{TASK_NAME}/log_fitting.json', 'r') as f:
             fdat_fit.append(json.load(f)['cac'])
         with open(f'{dir_beh}/{subj}/fitting_{TASK_NAME}/log_gameplay.json', 'r') as f:
@@ -431,6 +309,8 @@ for TASK_NAME in ['chasing', 'chased']:
             dat_play.append(json.load(f)['cac'])
         with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_surrender.json', 'r') as f:
             dat_sur.append(json.load(f)['cac'])
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_position.json', 'r') as f:
+            dat_pos.append(json.load(f)['cac'])
         
         ftra_wl.append(np.array(fdat_play[-1]['winlose']))
         ftra_t.append(np.round(np.array(fdat_play[-1]['time'])/TPS, 1)) # sec
@@ -442,12 +322,35 @@ for TASK_NAME in ['chasing', 'chased']:
         ftra_rho_wl.append(np.vstack((ftra_rho[-1], ftra_wl[-1]))) # data sort
         ftra_rho_wl_sorted.append(ftra_rho_wl[-1][:, np.argsort(ftra_rho_wl[-1])[0]])
         
+        tra_wl.append(np.array(dat_play[-1]['winlose']))
+        tra_t.append(np.round(np.array(dat_play[-1]['time'])/TPS, 1))
+        tra_rho.append(np.array(dat_play[-1]['difficulty']))
+        tra_rho_wl.append(np.vstack((tra_rho[-1], tra_wl[-1]))) # data sort
+        tra_rho_wl_sorted.append(tra_rho_wl[-1][:, np.argsort(tra_rho_wl[-1])[0]])
+        
+        stra_score.append(np.array([dat_suv[-1][f'trial_{i}']['answer'] for i in range(20)]))
+        stra_score_t.append(np.array([dat_suv[-1][f'trial_{i}']['time'] for i in range(20)]))
+        stra_vote.append(np.array([dat_sur[-1][f'trial_{i}']['answer'] for i in range(20)]))
+        stra_vote_t.append(np.array([dat_sur[-1][f'trial_{i}']['time'] for i in range(20)]))
+        stra_vote[-1][stra_vote_t[-1]<=5] = 1 # mistake adjust
+        stra_vote_range.append(sort_surrender(stra_vote[-1]))
+        
         theta_star_idx = np.where(np.all(theta_con_idx == ftra_theta[-1][-1], axis=1))[0][0]
         theta_star.append(theta_con[theta_star_idx])
         theta_PSI.append(P_con[:, theta_star_idx])
         
+        for j in range(20):
+            pos_pred = dat_pos[-1][f'trial_{j}']['gameplay']['predator']
+            pos_prey = dat_pos[-1][f'trial_{j}']['gameplay']['prey']
+            ptra_pred_x[idx,j,:len(pos_pred['x'])] = pos_pred['x']
+            ptra_pred_z[idx,j,:len(pos_pred['z'])] = pos_pred['z']
+            ptra_pred_r[idx,j,:len(pos_pred['r'])] = pos_pred['r']
+            ptra_prey_x[idx,j,:len(pos_prey['x'])] = pos_prey['x']
+            ptra_prey_z[idx,j,:len(pos_prey['z'])] = pos_prey['z']
+            ptra_prey_r[idx,j,:len(pos_prey['r'])] = pos_prey['r']
+    
     # Plot
-    # Difficulty - Win rate
+    # Difficulty - Win rate (fit)
     fig_rho_p_fit = meowfig(nrows=1, ncols=len(SUBJECTS),
                             xlabel=r'$\rho$'+' (Difficulty)', 
                             ylabel=r'$\Psi$'+' (Win Rate)',
@@ -462,9 +365,9 @@ for TASK_NAME in ['chasing', 'chased']:
         c_p = np.array([np.mean(ftra_rho_wl_sorted[i][1], where=(ftra_rho_wl_sorted[i][0]==r)) for r in c_rho])
         ax.scatter(c_rho, c_p, s=1, color=COLOR_BLUE_C, zorder=1)
         ax.plot(RHO, theta_PSI[i], linewidth=1, color=COLOR_GOLD_C, zorder=2)
-        ax.set_title(f'{subj}-{TASK_NAME}')
+        ax.set_title(f'{subj}-{TASK_NAME} (fit)')
     
-    # Difficulty - Time
+    # Difficulty - Time (fit)
     fig_rho_t_fit = meowfig(nrows=1, ncols=len(SUBJECTS),
                             xlabel=r'$\rho$'+' (Difficulty)', 
                             ylabel=r'$t$'+' (Time)',
@@ -478,73 +381,105 @@ for TASK_NAME in ['chasing', 'chased']:
         ax.imshow(z, origin='lower', aspect='auto', cmap='YlGn')
         ax.axhline(299, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=1)
         ax.scatter(c_rho, c_t, s=1, color='k', zorder=2)
+        ax.set_title(f'{subj}-{TASK_NAME} (fit)')
+    
+    # Trial - maxEIG (fit)
+    max_trial_fit = 25
+    fig_maxEIG_fit = meowfig(nrows=1, ncols=len(SUBJECTS),
+                             xlabel=r'$N$'+' (Trial)',
+                             ylabel='max expected information gain',
+                             xlim=[0, max_trial_fit], ylim=[0, 0.4],
+                             xticks=[0, 5, 10, 15, 20, 25],
+                             yticks=[0, 0.1, 0.2, 0.3, 0.4],
+                             yoffset=0)
+    for i, ax in enumerate(fig_maxEIG_fit.axes[0]):
+        subj = SUBJECTS[i]
+        ax.plot(np.arange(ftra_maxEIG[i].shape[0]), ftra_maxEIG[i], color=COLOR_BLUE_C, zorder=1)
+        ax.axhline(0.05, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=2)
+        ax.set_title(f'{subj}-{TASK_NAME} (fit)')
+    
+    # Trial - Entropy (fit)
+    '''
+    max_H_fit = np.log(theta_con.shape[0])
+    fig_H_fit = meowfig(nrows=1, ncols=len(SUBJECTS),
+                        xlabel=r'$N$'+' (Trial)',
+                        ylabel=r'$log(H)$'+' (Entropy)',
+                        xlim=[0, max_trial_fit], ylim=[8, max_H_fit],
+                        xticks=[0, 5, 10, 15, 20, 25],
+                        yticks=[8, 10, 12])
+    for i, ax in enumerate(fig_H_fit.axes[0]):
+        subj = SUBJECTS[i]
+        ax.plot(np.arange(ftra_H[i].shape[0]), ftra_H[i], color=COLOR_BLUE_C, zorder=1)
+        ax.set_title(f'{subj}-{TASK_NAME} (fit)')
+    '''
+    
+    # Trial - Score (survey & surrender)
+    max_trial = 20
+    fig_score = meowfig(nrows=1, ncols=len(SUBJECTS),
+                        xlabel=r'$N$'+' (Trial)',
+                        ylabel='Survey Answer',
+                        xlim=[0, max_trial], ylim=[0, 100],
+                        xticks=[0, 5, 10, 15, 20],
+                        yticks=[0, 50, 100], yticklabels=['No', '', 'Yes'])
+    for i, ax in enumerate(fig_score.axes[0]):
+        subj = SUBJECTS[i]
+        ax.plot(np.arange(max_trial), stra_score[i], linewidth=0.5,
+                label=['is hard?','stress','willing','can win?'])
+        if (len(stra_vote_range[i]) != 0):
+            for j in stra_vote_range[i]:
+                ax.fill_between(j, [0,0], [100,100], color=COLOR_RED_C, alpha=0.2, edgecolor='none')
+        ax.set_title(f'{subj}-{TASK_NAME}')
+    fig_score.axes[0][-1].legend()
+    
+    # Difficulty - Win rate
+    fig_rho_p = meowfig(nrows=1, ncols=len(SUBJECTS),
+                        xlabel=r'$\rho$'+' (Difficulty)', 
+                        ylabel=r'$\Psi$'+' (Win Rate)',
+                        xlim=[0.7, 1.3], ylim=[0, 1],
+                        yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1],
+                        yoffset=0)
+    for i, ax in enumerate(fig_rho_p.axes[0]):
+        subj = SUBJECTS[i]
+        ax.scatter(tra_rho_wl[i][0], tra_rho_wl[i][1],
+                   s=1, color='gray', alpha=0.2, zorder=0)
+        c_rho = np.unique(tra_rho[i]) # duple remove
+        c_p = np.array([np.mean(tra_rho_wl_sorted[i][1], where=(tra_rho_wl_sorted[i][0]==r)) for r in c_rho])
+        ax.scatter(c_rho, c_p, s=1, color=COLOR_BLUE_C, zorder=1)
+        ax.plot(RHO, theta_PSI[i], linewidth=1, color=COLOR_GOLD_C, zorder=2)
         ax.set_title(f'{subj}-{TASK_NAME}')
     
-    
-    
-    #plot_trial_maxEIG(trace_maxEIG)
-    #plt.title(f'{SUBJECT}-{TASK_NAME}')
-    
-    # for subj in SUBJECTS:
-    #     fig, ax = plot_setting(xlabel='Trials', 
-    #                            ylabel='Score',
-    #                            xlim=[0, 20], ylim=[0, 100],
-    #                            yticks=[0, 50, 100], yticklabels=[0, 50, 100]) # plot
-    #     suv_ans = np.array([dat_suv[subj][suv]['answer'] for suv in dat_suv[subj]])
-    #     ax.plot(np.arange(0,20), suv_ans, label=['perdiff','stress','willing','predwin'])
-    #     plt.title(f'{SUBJECT}-{TASK_NAME}-Survey')
-    #     ax.legend()
+    # Difficulty - Time
+    fig_rho_t = meowfig(nrows=1, ncols=len(SUBJECTS),
+                        xlabel=r'$\rho$'+' (Difficulty)', 
+                        ylabel=r'$t$'+' (Time)',
+                        xticks=[0, 10, 20, 30, 40, 50, 60], 
+                        xticklabels=[0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3],
+                        yticks=[99, 199, 299, 399, 499], 
+                        yticklabels=[10, 20, 30, 40, 50])
+    for i, ax in enumerate(fig_rho_t.axes[0]):
+        subj = SUBJECTS[i]
+        z, c_rho, c_t = psi_heatmap(tra_t[i], np.round(tra_rho[i], 2), theta_star[i], TASK_NAME)
+        ax.imshow(z, origin='lower', aspect='auto', cmap='YlGn')
+        ax.axhline(299, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=1)
+        ax.scatter(c_rho, c_t, s=1, color='k', zorder=2)
+        ax.set_title(f'{subj}-{TASK_NAME}')
         
-    #     fig, ax = plot_setting(xlabel='Trials', 
-    #                            ylabel='Time(sec)',
-    #                            xlim=[0, 20], ylim=[0, 30],
-    #                            yticks=[0, 15, 30], yticklabels=[0, 15, 30]) # plot
-    #     suv_t = np.array([dat_suv[subj][suv]['time'] for suv in dat_suv[subj]])/20
-    #     ax.plot(np.arange(0,20), suv_t, label=['perdiff','stress','willing','predwin'])
-    #     plt.title(f'{SUBJECT}-{TASK_NAME}-Survey')
-    #     ax.legend()
-    
-    
-    #     # surrender (ans)
-    #     fig, ax = plot_setting(xlabel='Trials', 
-    #                            xlim=[0, 20], ylim=[0, 1],
-    #                            yticks=[0, 1], yticklabels=['quit', 'go']) # plot
-    #     sur_ans = np.array([dat_sur[subj][sur]['answer'] for sur in dat_sur[subj]])
-    #     line1 = ax.plot(np.arange(0,20), sur_ans, color='r', label='vote')
-    #     plt.title(f'{subj}-{TASK_NAME}-Surrender')
-    
-    #     # surrender (t)
-    #     ax2 = ax.twinx()
-    #     sur_t = np.array([dat_sur[subj][sur]['time'] for sur in dat_sur[subj]])/20
-    #     line2 = ax2.plot(np.arange(0,20), sur_t, color='b', label='time')
-    #     for side in ['left', 'top', 'bottom']:
-    #         ax2.spines[side].set_visible(False)
-    #     plt.ylabel('time')
-    #     lines = line1 + line2
-    #     labels = [line.get_label() for line in lines]
-    #     ax.legend(lines, labels)
-    
-    
-    #     # surrender (ans)
-    #     fig, ax = plot_setting(xlabel='Trials', 
-    #                            xlim=[0, 20], ylim=[0, 100],
-    #                            yticks=[0, 50, 100], yticklabels=[0, 50, 100]) # plot
-    #     suv_ans = np.array([dat_suv[subj][suv]['answer'][0] for suv in dat_suv[subj]])
-    #     line1 = ax.plot(np.arange(0,20), suv_ans, color='b', label='perdiff')
-    #     plt.title(f'{subj}-{TASK_NAME}-perdiff and realdiff')
-    #     ax.set_ylabel('survey answer score')
-        
-    #     ax2 = ax.twinx()
-    #     ax2.set_ylim([0,100])
-    #     ax2.set_yticks([0,50,100])
-    #     ax2.set_yticklabels([100,50,0])
-    #     ax2.set_ylabel('(%)')
-    #     p_win = np.array(dat_play[subj]['predicted']['winrate'])*100
-    #     line2 = ax2.plot(np.arange(0,20), 100-p_win, color='g', label='winrate by curve')
-    #     for side in ['left', 'top', 'bottom']:
-    #         ax2.spines[side].set_visible(False)
-    #     lines = line1 + line2
-    #     labels = [line.get_label() for line in lines]
-    #     ax.legend(lines, labels)
+    # Position
+    play_time = np.linspace(0.05, 30, 600)
+    fig_pos = meowfig(nrows=1, ncols=len(SUBJECTS), grid=True, 
+                      xlabel=r'$x$', ylabel=r'$z$',
+                      xlim=[border_start[0], border_end[0]],
+                      ylim=[border_start[2], border_end[2]],
+                      xticks=np.arange(border_start[0],border_end[0]+1,8).tolist(),
+                      yticks=np.arange(border_start[2],border_end[2]+1,8).tolist())
+    for i, ax in enumerate(fig_pos.axes[0]):
+        subj = SUBJECTS[i]
+        sca_tom = ax.scatter(ptra_pred_x[i,-1], ptra_pred_z[i,-1], s=0.1, 
+                             c=play_time, cmap=COLOR_TOM)
+        sca_jerry = ax.scatter(ptra_prey_x[i,-1], ptra_prey_z[i,-1], s=0.1, 
+                               c=play_time, cmap=COLOR_JERRY)
+        ax.set_title(f'{subj}-{TASK_NAME}')
+    #fig_pos.fig.colorbar(sca_tom, ax=fig_pos.axes[0][-1])
+    #fig_pos.fig.colorbar(sca_jerry, ax=fig_pos.axes[0][-1])
     
     plt.show()
