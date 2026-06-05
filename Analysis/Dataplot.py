@@ -6,6 +6,7 @@ from matplotlib.colors import LinearSegmentedColormap
 import json
 import itertools
 import math
+from glob import glob
 
 #%% plotting
 class meowfig:
@@ -210,6 +211,7 @@ P_MIN = 1.0E-12
 P_MAX = 1 - 1.0E-12
 RHO_SIZE = 60
 RHO = np.round(np.linspace(0.7, 1.29, RHO_SIZE), 2)
+
 M = 100.0
 dir_comp = '../MCmod/run/cacutil/components'
 dir_beh = '../../CaC_Data'
