@@ -37,6 +37,9 @@ public class IniLogProcedure {
 		if (CacModVariables.Exp_property.contains("G")) {
 			IniLogGameplayProcedure.execute();
 		}
+		if (CacModVariables.Exp_property.contains("A")) {
+			IniLogActionProcedure.execute();
+		}
 		if (CacModVariables.Exp_property.contains("S")) {
 			IniLogSurveyProcedure.execute();
 		}

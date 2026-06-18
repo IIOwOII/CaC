@@ -1,6 +1,7 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CstPsychometric;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
@@ -38,6 +39,11 @@ public class CapManageProcedure {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+		if ((CacModVariables.Exp_mode).equals("seeg")) {
+			CstPsychometric.adjustIG(0.08);
+		} else {
+			CstPsychometric.adjustIG(0.05);
 		}
 		if ((CacModVariables.Psy_method).equals(".")) {
 			CacModVariables.Psy_method = "continuous";

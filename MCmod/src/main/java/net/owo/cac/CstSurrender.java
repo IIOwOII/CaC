@@ -87,6 +87,9 @@ public class CstSurrender {
 		sur_time = 0;
 		sur_select = -1;
 		IsSurrender = true;
+		if ((CacModVariables.Exp_mode).equals("seeg")) {
+			CstRenderComponent.renderPatchToggle();
+		}
 	}
 	
 	public static void endSurrender() {
@@ -97,6 +100,9 @@ public class CstSurrender {
 		}
 		EvQueImmediateProcedure.execute();
 		IsSurrender = false;
+		if ((CacModVariables.Exp_mode).equals("seeg")) {
+			CstRenderComponent.renderPatchToggle();
+		}
 	}
 	
 	public static void confirmSurrender() {

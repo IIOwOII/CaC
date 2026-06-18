@@ -6,7 +6,6 @@ from matplotlib.colors import LinearSegmentedColormap
 import json
 import itertools
 import math
-from glob import glob
 
 #%% plotting
 class meowfig:
@@ -92,6 +91,16 @@ class meowfig:
                     for xtick in self.xticks:
                         ax.axvline(xtick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
 
+# Color Map (MANIM)
+COLOR_RED_C = '#FC6255'
+COLOR_BLUE_C = '#58C4DD'
+COLOR_GREEN_C = '#83C167'
+COLOR_YELLOW_C = '#F7D96F'
+COLOR_PURPLE_C = '#9A72AC'
+COLOR_GOLD_C = '#F0AC5F'
+COLOR_JERRY = LinearSegmentedColormap.from_list('jerry', ['#A46E24','#CA8628','#E9A547'])
+COLOR_TOM = LinearSegmentedColormap.from_list('tom', ['#6D6C6D','#998999','#CAC4C4'])
+
 
 #%% Util
 def psi_heatmap(dat_t, dat_rho, fit_theta, task_name):
@@ -126,6 +135,39 @@ def sort_surrender(trace_vote):
         range_vote.append(range_vote_temp.copy())
     return range_vote
 
+# winlose interval making
+def sort_winlose(trace_wl):
+    # if n=0, 4, 5, 8 is surrender,
+    # return [0,1], [4,6], [8,9]
+    N = trace_wl.shape[0]
+    range_win = []
+    range_lose = []
+    range_win_temp = [-1, -1]
+    range_lose_temp = [-1, -1]
+    if (trace_wl[0]==1):
+        range_win_temp[0] = 0
+    else:
+        range_lose_temp[0] = 0
+    for i in range(1, N):
+        if (trace_wl[i-1]==1 and trace_wl[i]==0):
+            range_win_temp[1] = i
+            range_lose_temp[0] = i
+            range_win.append(range_win_temp.copy())
+            range_win_temp = [-1,-1]
+        elif (trace_wl[i-1]==0 and trace_wl[i]==1):
+            range_win_temp[0] = i
+            range_lose_temp[1] = i
+            range_lose.append(range_lose_temp.copy())
+            range_lose_temp = [-1,-1]
+    if (range_win_temp[0] != -1):
+        range_win_temp[1] = N
+        range_win.append(range_win_temp.copy())
+    elif (range_lose_temp[0] != -1):
+        range_lose_temp[1] = N
+        range_lose.append(range_lose_temp.copy())
+    return range_win, range_lose
+
+
 #%% Functions
 # rho - P
 def cal_Polyexp_PSI(rho_hat, theta, task_name):
@@ -153,7 +195,6 @@ def cal_Polyexp_PSI(rho_hat, theta, task_name):
     elif (task_name == 'chased'): PSI = 1-P_hit
     return PSI
 
-
 def cal_Polyexp_PSI_opt(rho_hat, theta_star, task_name):
     k, m, h, w = theta_star # theta = [k, m, h, w]
     # 1 - e^(-X) * (X^0/0! + X^1/1! + ... + X^(k-1)/(k-1)!)
@@ -177,7 +218,6 @@ def cal_Polyexp_psi_opt(t, rho_hat, theta_star):
     psi = ((x**k)*np.exp(-x))/(t*math.gamma(k))
     return psi
 
-
 def cal_Mu(rho_hat, theta):
     # theta = [k, m, h, w]
     rho_hat = np.repeat(rho_hat.reshape(-1,1), theta.shape[0], axis=-1)
@@ -193,18 +233,8 @@ def cal_X_coef(theta):
     x_coef = k/MU
     return x_coef
 
-        
-#%% Color Map (MANIM)
-COLOR_RED_C = '#FC6255'
-COLOR_BLUE_C = '#58C4DD'
-COLOR_GREEN_C = '#83C167'
-COLOR_YELLOW_C = '#F7D96F'
-COLOR_PURPLE_C = '#9A72AC'
-COLOR_GOLD_C = '#F0AC5F'
-COLOR_JERRY = LinearSegmentedColormap.from_list('jerry', ['#A46E24','#CA8628','#E9A547'])
-COLOR_TOM = LinearSegmentedColormap.from_list('tom', ['#6D6C6D','#998999','#CAC4C4'])
 
-# hyp
+#%% hyp
 T = 30
 TPS = 20
 P_MIN = 1.0E-12
@@ -221,6 +251,10 @@ with open(f'{dir_comp}/pool_point.json', 'r') as f:
     pool_point = json.load(f)
 border_start = pool_point['border']['start']
 border_end = pool_point['border']['end']
+with open(f'{dir_comp}/info_obstacle.json', 'r') as f:
+    info_obs = json.load(f)
+point_wall = np.array(info_obs['wall_point']).T
+point_obs = np.array(info_obs['obstacle_point']).T
 
 # Param load
 with open(f'{dir_comp}/pool_psychometric.json', 'r') as f_psy:
@@ -233,9 +267,6 @@ theta_con = []
 for i in range(4):
     theta_con.append(np.round(np.linspace(psy_con['min'][i], psy_con['max'][i]-psy_con['step'][i], psy_con['shape'][i]), 3))
 theta_con = np.array(list(itertools.product(*theta_con)))
-
-# init Prior
-theta_con_prior = np.array(psy_con['prior'])
 theta_con_idx = np.array(list(itertools.product(*[np.arange(psy_con['shape'][i]) for i in range(4)])))
 
 
@@ -280,6 +311,8 @@ for TASK_NAME in ['chasing', 'chased']:
     tra_rho = []
     tra_rho_wl = []
     tra_rho_wl_sorted = []
+    tra_win_range = []
+    tra_lose_range = []
     
     # Trace (survey & surrender)
     stra_score = []
@@ -305,13 +338,13 @@ for TASK_NAME in ['chasing', 'chased']:
             fdat_fit.append(json.load(f)['cac'])
         with open(f'{dir_beh}/{subj}/fitting_{TASK_NAME}/log_gameplay.json', 'r') as f:
             fdat_play.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_survey.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_survey.json', 'r') as f:
             dat_suv.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_gameplay.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_gameplay.json', 'r') as f:
             dat_play.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_surrender.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_surrender.json', 'r') as f:
             dat_sur.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_position.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_position.json', 'r') as f:
             dat_pos.append(json.load(f)['cac'])
         
         ftra_wl.append(np.array(fdat_play[-1]['winlose']))
@@ -329,6 +362,9 @@ for TASK_NAME in ['chasing', 'chased']:
         tra_rho.append(np.array(dat_play[-1]['difficulty']))
         tra_rho_wl.append(np.vstack((tra_rho[-1], tra_wl[-1]))) # data sort
         tra_rho_wl_sorted.append(tra_rho_wl[-1][:, np.argsort(tra_rho_wl[-1])[0]])
+        tra_win_temp, tra_lose_temp = sort_winlose(tra_wl[-1])
+        tra_win_range.append(tra_win_temp.copy())
+        tra_lose_range.append(tra_lose_temp.copy())
         
         stra_score.append(np.array([dat_suv[-1][f'trial_{i}']['answer'] for i in range(20)]))
         stra_score_t.append(np.array([dat_suv[-1][f'trial_{i}']['time'] for i in range(20)]))
@@ -427,9 +463,19 @@ for TASK_NAME in ['chasing', 'chased']:
         subj = SUBJECTS[i]
         ax.plot(np.arange(max_trial), stra_score[i], linewidth=0.5,
                 label=['is hard?','stress','willing','can win?'])
-        if (len(stra_vote_range[i]) != 0):
-            for j in stra_vote_range[i]:
+        if (len(tra_win_range[i]) != 0):
+            for j in tra_win_range[i]:
+                ax.fill_between(j, [0,0], [100,100], color=COLOR_GREEN_C, alpha=0.2, edgecolor='none')
+        if (len(tra_lose_range[i]) != 0):
+            for j in tra_lose_range[i]:
                 ax.fill_between(j, [0,0], [100,100], color=COLOR_RED_C, alpha=0.2, edgecolor='none')
+        stra_vote_index = np.where(stra_vote[i]==0)[0]
+        if (stra_vote_index.shape[0] != 0):
+            ax.scatter(stra_vote_index+0.5, np.ones(stra_vote_index.shape[0])*100, 
+                       s=10, marker='^', color=COLOR_PURPLE_C)
+        # if (len(stra_vote_range[i]) != 0):
+        #     for j in stra_vote_range[i]:
+        #         ax.fill_between(j, [0,0], [100,100], color=COLOR_RED_C, alpha=0.2, edgecolor='none')
         ax.set_title(f'{subj}-{TASK_NAME}')
     fig_score.axes[0][-1].legend()
     
@@ -467,7 +513,7 @@ for TASK_NAME in ['chasing', 'chased']:
         ax.set_title(f'{subj}-{TASK_NAME}')
         
     # Position
-    play_time = np.linspace(0.05, 30, 600)
+    play_time = np.linspace(0.05, 600, 12000)
     fig_pos = meowfig(nrows=1, ncols=len(SUBJECTS), grid=True, 
                       xlabel=r'$x$', ylabel=r'$z$',
                       xlim=[border_start[0], border_end[0]],
@@ -476,10 +522,12 @@ for TASK_NAME in ['chasing', 'chased']:
                       yticks=np.arange(border_start[2],border_end[2]+1,8).tolist())
     for i, ax in enumerate(fig_pos.axes[0]):
         subj = SUBJECTS[i]
-        sca_tom = ax.scatter(ptra_pred_x[i,-1], ptra_pred_z[i,-1], s=0.1, 
+        sca_tom = ax.scatter(ptra_pred_x[i], ptra_pred_z[i], s=0.1, 
                              c=play_time, cmap=COLOR_TOM)
-        sca_jerry = ax.scatter(ptra_prey_x[i,-1], ptra_prey_z[i,-1], s=0.1, 
+        sca_jerry = ax.scatter(ptra_prey_x[i], ptra_prey_z[i], s=0.1, 
                                c=play_time, cmap=COLOR_JERRY)
+        ax.scatter(point_wall[0]+0.5, point_wall[1]+0.5, s=10, color='k', marker='s', alpha=0.5)
+        ax.scatter(point_obs[0]+0.5, point_obs[1]+0.5, s=10, color='k', marker='s', alpha=0.5)
         ax.set_title(f'{subj}-{TASK_NAME}')
     #fig_pos.fig.colorbar(sca_tom, ax=fig_pos.axes[0][-1])
     #fig_pos.fig.colorbar(sca_jerry, ax=fig_pos.axes[0][-1])

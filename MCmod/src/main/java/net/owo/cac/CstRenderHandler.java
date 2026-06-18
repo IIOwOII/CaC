@@ -32,6 +32,8 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 public class CstRenderHandler {
 	public static ArrayList<Vec3> vec_nodes = new ArrayList<>();
 	public static int camicon_timer = 0;
+	public static int patch_flicker_timer = 0;
+	public static int patch_toggle_timer = 0;
 	
     @SubscribeEvent
     public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
@@ -69,6 +71,19 @@ public class CstRenderHandler {
     			CstRenderComponent.renderIconMeowcamOff(gg);
     		}
     		camicon_timer--;
+    	}
+    	if ((CacModVariables.Exp_mode).equals("seeg")) {
+    		GuiGraphics gg = event.getGuiGraphics();
+	    	int gw = event.getWindow().getGuiScaledWidth();
+			int gh = event.getWindow().getGuiScaledHeight();
+    		CstRenderComponent.renderPatchBlack(gg, gw, gh);
+    		if (patch_flicker_timer > 0) {
+    			if (patch_flicker_timer%2 == 0) CstRenderComponent.renderPatchWhite(gg, gw, gh);
+    			patch_flicker_timer--;
+    		} else if (patch_toggle_timer > 0) {
+    			CstRenderComponent.renderPatchWhite(gg, gw, gh);
+    			patch_toggle_timer--;
+    		}
     	}
     }
 

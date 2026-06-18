@@ -132,6 +132,7 @@ public class CacModVariables {
 	public static double Tuto_hurdle_stack_old = 0;
 	public static double Tuto_score = 0;
 	public static boolean Tuto_score_running = false;
+	public static File Log_action = new File("");
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

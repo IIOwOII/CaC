@@ -61,6 +61,14 @@ public class CstRenderComponent {
 		gg.blit(patch_black, gw-32, 0, 0, 0, 32, 32, 32, 32);
 	}
 
+	public static void renderPatchFlicker() {
+		CstRenderHandler.patch_flicker_timer = 120; // 60fps
+	}
+
+	public static void renderPatchToggle() {
+		CstRenderHandler.patch_toggle_timer = 60; // 60fps
+	}
+
 	// Blank
 	public static void renderGuiBlank(GuiGraphics gg, int gw, int gh) {
 		gg.blit(gui_blank, 0, 0, 0, 0, gw, gh, gw, gh);

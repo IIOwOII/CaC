@@ -227,47 +227,43 @@ public class CstPsychometric {
 	public static double adjustRho() {
 		int LV_MIN = 0;
 		int LV_MAX = 10;
-		int NUM_RAWLOSE = 4;
-
+		int NUM_RAWLOSE = 5;
 		int lv = -1;
 		int tnum = trace_winlose.size();
+		int lnum = 0;
+		int delta_lv = 1;
+		if (tnum > 5) { // trial 7
+			delta_lv = 3;
+		}
 		if (tnum == 0) { // first trial
 			lv = LV_MIN;
 		} else { // not first trial
 			int wl_prev = trace_winlose.get(tnum-1);
 			int lv_prev = trace_level.get(tnum-1);
 			if (wl_prev == 1) { // win before
-				lv = (lv_prev < LV_MAX) ? lv_prev+1 : LV_MAX;
+				lv = (lv_prev+delta_lv <= LV_MAX) ? lv_prev+delta_lv : LV_MAX;
 			} else { // lose before
-				if (tnum > NUM_RAWLOSE) { // trial process more than rawlose cond
-					boolean IS_RAWLOSE = true;
-					for (int i=0; i<NUM_RAWLOSE; i++) {
-						if (trace_winlose.get(tnum-1-i) == 1) {
-							IS_RAWLOSE = false;
-						}
-					}
-					if (IS_RAWLOSE) { // rawlose
-						lv = (lv_prev > LV_MIN) ? lv_prev-1 : LV_MIN;
-					} else { // not rawlose
-						lv = lv_prev;
-					}
+				for (int i=0; i<tnum; i++) {
+					if (trace_winlose.get(tnum-i-1) == 1) break;
+					lnum++;
+				}
+				if (lnum >= NUM_RAWLOSE && (lnum%NUM_RAWLOSE) == 0) { // trial process more than rawlose cond
+					lv = (lv_prev-5 >= LV_MIN) ? lv_prev-5 : LV_MIN;
 				} else { // trial is less than rawlose cond
 					lv = lv_prev;
 				}
 			}
 		}
 		double P_target = 0.85 - 0.07*lv;
-		/*
-		if (lv > 1) {
-			double P_target = Math.round(10000.0/lv) / 10000.0;
-		} else if (lv == 1) {
-			double P_target = 0.75;
-		}
-		*/
 		double rho_next = calFitInversePSI(P_target);
 		trace_level.add(lv);
 		trace_rho.add(rho_next);
 		return rho_next;
+	}
+
+	// Change IG threshold
+	public static void adjustIG(double ig) {
+		IG_THRESHOLD = ig;
 	}
 
 	// get result from CstAgent
