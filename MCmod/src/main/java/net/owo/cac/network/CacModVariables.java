@@ -62,7 +62,6 @@ public class CacModVariables {
 	public static double Exp_phase = 0;
 	public static String Exp_property = "\"\"";
 	public static String Exp_session = "none";
-	public static boolean Exp_signal = false;
 	public static String Exp_subject = "none";
 	public static double Exp_trial = 0;
 	public static double Exp_trial_total = 0;
@@ -72,7 +71,6 @@ public class CacModVariables {
 	public static File Log_fitting = new File("");
 	public static File Log_gameplay = new File("");
 	public static File Log_position = new File("");
-	public static File Log_scanner = new File("");
 	public static File Log_surrender = new File("");
 	public static File Log_survey = new File("");
 	public static Vec3 Meow_destination = Vec3.ZERO;
@@ -112,7 +110,6 @@ public class CacModVariables {
 	public static boolean Switch_blank = false;
 	public static boolean Switch_debug = false;
 	public static boolean Switch_que = false;
-	public static boolean Switch_scanner = false;
 	public static boolean Switch_timer = false;
 	public static boolean Switch_trace = false;
 	public static double TimA_time = 0;
@@ -123,7 +120,6 @@ public class CacModVariables {
 	public static double TimC_time = 0;
 	public static double TimR_que_time = 0;
 	public static double TimR_time = 0;
-	public static double TimS_time = 0;
 	public static Vec3 Tuto_checkpoint_center = Vec3.ZERO;
 	public static double Tuto_checkpoint_index = 0;
 	public static ListTag Tuto_checkpoint_pos = new ListTag();

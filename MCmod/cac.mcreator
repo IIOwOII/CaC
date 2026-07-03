@@ -450,12 +450,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -564,19 +559,6 @@
           "src/main/java/net/owo/cac/mixins/MxnMeowviewMixin.java"
         ]
       }
-    },
-    {
-      "name": "CacKeySignal",
-      "type": "keybind",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "cac_key_signal",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/network/CacKeySignalMessage.java"
-        ]
-      },
-      "path": "~/CacKey"
     },
     {
       "name": "CacError",
@@ -1628,20 +1610,6 @@
       "path": "~/CacTask/General"
     },
     {
-      "name": "KeySignalOn",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "key_signal_on",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/KeySignalOnProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacKey"
-    },
-    {
       "name": "BlkFence",
       "type": "block",
       "compiles": true,
@@ -1827,53 +1795,6 @@
         ]
       },
       "path": "~/CacBlock"
-    },
-    {
-      "name": "TimScanner",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tim_scanner",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/TimScannerProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      },
-      "path": "~/CacTimer"
-    },
-    {
-      "name": "IniLogScanner",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ini_log_scanner",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/IniLogScannerProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacInit/Log"
-    },
-    {
-      "name": "RecScanner",
-      "type": "procedure",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rec_scanner",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/procedures/RecScannerProcedure.java"
-        ],
-        "dependencies": []
-      },
-      "path": "~/CacTask/Record"
     },
     {
       "name": "SimGameplay",
@@ -3956,6 +3877,18 @@
         "dependencies": []
       },
       "path": "~/CacInit/Log"
+    },
+    {
+      "name": "CstTimer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_timer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstTimer.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4182,12 +4115,6 @@
       "value": "none"
     },
     {
-      "name": "Exp_signal",
-      "type": "logic",
-      "scope": "global",
-      "value": "false"
-    },
-    {
       "name": "Exp_subject",
       "type": "string",
       "scope": "global",
@@ -4255,12 +4182,6 @@
     },
     {
       "name": "Log_position",
-      "type": "file",
-      "scope": "global",
-      "value": "new File(\"\")"
-    },
-    {
-      "name": "Log_scanner",
       "type": "file",
       "scope": "global",
       "value": "new File(\"\")"
@@ -4500,12 +4421,6 @@
       "value": "false"
     },
     {
-      "name": "Switch_scanner",
-      "type": "logic",
-      "scope": "global",
-      "value": "false"
-    },
-    {
       "name": "Switch_timer",
       "type": "logic",
       "scope": "global",
@@ -4561,12 +4476,6 @@
     },
     {
       "name": "TimR_time",
-      "type": "number",
-      "scope": "global",
-      "value": "0"
-    },
-    {
-      "name": "TimS_time",
       "type": "number",
       "scope": "global",
       "value": "0"
@@ -4730,6 +4639,7 @@
       "advancements.adv_racing.descr": "Ready to flight away",
       "effect.cac.eff_stop_move": "Stiffness",
       "key.cac.cac_key_up": "Up",
+      "key.cac.cac_key_scanner": "Scanner Signal",
       "advancements.adv_chased.title": "The shrewd prey",
       "subtitles.snd_bookpage": "snd_bookpage",
       "block.cac.blk_hurdle": "Hurdle",
@@ -4751,7 +4661,6 @@
       "key.cac.cac_key_right": "Right",
       "subtitles.cac.snd_silence": "snd_silence",
       "entity.cac.ent_pseudo_cat": "Predator (Pseudo)",
-      "key.cac.cac_key_signal": "Scanner Signal",
       "block.cac.blk_valuestone": "Value Stone",
       "advancements.adv_surrender.title": "Continue?",
       "key.cac.cac_key_down": "Down",
@@ -4881,10 +4790,6 @@
       },
       {
         "name": "CacEvent",
-        "children": []
-      },
-      {
-        "name": "CacKey",
         "children": []
       },
       {

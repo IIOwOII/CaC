@@ -10,8 +10,8 @@ public class RecManageProcedure {
 		if (CacModVariables.Exp_property.contains("G")) {
 			RecGameplayProcedure.execute();
 		}
-		if (CacModVariables.Exp_property.contains("C")) {
-			RecScannerProcedure.execute();
+		if (CacModVariables.Exp_property.contains("A")) {
+			net.owo.cac.CstTimer.recordAction();
 		}
 		if (CacModVariables.Exp_property.contains("F")) {
 			net.owo.cac.CstPsychometric.updateTrialAfter();

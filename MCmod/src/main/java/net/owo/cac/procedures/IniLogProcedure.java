@@ -49,8 +49,5 @@ public class IniLogProcedure {
 		if (CacModVariables.Exp_property.contains("F")) {
 			IniLogFittingProcedure.execute();
 		}
-		if (CacModVariables.Exp_property.contains("C")) {
-			IniLogScannerProcedure.execute();
-		}
 	}
 }

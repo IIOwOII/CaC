@@ -40,13 +40,6 @@ public class TaskManageProcedure {
 			}
 		}
 		if (is_task && !(CacModVariables.Exp_subject).equals("none")) {
-			if (CacModVariables.Exp_property.contains("C")) {
-				CacModVariables.Switch_scanner = true;
-				CacModVariables.Exp_signal = false;
-				CacModVariables.TimS_time = 0;
-			} else {
-				CacModVariables.Switch_scanner = false;
-			}
 			if (CacModVariables.Exp_property.contains("S")) {
 				net.owo.cac.CstSurvey.initSurvey(false);
 			}

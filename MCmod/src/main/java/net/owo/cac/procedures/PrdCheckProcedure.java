@@ -18,8 +18,6 @@ public class PrdCheckProcedure {
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7esubject: \u00A7r" + CacModVariables.Exp_subject)), false);
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7esession: \u00A7r" + CacModVariables.Exp_session)), false);
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7esignal: \u00A7r" + CacModVariables.Exp_signal)), false);
 		}
 		if ((target).equals("switch")) {
 			if (!world.isClientSide() && world.getServer() != null)
@@ -32,8 +30,6 @@ public class PrdCheckProcedure {
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7etimer: \u00A7r" + CacModVariables.Switch_timer)), false);
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7etrace: \u00A7r" + CacModVariables.Switch_trace)), false);
-			if (!world.isClientSide() && world.getServer() != null)
-				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7eScanner: \u00A7r" + CacModVariables.Switch_scanner)), false);
 		}
 		if ((target).equals("event")) {
 			if (!world.isClientSide() && world.getServer() != null)

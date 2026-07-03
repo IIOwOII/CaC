@@ -3942,6 +3942,32 @@
         ]
       },
       "path": "~/CacTask/Main"
+    },
+    {
+      "name": "IniLogAction",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ini_log_action",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/IniLogActionProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacInit/Log"
+    },
+    {
+      "name": "CstTimer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_timer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstTimer.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4604,6 +4630,12 @@
       "type": "logic",
       "scope": "global",
       "value": "false"
+    },
+    {
+      "name": "Log_action",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
     }
   ],
   "sound_elements": [

@@ -31,8 +31,8 @@ public class CstState {
     public static int[] meowmove_tick = {0, 0, 0, 0, 0, 0, 0, 0}; // Total tick not reset
     public static float rot_angle = 0F;
 
-	public static boolean[] key_pressed = {false, false, false, false, false, false, false};
-	public static boolean[] key_pressed_old = {false, false, false, false, false, false, false};
+	public static boolean[] key_pressed = {false, false, false, false, false, false, false, false};
+	public static boolean[] key_pressed_old = {false, false, false, false, false, false, false, false};
 	public static int[] key_pressed_tick = {0, 0, 0, 0}; // RLUD
 
 	public static void changeOption() {

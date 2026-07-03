@@ -450,12 +450,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -3956,6 +3951,18 @@
         "dependencies": []
       },
       "path": "~/CacInit/Log"
+    },
+    {
+      "name": "CstTimer",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_timer",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstTimer.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
