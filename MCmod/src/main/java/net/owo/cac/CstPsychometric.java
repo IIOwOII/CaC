@@ -92,7 +92,8 @@ public class CstPsychometric {
 	// Traces (main)
 	public static ArrayList<Integer> trace_winlose = new ArrayList<>();
 	public static ArrayList<Double> trace_rho = new ArrayList<>();
-	public static ArrayList<Integer> trace_level = new ArrayList<>();
+	public static ArrayList<Double> trace_p = new ArrayList<>();
+	public static ArrayList<Double> trace_dp = new ArrayList<>();
 	public static ArrayList<Integer> trace_score = new ArrayList<>();
 
 	// Score
@@ -111,7 +112,8 @@ public class CstPsychometric {
 		task_type = (int)CacModVariables.Dat_trial_type;
 		trace_winlose = new ArrayList<>();
 		trace_rho = new ArrayList<>();
-		trace_level = new ArrayList<>();
+		trace_p = new ArrayList<>();
+		trace_dp = new ArrayList<>();
 		trace_score = new ArrayList<>();
 	}
 	
@@ -225,6 +227,60 @@ public class CstPsychometric {
 	
 	// Adjusting Difficulty
 	public static double adjustRho() {
+		int N = 20;
+		double dp_win = -0.02;
+		double dp_lose = 0.01;
+		double p_M = 0.8;
+		double p_m = 0.2;
+		double p_equ = 0.4;
+		double k_m = 0.05;
+		double k_M = k_m*(p_equ-p_m)/(p_M-p_equ);
+
+		int tnum = trace_winlose.size();
+		if (tnum == 0) { // first trial
+			double p = 0.7;
+			double dp = 0;
+		} else { // not first trial
+			int wl = trace_winlose.get(tnum-1);
+			double p = trace_p.get(tnum-1);
+			double dp = trace_dp.get(tnum-1);
+			// equ force apply
+			double x = p - p_equ;
+			double F_weight = Math.floorDiv(tnum, N/4)*0.25;
+			double F_M = -k_M*x;
+			double F_m = -k_m*x;
+			dp += (F_M*F_weight);
+			dp += (F_m*F_weight);
+			// win lose dp apply
+			if (wl==1) {
+				dp += dp_win;
+			} else if (wl==0) {
+				dp += dp_lose;
+			}
+			dp = Math.round(dp*100)*0.01;
+			// dp min max adjust
+			if (dp > 0.05) {
+				dp = 0.05;
+			} else if (dp < -0.05) {
+				dp = -0.05;
+			}
+		}
+		p += dp;
+		p = Math.round(p*100)*0.01;
+		// p min max adjust
+		if (p > p_M) {
+			p = p_M;
+		} else if (p < p_m) {
+			p = p_m;
+		}
+		double rho_next = calFitInversePSI(p);
+		trace_p.add(p);
+		trace_dp.add(dp);
+		trace_rho.add(rho_next);
+		return rho_next;
+	}
+	/*
+	public static double adjustRho() {
 		int LV_MIN = 0;
 		int LV_MAX = 10;
 		int NUM_RAWLOSE = 5;
@@ -260,6 +316,7 @@ public class CstPsychometric {
 		trace_rho.add(rho_next);
 		return rho_next;
 	}
+	*/
 
 	// Change IG threshold
 	public static void adjustIG(double ig) {
@@ -268,7 +325,7 @@ public class CstPsychometric {
 
 	// get result from CstAgent
 	public static void msgResult(int wl) {
-		int tnum = trace_level.size();
+		int tnum = trace_p.size();
 		if (tnum == 0) return; // if not chasing and chased
 		trace_winlose.add(wl);
 		if (score_switch) {
@@ -277,7 +334,7 @@ public class CstPsychometric {
 	}
 
 	public static void updateScore(int wl) {
-		int tnum = trace_level.size();
+		int tnum = trace_p.size();
 		int score_last = 0;
 		if (tnum > 1) {
 			score_last = trace_score.get(tnum-2);
