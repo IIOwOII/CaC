@@ -236,14 +236,13 @@ public class CstPsychometric {
 		double k_m = 0.05;
 		double k_M = k_m*(p_equ-p_m)/(p_M-p_equ);
 
+		double p = 0.7;
+		double dp = 0;
 		int tnum = trace_winlose.size();
-		if (tnum == 0) { // first trial
-			double p = 0.7;
-			double dp = 0;
-		} else { // not first trial
+		if (tnum != 0) { // not first trial
 			int wl = trace_winlose.get(tnum-1);
-			double p = trace_p.get(tnum-1);
-			double dp = trace_dp.get(tnum-1);
+			p = trace_p.get(tnum-1);
+			dp = trace_dp.get(tnum-1);
 			// equ force apply
 			double x = p - p_equ;
 			double F_weight = Math.floorDiv(tnum, N/4)*0.25;
