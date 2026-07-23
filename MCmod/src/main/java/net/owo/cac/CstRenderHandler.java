@@ -11,6 +11,7 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.event.RenderHandEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 
 import net.owo.cac.CstState;
@@ -28,12 +29,20 @@ import net.minecraft.world.phys.Vec3;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 
+
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderHandler {
 	public static ArrayList<Vec3> vec_nodes = new ArrayList<>();
+
+	// code 0: 10 tick rest
+	// code 1: 10 tick toggle
+	// code 2: 10 tick flicker
+	public static ArrayList<Integer> patch_que = new ArrayList<>();
+	public static int patch_index = 0;
+	public static int[] patch_timer = {0,0,0};
+	
 	public static int camicon_timer = 0;
-	public static int patch_flicker_timer = 0;
-	public static int patch_toggle_timer = 0;
+	public static int emergency_timer = 0;
 	
     @SubscribeEvent
     public static void onRenderGuiOverlay(RenderGuiOverlayEvent.Pre event) {
@@ -57,11 +66,11 @@ public class CstRenderHandler {
     	GuiGraphics gg = event.getGuiGraphics();
     	int gw = event.getWindow().getGuiScaledWidth();
 		int gh = event.getWindow().getGuiScaledHeight();
-    	if (CacModVariables.Switch_blank) CstRenderComponent.renderBlank(gg, gw, gh);
+    	if (CacModVariables.Switch_blank || emergency_timer > 0) CstRenderComponent.renderBlank(gg, gw, gh);
     }
 
     @SubscribeEvent
-    public static void onRenderGuiPose(RenderGuiEvent.Post event) {
+    public static void onRenderGuiPost(RenderGuiEvent.Post event) {
     	if (CstReplay.isRecording()) CstReplay.readFrame();
     	if (camicon_timer > 0) {
     		GuiGraphics gg = event.getGuiGraphics();
@@ -77,12 +86,28 @@ public class CstRenderHandler {
 	    	int gw = event.getWindow().getGuiScaledWidth();
 			int gh = event.getWindow().getGuiScaledHeight();
     		CstRenderComponent.renderPatchBlack(gg, gw, gh);
-    		if (patch_flicker_timer > 0) {
-    			if (patch_flicker_timer%2 == 0) CstRenderComponent.renderPatchWhite(gg, gw, gh);
-    			patch_flicker_timer--;
-    		} else if (patch_toggle_timer > 0) {
+    		if (patch_index==2 && patch_timer[2]%2==0) {
     			CstRenderComponent.renderPatchWhite(gg, gw, gh);
-    			patch_toggle_timer--;
+    		} else if (patch_index==1) {
+    			CstRenderComponent.renderPatchWhite(gg, gw, gh);
+    		}
+    	}
+    }
+
+    @SubscribeEvent
+    public static void onClientTick(TickEvent.ClientTickEvent event) {
+    	if (event.phase == TickEvent.Phase.END) {
+    		if (emergency_timer > 0) emergency_timer--;
+    		if ((CacModVariables.Exp_mode).equals("seeg")) {
+    			if (!patch_que.isEmpty() && patch_timer[patch_index] <= 0) {
+    				patch_index = patch_que.get(0);
+    				patch_que.remove(0);
+    				patch_timer[patch_index] = 10; // 10 tick
+    			} else if (patch_timer[patch_index] > 0) {
+    				patch_timer[patch_index]--;
+    			} else if (patch_que.isEmpty() && patch_index != 0) {
+    				patch_index = 0;
+    			}
     		}
     	}
     }

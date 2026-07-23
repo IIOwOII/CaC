@@ -9,10 +9,10 @@ COLOR_YELLOW_C = '#F7D96F'
 COLOR_PURPLE_C = '#9A72AC'
 COLOR_GOLD_C = '#F0AC5F'
 
-dp_win = -0.02
+dp_win = -0.04
 dp_lose = 0.01
 
-N = 50
+N = 20
 
 p = 0.7
 dp = 0
@@ -21,7 +21,7 @@ p_M = 0.8
 p_m = 0.2
 
 p_equ = 0.4
-k_m = 0.05
+k_m = 0.4
 k_M = k_m * (p_equ - p_m)/(p_M - p_equ) # to max weight
 
 epochs = 100
@@ -43,7 +43,9 @@ for i in range(epochs):
         wl = np.random.choice([1, 0], 1, replace=True, p=[p, 1-p])[0]
         WL_temp.append(wl)
         x = p - p_equ
-        F_weight = np.round(np.ceil(4*(trial+1)/N)/4, 2)
+        #F_weight = np.round(np.ceil(4*(trial+1)/N)/4, 2)
+        #F_weight = 1
+        F_weight = (trial+1)/N
         F_M = -k_M*x
         F_m = -k_m*x
         dp += (F_M*F_weight)
@@ -53,10 +55,10 @@ for i in range(epochs):
         elif (wl==0):
             dp += dp_lose
         dp = np.round(dp, 2)
-        if (dp > 0.05):
-            dp = 0.05
-        elif (dp < -0.05):
-            dp = -0.05
+        if (dp > 0.1):
+            dp = 0.1
+        elif (dp < -0.1):
+            dp = -0.1
         DP_temp.append(dp)
         p += dp
         p = np.round(p, 2)
@@ -86,10 +88,10 @@ ax[0].axvline(p_equ, linewidth=1, linestyle='-.', color=COLOR_PURPLE_C)
 
 hist_DP = ax[1].hist(DP.flatten(), color=COLOR_PURPLE_C)
 ax[1].set_xlabel(r'$\Delta$P (%)')
-ax[1].set_xlim([-0.06, 0.06])
-ax[1].set_xticks([-0.05, 0, 0.05])
-ax[1].axvline(-0.05, linewidth=1, linestyle='--', color=COLOR_RED_C)
-ax[1].axvline(0.05, linewidth=1, linestyle='--', color=COLOR_RED_C)
+ax[1].set_xlim([-0.11, 0.11])
+ax[1].set_xticks([-0.1, 0, 0.1])
+ax[1].axvline(-0.1, linewidth=1, linestyle='--', color=COLOR_RED_C)
+ax[1].axvline(0.1, linewidth=1, linestyle='--', color=COLOR_RED_C)
 ax[1].axvline(0, linewidth=1, linestyle='--', color='k')
 
 ax[0].set_title(f'{N} trials x {epochs} epochs')

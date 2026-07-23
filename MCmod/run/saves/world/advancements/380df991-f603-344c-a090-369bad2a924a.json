@@ -1893,5 +1893,11 @@
     },
     "done": true
   },
+  "cac:adv_beginner": {
+    "criteria": {
+      "adv_beginner_0": "2026-07-23 14:21:59 +0900"
+    },
+    "done": true
+  },
   "DataVersion": 3465
 }

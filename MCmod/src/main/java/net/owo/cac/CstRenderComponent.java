@@ -10,9 +10,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 
 import net.owo.cac.CstPsychometric;
+import net.owo.cac.CstRenderHandler;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstRenderComponent {
@@ -61,12 +63,48 @@ public class CstRenderComponent {
 		gg.blit(patch_black, gw-32, 0, 0, 0, 32, 32, 32, 32);
 	}
 
-	public static void renderPatchFlicker() {
-		CstRenderHandler.patch_flicker_timer = 120; // 60fps
+	public static void renderPatchPattern(ArrayList<Integer> que) {
+		for (int i=0; i<que.size(); i++) {
+			CstRenderHandler.patch_que.add(que.get(i));
+		}
 	}
 
-	public static void renderPatchToggle() {
-		CstRenderHandler.patch_toggle_timer = 60; // 60fps
+	public static void renderPatchStart() {
+		ArrayList<Integer> que = new ArrayList<>();
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(0);
+		que.add(0);
+		que.add(2);
+		que.add(2);
+		renderPatchPattern(que);
+	}
+
+	public static void renderPatchEnd() {
+		ArrayList<Integer> que = new ArrayList<>();
+		que.add(2);
+		que.add(2);
+		que.add(0);
+		que.add(0);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		que.add(1);
+		renderPatchPattern(que);
 	}
 
 	// Blank

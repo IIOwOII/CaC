@@ -2,7 +2,6 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 import net.owo.cac.CstState;
-import net.owo.cac.CstRenderComponent;
 
 public class TaskPreRunProcedure {
 	public static void execute() {
@@ -20,8 +19,5 @@ public class TaskPreRunProcedure {
 		CacModVariables.Dat_time_interval = 0;
 		FncResetDatPosProcedure.execute();
 		CstState.IsMeowView = true;
-		if ((CacModVariables.Exp_mode).equals("seeg")) {
-			CstRenderComponent.renderPatchFlicker();
-		}
 	}
 }

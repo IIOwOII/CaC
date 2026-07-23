@@ -228,12 +228,12 @@ public class CstPsychometric {
 	// Adjusting Difficulty
 	public static double adjustRho() {
 		int N = 20;
-		double dp_win = -0.02;
+		double dp_win = -0.04;
 		double dp_lose = 0.01;
 		double p_M = 0.8;
 		double p_m = 0.2;
 		double p_equ = 0.4;
-		double k_m = 0.05;
+		double k_m = 0.4;
 		double k_M = k_m*(p_equ-p_m)/(p_M-p_equ);
 
 		double p = 0.7;
@@ -245,7 +245,7 @@ public class CstPsychometric {
 			dp = trace_dp.get(tnum-1);
 			// equ force apply
 			double x = p - p_equ;
-			double F_weight = Math.floorDiv(tnum, N/4)*0.25;
+			double F_weight = (tnum+1)/N;
 			double F_M = -k_M*x;
 			double F_m = -k_m*x;
 			dp += (F_M*F_weight);
@@ -258,10 +258,10 @@ public class CstPsychometric {
 			}
 			dp = Math.round(dp*100)*0.01;
 			// dp min max adjust
-			if (dp > 0.05) {
-				dp = 0.05;
-			} else if (dp < -0.05) {
-				dp = -0.05;
+			if (dp > 0.1) {
+				dp = 0.1;
+			} else if (dp < -0.1) {
+				dp = -0.1;
 			}
 		}
 		p += dp;

@@ -20,6 +20,7 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.event.TickEvent;
 
 import net.owo.cac.CstState;
+import net.owo.cac.CstRenderHandler;
 import net.owo.cac.CstRenderComponent;
 import net.owo.cac.CstTutorial;
 import net.owo.cac.CstPsychometric;
@@ -63,7 +64,6 @@ public class CstSurvey {
 	public static int timer_quiz = 0;
 	public static int timer_blank = 0;
 	public static int timer_score = 0;
-	public static int timer_patch = 0;
 	public static int suv_phase = 30;
 
 	// trial by trial
@@ -94,20 +94,6 @@ public class CstSurvey {
 		} else if (suv_phase == 31) {
 			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			CstRenderComponent.renderScoreboard(gg, gw, gh);
-		}
-	}
-
-	@SubscribeEvent
-	public static void onRenderGuiPost(RenderGuiEvent.Post event) {
-		if (!IsSurvey) return;
-		GuiGraphics gg = event.getGuiGraphics();
-		int gw = event.getWindow().getGuiScaledWidth();
-		int gh = event.getWindow().getGuiScaledHeight();
-		if (timer_patch > 0) {
-			if ((CacModVariables.Exp_mode).equals("seeg")) {
-				CstRenderComponent.renderPatchWhite(gg, gw, gh);
-				timer_patch--;
-			}
 		}
 	}
 	
@@ -185,6 +171,7 @@ public class CstSurvey {
 		if (CstTutorial.tuto_id == 30) { // is tutorial?
 			CstTutorial.completeMission(6, true);
 		}
+		CstRenderHandler.emergency_timer = 2;
 		EvQueImmediateProcedure.execute(); // next event
 		IsSurvey = false;
 	}
@@ -207,13 +194,11 @@ public class CstSurvey {
 	public static void progressSurvey() { // phase 3.5
 		suv_phase = 35; // end of func
 		timer_blank = 0;
-		timer_patch = 30; // 60 fps
 		CacModVariables.Ev_pulse_content = ("survey_progress_" + idx);
 		EvPulseRecordProcedure.execute();
 	}
 	public static void confirmSurvey() { // phase 3.7
 		suv_phase = 37; // start of func
-		timer_patch = 30; // 60 fps
 
 		// Intermediate Record
 		int suv_id = suv_order[idx];
@@ -228,7 +213,6 @@ public class CstSurvey {
 		if (idx < SURVEY_LIST.length) {
 			waitingSurvey();
 		} else {
-			timer_patch = 0;
 			endSurvey();
 		}
 	}

@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CstRenderComponent;
 
 import java.util.Calendar;
 
@@ -42,8 +41,5 @@ public class TaskSessionEndProcedure {
 		}
 		CacModVariables.Switch_blank = false;
 		CacModVariables.Switch_timer = false;
-		if ((CacModVariables.Exp_mode).equals("seeg")) {
-			CstRenderComponent.renderPatchFlicker();
-		}
 	}
 }

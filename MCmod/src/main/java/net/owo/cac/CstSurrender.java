@@ -19,6 +19,7 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.event.TickEvent;
 
 import net.owo.cac.CstState;
+import net.owo.cac.CstRenderHandler;
 import net.owo.cac.CstRenderComponent;
 import net.owo.cac.CstTutorial;
 import net.owo.cac.network.CacModVariables;
@@ -30,6 +31,7 @@ public class CstSurrender {
 	static ResourceLocation surrender_text = new ResourceLocation("cac:textures/screens/text_surrender.png");
 	
 	public static boolean IsSurrender = false;
+	public static int timer_blank = 0;
 	public static int sur_type = 0; // even trial(0,2,4,...) = 0, odd trial(1,3,5,...) = 1, not recorded
 	public static int sur_time = 0;
 	public static int sur_select = -1; // left = 0, right = 1, init = -1
@@ -42,6 +44,10 @@ public class CstSurrender {
 		int gw = event.getWindow().getGuiScaledWidth();
 		int gh = event.getWindow().getGuiScaledHeight();
 		
+		if (timer_blank > 0) {
+			CstRenderComponent.renderBlank(gg, gw, gh); // Render Cross blank
+			return;
+		}
 		CstRenderComponent.renderBlankLightgrey(gg, gw, gh); // Render Background
 		gg.blit(surrender_text, gw/2-200, 30, 0, 0, 400, 60, 400, 60); // Render Text
 
@@ -62,6 +68,10 @@ public class CstSurrender {
 	public static void onClientTick(TickEvent.ClientTickEvent event) {
 		if (!IsSurrender) return;
 		if (event.phase == TickEvent.Phase.END) {
+			if (timer_blank > 0) {
+				timer_blank--;
+				return;
+			}
 			sur_time = sur_time + 1;
 			if (CstState.key_pressed[0])
 				sur_select = 1;
@@ -86,10 +96,8 @@ public class CstSurrender {
 		sur_type = (int)(CacModVariables.Exp_trial % 2);
 		sur_time = 0;
 		sur_select = -1;
+		timer_blank = 20; // 1sec blank before vote
 		IsSurrender = true;
-		if ((CacModVariables.Exp_mode).equals("seeg")) {
-			CstRenderComponent.renderPatchToggle();
-		}
 	}
 	
 	public static void endSurrender() {
@@ -98,11 +106,9 @@ public class CstSurrender {
 		if (CstTutorial.tuto_id == 40) { // is tutorial?
 			CstTutorial.completeMission(7, true);
 		}
+		CstRenderHandler.emergency_timer = 2;
 		EvQueImmediateProcedure.execute();
 		IsSurrender = false;
-		if ((CacModVariables.Exp_mode).equals("seeg")) {
-			CstRenderComponent.renderPatchToggle();
-		}
 	}
 	
 	public static void confirmSurrender() {

@@ -44,6 +44,9 @@ public class TimCountdownProcedure {
 				_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						("subtitle @a title " + "\uC7A0\uC2DC \uD6C4 \uC2DC\uC791\uD569\uB2C8\uB2E4."));
 			CacModVariables.TimC_time = CacModVariables.TimC_time - 1;
+			if ((CacModVariables.Exp_mode).equals("seeg") && CacModVariables.TimC_time == 100) {
+				net.owo.cac.CstRenderComponent.renderPatchStart();
+			}
 			if (CacModVariables.TimC_time % 20 == 0 && CacModVariables.TimC_time <= 60) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {

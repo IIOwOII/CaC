@@ -1,9 +1,11 @@
 package net.owo.cac.procedures;
 
-import net.owo.cac.CstTimer;
+import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CstRenderComponent;
 
 public class PrdExperimentalProcedure {
 	public static void execute() {
-		CstTimer.onTimer();
+		CacModVariables.Exp_mode = "seeg";
+		CstRenderComponent.renderPatchStart();
 	}
 }

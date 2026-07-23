@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CstRenderComponent;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
@@ -22,8 +21,5 @@ public class TaskGameplayProcedure {
 			}
 		}
 		AiStartProcedure.execute();
-		if ((CacModVariables.Exp_mode).equals("seeg")) {
-			CstRenderComponent.renderPatchToggle();
-		}
 	}
 }

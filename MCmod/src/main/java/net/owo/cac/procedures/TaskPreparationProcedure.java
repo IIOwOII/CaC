@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CstRenderComponent;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
@@ -25,8 +24,5 @@ public class TaskPreparationProcedure {
 		}
 		MeowMoveOnProcedure.execute();
 		FncManageTimePreparationProcedure.execute(world);
-		if ((CacModVariables.Exp_mode).equals("seeg")) {
-			CstRenderComponent.renderPatchToggle();
-		}
 	}
 }
