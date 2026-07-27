@@ -41,5 +41,8 @@ public class TaskSessionEndProcedure {
 		}
 		CacModVariables.Switch_blank = false;
 		CacModVariables.Switch_timer = false;
+		if ((CacModVariables.Exp_mode).equals("seeg")) {
+			net.owo.cac.CstRenderComponent.renderPatchEnd();
+		}
 	}
 }

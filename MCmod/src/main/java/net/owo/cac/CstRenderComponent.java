@@ -11,6 +11,7 @@ import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 
 import net.owo.cac.CstPsychometric;
 import net.owo.cac.CstRenderHandler;
+import net.owo.cac.network.CacModVariables;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -67,6 +68,43 @@ public class CstRenderComponent {
 		for (int i=0; i<que.size(); i++) {
 			CstRenderHandler.patch_que.add(que.get(i));
 		}
+	}
+
+	public static void renderPatchReserved(int phase) {
+		if (!(CacModVariables.Exp_mode).equals("seeg")) return;
+		ArrayList<Integer> que = new ArrayList<>();
+		switch (phase) {
+			case 10:
+				que.add(1);
+				que.add(0);
+				que.add(1);
+				break;
+			case 20:
+				que.add(1);
+				que.add(0);
+				que.add(2);
+				break;
+			case 25:
+				que.add(1);
+				que.add(0);
+				que.add(1);
+				break;
+			case 33:
+				que.add(2);
+				break;
+			case 35:
+				que.add(1);
+				break;
+			case 39:
+				que.add(2);
+				break;
+			case 40:
+				que.add(2);
+				break;
+			default:
+				break;
+		}
+		renderPatchPattern(que);
 	}
 
 	public static void renderPatchStart() {

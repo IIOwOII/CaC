@@ -188,12 +188,14 @@ public class CstSurvey {
 	public static void waitingSurvey() { // phase 3.3
 		suv_phase = 33; // start of func
 		timer_quiz = 0;
+		CstRenderComponent.renderPatchReserved(33);
 		CacModVariables.Ev_pulse_content = ("survey_waiting_" + idx);
 		EvPulseRecordProcedure.execute();
 	}
 	public static void progressSurvey() { // phase 3.5
 		suv_phase = 35; // end of func
 		timer_blank = 0;
+		CstRenderComponent.renderPatchReserved(35);
 		CacModVariables.Ev_pulse_content = ("survey_progress_" + idx);
 		EvPulseRecordProcedure.execute();
 	}

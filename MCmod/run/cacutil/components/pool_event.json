@@ -1,10 +1,10 @@
 {
   "test_start": 2,
-  "pseudo_start": 100,
+  "pseudo_start": 160,
   "simulation_start": 2,
   "demo_start": 2,
-  "fitting_start": 100,
-  "main_start": 100,
+  "fitting_start": 160,
+  "main_start": 160,
   "phase_fitting": 40,
   "phase_pretrial": 2,
   "phase_preparation": -1,

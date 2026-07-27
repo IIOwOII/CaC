@@ -13,5 +13,6 @@ public class TaskIntervalProcedure {
 		FncManageIntervalProcedure.execute();
 		EffRemoveMorphProcedure.execute(entity);
 		RecManageProcedure.execute();
+		net.owo.cac.CstRenderComponent.renderPatchReserved(40);
 	}
 }

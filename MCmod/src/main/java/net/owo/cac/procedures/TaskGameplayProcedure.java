@@ -21,5 +21,6 @@ public class TaskGameplayProcedure {
 			}
 		}
 		AiStartProcedure.execute();
+		net.owo.cac.CstRenderComponent.renderPatchReserved(20);
 	}
 }

@@ -24,5 +24,6 @@ public class TaskPreparationProcedure {
 		}
 		MeowMoveOnProcedure.execute();
 		FncManageTimePreparationProcedure.execute(world);
+		net.owo.cac.CstRenderComponent.renderPatchReserved(10);
 	}
 }
