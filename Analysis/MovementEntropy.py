@@ -2,6 +2,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
+import matplotlib.patches as patches
 
 import json
 import itertools
@@ -93,9 +94,12 @@ class meowfig:
                         ax.axvline(xtick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
 
 # Color Map (MANIM)
-COLOR_RED_C = '#FC6255'
-COLOR_BLUE_C = '#58C4DD'
-COLOR_GREEN_C = '#83C167'
+DEC_RED_C = np.array([252, 98, 85])
+COLOR_RED_C = '#FC6255' # (252, 98, 85)
+DEC_BLUE_C = np.array([88, 196, 221])
+COLOR_BLUE_C = '#58C4DD' # (88, 196, 221)
+DEC_GREEN_C = np.array([131, 193, 103])
+COLOR_GREEN_C = '#83C167' # (131, 193, 103)
 COLOR_YELLOW_C = '#F7D96F'
 COLOR_PURPLE_C = '#9A72AC'
 COLOR_GOLD_C = '#F0AC5F'
@@ -402,12 +406,19 @@ def distance_8way_path(vec_s, vec_e, path):
 
 
 #%%
-subj = 'YSY'
+subj = 'b01'
 TASK_NAME = 'chasing'
-with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_position.json', 'r') as f:
+with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_position.json', 'r') as f:
     dat_pos = json.load(f)['cac']
+with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_gameplay.json', 'r') as f:
+    dat_play = json.load(f)['cac']
+p_predicted = np.round(np.array(dat_play['predicted']['winrate']), 2)
 
+# smoothing kernel
+window_size = 10
+kernel = np.ones(window_size)/window_size
 
+# calculation 8 way distance
 pathfinder = Pathfinder()
 pathfinder.set_w(map_obs)
 dist_path = []
@@ -425,10 +436,13 @@ for n in range(20):
         opt_path = pathfinder.que_move.copy()
         opt_path.insert(0, vec_pred.vec2int())
         dist_path_temp.append(distance_8way(vec_pred, vec_prey, opt_path))
+    # smoothing (500 milli)
+    dist_path_temp = np.array(dist_path_temp)
+    dist_path_temp = np.convolve(dist_path_temp, kernel, mode='same')
     dist_path.append(dist_path_temp.copy())
 
 
-fig_t_d = meowfig(nrows=4, ncols=5, figsize=(10, 6),
+fig_t_d = meowfig(nrows=4, ncols=5, figsize=(8, 8), dpi=300,
                   xlabel=r'$t$'+' (Time)', 
                   ylabel=r'$L$'+' (Distance)',
                   xlim=[0, 600], ylim=[0, 20],
@@ -438,7 +452,44 @@ fig_t_d = meowfig(nrows=4, ncols=5, figsize=(10, 6),
 
 for n, dist in enumerate(dist_path):
     ax = fig_t_d.axes[n//5, n%5]
-    ax.plot(dist)
+    ax.fill_between([0, 600], [0,0], [0.8,0.8], color=COLOR_RED_C, alpha=0.2, edgecolor='none')
+    ax.plot(dist, c=COLOR_BLUE_C)
+    
+    # cal value
+    p_n = p_predicted[n]
+    DEC_P = p_n*DEC_GREEN_C + (1-p_n)*DEC_RED_C
+    COLOR_P = '#' + hex(int(DEC_P[0]))[-2:] + hex(int(DEC_P[1]))[-2:] + hex(int(DEC_P[2]))[-2:]
+    
+    # gauge constant
+    x_wedge = 0.75
+    y_wedge = 0.75
+    r_wedge = 0.2
+    w_wedge = 0.1
+
+    # gauges
+    bg_wedge = patches.Wedge((x_wedge, y_wedge), r_wedge, 0, 180, 
+                             width=w_wedge, facecolor='#e0e0e0', 
+                             edgecolor='none', transform=ax.transAxes)
+    val_wedge = patches.Wedge((x_wedge, y_wedge), r_wedge, 180*(1-p_n), 180, 
+                              width=w_wedge, facecolor=COLOR_P, 
+                              edgecolor='none', transform=ax.transAxes)
+    ax.add_patch(bg_wedge)
+    ax.add_patch(val_wedge)
+
+    # gauge needle
+    ang_arr = np.deg2rad(180*(1-p_n))
+    r_arr = r_wedge*0.9
+    x_arr = x_wedge + r_arr * np.cos(ang_arr)
+    y_arr = y_wedge + r_arr * np.sin(ang_arr)
+    ax.annotate('', 
+                xy=(x_arr, y_arr), 
+                xytext=(x_wedge, y_wedge),
+                xycoords='axes fraction',
+                textcoords='axes fraction',
+                arrowprops=dict(facecolor='black', width=3, headwidth=8, shrink=0))
+    ax.text(x_wedge, y_wedge-0.05, f'{p_n}', 
+            horizontalalignment='center', fontsize=16, weight='bold', transform=ax.transAxes)
+    
     ax.set_title(f'trial {n+1}')
 
 plt.show()

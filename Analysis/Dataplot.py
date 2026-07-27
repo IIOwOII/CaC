@@ -271,7 +271,7 @@ theta_con_idx = np.array(list(itertools.product(*[np.arange(psy_con['shape'][i])
 
 
 #%%
-SUBJECTS = ['YSY', 'HES', 'PMJ']
+SUBJECTS = ['b01', 'b02', 'b03', 'b04']
 
 for TASK_NAME in ['chasing', 'chased']:
     if (TASK_NAME == 'chasing'): 
@@ -338,13 +338,13 @@ for TASK_NAME in ['chasing', 'chased']:
             fdat_fit.append(json.load(f)['cac'])
         with open(f'{dir_beh}/{subj}/fitting_{TASK_NAME}/log_gameplay.json', 'r') as f:
             fdat_play.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_survey.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_survey.json', 'r') as f:
             dat_suv.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_gameplay.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_gameplay.json', 'r') as f:
             dat_play.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_surrender.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_surrender.json', 'r') as f:
             dat_sur.append(json.load(f)['cac'])
-        with open(f'{dir_beh}/{subj}/{TASK_NAME}_0/log_position.json', 'r') as f:
+        with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_position.json', 'r') as f:
             dat_pos.append(json.load(f)['cac'])
         
         ftra_wl.append(np.array(fdat_play[-1]['winlose']))

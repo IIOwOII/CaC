@@ -227,14 +227,13 @@ public class CstPsychometric {
 	
 	// Adjusting Difficulty
 	public static double adjustRho() {
-		int N = 20;
+		double N = 20;
 		double dp_win = -0.04;
 		double dp_lose = 0.01;
 		double p_M = 0.8;
 		double p_m = 0.2;
 		double p_equ = 0.4;
-		double k_m = 0.4;
-		double k_M = k_m*(p_equ-p_m)/(p_M-p_equ);
+		double k_E = 0.6;
 
 		double p = 0.7;
 		double dp = 0;
@@ -246,10 +245,8 @@ public class CstPsychometric {
 			// equ force apply
 			double x = p - p_equ;
 			double F_weight = (tnum+1)/N;
-			double F_M = -k_M*x;
-			double F_m = -k_m*x;
-			dp += (F_M*F_weight);
-			dp += (F_m*F_weight);
+			double F_E = -k_E*x;
+			dp += (F_E*F_weight);
 			// win lose dp apply
 			if (wl==1) {
 				dp += dp_win;

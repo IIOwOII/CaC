@@ -21,11 +21,9 @@ p_M = 0.8
 p_m = 0.2
 
 p_equ = 0.4
-k_m = 0.4
-k_M = k_m * (p_equ - p_m)/(p_M - p_equ) # to max weight
+k_E = 0.6
 
 epochs = 100
-
 np.random.seed(42)
 
 WL = []
@@ -37,19 +35,23 @@ for i in range(epochs):
     P_temp = []
     print('----------')
     print(f'epoch: {i}')
+    # trial 0
     p = 0.7
     dp = 0
-    for trial in range(N):
-        wl = np.random.choice([1, 0], 1, replace=True, p=[p, 1-p])[0]
-        WL_temp.append(wl)
+    wl = np.random.choice([1, 0], 1, replace=True, p=[p, 1-p])[0]
+    P_temp.append(p)
+    DP_temp.append(dp)
+    WL_temp.append(wl)
+    print(f'p_0= {p}, dp_0= {dp}, wl_0= {wl}')
+    for trial in range(1, N): # trial 1 ~
+        p = P_temp[-1]
+        dp = DP_temp[-1]
+        wl = WL_temp[-1]
+        # equ force apply
         x = p - p_equ
-        #F_weight = np.round(np.ceil(4*(trial+1)/N)/4, 2)
-        #F_weight = 1
         F_weight = (trial+1)/N
-        F_M = -k_M*x
-        F_m = -k_m*x
-        dp += (F_M*F_weight)
-        dp += (F_m*F_weight)
+        F_E = -k_E*x
+        dp += (F_E*F_weight)
         if (wl==1):
             dp += dp_win
         elif (wl==0):
@@ -59,7 +61,6 @@ for i in range(epochs):
             dp = 0.1
         elif (dp < -0.1):
             dp = -0.1
-        DP_temp.append(dp)
         p += dp
         p = np.round(p, 2)
         if (p > p_M):
@@ -67,6 +68,9 @@ for i in range(epochs):
         elif (p < p_m):
             p = p_m
         P_temp.append(p)
+        DP_temp.append(dp)
+        wl = np.random.choice([1, 0], 1, replace=True, p=[p, 1-p])[0]
+        WL_temp.append(wl)
         print(f'p_{trial}= {p}, dp_{trial}= {dp}, wl_{trial}= {wl}')
     WL.append(WL_temp.copy())
     DP.append(DP_temp.copy())
