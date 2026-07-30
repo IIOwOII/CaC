@@ -61,11 +61,11 @@ class meowfig:
     
     # additional setting
     def optional_setting(self):
-        self.axes[0,0].set_ylabel(self.ylabel)
         for rax in self.axes:
             for ax in rax:
                 ax.set_title(self.title)
                 ax.set_xlabel(self.xlabel)
+                ax.set_ylabel(self.ylabel)
                 if (self.xlim != None):
                     xlim = self.xlim
                     xrange = xlim[1] - xlim[0]
@@ -92,6 +92,7 @@ class meowfig:
                 if (self.xticks != None) and (self.grid):
                     for xtick in self.xticks:
                         ax.axvline(xtick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
+    
 
 # Color Map (MANIM)
 DEC_RED_C = np.array([252, 98, 85])
@@ -406,8 +407,8 @@ def distance_8way_path(vec_s, vec_e, path):
 
 
 #%%
-subj = 'b01'
-TASK_NAME = 'chasing'
+subj = 'b04'
+TASK_NAME = 'chased'
 with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_position.json', 'r') as f:
     dat_pos = json.load(f)['cac']
 with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_gameplay.json', 'r') as f:
@@ -442,17 +443,25 @@ for n in range(20):
     dist_path.append(dist_path_temp.copy())
 
 
+#%% Plot
 fig_t_d = meowfig(nrows=4, ncols=5, figsize=(8, 8), dpi=300,
                   xlabel=r'$t$'+' (Time)', 
                   ylabel=r'$L$'+' (Distance)',
-                  xlim=[0, 600], ylim=[0, 20],
+                  xlim=[0, 600], ylim=[0, 32],
                   xticks=[0, 100, 200, 300, 400, 500, 600], 
                   xticklabels=[0, 5, 10, 15, 20, 25, 30],
-                  yticks=[0, 4, 8, 12, 16, 20])
+                  yticks=[0, 2, 4, 8, 16, 32])
 
+# gauge constant
+x_wedge = 0.75
+y_wedge = 0.75
+r_wedge = 0.2
+w_wedge = 0.1
+
+# all trials
 for n, dist in enumerate(dist_path):
     ax = fig_t_d.axes[n//5, n%5]
-    ax.fill_between([0, 600], [0,0], [0.8,0.8], color=COLOR_RED_C, alpha=0.2, edgecolor='none')
+    ax.fill_between([-8, 600+8], [0, 0], [1, 1], color=COLOR_RED_C, alpha=0.2, edgecolor='none')
     ax.plot(dist, c=COLOR_BLUE_C)
     
     # cal value
@@ -460,12 +469,6 @@ for n, dist in enumerate(dist_path):
     DEC_P = p_n*DEC_GREEN_C + (1-p_n)*DEC_RED_C
     COLOR_P = '#' + hex(int(DEC_P[0]))[-2:] + hex(int(DEC_P[1]))[-2:] + hex(int(DEC_P[2]))[-2:]
     
-    # gauge constant
-    x_wedge = 0.75
-    y_wedge = 0.75
-    r_wedge = 0.2
-    w_wedge = 0.1
-
     # gauges
     bg_wedge = patches.Wedge((x_wedge, y_wedge), r_wedge, 0, 180, 
                              width=w_wedge, facecolor='#e0e0e0', 
@@ -491,5 +494,6 @@ for n, dist in enumerate(dist_path):
             horizontalalignment='center', fontsize=16, weight='bold', transform=ax.transAxes)
     
     ax.set_title(f'trial {n+1}')
+fig_t_d.fig.savefig(f'{dir_beh}/IMG/{subj}_{TASK_NAME}_dist.png', bbox_inches='tight', dpi=300)
 
 plt.show()

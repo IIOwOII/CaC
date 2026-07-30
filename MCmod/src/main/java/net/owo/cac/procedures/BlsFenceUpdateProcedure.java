@@ -1,11 +1,12 @@
 package net.owo.cac.procedures;
 
+import net.owo.cac.init.CacModBlocks;
+
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
@@ -17,10 +18,10 @@ public class BlsFenceUpdateProcedure {
 		boolean B_south = false;
 		boolean B_west = false;
 		Direction D_rotation = Direction.NORTH;
-		B_north = !((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == Blocks.AIR);
-		B_east = !((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == Blocks.AIR);
-		B_south = !((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == Blocks.AIR);
-		B_west = !((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == Blocks.AIR);
+		B_north = (world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == CacModBlocks.BLK_OBSTACLE.get() || (world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == CacModBlocks.BLK_WALL.get();
+		B_east = (world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == CacModBlocks.BLK_OBSTACLE.get() || (world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == CacModBlocks.BLK_WALL.get();
+		B_south = (world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == CacModBlocks.BLK_OBSTACLE.get() || (world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == CacModBlocks.BLK_WALL.get();
+		B_west = (world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == CacModBlocks.BLK_OBSTACLE.get() || (world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == CacModBlocks.BLK_WALL.get();
 		if (B_north && B_east && B_south && B_west) {
 			{
 				int _value = 6;

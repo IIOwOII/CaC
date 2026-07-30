@@ -3,7 +3,7 @@
     "register": "Wed Apr 08 13:59:35 KST 2026",
     "fitting_start": "Wed Apr 08 13:59:54 KST 2026",
     "re-register_0": "Tue Apr 21 20:22:52 KST 2026",
-    "chasing_start": "Mon Jul 27 15:13:18 KST 2026",
+    "chasing_start": "Thu Jul 30 14:17:36 KST 2026",
     "re-register_1": "Tue Apr 21 20:27:13 KST 2026",
     "re-register_2": "Tue Apr 21 20:56:39 KST 2026",
     "re-register_3": "Tue Apr 21 21:12:27 KST 2026",
@@ -11,7 +11,7 @@
     "chasing_end": "Thu Jun 18 17:10:11 KST 2026",
     "re-register_5": "Wed Apr 22 13:33:41 KST 2026",
     "re-register_6": "Wed May 13 14:31:22 KST 2026",
-    "chased_start": "Wed May 13 16:16:02 KST 2026",
+    "chased_start": "Thu Jul 30 15:27:29 KST 2026",
     "re-register_7": "Wed May 13 16:07:39 KST 2026",
     "re-register_8": "Wed May 13 16:15:42 KST 2026",
     "re-register_9": "Wed May 13 16:26:55 KST 2026",
@@ -34,6 +34,8 @@
     "re-register_24": "Thu Jul 23 16:07:48 KST 2026",
     "re-register_25": "Mon Jul 27 14:11:51 KST 2026",
     "re-register_26": "Mon Jul 27 14:16:26 KST 2026",
-    "re-register_27": "Mon Jul 27 15:13:14 KST 2026"
+    "re-register_27": "Mon Jul 27 15:13:14 KST 2026",
+    "re-register_28": "Thu Jul 30 14:17:29 KST 2026",
+    "re-register_29": "Thu Jul 30 15:27:18 KST 2026"
   }
 }

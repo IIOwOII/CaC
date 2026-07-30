@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "cac:block/blk_parasol"
+    },
+    "blockstate=1": {
+      "model": "cac:block/bls_parasol_blockstate_0"
+    }
+  }
+}

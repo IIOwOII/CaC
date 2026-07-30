@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "texture_cac_parasol"
+      },
+      "name": "default"
+    },
+    "transparency": {
+      "map": {
+        "0": "texture_cac_parasol"
+      },
+      "name": "transparency"
+    }
+  }
+}

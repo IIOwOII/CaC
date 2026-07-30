@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_parasol",
+  "textures": {
+    "all": "cac:block/texture_cac_parasol",
+    "particle": "cac:block/texture_cac_parasol",
+    "0": "cac:block/texture_cac_parasol"
+  },
+  "render_type": "translucent"
+}

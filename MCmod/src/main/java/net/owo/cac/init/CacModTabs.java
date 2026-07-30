@@ -44,6 +44,9 @@ public class CacModTabs {
 				tabData.accept(CacModBlocks.BLK_VALUEPATCH.get().asItem());
 				tabData.accept(CacModBlocks.BLK_MISSION.get().asItem());
 				tabData.accept(CacModBlocks.BLK_FLAG.get().asItem());
+				tabData.accept(CacModBlocks.BLK_PARASOL.get().asItem());
+				tabData.accept(CacModBlocks.BLK_AZALEA_GRASS.get().asItem());
+				tabData.accept(CacModBlocks.BLK_FLOWERING_AZALEA_GRASS.get().asItem());
 			}).withSearchBar().build());
 
 	@SubscribeEvent

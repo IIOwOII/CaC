@@ -1,0 +1,9 @@
+{
+  "parent": "cac:custom/cac_azalea_grass",
+  "textures": {
+    "all": "cac:block/texture_cac_azalea_grass",
+    "particle": "cac:block/texture_cac_azalea_grass",
+    "0": "cac:block/texture_cac_azalea_grass"
+  },
+  "render_type": "translucent"
+}

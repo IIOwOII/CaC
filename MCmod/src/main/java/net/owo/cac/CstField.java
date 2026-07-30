@@ -37,6 +37,7 @@ public class CstField {
 	public static ArrayList<ArrayList<Vec3>> list_wall = new ArrayList<>();
 	public static ArrayList<Vec3> points_obstacle = new ArrayList<>();
 	public static ArrayList<Vec3> points_wall = new ArrayList<>();
+	public static ArrayList<Vec3> points_parasol = new ArrayList<>();
 	public static Vec3 pos_border_start = new Vec3(-15.5, 64.0, -65.5);
 	public static Vec3 pos_border_end = new Vec3(16.5, 64.0, -33.5);
 	
@@ -69,6 +70,7 @@ public class CstField {
 		JsonArray arr_wall = new JsonArray();
 		JsonArray arr_obstacle_point = new JsonArray();
 		JsonArray arr_wall_point = new JsonArray();
+		JsonArray arr_parasol_point = new JsonArray();
 		JsonArray arr_temp = new JsonArray();
 
 		// create file
@@ -101,6 +103,11 @@ public class CstField {
 		for (int j=0; j<points_wall.size(); j++) {
 			arr_wall_point.add(vec2arr(points_wall.get(j)));
 		}
+		if (points_parasol.size() != 0) {
+			for (int k=0; k<points_parasol.size(); k++) {
+				arr_parasol_point.add(vec2arr(points_parasol.get(k)));
+			}
+		}
 
 		// write
 		obj_file.add("border", arr_border);
@@ -108,6 +115,7 @@ public class CstField {
 		obj_file.add("wall", arr_wall);
 		obj_file.add("obstacle_point", arr_obstacle_point);
 		obj_file.add("wall_point", arr_wall_point);
+		obj_file.add("parasol_point", arr_parasol_point);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(Info_obstacle);
@@ -223,6 +231,7 @@ public class CstField {
 		boolean iswall_end = false;
 		
 		double oy = pos_border_start.y();
+		double py = oy+5; // parasol y
 		int bx0 = (int) Math.round(pos_border_start.x() - 0.5); // bound pos x (start)
 		int bx1 = (int) Math.round(pos_border_end.x() - 0.5); // bound pos x (end)
 		int bz0 = (int) Math.round(pos_border_start.z() - 0.5); // bound pos z (start)
@@ -233,6 +242,7 @@ public class CstField {
 		list_wall.clear();
 		points_obstacle.clear();
 		points_wall.clear();
+		points_parasol.clear();
 
 		// scan
 		Vec3 vec_vertice_temp = Vec3.ZERO;
@@ -258,6 +268,9 @@ public class CstField {
 					points_wall.add(new Vec3(cx, oy, cz));
 					if (!(block_prev.getBlock() == CacModBlocks.BLK_WALL.get())) iswall_start = true;
 					if (!(block_next.getBlock() == CacModBlocks.BLK_WALL.get())) iswall_end = true;
+				}
+				if ((world.getBlockState(BlockPos.containing(cx, py, cz))).getBlock() == CacModBlocks.BLK_PARASOL.get()) { // parasol
+					points_parasol.add(new Vec3(cx, py, cz));
 				}
 				if (ispoint_start || ispoint_end) { // if it is vertice (obs)
 					vec_vertice_temp = new Vec3(cx, oy, cz);

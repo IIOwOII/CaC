@@ -42,6 +42,9 @@ public class CacModItems {
 	public static final RegistryObject<Item> BLK_VALUEPATCH = block(CacModBlocks.BLK_VALUEPATCH);
 	public static final RegistryObject<Item> BLK_MISSION = block(CacModBlocks.BLK_MISSION);
 	public static final RegistryObject<Item> BLK_FLAG = block(CacModBlocks.BLK_FLAG);
+	public static final RegistryObject<Item> BLK_PARASOL = block(CacModBlocks.BLK_PARASOL);
+	public static final RegistryObject<Item> BLK_FLOWERING_AZALEA_GRASS = block(CacModBlocks.BLK_FLOWERING_AZALEA_GRASS);
+	public static final RegistryObject<Item> BLK_AZALEA_GRASS = block(CacModBlocks.BLK_AZALEA_GRASS);
 
 	// Start of user code block custom items
 	// End of user code block custom items

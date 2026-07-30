@@ -2,8 +2,8 @@
   "advancements.adv_survey.title": "Honest voter",
   "advancements.adv_checkpoint.title": "CESCO",
   "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-  "entity.cac.ent_cat": "Predator",
   "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+  "entity.cac.ent_cat": "Predator",
   "key.cac.cac_key_camera": "Toggle Camera",
   "block.cac.blk_tape_block": "Tape Block",
   "entity.cac.ent_meowcam": "Meowcam",
@@ -14,6 +14,7 @@
   "entity.cac.ent_mouse": "Prey",
   "advancements.adv_racing.descr": "Ready to flight away",
   "effect.cac.eff_stop_move": "Stiffness",
+  "block.cac.blk_flowering_azalea_grass": "Flowering Azalea Grass",
   "key.cac.cac_key_up": "Up",
   "key.cac.cac_key_scanner": "Scanner Signal",
   "advancements.adv_chased.title": "The shrewd prey",
@@ -59,9 +60,11 @@
   "key.cac.cac_key_left": "Left",
   "advancements.adv_cac.descr": "Welcome to the CaC!",
   "block.cac.blk_switchstone": "Switch Stone",
+  "block.cac.blk_azalea_grass": "Azalea Grass",
   "advancements.adv_chasing.title": "The veteran predator",
   "effect.cac.eff_morph_prey": "Prey",
   "block.cac.blk_wall": "Wall",
   "subtitles.snd_bbyong": "snd_bbyong",
-  "advancements.adv_beginner.title": "Stickman"
+  "advancements.adv_beginner.title": "Stickman",
+  "block.cac.blk_parasol": "Parasol"
 }
