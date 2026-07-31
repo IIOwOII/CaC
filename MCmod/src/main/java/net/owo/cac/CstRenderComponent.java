@@ -36,6 +36,8 @@ public class CstRenderComponent {
 	public static ResourceLocation button_select = new ResourceLocation("cac:textures/screens/button_select.png");
 	public static ResourceLocation button_yes = new ResourceLocation("cac:textures/screens/button_yes.png");
 	public static ResourceLocation button_no = new ResourceLocation("cac:textures/screens/button_no.png");
+	public static ResourceLocation button_yes_select = new ResourceLocation("cac:textures/screens/button_yes_select.png");
+	public static ResourceLocation button_no_select = new ResourceLocation("cac:textures/screens/button_no_select.png");
 
 	public static ResourceLocation scoreboard = new ResourceLocation("cac:textures/screens/texture_scoreboard.png");
 	public static ResourceLocation scoreaxis = new ResourceLocation("cac:textures/screens/texture_scoreaxis.png");
@@ -174,33 +176,32 @@ public class CstRenderComponent {
 	}
 
 	// Button
-	public static void renderButtonSelect(GuiGraphics gg, int gw, int gh, int type) {
-		int ox = 0;
-		int oy = gh/2+32;
-		if (type == 0) {ox = (gw/4)-40;}
-		else if (type == 1) {ox = (gw/4)*3-40;}
-		else {return;}
-		gg.blit(button_select, ox, oy, 0, 0, 80, 32, 80, 32);
-	}
-	
-	public static void renderButtonYes(GuiGraphics gg, int gw, int gh, int type) {
+	public static void renderButtonYes(GuiGraphics gg, int gw, int gh, int type, int selected) {
 		int ox = 0;
 		int oy = gh/2+32;
 		switch (type) {
-			case 0: ox = (gw/4)-40; break;
-			case 1: ox = (gw/4)*3-40; break;
+			case 0: ox = (gw/4)-48; break;
+			case 1: ox = (gw/4)*3-48; break;
 		}
-		gg.blit(button_yes, ox, oy, 0, 0, 80, 32, 80, 32);
+		if (type==selected) {
+			gg.blit(button_yes_select, ox, oy, 0, 0, 96, 32, 96, 32);
+		} else {
+			gg.blit(button_yes, ox, oy, 0, 0, 96, 32, 96, 32);
+		}
 	}
 
-	public static void renderButtonNo(GuiGraphics gg, int gw, int gh, int type) {
+	public static void renderButtonNo(GuiGraphics gg, int gw, int gh, int type, int selected) {
 		int ox = 0;
 		int oy = gh/2+32;
 		switch (type) {
-			case 0: ox = (gw/4)-40; break;
-			case 1: ox = (gw/4)*3-40; break;
+			case 0: ox = (gw/4)-48; break;
+			case 1: ox = (gw/4)*3-48; break;
 		}
-		gg.blit(button_no, ox, oy, 0, 0, 80, 32, 80, 32);
+		if (type==selected) {
+			gg.blit(button_no_select, ox, oy, 0, 0, 96, 32, 96, 32);
+		} else {
+			gg.blit(button_no, ox, oy, 0, 0, 96, 32, 96, 32);
+		}
 	}
 
 	// icon

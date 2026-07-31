@@ -53,15 +53,12 @@ public class CstSurrender {
 
 		// left button : x=70, y=140 (OR) right button : x=285, y=140
 		if (sur_type == 0) { // yes is left
-			CstRenderComponent.renderButtonYes(gg, gw, gh, 0);
-			CstRenderComponent.renderButtonNo(gg, gw, gh, 1);
+			CstRenderComponent.renderButtonYes(gg, gw, gh, 0, sur_select);
+			CstRenderComponent.renderButtonNo(gg, gw, gh, 1, sur_select);
 		} else if (sur_type == 1) { // no is left
-			CstRenderComponent.renderButtonYes(gg, gw, gh, 1);
-			CstRenderComponent.renderButtonNo(gg, gw, gh, 0);
+			CstRenderComponent.renderButtonYes(gg, gw, gh, 1, sur_select);
+			CstRenderComponent.renderButtonNo(gg, gw, gh, 0, sur_select);
 		}
-
-		// selection highlight
-		CstRenderComponent.renderButtonSelect(gg, gw, gh, sur_select);
 	}
 
 	@SubscribeEvent

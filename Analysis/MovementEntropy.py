@@ -494,6 +494,6 @@ for n, dist in enumerate(dist_path):
             horizontalalignment='center', fontsize=16, weight='bold', transform=ax.transAxes)
     
     ax.set_title(f'trial {n+1}')
-fig_t_d.fig.savefig(f'{dir_beh}/IMG/{subj}_{TASK_NAME}_dist.png', bbox_inches='tight', dpi=300)
+#fig_t_d.fig.savefig(f'{dir_beh}/IMG/{subj}_{TASK_NAME}_dist.png', bbox_inches='tight', dpi=300)
 
 plt.show()

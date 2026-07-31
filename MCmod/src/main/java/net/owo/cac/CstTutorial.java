@@ -22,6 +22,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import net.owo.cac.CacMod;
 import net.owo.cac.CstState;
 import net.owo.cac.CstAgent;
 import net.owo.cac.CstSurvey;
@@ -32,6 +33,7 @@ import net.owo.cac.network.CacModVariables;
 import net.owo.cac.procedures.TutoBeginnerReadyProcedure;
 import net.owo.cac.procedures.TutoCheckpointReadyProcedure;
 import net.owo.cac.procedures.TutoRacingReadyProcedure;
+import net.owo.cac.procedures.TutoPracticeReadyProcedure;
 import net.owo.cac.procedures.TutoComebackProcedure;
 import net.owo.cac.procedures.AdpBeginnerProcedure;
 import net.owo.cac.procedures.AdpCheckpointProcedure;
@@ -40,12 +42,14 @@ import net.owo.cac.procedures.AdpChasingProcedure;
 import net.owo.cac.procedures.AdpChasedProcedure;
 import net.owo.cac.procedures.AdpSurveyProcedure;
 import net.owo.cac.procedures.AdpSurrenderProcedure;
-import net.owo.cac.procedures.MeowViewOnProcedure;
-import net.owo.cac.procedures.MeowMoveOnProcedure;
 import net.owo.cac.procedures.TaskSpawnOpponentProcedure;
 import net.owo.cac.procedures.EffApplyMorphPredatorProcedure;
 import net.owo.cac.procedures.EffApplyMorphPreyProcedure;
 import net.owo.cac.procedures.EffRemoveMorphProcedure;
+import net.owo.cac.procedures.MeowViewOnProcedure;
+import net.owo.cac.procedures.MeowMoveOnProcedure;
+import net.owo.cac.procedures.MeowViewOffProcedure;
+import net.owo.cac.procedures.MeowMoveOffProcedure;
 
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -60,11 +64,15 @@ public class CstTutorial {
 	70: surrender (legacy)
 	110: practice
 	120: main
+	121: main practice book
+	122: main practice
+	130: main chasing book
 	200: fMRI (total)
 	*/
 	public static int tuto_id = 0;
 	public static int book_id = 0;
 	public static int prac_id = 0;
+	public static int main_id = 0;
 	
 	public static int timer = 0;
 	public static boolean timer_switch = false;
@@ -73,6 +81,7 @@ public class CstTutorial {
 	public static boolean adv_switch = false;
 	public static boolean adv_certificate = false;
 
+	// Legacy
 	static ResourceLocation[] BOOK_MOVING = {
 		new ResourceLocation("cac:textures/screens/book_3x2_moving_0.png"),
 		new ResourceLocation("cac:textures/screens/book_3x2_moving_1.png"),
@@ -89,6 +98,24 @@ public class CstTutorial {
 		new ResourceLocation("cac:textures/screens/book_3x2_racing_1.png"),
 		new ResourceLocation("cac:textures/screens/book_3x2_start.png")
 	};
+	// Renewal
+	static ResourceLocation[] BOOK = {
+		new ResourceLocation("cac:textures/screens/book_0.png"),
+		new ResourceLocation("cac:textures/screens/book_1.png"),
+		new ResourceLocation("cac:textures/screens/book_2a.png"),
+		new ResourceLocation("cac:textures/screens/book_2b.png"),
+		new ResourceLocation("cac:textures/screens/book_3f.png"),
+		new ResourceLocation("cac:textures/screens/book_3s.png"),
+		new ResourceLocation("cac:textures/screens/book_4.png"),
+		new ResourceLocation("cac:textures/screens/book_cat_0.png"),
+		new ResourceLocation("cac:textures/screens/book_cat_1.png"),
+		new ResourceLocation("cac:textures/screens/book_mouse_0.png"),
+		new ResourceLocation("cac:textures/screens/book_mouse_1.png"),
+		new ResourceLocation("cac:textures/screens/book_qna.png")
+	};
+	public static int[] BOOK_PRACTICE_ORDER = new int[5];
+	public static int[] BOOK_CHASING_ORDER = {7,8};
+	public static int[] BOOK_CHASED_ORDER = {9,10};
 
 	// Moving Tutorial
 	static int[] MOVING_ORD = {2,0,5,3,6,1,7,4};
@@ -114,6 +141,7 @@ public class CstTutorial {
 		if (tuto_id == 11) {
 			renderArrow(gg, gw, gh, MOVING_ORD[moving_idx]);
 		}
+		// Legacy
 		if (tuto_id == 10) {
 			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_MOVING[book_id]);
@@ -124,6 +152,16 @@ public class CstTutorial {
 			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_RACING[book_id]);
 		}
+		// Renewal
+		if (tuto_id == 121) {
+			renderBookFHD(gg, BOOK[BOOK_PRACTICE_ORDER[book_id]]);
+		} else if (tuto_id == 130) {
+			renderBookFHD(gg, BOOK[BOOK_CHASING_ORDER[book_id]]);
+		} else if (tuto_id == 140) {
+			renderBookFHD(gg, BOOK[BOOK_CHASED_ORDER[book_id]]);
+		} else if (tuto_id == 150) {
+			renderBookFHD(gg, BOOK[11]);
+		}
 	}
 	
 	@SubscribeEvent
@@ -132,9 +170,10 @@ public class CstTutorial {
 		LevelAccessor world = _ent.level();
 		if (world.isClientSide() || _ent == null) return;
 		if (event.phase == TickEvent.Phase.END) {
+			// Legacy
 			if (tuto_id == 41 && CstState.getKeyChanged(5) == 0) {chasingGameTutorial(_ent);} // Chasing Prep
 			if (tuto_id == 51 && CstState.getKeyChanged(5) == 0) {chasedGameTutorial(_ent);} // Chased Prep
-			if (tuto_id > 0 && tuto_id % 10 == 0) { // Book
+			if (tuto_id == 10 || tuto_id == 20 || tuto_id == 30 || tuto_id == 121 || tuto_id == 130 || tuto_id == 140) { // Book
 				if (CstState.getKeyChanged(0) == 0) {
 					nextBookPage(_ent);
 				} else if (CstState.getKeyChanged(1) == 0) {
@@ -142,6 +181,8 @@ public class CstTutorial {
 				} else if (CstState.getKeyChanged(5) == 0) {
 					selectBookPage(_ent);
 				}
+			} else if (tuto_id == 150 && CstState.getKeyChanged(5) == 0) {
+				selectBookPage(_ent);
 			}
 			if (tuto_id == 11) {
 				int moving_diff = CstState.meowmove_tick[MOVING_ORD[moving_idx]] - moving_footprint[MOVING_ORD[moving_idx]];
@@ -188,19 +229,16 @@ public class CstTutorial {
 		if (player == null) return;
 		LevelAccessor world = player.level();
 		if (world.isClientSide()) return;
-		if (tuto_id == 10 && book_id < BOOK_MOVING.length-1) {
+		// Legacy
+		if ((tuto_id == 10 && book_id < BOOK_MOVING.length-1) || (tuto_id == 20 && book_id < BOOK_CHECKPOINT.length-1) || (tuto_id == 30 && book_id < BOOK_RACING.length-1)) {
 			book_id += 1;
 			// Sound and message
 			if (world instanceof Level _level) {
 				_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_bookpage")), SoundSource.NEUTRAL, 1, 1);
 			}
-		} else if (tuto_id == 20 && book_id < BOOK_CHECKPOINT.length-1) {
-			book_id += 1;
-			// Sound and message
-			if (world instanceof Level _level) {
-				_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_bookpage")), SoundSource.NEUTRAL, 1, 1);
-			}
-		} else if (tuto_id == 30 && book_id < BOOK_RACING.length-1) {
+		}
+		// Renewal
+		if ((tuto_id == 121 && book_id < BOOK_PRACTICE_ORDER.length-1) || (tuto_id == 130 && book_id < BOOK_CHASING_ORDER.length-1) || (tuto_id == 140 && book_id < BOOK_CHASED_ORDER.length-1)) {
 			book_id += 1;
 			// Sound and message
 			if (world instanceof Level _level) {
@@ -208,36 +246,35 @@ public class CstTutorial {
 			}
 		}
 	}
+	
 	public static void prevBookPage(Entity player) {
 		if (player == null) return;
 		LevelAccessor world = player.level();
 		if (world.isClientSide()) return;
-		if (book_id > 0) {
-			if (tuto_id == 10) {
-				book_id -= 1;
-				// Sound and message
-				if (world instanceof Level _level) {
-					_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_bookpage")), SoundSource.NEUTRAL, 1, 1);
-				}
-			} else if (tuto_id == 20) {
-				book_id -= 1;
-				// Sound and message
-				if (world instanceof Level _level) {
-					_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_bookpage")), SoundSource.NEUTRAL, 1, 1);
-				}
-			} else if (tuto_id == 30) {
-				book_id -= 1;
-				// Sound and message
-				if (world instanceof Level _level) {
-					_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_bookpage")), SoundSource.NEUTRAL, 1, 1);
-				}
+		if (book_id == 0) return;
+		// Legacy
+		if ((tuto_id == 10) || (tuto_id == 20) || (tuto_id == 30)) {
+			book_id -= 1;
+			// Sound and message
+			if (world instanceof Level _level) {
+				_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_bookpage")), SoundSource.NEUTRAL, 1, 1);
+			}
+		}
+		// Renewal
+		if (tuto_id == 121 || tuto_id == 130 || tuto_id == 140) {
+			book_id -= 1;
+			// Sound and message
+			if (world instanceof Level _level) {
+				_level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("cac:snd_bookpage")), SoundSource.NEUTRAL, 1, 1);
 			}
 		}
 	}
+	
 	public static void selectBookPage(Entity player) {
 		if (player == null) return;
 		LevelAccessor world = player.level();
 		if (world.isClientSide()) return;
+		// Legacy
 		if (tuto_id == 10 && book_id == BOOK_MOVING.length-1) {
 			tuto_id = 0;
 			book_id = 0;
@@ -251,11 +288,41 @@ public class CstTutorial {
 			book_id = 0;
 			TutoRacingReadyProcedure.execute(player);
 		}
+		// Renewal
+		if (tuto_id == 121 && book_id == BOOK_PRACTICE_ORDER.length-1) {
+			tuto_id = 122;
+			book_id = 0;
+			main_id = 1; // practice
+			if ((CacModVariables.Exp_mode).equals("seeg")) {
+				TutoBeginnerReadyProcedure.execute(player);
+			} else {
+				TutoPracticeReadyProcedure.execute(player);
+			}
+		} else if (tuto_id == 130 && book_id == BOOK_CHASING_ORDER.length-1) {
+			tuto_id = 131;
+			book_id = 0;
+			main_id = 2; // chasing
+			chasingPrepTutorial(player);
+		} else if (tuto_id == 140 && book_id == BOOK_CHASED_ORDER.length-1) {
+			tuto_id = 141;
+			book_id = 0;
+			main_id = 3; // chased
+			chasedPrepTutorial(player);
+		} else if (tuto_id == 150) {
+			tuto_id = 0;
+			book_id = 0;
+			main_id = 0;
+			CacModVariables.Tuto_main = false;
+		}
 	}
 
 	// Rendering
 	public static void renderBook(GuiGraphics gg, int gw, int gh, ResourceLocation book) {
 		gg.blit(book, gw/2-180, gh/2-120, 0, 0, 360, 240, 360, 240);
+	}
+
+	public static void renderBookFHD(GuiGraphics gg, ResourceLocation book) {
+		gg.blit(book, 0, 0, 0, 0, 427, 240, 1920, 1080);
 	}
 
 	public static void renderArrow(GuiGraphics gg, int gw, int gh, int ID) {
@@ -281,9 +348,43 @@ public class CstTutorial {
 		return tuto_id;
 	}
 
+	// Each tutorial
 	public static void practiceTutorial() {
 		tuto_id = 110;
 		prac_id = 0;
+	}
+
+	public static void orderBookPage() {
+		int[] order_af = {0,1,2,4,6}; // Group A, fmri or beh
+		int[] order_bf = {0,1,3,4,6}; // Group B, fmri or beh
+		int[] order_as = {0,1,2,5,6}; // Group A, seeg
+		int[] order_bs = {0,1,3,5,6}; // Group B, seeg
+		boolean is_seeg = (CacModVariables.Exp_mode).equals("seeg");
+		if ((CacModVariables.Exp_group).equals("A")) {
+			if (is_seeg) {
+				BOOK_PRACTICE_ORDER = order_as;
+			} else {
+				BOOK_PRACTICE_ORDER = order_af;
+			}
+			tuto_id = 121;
+		} else if ((CacModVariables.Exp_group).equals("B")) {
+			if (is_seeg) {
+				BOOK_PRACTICE_ORDER = order_bs;
+			} else {
+				BOOK_PRACTICE_ORDER = order_bf;
+			}
+			tuto_id = 121;
+		} else {
+			CacMod.LOGGER.warn("group error!");
+		}
+	}
+
+	public static void mainTutorial() {
+		tuto_id = 120;
+		book_id = 0;
+		orderBookPage();
+		MeowMoveOffProcedure.execute();
+		MeowViewOnProcedure.execute();
 	}
 
 	// (Legacy)

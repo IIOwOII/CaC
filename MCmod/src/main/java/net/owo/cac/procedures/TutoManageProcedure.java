@@ -1,5 +1,7 @@
 package net.owo.cac.procedures;
 
+import net.owo.cac.network.CacModVariables;
+
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
@@ -14,6 +16,7 @@ public class TutoManageProcedure {
 			return;
 		String tuto_name = "";
 		tuto_name = StringArgumentType.getString(arguments, "name");
+		CacModVariables.Tuto_main = false;
 		if ((tuto_name).equals("all")) {
 			TutoResetProcedure.execute(entity);
 			{
@@ -43,6 +46,9 @@ public class TutoManageProcedure {
 			net.owo.cac.CstTutorial.tuto_id = 10;
 		} else if ((tuto_name).equals("practice")) {
 			TutoPracticeReadyProcedure.execute(entity);
+		} else if ((tuto_name).equals("main")) {
+			CacModVariables.Tuto_main = true;
+			net.owo.cac.CstTutorial.mainTutorial();
 		}
 	}
 }

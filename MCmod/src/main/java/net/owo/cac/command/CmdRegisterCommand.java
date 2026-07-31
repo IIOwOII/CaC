@@ -22,7 +22,7 @@ public class CmdRegisterCommand {
 	public static void registerCommand(RegisterCommandsEvent event) {
 		event.getDispatcher().register(Commands.literal("cac_register")
 
-				.then(Commands.argument("subject", StringArgumentType.word()).then(Commands.argument("mode", StringArgumentType.word()).executes(arguments -> {
+				.then(Commands.argument("subject", StringArgumentType.word()).then(Commands.argument("mode", StringArgumentType.word()).then(Commands.argument("group", StringArgumentType.word()).executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();
 					double x = arguments.getSource().getPosition().x();
 					double y = arguments.getSource().getPosition().y();
@@ -36,6 +36,6 @@ public class CmdRegisterCommand {
 
 					TaskRegisterProcedure.execute(world, arguments);
 					return 0;
-				}))));
+				})))));
 	}
 }

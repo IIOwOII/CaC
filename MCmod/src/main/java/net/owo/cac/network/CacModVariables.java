@@ -58,6 +58,7 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Ev_que = new com.google.gson.JsonArray();
 	public static double Ev_que_index = 0;
 	public static boolean Ev_que_loop = false;
+	public static String Exp_group = "A";
 	public static String Exp_mode = "none";
 	public static double Exp_phase = 0;
 	public static String Exp_property = "\"\"";
@@ -66,6 +67,7 @@ public class CacModVariables {
 	public static double Exp_trial = 0;
 	public static double Exp_trial_total = 0;
 	public static File Info_timestamp = new File("");
+	public static File Log_action = new File("");
 	public static String Log_error = "\"\"";
 	public static File Log_event = new File("");
 	public static File Log_fitting = new File("");
@@ -128,7 +130,7 @@ public class CacModVariables {
 	public static double Tuto_hurdle_stack_old = 0;
 	public static double Tuto_score = 0;
 	public static boolean Tuto_score_running = false;
-	public static File Log_action = new File("");
+	public static boolean Tuto_main = false;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

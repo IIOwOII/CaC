@@ -255,6 +255,7 @@ with open(f'{dir_comp}/info_obstacle.json', 'r') as f:
     info_obs = json.load(f)
 point_wall = np.array(info_obs['wall_point']).T
 point_obs = np.array(info_obs['obstacle_point']).T
+point_grass = np.array(info_obs['grass_point']).T
 
 # Param load
 with open(f'{dir_comp}/pool_psychometric.json', 'r') as f_psy:
@@ -528,6 +529,7 @@ for TASK_NAME in ['chasing', 'chased']:
                                c=play_time, cmap=COLOR_JERRY)
         ax.scatter(point_wall[0]+0.5, point_wall[1]+0.5, s=10, color='k', marker='s', alpha=0.5)
         ax.scatter(point_obs[0]+0.5, point_obs[1]+0.5, s=10, color='k', marker='s', alpha=0.5)
+        ax.scatter(point_grass[0]+0.5, point_grass[1]+0.5, s=10, color=COLOR_GREEN_C, marker='s', alpha=0.2)
         ax.set_title(f'{subj}-{TASK_NAME}')
     #fig_pos.fig.colorbar(sca_tom, ax=fig_pos.axes[0][-1])
     #fig_pos.fig.colorbar(sca_jerry, ax=fig_pos.axes[0][-1])

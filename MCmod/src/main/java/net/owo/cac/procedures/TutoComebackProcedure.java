@@ -1,5 +1,6 @@
 package net.owo.cac.procedures;
 
+import net.owo.cac.network.CacModVariables;
 import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
@@ -13,15 +14,28 @@ public class TutoComebackProcedure {
 		if (entity == null)
 			return;
 		EffRemoveMorphProcedure.execute(entity);
-		CacMod.queueServerWork(10, () -> {
-			{
-				Entity _ent = entity;
-				if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-					_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-							_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp tutorial");
+		if (!CacModVariables.Tuto_main) {
+			CacMod.queueServerWork(10, () -> {
+				{
+					Entity _ent = entity;
+					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
+								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "cac_tp tutorial");
+					}
 				}
+				MeowViewOffProcedure.execute();
+			});
+		} else {
+			if (net.owo.cac.CstTutorial.main_id == 1) {
+				MeowMoveOffProcedure.execute();
+				net.owo.cac.CstTutorial.tuto_id = 130;
+			} else if (net.owo.cac.CstTutorial.main_id == 2) {
+				MeowMoveOffProcedure.execute();
+				net.owo.cac.CstTutorial.tuto_id = 140;
+			} else if (net.owo.cac.CstTutorial.main_id == 3) {
+				MeowMoveOffProcedure.execute();
+				net.owo.cac.CstTutorial.tuto_id = 150;
 			}
-			MeowViewOffProcedure.execute();
-		});
+		}
 	}
 }

@@ -3919,6 +3919,40 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "BlkFloweringAzaleaGrass",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_flowering_azalea_grass",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/block/BlkFloweringAzaleaGrassBlock.java",
+          "src/main/resources/assets/cac/models/item/blk_flowering_azalea_grass.json",
+          "src/main/resources/assets/cac/blockstates/blk_flowering_azalea_grass.json",
+          "src/main/resources/assets/cac/models/block/blk_flowering_azalea_grass.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_flowering_azalea_grass.json"
+        ]
+      },
+      "path": "~/CacBlock"
+    },
+    {
+      "name": "BlkAzaleaGrass",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blk_azalea_grass",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/cac/loot_tables/blocks/blk_azalea_grass.json",
+          "src/main/resources/assets/cac/models/item/blk_azalea_grass.json",
+          "src/main/java/net/owo/cac/block/BlkAzaleaGrassBlock.java",
+          "src/main/resources/assets/cac/models/block/blk_azalea_grass.json",
+          "src/main/resources/assets/cac/blockstates/blk_azalea_grass.json"
+        ]
+      },
+      "path": "~/CacBlock"
     }
   ],
   "variable_elements": [
@@ -4121,6 +4155,12 @@
       "value": "false"
     },
     {
+      "name": "Exp_group",
+      "type": "string",
+      "scope": "global",
+      "value": "A"
+    },
+    {
       "name": "Exp_mode",
       "type": "string",
       "scope": "global",
@@ -4185,6 +4225,12 @@
       "type": "datalist",
       "scope": "map",
       "value": "new ListTag()"
+    },
+    {
+      "name": "Log_action",
+      "type": "file",
+      "scope": "global",
+      "value": "new File(\"\")"
     },
     {
       "name": "Log_error",
@@ -4559,10 +4605,10 @@
       "value": "false"
     },
     {
-      "name": "Log_action",
-      "type": "file",
+      "name": "Tuto_main",
+      "type": "logic",
       "scope": "global",
-      "value": "new File(\"\")"
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -4649,7 +4695,9 @@
       "BlkValuepatch",
       "BlkMission",
       "BlkFlag",
-      "BlkParasol"
+      "BlkParasol",
+      "BlkAzaleaGrass",
+      "BlkFloweringAzaleaGrass"
     ]
   },
   "language_map": {
@@ -4669,6 +4717,7 @@
       "entity.cac.ent_mouse": "Prey",
       "advancements.adv_racing.descr": "Ready to flight away",
       "effect.cac.eff_stop_move": "Stiffness",
+      "block.cac.blk_flowering_azalea_grass": "Flowering Azalea Grass",
       "key.cac.cac_key_up": "Up",
       "key.cac.cac_key_scanner": "Scanner Signal",
       "advancements.adv_chased.title": "The shrewd prey",
@@ -4714,6 +4763,7 @@
       "key.cac.cac_key_left": "Left",
       "advancements.adv_cac.descr": "Welcome to the CaC!",
       "block.cac.blk_switchstone": "Switch Stone",
+      "block.cac.blk_azalea_grass": "Azalea Grass",
       "advancements.adv_chasing.title": "The veteran predator",
       "effect.cac.eff_morph_prey": "Prey",
       "block.cac.blk_wall": "Wall",
@@ -4837,7 +4887,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "1.41",
+    "version": "1.5",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",

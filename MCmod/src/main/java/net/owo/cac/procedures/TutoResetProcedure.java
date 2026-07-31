@@ -15,6 +15,7 @@ public class TutoResetProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
+		CacModVariables.Tuto_main = false;
 		CacModVariables.Tuto_score_running = false;
 		CacModVariables.Tuto_score = 0;
 		CacModVariables.Tuto_hurdle_stack = 0;
@@ -36,5 +37,7 @@ public class TutoResetProcedure {
 			}
 		}
 		net.owo.cac.CstTutorial.tuto_id = 0;
+		net.owo.cac.CstTutorial.book_id = 0;
+		net.owo.cac.CstTutorial.main_id = 0;
 	}
 }

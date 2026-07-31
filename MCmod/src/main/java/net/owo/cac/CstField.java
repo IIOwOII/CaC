@@ -38,6 +38,7 @@ public class CstField {
 	public static ArrayList<Vec3> points_obstacle = new ArrayList<>();
 	public static ArrayList<Vec3> points_wall = new ArrayList<>();
 	public static ArrayList<Vec3> points_parasol = new ArrayList<>();
+	public static ArrayList<Vec3> points_grass = new ArrayList<>();
 	public static Vec3 pos_border_start = new Vec3(-15.5, 64.0, -65.5);
 	public static Vec3 pos_border_end = new Vec3(16.5, 64.0, -33.5);
 	
@@ -71,6 +72,7 @@ public class CstField {
 		JsonArray arr_obstacle_point = new JsonArray();
 		JsonArray arr_wall_point = new JsonArray();
 		JsonArray arr_parasol_point = new JsonArray();
+		JsonArray arr_grass_point = new JsonArray();
 		JsonArray arr_temp = new JsonArray();
 
 		// create file
@@ -108,6 +110,11 @@ public class CstField {
 				arr_parasol_point.add(vec2arr(points_parasol.get(k)));
 			}
 		}
+		if (points_grass.size() != 0) {
+			for (int l=0; l<points_grass.size(); l++) {
+				arr_grass_point.add(vec2arr(points_grass.get(l)));
+			}
+		}
 
 		// write
 		obj_file.add("border", arr_border);
@@ -116,6 +123,7 @@ public class CstField {
 		obj_file.add("obstacle_point", arr_obstacle_point);
 		obj_file.add("wall_point", arr_wall_point);
 		obj_file.add("parasol_point", arr_parasol_point);
+		obj_file.add("grass_point", arr_grass_point);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(Info_obstacle);
@@ -243,6 +251,7 @@ public class CstField {
 		points_obstacle.clear();
 		points_wall.clear();
 		points_parasol.clear();
+		points_grass.clear();
 
 		// scan
 		Vec3 vec_vertice_temp = Vec3.ZERO;
@@ -271,6 +280,9 @@ public class CstField {
 				}
 				if ((world.getBlockState(BlockPos.containing(cx, py, cz))).getBlock() == CacModBlocks.BLK_PARASOL.get()) { // parasol
 					points_parasol.add(new Vec3(cx, py, cz));
+				}
+				if ((block_curr.getBlock() == CacModBlocks.BLK_AZALEA_GRASS.get()) || (block_curr.getBlock() == CacModBlocks.BLK_FLOWERING_AZALEA_GRASS.get())) { // grass
+					points_grass.add(new Vec3(cx, oy, cz));
 				}
 				if (ispoint_start || ispoint_end) { // if it is vertice (obs)
 					vec_vertice_temp = new Vec3(cx, oy, cz);

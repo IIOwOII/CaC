@@ -1899,5 +1899,11 @@
     },
     "done": true
   },
+  "cac:adv_chased": {
+    "criteria": {
+      "adv_chased_0": "2026-07-31 16:21:16 +0900"
+    },
+    "done": true
+  },
   "DataVersion": 3465
 }
