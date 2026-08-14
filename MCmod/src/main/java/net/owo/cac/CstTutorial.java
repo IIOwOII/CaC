@@ -322,7 +322,7 @@ public class CstTutorial {
 	}
 
 	public static void renderBookFHD(GuiGraphics gg, ResourceLocation book) {
-		gg.blit(book, 0, 0, 0, 0, 427, 240, 1920, 1080);
+		gg.blit(book, 0, 0, 0, 0, 1920, 1080, 480, 270);
 	}
 
 	public static void renderArrow(GuiGraphics gg, int gw, int gh, int ID) {

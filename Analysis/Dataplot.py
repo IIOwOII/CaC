@@ -272,7 +272,7 @@ theta_con_idx = np.array(list(itertools.product(*[np.arange(psy_con['shape'][i])
 
 
 #%%
-SUBJECTS = ['b01', 'b02', 'b03', 'b04']
+SUBJECTS = ['b01', 'b02', 'b03', 'b04', 'P012']
 
 for TASK_NAME in ['chasing', 'chased']:
     if (TASK_NAME == 'chasing'): 
@@ -434,7 +434,11 @@ for TASK_NAME in ['chasing', 'chased']:
     for i, ax in enumerate(fig_maxEIG_fit.axes[0]):
         subj = SUBJECTS[i]
         ax.plot(np.arange(ftra_maxEIG[i].shape[0]), ftra_maxEIG[i], color=COLOR_BLUE_C, zorder=1)
-        ax.axhline(0.05, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=2)
+        if (subj[0]=='P'):
+            IG_threshold = 0.08
+        else:
+            IG_threshold = 0.05
+        ax.axhline(IG_threshold, linewidth=0.3, linestyle='-.', color=COLOR_RED_C, zorder=2)
         ax.set_title(f'{subj}-{TASK_NAME} (fit)')
     
     # Trial - Entropy (fit)
@@ -529,7 +533,7 @@ for TASK_NAME in ['chasing', 'chased']:
                                c=play_time, cmap=COLOR_JERRY)
         ax.scatter(point_wall[0]+0.5, point_wall[1]+0.5, s=10, color='k', marker='s', alpha=0.5)
         ax.scatter(point_obs[0]+0.5, point_obs[1]+0.5, s=10, color='k', marker='s', alpha=0.5)
-        ax.scatter(point_grass[0]+0.5, point_grass[1]+0.5, s=10, color=COLOR_GREEN_C, marker='s', alpha=0.2)
+        #ax.scatter(point_grass[0]+0.5, point_grass[1]+0.5, s=10, color=COLOR_GREEN_C, marker='s', alpha=0.2)
         ax.set_title(f'{subj}-{TASK_NAME}')
     #fig_pos.fig.colorbar(sca_tom, ax=fig_pos.axes[0][-1])
     #fig_pos.fig.colorbar(sca_jerry, ax=fig_pos.axes[0][-1])

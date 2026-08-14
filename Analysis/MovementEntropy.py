@@ -407,7 +407,7 @@ def distance_8way_path(vec_s, vec_e, path):
 
 
 #%%
-subj = 'b04'
+subj = 'P012'
 TASK_NAME = 'chased'
 with open(f'{dir_beh}/{subj}/{TASK_NAME}/log_position.json', 'r') as f:
     dat_pos = json.load(f)['cac']

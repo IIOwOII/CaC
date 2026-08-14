@@ -64,6 +64,7 @@ public class CstSurvey {
 	public static int timer_quiz = 0;
 	public static int timer_blank = 0;
 	public static int timer_score = 0;
+	public static int timer_safe = 0;
 	public static int suv_phase = 30;
 
 	// trial by trial
@@ -103,12 +104,13 @@ public class CstSurvey {
 		if (event.phase == TickEvent.Phase.END) {
 			if (suv_phase == 35) {
 				timer_quiz = timer_quiz + 1;
+				timer_safe = timer_safe + 1;
 				int suv_id = suv_order[idx];
 				if ((CstState.key_pressed[0]) && (suv_value[suv_id] < 100))
 					suv_value[suv_id] = suv_value[suv_id] + 1;
 				if ((CstState.key_pressed[1]) && (suv_value[suv_id] > 0))
 					suv_value[suv_id] = suv_value[suv_id] - 1;
-				if ((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer))
+				if (((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer)) && timer_safe >= 20)
 					confirmSurvey();
 			} else if (suv_phase == 33) {
 				timer_blank = timer_blank + 1;
@@ -188,6 +190,7 @@ public class CstSurvey {
 	public static void waitingSurvey() { // phase 3.3
 		suv_phase = 33; // start of func
 		timer_quiz = 0;
+		timer_safe = 0;
 		CstRenderComponent.renderPatchReserved(33);
 		CacModVariables.Ev_pulse_content = ("survey_waiting_" + idx);
 		EvPulseRecordProcedure.execute();

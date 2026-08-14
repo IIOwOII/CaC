@@ -32,6 +32,7 @@ public class CstSurrender {
 	
 	public static boolean IsSurrender = false;
 	public static int timer_blank = 0;
+	public static int timer_safe = 0;
 	public static int sur_type = 0; // even trial(0,2,4,...) = 0, odd trial(1,3,5,...) = 1, not recorded
 	public static int sur_time = 0;
 	public static int sur_select = -1; // left = 0, right = 1, init = -1
@@ -69,12 +70,13 @@ public class CstSurrender {
 				timer_blank--;
 				return;
 			}
+			timer_safe++;
 			sur_time = sur_time + 1;
 			if (CstState.key_pressed[0])
 				sur_select = 1;
 			if (CstState.key_pressed[1])
 				sur_select = 0;
-			if ((CstState.key_pressed[5]) && (sur_select == 0 || sur_select == 1)) {
+			if (((CstState.key_pressed[5]) && (sur_select == 0 || sur_select == 1)) && timer_safe >= 20) {
 				confirmSurrender();
 			}
 		}
@@ -94,6 +96,7 @@ public class CstSurrender {
 		sur_time = 0;
 		sur_select = -1;
 		timer_blank = 20; // 1sec blank before vote
+		timer_safe = 0;
 		IsSurrender = true;
 	}
 	
