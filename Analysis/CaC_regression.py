@@ -144,6 +144,14 @@ def func_fraction(rho_hat, m, h, w):
     mu_norm = np.where(rho_hat >= (h-w)+w/(M-m), (m+(1.0/(1+((rho_hat-h)/w)))), M)
     return mu_norm
 
+def func_exponent(rho_hat, k, m, h, w):
+    theta = np.array([k, m, h, w])
+    vec_unnorm = np.vectorize(unnormalize)
+    k, m, h, w = vec_unnorm(theta, con_min, con_max)[:]
+    
+    mu_norm = m+((3*k)/(3*k-1)-m)*np.exp(-(rho_hat-h)/w)
+    return mu_norm
+
 # def pdf_polyexp(xy, k, m, h, w):
 #     t, rho_hat = xy
 #     k = round(k)
@@ -189,6 +197,11 @@ popt_frac, pcov_frac = curve_fit(func_fraction,
                                  p0=[0.5, 0.5, 0.5],
                                  bounds=([0,0,0], [1,1,1]),
                                  maxfev=200000)
+popt_exp, pcov_exp = curve_fit(func_exponent,
+                               sim_rho_hat, sim_t/T,
+                               p0=[0.5, 0.5, 0.5, 0.5],
+                               bounds=([0,0,0,0], [1,1,1,1]),
+                               maxfev=200000)
 popt_pexp, pcov_pexp = curve_fit(cdf_polyexp,
                                  sim_rho_hat, sim_wl,
                                  p0=[0.5, 0.5, 0.5, 0.5],
@@ -230,6 +243,14 @@ ax2.axhline(1, linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, zorder=-1)
 ax2.scatter(sim_rho, sim_t/T, s=1, color='k', alpha=0.2, zorder=1)
 ax2.plot(RHO, func_fraction(RHO_HAT, *popt_pexp[1:]), linewidth=1, color=COLOR_GREEN_C, zorder=2)
 
+fig2, ax2 = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
+                       ylabel=r'$t$'+' (Trial Time)',
+                       xlim=[0.8, 1.2], ylim=[0.0, 1.67],
+                       yticks=[0, 0.5, 1, 1.5], yticklabels=[0, 15, 30, 45])
+ax2.axhline(1, linewidth=0.3, linestyle='-.', color=COLOR_YELLOW_C, zorder=-1)
+ax2.scatter(sim_rho, sim_t/T, s=1, color='k', alpha=0.2, zorder=1)
+ax2.plot(RHO, func_exponent(RHO_HAT, *popt_pexp[0:]), linewidth=1, color=COLOR_GREEN_C, zorder=2)
+
 
 fig3, ax3 = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
                        ylabel=r'$\Psi$'+' (Win Rate)',
@@ -239,5 +260,12 @@ ax3.plot(RHO, cdf_polyexp(RHO_HAT, popt_pexp[0], *popt_frac), zorder=2)
 ax3.scatter(sim_rho, sim_wl, s=1, color='gray', alpha=0.2, zorder=1)
 plot_raw_mu(ax3, sim_rho, sim_wl)
 
+fig3, ax3 = plot_setting(xlabel=r'$\rho$'+' (Difficulty)', 
+                       ylabel=r'$\Psi$'+' (Win Rate)',
+                       xlim=[0.8, 1.2], ylim=[0, 1],
+                       yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1])
+ax3.plot(RHO, cdf_polyexp(RHO_HAT, *popt_exp), zorder=2)
+ax3.scatter(sim_rho, sim_wl, s=1, color='gray', alpha=0.2, zorder=1)
+plot_raw_mu(ax3, sim_rho, sim_wl)
 
 plt.show()
