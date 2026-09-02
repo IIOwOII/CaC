@@ -46,7 +46,7 @@ public class CapManageProcedure {
 			CstPsychometric.adjustIG(0.05);
 		}
 		if ((CacModVariables.Psy_method).equals(".")) {
-			CacModVariables.Psy_method = "continuous";
+			CacModVariables.Psy_method = "neo";
 		}
 		if ((CacModVariables.Psy_method).equals("both")) {
 			net.owo.cac.CstPsychometric.method_type = 0;
@@ -54,6 +54,8 @@ public class CapManageProcedure {
 			net.owo.cac.CstPsychometric.method_type = 1;
 		} else if ((CacModVariables.Psy_method).equals("continuous")) {
 			net.owo.cac.CstPsychometric.method_type = 2;
+		} else if ((CacModVariables.Psy_method).equals("neo")) {
+			net.owo.cac.CstPsychometric.method_type = 3;
 		} else {
 			is_available = false;
 		}
@@ -62,9 +64,11 @@ public class CapManageProcedure {
 			net.owo.cac.CstPsychometric.initPsy();
 		} else if ((CacModVariables.Psy_task).equals("chasing")) {
 			net.owo.cac.CstPsychometric.task_type = 0;
+			net.owo.cac.CstPsychometric.c_pre = 1;
 			net.owo.cac.CstPsychometric.initPsy();
 		} else if ((CacModVariables.Psy_task).equals("chased")) {
 			net.owo.cac.CstPsychometric.task_type = 1;
+			net.owo.cac.CstPsychometric.c_pre = -1;
 			net.owo.cac.CstPsychometric.initPsy();
 		} else {
 			is_available = false;

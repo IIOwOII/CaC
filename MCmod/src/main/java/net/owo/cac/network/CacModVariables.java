@@ -131,6 +131,11 @@ public class CacModVariables {
 	public static double Tuto_score = 0;
 	public static boolean Tuto_score_running = false;
 	public static boolean Tuto_main = false;
+	public static com.google.gson.JsonArray Psy_neo_param_max = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_min = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_prior = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_shape = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_step = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

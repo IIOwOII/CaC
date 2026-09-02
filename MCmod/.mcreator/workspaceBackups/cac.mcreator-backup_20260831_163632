@@ -167,11 +167,11 @@
       "registry_name": "blk_obstacle",
       "metadata": {
         "files": [
-          "src/main/resources/data/cac/loot_tables/blocks/blk_obstacle.json",
-          "src/main/resources/assets/cac/blockstates/blk_obstacle.json",
-          "src/main/resources/assets/cac/models/block/blk_obstacle.json",
           "src/main/resources/assets/cac/models/item/blk_obstacle.json",
-          "src/main/java/net/owo/cac/block/BlkObstacleBlock.java"
+          "src/main/resources/assets/cac/blockstates/blk_obstacle.json",
+          "src/main/java/net/owo/cac/block/BlkObstacleBlock.java",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_obstacle.json",
+          "src/main/resources/assets/cac/models/block/blk_obstacle.json"
         ]
       },
       "path": "~/CacBlock"
@@ -184,18 +184,18 @@
       "registry_name": "bls_obstacle",
       "metadata": {
         "files": [
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_4.json",
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_6.json",
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_9.json",
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_1.json",
           "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_0.json",
           "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_2.json",
           "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_8.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_3.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_10.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_7.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_11.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_4.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_1.json",
           "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_5.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_9.json",
-          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_6.json"
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_10.json",
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_11.json",
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_7.json",
+          "src/main/resources/assets/cac/models/block/bls_obstacle_blockstate_3.json"
         ]
       },
       "path": "~/CacBlock"
@@ -244,11 +244,11 @@
       "registry_name": "blk_wall",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/block/BlkWallBlock.java",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_wall.json",
           "src/main/resources/assets/cac/models/item/blk_wall.json",
+          "src/main/resources/assets/cac/blockstates/blk_wall.json",
+          "src/main/java/net/owo/cac/block/BlkWallBlock.java",
           "src/main/resources/assets/cac/models/block/blk_wall.json",
-          "src/main/resources/assets/cac/blockstates/blk_wall.json"
+          "src/main/resources/data/cac/loot_tables/blocks/blk_wall.json"
         ]
       },
       "path": "~/CacBlock"
@@ -261,11 +261,11 @@
       "registry_name": "bls_wall",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/bls_wall_blockstate_0.json",
-          "src/main/resources/assets/cac/models/block/bls_wall_blockstate_5.json",
           "src/main/resources/assets/cac/models/block/bls_wall_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_wall_blockstate_5.json",
           "src/main/resources/assets/cac/models/block/bls_wall_blockstate_1.json",
           "src/main/resources/assets/cac/models/block/bls_wall_blockstate_4.json",
+          "src/main/resources/assets/cac/models/block/bls_wall_blockstate_0.json",
           "src/main/resources/assets/cac/models/block/bls_wall_blockstate_3.json"
         ]
       },
@@ -450,7 +450,24 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       },
       "path": "~/CacCommand"
     },
@@ -1617,11 +1634,11 @@
       "registry_name": "blk_fence",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/blk_fence.json",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_fence.json",
           "src/main/resources/assets/cac/blockstates/blk_fence.json",
           "src/main/resources/assets/cac/models/item/blk_fence.json",
-          "src/main/java/net/owo/cac/block/BlkFenceBlock.java"
+          "src/main/java/net/owo/cac/block/BlkFenceBlock.java",
+          "src/main/resources/assets/cac/models/block/blk_fence.json",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_fence.json"
         ]
       },
       "path": "~/CacBlock"
@@ -1635,11 +1652,11 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/cac/models/block/bls_fence_blockstate_4.json",
-          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_1.json",
-          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_5.json",
-          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_0.json",
           "src/main/resources/assets/cac/models/block/bls_fence_blockstate_3.json",
-          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_2.json"
+          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_0.json",
+          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_5.json",
+          "src/main/resources/assets/cac/models/block/bls_fence_blockstate_1.json"
         ]
       },
       "path": "~/CacBlock"
@@ -1775,10 +1792,10 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/block/BlkCheckpointBlock.java",
-          "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
-          "src/main/resources/assets/cac/models/item/blk_checkpoint.json",
+          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json",
           "src/main/resources/data/cac/loot_tables/blocks/blk_checkpoint.json",
-          "src/main/resources/assets/cac/blockstates/blk_checkpoint.json"
+          "src/main/resources/assets/cac/models/block/blk_checkpoint.json",
+          "src/main/resources/assets/cac/models/item/blk_checkpoint.json"
         ]
       },
       "path": "~/CacBlock"
@@ -1981,9 +1998,9 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/cac/models/block/blk_hurdle.json",
-          "src/main/resources/assets/cac/blockstates/blk_hurdle.json",
           "src/main/java/net/owo/cac/block/BlkHurdleBlock.java",
           "src/main/resources/data/cac/loot_tables/blocks/blk_hurdle.json",
+          "src/main/resources/assets/cac/blockstates/blk_hurdle.json",
           "src/main/resources/assets/cac/models/item/blk_hurdle.json"
         ]
       },
@@ -1997,12 +2014,12 @@
       "registry_name": "bls_hurdle",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_0.json",
-          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_3.json",
-          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_4.json",
-          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_2.json",
           "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_5.json",
-          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_1.json"
+          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_1.json",
+          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_3.json",
+          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_0.json",
+          "src/main/resources/assets/cac/models/block/bls_hurdle_blockstate_4.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2068,11 +2085,11 @@
       "registry_name": "blk_switchstone",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/item/blk_switchstone.json",
-          "src/main/resources/assets/cac/models/block/blk_switchstone.json",
           "src/main/resources/data/cac/loot_tables/blocks/blk_switchstone.json",
+          "src/main/resources/assets/cac/models/block/blk_switchstone.json",
+          "src/main/resources/assets/cac/blockstates/blk_switchstone.json",
           "src/main/java/net/owo/cac/block/BlkSwitchstoneBlock.java",
-          "src/main/resources/assets/cac/blockstates/blk_switchstone.json"
+          "src/main/resources/assets/cac/models/item/blk_switchstone.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2118,8 +2135,8 @@
       "registry_name": "cac_builder_tool",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/item/cac_builder_tool.json",
-          "src/main/java/net/owo/cac/item/CacBuilderToolItem.java"
+          "src/main/java/net/owo/cac/item/CacBuilderToolItem.java",
+          "src/main/resources/assets/cac/models/item/cac_builder_tool.json"
         ]
       },
       "path": "~/CacItem"
@@ -2198,11 +2215,11 @@
       "registry_name": "blk_arrow",
       "metadata": {
         "files": [
+          "src/main/resources/assets/cac/models/block/blk_arrow.json",
           "src/main/java/net/owo/cac/block/BlkArrowBlock.java",
           "src/main/resources/data/cac/loot_tables/blocks/blk_arrow.json",
-          "src/main/resources/assets/cac/blockstates/blk_arrow.json",
           "src/main/resources/assets/cac/models/item/blk_arrow.json",
-          "src/main/resources/assets/cac/models/block/blk_arrow.json"
+          "src/main/resources/assets/cac/blockstates/blk_arrow.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2215,9 +2232,9 @@
       "registry_name": "bls_arrow",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/bls_arrow_blockstate_2.json",
           "src/main/resources/assets/cac/models/block/bls_arrow_blockstate_1.json",
-          "src/main/resources/assets/cac/models/block/bls_arrow_blockstate_0.json"
+          "src/main/resources/assets/cac/models/block/bls_arrow_blockstate_0.json",
+          "src/main/resources/assets/cac/models/block/bls_arrow_blockstate_2.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2352,11 +2369,11 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/cac/models/item/blk_valuestone.json",
-          "src/main/resources/data/cac/loot_tables/blocks/blk_valuestone.json",
-          "src/main/java/net/owo/cac/block/BlkValuestoneBlock.java",
+          "src/main/resources/assets/cac/models/block/blk_valuestone.json",
           "src/main/resources/assets/cac/blockstates/blk_valuestone.json",
-          "src/main/java/net/owo/cac/block/entity/BlkValuestoneBlockEntity.java",
-          "src/main/resources/assets/cac/models/block/blk_valuestone.json"
+          "src/main/java/net/owo/cac/block/BlkValuestoneBlock.java",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_valuestone.json",
+          "src/main/java/net/owo/cac/block/entity/BlkValuestoneBlockEntity.java"
         ]
       },
       "path": "~/CacBlock"
@@ -2386,12 +2403,12 @@
       "registry_name": "blk_valuepatch",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/block/BlkValuepatchBlock.java",
-          "src/main/resources/assets/cac/models/item/blk_valuepatch.json",
-          "src/main/resources/assets/cac/models/block/blk_valuepatch.json",
-          "src/main/java/net/owo/cac/block/entity/BlkValuepatchBlockEntity.java",
           "src/main/resources/data/cac/loot_tables/blocks/blk_valuepatch.json",
-          "src/main/resources/assets/cac/blockstates/blk_valuepatch.json"
+          "src/main/resources/assets/cac/models/block/blk_valuepatch.json",
+          "src/main/resources/assets/cac/models/item/blk_valuepatch.json",
+          "src/main/java/net/owo/cac/block/BlkValuepatchBlock.java",
+          "src/main/resources/assets/cac/blockstates/blk_valuepatch.json",
+          "src/main/java/net/owo/cac/block/entity/BlkValuepatchBlockEntity.java"
         ]
       },
       "path": "~/CacBlock"
@@ -2404,12 +2421,12 @@
       "registry_name": "bls_valuepatch",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_0.json",
-          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_3.json",
-          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_4.json",
           "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_1.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_4.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_3.json",
           "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_5.json",
-          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_2.json"
+          "src/main/resources/assets/cac/models/block/bls_valuepatch_blockstate_0.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2947,11 +2964,11 @@
       "registry_name": "blk_mission",
       "metadata": {
         "files": [
-          "src/main/resources/data/cac/loot_tables/blocks/blk_mission.json",
           "src/main/resources/assets/cac/models/item/blk_mission.json",
+          "src/main/java/net/owo/cac/block/BlkMissionBlock.java",
+          "src/main/resources/data/cac/loot_tables/blocks/blk_mission.json",
           "src/main/resources/assets/cac/models/block/blk_mission.json",
-          "src/main/resources/assets/cac/blockstates/blk_mission.json",
-          "src/main/java/net/owo/cac/block/BlkMissionBlock.java"
+          "src/main/resources/assets/cac/blockstates/blk_mission.json"
         ]
       },
       "path": "~/CacBlock"
@@ -2964,37 +2981,37 @@
       "registry_name": "bls_mission",
       "metadata": {
         "files": [
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_16.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_10.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_13.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_19.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_27.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_6.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_30.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_9.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_2.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_18.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_22.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_11.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_15.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_26.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_8.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_5.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_29.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_4.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_7.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_23.json",
           "src/main/resources/assets/cac/models/block/bls_mission_blockstate_14.json",
           "src/main/resources/assets/cac/models/block/bls_mission_blockstate_17.json",
           "src/main/resources/assets/cac/models/block/bls_mission_blockstate_25.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_1.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_12.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_20.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_7.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_4.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_23.json",
           "src/main/resources/assets/cac/models/block/bls_mission_blockstate_28.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_20.json",
           "src/main/resources/assets/cac/models/block/bls_mission_blockstate_3.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_24.json",
           "src/main/resources/assets/cac/models/block/bls_mission_blockstate_0.json",
-          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_21.json"
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_13.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_9.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_12.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_16.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_24.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_19.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_27.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_6.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_8.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_21.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_5.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_18.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_10.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_15.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_2.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_30.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_26.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_29.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_22.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_1.json",
+          "src/main/resources/assets/cac/models/block/bls_mission_blockstate_11.json"
         ]
       },
       "path": "~/CacBlock"
@@ -4887,7 +4904,7 @@
   "workspaceSettings": {
     "modid": "cac",
     "modName": "CaC",
-    "version": "1.5",
+    "version": "1.7",
     "description": "Chasing and Chased!",
     "author": "OwO",
     "websiteURL": "https://github.com/IIOwOII",
