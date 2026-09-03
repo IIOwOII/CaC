@@ -953,7 +953,19 @@ public class CstPsychometric {
 			}
 			P_nhit = Math.exp(-lambda*T)*series;
 		} else if (k_isint == 1) { // k is n+0.5
-			
+			if (k == 0.5) {
+				P_nhit = calErfcsqrt(lambda*T);
+			} else {
+				double a = 1;
+				double series = 0;
+				for (int i=0; i<(int)(k-0.5); i++) {
+					if (i!=0) {
+						a = a * (2.0/(2.0*i+1.0));
+					}
+					series += a*Math.pow(lambda*T, i);
+				}
+				P_nhit = calErfcsqrt(lambda*T) + 2*Math.exp(-lambda*T)*Math.sqrt(-lambda*T/Math.PI)*series;
+			}
 		}
 		P = ((1.0+C_PRE)/2.0)-C_PRE*P_nhit;
 		if (P < PMIN) {
@@ -978,6 +990,10 @@ public class CstPsychometric {
 			lambda_median = Math.pow(2.0, -1/k)*(0.56147)*(Math.pow(2.27611,k));
 		}
 		return lambda_median;
+	}
+	public static double calErfcsqrt(double x) {
+		double y = 1 - Math.sqrt(1-Math.exp(-x*((1.27324+0.147*x)/(1+0.147*x))));
+		return y;
 	}
 	
 	// Index rearrange
