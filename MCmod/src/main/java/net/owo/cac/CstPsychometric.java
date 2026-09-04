@@ -191,6 +191,9 @@ public class CstPsychometric {
 		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
 		return P;
 	}
+	public static double calFittedNeoPSI(double r) {
+		
+	}
 	
 	public static double calFitInversePSI(double P) {
 		double k = THETA_STAR[0];
@@ -232,6 +235,15 @@ public class CstPsychometric {
 		rho = Math.round(rho*10000.0) / 10000.0; // 4 decimals
 		return rho;
 	}
+	public static double calFittedNeoInversePSI(double P) {
+		double k = THETA_STAR[0];
+		double m = THETA_STAR[1];
+		double h = THETA_STAR[2];
+		double w = THETA_STAR[3];
+		
+		
+	}
+	
 	public static double calFitPercentile(double rho, double tick) {
 		double k = THETA_STAR[0];
 		double m = THETA_STAR[1];
@@ -598,7 +610,7 @@ public class CstPsychometric {
 		likelihood_con = new double[GRIDCON];
 	}
 	public static void initNeoL() {
-		likelihood_neo = new double[GRIDNEO];
+		L_neo = new double[GRIDNEO];
 	}
 
 	// Prob
@@ -747,13 +759,13 @@ public class CstPsychometric {
 				for (int c=0; c<shape[2]; c++) {
 					for (int d=0; d<shape[3]; d++) {
 						D_sq = Math.pow((a-prior[0])/shape[0],2) + Math.pow((b-prior[1])/shape[1],2) + Math.pow((c-prior[2])/shape[2],2) + Math.pow((d-prior[3])/shape[3],2);
-						likelihood_neo[flattenNeoIndex(a,b,c,d)] = Math.log(0.5+0.5*Math.exp(-D_sq/2));
+						L_neo[flattenNeoIndex(a,b,c,d)] = Math.log(0.5+0.5*Math.exp(-D_sq/2));
 					}
 				}
 			}
 		}
-		likelihood_neo = normL(likelihood_neo.clone());
-		entropy_neo = calEntropy(likelihood_neo);
+		L_neo = normL(L_neo.clone());
+		H_neo = calEntropy(L_neo);
 	}
 
 
@@ -943,7 +955,7 @@ public class CstPsychometric {
 		// PSI = (1+c_pre)/2 - c_pre * Gamma(k,lambda*T)/Gamma(k)
 		double P = 0;
 		double P_nhit = 0;
-		int k_isint = Math.round(2*k)%2;
+		int k_isint = (int)Math.round(2*k)%2;
 		
 		if (k_isint == 0) { // k is int
 			// P_nhit = e^(-lambda*T)*sum_{i=0}^{k-1}((lambda*T)^i/i!)
@@ -953,7 +965,7 @@ public class CstPsychometric {
 			}
 			P_nhit = Math.exp(-lambda*T)*series;
 		} else if (k_isint == 1) { // k is n+0.5
-			if (k == 0.5) {
+			if (Math.round(2*k) == 1) { // k is 0.5
 				P_nhit = calErfcsqrt(lambda*T);
 			} else {
 				double a = 1;
@@ -984,10 +996,10 @@ public class CstPsychometric {
 		return lambda;
 	}
 	public static double calGammaLambdaMedian(double k) {
-		double lambda_median = k - 1.0/3.0;
+		double lambda_median = (k - 1.0/3.0)/T;
 		if (k<1) {
 			// 2^(-1/k) * e^(-eulercon+zeta(2)*k)
-			lambda_median = Math.pow(2.0, -1/k)*(0.56147)*(Math.pow(2.27611,k));
+			lambda_median = (Math.pow(2.0, -1/k)*(0.56147)*(Math.pow(2.27611,k)))/T;
 		}
 		return lambda_median;
 	}
@@ -1006,6 +1018,16 @@ public class CstPsychometric {
 			}
 		}
 		return rho_id;
+	}
+	public static int getRIndex(double rho) {
+		int r_id = -1;
+		double r = Math.round(-Math.log(rho)*100.0)/100.0;
+		for (int i=0; i<RSIZE_NEO; i++) {
+			if (R_NEO[i] == r) {
+				r_id = i;
+			}
+		}
+		return r_id;
 	}
 	
 	public static int flattenIndex(int sm, int sw, int sgamma, int slambda) {
@@ -1145,6 +1167,33 @@ public class CstPsychometric {
 		}
 		return L_update;
 	}
+	public static double[] updateNeoLikelihood(double[] L) {
+		double[] L_update = new double[GRIDNEO];
+		int winlose = (int) CacModVariables.Dat_trial_winlose;
+		int r_curr = getRIndex(CacModVariables.Dat_difficulty);
+		int wl = 0;
+		if (winlose == 1) {
+			wl = 0;
+		} else if (winlose == 0) {
+			wl = 1;
+		}
+		double k = 0;
+		double t = (CacModVariables.Dat_time_gameplay/20.0); // sec
+		double lambda = 0;
+
+		if ((task_type == 0 && winlose == 0) || (task_type == 1 && winlose == 1)) { // update based on P
+			// over 600 (chasing lose) (chased win)
+			L_update = ExL_neo[wl][r_curr].clone();
+		} else { // update based on t
+			for (int g=0; g<GRIDNEO; g++) {
+				k = NEO_K[reshapeNeoIndex(g, 0)];
+				lambda = NEO_LAMBDA[r_curr][g];
+				L_update[g] = L[g] + k*Math.log(lambda) + (k-1)*Math.log(t) - lambda*t - loggamma(k);
+			}
+			L_update = normL(L_update.clone());
+		}
+		return L_update;
+	}
 
 	// Entropy
 	public static double updateConEntropy(double[] L) {
@@ -1157,11 +1206,31 @@ public class CstPsychometric {
 		} else if (winlose == 0) {
 			wl = 1;
 		}
-
 		// update based on P
 		// over 600 (chasing lose) (chased win)
 		if ((task_type == 0 && winlose == 0) || (task_type == 1 && winlose == 1)) { 
 			H_update = expected_H_con[wl][rho_curr];
+		} else {
+			// update based on t
+			// warning : please update L before
+			H_update = calEntropy(L);
+		}
+		return H_update;
+	}
+	public static double updateNeoEntropy(double[] L) {
+		double H_update = 0;
+		int winlose = (int) CacModVariables.Dat_trial_winlose;
+		int r_curr = getRIndex(CacModVariables.Dat_difficulty);
+		int wl = 0;
+		if (winlose == 1) {
+			wl = 0;
+		} else if (winlose == 0) {
+			wl = 1;
+		}
+		// update based on P
+		// over 600 (chasing lose) (chased win)
+		if ((task_type == 0 && winlose == 0) || (task_type == 1 && winlose == 1)) { 
+			H_update = ExH_neo[wl][r_curr];
 		} else {
 			// update based on t
 			// warning : please update L before
@@ -1408,6 +1477,26 @@ public class CstPsychometric {
 		}
 		return value;
 	}
+	public static double loggamma(double s) {
+		double y = 0;
+		int s_isint = (int)Math.round(2*s)%2;
+		if (s_isint == 0) { // int
+			for (int i=1; i<(int)s; i++) {
+				y += Math.log(i);
+			}
+		} else if (s_isint == 1) { // half int
+			if (Math.round(2*s) == 1) { // s is 0.5
+				y = 0.5*Math.log(Math.PI);
+			} else {
+				double series = 0;
+				for (int i=1; i<(int)(s+0.5); i++) {
+					series += Math.log(2.0*i-1.0);
+				}
+				y = 0.5*Math.log(2*Math.PI) - s*Math.log(2.0) + series;
+			}
+		}
+		return y;
+	}
 
 	// get rho given estimated win rate P_target.
 	public static int getEstimatedRho(double P_target){
@@ -1453,7 +1542,7 @@ public class CstPsychometric {
 	}
 	public static JsonArray getNeoLikelihood() {
 		Gson gson = new Gson();
-		JsonArray L = gson.toJsonTree(likelihood_neo).getAsJsonArray();
+		JsonArray L = gson.toJsonTree(L_neo).getAsJsonArray();
 		return L;
 	}
 
@@ -1483,7 +1572,7 @@ public class CstPsychometric {
 		return theta;
 	}
 	public static JsonArray getNeoBestParam() {
-		int grid_best = argmax(likelihood_neo);
+		int grid_best = argmax(L_neo);
 		int k_best = reshapeNeoIndex(grid_best, 0);
 		int m_best = reshapeNeoIndex(grid_best, 1);
 		int h_best = reshapeNeoIndex(grid_best, 2);
@@ -1519,7 +1608,7 @@ public class CstPsychometric {
 		return theta;
 	}
 	public static JsonArray getNeoBestTheta() {
-		int grid_best = argmax(likelihood_neo);
+		int grid_best = argmax(L_neo);
 		double k_best = NEO_K[reshapeNeoIndex(grid_best, 0)];
 		double m_best = NEO_M[reshapeNeoIndex(grid_best, 1)];
 		double h_best = NEO_H[reshapeNeoIndex(grid_best, 2)];
