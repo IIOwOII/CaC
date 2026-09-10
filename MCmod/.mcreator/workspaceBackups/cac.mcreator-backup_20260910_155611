@@ -3970,6 +3970,20 @@
         ]
       },
       "path": "~/CacBlock"
+    },
+    {
+      "name": "PsyNeoInitialize",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "psy_neo_initialize",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/procedures/PsyNeoInitializeProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/CacTask/Psychometric"
     }
   ],
   "variable_elements": [
@@ -4635,6 +4649,24 @@
     },
     {
       "name": "Psy_neo_param_min",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_neo_param_prior",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_neo_param_shape",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_neo_param_step",
       "type": "jsonarray",
       "scope": "global",
       "value": "new com.google.gson.JsonArray()"

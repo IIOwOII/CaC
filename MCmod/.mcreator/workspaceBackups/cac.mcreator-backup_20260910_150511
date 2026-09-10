@@ -3117,7 +3117,7 @@
     {
       "name": "CstPsychometric",
       "type": "code",
-      "compiles": true,
+      "compiles": false,
       "locked_code": true,
       "registry_name": "cst_psychometric",
       "metadata": {
@@ -3170,7 +3170,7 @@
     {
       "name": "CapManage",
       "type": "procedure",
-      "compiles": true,
+      "compiles": false,
       "locked_code": false,
       "registry_name": "cap_manage",
       "metadata": {
@@ -4626,6 +4626,36 @@
       "type": "logic",
       "scope": "global",
       "value": "false"
+    },
+    {
+      "name": "Psy_neo_param_max",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_neo_param_min",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_neo_param_prior",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_neo_param_shape",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
+    },
+    {
+      "name": "Psy_neo_param_step",
+      "type": "jsonarray",
+      "scope": "global",
+      "value": "new com.google.gson.JsonArray()"
     }
   ],
   "sound_elements": [

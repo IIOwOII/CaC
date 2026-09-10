@@ -64,11 +64,11 @@ public class CapManageProcedure {
 			net.owo.cac.CstPsychometric.initPsy();
 		} else if ((CacModVariables.Psy_task).equals("chasing")) {
 			net.owo.cac.CstPsychometric.task_type = 0;
-			net.owo.cac.CstPsychometric.c_pre = 1;
+			net.owo.cac.CstPsychometric.C_PRE = 1;
 			net.owo.cac.CstPsychometric.initPsy();
 		} else if ((CacModVariables.Psy_task).equals("chased")) {
 			net.owo.cac.CstPsychometric.task_type = 1;
-			net.owo.cac.CstPsychometric.c_pre = -1;
+			net.owo.cac.CstPsychometric.C_PRE = -1;
 			net.owo.cac.CstPsychometric.initPsy();
 		} else {
 			is_available = false;

@@ -49,5 +49,10 @@ public class PrdCheckProcedure {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal(("\u00A7ebehaviors: \u00A7r" + CacModVariables.Dir_behaviors)), false);
 		}
+		if ((target).equals("cap")) {
+			net.owo.cac.CstPsychometric.debugValue();
+			if (!world.isClientSide() && world.getServer() != null)
+				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Check the log!"), false);
+		}
 	}
 }

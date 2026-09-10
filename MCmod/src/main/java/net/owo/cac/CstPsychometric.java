@@ -55,7 +55,7 @@ public class CstPsychometric {
 	public static double[][] X_coef; // [diff][grid]
 	// (neo)
 	public static int RSIZE_NEO = 45;
-	public static double[][] R_NEO; // [r]
+	public static double[] R_NEO; // [r]
 
 	// Data
 	// Current
@@ -115,6 +115,7 @@ public class CstPsychometric {
 	public static double TRIAL_MAX = 25;
 
 	// Fitted Data
+	public static int THETA_TYPE = 2; // con 1, neo 2
 	public static double[] THETA_STAR = new double[4]; // k, m, h, w
 
 	// Traces (main)
@@ -155,14 +156,12 @@ public class CstPsychometric {
 		double m = THETA_STAR[1];
 		double h = THETA_STAR[2];
 		double w = THETA_STAR[3];
-		
 		double rho_hat = 0;
 		if (task_type == 0) {
 			rho_hat = 1/rho;
 		} else if (task_type == 1) {
 			rho_hat = rho;
 		}
-		
 		double X = 0;
 		if (rho_hat >= (h-w)+w/(MU_MAX-m)) {
 			X = k/(m+(1/(1+((rho_hat-h)/w))));
@@ -176,7 +175,6 @@ public class CstPsychometric {
 			}
 			CacMod.LOGGER.info("rho out of range! adjusted rho: " + new java.text.DecimalFormat("##.####").format(rho));
 		}
-		
 		double series = 0;
 		for (int i=0; i<(int)k; i++) {
 			series += Math.pow(X, i)/factorial(i);
@@ -191,23 +189,17 @@ public class CstPsychometric {
 		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
 		return P;
 	}
-	public static double calFittedNeoPSI(double r) {
-		
-	}
-	
 	public static double calFitInversePSI(double P) {
 		double k = THETA_STAR[0];
 		double m = THETA_STAR[1];
 		double h = THETA_STAR[2];
 		double w = THETA_STAR[3];
-		
 		double P_hat = 0;
 		if (task_type == 0) {
 			P_hat = 1 - P;
 		} else if (task_type == 1) {
 			P_hat = P;
 		}
-		
 		int num_iter = 10;
 		double X = k;
 		for (int j=0; j<num_iter; j++) {
@@ -240,8 +232,18 @@ public class CstPsychometric {
 		double m = THETA_STAR[1];
 		double h = THETA_STAR[2];
 		double w = THETA_STAR[3];
-		
-		
+		double w_hat = Math.exp(-w);
+		int num_iter = 10;
+		double rho_hat = 1;
+		for (int i=0; i<num_iter; i++) {
+			double r = C_PRE*Math.log(rho_hat);
+			double lambda = calGammaLambda(r, k, m, h, w);
+			double PSI = calGammaCDF(k, lambda);
+			double pdf = calGammaPDF(k, lambda, T);
+			rho_hat = rho_hat - (w_hat/(C_PRE*T))*((PSI-P)/((1.0-m*T*lambda/k)*pdf));
+		}
+		double rho = Math.round(Math.pow(rho_hat, -C_PRE)*10000.0)/10000.0;
+		return rho;
 	}
 	
 	public static double calFitPercentile(double rho, double tick) {
@@ -249,14 +251,12 @@ public class CstPsychometric {
 		double m = THETA_STAR[1];
 		double h = THETA_STAR[2];
 		double w = THETA_STAR[3];
-		
 		double rho_hat = 0;
 		if (task_type == 0) {
 			rho_hat = 1/rho;
 		} else if (task_type == 1) {
 			rho_hat = rho;
 		}
-		
 		double t = tick/20.0;
 		double x = (k*t/T)*(1.0/(m+(1.0/(1+((rho_hat-h)/w)))));
 		double series = 0;
@@ -314,7 +314,13 @@ public class CstPsychometric {
 		} else if (p < p_m) {
 			p = p_m;
 		}
-		double rho_next = calFitInversePSI(p);
+
+		double rho_next = 1;
+		if (THETA_TYPE == 2) { // neo
+			rho_next = calFittedNeoInversePSI(p);
+		} else if (THETA_TYPE == 1) { // con
+			rho_next = calFitInversePSI(p);
+		}
 		trace_p.add(p);
 		trace_dp.add(dp);
 		trace_rho.add(rho_next);
@@ -403,8 +409,14 @@ public class CstPsychometric {
 	
 	// Repeat (Before trial)
 	public static void updateTrialBefore() {
+		// Expected update
 		if (method_neo) {
-			
+			ExP_neo = calExpectedNeoProbability(P_neo, L_neo);
+			ExL_neo = calExpectedNeoLikelihood(P_neo, L_neo, ExP_neo);
+			ExH_neo = calExpectedNeoEntropy(ExL_neo);
+			EIG_neo = calEIGNeo(H_neo, ExP_neo, ExH_neo);
+			r_best = R_NEO[argmax(EIG_neo)];
+			trace_maxEIG_neo.add(max(EIG_neo));
 		} else {
 			if (method_bin) {
 				expected_P_bin = calExpectedProbability(probability_bin, likelihood_bin);
@@ -423,10 +435,9 @@ public class CstPsychometric {
 				trace_maxEIG_con.add(max(EIG_con));
 			}
 		}
-
 		// Diff setting
 		if (method_neo) {
-			CacModVariables.Dat_difficulty = r_best;
+			CacModVariables.Dat_difficulty = RtoRho(r_best);
 		} else {
 			if (method_bin && !method_con) {
 				rho_best = rho_best_bin;
@@ -437,9 +448,11 @@ public class CstPsychometric {
 			}
 			CacModVariables.Dat_difficulty = rho_best;
 		}
-		
 	}
-	
+	public static double RtoRho(double r) {
+		double rho = Math.round(Math.exp(-r)*10000.0)/10000.0; // 4 decimals
+		return rho;
+	}
 	// Repeat (After trial)
 	public static void updateTrialAfter() {
 		int winlose = (int) CacModVariables.Dat_trial_winlose;
@@ -449,10 +462,12 @@ public class CstPsychometric {
 		} else if (winlose == 0) {
 			wl = 1;
 		}
-		double H_past = 0;
-		
 		if (method_neo) {
-			
+			int r_curr = getRIndex(CacModVariables.Dat_difficulty);
+			double H_past = H_neo;
+			L_neo = updateNeoLikelihood(L_neo.clone());
+			H_neo = updateNeoEntropy(L_neo);
+			updateNeoIG(H_past, H_neo);
 		} else {
 			int rho_curr = getRhoIndex(CacModVariables.Dat_difficulty);
 			if (method_bin) {
@@ -461,7 +476,7 @@ public class CstPsychometric {
 				entropy_bin = expected_H_bin[wl][rho_curr];
 			}
 			if (method_con) {
-				H_past = entropy_con;
+				double H_past = entropy_con;
 				likelihood_con = updateConLikelihood(likelihood_con.clone());
 				entropy_con = updateConEntropy(likelihood_con);
 				updateConIG(H_past, entropy_con);
@@ -485,7 +500,6 @@ public class CstPsychometric {
 			CacModVariables.Exp_trial_total = TRIAL_MAX;
 			return;
 		}
-		
 		boolean isend = true;
 		for (int i=size-RAW_THRESHOLD; i<size; i++) {
 			if (EIG_check.get(i) >= IG_THRESHOLD) {
@@ -527,7 +541,6 @@ public class CstPsychometric {
 		trace_maxEIG_con = new ArrayList<>();
 		trace_maxEIG_neo = new ArrayList<>();
 	}
-
 	// param
 	public static void initBinParam() {
 		JsonArray param_min = CacModVariables.Psy_bin_param_min;
@@ -588,7 +601,7 @@ public class CstPsychometric {
 			double p_max = param_max.get(i).getAsDouble();
 			double p_step = param_step.get(i).getAsDouble();
 			for (int k=0; k<P.length; k++) {
-				P[k] = Math.round((p_min + k*p_step)*1000) / 1000.0;
+				P[k] = Math.round((p_min + k*p_step)*1000.0) / 1000.0;
 			}
 			if (i==0) {
 				NEO_K = P.clone();
@@ -675,7 +688,7 @@ public class CstPsychometric {
 			IDX[2] = reshapeNeoIndex(i, 2);
 			IDX[3] = reshapeNeoIndex(i, 3);
 			for (int j=0; j<RSIZE_NEO; j++) {
-				double P = calGammaPSI(NEO_K[IDX[0]], NEO_LAMBDA[j][i]);
+				double P = calGammaCDF(NEO_K[IDX[0]], NEO_LAMBDA[j][i]);
 				P_neo[j][i] = P;
 			}
 		}
@@ -777,7 +790,6 @@ public class CstPsychometric {
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
 		JsonObject obj_method_neo = new JsonObject();
-		
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_fitting));
 			StringBuilder jsonstringbuilder = new StringBuilder();
@@ -791,10 +803,15 @@ public class CstPsychometric {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		obj_trial.addProperty("difficulty", CacModVariables.Dat_difficulty);
 		if (method_neo) {
-			
+			obj_method_neo.addProperty("entropy", H_neo);
+			obj_method_neo.add("param_best", getNeoBestParam());
+			obj_method_neo.add("theta", getNeoBestTheta());
+			obj_method_neo.addProperty("rho_best", RtoRho(r_best));
+			obj_method_neo.add("EIGs", getNeoEIGs());
+			obj_method_neo.add("likelihood", getNeoLikelihood());
+			obj_trial.add(("neo"), obj_method_neo);
 		} else {
 			if (method_bin) {
 				obj_method_bin.addProperty("entropy", entropy_bin);
@@ -815,8 +832,6 @@ public class CstPsychometric {
 				obj_trial.add(("continuous"), obj_method_con);
 			}
 		}
-		
-		
 		obj_cac.add(("trial" + "_" + new java.text.DecimalFormat("##").format(CacModVariables.Exp_trial)), obj_trial);
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
@@ -834,7 +849,6 @@ public class CstPsychometric {
 		JsonObject obj_method_bin = new JsonObject();
 		JsonObject obj_method_con = new JsonObject();
 		JsonObject obj_method_neo = new JsonObject();
-		
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(CacModVariables.Log_fitting));
 			StringBuilder jsonstringbuilder = new StringBuilder();
@@ -848,11 +862,13 @@ public class CstPsychometric {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		obj_final = obj_cac.get("final").getAsJsonObject();
-
 		if (method_neo) {
-			
+			obj_method_neo.addProperty("entropy", H_neo);
+			obj_method_neo.add("param_best", getNeoBestParam());
+			obj_method_neo.add("theta", getNeoBestTheta());
+			obj_method_neo.add("likelihood", getNeoLikelihood());
+			obj_final.add(("neo"), obj_method_neo);
 		} else {
 			if (method_bin) {
 				obj_method_bin.addProperty("entropy", entropy_bin);
@@ -869,7 +885,6 @@ public class CstPsychometric {
 				obj_final.add(("continuous"), obj_method_con);
 			}
 		}
-		
 		com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
 		try {
 			FileWriter fileWriter = new FileWriter(CacModVariables.Log_fitting);
@@ -950,13 +965,12 @@ public class CstPsychometric {
 		return mu;
 	}
 	// (neo)
-	public static double calGammaPSI(double k, double lambda) {
+	public static double calGammaCDF(double k, double lambda) {
 		// Alert! Please use the lambda instead of rho
 		// PSI = (1+c_pre)/2 - c_pre * Gamma(k,lambda*T)/Gamma(k)
 		double P = 0;
 		double P_nhit = 0;
-		int k_isint = (int)Math.round(2*k)%2;
-		
+		int k_isint = ((int)Math.round(2*k))%2;
 		if (k_isint == 0) { // k is int
 			// P_nhit = e^(-lambda*T)*sum_{i=0}^{k-1}((lambda*T)^i/i!)
 			double series = 0;
@@ -986,6 +1000,11 @@ public class CstPsychometric {
 			P = PMAX;
 		}
 		return P;
+	}
+	public static double calGammaPDF(double k, double lambda, double t) {
+		if (t<=0) return 0.0;
+		double p = Math.pow(lambda*t, k) * Math.exp(-lambda*t) / (t*Math.exp(loggamma(k)));
+		return p;
 	}
 	public static double calGammaLambda(double r, double k, double m, double h, double w) {
 		// Alert! Please use the 
@@ -1104,7 +1123,6 @@ public class CstPsychometric {
 		return idx;
 	}
 	
-
 	// Grid Normalize
 	public static double[] normL(double[] L_hat) {
 		// L_hat is unnormalized likelihood
@@ -1119,7 +1137,6 @@ public class CstPsychometric {
 		}
 		return L;
 	}
-
 
 	// Update
 	// Info gain
@@ -1151,7 +1168,6 @@ public class CstPsychometric {
 		double coef = 0;
 		double x = 0;
 		double k = 0;
-		
 		if ((task_type == 0 && winlose == 0) || (task_type == 1 && winlose == 1)) { // update based on P
 			// over 600 (chasing lose) (chased win)
 			L_update = expected_L_con[wl][rho_curr].clone();
@@ -1180,7 +1196,6 @@ public class CstPsychometric {
 		double k = 0;
 		double t = (CacModVariables.Dat_time_gameplay/20.0); // sec
 		double lambda = 0;
-
 		if ((task_type == 0 && winlose == 0) || (task_type == 1 && winlose == 1)) { // update based on P
 			// over 600 (chasing lose) (chased win)
 			L_update = ExL_neo[wl][r_curr].clone();
@@ -1429,7 +1444,6 @@ public class CstPsychometric {
 		return H;
 	}
 	
-	
 	// Utils
 	public static double max(double[] arr) {
 		double v_max = arr[0];
@@ -1478,11 +1492,16 @@ public class CstPsychometric {
 		return value;
 	}
 	public static double loggamma(double s) {
+		// alert! gamma(s+1)=s!
 		double y = 0;
-		int s_isint = (int)Math.round(2*s)%2;
+		int s_isint = ((int)Math.round(2*s))%2;
 		if (s_isint == 0) { // int
-			for (int i=1; i<(int)s; i++) {
-				y += Math.log(i);
+			if (Math.round(s) == 1) { // s is 1
+				y = 0;
+			} else {
+				for (int i=1; i<(int)s; i++) {
+					y += Math.log(i);
+				}
 			}
 		} else if (s_isint == 1) { // half int
 			if (Math.round(2*s) == 1) { // s is 0.5
@@ -1648,10 +1667,44 @@ public class CstPsychometric {
 		return CacModVariables.Psy_neo_param_shape.get(idx).getAsInt();
 	}
 
-
 	// Debug
 	public static void debugValue() {
+		method_type = 3;
+		initPsy();
 		// curr
+		for (int i=0; i<RSIZE_NEO; i++) {
+			for (int j=0; j<GRIDNEO; j++) {
+				if ((Double.isNaN(NEO_LAMBDA[i][j])) || (Double.isInfinite(NEO_LAMBDA[i][j]))) {
+					System.out.printf("bug: Lambda %n");
+					System.out.printf("r: %d %n", i);
+					System.out.printf("grid: %d %n", j);
+					return;
+				}
+			}
+		}
+		for (int i=0; i<RSIZE_NEO; i++) {
+			for (int j=0; j<GRIDNEO; j++) {
+				if ((Double.isNaN(P_neo[i][j])) || (Double.isInfinite(P_neo[i][j]))) {
+					System.out.printf("bug: P %n");
+					System.out.printf("r: %d %n", i);
+					System.out.printf("grid: %d %n", j);
+					return;
+				}
+			}
+		}
+		for (int i=0; i<GRIDNEO; i++) {
+			if ((Double.isNaN(L_neo[i])) || (Double.isInfinite(L_neo[i]))) {
+				System.out.printf("bug: L %n");
+				System.out.printf("grid: %d %n", i);
+				return;
+			}
+		}
+		if ((Double.isNaN(H_neo)) || (Double.isInfinite(H_neo))) {
+			System.out.printf("bug: H %n");
+			return;
+		}
+		
+		/*
 		for (int r=0; r<RHOSIZE; r++) {
 			for (int k=0; k<GRIDSIZE; k++) {
 				if ((Double.isNaN(probability_bin[r][k])) || (Double.isInfinite(probability_bin[r][k]))) {
@@ -1705,5 +1758,6 @@ public class CstPsychometric {
 				return;
 			}
 		}
+		*/
 	}
 }

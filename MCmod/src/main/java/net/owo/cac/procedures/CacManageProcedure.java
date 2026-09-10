@@ -61,8 +61,17 @@ public class CacManageProcedure {
 				}
 			}
 			obj_final = obj_cac.get("final").getAsJsonObject();
-			if (obj_final.get("continuous").isJsonObject()) {
-				obj_method = obj_final.get("continuous").getAsJsonObject();
+			if (!obj_final.get("continuous").isJsonObject() && !obj_final.get("neo").isJsonObject()) {
+				if (!world.isClientSide() && world.getServer() != null)
+					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Only continuous or neo is supported!"), false);
+			} else {
+				if (obj_final.get("neo").isJsonObject()) {
+					obj_method = obj_final.get("neo").getAsJsonObject();
+					net.owo.cac.CstPsychometric.THETA_TYPE = 2;
+				} else if (obj_final.get("continuous").isJsonObject()) {
+					obj_method = obj_final.get("continuous").getAsJsonObject();
+					net.owo.cac.CstPsychometric.THETA_TYPE = 1;
+				}
 				CacModVariables.Dat_theta = obj_method.get("theta").getAsJsonArray();
 				net.owo.cac.CstPsychometric.loadThetaStar();
 				CacModVariables.Exp_trial_total = 20;
@@ -71,9 +80,6 @@ public class CacManageProcedure {
 				}
 				PrdCountdownProcedure.execute();
 				TaskSessionStartProcedure.execute(world, entity);
-			} else {
-				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Only continuous!"), false);
 			}
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
