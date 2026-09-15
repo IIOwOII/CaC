@@ -129,6 +129,24 @@ public class CstPsychometric {
 	public static boolean score_positive = true; // positive stack? or negative?
 	public static boolean score_switch = false;
 
+	//
+	public static double round(double value, int decimals) {
+		double weight = Math.pow(10.0, decimals);
+		double nval = Math.round(value * weight)/weight;
+		return nval;
+	}
+	public static double RhotoRho(double rho) {
+		// rho to rho_hat
+		// rho_hat to rho
+		double nrho = 1;
+		if (C_PRE == 1) {
+			nrho = 1.0/rho;
+		} else if (C_PRE == -1) {
+			nrho = rho;
+		}
+		return nrho;
+	}
+	
 	// Using Fitted parameter
 	// Theta Star Load
 	public static void loadThetaStar() {
@@ -990,7 +1008,7 @@ public class CstPsychometric {
 					}
 					series += a*Math.pow(lambda*T, i);
 				}
-				P_nhit = calErfcsqrt(lambda*T) + 2*Math.exp(-lambda*T)*Math.sqrt(-lambda*T/Math.PI)*series;
+				P_nhit = calErfcsqrt(lambda*T) + 2*Math.exp(-lambda*T)*Math.sqrt(lambda*T/Math.PI)*series;
 			}
 		}
 		P = ((1.0+C_PRE)/2.0)-C_PRE*P_nhit;
