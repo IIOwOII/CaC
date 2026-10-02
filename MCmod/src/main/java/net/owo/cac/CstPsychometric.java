@@ -42,7 +42,7 @@ public class CstPsychometric {
 	public static double[] CON_H; // [shape]
 	public static double[] CON_W; // [shape]
 
-	public static int GRIDNEO = 150000;
+	public static int GRIDNEO = 180000;
 	public static double[] NEO_K; // [shape]
 	public static double[] NEO_M; // [shape]
 	public static double[] NEO_H; // [shape]
@@ -54,7 +54,7 @@ public class CstPsychometric {
 	public static double[] RHO; // [diff]
 	public static double[][] X_coef; // [diff][grid]
 	// (neo)
-	public static int RSIZE_NEO = 45;
+	public static int RSIZE_NEO = 50;
 	public static double[] R_NEO; // [r]
 
 	// Data
@@ -109,7 +109,7 @@ public class CstPsychometric {
 	public static double RHO_MAX = 1.30;
 	public static double RHO_MIN = 0.70;
 	public static double R_MAX = 0.7;
-	public static double R_MIN = -0.2;
+	public static double R_MIN = -0.3;
 	public static double PMIN = 1.0E-12; // point 12
 	public static double PMAX = 1.0 - 1.0E-12; // point 12
 	public static double TRIAL_MAX = 25;
@@ -145,6 +145,10 @@ public class CstPsychometric {
 			nrho = rho;
 		}
 		return nrho;
+	}
+	public static double RtoRho(double r) {
+		double rho = Math.round(Math.exp(-r)*10000.0)/10000.0; // 4 decimals
+		return rho;
 	}
 	
 	// Using Fitted parameter
@@ -245,25 +249,6 @@ public class CstPsychometric {
 		rho = Math.round(rho*10000.0) / 10000.0; // 4 decimals
 		return rho;
 	}
-	public static double calFittedNeoInversePSI(double P) {
-		double k = THETA_STAR[0];
-		double m = THETA_STAR[1];
-		double h = THETA_STAR[2];
-		double w = THETA_STAR[3];
-		double w_hat = Math.exp(-w);
-		int num_iter = 10;
-		double rho_hat = 1;
-		for (int i=0; i<num_iter; i++) {
-			double r = C_PRE*Math.log(rho_hat);
-			double lambda = calGammaLambda(r, k, m, h, w);
-			double PSI = calGammaCDF(k, lambda);
-			double pdf = calGammaPDF(k, lambda, T);
-			rho_hat = rho_hat - (w_hat/(C_PRE*T))*((PSI-P)/((1.0-m*T*lambda/k)*pdf));
-		}
-		double rho = Math.round(Math.pow(rho_hat, -C_PRE)*10000.0)/10000.0;
-		return rho;
-	}
-	
 	public static double calFitPercentile(double rho, double tick) {
 		double k = THETA_STAR[0];
 		double m = THETA_STAR[1];
@@ -285,8 +270,60 @@ public class CstPsychometric {
 		double P = 0;
 		P = 1 - series * Math.exp(-x);
 		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
+		if (tick >= T*20) {
+			P = 1-P;
+		}
 		return P;
 	}
+	public static double calFittedNeoPSI(double rho) {
+		double k = THETA_STAR[0];
+		double m = THETA_STAR[1];
+		double h = THETA_STAR[2];
+		double w = THETA_STAR[3];
+
+		double r = -Math.log(rho);
+		double lambda = calGammaLambda(r, k, m, h, w);
+		double P = calGammaCDF(k, lambda);
+		
+		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
+		return P;
+	}
+	public static double calFittedNeoInversePSI(double P) {
+		double k = THETA_STAR[0];
+		double m = THETA_STAR[1];
+		double h = THETA_STAR[2];
+		double w = THETA_STAR[3];
+		double w_hat = Math.exp(-w);
+		int num_iter = 10;
+		double rho_hat = 1;
+		for (int i=0; i<num_iter; i++) {
+			double r = C_PRE*Math.log(rho_hat);
+			double lambda = calGammaLambda(r, k, m, h, w);
+			double PSI = calGammaCDF(k, lambda);
+			double pdf = calGammaPDF(k, lambda, T);
+			rho_hat = rho_hat - (w_hat/(C_PRE*T))*((PSI-P)/((1.0-m*T*lambda/k)*pdf));
+		}
+		double rho = Math.round(Math.pow(rho_hat, -C_PRE)*10000.0)/10000.0;
+		return rho;
+	}
+	public static double calFittedNeoPercentile(double rho, double tick) {
+		double k = THETA_STAR[0];
+		double m = THETA_STAR[1];
+		double h = THETA_STAR[2];
+		double w = THETA_STAR[3];
+		
+		double t = tick/20.0;
+		double r = -Math.log(rho);
+		double lambda = calGammaLambda(r, k, m, h, w);
+		double P = calGammaCDF(k, lambda*(t/T));
+		
+		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
+		if (tick >= T*20) {
+			P = 1-P;
+		}
+		return P;
+	}
+	
 	
 	// Adjusting Difficulty
 	public static double adjustRho() {
@@ -467,10 +504,7 @@ public class CstPsychometric {
 			CacModVariables.Dat_difficulty = rho_best;
 		}
 	}
-	public static double RtoRho(double r) {
-		double rho = Math.round(Math.exp(-r)*10000.0)/10000.0; // 4 decimals
-		return rho;
-	}
+	
 	// Repeat (After trial)
 	public static void updateTrialAfter() {
 		int winlose = (int) CacModVariables.Dat_trial_winlose;

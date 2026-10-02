@@ -1,10 +1,18 @@
-#%%
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 
+# Color (MANIM)
+COLOR_RED_C = '#FC6255'
+COLOR_BLUE_C = '#58C4DD'
+COLOR_GREEN_C = '#83C167'
+COLOR_YELLOW_C = '#F7D96F'
+COLOR_PURPLE_C = '#9A72AC'
+COLOR_GOLD_C = '#F0AC5F'
+COLOR_JERRY = LinearSegmentedColormap.from_list('jerry', ['#A46E24','#CA8628','#E9A547'])
+COLOR_TOM = LinearSegmentedColormap.from_list('tom', ['#6D6C6D','#998999','#CAC4C4'])
 
-#%% Figure
+# Figure
 class meowfig:
     def __init__(self, nrows=1, ncols=1, figsize=(4,3), dpi=300, 
                  design=True, grid=False, **kwargs):
@@ -88,14 +96,4 @@ class meowfig:
                     for xtick in self.xticks:
                         ax.axvline(xtick, linewidth=0.3, linestyle='-.', color='gray', alpha=0.3, zorder=-1)
 
-
-#%% Color (MANIM)
-COLOR_RED_C = '#FC6255'
-COLOR_BLUE_C = '#58C4DD'
-COLOR_GREEN_C = '#83C167'
-COLOR_YELLOW_C = '#F7D96F'
-COLOR_PURPLE_C = '#9A72AC'
-COLOR_GOLD_C = '#F0AC5F'
-COLOR_JERRY = LinearSegmentedColormap.from_list('jerry', ['#A46E24','#CA8628','#E9A547'])
-COLOR_TOM = LinearSegmentedColormap.from_list('tom', ['#6D6C6D','#998999','#CAC4C4'])
     

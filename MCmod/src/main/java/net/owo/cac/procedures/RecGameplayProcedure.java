@@ -52,8 +52,13 @@ public class RecGameplayProcedure {
 			obj_pred = obj_cac.get("predicted").getAsJsonObject();
 			arr_winrate = obj_pred.get("winrate").getAsJsonArray();
 			arr_percentile = obj_pred.get("percentile").getAsJsonArray();
-			arr_winrate.add(net.owo.cac.CstPsychometric.calFitPSI(dat_rho));
-			arr_percentile.add(net.owo.cac.CstPsychometric.calFitPercentile(dat_rho, dat_tick));
+			if (net.owo.cac.CstPsychometric.THETA_TYPE == 2) {
+				arr_winrate.add(net.owo.cac.CstPsychometric.calFittedNeoPSI(dat_rho));
+				arr_percentile.add(net.owo.cac.CstPsychometric.calFittedNeoPercentile(dat_rho, dat_tick));
+			} else if (net.owo.cac.CstPsychometric.THETA_TYPE == 1) {
+				arr_winrate.add(net.owo.cac.CstPsychometric.calFitPSI(dat_rho));
+				arr_percentile.add(net.owo.cac.CstPsychometric.calFitPercentile(dat_rho, dat_tick));
+			}
 		}
 		{
 			com.google.gson.Gson mainGSONBuilderVariable = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
