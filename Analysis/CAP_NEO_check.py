@@ -73,11 +73,11 @@ def factorial(s):
         value *= i
     return value
 
-GRID_NEO = 150000
-R_NEO = np.linspace(-0.18, 0.7, 45)
+GRID_NEO = 180000
+R_NEO = np.linspace(-0.28, 0.7, 50)
 NEO_K = np.linspace(0.5, 20, 40)
 NEO_M = np.linspace(0.1, 0.3, 5)
-NEO_H = np.linspace(0.6, 1.08, 25)
+NEO_H = np.linspace(0.6, 1.18, 30)
 NEO_W = np.linspace(1.1, 4, 30)
 
 THETA = np.meshgrid(NEO_K, NEO_M, NEO_H, NEO_W, indexing='ij')
@@ -86,12 +86,12 @@ M = THETA[1].flatten()
 H = THETA[2].flatten()
 W = THETA[3].flatten()
 
-P_neo = np.zeros((45, GRID_NEO))
-NEO_LAM = np.zeros((45, GRID_NEO))
+P_neo = np.zeros((50, GRID_NEO))
+NEO_LAM = np.zeros((50, GRID_NEO))
 for i in range(GRID_NEO):
-    for j in range(45):
+    for j in range(50):
         NEO_LAM[j,i] = calGammaLambda(R_NEO[j], K[i], M[i], H[i], W[i])
 
-for i in range(GRID_NEO):
-    for j in range(45):
-        P_neo[j,i] = calGammaCDF(K[i], NEO_LAM[j,i])
+# for i in range(GRID_NEO):
+#     for j in range(50):
+#         P_neo[j,i] = calGammaCDF(K[i], NEO_LAM[j,i])
