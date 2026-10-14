@@ -19,6 +19,7 @@ public class TaskResetProcedure {
 		CacModVariables.Ev_que_index = 0;
 		CacModVariables.Ev_content = "";
 		CacModVariables.Ev_pulse_content = "";
+		net.owo.cac.CstTimer.endTimer();
 		EffRemoveMorphProcedure.execute(entity);
 	}
 }

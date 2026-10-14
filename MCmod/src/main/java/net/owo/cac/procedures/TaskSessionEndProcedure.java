@@ -43,6 +43,10 @@ public class TaskSessionEndProcedure {
 		CacModVariables.Switch_timer = false;
 		if ((CacModVariables.Exp_mode).equals("seeg")) {
 			net.owo.cac.CstRenderComponent.renderPatchEnd();
+			net.owo.cac.CstPythonExecutor.runPupil();
+		}
+		if (CacModVariables.Exp_property.contains("A")) {
+			net.owo.cac.CstTimer.endTimer();
 		}
 	}
 }

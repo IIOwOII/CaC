@@ -58,5 +58,8 @@ public class TaskSessionStartProcedure {
 			IniQueProcedure.execute();
 			EvQueCallProcedure.execute(world, entity);
 		}
+		if ((CacModVariables.Exp_mode).equals("seeg")) {
+			net.owo.cac.CstPythonExecutor.runPupil();
+		}
 	}
 }

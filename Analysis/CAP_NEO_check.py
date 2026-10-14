@@ -1,8 +1,12 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from itertools import product
+import json
 
+from sisypuss.graph import *
 
-C_PRE = 1
-T= 30
+# import multiprocessing as mp
+# from functools import partial
 
 def calGammaCDF(k, lam):
     k_isint = int(np.round(2*k))%2
@@ -73,25 +77,82 @@ def factorial(s):
         value *= i
     return value
 
-GRID_NEO = 180000
-R_NEO = np.linspace(-0.28, 0.7, 50)
-NEO_K = np.linspace(0.5, 20, 40)
-NEO_M = np.linspace(0.1, 0.3, 5)
-NEO_H = np.linspace(0.6, 1.18, 30)
-NEO_W = np.linspace(1.1, 4, 30)
+def RtoRho(r):
+    rho = np.round(np.exp(-r), 4)
+    return rho
 
-THETA = np.meshgrid(NEO_K, NEO_M, NEO_H, NEO_W, indexing='ij')
-K = THETA[0].flatten()
-M = THETA[1].flatten()
-H = THETA[2].flatten()
-W = THETA[3].flatten()
 
-P_neo = np.zeros((50, GRID_NEO))
-NEO_LAM = np.zeros((50, GRID_NEO))
-for i in range(GRID_NEO):
-    for j in range(50):
-        NEO_LAM[j,i] = calGammaLambda(R_NEO[j], K[i], M[i], H[i], W[i])
+#%% Variables and Constants
 
-# for i in range(GRID_NEO):
-#     for j in range(50):
-#         P_neo[j,i] = calGammaCDF(K[i], NEO_LAM[j,i])
+# 1. variables
+subj = 'PBJ2'
+task_num = 0
+
+# 2. directory
+dir_main = '../../CaC_Analysis'
+dir_beh = f'{dir_main}/Beh'
+dir_subj = f'{dir_beh}/{subj}'
+
+# 3. constants
+T = 30
+TASKS = ['fitting_chasing', 'fitting_chased', 'chasing', 'chased'] # task list
+task = TASKS[task_num]
+if (task_num == 0) or (task_num == 2):
+    C_PRE = 1
+elif (task_num == 1) or (task_num == 3):
+    C_PRE = -1
+
+# 4. Data Load
+with open(f'{dir_subj}/{task}/log_fitting.json', 'r') as f:
+    log_fit = json.load(f)['cac']
+fit_final = log_fit['final']['neo']
+
+
+
+#%%
+R = np.linspace(-0.28, 0.7, 50)
+Rho = RtoRho(R)
+THETA_STAR = np.array(fit_final['theta'])
+
+
+LAM = np.zeros(50)
+P = np.zeros(50)
+for i, r in enumerate(R):
+    LAM[i] = calGammaLambda(r, *THETA_STAR)
+    P[i] = calGammaCDF(THETA_STAR[0], LAM[i])
+
+fig_rho_p_fit = meowfig(xlabel=r'$\rho$'+' (Difficulty)', 
+                        ylabel=r'$\Psi$'+' (Win Rate)',
+                        xlim=[0.5, 1.3], ylim=[0, 1],
+                        yticks=[0, 0.5, 1], yticklabels=[0, 0.5, 1],
+                        yoffset=0)
+ax = fig_rho_p_fit.axes[0,0]
+ax.plot(Rho, P, linewidth=1, color=COLOR_GOLD_C, zorder=2)
+ax.set_title(f'{subj}-{task}')
+
+
+#%%
+# GRIDSIZE = 180000
+# R = np.linspace(-0.28, 0.7, 50)
+# K = np.linspace(0.5, 20, 40)
+# M = np.linspace(0.1, 0.3, 5)
+# H = np.linspace(0.6, 1.18, 30)
+# W = np.linspace(1.1, 4, 30)
+# THETA = np.array(list(product(K, M, H, W))).T
+
+# n_work = 25
+# func = partial(np.vectorize(calGammaLambda), k=THETA[0], m=THETA[1], h=THETA[2], w=THETA[3])
+# with mp.Pool(processes=n_work) as pool:
+#     LAM = np.array(pool.map(func, R))
+
+# LAM = np.zeros((50, GRIDSIZE))
+# func = np.vectorize(calGammaLambda)
+# for i, r in enumerate(R):
+#     LAM[i] = func(r, *THETA)
+
+# P = np.zeros((50, GRIDSIZE))
+# func = np.vectorize(calGammaCDF)
+# for i, r in enumerate(R):
+#     P[i] = func(THETA[0], LAM[i])
+
+

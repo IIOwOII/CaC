@@ -218,7 +218,7 @@ public class CstAgent {
 		}
 		Vec3 vec_pp = (ent_prey.position()).subtract(ent_predator.position());
 		double dist2d = Math.sqrt(Math.pow(vec_pp.x(), 2) + Math.pow(vec_pp.z(), 2));
-		if (dist2d > 2) {
+		if (dist2d > 1.7) {
 			Vec3 dest = destPredator();
 			ent_predator.getNavigation().moveTo(dest.x(), dest.y(), dest.z(), speed);
 		} else if (dist2d > 0.001) {

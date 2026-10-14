@@ -30,5 +30,6 @@ public class IniLogActionProcedure {
 				}
 			}
 		}
+		net.owo.cac.CstTimer.startTimer();
 	}
 }

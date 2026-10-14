@@ -50,8 +50,10 @@ public class CstTimer {
 			TimA += (TimA_cur - TimA_old);
 			TimA_old = TimA_cur;
 			// Log
-			action_TimA.add(TimA);
-			action_TimR.add(TimR);
+			//action_TimA.add(TimA);
+			//action_TimR.add(TimR);
+			action_TimA.add((long)CacModVariables.TimA_time);
+			action_TimR.add((long)CacModVariables.TimR_time);
 			action_stick.add(CstState.getKeyCase());
 			action_select.add(CstState.key_pressed[5]?1:0);
 			action_signal.add(CstState.key_pressed[7]?1:0);
@@ -96,11 +98,17 @@ public class CstTimer {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			// Key reset (reduce lag)
+			action_TimA.clear();
+			action_TimR.clear();
+			action_stick.clear();
+			action_select.clear();
+			action_signal.clear();
 		}
 	}
 
 	// Timer Switch
-	public static void onTimer() {
+	public static void startTimer() {
 		// TimR reset
 		TimR = 0;
 		// TimA reset
@@ -115,7 +123,13 @@ public class CstTimer {
 		// switch on
 		switch_timer = true;
 	}
-	public static void offTimer() {
+	public static void endTimer() {
 		switch_timer = false;
+		// Key reset
+		action_TimA.clear();
+		action_TimR.clear();
+		action_stick.clear();
+		action_select.clear();
+		action_signal.clear();
 	}
 }
