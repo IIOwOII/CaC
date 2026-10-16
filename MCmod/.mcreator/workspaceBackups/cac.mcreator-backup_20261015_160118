@@ -3993,14 +3993,14 @@
       }
     },
     {
-      "name": "CstServerMessage",
+      "name": "CstPythonExecutor",
       "type": "code",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "cst_server_message",
+      "registry_name": "cst_python_executor",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/CstServerMessage.java"
+          "src/main/java/net/owo/cac/CstPythonExecutor.java"
         ]
       }
     }

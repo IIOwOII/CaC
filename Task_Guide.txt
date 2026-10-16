@@ -1,6 +1,26 @@
-/CaC_Initial
+# 세팅
+1. 게임 패드를 연결한 뒤, Joiplay를 실행하여 연결을 확인하세요.
+2. Mcreator를 키고, 오른쪽 상단의 재생버튼()을 눌러 마인크래프트를 실행하세요.
+3. Singleplayer 클릭 -> world 더블 클릭
 
-잠시 후 튜토리얼을 시작합니다.
+# 참가자 정보 입력
+4. t를 눌러 채팅창을 켜고, 명령어 "/cac_register {subj} {mode} {group}" 를 입력하세요.
+- {subj} : 참가자 이니셜 및 넘버를 입력합니다. (예: P001)
+- {mode} : "seeg"/"fmri"/"beh" 중 하나를 입력합니다. (예: seeg)
+- {group} : chasing -> chased 순서면 "A"를, chased -> chasing 순서면 "B"를 입력합니다.
+(예. 참가자 넘버가 P001이고, seeg 실험이며 A 그룹인 경우 "/cac_register P001 seeg A" 입력)
 
-/CaC_Task_Pre
-잠시 후 연습을 시작합니다.
+
+# 튜토리얼
+5. 명령어 "/cac_tutorial main" 을 입력하세요.
+(조작연습 -> chasing/chased 각각 한판 -> survey 응답 연습 -> surrender 투표 연습)
+<중도 정지 명령어: "/cac_tutorial reset">
+
+
+# fitting 세션
+6. 명령어 "/cap "
+<중도 정지 명령어: "/cac_task_reset">
+
+
+# main 세션
+<중도 정지 명령어: "/cac_task_reset">

@@ -450,24 +450,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -3994,6 +3977,30 @@
       "metadata": {
         "files": [
           "src/main/java/net/owo/cac/PupilRemoteClient.java"
+        ]
+      }
+    },
+    {
+      "name": "PupilEventSender",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "pupil_event_sender",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/PupilEventSender.java"
+        ]
+      }
+    },
+    {
+      "name": "CstPythonExecutor",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_python_executor",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstPythonExecutor.java"
         ]
       }
     }

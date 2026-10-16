@@ -427,7 +427,7 @@ public class CstTutorial {
 		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
 			entity.getName().getString(), entity.getDisplayName(), server, entity), "cac_tp task");
 		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
-			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 8");
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 2");
 		MeowViewOnProcedure.execute();
 		MeowMoveOnProcedure.execute();
 		CacModVariables.Dat_trial_spawnpoint_opponent = 0;
@@ -470,7 +470,7 @@ public class CstTutorial {
 		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
 			entity.getName().getString(), entity.getDisplayName(), server, entity), "cac_tp task");
 		server.getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), world instanceof ServerLevel ? (ServerLevel) world : null, 4,
-			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 8");
+			entity.getName().getString(), entity.getDisplayName(), server, entity), "worldborder set 2");
 		MeowViewOnProcedure.execute();
 		MeowMoveOnProcedure.execute();
 		CacModVariables.Dat_trial_spawnpoint_opponent = 2;

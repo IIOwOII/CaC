@@ -28,6 +28,7 @@ public class CstRenderComponent {
 	public static ResourceLocation blank = new ResourceLocation("cac:textures/screens/texture_blank.png");
 	public static ResourceLocation gui_blank = new ResourceLocation("cac:textures/screens/gui_blank.png");
 	public static ResourceLocation slide_frame = new ResourceLocation("cac:textures/screens/texture_slide.png");
+	public static ResourceLocation slide_frame_short = new ResourceLocation("cac:textures/screens/texture_slide_short.png");
 	public static ResourceLocation slide_trace = new ResourceLocation("cac:textures/screens/texture_slide_trace.png");
 	public static ResourceLocation slide_cursor = new ResourceLocation("cac:textures/screens/texture_slide_cursor.png");
 	public static ResourceLocation slide_text_right = new ResourceLocation("cac:textures/screens/text_slide_right.png");
@@ -164,15 +165,20 @@ public class CstRenderComponent {
 	public static void renderSlide(GuiGraphics gg, int gw, int gh, double value, double value_old, double value_max) {
 		double ratio = value/value_max;
 		double ratio_old = value_old/value_max;
-		gg.blit(slide_frame, gw/2-200, gh/2+54, 0, 0, 400, 32, 400, 32);
-		gg.blit(slide_trace, gw/2-194+(int)(384*ratio_old), gh/2+60, 0, 0, 4, 20, 4, 20);
-		gg.blit(slide_cursor, gw/2-194+(int)(384*ratio), gh/2+60, 0, 0, 4, 20, 4, 20);
+		//gg.blit(slide_frame, gw/2-200, gh/2+54, 0, 0, 400, 32, 400, 32);
+		//gg.blit(slide_trace, gw/2-194+(int)(384*ratio_old), gh/2+60, 0, 0, 4, 20, 4, 20);
+		//gg.blit(slide_cursor, gw/2-194+(int)(384*ratio), gh/2+60, 0, 0, 4, 20, 4, 20);
+		gg.blit(slide_frame_short, gw/2-100, gh/2+54, 0, 0, 200, 32, 200, 32);
+		gg.blit(slide_trace, gw/2-94+(int)(184*ratio_old), gh/2+60, 0, 0, 4, 20, 4, 20);
+		gg.blit(slide_cursor, gw/2-94+(int)(184*ratio), gh/2+60, 0, 0, 4, 20, 4, 20);
 	}
 
 	// Slide Text
 	public static void renderSlideText(GuiGraphics gg, int gw, int gh) {
-		gg.blit(slide_text_left, gw/2-200, gh/2+86, 0, 0, 100, 30, 100, 30);
-		gg.blit(slide_text_right, gw/2+100, gh/2+86, 0, 0, 100, 30, 100, 30);
+		//gg.blit(slide_text_left, gw/2-200, gh/2+86, 0, 0, 100, 30, 100, 30);
+		//gg.blit(slide_text_right, gw/2+100, gh/2+86, 0, 0, 100, 30, 100, 30);
+		gg.blit(slide_text_left, gw/2-125, gh/2+86, 0, 0, 100, 30, 100, 30);
+		gg.blit(slide_text_right, gw/2+25, gh/2+86, 0, 0, 100, 30, 100, 30);
 	}
 
 	// Button

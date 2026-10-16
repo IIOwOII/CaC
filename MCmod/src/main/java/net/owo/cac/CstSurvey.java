@@ -107,9 +107,9 @@ public class CstSurvey {
 				timer_safe = timer_safe + 1;
 				int suv_id = suv_order[idx];
 				if ((CstState.key_pressed[0]) && (suv_value[suv_id] < 100))
-					suv_value[suv_id] = suv_value[suv_id] + 1;
+					suv_value[suv_id] = suv_value[suv_id] + 2;
 				if ((CstState.key_pressed[1]) && (suv_value[suv_id] > 0))
-					suv_value[suv_id] = suv_value[suv_id] - 1;
+					suv_value[suv_id] = suv_value[suv_id] - 2;
 				if (((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer)) && timer_safe >= 20)
 					confirmSurvey();
 			} else if (suv_phase == 33) {

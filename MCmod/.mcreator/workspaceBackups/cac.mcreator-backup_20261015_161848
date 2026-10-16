@@ -450,24 +450,7 @@
         "files": [
           "src/main/java/net/owo/cac/procedures/PrdExperimentalProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
+        "dependencies": []
       },
       "path": "~/CacCommand"
     },
@@ -4010,14 +3993,14 @@
       }
     },
     {
-      "name": "CstServerMessage",
+      "name": "CstPythonExecutor",
       "type": "code",
       "compiles": true,
       "locked_code": true,
-      "registry_name": "cst_server_message",
+      "registry_name": "cst_python_executor",
       "metadata": {
         "files": [
-          "src/main/java/net/owo/cac/CstServerMessage.java"
+          "src/main/java/net/owo/cac/CstPythonExecutor.java"
         ]
       }
     }
@@ -4802,8 +4785,8 @@
       "advancements.adv_survey.title": "Honest voter",
       "advancements.adv_checkpoint.title": "CESCO",
       "item.cac.ent_player_cat_spawn_egg": "Predator (Player) Spawn Egg",
-      "entity.cac.ent_cat": "Predator",
       "entity.cac.ent_pseudo_mouse": "Prey (Pseudo)",
+      "entity.cac.ent_cat": "Predator",
       "key.cac.cac_key_camera": "Toggle Camera",
       "block.cac.blk_tape_block": "Tape Block",
       "entity.cac.ent_meowcam": "Meowcam",
@@ -4942,6 +4925,10 @@
           },
           {
             "name": "Demo",
+            "children": []
+          },
+          {
+            "name": "GUI",
             "children": []
           }
         ]
