@@ -4003,20 +4003,6 @@
           "src/main/java/net/owo/cac/CstPythonExecutor.java"
         ]
       }
-    },
-    {
-      "name": "TaskGui",
-      "type": "gui",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "task_gui",
-      "metadata": {
-        "files": [
-          "src/main/java/net/owo/cac/client/gui/TaskGuiScreen.java",
-          "src/main/java/net/owo/cac/world/inventory/TaskGuiMenu.java"
-        ]
-      },
-      "path": "~/CacTask/GUI"
     }
   ],
   "variable_elements": [
@@ -4806,7 +4792,6 @@
       "entity.cac.ent_meowcam": "Meowcam",
       "block.cac.blk_fence": "Fence (No field)",
       "advancements.adv_survey.descr": "Thank you for your response!",
-      "gui.cac.task_gui.subject": "000",
       "advancements.adv_racing.title": "Rat, the racer",
       "item.cac.ent_pseudo_cat_spawn_egg": "Predator (Pseudo) Spawn Egg",
       "entity.cac.ent_mouse": "Prey",
@@ -4940,10 +4925,6 @@
           },
           {
             "name": "Demo",
-            "children": []
-          },
-          {
-            "name": "GUI",
             "children": []
           }
         ]

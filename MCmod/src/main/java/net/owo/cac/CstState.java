@@ -20,6 +20,7 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import net.owo.cac.CacMod;
 import net.owo.cac.init.CacModItems;
 import net.owo.cac.CstKeyHandler;
+import net.owo.cac.network.CacModVariables;
 
 
 public class CstState {
@@ -34,6 +35,29 @@ public class CstState {
 	public static boolean[] key_pressed = {false, false, false, false, false, false, false, false};
 	public static boolean[] key_pressed_old = {false, false, false, false, false, false, false, false};
 	public static int[] key_pressed_tick = {0, 0, 0, 0}; // RLUD
+
+	public static boolean signal_cued = false;
+	public static int signal_cued_timer = 0;
+
+	public static void signalUpdate() {
+		if ((CacModVariables.Exp_mode).equals("fmri")) {
+			signal_cued = true;
+		}
+	}
+
+	public static boolean waitSignal() {
+		if (!(CacModVariables.Exp_mode).equals("fmri") || signal_cued) {
+			signal_cued = false;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static void cleanSignal() {
+		signal_cued = false;
+		signal_cued_timer = 0;
+	}
 
 	public static void changeOption() {
 		String dir_option = FMLPaths.GAMEDIR.get().toString() + "/options.txt";

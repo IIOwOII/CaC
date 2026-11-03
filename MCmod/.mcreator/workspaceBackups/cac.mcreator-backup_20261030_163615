@@ -4840,6 +4840,7 @@
       "subtitles.snd_orb_c7": "snd_orb_c7",
       "key.cac.cac_key_record": "Toggle Record",
       "entity.cac.ent_player_mouse": "Prey (Player)",
+      "mount.onboard": "",
       "key.cac.cac_key_left": "Left",
       "advancements.adv_cac.descr": "Welcome to the CaC!",
       "block.cac.blk_switchstone": "Switch Stone",
@@ -4925,10 +4926,6 @@
           },
           {
             "name": "Demo",
-            "children": []
-          },
-          {
-            "name": "GUI",
             "children": []
           }
         ]

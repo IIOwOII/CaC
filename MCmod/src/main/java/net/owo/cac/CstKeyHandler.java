@@ -56,7 +56,12 @@ public class CstKeyHandler {
     	_ent = event.player;
     	if (_ent == null)
     		return;
-    	
+    	if (CstState.signal_cued) {
+			CstState.signal_cued_timer++;
+			if (CstState.signal_cued_timer > 10) {
+				CstState.cleanSignal();
+			}
+		}
     	if (CstState.CanMeowMove && CstState.IsMeowMove_old) {
     		_ent.setYRot(CstState.rot_angle);
     	}

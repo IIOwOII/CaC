@@ -61,5 +61,8 @@ public class TaskSessionStartProcedure {
 		if ((CacModVariables.Exp_mode).equals("seeg")) {
 			net.owo.cac.CstPythonExecutor.runPupil();
 		}
+		if ((CacModVariables.Exp_mode).equals("fmri")) {
+			net.owo.cac.CstState.cleanSignal();
+		}
 	}
 }

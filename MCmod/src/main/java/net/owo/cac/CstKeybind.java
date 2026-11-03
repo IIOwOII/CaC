@@ -104,6 +104,7 @@ public class CstKeybind {
 			super.setDown(isDown);
 			CstState.key_pressed[KI] = isDown;
 			isDownOld = isDown;
+			CstState.signalUpdate();
 		}
     };
     

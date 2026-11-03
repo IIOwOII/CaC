@@ -20,6 +20,7 @@ public class TaskResetProcedure {
 		CacModVariables.Ev_content = "";
 		CacModVariables.Ev_pulse_content = "";
 		net.owo.cac.CstTimer.endTimer();
+		net.owo.cac.CstState.cleanSignal();
 		EffRemoveMorphProcedure.execute(entity);
 	}
 }

@@ -31,7 +31,11 @@ public class TimRelativeProcedure {
 		if (CacModVariables.Switch_timer && !world.isClientSide()) {
 			CacModVariables.TimR_time = CacModVariables.TimR_time + 1;
 			if (CacModVariables.Switch_que && CacModVariables.TimR_time == CacModVariables.TimR_que_time) {
-				EvQueCallProcedure.execute(world, entity);
+				if (net.owo.cac.CstState.waitSignal()) {
+					EvQueCallProcedure.execute(world, entity);
+				} else {
+					CacModVariables.TimR_que_time = CacModVariables.TimR_que_time + 1;
+				}
 			}
 		}
 	}
