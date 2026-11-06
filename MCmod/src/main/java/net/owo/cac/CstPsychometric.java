@@ -304,6 +304,13 @@ public class CstPsychometric {
 			rho_hat = rho_hat - (w_hat/(C_PRE*T))*((PSI-P)/((1.0-m*T*lambda/k)*pdf));
 		}
 		double rho = Math.round(Math.pow(rho_hat, -C_PRE)*10000.0)/10000.0;
+		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(rho));
+		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(k));
+		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(m));
+		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(h));
+		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(w));
+		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(rho_hat));
+		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(P));
 		return rho;
 	}
 	public static double calFittedNeoPercentile(double rho, double tick) {

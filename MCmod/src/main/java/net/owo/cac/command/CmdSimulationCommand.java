@@ -35,7 +35,7 @@ public class CmdSimulationCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					SimManageProcedure.execute(world, arguments, entity);
+					SimManageProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				}))));
 	}

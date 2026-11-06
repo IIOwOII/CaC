@@ -46,7 +46,7 @@ public class CstState {
 	}
 
 	public static boolean waitSignal() {
-		if (!(CacModVariables.Exp_mode).equals("fmri") || signal_cued) {
+		if (!((CacModVariables.Exp_mode).equals("fmri")) || signal_cued) {
 			signal_cued = false;
 			return true;
 		} else {

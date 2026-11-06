@@ -1,0 +1,49 @@
+{
+  "cac": {
+    "content": [
+      "fitting_start",
+      "phase_fitting",
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay",
+      "touch",
+      "phase_gameplay_end",
+      "phase_interval",
+      "phase_posttrial",
+      "phase_fitting",
+      "phase_pretrial",
+      "phase_preparation",
+      "phase_gameplay"
+    ],
+    "absolute": [
+      0,
+      212722,
+      215672,
+      215811,
+      223582,
+      232572,
+      233722,
+      238872,
+      242572,
+      242672,
+      245972,
+      246076,
+      252772
+    ],
+    "relative": [
+      0,
+      185,
+      244,
+      246,
+      402,
+      582,
+      605,
+      708,
+      782,
+      784,
+      850,
+      852,
+      986
+    ]
+  }
+}

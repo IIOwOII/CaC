@@ -34,7 +34,7 @@ public class CmdDemoCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					DemoManageProcedure.execute(world, arguments, entity);
+					DemoManageProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				})))));
 	}

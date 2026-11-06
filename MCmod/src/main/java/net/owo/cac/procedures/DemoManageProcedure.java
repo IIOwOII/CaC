@@ -12,7 +12,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class DemoManageProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_subject = "demo";
@@ -34,6 +34,6 @@ public class DemoManageProcedure {
 		EvResetProcedure.execute();
 		TimResetProcedure.execute();
 		IniQueProcedure.execute();
-		EvQueCallProcedure.execute(world, entity);
+		EvQueCallProcedure.execute(world, x, y, z, entity);
 	}
 }

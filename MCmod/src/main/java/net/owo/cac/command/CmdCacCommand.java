@@ -34,7 +34,7 @@ public class CmdCacCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					CacManageProcedure.execute(world, arguments, entity);
+					CacManageProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				})));
 	}

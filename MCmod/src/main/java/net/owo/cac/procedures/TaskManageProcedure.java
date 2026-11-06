@@ -16,7 +16,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class TaskManageProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
@@ -43,7 +43,7 @@ public class TaskManageProcedure {
 			if (CacModVariables.Exp_property.contains("S")) {
 				net.owo.cac.CstSurvey.initSurvey(false);
 			}
-			TaskSessionStartProcedure.execute(world, entity);
+			TaskSessionStartProcedure.execute(world, x, y, z, entity);
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eUnavailable task name or not registered!\u00A7r"), false);

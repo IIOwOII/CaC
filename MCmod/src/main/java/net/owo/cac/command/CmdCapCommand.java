@@ -34,7 +34,7 @@ public class CmdCapCommand {
 					if (entity != null)
 						direction = entity.getDirection();
 
-					CapManageProcedure.execute(world, arguments, entity);
+					CapManageProcedure.execute(world, x, y, z, arguments, entity);
 					return 0;
 				}))));
 	}

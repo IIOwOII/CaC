@@ -1,6 +1,7 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +17,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class CacManageProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		String psy_type = "";
@@ -61,26 +62,20 @@ public class CacManageProcedure {
 				}
 			}
 			obj_final = obj_cac.get("final").getAsJsonObject();
-			if (!obj_final.get("continuous").isJsonObject() && !obj_final.get("neo").isJsonObject()) {
-				if (!world.isClientSide() && world.getServer() != null)
-					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Only continuous or neo is supported!"), false);
-			} else {
-				if (obj_final.get("neo").isJsonObject()) {
-					obj_method = obj_final.get("neo").getAsJsonObject();
-					net.owo.cac.CstPsychometric.THETA_TYPE = 2;
-				} else if (obj_final.get("continuous").isJsonObject()) {
-					obj_method = obj_final.get("continuous").getAsJsonObject();
-					net.owo.cac.CstPsychometric.THETA_TYPE = 1;
-				}
-				CacModVariables.Dat_theta = obj_method.get("theta").getAsJsonArray();
-				net.owo.cac.CstPsychometric.loadThetaStar();
-				CacModVariables.Exp_trial_total = 20;
-				if (CacModVariables.Exp_property.contains("S")) {
-					net.owo.cac.CstSurvey.initSurvey(false);
-				}
-				PrdCountdownProcedure.execute();
-				TaskSessionStartProcedure.execute(world, entity);
+			obj_method = obj_final.get("neo").getAsJsonObject();
+			net.owo.cac.CstPsychometric.THETA_TYPE = 2;
+			CacModVariables.Dat_theta = obj_method.get("theta").getAsJsonArray();
+			net.owo.cac.CstPsychometric.loadThetaStar();
+			CacModVariables.Exp_trial_total = 20;
+			if (CacModVariables.Exp_property.contains("S")) {
+				net.owo.cac.CstSurvey.initSurvey(false);
 			}
+			PrdCountdownProcedure.execute();
+			TaskSessionStartProcedure.execute(world, x, y, z, entity);
+			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(0).getAsDouble());
+			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(1).getAsDouble());
+			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(2).getAsDouble());
+			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(3).getAsDouble());
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eNo fitting file of not registered!\u00A7r"), false);

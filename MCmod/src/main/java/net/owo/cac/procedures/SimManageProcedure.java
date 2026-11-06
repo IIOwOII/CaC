@@ -14,7 +14,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 
 public class SimManageProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		String sim_type = "";
@@ -52,7 +52,7 @@ public class SimManageProcedure {
 			TimResetProcedure.execute();
 			IniLogProcedure.execute();
 			IniQueProcedure.execute();
-			EvQueCallProcedure.execute(world, entity);
+			EvQueCallProcedure.execute(world, x, y, z, entity);
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Please check the task name!"), false);

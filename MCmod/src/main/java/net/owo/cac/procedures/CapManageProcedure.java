@@ -16,7 +16,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.arguments.StringArgumentType;
 
 public class CapManageProcedure {
-	public static void execute(LevelAccessor world, CommandContext<CommandSourceStack> arguments, Entity entity) {
+	public static void execute(LevelAccessor world, double x, double y, double z, CommandContext<CommandSourceStack> arguments, Entity entity) {
 		if (entity == null)
 			return;
 		com.google.gson.JsonObject obj_task = new com.google.gson.JsonObject();
@@ -70,7 +70,7 @@ public class CapManageProcedure {
 		}
 		if (is_available && !(CacModVariables.Exp_subject).equals("none")) {
 			PrdCountdownProcedure.execute();
-			TaskSessionStartProcedure.execute(world, entity);
+			TaskSessionStartProcedure.execute(world, x, y, z, entity);
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eUnavailable task name or not registered!\u00A7r"), false);

@@ -1,8 +1,8 @@
 {
   "cac": {
     "final": {
-      "continuous": {
-        "theta": [10, 0.1, 1, 0.15]
+      "neo": {
+        "theta": [10, 0.2, 0.8, 2]
       }
     }
   }
