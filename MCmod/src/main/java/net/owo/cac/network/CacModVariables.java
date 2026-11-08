@@ -107,6 +107,16 @@ public class CacModVariables {
 	public static com.google.gson.JsonArray Psy_con_param_shape = new com.google.gson.JsonArray();
 	public static com.google.gson.JsonArray Psy_con_param_step = new com.google.gson.JsonArray();
 	public static String Psy_method = "\"\"";
+	public static com.google.gson.JsonArray Psy_neo_param_max = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_min = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_prior = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_shape = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_neo_param_step = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_param_max = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_param_min = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_param_prior = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_param_shape = new com.google.gson.JsonArray();
+	public static com.google.gson.JsonArray Psy_param_step = new com.google.gson.JsonArray();
 	public static String Psy_task = "\"\"";
 	public static boolean Switch_AI = false;
 	public static boolean Switch_blank = false;
@@ -128,14 +138,9 @@ public class CacModVariables {
 	public static ListTag Tuto_checkpoint_route = new ListTag();
 	public static double Tuto_hurdle_stack = 0;
 	public static double Tuto_hurdle_stack_old = 0;
+	public static boolean Tuto_main = false;
 	public static double Tuto_score = 0;
 	public static boolean Tuto_score_running = false;
-	public static boolean Tuto_main = false;
-	public static com.google.gson.JsonArray Psy_neo_param_max = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_neo_param_min = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_neo_param_prior = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_neo_param_shape = new com.google.gson.JsonArray();
-	public static com.google.gson.JsonArray Psy_neo_param_step = new com.google.gson.JsonArray();
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

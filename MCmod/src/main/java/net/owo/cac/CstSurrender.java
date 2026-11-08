@@ -76,7 +76,7 @@ public class CstSurrender {
 				sur_select = 1;
 			if (CstState.key_pressed[1])
 				sur_select = 0;
-			if (((CstState.key_pressed[5]) && (sur_select == 0 || sur_select == 1)) && timer_safe >= 20) {
+			if (((CstState.key_pressed[5]) && (sur_select == 0 || sur_select == 1)) && timer_safe >= 40) {
 				confirmSurrender();
 			}
 		}
@@ -95,7 +95,7 @@ public class CstSurrender {
 		sur_type = (int)(CacModVariables.Exp_trial % 2);
 		sur_time = 0;
 		sur_select = -1;
-		timer_blank = 20; // 1sec blank before vote
+		timer_blank = CstState.getITI(); // 1sec blank before vote
 		timer_safe = 0;
 		IsSurrender = true;
 	}

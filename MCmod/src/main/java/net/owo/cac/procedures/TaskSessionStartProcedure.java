@@ -64,5 +64,6 @@ public class TaskSessionStartProcedure {
 		if ((CacModVariables.Exp_mode).equals("fmri")) {
 			net.owo.cac.CstState.cleanSignal();
 		}
+		net.owo.cac.CstState.setITI();
 	}
 }

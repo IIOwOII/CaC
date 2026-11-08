@@ -2,14 +2,13 @@ package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
 
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 public class TaskPreparationProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
+	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 1;
@@ -23,7 +22,7 @@ public class TaskPreparationProcedure {
 			}
 		}
 		MeowMoveOnProcedure.execute();
-		FncManageTimePreparationProcedure.execute(world);
+		FncManageTimePreparationProcedure.execute();
 		net.owo.cac.CstRenderComponent.renderPatchReserved(10);
 	}
 }

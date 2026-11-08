@@ -110,11 +110,11 @@ public class CstSurvey {
 					suv_value[suv_id] = suv_value[suv_id] + 2;
 				if ((CstState.key_pressed[1]) && (suv_value[suv_id] > 0))
 					suv_value[suv_id] = suv_value[suv_id] - 2;
-				if (((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer)) && timer_safe >= 20)
+				if (((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer)) && timer_safe >= 40)
 					confirmSurvey();
 			} else if (suv_phase == 33) {
 				timer_blank = timer_blank + 1;
-				if (timer_blank >= 20) {
+				if (timer_blank >= CstState.getITI()) {
 					progressSurvey();
 				}
 			} else if (suv_phase == 31) {

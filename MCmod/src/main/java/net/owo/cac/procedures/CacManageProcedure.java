@@ -1,7 +1,6 @@
 package net.owo.cac.procedures;
 
 import net.owo.cac.network.CacModVariables;
-import net.owo.cac.CacMod;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
@@ -72,10 +71,6 @@ public class CacManageProcedure {
 			}
 			PrdCountdownProcedure.execute();
 			TaskSessionStartProcedure.execute(world, x, y, z, entity);
-			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(0).getAsDouble());
-			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(1).getAsDouble());
-			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(2).getAsDouble());
-			CacMod.LOGGER.info(CacModVariables.Dat_theta.get(3).getAsDouble());
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)
 				world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7eNo fitting file of not registered!\u00A7r"), false);

@@ -39,6 +39,21 @@ public class CstState {
 	public static boolean signal_cued = false;
 	public static int signal_cued_timer = 0;
 
+	// Mode by mode
+	public static int ITI = 40; // fmri = 100, other = 20
+
+	public static void setITI() {
+		if (!((CacModVariables.Exp_mode).equals("fmri"))) { // not fmri
+			ITI = 40;
+		} else {
+			ITI = 100; // 5 sec
+		}
+	}
+
+	public static int getITI() {
+		return ITI;
+	}
+
 	public static void signalUpdate() {
 		if ((CacModVariables.Exp_mode).equals("fmri")) {
 			signal_cued = true;

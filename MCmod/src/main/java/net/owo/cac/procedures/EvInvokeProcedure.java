@@ -30,7 +30,7 @@ public class EvInvokeProcedure {
 				if ((ev_content).equals("phase_pretrial")) {
 					TaskPreTrialProcedure.execute(world, entity);
 				} else if ((ev_content).equals("phase_preparation")) {
-					TaskPreparationProcedure.execute(world, entity);
+					TaskPreparationProcedure.execute(entity);
 				} else if ((ev_content).equals("phase_gameplay")) {
 					TaskGameplayProcedure.execute(world, x, y, z, entity);
 				} else if ((ev_content).equals("phase_gameplay_end")) {

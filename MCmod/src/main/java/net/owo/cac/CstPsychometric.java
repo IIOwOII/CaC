@@ -288,29 +288,41 @@ public class CstPsychometric {
 		P = Math.round(P*10000.0) / 10000.0; // 4 decimals
 		return P;
 	}
-	public static double calFittedNeoInversePSI(double P) {
+	public static double calFittedNeoInversePSI(double P) { // Bisection Method
+		// Fitted parameters
 		double k = THETA_STAR[0];
 		double m = THETA_STAR[1];
 		double h = THETA_STAR[2];
 		double w = THETA_STAR[3];
-		double w_hat = Math.exp(-w);
-		int num_iter = 10;
-		double rho_hat = 1;
-		for (int i=0; i<num_iter; i++) {
-			double r = C_PRE*Math.log(rho_hat);
-			double lambda = calGammaLambda(r, k, m, h, w);
-			double PSI = calGammaCDF(k, lambda);
-			double pdf = calGammaPDF(k, lambda, T);
-			rho_hat = rho_hat - (w_hat/(C_PRE*T))*((PSI-P)/((1.0-m*T*lambda/k)*pdf));
+
+		// Hyperparameter
+		double epsilon = 0.0001;
+		double r_m = R_MIN;
+		double r_p = R_MAX;
+		
+		// Loop
+		double r_c = 0;
+		double PSI = 0;
+		double lambda = 0;
+		int num_loop = 0;
+		while (true) {
+			num_loop += 1;
+			r_c = (r_m+r_p)/2.0;
+			lambda = calGammaLambda(r_c, k, m, h, w);
+			PSI = calGammaCDF(k, lambda);
+			if (Math.abs(PSI-P) <= epsilon) {
+				break;
+			} else if (PSI < P) {
+				r_m = r_c;
+			} else if (PSI > P) {
+				r_p = r_c;
+			}
+			if (num_loop > 100) {
+				CacMod.LOGGER.warn("Weird! The loop is over than 100!");
+				break;
+			}
 		}
-		double rho = Math.round(Math.pow(rho_hat, -C_PRE)*10000.0)/10000.0;
-		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(rho));
-		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(k));
-		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(m));
-		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(h));
-		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(w));
-		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(rho_hat));
-		CacMod.LOGGER.info(new java.text.DecimalFormat("##.####").format(P));
+		double rho = RtoRho(r_c);
 		return rho;
 	}
 	public static double calFittedNeoPercentile(double rho, double tick) {
@@ -1716,6 +1728,9 @@ public class CstPsychometric {
 	}
 
 	// get Shape
+	public static int getParamShape(int idx) {
+		return CacModVariables.Psy_param_shape.get(idx).getAsInt();
+	}
 	public static int getBinShape(int idx) {
 		return CacModVariables.Psy_bin_param_shape.get(idx).getAsInt();
 	}
