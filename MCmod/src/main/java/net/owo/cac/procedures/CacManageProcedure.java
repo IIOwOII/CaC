@@ -65,7 +65,11 @@ public class CacManageProcedure {
 			net.owo.cac.CstPsychometric.THETA_TYPE = 2;
 			CacModVariables.Dat_theta = obj_method.get("theta").getAsJsonArray();
 			net.owo.cac.CstPsychometric.loadThetaStar();
-			CacModVariables.Exp_trial_total = 20;
+			if ((CacModVariables.Exp_mode).equals("fmri")) {
+				CacModVariables.Exp_trial_total = 10;
+			} else {
+				CacModVariables.Exp_trial_total = 20;
+			}
 			if (CacModVariables.Exp_property.contains("S")) {
 				net.owo.cac.CstSurvey.initSurvey(false);
 			}

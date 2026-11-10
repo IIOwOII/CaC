@@ -92,6 +92,12 @@ public class CstSurrender {
 	// trial by trial OR surrender by surrender
 	public static void startSurrender() {
 		CstState.offMeowMove(); // stop moving
+		//TEMP
+		if ((CacModVariables.Exp_mode).equals("fmri") && (CacModVariables.Exp_trial%4) != 0) {
+			endSurrender();
+			return;
+		}
+		//
 		sur_type = (int)(CacModVariables.Exp_trial % 2);
 		sur_time = 0;
 		sur_select = -1;

@@ -58,7 +58,7 @@ public class CstSurvey {
 		new ResourceLocation("cac:textures/screens/text_survey_revised_3.png"),
 		new ResourceLocation("cac:textures/screens/text_survey_revised_4.png")
 	};
-	
+
 	public static boolean IsSurvey = false;
 	public static boolean IsTimer = false;
 	public static int timer_quiz = 0;
@@ -153,6 +153,12 @@ public class CstSurvey {
 	// trial by trial
 	public static void startSurvey() { // phase 3.0
 		CstState.offMeowMove(); // stop moving
+		//TEMP
+		if ((CacModVariables.Exp_mode).equals("fmri") && (CacModVariables.Exp_trial%4) != 0) {
+			endSurvey();
+			return;
+		}
+		//
 		suv_phase = 30;
 		idx = 0;
 		suv_value_prev = suv_value.clone();

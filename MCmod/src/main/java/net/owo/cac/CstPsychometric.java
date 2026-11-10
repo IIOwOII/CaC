@@ -389,6 +389,17 @@ public class CstPsychometric {
 			p = p_m;
 		}
 
+		// TEMP!
+		double[] TEMP_FMRI = {0.7, 0.57, 0.38, 0.23, 0.24, 0.38, 0.49, 0.43, 0.31, 0.40};
+		if ((CacModVariables.Exp_mode).equals("fmri")) {
+			int id = tnum;
+			if (id >= 10) {
+				id = 9;
+			}
+			p = TEMP_FMRI[id];
+		}
+		//
+		
 		double rho_next = 1;
 		if (THETA_TYPE == 2) { // neo
 			rho_next = calFittedNeoInversePSI(p);

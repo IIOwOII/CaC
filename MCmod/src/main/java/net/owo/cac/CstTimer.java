@@ -65,6 +65,7 @@ public class CstTimer {
 		Gson GS = new Gson();
 		JsonObject obj_file = new JsonObject();
 		JsonObject obj_cac = new JsonObject();
+		JsonObject obj_trial = new JsonObject();
 		
 		if (CacModVariables.Exp_property.contains("A")) {
 			JsonArray arr_TimA = GS.toJsonTree(action_TimA.clone()).getAsJsonArray();
@@ -85,11 +86,12 @@ public class CstTimer {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			obj_cac.add("time", arr_TimA);
-			obj_cac.add("tick", arr_TimR);
-			obj_cac.add("stick", arr_stick);
-			obj_cac.add("select", arr_select);
-			obj_cac.add("signal", arr_signal);
+			obj_trial.add("time", arr_TimA);
+			obj_trial.add("tick", arr_TimR);
+			obj_trial.add("stick", arr_stick);
+			obj_trial.add("select", arr_select);
+			obj_trial.add("signal", arr_signal);
+			obj_cac.add(("trial_" + (int)CacModVariables.Exp_trial), obj_trial);
 			Gson GB = new GsonBuilder().setPrettyPrinting().create();
 			try {
 				FileWriter fileWriter = new FileWriter(CacModVariables.Log_action);
