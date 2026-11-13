@@ -14,6 +14,7 @@ public class TaskPreTrialProcedure {
 			return;
 		CacModVariables.Exp_phase = 0;
 		CacModVariables.Switch_blank = true;
+		MeowMoveOffProcedure.execute();
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {

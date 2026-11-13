@@ -141,6 +141,7 @@ public class CacModVariables {
 	public static boolean Tuto_main = false;
 	public static double Tuto_score = 0;
 	public static boolean Tuto_score_running = false;
+	public static boolean Ev_waiting = false;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {

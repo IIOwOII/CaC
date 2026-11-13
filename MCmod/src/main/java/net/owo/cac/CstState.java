@@ -40,10 +40,25 @@ public class CstState {
 	public static int signal_cued_timer = 0;
 
 	// Mode by mode
-	public static int ITI = 40; // fmri = 100, other = 20
+	public static int ITI = 40; // fmri = 100, other = 40
+
+	// get Exp mode
+	// 0: beh, 1: fmri, 2: seeg
+	public static int getModeCode() {
+		String mode = CacModVariables.Exp_mode;
+		int mode_code = -1;
+		if (mode.equals("beh")) {
+			mode_code = 0;
+		} else if (mode.equals("fmri")) {
+			mode_code = 1;
+		} else if (mode.equals("seeg")) {
+			mode_code = 2;
+		}
+		return mode_code;
+	}
 
 	public static void setITI() {
-		if (!((CacModVariables.Exp_mode).equals("fmri"))) { // not fmri
+		if (getModeCode() != 1) { // not fmri
 			ITI = 40;
 		} else {
 			ITI = 100; // 5 sec
@@ -55,13 +70,13 @@ public class CstState {
 	}
 
 	public static void signalUpdate() {
-		if ((CacModVariables.Exp_mode).equals("fmri")) {
+		if (getModeCode() == 1) {
 			signal_cued = true;
 		}
 	}
 
 	public static boolean waitSignal() {
-		if (!((CacModVariables.Exp_mode).equals("fmri")) || signal_cued) {
+		if (getModeCode() != 1 || signal_cued) {
 			signal_cued = false;
 			return true;
 		} else {

@@ -27,10 +27,14 @@ public class CstRenderComponent {
 	public static ResourceLocation blank_lightgrey = new ResourceLocation("cac:textures/screens/texture_lightgrey.png");
 	public static ResourceLocation blank = new ResourceLocation("cac:textures/screens/texture_blank.png");
 	public static ResourceLocation gui_blank = new ResourceLocation("cac:textures/screens/gui_blank.png");
+	public static ResourceLocation fmri_start = new ResourceLocation("cac:textures/screens/texture_session_start.png");
+	public static ResourceLocation fmri_end = new ResourceLocation("cac:textures/screens/texture_session_end.png");
+	public static ResourceLocation fmri_blank = new ResourceLocation("cac:textures/screens/texture_blank_black.png");
 	public static ResourceLocation slide_frame = new ResourceLocation("cac:textures/screens/texture_slide.png");
 	public static ResourceLocation slide_frame_short = new ResourceLocation("cac:textures/screens/texture_slide_short.png");
 	public static ResourceLocation slide_trace = new ResourceLocation("cac:textures/screens/texture_slide_trace.png");
 	public static ResourceLocation slide_cursor = new ResourceLocation("cac:textures/screens/texture_slide_cursor.png");
+	public static ResourceLocation slide_cursor_select = new ResourceLocation("cac:textures/screens/texture_slide_cursor_select.png");
 	public static ResourceLocation slide_text_right = new ResourceLocation("cac:textures/screens/text_slide_right.png");
 	public static ResourceLocation slide_text_left = new ResourceLocation("cac:textures/screens/text_slide_left.png");
 
@@ -146,6 +150,17 @@ public class CstRenderComponent {
 		que.add(1);
 		que.add(1);
 		renderPatchPattern(que);
+	}
+
+	// fmri
+	public static void renderFmriBlank(GuiGraphics gg, int gw, int gh) {
+		gg.blit(fmri_blank, 0, 0, 0, 0, gw, gh, gw, gh);
+	}
+	public static void renderFmriStart(GuiGraphics gg, int gw, int gh) {
+		gg.blit(fmri_start, 0, 0, 0, 0, gw, gh, gw, gh);
+	}
+	public static void renderFmriEnd(GuiGraphics gg, int gw, int gh) {
+		gg.blit(fmri_end, 0, 0, 0, 0, gw, gh, gw, gh);
 	}
 
 	// Blank

@@ -12,8 +12,6 @@ public class TaskPreparationProcedure {
 		if (entity == null)
 			return;
 		CacModVariables.Exp_phase = 1;
-		CacModVariables.Switch_blank = false;
-		CacModVariables.Switch_trace = true;
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
@@ -21,6 +19,8 @@ public class TaskPreparationProcedure {
 						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "worldborder set 2");
 			}
 		}
+		CacModVariables.Switch_blank = false;
+		CacModVariables.Switch_trace = true;
 		MeowMoveOnProcedure.execute();
 		FncManageTimePreparationProcedure.execute();
 		net.owo.cac.CstRenderComponent.renderPatchReserved(10);

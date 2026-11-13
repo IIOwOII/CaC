@@ -110,7 +110,7 @@ public class CstSurvey {
 					suv_value[suv_id] = suv_value[suv_id] + 2;
 				if ((CstState.key_pressed[1]) && (suv_value[suv_id] > 0))
 					suv_value[suv_id] = suv_value[suv_id] - 2;
-				if (((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer)) && timer_safe >= 40)
+				if (((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer)) && timer_safe >= 30)
 					confirmSurvey();
 			} else if (suv_phase == 33) {
 				timer_blank = timer_blank + 1;
@@ -154,7 +154,7 @@ public class CstSurvey {
 	public static void startSurvey() { // phase 3.0
 		CstState.offMeowMove(); // stop moving
 		//TEMP
-		if ((CacModVariables.Exp_mode).equals("fmri") && (CacModVariables.Exp_trial%4) != 0) {
+		if (CstState.getModeCode == 1 && (CacModVariables.Exp_trial%4) != 0) {
 			endSurvey();
 			return;
 		}
