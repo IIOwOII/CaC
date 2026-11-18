@@ -49,7 +49,7 @@ public class CstSurrender {
 			CstRenderComponent.renderBlank(gg, gw, gh); // Render Cross blank
 			return;
 		}
-		CstRenderComponent.renderBlankLightgrey(gg, gw, gh); // Render Background
+		CstRenderComponent.renderBackground(gg, gw, gh); // Render Background
 		gg.blit(surrender_text, gw/2-200, 30, 0, 0, 400, 60, 400, 60); // Render Text
 
 		// left button : x=70, y=140 (OR) right button : x=285, y=140

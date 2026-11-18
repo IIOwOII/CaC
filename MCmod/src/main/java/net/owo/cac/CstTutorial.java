@@ -143,13 +143,13 @@ public class CstTutorial {
 		}
 		// Legacy
 		if (tuto_id == 10) {
-			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
+			CstRenderComponent.renderBackground(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_MOVING[book_id]);
 		} else if (tuto_id == 20) {
-			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
+			CstRenderComponent.renderBackground(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_CHECKPOINT[book_id]);
 		} else if (tuto_id == 30) {
-			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
+			CstRenderComponent.renderBackground(gg, gw, gh);
 			renderBook(gg, gw, gh, BOOK_RACING[book_id]);
 		}
 		// Renewal

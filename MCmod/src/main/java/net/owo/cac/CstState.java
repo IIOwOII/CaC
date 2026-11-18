@@ -24,6 +24,10 @@ import net.owo.cac.network.CacModVariables;
 
 
 public class CstState {
+	// States
+	public static int state = -1; // -1: default, 1: start, 2: end
+	
+	// Others
 	public static boolean IsPause = false;
 	
     public static boolean IsMeowView = false; // Camera
@@ -41,6 +45,15 @@ public class CstState {
 
 	// Mode by mode
 	public static int ITI = 40; // fmri = 100, other = 40
+
+	
+	// States
+	public static void setState(int s) {
+		state = s;
+	}
+	public static int getState() {
+		return state;
+	}
 
 	// get Exp mode
 	// 0: beh, 1: fmri, 2: seeg

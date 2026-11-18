@@ -23,13 +23,12 @@ public class CstRenderComponent {
 	public static ResourceLocation bar_gauge = new ResourceLocation("cac:textures/screens/texture_bar_gauge.png");
 	public static ResourceLocation patch_white = new ResourceLocation("cac:textures/screens/texture_patch_white.png");
 	public static ResourceLocation patch_black = new ResourceLocation("cac:textures/screens/texture_patch_black.png");
-
-	public static ResourceLocation blank_lightgrey = new ResourceLocation("cac:textures/screens/texture_lightgrey.png");
+	
+	public static ResourceLocation background = new ResourceLocation("cac:textures/screens/texture_grey.png");
 	public static ResourceLocation blank = new ResourceLocation("cac:textures/screens/texture_blank.png");
 	public static ResourceLocation gui_blank = new ResourceLocation("cac:textures/screens/gui_blank.png");
-	public static ResourceLocation fmri_start = new ResourceLocation("cac:textures/screens/texture_session_start.png");
-	public static ResourceLocation fmri_end = new ResourceLocation("cac:textures/screens/texture_session_end.png");
-	public static ResourceLocation fmri_blank = new ResourceLocation("cac:textures/screens/texture_blank_black.png");
+	public static ResourceLocation session_start = new ResourceLocation("cac:textures/screens/texture_session_start.png");
+	public static ResourceLocation session_end = new ResourceLocation("cac:textures/screens/texture_session_end.png");
 	public static ResourceLocation slide_frame = new ResourceLocation("cac:textures/screens/texture_slide.png");
 	public static ResourceLocation slide_frame_short = new ResourceLocation("cac:textures/screens/texture_slide_short.png");
 	public static ResourceLocation slide_trace = new ResourceLocation("cac:textures/screens/texture_slide_trace.png");
@@ -151,18 +150,7 @@ public class CstRenderComponent {
 		que.add(1);
 		renderPatchPattern(que);
 	}
-
-	// fmri
-	public static void renderFmriBlank(GuiGraphics gg, int gw, int gh) {
-		gg.blit(fmri_blank, 0, 0, 0, 0, gw, gh, gw, gh);
-	}
-	public static void renderFmriStart(GuiGraphics gg, int gw, int gh) {
-		gg.blit(fmri_start, 0, 0, 0, 0, gw, gh, gw, gh);
-	}
-	public static void renderFmriEnd(GuiGraphics gg, int gw, int gh) {
-		gg.blit(fmri_end, 0, 0, 0, 0, gw, gh, gw, gh);
-	}
-
+	
 	// Blank
 	public static void renderGuiBlank(GuiGraphics gg, int gw, int gh) {
 		gg.blit(gui_blank, 0, 0, 0, 0, gw, gh, gw, gh);
@@ -172,8 +160,17 @@ public class CstRenderComponent {
 		gg.blit(blank, 0, 0, 0, 0, gw, gh, gw, gh);
 	}
 
-	public static void renderBlankLightgrey(GuiGraphics gg, int gw, int gh) {
-		gg.blit(blank_lightgrey, 0, 0, 0, 0, gw, gh, gw, gh);
+	public static void renderBackground(GuiGraphics gg, int gw, int gh) {
+		gg.blit(background, 0, 0, 0, 0, gw, gh, gw, gh);
+	}
+
+	// Session
+	public static void renderSessionStart(GuiGraphics gg, int gw, int gh) {
+		gg.blit(session_start, 0, 0, 0, 0, gw, gh, gw, gh);
+	}
+
+	public static void renderSessionEnd(GuiGraphics gg, int gw, int gh) {
+		gg.blit(session_end, 0, 0, 0, 0, gw, gh, gw, gh);
 	}
 
 	// Slide

@@ -4834,6 +4834,12 @@
       "type": "logic",
       "scope": "global",
       "value": "false"
+    },
+    {
+      "name": "Ev_waiting",
+      "type": "logic",
+      "scope": "global",
+      "value": "false"
     }
   ],
   "sound_elements": [

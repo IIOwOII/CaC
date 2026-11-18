@@ -69,7 +69,6 @@ public class CapManageProcedure {
 			is_available = false;
 		}
 		if (is_available && !(CacModVariables.Exp_subject).equals("none")) {
-			PrdCountdownProcedure.execute();
 			TaskSessionStartProcedure.execute(world, x, y, z, entity);
 		} else {
 			if (!world.isClientSide() && world.getServer() != null)

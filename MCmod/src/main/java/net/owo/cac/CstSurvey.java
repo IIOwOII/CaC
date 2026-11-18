@@ -84,7 +84,7 @@ public class CstSurvey {
 		int gh = event.getWindow().getGuiScaledHeight();
 		CstRenderComponent.renderBlank(gg, gw, gh); // Render Cross blank
 		if (suv_phase == 35) {
-			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
+			CstRenderComponent.renderBackground(gg, gw, gh);
 			int suv_id = suv_order[idx];
 			if (IsTimer) {
 				CstRenderComponent.renderBar(gg, gw, gh, 200-timer_quiz, 200); // Render timebar
@@ -93,7 +93,7 @@ public class CstSurvey {
 			CstRenderComponent.renderSlide(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
 			CstRenderComponent.renderSlideText(gg, gw, gh); // Render Slide Text
 		} else if (suv_phase == 31) {
-			CstRenderComponent.renderBlankLightgrey(gg, gw, gh);
+			CstRenderComponent.renderBackground(gg, gw, gh);
 			CstRenderComponent.renderScoreboard(gg, gw, gh);
 		}
 	}
@@ -154,7 +154,7 @@ public class CstSurvey {
 	public static void startSurvey() { // phase 3.0
 		CstState.offMeowMove(); // stop moving
 		//TEMP
-		if (CstState.getModeCode == 1 && (CacModVariables.Exp_trial%4) != 0) {
+		if (CstState.getModeCode() == 1 && (CacModVariables.Exp_trial%4) != 0) {
 			endSurvey();
 			return;
 		}
