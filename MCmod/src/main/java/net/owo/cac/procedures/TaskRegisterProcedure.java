@@ -37,5 +37,6 @@ public class TaskRegisterProcedure {
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("\u00A7ePlease check the group! (A, B)\u00A7r"), false);
 			}
 		}
+		net.owo.cac.CstState.setModeCode();
 	}
 }

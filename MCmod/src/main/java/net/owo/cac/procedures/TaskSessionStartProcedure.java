@@ -65,5 +65,6 @@ public class TaskSessionStartProcedure {
 			net.owo.cac.CstState.cleanSignal();
 		}
 		net.owo.cac.CstState.setITI();
+		MeowMoveOffProcedure.execute();
 	}
 }

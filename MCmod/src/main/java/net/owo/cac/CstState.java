@@ -24,10 +24,8 @@ import net.owo.cac.network.CacModVariables;
 
 
 public class CstState {
-	// States
-	public static int state = -1; // -1: default, 1: start, 2: end
-	
 	// Others
+	public static int mode_code = -1;
 	public static boolean IsPause = false;
 	
     public static boolean IsMeowView = false; // Camera
@@ -46,27 +44,21 @@ public class CstState {
 	// Mode by mode
 	public static int ITI = 40; // fmri = 100, other = 40
 
-	
-	// States
-	public static void setState(int s) {
-		state = s;
-	}
-	public static int getState() {
-		return state;
-	}
-
 	// get Exp mode
 	// 0: beh, 1: fmri, 2: seeg
-	public static int getModeCode() {
+	public static void setModeCode() {
 		String mode = CacModVariables.Exp_mode;
-		int mode_code = -1;
 		if (mode.equals("beh")) {
 			mode_code = 0;
 		} else if (mode.equals("fmri")) {
 			mode_code = 1;
 		} else if (mode.equals("seeg")) {
 			mode_code = 2;
+		} else {
+			mode_code = -1;
 		}
+	}
+	public static int getModeCode() {
 		return mode_code;
 	}
 
@@ -77,7 +69,6 @@ public class CstState {
 			ITI = 100; // 5 sec
 		}
 	}
-
 	public static int getITI() {
 		return ITI;
 	}

@@ -48,5 +48,6 @@ public class TaskSessionEndProcedure {
 		if (CacModVariables.Exp_property.contains("A")) {
 			net.owo.cac.CstTimer.endTimer();
 		}
+		MeowMoveOffProcedure.execute();
 	}
 }
