@@ -26,6 +26,7 @@ import net.owo.cac.network.CacModVariables;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstTimer {
 	public static boolean switch_timer = false;
+	public static int timer_toggle = 0;
 	
 	public static long TimR = 0; // Relative (1 sec = 20 tick)
 	public static long TimA = 0; // Absolute (millisecond)
@@ -57,7 +58,28 @@ public class CstTimer {
 			action_stick.add(CstState.getKeyCase());
 			action_select.add(CstState.key_pressed[5]?1:0);
 			action_signal.add(CstState.key_pressed[7]?1:0);
+			signalCheck();
+			if (timer_toggle > 0) {
+				timer_toggle -= 1;
+				setSwitchSignal(true);
+				if (CacModVariables.TimR_time >= CacModVariables.TimR_que_time) {
+					CacModVariables.TimR_que_time = CacModVariables.TimR_time + 1;
+				}
+			} else {
+				setSwitchSignal(false);
+			}
 		}
+	}
+
+	public static void signalCheck() {
+		int mode_code = CstState.getModeCode();
+		if (mode_code != 1) return;
+		if (CstState.key_pressed[7]) {
+			timer_toggle = 5;
+		}
+	}
+	public static void setSwitchSignal(boolean sw) {
+		CacModVariables.Switch_scanner = sw;
 	}
 
 	// Record Action log

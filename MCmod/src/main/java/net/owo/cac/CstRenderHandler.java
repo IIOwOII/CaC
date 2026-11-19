@@ -67,6 +67,11 @@ public class CstRenderHandler {
     	int gw = event.getWindow().getGuiScaledWidth();
 		int gh = event.getWindow().getGuiScaledHeight();
     	if (CacModVariables.Switch_blank || emergency_timer > 0) CstRenderComponent.renderBlank(gg, gw, gh);
+    	if (CstState.getSessionCode() == 1) { // Session Start
+    		CstRenderComponent.renderSessionStart(gg, gw, gh);
+    	} else if (CstState.getSessionCode() == 2) { // Session End
+    		CstRenderComponent.renderSessionEnd(gg, gw, gh);
+    	}
     }
 
     @SubscribeEvent

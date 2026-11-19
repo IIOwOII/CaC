@@ -26,6 +26,8 @@ import net.owo.cac.network.CacModVariables;
 public class CstState {
 	// Others
 	public static int mode_code = -1;
+	public static int session_code = 0;
+	
 	public static boolean IsPause = false;
 	
     public static boolean IsMeowView = false; // Camera
@@ -60,6 +62,15 @@ public class CstState {
 	}
 	public static int getModeCode() {
 		return mode_code;
+	}
+
+	// get Session code
+	// 0: default, 1: start, 2: end
+	public static void setSessionCode(int code) {
+		session_code = code;
+	}
+	public static int getSessionCode() {
+		return session_code;
 	}
 
 	public static void setITI() {

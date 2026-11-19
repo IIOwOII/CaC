@@ -4118,6 +4118,18 @@
           "src/main/java/net/owo/cac/CstPythonExecutor.java"
         ]
       }
+    },
+    {
+      "name": "CstCoroutine",
+      "type": "code",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "cst_coroutine",
+      "metadata": {
+        "files": [
+          "src/main/java/net/owo/cac/CstCoroutine.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4837,6 +4849,18 @@
     },
     {
       "name": "Ev_waiting",
+      "type": "logic",
+      "scope": "global",
+      "value": "false"
+    },
+    {
+      "name": "Switch_timelock",
+      "type": "logic",
+      "scope": "global",
+      "value": "false"
+    },
+    {
+      "name": "Switch_scanner",
       "type": "logic",
       "scope": "global",
       "value": "false"

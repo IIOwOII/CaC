@@ -13,10 +13,12 @@ public class EvInvokeProcedure {
 		String ev_content = "";
 		if (CacModVariables.Ev_occuring && !world.isClientSide()) {
 			ev_content = CacModVariables.Ev_content;
+			net.owo.cac.CstState.setSessionCode(0);
 			if ((ev_content).equals("")) {
 				if (!world.isClientSide() && world.getServer() != null)
 					world.getServer().getPlayerList().broadcastSystemMessage(Component.literal("Event is blank!"), false);
 			} else if (ev_content.endsWith("start")) {
+				net.owo.cac.CstState.setSessionCode(1);
 				CacModVariables.Switch_que = true;
 				CacModVariables.Ev_que_loop = true;
 				if ((ev_content).equals("main_start") || (ev_content).equals("fitting_start") || (ev_content).equals("test_start") || (ev_content).equals("pseudo_start")) {
@@ -79,9 +81,11 @@ public class EvInvokeProcedure {
 				} else if ((ev_content).equals("fitting_end")) {
 					CacModVariables.Switch_que = false;
 					net.owo.cac.CstPsychometric.recFinal();
+					net.owo.cac.CstState.setSessionCode(2);
 					TaskSessionEndProcedure.execute();
 				} else if ((ev_content).equals("main_end")) {
 					CacModVariables.Switch_que = false;
+					net.owo.cac.CstState.setSessionCode(2);
 					TaskSessionEndProcedure.execute();
 				}
 			}
@@ -90,6 +94,7 @@ public class EvInvokeProcedure {
 				CacModVariables.Ev_que_index = (CacModVariables.Ev_que_index + 1) % CacModVariables.Ev_que.size();
 			}
 			CacModVariables.Ev_occuring = false;
+			net.owo.cac.CstCoroutine.setWaiting();
 		}
 	}
 }

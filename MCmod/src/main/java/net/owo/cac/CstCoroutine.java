@@ -1,6 +1,7 @@
 package net.owo.cac;
 
 import net.owo.cac.network.CacModVariables;
+import net.owo.cac.CstState;
 
 public class CstCoroutine {
 
@@ -17,14 +18,17 @@ public class CstCoroutine {
 
 	// Set waiting
 	public static void setWaiting() {
+		int mode_code = CstState.getModeCode();
+		if (mode_code != 1) return;
 		String ev = getEventQueue();
 		boolean sw = false;
-		if (ev.startsWith("phase") {
+		if (ev.endsWith("start")) {
+			if ((ev).equals("main_start") || (ev).equals("fitting_start") || (ev).equals("test_start") || (ev).equals("pseudo_start")) {
+				sw = true;
+			}
+		}
+		else if (ev.startsWith("phase")) {
 			if ((ev).equals("phase_pretrial")) {
-				sw = true;
-			} else if ((ev).equals("phase_preparation")) {
-				sw = true;
-			} else if ((ev).equals("phase_gameplay")) {
 				sw = true;
 			} else if ((ev).equals("phase_surrender")) {
 				sw = true;

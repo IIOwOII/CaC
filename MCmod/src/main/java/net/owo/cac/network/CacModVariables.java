@@ -143,6 +143,7 @@ public class CacModVariables {
 	public static boolean Tuto_score_running = false;
 	public static boolean Ev_waiting = false;
 	public static boolean Switch_timelock = false;
+	public static boolean Switch_scanner = false;
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
