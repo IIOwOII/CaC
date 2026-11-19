@@ -77,7 +77,7 @@ public class CstState {
 		if (getModeCode() != 1) { // not fmri
 			ITI = 40;
 		} else {
-			ITI = 100; // 5 sec
+			ITI = 200; // 10 sec
 		}
 	}
 	public static int getITI() {

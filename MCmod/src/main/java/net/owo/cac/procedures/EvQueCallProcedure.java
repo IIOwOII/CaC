@@ -72,6 +72,7 @@ public class EvQueCallProcedure {
 				}
 			}
 			CacModVariables.TimR_que_time = CacModVariables.TimR_time + ev_duration;
+			net.owo.cac.CstCoroutine.setWaiting();
 			EvInvokeProcedure.execute(world, x, y, z, entity);
 		}
 	}

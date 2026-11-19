@@ -30,10 +30,6 @@ public class CstCoroutine {
 		else if (ev.startsWith("phase")) {
 			if ((ev).equals("phase_pretrial")) {
 				sw = true;
-			} else if ((ev).equals("phase_surrender")) {
-				sw = true;
-			} else if ((ev).equals("phase_interval")) {
-				sw = true;
 			}
 		}
 		setSwitchTimelock(sw);

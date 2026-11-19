@@ -30,8 +30,12 @@ public class TimRelativeProcedure {
 			return;
 		if (CacModVariables.Switch_timer && !world.isClientSide()) {
 			CacModVariables.TimR_time = CacModVariables.TimR_time + 1;
-			if (CacModVariables.Switch_que && CacModVariables.TimR_time == CacModVariables.TimR_que_time && (!CacModVariables.Switch_timelock || CacModVariables.Switch_scanner)) {
-				EvQueCallProcedure.execute(world, x, y, z, entity);
+			if (CacModVariables.Switch_que && CacModVariables.TimR_time == CacModVariables.TimR_que_time) {
+				if (CacModVariables.Switch_timelock && !CacModVariables.Switch_scanner) {
+					CacModVariables.TimR_que_time = CacModVariables.TimR_time + 1;
+				} else {
+					EvQueCallProcedure.execute(world, x, y, z, entity);
+				}
 			}
 		}
 	}

@@ -184,6 +184,13 @@ public class CstRenderComponent {
 		gg.blit(slide_trace, gw/2-94+(int)(184*ratio_old), gh/2+60, 0, 0, 4, 20, 4, 20);
 		gg.blit(slide_cursor, gw/2-94+(int)(184*ratio), gh/2+60, 0, 0, 4, 20, 4, 20);
 	}
+	public static void renderSlideSelect(GuiGraphics gg, int gw, int gh, double value, double value_old, double value_max) {
+		double ratio = value/value_max;
+		double ratio_old = value_old/value_max;
+		gg.blit(slide_frame_short, gw/2-100, gh/2+54, 0, 0, 200, 32, 200, 32);
+		gg.blit(slide_trace, gw/2-94+(int)(184*ratio_old), gh/2+60, 0, 0, 4, 20, 4, 20);
+		gg.blit(slide_cursor_select, gw/2-94+(int)(184*ratio), gh/2+60, 0, 0, 4, 20, 4, 20);
+	}
 
 	// Slide Text
 	public static void renderSlideText(GuiGraphics gg, int gw, int gh) {

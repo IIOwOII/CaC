@@ -65,6 +65,7 @@ public class CstSurvey {
 	public static int timer_blank = 0;
 	public static int timer_score = 0;
 	public static int timer_safe = 0;
+	public static int timer_confirm = 0;
 	public static int suv_phase = 30;
 
 	// trial by trial
@@ -83,14 +84,18 @@ public class CstSurvey {
 		int gw = event.getWindow().getGuiScaledWidth();
 		int gh = event.getWindow().getGuiScaledHeight();
 		CstRenderComponent.renderBlank(gg, gw, gh); // Render Cross blank
-		if (suv_phase == 35) {
+		if (suv_phase == 35 || suv_phase == 36) {
 			CstRenderComponent.renderBackground(gg, gw, gh);
 			int suv_id = suv_order[idx];
 			if (IsTimer) {
 				CstRenderComponent.renderBar(gg, gw, gh, 200-timer_quiz, 200); // Render timebar
 			}
 			renderSurvey(gg, gw, gh, suv_id); // Render text
-			CstRenderComponent.renderSlide(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
+			if (suv_phase == 35) {
+				CstRenderComponent.renderSlide(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
+			} else if (suv_phase == 36) {
+				CstRenderComponent.renderSlideSelect(gg, gw, gh, suv_value[suv_id], suv_value_prev[suv_id], 100); // Render Slide
+			}
 			CstRenderComponent.renderSlideText(gg, gw, gh); // Render Slide Text
 		} else if (suv_phase == 31) {
 			CstRenderComponent.renderBackground(gg, gw, gh);
@@ -111,16 +116,21 @@ public class CstSurvey {
 				if ((CstState.key_pressed[1]) && (suv_value[suv_id] > 0))
 					suv_value[suv_id] = suv_value[suv_id] - 2;
 				if (((CstState.key_pressed[5]) || (timer_quiz >= 200 && IsTimer)) && timer_safe >= 30)
-					confirmSurvey();
+					suv_phase = 36;
 			} else if (suv_phase == 33) {
 				timer_blank = timer_blank + 1;
-				if (timer_blank >= CstState.getITI()) {
+				if (timer_blank >= CstState.getITI() && (CstState.key_pressed[7] || CstState.getModeCode != 1)) {
 					progressSurvey();
 				}
 			} else if (suv_phase == 31) {
 				timer_score = timer_score + 1;
 				if (timer_score >= 60) {
 					waitingSurvey();
+				}
+			} else if (suv_phase == 36) {
+				timer_confirm += 1;
+				if (timer_confirm >= 20) {
+					confirmSurvey();
 				}
 			}
 		}
@@ -210,6 +220,7 @@ public class CstSurvey {
 	}
 	public static void confirmSurvey() { // phase 3.7
 		suv_phase = 37; // start of func
+		timer_confirm = 0;
 
 		// Intermediate Record
 		int suv_id = suv_order[idx];

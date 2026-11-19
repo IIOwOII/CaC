@@ -1,10 +1,10 @@
 {
   "test_start": 2,
-  "pseudo_start": 200,
+  "pseudo_start": 100,
   "simulation_start": 2,
   "demo_start": 2,
-  "fitting_start": 200,
-  "main_start": 200,
+  "fitting_start": 100,
+  "main_start": 100,
   "phase_fitting": 100,
   "phase_pretrial": 100,
   "phase_preparation": -1,
@@ -28,5 +28,5 @@
   "pseudo_end": -1,
   "fitting_end": -1,
   "main_end": -1,
-  "blank": 100
+  "blank": 200
 }

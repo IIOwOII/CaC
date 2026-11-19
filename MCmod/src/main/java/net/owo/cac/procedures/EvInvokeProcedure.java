@@ -94,7 +94,6 @@ public class EvInvokeProcedure {
 				CacModVariables.Ev_que_index = (CacModVariables.Ev_que_index + 1) % CacModVariables.Ev_que.size();
 			}
 			CacModVariables.Ev_occuring = false;
-			net.owo.cac.CstCoroutine.setWaiting();
 		}
 	}
 }

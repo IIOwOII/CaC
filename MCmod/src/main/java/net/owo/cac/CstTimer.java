@@ -62,9 +62,6 @@ public class CstTimer {
 			if (timer_toggle > 0) {
 				timer_toggle -= 1;
 				setSwitchSignal(true);
-				if (CacModVariables.TimR_time >= CacModVariables.TimR_que_time) {
-					CacModVariables.TimR_que_time = CacModVariables.TimR_time + 1;
-				}
 			} else {
 				setSwitchSignal(false);
 			}

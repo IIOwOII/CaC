@@ -148,7 +148,7 @@ P_con = np.array([cal_Polyexp_PSI(HRHO[0], theta, 'chasing'),
 
 
 #%%
-SUBJECTS = ['YSY', 'HES', 'PMJ']
+SUBJECTS = ['P008']
 
 # File Load
 fdat_fit = []
