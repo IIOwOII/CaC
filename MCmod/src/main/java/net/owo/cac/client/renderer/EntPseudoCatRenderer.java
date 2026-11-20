@@ -29,7 +29,7 @@ public class EntPseudoCatRenderer extends GeoEntityRenderer<EntPseudoCatEntity> 
 	@Override
 	public void preRender(PoseStack poseStack, EntPseudoCatEntity entity, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green,
 			float blue, float alpha) {
-		float scale = 1f;
+		float scale = 0.8f;
 		this.scaleHeight = scale;
 		this.scaleWidth = scale;
 		super.preRender(poseStack, entity, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);

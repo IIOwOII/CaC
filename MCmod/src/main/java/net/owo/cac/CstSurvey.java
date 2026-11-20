@@ -119,7 +119,7 @@ public class CstSurvey {
 					suv_phase = 36;
 			} else if (suv_phase == 33) {
 				timer_blank = timer_blank + 1;
-				if (timer_blank >= CstState.getITI() && (CstState.key_pressed[7] || CstState.getModeCode != 1)) {
+				if (timer_blank >= CstState.getITI() && (CstState.key_pressed[7] || CstState.getModeCode() != 1)) {
 					progressSurvey();
 				}
 			} else if (suv_phase == 31) {
