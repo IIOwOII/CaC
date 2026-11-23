@@ -42,9 +42,8 @@ public class CstState {
 
 	public static boolean signal_cued = false;
 	public static int signal_cued_timer = 0;
-
-	// Mode by mode
-	public static int ITI = 40; // fmri = 100, other = 40
+	
+	public static int ITI = 40; // fmri = 200, other = 40
 
 	// get Exp mode
 	// 0: beh, 1: fmri, 2: seeg
@@ -64,7 +63,7 @@ public class CstState {
 		return mode_code;
 	}
 
-	// get Session code
+	// Session code
 	// 0: default, 1: start, 2: end
 	public static void setSessionCode(int code) {
 		session_code = code;
@@ -73,6 +72,7 @@ public class CstState {
 		return session_code;
 	}
 
+	// ITI
 	public static void setITI() {
 		if (getModeCode() != 1) { // not fmri
 			ITI = 40;
@@ -83,7 +83,7 @@ public class CstState {
 	public static int getITI() {
 		return ITI;
 	}
-
+	
 	public static void signalUpdate() {
 		if (getModeCode() == 1) {
 			signal_cued = true;
@@ -130,24 +130,24 @@ public class CstState {
 	public static void switchPause() {
 		IsPause = (!IsPause);
 	}
-	
+
+	// Meow
     public static void switchMeowView() {
     	IsMeowView = (!IsMeowView);
     }
-
     public static boolean getMeowView() {
     	return IsMeowView;
     }
-
+    
 	public static void onMeowMove() {
 		CanMeowMove = true;
 	}
-	
     public static void offMeowMove() {
     	CanMeowMove = false;
     	CstKeyHandler.stopMeowMove();
     }
 
+	// Key
     public static void KeyTickUpdate() {
     	for (int KI=0; KI<4; KI++) {
     		if (key_pressed[KI]) {
@@ -214,7 +214,8 @@ public class CstState {
 		}
 		return key_changed;
 	}
-	
+
+	// Debug Item
 	public static int getCondition() {
 		Minecraft mc = Minecraft.getInstance();
 		@Nullable LevelAccessor world = mc.level;
@@ -237,6 +238,7 @@ public class CstState {
 		return 0;
 	}
 
+	// Log util
 	public static int getNumFiles(String path, String name, String extension) {
 		File dir_file = new File(path);
 		String[] names_file = dir_file.list();

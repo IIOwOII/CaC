@@ -1,4 +1,3 @@
-
 jjy01, cju01, khg01
 {
   "method": ["binary", "continuous"],
@@ -25,3 +24,4 @@ jjy01, cju01, khg01
     }
   }
 }
+=> Beta.zip

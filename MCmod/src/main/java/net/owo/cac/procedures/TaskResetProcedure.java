@@ -24,6 +24,7 @@ public class TaskResetProcedure {
 		net.owo.cac.CstTimer.endTimer();
 		net.owo.cac.CstState.cleanSignal();
 		net.owo.cac.CstState.setSessionCode(0);
+		net.owo.cac.CstEyetrack.resetEyetrack();
 		EffRemoveMorphProcedure.execute(entity);
 	}
 }

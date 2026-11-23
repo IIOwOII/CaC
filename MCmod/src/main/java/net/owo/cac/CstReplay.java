@@ -137,7 +137,7 @@ public class CstReplay {
 	        if (frame == null) return;
 	        try {
 	        	is_record = true;
-	        	CstRenderHandler.camicon_timer = 60;
+	        	CstRenderHandler.camicon_timer = 100;
 	        	
 	        	// init metadata
 	        	frameLoaded = 0L;
@@ -203,7 +203,7 @@ public class CstReplay {
     	Thread saveThread;
     	synchronized (STATE_LOCK) {
     		is_record = false;
-    		CstRenderHandler.camicon_timer = 60;
+    		CstRenderHandler.camicon_timer = 100;
     		if (!RECORDING.get() && writerThread == null) return;
             T_END = System.nanoTime();
             STOP_REQUEST.set(true);

@@ -13,6 +13,8 @@ import java.util.Calendar;
 import java.util.ArrayList;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.server.MinecraftServer;
+import net.minecraftforge.server.ServerLifecycleHooks;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -22,6 +24,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.owo.cac.CacMod;
 import net.owo.cac.CstState;
 import net.owo.cac.network.CacModVariables;
+
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstTimer {
@@ -66,6 +69,15 @@ public class CstTimer {
 				setSwitchSignal(false);
 			}
 		}
+	}
+
+	// Tick util
+	public static float getTPS() { // From Real Instance
+		MinecraftServer server = ServerLifecycleHooks.getCurrentServer();
+		if (server == null) return 0.0F;
+		float ticktime = server.getAverageTickTime();
+		float tps = Math.round((1000.0F/ticktime)*100)/100.0F;
+		return Math.min(20, tps);
 	}
 
 	public static void signalCheck() {

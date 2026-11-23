@@ -18,7 +18,7 @@ import net.minecraft.commands.Commands;
 public class CmdTaskResetCommand {
 	@SubscribeEvent
 	public static void registerCommand(RegisterCommandsEvent event) {
-		event.getDispatcher().register(Commands.literal("cac_task_reset")
+		event.getDispatcher().register(Commands.literal("cac_reset")
 
 				.executes(arguments -> {
 					Level world = arguments.getSource().getUnsidedLevel();

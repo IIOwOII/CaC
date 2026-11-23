@@ -31,11 +31,11 @@ glintStrength:0.75
 damageTiltStrength:1.0
 highContrast:false
 gamma:0.5
-renderDistance:8
+renderDistance:5
 simulationDistance:12
 entityDistanceScaling:1.0
 guiScale:0
-particles:1
+particles:0
 maxFps:120
 graphicsMode:0
 ao:false
@@ -47,10 +47,10 @@ incompatibleResourcePacks:[]
 lastServer:localhost:25463
 lang:en_us
 soundDevice:""
-chatVisibility:0
-chatOpacity:1.0
+chatVisibility:1
+chatOpacity:0.45374669894366193
 chatLineSpacing:0.0
-textBackgroundOpacity:0.5
+textBackgroundOpacity:0.0
 backgroundForChatOnly:true
 hideServerAddress:false
 advancedItemTooltips:false
@@ -77,7 +77,7 @@ skipRealms32bitWarning:false
 hideMatchedNames:true
 joinedFirstServer:false
 hideBundleTutorial:false
-syncChunkWrites:false
+syncChunkWrites:true
 showAutosaveIndicator:true
 allowServerListing:true
 onlyShowSecureChat:false
