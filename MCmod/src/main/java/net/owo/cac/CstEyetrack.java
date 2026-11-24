@@ -1,5 +1,8 @@
 package net.owo.cac;
 
+import com.mojang.blaze3d.platform.Window;
+import com.mojang.blaze3d.vertex.PoseStack;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.client.event.RenderGuiEvent;
@@ -7,7 +10,6 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
-
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CstEyetrack {
@@ -19,11 +21,32 @@ public class CstEyetrack {
 	// Rendering
 	@SubscribeEvent
     public static void onRenderGuiPost(RenderGuiEvent.Post event) {
+    	// Scaling
     	GuiGraphics gg = event.getGuiGraphics();
-	    int ww = event.getWindow().getWidth();
-		int wh = event.getWindow().getHeight();
-		int gw = event.getWindow().getGuiScaledWidth();
-		int gh = event.getWindow().getGuiScaledHeight();
+    	Window wd = event.getWindow();
+    	
+	    int ww = wd.getWidth(); // eg. 1920
+		int wh = wd.getHeight(); // eg. 1080
+		double gs = wd.getGuiScale(); // GuiScale
+
+		PoseStack pose = gg.pose();
+		pose.pushPose(); // Gui Matrix save
+		float inv_scale = 1.0F/(float)gs;
+		pose.scale(inv_scale, inv_scale, 1.0F);
+		pose.popPose(); // apply
+    }
+
+    // Convert pixel [ww x wh resolution (eg. 1920x1080)]
+    public static int getPixelPosition(int iw, int ih, int ww, int wh, int sw, int sh) {
+    	// iw, ih : id of grid
+    	// ww, wh : window size
+    	// sw, sh : scale factor
+    	// eg) (1,1, 1920,1080, 8,6) => 1920/8,1080/6 = 240,180(grid size) => 1*2
+    }
+    public static int getPixelRadius(int ww, int scale) {
+    	// original radius : 160px in 1920x1080 => 1:12 (size:width) => scale : 12
+    	int px = ww/scale;
+    	return px;
     }
     
 
@@ -59,7 +82,8 @@ public class CstEyetrack {
 	// Eyetracking
     public static void startEyetrack(GuiGraphics gg, int ww, int wh) {
     	signal_count = 0;
-    	int text_pos = getGridPosition(0, ww, wh);
+    	int[] text_pos = getGridPosition(0, ww, wh);
+    	text_pos[0]
     }
 
     // render
@@ -73,7 +97,12 @@ public class CstEyetrack {
 		int ms_per_frame = period/frame_max;
 		int frame = ms/ms_per_frame;
 		int size = (size_max*frame)/frame_max;
-		gg.fill(ox - size, oy - size, size, size, 0xFF00FF00); // Green
-		gg.fill(ox - size_offset, oy - size_offset, size_offset, size_offset, 0xFFFF0000); // Red
+		gg.fill(ox - size/2, oy - size/2, size, size, 0xFF00FF00); // Green
+		gg.fill(ox - size_offset/2, oy - size_offset/2, size_offset, size_offset, 0xFFFF0000); // Red
+	}
+
+	// Draw text
+	public static void renderText(GuiGraphics gg, int ww, int wh, int ox, int oy) {
+		
 	}
 }
