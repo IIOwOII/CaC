@@ -35,7 +35,7 @@ renderDistance:5
 simulationDistance:12
 entityDistanceScaling:1.0
 guiScale:0
-particles:0
+particles:1
 maxFps:120
 graphicsMode:0
 ao:false
@@ -47,10 +47,10 @@ incompatibleResourcePacks:[]
 lastServer:localhost:25463
 lang:en_us
 soundDevice:""
-chatVisibility:1
-chatOpacity:0.45374669894366193
+chatVisibility:0
+chatOpacity:1.0
 chatLineSpacing:0.0
-textBackgroundOpacity:0.0
+textBackgroundOpacity:0.5
 backgroundForChatOnly:true
 hideServerAddress:false
 advancedItemTooltips:false
@@ -77,7 +77,7 @@ skipRealms32bitWarning:false
 hideMatchedNames:true
 joinedFirstServer:false
 hideBundleTutorial:false
-syncChunkWrites:true
+syncChunkWrites:false
 showAutosaveIndicator:true
 allowServerListing:true
 onlyShowSecureChat:false
@@ -88,11 +88,11 @@ key_key.attack:key.mouse.left
 key_key.use:key.mouse.right
 key_key.forward:key.keyboard.w
 key_key.left:key.keyboard.a
-key_key.back:key.keyboard.x
+key_key.back:key.keyboard.s
 key_key.right:key.keyboard.d
 key_key.jump:key.keyboard.space
 key_key.sneak:key.keyboard.left.shift
-key_key.sprint:key.keyboard.unknown
+key_key.sprint:key.keyboard.left.control
 key_key.drop:key.keyboard.q
 key_key.inventory:key.keyboard.e
 key_key.chat:key.keyboard.t
@@ -107,7 +107,7 @@ key_key.fullscreen:key.keyboard.f11
 key_key.spectatorOutlines:key.keyboard.unknown
 key_key.swapOffhand:key.keyboard.f
 key_key.saveToolbarActivator:key.keyboard.c
-key_key.loadToolbarActivator:key.keyboard.unknown
+key_key.loadToolbarActivator:key.keyboard.x
 key_key.advancements:key.keyboard.l
 key_key.hotbar.1:key.keyboard.1
 key_key.hotbar.2:key.keyboard.2
@@ -127,7 +127,7 @@ key_key.cac.cac_key_decide:key.keyboard.left.control
 key_key.cac.cac_key_record:key.keyboard.right.shift
 key_key.cac.cac_key_scanner:key.keyboard.s
 soundCategory_master:1.0
-soundCategory_music:0.0
+soundCategory_music:1.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0
